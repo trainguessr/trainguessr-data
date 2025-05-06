@@ -1,0 +1,38 @@
+{"type":"node","id":1,"lat":46.0741396,"lon":11.1206332,"tags":{"name":"Trento FTM","operator":"Trentino Trasporti","osm_id":9799570214},"category":"italy_tt"}
+{"type":"node","id":3,"lat":46.0899218,"lon":11.1129994,"tags":{"name":"Trento Nord Zona Commerciale","operator":"Trentino Trasporti","osm_id":9860704976},"category":"italy_tt"}
+{"type":"node","id":4,"lat":46.1080600,"lon":11.1046112,"tags":{"name":"Gardolo","operator":"Trentino Trasporti","osm_id":311382070},"category":"italy_tt"}
+{"type":"node","id":5,"lat":46.1186853,"lon":11.1052513,"tags":{"name":"Zona Industriale - Spini","operator":"Trentino Trasporti","osm_id":9860704975},"category":"italy_tt"}
+{"type":"node","id":6,"lat":46.1255242,"lon":11.1073705,"tags":{"name":"Lamar","operator":"Trentino Trasporti","osm_id":9860704974},"category":"italy_tt"}
+{"type":"node","id":7,"lat":46.1400238,"lon":11.1061184,"tags":{"name":"Lavis FTM","operator":"Trentino Trasporti","osm_id":9800819396},"category":"italy_tt"}
+{"type":"node","id":8,"lat":46.1512683,"lon":11.1007472,"tags":{"name":"Zambana","operator":"Trentino Trasporti","osm_id":311380553},"category":"italy_tt"}
+{"type":"node","id":9,"lat":46.1681511,"lon":11.1139628,"tags":{"name":"Nave San Felice","operator":"Trentino Trasporti","osm_id":311380528},"category":"italy_tt"}
+{"type":"node","id":11,"lat":46.193903,"lon":11.1279605,"tags":{"name":"Grumo San Michele","operator":"Trentino Trasporti","osm_id":311380464},"category":"italy_tt"}
+{"type":"node","id":12,"lat":46.2063858,"lon":11.1272011,"tags":{"name":"Mezzocorona Ferrovia","operator":"Trentino Trasporti","osm_id":6018351090},"category":"italy_tt"}
+{"type":"node","id":13,"lat":46.2139465,"lon":11.1190969,"tags":{"name":"Mezzocorona Borgata","operator":"Trentino Trasporti","osm_id":867538756},"category":"italy_tt"}
+{"type":"node","id":14,"lat":46.2134458,"lon":11.0934429,"tags":{"name":"Mezzolombardo","operator":"Trentino Trasporti","osm_id":2757315482},"category":"italy_tt"}
+{"type":"node","id":15,"lat":46.2386349,"lon":11.061151,"tags":{"name":"Masi di Vigo","operator":"Trentino Trasporti","osm_id":10240889395},"category":"italy_tt"}
+{"type":"node","id":16,"lat":46.2440933,"lon":11.0588133,"tags":{"name":"Crescino","operator":"Trentino Trasporti","osm_id":279327776},"category":"italy_tt"}
+{"type":"node","id":17,"lat":46.2628927,"lon":11.0601609,"tags":{"name":"Denno","operator":"Trentino Trasporti","osm_id":279326220},"category":"italy_tt"}
+{"type":"node","id":19,"lat":46.2948169,"lon":11.0682542,"tags":{"name":"Mollaro","operator":"Trentino Trasporti","osm_id":279318407},"category":"italy_tt"}
+{"type":"node","id":20,"lat":46.3043834,"lon":11.0715715,"tags":{"name":"Segno","operator":"Trentino Trasporti","osm_id":415948280},"category":"italy_tt"}
+{"type":"node","id":21,"lat":46.3221375,"lon":11.0677615,"tags":{"name":"Taio","operator":"Trentino Trasporti","osm_id":279318365},"category":"italy_tt"}
+{"type":"node","id":22,"lat":46.3375743,"lon":11.0630878,"tags":{"name":"Dermulo","operator":"Trentino Trasporti","osm_id":415948281},"category":"italy_tt"}
+{"type":"node","id":23,"lat":46.3413008,"lon":11.0538621,"tags":{"name":"Tassullo","operator":"Trentino Trasporti","osm_id":10240840569},"category":"italy_tt"}
+{"type":"node","id":24,"lat":46.3644544,"lon":11.0388699,"tags":{"name":"Cles","operator":"Trentino Trasporti","osm_id":10240840568},"category":"italy_tt"}
+{"type":"node","id":25,"lat":46.3699694,"lon":11.0337961,"tags":{"name":"Cles Polo Scolastico","operator":"Trentino Trasporti","osm_id":279323906},"category":"italy_tt"}
+{"type":"node","id":26,"lat":46.3948151,"lon":11.0100891,"tags":{"name":"Mostizzolo","operator":"Trentino Trasporti","osm_id":10241950781},"category":"italy_tt"}
+{"type":"node","id":27,"lat":46.3873439,"lon":10.9847443,"tags":{"name":"Bozzana","operator":"Trentino Trasporti","osm_id":10241950777},"category":"italy_tt"}
+{"type":"node","id":28,"lat":46.3811641,"lon":10.9718977,"tags":{"name":"Tozzaga","operator":"Trentino Trasporti","osm_id":335604391},"category":"italy_tt"}
+{"type":"node","id":29,"lat":46.3752482,"lon":10.9627166,"tags":{"name":"Cassana","operator":"Trentino Trasporti","osm_id":600596907},"category":"italy_tt"}
+{"type":"node","id":30,"lat":46.3712527,"lon":10.9519386,"tags":{"name":"Cavizzana","operator":"Trentino Trasporti","osm_id":335608033},"category":"italy_tt"}
+{"type":"node","id":31,"lat":46.3661937,"lon":10.9455518,"tags":{"name":"Caldes","operator":"Trentino Trasporti","osm_id":10241950770},"category":"italy_tt"}
+{"type":"node","id":32,"lat":46.3581285,"lon":10.9256954,"tags":{"name":"Terzolas","operator":"Trentino Trasporti","osm_id":10241950766},"category":"italy_tt"}
+{"type":"node","id":33,"lat":46.3535817,"lon":10.9170884,"tags":{"name":"Malé","operator":"Trentino Trasporti","osm_id":335595260},"category":"italy_tt"}
+{"type":"node","id":34,"lat":46.3437767,"lon":10.9071936,"tags":{"name":"Croviana","operator":"Trentino Trasporti","osm_id":10242893912},"category":"italy_tt"}
+{"type":"node","id":35,"lat":46.3326484,"lon":10.8895218,"tags":{"name":"Monclassico","operator":"Trentino Trasporti","osm_id":10242893911},"category":"italy_tt"}
+{"type":"node","id":36,"lat":46.3289521,"lon":10.8727325,"tags":{"name":"Dimaro - Pressòn","operator":"Trentino Trasporti","osm_id":10242893910},"category":"italy_tt"}
+{"type":"node","id":37,"lat":46.3222573,"lon":10.8475258,"tags":{"name":"Mastellina","operator":"Trentino Trasporti","osm_id":10242891607},"category":"italy_tt"}
+{"type":"node","id":38,"lat":46.3196181,"lon":10.836164,"tags":{"name":"Daolasa","operator":"Trentino Trasporti","osm_id":10242891590},"category":"italy_tt"}
+{"type":"node","id":39,"lat":46.3175115,"lon":10.8263435,"tags":{"name":"Piano","operator":"Trentino Trasporti","osm_id":335599374},"category":"italy_tt"}
+{"type":"node","id":40,"lat":46.3152264,"lon":10.8121774,"tags":{"name":"Marilleva","operator":"Trentino Trasporti","osm_id":335599298},"category":"italy_tt"}
+{"type":"node","id":41,"lat":46.3135112,"lon":10.8014777,"tags":{"name":"Mezzana","operator":"Trentino Trasporti","osm_id":10242891579},"category":"italy_tt"}
