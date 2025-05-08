@@ -25,47 +25,36 @@
 
 ## Renamed stations
 
-| Station | New name 1 | New name 2 |
-| Derby | Derby (La Salle) | Derby (UK) |
-| Westendorf | Westendorf (Austria) | Westendorf (Germany) |
-| Maria Rain | Maria Rain (Austria) | Maria Rain (Germany) |
-| Bazzano | Bazzano (Valsamoggia) | Bazzano (L'Aquila) |
-| Lison | Lison (France) | Lison (Portogruaro) |
-| Magenta | Magenta (Paris) | Magenta (Milano) |
-| Guarda | Guarda (Switzerland) | Guarda (Molinella) |
-
-TODO:
-
-```
-[trainguessr] - 2025-04-29 12:36:40,114 - DEBUG - Resolved duplicate Haslach to Haslach (austria_oebb)
-[trainguessr] - 2025-04-29 12:36:40,114 - DEBUG - Resolved duplicate Haslach to Haslach (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Ramsen to Ramsen (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Ramsen to Ramsen (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Horn to Horn (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Horn to Horn (austria_oebb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Rietheim to Rietheim (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Rietheim to Rietheim (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Brunnen to Brunnen (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Brunnen to Brunnen (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Steinen to Steinen (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Steinen to Steinen (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Langendorf to Langendorf (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Langendorf to Langendorf (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Baden to Baden (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Baden to Baden (austria_oebb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Stans to Stans (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Stans to Stans (austria_oebb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Feldbach to Feldbach (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Feldbach to Feldbach (austria_oebb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Speicher to Speicher (switzerland_sbb)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Speicher to Speicher (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Bellevue to Bellevue (france_sncf)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Bellevue to Bellevue (germany_db)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Dormans to Dormans (france_sncf)
-[trainguessr] - 2025-04-29 12:36:40,115 - DEBUG - Resolved duplicate Dormans to Dormans (uk_national_rail)
-[trainguessr] - 2025-04-29 12:36:40,116 - DEBUG - Resolved duplicate Fors to Fors (sweden_trafikverket)
-[trainguessr] - 2025-04-29 12:36:40,116 - DEBUG - Resolved duplicate Fors to Fors (france_sncf)
-```
+| Station                 | New name 1                    | New name 2                    |
+| ----------------------- | ----------------------------- | ----------------------------- |
+| Derby                   | Derby (La Salle)              | Derby (UK)                    |
+| Westendorf              | Westendorf (Austria)          | Westendorf (Germany)          |
+| Maria Rain              | Maria Rain (Austria)          | Maria Rain (Germany)          |
+| Bazzano                 | Bazzano (Valsamoggia)         | Bazzano (L'Aquila)            |
+| Lison                   | Lison (France)                | Lison (Portogruaro)           |
+| Magenta                 | Magenta (Paris)               | Magenta (Milano)              |
+| Guarda                  | Guarda (Switzerland)          | Guarda (Molinella)            |
+| Castellammare di Stabia | Castellammare di Stabia (RFI) | Castellammare di Stabia (EAV) |
+| Montesanto              | Montesanto (Voghiera)         | Montesanto (Napoli, EAV)      |
+| Casalnuovo              | Casalnuovo (RFI)              | Casalnuovo (EAV)              |
+| Nola                    | Nola (RFI)                    | Nola (EAV)                    |
+| Torre del Greco         | Torre del Greco (RFI)         | Torre del Greco (EAV)         |
+| Scafati                 | Scafati (RFI)                 | Scafati (EAV)                 |
+| Sarno                   | Sarno (RFI)                   | Sarno (EAV)                   |
+| Haslach                 | Haslach (Austria)             | Haslach (Germany)             |
+| Fors                    | Fors (Sweden)                 | Fors (France)                 |
+| Dormans                 | Dormans (France)              | Dormans (UK)                  |
+| Bellevue                | Bellevue (France)             | Bellevue (Germany)            |
+| Speicher                | Speicher (Switzerland)        | Speicher (Germany)            |
+| Ramsen                  | Ramsen (Switzerland)          | Ramsen (Germany)              |
+| Horn                    | Horn (Switzerland)            | Horn (Austria)                |
+| Rietheim                | Rietheim (Switzerland)        | Rietheim (Germany)            |
+| Brunnen                 | Brunnen (Switzerland)         | Brunnen (Germany)             |
+| Steinen                 | Steinen (Switzerland)         | Steinen (Germany)             |
+| Langendorf              | Langendorf (Switzerland)      | Langendorf (Germany)          |
+| Stans                   | Stans (Switzerland)           | Stans (Austria)               |
+| Baden                   | Baden (Switzerland)           | Baden (Germany)               |
+| Feldbach                | Feldbach (Switzerland)        | Feldbach (Austria)            |
 
 ## Removed stations
 

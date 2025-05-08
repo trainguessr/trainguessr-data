@@ -1,0 +1,120 @@
+{"type":"node","id":"1","lat":40.8491254,"lon":14.2694638,"tags":{"name":"Napoli Porta Nolana","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"224814381"},"category":"italy_eav"}
+{"type":"node","id":"10","lat":40.8621065,"lon":14.3842104,"tags":{"name":"Guindazzi","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"281159312"},"category":"italy_eav"}
+{"type":"node","id":"101","lat":40.8721916,"lon":14.3155966,"tags":{"name":"Bivio Botteghelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11406225059"},"category":"italy_eav"}
+{"type":"node","id":"102","lat":40.8710751,"lon":14.3348515,"tags":{"name":"Bivio Madonnelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11406225006"},"category":"italy_eav"}
+{"type":"node","id":"107","lat":40.829108,"lon":14.117681,"tags":{"name":"Pozzuoli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1359337154"},"category":"italy_eav"}
+{"type":"node","id":"109","lat":40.8802969,"lon":14.1361829,"tags":{"name":"Quarto","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"972225049"},"category":"italy_eav"}
+{"type":"node","id":"11","lat":40.8673467,"lon":14.3894802,"tags":{"name":"Madonna dell'Arco","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253939142"},"category":"italy_eav"}
+{"type":"node","id":"12","lat":40.8700685,"lon":14.4005207,"tags":{"name":"Sant'Anastasia","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407164105"},"category":"italy_eav"}
+{"type":"node","id":"13","lat":40.8733537,"lon":14.4262847,"tags":{"name":"Villa Augustea","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253934558"},"category":"italy_eav"}
+{"type":"node","id":"14","lat":40.8740087,"lon":14.4385005,"tags":{"name":"Somma Vesuviana","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253934539"},"category":"italy_eav"}
+{"type":"node","id":"15","lat":40.8702492,"lon":14.4618138,"tags":{"name":"Rione Trieste","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253938010"},"category":"italy_eav"}
+{"type":"node","id":"16","lat":40.8529512,"lon":14.4807878,"tags":{"name":"Ottaviano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253941086"},"category":"italy_eav"}
+{"type":"node","id":"17","lat":40.8430152,"lon":14.4923305,"tags":{"name":"San Leonardo (Ottaviano)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"254023288"},"category":"italy_eav"}
+{"type":"node","id":"18","lat":40.8375711,"lon":14.5010196,"tags":{"name":"San Giuseppe","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644501"},"category":"italy_eav"}
+{"type":"node","id":"19","lat":40.8265713,"lon":14.5003668,"tags":{"name":"Casilli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644500"},"category":"italy_eav"}
+{"type":"node","id":"20","lat":40.8142964,"lon":14.4972794,"tags":{"name":"Terzigno","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644499"},"category":"italy_eav"}
+{"type":"node","id":"21","lat":40.8035814,"lon":14.5320255,"tags":{"name":"Flocco","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644513"},"category":"italy_eav"}
+{"type":"node","id":"22","lat":40.8009688,"lon":14.5403113,"tags":{"name":"Poggiomarino","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644505"},"category":"italy_eav"}
+{"type":"node","id":"23","lat":40.811971,"lon":14.5769413,"tags":{"name":"Striano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644519"},"category":"italy_eav"}
+{"type":"node","id":"24","lat":40.7975429,"lon":14.6004911,"tags":{"name":"San Valentino Torio","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407164124"},"category":"italy_eav"}
+{"type":"node","id":"25","lat":40.8122406,"lon":14.6183655,"tags":{"name":"Sarno (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"260860458"},"category":"italy_eav"}
+{"type":"node","id":"26","lat":40.8402056,"lon":14.3277212,"tags":{"name":"Santa Maria del Pozzo","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"2493550232"},"category":"italy_eav"}
+{"type":"node","id":"27","lat":40.8330084,"lon":14.3376827,"tags":{"name":"San Giorgio a Cremano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"229162928"},"category":"italy_eav"}
+{"type":"node","id":"28","lat":40.8287458,"lon":14.340735,"tags":{"name":"Cavalli di Bronzo","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"185621267"},"category":"italy_eav"}
+{"type":"node","id":"29","lat":40.8220171,"lon":14.3434588,"tags":{"name":"Portici Bellavista","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253925148"},"category":"italy_eav"}
+{"type":"node","id":"3","lat":40.8510432,"lon":14.2732815,"tags":{"name":"Napoli Garibaldi (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1738681458"},"category":"italy_eav"}
+{"type":"node","id":"30","lat":40.8167224,"lon":14.3463544,"tags":{"name":"Portici Via Libertà","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253925643"},"category":"italy_eav"}
+{"type":"node","id":"31","lat":40.8085341,"lon":14.3554844,"tags":{"name":"Ercolano Scavi","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253063148"},"category":"italy_eav"}
+{"type":"node","id":"32","lat":40.8085341,"lon":14.3554844,"tags":{"name":"Ercolano Miglio d'Oro","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253063148"},"category":"italy_eav"}
+{"type":"node","id":"33","lat":40.793413,"lon":14.3698022,"tags":{"name":"Torre del Greco (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644487"},"category":"italy_eav"}
+{"type":"node","id":"34","lat":40.7842817,"lon":14.3842293,"tags":{"name":"Via Sant'Antonio","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407270278"},"category":"italy_eav"}
+{"type":"node","id":"35","lat":40.7781017,"lon":14.3924153,"tags":{"name":"Via del Monte","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4340367752"},"category":"italy_eav"}
+{"type":"node","id":"36","lat":40.775816,"lon":14.4000979,"tags":{"name":"Via dei Monaci","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"2246301494"},"category":"italy_eav"}
+{"type":"node","id":"37","lat":40.7722523,"lon":14.4085089,"tags":{"name":"Villa delle Ginestre","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"258033595"},"category":"italy_eav"}
+{"type":"node","id":"38","lat":40.7661500,"lon":14.4177616,"tags":{"name":"Leopardi","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"296077447"},"category":"italy_eav"}
+{"type":"node","id":"39","lat":40.763796,"lon":14.4279529,"tags":{"name":"Via Viuli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"946668248"},"category":"italy_eav"}
+{"type":"node","id":"4","lat":40.845991,"lon":14.2872782,"tags":{"name":"Via Gianturco","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"229162892"},"category":"italy_eav"}
+{"type":"node","id":"40","lat":40.7619171,"lon":14.4397226,"tags":{"name":"Trecase","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"258033621"},"category":"italy_eav"}
+{"type":"node","id":"41","lat":40.7470393,"lon":14.4638607,"tags":{"name":"Torre Annunziata - Oplonti","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"324818339"},"category":"italy_eav"}
+{"type":"node","id":"42","lat":40.7688312,"lon":14.4612814,"tags":{"name":"Boscotrecase - Cratere Vesuvio","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644484"},"category":"italy_eav"}
+{"type":"node","id":"43","lat":40.7700301,"lon":14.474435,"tags":{"name":"Boscoreale","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3389605447"},"category":"italy_eav"}
+{"type":"node","id":"44","lat":40.7572394,"lon":14.4702797,"tags":{"name":"Villa Regina","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3906344558"},"category":"italy_eav"}
+{"type":"node","id":"45","lat":40.7512701,"lon":14.5016608,"tags":{"name":"Pompei Santuario","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407270297"},"category":"italy_eav"}
+{"type":"node","id":"46","lat":40.7536298,"lon":14.5241808,"tags":{"name":"Scafati (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253006925"},"category":"italy_eav"}
+{"type":"node","id":"47","lat":40.7606307,"lon":14.534329,"tags":{"name":"San Pietro (Scafati)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"250313706"},"category":"italy_eav"}
+{"type":"node","id":"48","lat":40.7852651,"lon":14.537646,"tags":{"name":"Via Cangiani","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"250312780"},"category":"italy_eav"}
+{"type":"node","id":"49","lat":40.7487976,"lon":14.4809254,"tags":{"name":"Pompei Scavi - Villa dei Misteri","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644481"},"category":"italy_eav"}
+{"type":"node","id":"5","lat":40.8417682,"lon":14.3002213,"tags":{"name":"San Giovanni a Teduccio","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1306185157"},"category":"italy_eav"}
+{"type":"node","id":"51","lat":40.7188605,"lon":14.4917564,"tags":{"name":"Pioppaino","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644474"},"category":"italy_eav"}
+{"type":"node","id":"52","lat":40.7008024,"lon":14.4909267,"tags":{"name":"Via Nocera","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644473"},"category":"italy_eav"}
+{"type":"node","id":"53","lat":40.6953051,"lon":14.4837248,"tags":{"name":"Castellammare di Stabia (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407722191"},"category":"italy_eav"}
+{"type":"node","id":"54","lat":40.6896393,"lon":14.4682179,"tags":{"name":"Castellammare Terme","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3380923412"},"category":"italy_eav"}
+{"type":"node","id":"55","lat":40.6862693,"lon":14.4552523,"tags":{"name":"Pozzano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"6573414209"},"category":"italy_eav"}
+{"type":"node","id":"56","lat":40.6715539,"lon":14.4363115,"tags":{"name":"Scrajo","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"6573414210"},"category":"italy_eav"}
+{"type":"node","id":"57","lat":40.6628032,"lon":14.4298844,"tags":{"name":"Vico Equense","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644471"},"category":"italy_eav"}
+{"type":"node","id":"58","lat":40.6560139,"lon":14.4268565,"tags":{"name":"Seiano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644470"},"category":"italy_eav"}
+{"type":"node","id":"59","lat":40.6405035,"lon":14.4162093,"tags":{"name":"Meta","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407722196"},"category":"italy_eav"}
+{"type":"node","id":"6","lat":40.8441873,"lon":14.3141516,"tags":{"name":"Barra","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407164120"},"category":"italy_eav"}
+{"type":"node","id":"60","lat":40.6349718,"lon":14.4104818,"tags":{"name":"Piano di Sorrento","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11407493917"},"category":"italy_eav"}
+{"type":"node","id":"61","lat":40.6311016,"lon":14.3979917,"tags":{"name":"Sant'Agnello","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"10790148919"},"category":"italy_eav"}
+{"type":"node","id":"62","lat":40.6350689,"lon":14.4104007,"tags":{"name":"Sorrento","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644466"},"category":"italy_eav"}
+{"type":"node","id":"63","lat":40.8665289,"lon":14.2931903,"tags":{"name":"Poggioreale","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644485"},"category":"italy_eav"}
+{"type":"node","id":"64","lat":40.8722058,"lon":14.3155879,"tags":{"name":"Botteghelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644490"},"category":"italy_eav"}
+{"type":"node","id":"66","lat":40.9078543,"lon":14.3475134,"tags":{"name":"Casalnuovo (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282077072"},"category":"italy_eav"}
+{"type":"node","id":"67","lat":40.9102351,"lon":14.3652736,"tags":{"name":"Talona","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282077058"},"category":"italy_eav"}
+{"type":"node","id":"68","lat":40.9134619,"lon":14.3831037,"tags":{"name":"Pratola Ponte","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282078115"},"category":"italy_eav"}
+{"type":"node","id":"69","lat":40.9147361,"lon":14.3928312,"tags":{"name":"Pomigliano d'Arco","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282077027"},"category":"italy_eav"}
+{"type":"node","id":"7","lat":40.8476434,"lon":14.3246172,"tags":{"name":"Ponticelli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1738768188"},"category":"italy_eav"}
+{"type":"node","id":"70","lat":40.8878826,"lon":14.3298069,"tags":{"name":"Volla","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"595644496"},"category":"italy_eav"}
+{"type":"node","id":"71","lat":40.9204238,"lon":14.412245,"tags":{"name":"Castelcisterna","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282075558"},"category":"italy_eav"}
+{"type":"node","id":"72","lat":40.9171806,"lon":14.4176841,"tags":{"name":"Brusciano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917809067"},"category":"italy_eav"}
+{"type":"node","id":"73","lat":40.9194022,"lon":14.4427296,"tags":{"name":"Via Vittorio Veneto","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4915217460"},"category":"italy_eav"}
+{"type":"node","id":"74","lat":40.9169349,"lon":14.4563433,"tags":{"name":"Marigliano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917782011"},"category":"italy_eav"}
+{"type":"node","id":"75","lat":40.918426,"lon":14.4731632,"tags":{"name":"San Vitaliano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917764619"},"category":"italy_eav"}
+{"type":"node","id":"76","lat":40.9125653,"lon":14.4806268,"tags":{"name":"Scisciano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4915204196"},"category":"italy_eav"}
+{"type":"node","id":"77","lat":40.9121837,"lon":14.5093091,"tags":{"name":"Saviano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917826145"},"category":"italy_eav"}
+{"type":"node","id":"78","lat":40.9293781,"lon":14.5267092,"tags":{"name":"Nola (EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11406225017"},"category":"italy_eav"}
+{"type":"node","id":"79","lat":40.9386456,"lon":14.5305096,"tags":{"name":"Cimitile","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282072029"},"category":"italy_eav"}
+{"type":"node","id":"8","lat":40.8562808,"lon":14.355463,"tags":{"name":"Cercola","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253939227"},"category":"italy_eav"}
+{"type":"node","id":"80","lat":40.9522116,"lon":14.5314388,"tags":{"name":"Camposano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282074327"},"category":"italy_eav"}
+{"type":"node","id":"801","lat":40.8472171,"lon":14.2451762,"tags":{"name":"Montesanto (Napoli, EAV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"324565705"},"category":"italy_eav"}
+{"type":"node","id":"802","lat":40.8364314,"lon":14.2209842,"tags":{"name":"Corso Vittorio Emanuele","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917117115"},"category":"italy_eav"}
+{"type":"node","id":"803","lat":40.8279208,"lon":14.2017898,"tags":{"name":"Fuorigrotta","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1090940332"},"category":"italy_eav"}
+{"type":"node","id":"804","lat":40.8245648,"lon":14.1932039,"tags":{"name":"Mostra","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"434789470"},"category":"italy_eav"}
+{"type":"node","id":"805","lat":40.8203083,"lon":14.183488,"tags":{"name":"Edenlandia","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1338235385"},"category":"italy_eav"}
+{"type":"node","id":"806","lat":40.8176973,"lon":14.1763585,"tags":{"name":"Agnano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"434789521"},"category":"italy_eav"}
+{"type":"node","id":"808","lat":40.8151034,"lon":14.1667879,"tags":{"name":"Bagnoli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"329701822"},"category":"italy_eav"}
+{"type":"node","id":"81","lat":40.9606364,"lon":14.5434616,"tags":{"name":"Cicciano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282074306"},"category":"italy_eav"}
+{"type":"node","id":"810","lat":40.8172505,"lon":14.1600761,"tags":{"name":"Dazio","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1338235386"},"category":"italy_eav"}
+{"type":"node","id":"811","lat":40.8206808,"lon":14.135198,"tags":{"name":"Gerolomini","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1338239162"},"category":"italy_eav"}
+{"type":"node","id":"815","lat":40.8328497,"lon":14.1015092,"tags":{"name":"Arco Felice","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"326209133"},"category":"italy_eav"}
+{"type":"node","id":"816","lat":40.8292497,"lon":14.0834472,"tags":{"name":"Lucrino","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1480005815"},"category":"italy_eav"}
+{"type":"node","id":"818","lat":40.8185517,"lon":14.0616814,"tags":{"name":"Fusaro","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"326180913"},"category":"italy_eav"}
+{"type":"node","id":"819","lat":40.811495,"lon":14.0448721,"tags":{"name":"Torregaveta","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1462124085"},"category":"italy_eav"}
+{"type":"node","id":"82","lat":40.9663731,"lon":14.5598253,"tags":{"name":"Roccarainola","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282074288"},"category":"italy_eav"}
+{"type":"node","id":"820","lat":40.8429135,"lon":14.2065388,"tags":{"name":"Piave","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"325239246"},"category":"italy_eav"}
+{"type":"node","id":"821","lat":40.8439578,"lon":14.2006167,"tags":{"name":"Soccavo","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"325240435"},"category":"italy_eav"}
+{"type":"node","id":"822","lat":40.8450687,"lon":14.1941085,"tags":{"name":"Traiano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"325241055"},"category":"italy_eav"}
+{"type":"node","id":"823","lat":40.8540341,"lon":14.1719378,"tags":{"name":"La Trencia","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"325241710"},"category":"italy_eav"}
+{"type":"node","id":"824","lat":40.8560001,"lon":14.1624307,"tags":{"name":"Pianura","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4936292644"},"category":"italy_eav"}
+{"type":"node","id":"825","lat":40.8652869,"lon":14.1435942,"tags":{"name":"Pisani","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"972220234"},"category":"italy_eav"}
+{"type":"node","id":"827","lat":40.8801749,"lon":14.1448001,"tags":{"name":"Quarto Centro","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4458516196"},"category":"italy_eav"}
+{"type":"node","id":"828","lat":40.879101,"lon":14.1259153,"tags":{"name":"Quarto Officina","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1037516419"},"category":"italy_eav"}
+{"type":"node","id":"829","lat":40.8785138,"lon":14.0946728,"tags":{"name":"Grotta del Sole","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1463003360"},"category":"italy_eav"}
+{"type":"node","id":"83","lat":40.9551883,"lon":14.6025649,"tags":{"name":"Sperone - Avella","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282074225"},"category":"italy_eav"}
+{"type":"node","id":"830","lat":40.8714621,"lon":14.0589519,"tags":{"name":"Licola","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"329653476"},"category":"italy_eav"}
+{"type":"node","id":"84","lat":40.9528924,"lon":14.6171934,"tags":{"name":"Baiano","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282074201"},"category":"italy_eav"}
+{"type":"node","id":"87","lat":40.9089532,"lon":14.3550319,"tags":{"name":"La Pigna","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282078128"},"category":"italy_eav"}
+{"type":"node","id":"88","lat":40.911171,"lon":14.3727825,"tags":{"name":"Parco Piemonte","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282077053"},"category":"italy_eav"}
+{"type":"node","id":"89","lat":40.9167109,"lon":14.4291273,"tags":{"name":"De Ruggiero","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"4917182267"},"category":"italy_eav"}
+{"type":"node","id":"9","lat":40.8598708,"lon":14.3798078,"tags":{"name":"Pollena","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"279246100"},"category":"italy_eav"}
+{"type":"node","id":"90","lat":40.8580791,"lon":14.2818622,"tags":{"name":"Centro Direzionale","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"278841425"},"category":"italy_eav"}
+{"type":"node","id":"91","lat":40.8471847,"lon":14.3365329,"tags":{"name":"Bartolo Longo","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3497754974"},"category":"italy_eav"}
+{"type":"node","id":"92","lat":40.8522906,"lon":14.3389986,"tags":{"name":"Vesuvio De Meis (SGV)","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"611018471"},"category":"italy_eav"}
+{"type":"node","id":"93","lat":40.855491,"lon":14.3384254,"tags":{"name":"Villa Visconti","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3036938366"},"category":"italy_eav"}
+{"type":"node","id":"94","lat":40.8623952,"lon":14.3382606,"tags":{"name":"Argine-Palasport","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"611023894"},"category":"italy_eav"}
+{"type":"node","id":"95","lat":40.8522906,"lon":14.3389986,"tags":{"name":"Vesuvio De Meis","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"611018471"},"category":"italy_eav"}
+{"type":"node","id":"96","lat":40.871055,"lon":14.3348357,"tags":{"name":"Madonnelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"3588161277"},"category":"italy_eav"}
+{"type":"node","id":"97","lat":40.8994691,"lon":14.3373596,"tags":{"name":"Salice","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"282078138"},"category":"italy_eav"}
+{"type":"node","id":"99","lat":40.7382268,"lon":14.4850746,"tags":{"name":"Moregine","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"300386895"},"category":"italy_eav"}

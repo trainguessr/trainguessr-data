@@ -720,7 +720,7 @@
 {"type":"node","id":"DPD","lat":51.238918,"lon":-0.323921,"tags":{"name":"Dorking Deepdene"},"category":"uk_national_rail"}
 {"type":"node","id":"DKG","lat":51.241615,"lon":-0.323822,"tags":{"name":"Dorking"},"category":"uk_national_rail"}
 {"type":"node","id":"DKT","lat":51.236443,"lon":-0.339762,"tags":{"name":"Dorking West"},"category":"uk_national_rail"}
-{"type":"node","id":"DMS","lat":51.15567,"lon":-0.005183,"tags":{"name":"Dormans"},"category":"uk_national_rail"}
+{"type":"node","id":"DMS","lat":51.15567,"lon":-0.005183,"tags":{"name":"Dormans (France)"},"category":"uk_national_rail"}
 {"type":"node","id":"DDG","lat":52.371861,"lon":-1.753209,"tags":{"name":"Dorridge"},"category":"uk_national_rail"}
 {"type":"node","id":"DVH","lat":53.300005,"lon":-1.890678,"tags":{"name":"Dove Holes"},"category":"uk_national_rail"}
 {"type":"node","id":"DVP","lat":51.125988,"lon":1.304227,"tags":{"name":"Dover Priory"},"category":"uk_national_rail"}
