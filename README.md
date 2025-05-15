@@ -1,4 +1,62 @@
-# TODO
+# Trainguessr Dataset
+
+## How each country was obtained
+
+### Austria
+
+Austria has good open data, but a somewhat janky API for real time departures. The API ([here](https://fahrplan.oebb.at/bin/stboard.exe/dn)) returns JavaScript objects, which are then parsed and converted to JSON. The API is not documented, but it works well enough.
+
+The list of stations was obtained from the ÖBB open data website: [ÖBB](https://data.oebb.at/).
+
+### France
+
+SCNF export its stations as open data in a JSON file [here](https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe%2FBerlin).
+
+These station IDs are then used in the SNCF API, which requires an API key. The API key is obtained by creating a free account on the SNCF Numerique website: [SNCF Numerique](https://numerique.sncf.com/).
+
+### Germany
+
+The German railway system is a bit of a mess. The Deutsche Bahn API is not public, but it is possible to get the real time departures from the DB website: [DB](https://www.bahnhof.de/api/boards). The list of stations is obtained from the DB open data website: [DB Open Data](https://data.deutschebahn.com/). It thankfully uses UIC codes.
+
+### Italy
+
+Italy's RFI is notorious for its lack of public APIs. This website, written in pure HTML, allows someone to query data about train schedules and routes: [RFI](https://www.rfi.it/it/stazioni/pagine-stazioni/servizi-di-qualita/informazioni-al-pubblico/monitor-arrivi-partenze-live.html).
+
+The website embeds the train information along with the logos as base64 images and has a very good CSS. This CSS was fetched and modified to fit TrainGuessr. On the other hand, the whole HTML page is fetched, the timetable obtained and inserted as-is in the page.
+
+The RFI IDs are the same as the TrainGuessr IDs. To match them to the geolocation data, a lot of manual labor and scripting was done.
+
+All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti, Ferrovie Emilia Romagna, Ente Autonomo Volturno) each have their own API. In particular:
+
+- FerrovieNord (via Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. However, Trenitalia does not show information on the type of train on ViaggiaTreno; thus, an additional API call to the Trenord website is needed to get the type of train.
+- Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a public API and the data is heavily processed to get something usable.
+- Ferrovie Emilia Romagna and Ente Autonomo Volturno have their web departure boards similar to RFI. They are fetched in a similar fashion.
+
+## Netherlands
+
+Just like Sweden, the Netherlands has tremendous support for open data. The data was downloaded from the Rijden de Treinen website: [Rijden de Treinen](https://www.rijdendetreinen.nl/en/open-data). Their API is also used to get the real-time departures.
+
+### Sweden
+
+Sweden has a great, all-encompassing API service for its stations and departures called Trafiklab. The API provides access to real-time data and is user-friendly, making it easy to integrate into applications.
+
+It requires a valid API key, which can be obtained by signing up on the Trafiklab website: [Trafiklab](https://www.trafiklab.se/).
+
+We downloaded the GTFS 2 dataset to get the stations, and then use those IDs using the ResRobot API. Some stations had to be removed, in particular, those situated outside of Sweden.
+
+### Switzerland
+
+Switzerland has a very good API for its stations. The data is available in JSON format and can be obtained from the SBB Open Data website: [SBB API](https://data.sbb.ch/api/v2/catalog/datasets/haltestelle-haltekante/exports/geojson)
+
+Once the IDs are gathered, they can be used into the Transport API, which relies on the same IDs: [Transport CH](https://transport.opendata.ch/).
+
+### United Kingdom
+
+The UK has a million different services exposing train data, which is fortunate since the UK does not have a national rail service; rather, several operators run the trains. Yet, National Rail uses an airport-like system to identify stations, which is very usueful to us and is the one we use.
+
+The list of stations was downloaded from [Railway Codes](http://www.railwaycodes.org.uk/crs/crs0.shtm).
+
+The API endpoint we use to get the real-time departures is Huxley2: [Huxley2](https://huxley2.azurewebsites.net/)
 
 ## Planned systems
 
@@ -10,7 +68,6 @@
 | Agenzia Mobilità e Trasporti          | Principe-Granarolo, Genova-Casella                              |
 | Strutture Trasporto Alto Adige        | L'Assunta-Collalbo, Merano-Malles                               |
 | Infrastrutture Venete                 | Adria-Mestre                                                    |
-| Società Ferrovie Udine-Cividale       | Udine-Cividale                                                  |
 | Rete Ferroviaria Toscana              | Arezzo-Stia, Arezzo-Sinalunga                                   |
 | ASTRAL                                | Roma-Civita Castellana-Viterbo, Roma Lido                       |
 | ATAC                                  | Roma-Giardinetti                                                |
@@ -22,6 +79,15 @@
 | Ferrovie della Calabria               | tante                                                           |
 | ARST                                  | Macomer-Nuoro, Monserrato-Isili, Sassari-Alghero, Sassari-Sorso |
 | FCE                                   | Paternò-Riposto (Circumetnea)                                   |
+
+### Other countries
+
+- Before public release
+  - Belgium
+  - Denmark
+- Later
+  - Poland
+  - Czech Republic
 
 ## Renamed stations
 
