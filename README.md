@@ -8,6 +8,12 @@ Austria has good open data, but a somewhat janky API for real time departures. T
 
 The list of stations was obtained from the ÖBB open data website: [ÖBB](https://data.oebb.at/).
 
+### Belgium
+
+Infrabel exports its stations as open data in a JSON file [here](https://opendata.infrabel.be/explore/dataset/operationele-punten-van-het-netwerk/export/?sort=ptcarid).
+
+Trainguessr uses the iRail API ([here](https://docs.irail.be/#)) as it makes things way easier. Stations and live departures are obtained from the iRail API, which is a public API that does not require an API key.
+
 ### France
 
 SCNF export its stations as open data in a JSON file [here](https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe%2FBerlin).
@@ -223,4 +229,58 @@ Dismesse senza ID:
 {"type": "node", "id": 860000856, "lat": 55.628681, "lon": 12.579547, "tags": {"name": "\u00d8restad", "short_name": "\u00d8restad", "private_code": "25313", "transport_mode": "rail", "stop_place_type": "railStation", "weighting": "interchangeAllowed", "alt_name": "\u00d8restad", "abbreviation": "Z\u00d6RE", "owner": "50", "sellable": "true"}, "category": "sweden_trafikverket"}
 {"type": "node", "id": 860000857, "lat": 55.629746, "lon": 12.601651, "tags": {"name": "T\u00e5rnby", "short_name": "T\u00e5rnby", "private_code": "23657", "transport_mode": "rail", "stop_place_type": "railStation", "weighting": "recommendedInterchange", "owner": "50", "sellable": "true", "abbreviation": "ZT\u00c5T"}, "category": "sweden_trafikverket"}
 {"type": "node", "id": 860000858, "lat": 55.629429, "lon": 12.649696, "tags": {"name": "CPH Airport", "short_name": "CPH Airport", "private_code": "25314", "transport_mode": "rail", "stop_place_type": "railStation", "weighting": "preferredInterchange", "alt_name": "CPH Airport", "abbreviation": "ZCPH", "owner": "50", "sellable": "true"}, "category": "sweden_trafikverket"}
+```
+
+## Belgium
+
+These stations lie outside of Belgium but are included in the NMBS/SNCB network. They are used for international connections, especially to France.
+
+```json
+{"type": "node", "id": "BE.NMBS.008778127", "lat": 43.317498, "lon": 3.4658, "tags": {"name": "Agde"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774164", "lat": 45.673624, "lon": 6.383617, "tags": {"name": "Albertville"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775767", "lat": 43.586618, "lon": 7.1201361, "tags": {"name": "Antibes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008734201", "lat": 50.28683, "lon": 2.78169, "tags": {"name": "Arras"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008729560", "lat": 50.19744, "lon": 3.843413, "tags": {"name": "Aulnoye-Aymeries"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008778100", "lat": 43.336177, "lon": 3.218794, "tags": {"name": "B\u00e9ziers"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774179", "lat": 45.618826, "lon": 6.771664, "tags": {"name": "Bourg-Saint-Maurice"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775762", "lat": 43.553742, "lon": 7.019895, "tags": {"name": "Cannes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008701687", "lat": 49.263889, "lon": 2.469167, "tags": {"name": "Creil"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774177", "lat": 45.574194, "lon": 6.733522, "tags": {"name": "Landry"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775544", "lat": 43.4555673, "lon": 6.4826446, "tags": {"name": "Les Arcs - Draguignan"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008722326", "lat": 50.6391167, "lon": 3.0756612, "tags": {"name": "Lille Europe"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008714210", "lat": 48.9475, "lon": 6.169722, "tags": {"name": "Lorraine TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008739370", "lat": 48.725758, "lon": 2.261254, "tags": {"name": "Massy TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008729500", "lat": 50.27289, "lon": 3.966566, "tags": {"name": "Maubeuge"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008748100", "lat": 47.216148, "lon": -1.542356, "tags": {"name": "Nantes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008778110", "lat": 43.190399, "lon": 3.00601, "tags": {"name": "Narbonne"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008777500", "lat": 43.832602, "lon": 4.365997, "tags": {"name": "N\u00eemes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008778400", "lat": 42.695938, "lon": 2.879397, "tags": {"name": "Perpignan"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728683", "lat": 50.624164, "lon": 3.1275, "tags": {"name": "Pont de Bois"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008747100", "lat": 48.103517, "lon": -1.672744, "tags": {"name": "Rennes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008721222", "lat": 48.744798, "lon": 7.362255, "tags": {"name": "Saverne"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008777320", "lat": 43.41281, "lon": 3.696535, "tags": {"name": "S\u00e8te"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008721202", "lat": 48.585437, "lon": 7.733905, "tags": {"name": "Strasbourg"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775500", "lat": 43.1274781, "lon": 5.9326648, "tags": {"name": "Toulon"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015199", "lat": 50.78078, "lon": 6.07055, "tags": {"name": "Aachen West"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008010053", "lat": 51.517898, "lon": 7.459293, "tags": {"name": "Dortmund Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008010316", "lat": 51.42978, "lon": 6.7759037, "tags": {"name": "Duisburg Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015190", "lat": 50.8709, "lon": 6.0944, "tags": {"name": "Herzogenrath"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008003040", "lat": 49.699371, "lon": 7.321228, "tags": {"name": "Idar-Oberstein"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015458", "lat": 50.942721, "lon": 6.958823, "tags": {"name": "K\u00f6ln Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008014008", "lat": 49.479722, "lon": 8.469722, "tags": {"name": "Mannheim Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008302593", "lat": 45.440975, "lon": 12.321039, "tags": {"name": "Venezia Santa Lucia"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400081", "lat": 52.394175, "lon": 5.277962, "tags": {"name": "Almere Buiten"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400080", "lat": 52.375, "lon": 5.217778, "tags": {"name": "Almere Centrum"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400061", "lat": 52.338865, "lon": 4.871946, "tags": {"name": "Amsterdam Zuid"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400131", "lat": 51.594459, "lon": 4.7764, "tags": {"name": "Breda"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400219", "lat": 50.772135, "lon": 5.709786, "tags": {"name": "Eijsden"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400307", "lat": 50.89095, "lon": 5.974577, "tags": {"name": "Heerlen"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400548", "lat": 50.89651, "lon": 6.019776, "tags": {"name": "Landgraaf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400424", "lat": 50.85, "lon": 5.705392, "tags": {"name": "Maastricht"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400426", "lat": 50.838502, "lon": 5.716707, "tags": {"name": "Maastricht Randwyck"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400434", "lat": 50.8826, "lon": 5.750631, "tags": {"name": "Meerssen"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400526", "lat": 51.540834, "lon": 4.458692, "tags": {"name": "Roosendaal"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400621", "lat": 52.089167, "lon": 5.109722, "tags": {"name": "Utrecht Centraal"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400632", "lat": 50.86928, "lon": 5.832888, "tags": {"name": "Valkenburg"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.007054650", "lat": 51.5031, "lon": -0.1132, "tags": {"name": "London Waterloo"}, "category": "belgium_all"}
 ```

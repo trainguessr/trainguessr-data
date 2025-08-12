@@ -1,31 +1,24 @@
 {"type": "node", "id": "BE.NMBS.008400319", "lat": 51.69042, "lon": 5.294278, "tags": {"name": "'s Hertogenbosch"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008015345", "lat": 50.770832, "lon": 6.105275, "tags": {"name": "Aachen Hbf"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008015199", "lat": 50.78078, "lon": 6.07055, "tags": {"name": "Aachen West"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895000", "lat": 50.942813, "lon": 4.039653, "tags": {"name": "Aalst"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895125", "lat": 50.948377, "lon": 4.024407, "tags": {"name": "Aalst-Kerrebroek"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891140", "lat": 51.092295, "lon": 3.447848, "tags": {"name": "Aalter"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833209", "lat": 50.984406, "lon": 4.824043, "tags": {"name": "Aarschot"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008892288", "lat": 50.98446, "lon": 3.418363, "tags": {"name": "Aarsele"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886546", "lat": 50.733095, "lon": 3.847086, "tags": {"name": "Acren"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008778127", "lat": 43.317498, "lon": 3.4658, "tags": {"name": "Agde"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008774176", "lat": 45.554202, "lon": 6.648394, "tags": {"name": "Aime-la-Plagne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008874583", "lat": 50.429529, "lon": 4.584552, "tags": {"name": "Aiseau"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008731901", "lat": 43.53333, "lon": 5.433333, "tags": {"name": "Aix-en-Provence TGV"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008774164", "lat": 45.673624, "lon": 6.383617, "tags": {"name": "Albertville"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008831039", "lat": 50.886837, "lon": 5.292866, "tags": {"name": "Alken"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400081", "lat": 52.394175, "lon": 5.277962, "tags": {"name": "Almere Buiten"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400080", "lat": 52.375, "lon": 5.217778, "tags": {"name": "Almere Centrum"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008843331", "lat": 50.546011, "lon": 5.32049, "tags": {"name": "Amay"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008843323", "lat": 50.539215, "lon": 5.289729, "tags": {"name": "Ampsin"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008400058", "lat": 52.37908, "lon": 4.900632, "tags": {"name": "Amsterdam CS"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400061", "lat": 52.338865, "lon": 4.871946, "tags": {"name": "Amsterdam Zuid"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863404", "lat": 50.496759, "lon": 5.094699, "tags": {"name": "Andenne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811940", "lat": 50.8179, "lon": 4.2918, "tags": {"name": "Anderlecht"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008842002", "lat": 50.613152, "lon": 5.599695, "tags": {"name": "Angleur"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728685", "lat": 50.633333, "lon": 3.15, "tags": {"name": "Annappes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008841202", "lat": 50.661208, "lon": 5.509704, "tags": {"name": "Ans"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863818", "lat": 50.238023, "lon": 4.90553, "tags": {"name": "Anseremme"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008775767", "lat": 43.586618, "lon": 7.1201361, "tags": {"name": "Antibes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008885522", "lat": 50.569626, "lon": 3.451309, "tags": {"name": "Antoing"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821121", "lat": 51.19923, "lon": 4.432221, "tags": {"name": "Antwerpen-Berchem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821006", "lat": 51.2172, "lon": 4.421101, "tags": {"name": "Antwerpen-Centraal"}, "category": "belgium_all"}
@@ -40,7 +33,6 @@
 {"type": "node", "id": "BE.NMBS.008814472", "lat": 50.809722, "lon": 4.398333, "tags": {"name": "Arcaden/Arcades"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811759", "lat": 50.754345, "lon": 4.662444, "tags": {"name": "Archennes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008866001", "lat": 49.68053, "lon": 5.809971, "tags": {"name": "Arlon"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008734201", "lat": 50.28683, "lon": 2.78169, "tags": {"name": "Arras"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728686", "lat": 50.616666, "lon": 3.166666, "tags": {"name": "Ascq"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008812070", "lat": 50.906488, "lon": 4.207985, "tags": {"name": "Asse"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864931", "lat": 50.368133, "lon": 5.022839, "tags": {"name": "Assesse"}, "category": "belgium_all"}
@@ -49,7 +41,6 @@
 {"type": "node", "id": "BE.NMBS.008869047", "lat": 49.551749, "lon": 5.824932, "tags": {"name": "Athus-Frontiere"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008866654", "lat": 49.564093, "lon": 5.79806, "tags": {"name": "Aubange"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008869088", "lat": 49.549455, "lon": 5.826307, "tags": {"name": "Aubange-Frontiere-Luxembourg"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008729560", "lat": 50.19744, "lon": 3.843413, "tags": {"name": "Aulnoye-Aymeries"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008874716", "lat": 50.449197, "lon": 4.630532, "tags": {"name": "Auvelais"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008731896", "lat": 43.95, "lon": 4.816667, "tags": {"name": "Avignon TGV"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864352", "lat": 50.224135, "lon": 5.301091, "tags": {"name": "Aye"}, "category": "belgium_all"}
@@ -110,13 +101,11 @@
 {"type": "node", "id": "BE.NMBS.008811163", "lat": 50.877785, "lon": 4.410026, "tags": {"name": "Bordet"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822772", "lat": 51.099225, "lon": 4.240526, "tags": {"name": "Bornem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811437", "lat": 50.794698, "lon": 4.408112, "tags": {"name": "Bosvoorde/Boitsfort"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008774179", "lat": 45.618826, "lon": 6.771664, "tags": {"name": "Bourg-Saint-Maurice"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008884319", "lat": 50.436388, "lon": 3.797025, "tags": {"name": "Boussu"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821725", "lat": 51.165764, "lon": 4.746511, "tags": {"name": "Bouwel"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008881463", "lat": 50.474457, "lon": 4.126345, "tags": {"name": "Bracquegnies"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814258", "lat": 50.684778, "lon": 4.375526, "tags": {"name": "Braine-l'Alleud"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008883006", "lat": 50.605079, "lon": 4.137662, "tags": {"name": "Braine-le-Comte"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400131", "lat": 51.594459, "lon": 4.7764, "tags": {"name": "Breda"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008843901", "lat": 50.643967, "lon": 5.611057, "tags": {"name": "Bressoux"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886066", "lat": 50.594229, "lon": 3.852551, "tags": {"name": "Brugelette"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891009", "lat": 51.197226, "lon": 3.216726, "tags": {"name": "Brugge"}, "category": "belgium_all"}
@@ -134,10 +123,8 @@
 {"type": "node", "id": "BE.NMBS.008822145", "lat": 51.016291, "lon": 4.201666, "tags": {"name": "Buggenhout"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814340", "lat": 50.751577, "lon": 4.258558, "tags": {"name": "Buizingen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895455", "lat": 50.907198, "lon": 3.922416, "tags": {"name": "Burst"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008778100", "lat": 43.336177, "lon": 3.218794, "tags": {"name": "B\u00e9ziers"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008884889", "lat": 50.527359, "lon": 3.52618, "tags": {"name": "Callenelle"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886074", "lat": 50.586759, "lon": 3.874809, "tags": {"name": "Cambron-Casteau"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008775762", "lat": 43.553742, "lon": 7.019895, "tags": {"name": "Cannes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200518", "lat": 49.645, "lon": 5.990833, "tags": {"name": "Capellen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008865565", "lat": 49.905458, "lon": 5.092784, "tags": {"name": "Carlsbourg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008882248", "lat": 50.447957, "lon": 4.263826, "tags": {"name": "Carnieres"}, "category": "belgium_all"}
@@ -163,7 +150,6 @@
 {"type": "node", "id": "BE.NMBS.008864949", "lat": 50.387442, "lon": 4.996051, "tags": {"name": "Courri\u00e8re"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811825", "lat": 50.645567, "lon": 4.565819, "tags": {"name": "Court-Saint-\u00c9tienne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008875127", "lat": 50.056324, "lon": 4.491702, "tags": {"name": "Couvin"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008701687", "lat": 49.263889, "lon": 2.469167, "tags": {"name": "Creil"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728671", "lat": 50.666667, "lon": 3.15, "tags": {"name": "Croix Wasquehal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728105", "lat": 50.68668, "lon": 3.150797, "tags": {"name": "Croix l'Allumette"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863362", "lat": 50.429098, "lon": 4.884414, "tags": {"name": "Dave-Saint-Martin"}, "category": "belgium_all"}
@@ -186,13 +172,11 @@
 {"type": "node", "id": "BE.NMBS.008844545", "lat": 50.616244, "lon": 5.936494, "tags": {"name": "Dolhain-Gileppe"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200101", "lat": 49.633838, "lon": 6.13668, "tags": {"name": "Dommeldange"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008400180", "lat": 51.799998, "lon": 4.666668, "tags": {"name": "Dordrecht"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008010053", "lat": 51.517898, "lon": 7.459293, "tags": {"name": "Dortmund Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200133", "lat": 50.017778, "lon": 6.006106, "tags": {"name": "Drauffelt"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008892031", "lat": 51.047295, "lon": 3.655202, "tags": {"name": "Drongen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008015653", "lat": 51.27656, "lon": 6.767052, "tags": {"name": "Duesseldorf Flughafen (DE)"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822210", "lat": 51.091243, "lon": 4.493186, "tags": {"name": "Duffel"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891652", "lat": 51.338195, "lon": 3.263587, "tags": {"name": "Duinbergen"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008010316", "lat": 51.42978, "lon": 6.7759037, "tags": {"name": "Duisburg Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008008094", "lat": 51.219178, "lon": 6.795297, "tags": {"name": "Duesseldorf Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008039904", "lat": 51.292008, "lon": 6.786837, "tags": {"name": "D\u00fcsseldorf Flughafen Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.007015440", "lat": 51.45117, "lon": 0.275775, "tags": {"name": "Ebbsfleet International"}, "category": "belgium_all"}
@@ -200,7 +184,6 @@
 {"type": "node", "id": "BE.NMBS.008883311", "lat": 50.697273, "lon": 4.047357, "tags": {"name": "Enghien"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893708", "lat": 51.181333, "lon": 3.574515, "tags": {"name": "Eeklo"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895752", "lat": 50.823994, "lon": 3.993745, "tags": {"name": "Eichem"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400219", "lat": 50.772135, "lon": 5.709786, "tags": {"name": "Eijsden"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008892627", "lat": 50.870432, "lon": 3.623776, "tags": {"name": "Eine"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008892650", "lat": 50.960774, "lon": 3.627839, "tags": {"name": "Eke-Nazareth"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821071", "lat": 51.281626, "lon": 4.434154, "tags": {"name": "Ekeren"}, "category": "belgium_all"}
@@ -297,7 +280,6 @@
 {"type": "node", "id": "BE.NMBS.008731388", "lat": 49.85894, "lon": 2.49565, "tags": {"name": "Haute-Picardie TGV"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864832", "lat": 50.249044, "lon": 5.194371, "tags": {"name": "Haversin"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008881430", "lat": 50.470754, "lon": 4.059987, "tags": {"name": "Havre"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400307", "lat": 50.89095, "lon": 5.974577, "tags": {"name": "Heerlen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821519", "lat": 51.364623, "lon": 4.460483, "tags": {"name": "Heide"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891645", "lat": 51.333979, "lon": 3.239181, "tags": {"name": "Heist"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821832", "lat": 51.074146, "lon": 4.708235, "tags": {"name": "Heist-op-den-Berg"}, "category": "belgium_all"}
@@ -313,7 +295,6 @@
 {"type": "node", "id": "BE.NMBS.008885753", "lat": 50.713894, "lon": 3.245959, "tags": {"name": "Herseaux"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008841608", "lat": 50.660911, "lon": 5.622761, "tags": {"name": "Herstal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895430", "lat": 50.89722, "lon": 3.880616, "tags": {"name": "Herzele"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008015190", "lat": 50.8709, "lon": 6.0944, "tags": {"name": "Herzogenrath"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008832243", "lat": 51.038207, "lon": 5.281782, "tags": {"name": "Heusden"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822459", "lat": 50.997791, "lon": 4.537637, "tags": {"name": "Hever"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833126", "lat": 50.86253, "lon": 4.6952, "tags": {"name": "Heverlee"}, "category": "belgium_all"}
@@ -330,7 +311,6 @@
 {"type": "node", "id": "BE.NMBS.008821337", "lat": 51.154114, "lon": 4.465157, "tags": {"name": "Hove"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814415", "lat": 50.7519, "lon": 4.266487, "tags": {"name": "Huizingen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008843307", "lat": 50.527242, "lon": 5.234211, "tags": {"name": "Huy"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008003040", "lat": 49.699371, "lon": 7.321228, "tags": {"name": "Idar-Oberstein"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895844", "lat": 50.876886, "lon": 4.06849, "tags": {"name": "Iddergem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895729", "lat": 50.801871, "lon": 3.921553, "tags": {"name": "Idegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008896925", "lat": 50.914326, "lon": 3.255416, "tags": {"name": "Ingelmunster"}, "category": "belgium_all"}
@@ -361,7 +341,6 @@
 {"type": "node", "id": "BE.NMBS.008811254", "lat": 50.893067, "lon": 4.543301, "tags": {"name": "Kortenberg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008896008", "lat": 50.824506, "lon": 3.264549, "tags": {"name": "Kortrijk"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893567", "lat": 50.99175, "lon": 3.829593, "tags": {"name": "Kwatrecht"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008015458", "lat": 50.942721, "lon": 6.958823, "tags": {"name": "K\u00f6ln Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811510", "lat": 50.737958, "lon": 4.49706, "tags": {"name": "La Hulpe"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008882107", "lat": 50.478161, "lon": 4.179858, "tags": {"name": "La Louvi\u00e8re-Centre"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008882206", "lat": 50.464974, "lon": 4.190609, "tags": {"name": "La Louvi\u00e8re-Sud"}, "category": "belgium_all"}
@@ -371,8 +350,6 @@
 {"type": "node", "id": "BE.NMBS.008892056", "lat": 51.064311, "lon": 3.576852, "tags": {"name": "Landegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008871837", "lat": 50.377311, "lon": 4.350976, "tags": {"name": "Landelies"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833605", "lat": 50.747927, "lon": 5.07966, "tags": {"name": "Landen"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400548", "lat": 50.89651, "lon": 6.019776, "tags": {"name": "Landgraaf"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008774177", "lat": 45.574194, "lon": 6.733522, "tags": {"name": "Landry"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893054", "lat": 50.970545, "lon": 3.791146, "tags": {"name": "Landskouter"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833258", "lat": 51.002466, "lon": 4.863541, "tags": {"name": "Langdorp"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008874559", "lat": 50.42383, "lon": 4.542787, "tags": {"name": "Le Campinaire"}, "category": "belgium_all"}
@@ -384,7 +361,6 @@
 {"type": "node", "id": "BE.NMBS.008814332", "lat": 50.715107, "lon": 4.221577, "tags": {"name": "Lembeek"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008881190", "lat": 50.559342, "lon": 3.903224, "tags": {"name": "Lens"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008832003", "lat": 51.117312, "lon": 5.257287, "tags": {"name": "Leopoldsburg"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008775544", "lat": 43.4555673, "lon": 6.4826446, "tags": {"name": "Les Arcs - Draguignan"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886504", "lat": 50.712015, "lon": 3.836434, "tags": {"name": "Lessen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200712", "lat": 49.58712, "lon": 6.059306, "tags": {"name": "Leudelange"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833001", "lat": 50.88228, "lon": 4.715866, "tags": {"name": "Leuven"}, "category": "belgium_all"}
@@ -398,7 +374,6 @@
 {"type": "node", "id": "BE.NMBS.008895570", "lat": 50.816236, "lon": 3.826564, "tags": {"name": "Lierde"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008841673", "lat": 50.698181, "lon": 5.56683, "tags": {"name": "Liers"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008872520", "lat": 50.511726, "lon": 4.566133, "tags": {"name": "Ligny"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008722326", "lat": 50.6391167, "lon": 3.0756612, "tags": {"name": "Lille Europe"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728600", "lat": 50.633333, "lon": 3.066669, "tags": {"name": "Lille Flandres"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814241", "lat": 50.645423, "lon": 4.365368, "tags": {"name": "Lillois"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811635", "lat": 50.69214, "lon": 4.575302, "tags": {"name": "Limal"}, "category": "belgium_all"}
@@ -414,9 +389,7 @@
 {"type": "node", "id": "BE.NMBS.008832565", "lat": 51.211564, "lon": 5.312031, "tags": {"name": "Lommel"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822111", "lat": 51.009091, "lon": 4.299073, "tags": {"name": "Londerzeel"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.007015400", "lat": 51.5304, "lon": 0.123808, "tags": {"name": "London Saint Pancras International"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.007054650", "lat": 51.5031, "lon": -0.1132, "tags": {"name": "London Waterloo"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008861416", "lat": 50.551935, "lon": 4.7201, "tags": {"name": "Lonz\u00e9e"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008714210", "lat": 48.9475, "lon": 6.169722, "tags": {"name": "Lorraine TGV"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814357", "lat": 50.766364, "lon": 4.273696, "tags": {"name": "Lot"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811676", "lat": 50.669793, "lon": 4.615745, "tags": {"name": "Louvain-la-Neuve"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863156", "lat": 50.369000316323856, "lon": 4.877071380615234, "tags": {"name": "Lustin"}, "category": "belgium_all"}
@@ -425,15 +398,12 @@
 {"type": "node", "id": "BE.NMBS.008772202", "lat": 45.74836, "lon": 4.825301, "tags": {"name": "Lyon-Perrache TGV"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008776290", "lat": 45.720907, "lon": 5.075822, "tags": {"name": "Lyon-Saint Exup\u00e9ry TGV"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200100", "lat": 49.599996, "lon": 6.133331, "tags": {"name": "L\u00ebtzebuerg"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400424", "lat": 50.85, "lon": 5.705392, "tags": {"name": "Maastricht"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400426", "lat": 50.838502, "lon": 5.716707, "tags": {"name": "Maastricht Randwyck"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886041", "lat": 50.614356, "lon": 3.800117, "tags": {"name": "Maffle"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008019052", "lat": 50.0013, "lon": 8.2585, "tags": {"name": "Mainz Hbf (DE)"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822137", "lat": 51.014484, "lon": 4.22911, "tags": {"name": "Malderen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200516", "lat": 49.625663, "lon": 6.02014, "tags": {"name": "Mamer"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008210014", "lat": 49.618415, "lon": 6.02968, "tags": {"name": "Mamer-Lyc\u00e9e"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008882701", "lat": 50.506108, "lon": 4.234683, "tags": {"name": "Manage"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008014008", "lat": 49.479722, "lon": 8.469722, "tags": {"name": "Mannheim Hbf"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008866175", "lat": 49.727337, "lon": 5.539755, "tags": {"name": "Marbehan"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864410", "lat": 50.222472, "lon": 5.346289, "tags": {"name": "Marche-en-Famenne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863461", "lat": 50.480741, "lon": 4.96458, "tags": {"name": "Marche-les-Dames"}, "category": "belgium_all"}
@@ -446,14 +416,11 @@
 {"type": "node", "id": "BE.NMBS.008711184", "lat": 48.868256, "lon": 2.782184, "tags": {"name": "Marne-la-Vall\u00e9e - Chessy"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008775100", "lat": 43.303178, "lon": 5.380752, "tags": {"name": "Marseille-Saint-Charles"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008881174", "lat": 50.536546, "lon": 3.962139, "tags": {"name": "Masnuy-Saint-Pierre"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008739370", "lat": 48.725758, "lon": 2.261254, "tags": {"name": "Massy TGV"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008729500", "lat": 50.27289, "lon": 3.966566, "tags": {"name": "Maubeuge"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008885530", "lat": 50.547557, "lon": 3.495527, "tags": {"name": "Maubray"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008861333", "lat": 50.513497, "lon": 4.675829, "tags": {"name": "Mazy"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822004", "lat": 51.017648, "lon": 4.482785, "tags": {"name": "Mechelen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008822343", "lat": 51.029883, "lon": 4.489914, "tags": {"name": "Mechelen-Nekkerspoel"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008829025", "lat": 51.48573529673874, "lon": 4.734469757625622, "tags": {"name": "Meer-Grens"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400434", "lat": 50.8826, "lon": 5.750631, "tags": {"name": "Meerssen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811171", "lat": 50.854072, "lon": 4.394421, "tags": {"name": "Meiser"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821824", "lat": 51.094938, "lon": 4.671532, "tags": {"name": "Melkouwen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893039", "lat": 51.002807, "lon": 3.797088, "tags": {"name": "Melle"}, "category": "belgium_all"}
@@ -496,8 +463,6 @@
 {"type": "node", "id": "BE.NMBS.008863008", "lat": 50.468794, "lon": 4.86222, "tags": {"name": "Namur"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863453", "lat": 50.47043, "lon": 4.997939, "tags": {"name": "Nam\u00eache"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864964", "lat": 50.419695, "lon": 4.929756, "tags": {"name": "Naninne"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008748100", "lat": 47.216148, "lon": -1.542356, "tags": {"name": "Nantes"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008778110", "lat": 43.190399, "lon": 3.00601, "tags": {"name": "Narbonne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864915", "lat": 50.343296, "lon": 5.06116, "tags": {"name": "Natoye"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008832615", "lat": 51.222369, "lon": 5.43717, "tags": {"name": "Neerpelt"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833670", "lat": 50.763964, "lon": 5.036323, "tags": {"name": "Neerwinden"}, "category": "belgium_all"}
@@ -513,7 +478,6 @@
 {"type": "node", "id": "BE.NMBS.008814209", "lat": 50.599641, "lon": 4.335065, "tags": {"name": "Nivelles"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821105", "lat": 51.356838, "lon": 4.632204, "tags": {"name": "Noorderkempen"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811247", "lat": 50.883314, "lon": 4.506112, "tags": {"name": "Nossegem"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008777500", "lat": 43.832602, "lon": 4.365997, "tags": {"name": "N\u00eemes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008871332", "lat": 50.535206, "lon": 4.36357, "tags": {"name": "Obaix-Buzet"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008881406", "lat": 50.469873, "lon": 4.007804, "tags": {"name": "Obourg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895778", "lat": 50.857712, "lon": 4.054557, "tags": {"name": "Okegem"}, "category": "belgium_all"}
@@ -532,13 +496,11 @@
 {"type": "node", "id": "BE.NMBS.008727100", "lat": 48.88011, "lon": 2.354577, "tags": {"name": "Paris Nord"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008844206", "lat": 50.568179, "lon": 5.80615, "tags": {"name": "Pepinster"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008844313", "lat": 50.563405, "lon": 5.804397, "tags": {"name": "Pepinster-Cit\u00e9"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008778400", "lat": 42.695938, "lon": 2.879397, "tags": {"name": "Perpignan"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200930", "lat": 49.55425, "lon": 5.878681, "tags": {"name": "Petange"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008200102", "lat": 49.619126, "lon": 6.132853, "tags": {"name": "Pfaffenthal-Kirchberg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008873122", "lat": 50.191639, "lon": 4.535956, "tags": {"name": "Philippeville"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008871415", "lat": 50.434959, "lon": 4.288438, "tags": {"name": "Pi\u00e9ton"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008865227", "lat": 50.019504, "lon": 5.292641, "tags": {"name": "Poix-Saint-Hubert"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008728683", "lat": 50.624164, "lon": 3.1275, "tags": {"name": "Pont de Bois"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008843141", "lat": 50.619651, "lon": 5.510162, "tags": {"name": "Pont-de-Seraing"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008871365", "lat": 50.513812, "lon": 4.355291, "tags": {"name": "Pont-\u00e0-Celles"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008896735", "lat": 50.854449, "lon": 2.736343, "tags": {"name": "Poperinge"}, "category": "belgium_all"}
@@ -555,7 +517,6 @@
 {"type": "node", "id": "BE.NMBS.008884335", "lat": 50.410103, "lon": 3.68608, "tags": {"name": "Quievrain"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008886587", "lat": 50.661235, "lon": 3.793627, "tags": {"name": "Rebaix"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008841442", "lat": 50.678611, "lon": 5.321407, "tags": {"name": "Remicourt"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008747100", "lat": 48.103517, "lon": -1.672744, "tags": {"name": "Rennes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008861440", "lat": 50.499348, "lon": 4.801866, "tags": {"name": "Rhisnes"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008842705", "lat": 50.483285, "lon": 5.587631, "tags": {"name": "Rivage"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811536", "lat": 50.711413, "lon": 4.532855, "tags": {"name": "Rixensart"}, "category": "belgium_all"}
@@ -564,7 +525,6 @@
 {"type": "node", "id": "BE.NMBS.008896800", "lat": 50.949025, "lon": 3.130412, "tags": {"name": "Roeselare"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008861119", "lat": 50.457737, "lon": 4.82842, "tags": {"name": "Ronet"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008892908", "lat": 50.742506, "lon": 3.602552, "tags": {"name": "Ronse"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400526", "lat": 51.540834, "lon": 4.458692, "tags": {"name": "Roosendaal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008400530", "lat": 51.92485, "lon": 4.469313, "tags": {"name": "Rotterdam CS"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728673", "lat": 50.699997, "lon": 3.166666, "tags": {"name": "Roubaix"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008871217", "lat": 50.443112, "lon": 4.393199, "tags": {"name": "Roux"}, "category": "belgium_all"}
@@ -575,7 +535,6 @@
 {"type": "node", "id": "BE.NMBS.008718213", "lat": 47.5907, "lon": 7.555316, "tags": {"name": "Saint-Louis-Haut-Rhin"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008775752", "lat": 43.423456, "lon": 6.768825, "tags": {"name": "Saint-Rapha\u00ebl-Valescure"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008864956", "lat": 50.406373, "lon": 4.949739, "tags": {"name": "Sart-Bernard"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008721222", "lat": 48.744798, "lon": 7.362255, "tags": {"name": "Saverne"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811007", "lat": 50.878513, "lon": 4.378636, "tags": {"name": "Schaarbeek/Schaerbeek"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893070", "lat": 50.937069, "lon": 3.777842, "tags": {"name": "Scheldewindeke"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008824232", "lat": 51.12551, "lon": 4.340261, "tags": {"name": "Schelle"}, "category": "belgium_all"}
@@ -613,9 +572,7 @@
 {"type": "node", "id": "BE.NMBS.008843406", "lat": 50.528276, "lon": 5.219676, "tags": {"name": "Statte"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008869054", "lat": 49.64396, "lon": 5.90415, "tags": {"name": "Sterpenich-Frontiere"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008862018", "lat": 49.690939, "lon": 5.769115, "tags": {"name": "Stockem"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008721202", "lat": 48.585437, "lon": 7.733905, "tags": {"name": "Strasbourg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008842853", "lat": 50.403254, "lon": 5.523565, "tags": {"name": "Sy"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008777320", "lat": 43.41281, "lon": 3.696535, "tags": {"name": "S\u00e8te"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008874609", "lat": 50.432235, "lon": 4.608823, "tags": {"name": "Tamines"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008894672", "lat": 51.126085, "lon": 4.221352, "tags": {"name": "Temse"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895448", "lat": 50.901643, "lon": 3.896653, "tags": {"name": "Terhagen"}, "category": "belgium_all"}
@@ -635,7 +592,6 @@
 {"type": "node", "id": "BE.NMBS.008895638", "lat": 50.735522, "lon": 3.992828, "tags": {"name": "Tollembeek"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008831310", "lat": 50.784405, "lon": 5.47328, "tags": {"name": "Tongeren"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891314", "lat": 51.064707, "lon": 3.105871, "tags": {"name": "Torhout"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008775500", "lat": 43.1274781, "lon": 5.9326648, "tags": {"name": "Toulon"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008728654", "lat": 50.716667, "lon": 3.15, "tags": {"name": "Tourcoing"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008885001", "lat": 50.613134, "lon": 3.396942, "tags": {"name": "Tournai"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008845203", "lat": 50.368214, "lon": 5.873578, "tags": {"name": "Trois-Ponts"}, "category": "belgium_all"}
@@ -645,11 +601,8 @@
 {"type": "node", "id": "BE.NMBS.008821907", "lat": 51.322032, "lon": 4.937415, "tags": {"name": "Turnhout"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814134", "lat": 50.791749, "lon": 4.332207, "tags": {"name": "Ukkel-Kalevoet/Uccle-Calevoet"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008814126", "lat": 50.802411, "lon": 4.323901, "tags": {"name": "Ukkel-Stalle/Uccle-Stalle"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400621", "lat": 52.089167, "lon": 5.109722, "tags": {"name": "Utrecht Centraal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008776302", "lat": 44.93333, "lon": 4.9, "tags": {"name": "Valence TGV"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008400632", "lat": 50.86928, "lon": 5.832888, "tags": {"name": "Valkenburg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811270", "lat": 50.900519, "lon": 4.633516, "tags": {"name": "Veltem"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008302593", "lat": 45.440975, "lon": 12.321039, "tags": {"name": "Venezia Santa Lucia"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833050", "lat": 50.836282, "lon": 4.835522, "tags": {"name": "Vertrijk"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008844008", "lat": 50.588135, "lon": 5.854917, "tags": {"name": "Verviers-Central"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008844057", "lat": 50.590921, "lon": 5.865335, "tags": {"name": "Verviers-Palais"}, "category": "belgium_all"}
