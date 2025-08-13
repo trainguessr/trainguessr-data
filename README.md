@@ -283,4 +283,82 @@ These stations lie outside of Belgium but are included in the NMBS/SNCB network.
 {"type": "node", "id": "BE.NMBS.008400621", "lat": 52.089167, "lon": 5.109722, "tags": {"name": "Utrecht Centraal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008400632", "lat": 50.86928, "lon": 5.832888, "tags": {"name": "Valkenburg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.007054650", "lat": 51.5031, "lon": -0.1132, "tags": {"name": "London Waterloo"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.007015440", "lat": 51.45117, "lon": 0.275775, "tags": {"name": "Ebbsfleet International"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008008094", "lat": 51.219178, "lon": 6.795297, "tags": {"name": "Duesseldorf Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008010184", "lat": 51.42952, "lon": 6.776118, "tags": {"name": "Essen Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008011068", "lat": 50.1071318, "lon": 8.6653708, "tags": {"name": "Frankfurt am Main Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008011090", "lat": 50.051696, "lon": 8.569853, "tags": {"name": "Frankfurt am Main Flughafen Reginalbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015577", "lat": 50.7385, "lon": 7.1276, "tags": {"name": "Bonn-Beuel (DE)"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015588", "lat": 50.793916, "lon": 7.203029, "tags": {"name": "Siegburg"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015653", "lat": 51.27656, "lon": 6.767052, "tags": {"name": "Duesseldorf Flughafen (DE)"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008019022", "lat": 50.35084, "lon": 7.588441, "tags": {"name": "Koblenz Hbf (DE)"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008019052", "lat": 50.0013, "lon": 8.2585, "tags": {"name": "Mainz Hbf (DE)"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008032318", "lat": 52.5097, "lon": 13.4965, "tags": {"name": "Berlin Lichtenberg"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008032572", "lat": 50.3842, "lon": 8.063261, "tags": {"name": "Limburg S\u00fcd"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008039904", "lat": 51.292008, "lon": 6.786837, "tags": {"name": "D\u00fcsseldorf Flughafen Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008065969", "lat": 52.525589, "lon": 13.369548, "tags": {"name": "Berlin Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008101003", "lat": 48.184923, "lon": 16.375864, "tags": {"name": "Wien Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400058", "lat": 52.37908, "lon": 4.900632, "tags": {"name": "Amsterdam CS"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400234", "lat": 50.89607, "lon": 6.057451, "tags": {"name": "Eygelshoven markt"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400319", "lat": 51.69042, "lon": 5.294278, "tags": {"name": "'s Hertogenbosch"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400530", "lat": 51.92485, "lon": 4.469313, "tags": {"name": "Rotterdam CS"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008500010", "lat": 47.547408, "lon": 7.590716, "tags": {"name": "Basel"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008711184", "lat": 48.868256, "lon": 2.782184, "tags": {"name": "Marne-la-Vall\u00e9e - Chessy"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008718213", "lat": 47.5907, "lon": 7.555316, "tags": {"name": "Saint-Louis-Haut-Rhin"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008719203", "lat": 49.13333, "lon": 6.166663, "tags": {"name": "Metz"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008727100", "lat": 48.88011, "lon": 2.354577, "tags": {"name": "Paris Nord"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008727149", "lat": 49.003955, "lon": 2.571123, "tags": {"name": "A\u00e9roport Charles-de-Gaulle TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728105", "lat": 50.68668, "lon": 3.150797, "tags": {"name": "Croix l'Allumette"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008758100", "lat": 44.8256102, "lon": -0.5557068, "tags": {"name": "Bordeaux Saint Jean"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008772202", "lat": 45.74836, "lon": 4.825301, "tags": {"name": "Lyon-Perrache TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774100", "lat": 45.571498, "lon": 5.919756, "tags": {"name": "Chamb\u00e9ry-Challes-les-Eaux"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774172", "lat": 45.486693, "lon": 6.531454, "tags": {"name": "Mo\u00fbtiers-Salins-Brides-les-Bai"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008774176", "lat": 45.554202, "lon": 6.648394, "tags": {"name": "Aime-la-Plagne"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775100", "lat": 43.303178, "lon": 5.380752, "tags": {"name": "Marseille-Saint-Charles"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775605", "lat": 43.704605, "lon": 7.261928, "tags": {"name": "Nice Ville"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008775752", "lat": 43.423456, "lon": 6.768825, "tags": {"name": "Saint-Rapha\u00ebl-Valescure"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008776290", "lat": 45.720907, "lon": 5.075822, "tags": {"name": "Lyon-Saint Exup\u00e9ry TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008777300", "lat": 43.604947, "lon": 3.880534, "tags": {"name": "Montpellier"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008777301", "lat": 43.59518401, "lon": 3.92428293, "tags": {"name": "Montpellier-Sud-de-France"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008811155", "lat": 50.888878, "lon": 4.419978, "tags": {"name": "Haren"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008814472", "lat": 50.809722, "lon": 4.398333, "tags": {"name": "Arcaden/Arcades"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008821147", "lat": 51.18296, "lon": 4.448437, "tags": {"name": "Mortsel"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008844644", "lat": 50.718209, "lon": 6.041335, "tags": {"name": "Hergenrath"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008863115", "lat": 50.454843, "lon": 4.876144, "tags": {"name": "Jambes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008869047", "lat": 49.551749, "lon": 5.824932, "tags": {"name": "Athus-Frontiere"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008731901", "lat": 43.53333, "lon": 5.433333, "tags": {"name": "Aix-en-Provence TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728685", "lat": 50.633333, "lon": 3.15, "tags": {"name": "Annappes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728686", "lat": 50.616666, "lon": 3.166666, "tags": {"name": "Ascq"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008731896", "lat": 43.95, "lon": 4.816667, "tags": {"name": "Avignon TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728687", "lat": 50.6, "lon": 3.25, "tags": {"name": "Baisieux"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008718201", "lat": 48.083335, "lon": 7.366668, "tags": {"name": "Colmar"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008896412", "lat": 50.772072, "lon": 2.999286, "tags": {"name": "Comines"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728606", "lat": 50.626941, "lon": 3.108892, "tags": {"name": "Hellemmes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008881190", "lat": 50.559342, "lon": 3.903224, "tags": {"name": "Lens"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008882339", "lat": 50.430797, "lon": 4.211041, "tags": {"name": "Leval"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728710", "lat": 50.616666, "lon": 3.116667, "tags": {"name": "Lezennes"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728600", "lat": 50.633333, "lon": 3.066669, "tags": {"name": "Lille Flandres"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008718206", "lat": 47.749998, "lon": 7.333336, "tags": {"name": "Mulhouse"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008866258", "lat": 49.854318, "lon": 5.452559, "tags": {"name": "Neufch\u00e2teau"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728673", "lat": 50.699997, "lon": 3.166666, "tags": {"name": "Roubaix"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008719100", "lat": 49.366663, "lon": 6.166663, "tags": {"name": "Thionville"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008728654", "lat": 50.716667, "lon": 3.15, "tags": {"name": "Tourcoing"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008015345", "lat": 50.770832, "lon": 6.105275, "tags": {"name": "Aachen Hbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008007817", "lat": 52.51667, "lon": 13.45, "tags": {"name": "Berlin Ostbahnhof"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008895646", "lat": 50.723701, "lon": 4.014573, "tags": {"name": "Herne"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008893039", "lat": 51.002807, "lon": 3.797088, "tags": {"name": "Melle"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400280", "lat": 52.083329, "lon": 4.299999, "tags": {"name": "Den Haag HS"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400180", "lat": 51.799998, "lon": 4.666668, "tags": {"name": "Dordrecht"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400394", "lat": 52.511736, "lon": 5.470484, "tags": {"name": "Lelystad Centrum"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008894821", "lat": 51.214108, "lon": 4.32978, "tags": {"name": "Zwijndrecht"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008822459", "lat": 50.997791, "lon": 4.537637, "tags": {"name": "Hever"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008821337", "lat": 51.154114, "lon": 4.465157, "tags": {"name": "Hove"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008772319", "lat": 45.75, "lon": 4.85, "tags": {"name": "Lyon Part Dieu TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008776302", "lat": 44.93333, "lon": 4.9, "tags": {"name": "Valence TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008721405", "lat": 48.26667, "lon": 7.449999, "tags": {"name": "Selestat"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.007015400", "lat": 51.5304, "lon": 0.123808, "tags": {"name": "London Saint Pancras International"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008400561", "lat": 52.3, "lon": 4.75, "tags": {"name": "Schiphol"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008731388", "lat": 49.85894, "lon": 2.49565, "tags": {"name": "Haute-Picardie TGV"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008061676", "lat": 50.13083, "lon": 8.663611, "tags": {"name": "Frankfurt am Main Flughafen Fernbf"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.005457076", "lat": 50.083058, "lon": 14.436037, "tags": {"name": "Praha Hlavn\u00ed N\u00e1dra\u017e\u00ed"}, "category": "belgium_all"}
 ```
