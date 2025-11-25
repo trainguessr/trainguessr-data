@@ -585,4 +585,5 @@
 {"type": "node", "id": "BE.NMBS.008895208", "lat": 50.869102, "lon": 3.81441, "tags": {"name": "Zottegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891611", "lat": 51.306409, "lon": 3.191557, "tags": {"name": "Zwankendamme"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008800252", "lat": 51.2191653, "lon": 4.3256707, "tags": {"name": "Zwijndrecht-Dorp"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.000000252", "lat": 51.2191653, "lon": 4.3256707, "tags": {"name": "Zwijndrecht-Dorp"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008883212", "lat": 50.56239, "lon": 4.156639, "tags": {"name": "\u00c9caussinnes"}, "category": "belgium_all"}
