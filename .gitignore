@@ -3,3 +3,4 @@ trash
 .DS_Store
 cache
 .direnv
+.env-secret

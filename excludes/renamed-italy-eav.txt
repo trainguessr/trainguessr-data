@@ -1,0 +1,7 @@
+Castellammare di Stabia,Castellammare di Stabia (EAV) 
+Montesanto,Montesanto (Napoli, EAV)
+Casalnuovo,Casalnuovo (EAV)
+Nola,Nola (EAV)
+Torre del Greco,Torre del Greco (EAV)
+Scafati,Scafati (EAV)
+Sarno,Sarno (EAV)
