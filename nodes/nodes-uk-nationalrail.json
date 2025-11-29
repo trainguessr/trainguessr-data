@@ -688,7 +688,7 @@
 {"type":"node","id":"DNT","lat":54.282597,"lon":-2.363987,"tags":{"name":"Dent"},"category":"uk_national_rail"}
 {"type":"node","id":"DTN","lat":53.457087,"lon":-2.131648,"tags":{"name":"Denton"},"category":"uk_national_rail"}
 {"type":"node","id":"DEP","lat":51.478897,"lon":-0.02711,"tags":{"name":"Deptford"},"category":"uk_national_rail"}
-{"type":"node","id":"DBY","lat":52.916381,"lon":-1.462555,"tags":{"name":"Derby"},"category":"uk_national_rail"}
+{"type":"node","id":"DBY","lat":52.916381,"lon":-1.462555,"tags":{"name":"Derby (UK)"},"category":"uk_national_rail"}
 {"type":"node","id":"DBR","lat":52.04953,"lon":1.182332,"tags":{"name":"Derby Road"},"category":"uk_national_rail"}
 {"type":"node","id":"DPT","lat":50.378132,"lon":-4.171534,"tags":{"name":"Devonport"},"category":"uk_national_rail"}
 {"type":"node","id":"DEW","lat":53.692089,"lon":-1.633487,"tags":{"name":"Dewsbury"},"category":"uk_national_rail"}
@@ -716,7 +716,7 @@
 {"type":"node","id":"DKG","lat":51.241615,"lon":-0.323822,"tags":{"name":"Dorking"},"category":"uk_national_rail"}
 {"type":"node","id":"DPD","lat":51.238918,"lon":-0.323921,"tags":{"name":"Dorking Deepdene"},"category":"uk_national_rail"}
 {"type":"node","id":"DKT","lat":51.236443,"lon":-0.339762,"tags":{"name":"Dorking West"},"category":"uk_national_rail"}
-{"type":"node","id":"DMS","lat":51.15567,"lon":-0.005183,"tags":{"name":"Dormans"},"category":"uk_national_rail"}
+{"type":"node","id":"DMS","lat":51.15567,"lon":-0.005183,"tags":{"name":"Dormans (UK)"},"category":"uk_national_rail"}
 {"type":"node","id":"DDG","lat":52.371861,"lon":-1.753209,"tags":{"name":"Dorridge"},"category":"uk_national_rail"}
 {"type":"node","id":"DVH","lat":53.300005,"lon":-1.890678,"tags":{"name":"Dove Holes"},"category":"uk_national_rail"}
 {"type":"node","id":"DVP","lat":51.125988,"lon":1.304227,"tags":{"name":"Dover Priory"},"category":"uk_national_rail"}
