@@ -161,6 +161,8 @@ Contributions to this dataset are welcome! If you find any errors, missing stati
 
 When submitting changes, please ensure that you provide clear explanations and references for any modifications made to the dataset. This will help maintain the accuracy and reliability of the data for all users.
 
+At the moment, datasets that have been manually compiled (Italy) need processing since they basically contain leftover random data from OpenStreetMap. If you want to help with that, please open an issue first so we can discuss the best approach.
+
 ## License
 
 A vast majority of the data sources used in this dataset are open data or publicly accessible APIs. The overall dataset is licensed under the [Open Database License (ODbL)]([https://opendatacommons.org/licenses/odbl/1.0/) and has been compiled with data from OpenStreetMap and other open data sources. Please refer to the individual data sources for their specific licensing terms.
