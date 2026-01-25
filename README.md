@@ -49,16 +49,14 @@ Italy has a fragmented railway system with many different operators. The main ra
 
 Italy's RFI is notorious for its lack of public APIs. This website, written in pure HTML, allows someone to query data about train schedules and routes: [RFI](https://www.rfi.it/it/stazioni/pagine-stazioni/servizi-di-qualita/informazioni-al-pubblico/monitor-arrivi-partenze-live.html).
 
-The website embeds the train information along with the logos as base64 images and has a very good CSS. This CSS was fetched and modified to fit TrainGuessr. On the other hand, the whole HTML page is fetched, the timetable obtained and inserted as-is in the page.
-
-The RFI IDs are the same as the TrainGuessr IDs. To match them to the geolocation data, a lot of manual labor and scripting was done. Thus, updating automatically the RFI stations is not feasible at the moment.
+This dataset was compiled by _manually_ matching each RFI station to its geolocation data from OpenStreetMap. As a result, updating the dataset requires manual intervention to ensure accuracy.
 
 #### Other operators
 
-All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti, Ferrovie Emilia Romagna, Ente Autonomo Volturno) each have their own API. In particular:
+All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti, Ferrovie Emilia Romagna, Ente Autonomo Volturno) each have their own API and data sources:
 
-- FerrovieNord (via Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. However, Trenitalia does not show information on the type of train on ViaggiaTreno; thus, an additional API call to the Trenord website is needed to get the type of train.
-- Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a public API and the data is heavily processed to get something usable.
+- FerrovieNord (Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. The list of stations was scraped from ViaggiaTreno and manually matched to geolocation data.
+- Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a documented API and the data was scraped and heavily processed to get something usable. Again, the stations were manually matched to geolocation data.
 - Ferrovie Emilia Romagna and Ente Autonomo Volturno have their web departure boards similar to RFI. They are fetched in a similar fashion.
 
 All these non-RFI stations were matched to their geolocation data manually and thus require manual updates.
@@ -89,7 +87,7 @@ Once you have your API key, cd into `gen/` and run `python3 sweden.py`.
 
 Given the low rate of requests allowed by the Trafiklab API, the script will cache the GTFS dataset locally in the `cache/` folder. If you want to refresh the cache, just delete the `cache/sweden.zip` file.
 
-Currently, there are some stations that are actually in Norway but have not been removed yet. This is because Norway is not supported yet in Trainguessr and thus no overlap occurs.
+Currently, there are some stations that are actually in Norway but have not been removed yet.
 
 ### United Kingdom
 
@@ -156,3 +154,15 @@ Several rail infrastructure managers exist in Italy apart from RFI. These smalle
 | FCE                                   | Paternò-Riposto (Circumetnea)                                   |
 
 The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviarie (SSIF) and connects Italy to Switzerland. SSIF links with the Swiss Federal Railways (SBB) in Switzerland territory and those stations are already included in the Switzerland dataset; however, the Italian stations are missing (from Ribellasca to Domodossola).
+
+## Contributing
+
+Contributions to this dataset are welcome! If you find any errors, missing stations, or have suggestions for improvements, please open an issue or submit a pull request.
+
+When submitting changes, please ensure that you provide clear explanations and references for any modifications made to the dataset. This will help maintain the accuracy and reliability of the data for all users.
+
+## License
+
+A vast majority of the data sources used in this dataset are open data or publicly accessible APIs. The overall dataset is licensed under the [Open Database License (ODbL)]([https://opendatacommons.org/licenses/odbl/1.0/) and has been compiled with data from OpenStreetMap and other open data sources. Please refer to the individual data sources for their specific licensing terms.
+
+The data that was scraped from websites without public APIs is intended for personal and non-commercial use only. Please respect the terms of service of the original data providers when using this dataset.
