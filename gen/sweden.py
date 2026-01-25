@@ -4,7 +4,7 @@ import json
 import sys
 import os
 
-excludes = "../changes/excluded-sweden.json"
+excludes = "../excludes/excluded-sweden.json"
 
 def load_rename_mapping(rename_file):
     """
@@ -38,6 +38,8 @@ def convert_from_json(input_path, output_path, rename_map):
                 if line:
                     entry = json.loads(line)
                     excluded_ids.add(int(entry['id']))
+
+    print(f"Loaded {len(excluded_ids)} excluded station IDs")
 
     nodes = []
     with open(input_path, 'r', encoding='utf-8') as infile:
@@ -112,6 +114,10 @@ def convert_from_json(input_path, output_path, rename_map):
                     if key in key_values:
                         tags[key] = key_values[key]
 
+                if 'rikshallplats' not in key_values:
+                    print(f"Skipping feature with missing station ID: {feature}")
+                    continue
+                
                 station_id = key_values["rikshallplats"]
                 if not station_id:
                     print(f"Skipping feature with missing station ID: {feature}")
