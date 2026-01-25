@@ -1,4 +1,8 @@
-# Trainguessr Data
+# Trainguessr railway stations dataset
+
+This repository contains a dataset of geolocated railway stations across various European countries, along with scripts to generate and update the data.
+
+This README provides information about the data sources used for each country, instructions on how to generate the datasets, and notes on any removed or renamed stations.
 
 ## Data sources
 
@@ -59,7 +63,7 @@ All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti,
 
 All these non-RFI stations were matched to their geolocation data manually and thus require manual updates.
 
-## Netherlands
+### Netherlands
 
 Just like Sweden, the Netherlands has tremendous support for open data. The data was downloaded from the Rijden de Treinen website: [Rijden de Treinen](https://www.rijdendetreinen.nl/en/open-data). Their API is also used to get the real-time departures.
 
@@ -127,9 +131,7 @@ The Switzerland dataset only contains stations within Switzerland, so no removal
 
 In the `changes/` folder, there are files that contain a list of renamed stations for each country (and operator). These stations were renamed to avoid confusion with other stations with the same name in different countries or different operators within the same country.
 
-## Missing countries
-
-Trainguessr aims to support as many European countries as possible. However, some countries are missing due to the lack of open data or APIs.
+## Missing stations
 
 ### Italy
 
@@ -154,10 +156,3 @@ Several rail infrastructure managers exist in Italy apart from RFI. These smalle
 | FCE                                   | Paternò-Riposto (Circumetnea)                                   |
 
 The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviarie (SSIF) and connects Italy to Switzerland. SSIF links with the Swiss Federal Railways (SBB) in Switzerland territory and those stations are already included in the Switzerland dataset; however, the Italian stations are missing (from Ribellasca to Domodossola).
-
-### Other countries
-
-- Denmark
-- Poland
-- Czech Republic
-- Spain: an attempt was made in the past, but was abandoned due to the lack of open data and extremely challenging data formats.
