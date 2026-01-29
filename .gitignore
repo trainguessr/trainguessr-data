@@ -2,5 +2,6 @@ bak
 trash
 .DS_Store
 cache
+temp
 .direnv
 .env-secret
