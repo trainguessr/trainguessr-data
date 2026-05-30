@@ -56,10 +56,11 @@ This dataset was compiled by _manually_ matching each RFI station to its geoloca
 All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti, Ferrovie Emilia Romagna, Ente Autonomo Volturno) each have their own API and data sources:
 
 - FerrovieNord (Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. The list of stations was scraped from ViaggiaTreno and manually matched to geolocation data.
+- Ferrovie del Sud Est (FSE) also uses ViaggiaTreno identifiers. The station list is generated reproducibly by matching FSE railway stations from OpenStreetMap/OpenRailwayMap-compatible rail data to ViaggiaTreno station identifiers. The generator also emits a separate unresolved file with ViaggiaTreno IDs but blank coordinates for manual completion.
 - Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a documented API and the data was scraped and heavily processed to get something usable. Again, the stations were manually matched to geolocation data.
 - Ferrovie Emilia Romagna and Ente Autonomo Volturno have their web departure boards similar to RFI. They are fetched in a similar fashion.
 
-All these non-RFI stations were matched to their geolocation data manually and thus require manual updates.
+FN, TT, FER and EAV were matched to their geolocation data manually and thus still require manual updates. FSE is generated automatically from public sources.
 
 ### Netherlands
 
@@ -143,11 +144,10 @@ Several rail infrastructure managers exist in Italy apart from RFI. These smalle
 | Infrastrutture Venete                 | Adria-Mestre                                                    |
 | Rete Ferroviaria Toscana              | Arezzo-Stia, Arezzo-Sinalunga                                   |
 | ASTRAL                                | Roma-Civita Castellana-Viterbo, Roma Lido                       |
-| ATAC                                  | Roma-Giardinetti                                                |
+| ATAC                                  | Roma-Giardinetti (closed since 2025)                            |
 | Ferrovia Adriatico Sangritana         | Ferrovia Sangritana                                             |
 | Ferrovie del Gargano                  | San Severo-Peschici, Foggia-Lucera                              |
 | Ferrotramviaria                       | Bari-Barletta, Bari-San Paolo                                   |
-| Ferrovie del Sud Est                  | tante                                                           |
 | Ferrovie Appulo Lucane                | Bari-Matera-Montalbano Jonico, Altamura-Avigliano-Potenza       |
 | Ferrovie della Calabria               | tante                                                           |
 | ARST                                  | Macomer-Nuoro, Monserrato-Isili, Sassari-Alghero, Sassari-Sorso |

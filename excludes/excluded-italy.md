@@ -1,5 +1,18 @@
 # Removed Italy stations
 
+## FSE
+
+Stations on the Linea 2 of the Ferrovie del Sud Est (FSE) network are currently excluded from the main generated dataset since they are not available on ViaggiaTreno and thus cannot be matched to the dataset.
+
+* Erchie-Torre Santa Susanna
+* Gallipoli Porto
+* Salice-Veglie
+* San Cesario di Lecce
+* San Donato di Lecce
+* San Pancrazio Salentino
+* Sava
+
+
 ## RFI
 
 The following RFI stations were removed since they lie outside of Italy.
