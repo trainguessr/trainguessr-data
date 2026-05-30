@@ -104,7 +104,7 @@ To get started, cd into `gen/` and run `python3 uk.py`.
 
 ### Belgium
 
-The `changes/excluded-belgium.json` file contains a list of stations that were removed. These stations lie outside of Belgium but are included in the NMBS/SNCB network. They are used for international connections, especially to France.
+The `excludes/excluded-belgium.json` file contains a list of stations that were removed. These stations lie outside of Belgium but are included in the NMBS/SNCB network. They are used for international connections, especially to France.
 
 The script that generates the Belgium stations (`gen/belgium.py`) automatically removes these stations.
 
@@ -112,11 +112,11 @@ The script that generates the Belgium stations (`gen/belgium.py`) automatically 
 
 Since a lot of manual work was done to match the RFI stations to their geolocation data, no automatic removal of stations is implemented.
 
-Nevertheless, the `changes/excluded-italy.md` file contains a list of stations that were removed along with a small explanation for each of the removal(s).
+Nevertheless, the `excludes/excluded-italy.md` file contains a list of stations that were removed along with a small explanation for each of the removal(s).
 
 ### Sweden
 
-The `changes/excluded-sweden.json` file contains a list of stations that were removed. These stations lie outside of Sweden but are included in the Trafikverket network. They are used for international connections, especially to Denmark and Germany.
+The `excludes/excluded-sweden.json` file contains a list of stations that were removed. These stations lie outside of Sweden but are included in the Trafikverket network. They are used for international connections, especially to Denmark and Germany.
 
 The script that generates the Sweden stations (`gen/sweden.py`) automatically removes these stations.
 
@@ -128,7 +128,7 @@ The Switzerland dataset only contains stations within Switzerland, so no removal
 
 ## Renamed stations
 
-In the `changes/` folder, there are files that contain a list of renamed stations for each country (and operator). These stations were renamed to avoid confusion with other stations with the same name in different countries or different operators within the same country.
+In the `excludes/` folder, there are files that contain a list of renamed stations for each country (and operator). These stations were renamed to avoid confusion with other stations with the same name in different countries or different operators within the same country.
 
 ## Missing stations
 

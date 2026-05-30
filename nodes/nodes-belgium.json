@@ -18,6 +18,7 @@
 {"type": "node", "id": "BE.NMBS.008821006", "lat": 51.2172, "lon": 4.421101, "tags": {"name": "Antwerpen-Centraal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821022", "lat": 51.207357, "lon": 4.436392, "tags": {"name": "Antwerpen-Oost"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821048", "lat": 51.289968, "lon": 4.379086, "tags": {"name": "Antwerpen-Haven"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008894839", "lat": 51.215685, "lon": 4.360044, "tags": {"name": "Antwerpen-Linkeroever"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821063", "lat": 51.244132, "lon": 4.425029, "tags": {"name": "Antwerpen-Luchtbal"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821089", "lat": 51.261643, "lon": 4.427906, "tags": {"name": "Antwerpen-Noorderdokken"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008821196", "lat": 51.197828, "lon": 4.390259, "tags": {"name": "Antwerpen-Zuid"}, "category": "belgium_all"}
@@ -274,6 +275,7 @@
 {"type": "node", "id": "BE.NMBS.008843307", "lat": 50.527242, "lon": 5.234211, "tags": {"name": "Huy"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895844", "lat": 50.876886, "lon": 4.06849, "tags": {"name": "Iddergem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895729", "lat": 50.801871, "lon": 3.921553, "tags": {"name": "Idegem"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008896503", "lat": 50.847402, "lon": 2.876593, "tags": {"name": "Ieper"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008896925", "lat": 50.914326, "lon": 3.255416, "tags": {"name": "Ingelmunster"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008896909", "lat": 50.921149, "lon": 3.212088, "tags": {"name": "Izegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863354", "lat": 50.454798, "lon": 4.880261, "tags": {"name": "Jambes-Est"}, "category": "belgium_all"}
@@ -418,9 +420,9 @@
 {"type": "node", "id": "BE.NMBS.008881406", "lat": 50.469873, "lon": 4.007804, "tags": {"name": "Obourg"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895778", "lat": 50.857712, "lon": 4.054557, "tags": {"name": "Okegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008832458", "lat": 51.17403, "lon": 4.9025, "tags": {"name": "Olen"}, "category": "belgium_all"}
+{"type": "node", "id": "BE.NMBS.008891702", "lat": 51.228212, "lon": 2.925809, "tags": {"name": "Oostende"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891116", "lat": 51.154114, "lon": 3.257466, "tags": {"name": "Oostkamp"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008812146", "lat": 50.974779, "lon": 4.187319, "tags": {"name": "Opwijk"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008891702", "lat": 51.228212, "lon": 2.925809, "tags": {"name": "Oostende"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008811601", "lat": 50.673667, "lon": 4.56936, "tags": {"name": "Ottignies"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008833134", "lat": 50.835931, "lon": 4.653311, "tags": {"name": "Oud-Heverlee"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893518", "lat": 51.01523, "lon": 4.064472, "tags": {"name": "Oudegem"}, "category": "belgium_all"}
@@ -568,7 +570,6 @@
 {"type": "node", "id": "BE.NMBS.008821709", "lat": 51.168361, "lon": 4.786144, "tags": {"name": "Wolfstee"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008893211", "lat": 51.088357, "lon": 3.719071, "tags": {"name": "Wondelgem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008847258", "lat": 50.604856, "lon": 5.55788, "tags": {"name": "Y.renory"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008896503", "lat": 50.847402, "lon": 2.876593, "tags": {"name": "Ieper"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008873239", "lat": 50.23698, "lon": 4.500404, "tags": {"name": "Yves-Gomez\u00e9e"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008863545", "lat": 50.32084, "lon": 4.878643, "tags": {"name": "Yvoir"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895737", "lat": 50.806986, "lon": 3.957653, "tags": {"name": "Zandbergen"}, "category": "belgium_all"}
@@ -584,6 +585,5 @@
 {"type": "node", "id": "BE.NMBS.008832334", "lat": 50.989557, "lon": 5.348815, "tags": {"name": "Zonhoven"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008895208", "lat": 50.869102, "lon": 3.81441, "tags": {"name": "Zottegem"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008891611", "lat": 51.306409, "lon": 3.191557, "tags": {"name": "Zwankendamme"}, "category": "belgium_all"}
-{"type": "node", "id": "BE.NMBS.008800252", "lat": 51.2191653, "lon": 4.3256707, "tags": {"name": "Zwijndrecht-Dorp"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.000000252", "lat": 51.2191653, "lon": 4.3256707, "tags": {"name": "Zwijndrecht-Dorp"}, "category": "belgium_all"}
 {"type": "node", "id": "BE.NMBS.008883212", "lat": 50.56239, "lon": 4.156639, "tags": {"name": "\u00c9caussinnes"}, "category": "belgium_all"}

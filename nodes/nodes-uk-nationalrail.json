@@ -198,6 +198,7 @@
 {"type":"node","id":"BDM","lat":52.136175,"lon":-0.47945,"tags":{"name":"Bedford"},"category":"uk_national_rail"}
 {"type":"node","id":"BSJ","lat":52.129299,"lon":-0.467348,"tags":{"name":"Bedford St Johns"},"category":"uk_national_rail"}
 {"type":"node","id":"BDH","lat":50.853638,"lon":-0.996989,"tags":{"name":"Bedhampton"},"category":"uk_national_rail"}
+{"type":"node","id":"BEJ","lat":55.140419,"lon":-1.56863,"tags":{"name":"Bedlington"},"category":"uk_national_rail"}
 {"type":"node","id":"BMT","lat":51.440037,"lon":-2.594184,"tags":{"name":"Bedminster"},"category":"uk_national_rail"}
 {"type":"node","id":"BEH","lat":52.479133,"lon":-1.46749,"tags":{"name":"Bedworth"},"category":"uk_national_rail"}
 {"type":"node","id":"BDW","lat":51.379715,"lon":-1.599077,"tags":{"name":"Bedwyn"},"category":"uk_national_rail"}
@@ -665,6 +666,7 @@
 {"type":"node","id":"DNY","lat":54.466068,"lon":-0.910704,"tags":{"name":"Danby"},"category":"uk_national_rail"}
 {"type":"node","id":"DCT","lat":51.505199,"lon":-3.23332,"tags":{"name":"Danescourt"},"category":"uk_national_rail"}
 {"type":"node","id":"DZY","lat":52.324329,"lon":-1.819493,"tags":{"name":"Danzey"},"category":"uk_national_rail"}
+{"type":"node","id":"DAS","lat":52.57638,"lon":-2.01953,"tags":{"name":"Darlaston"},"category":"uk_national_rail"}
 {"type":"node","id":"DAR","lat":54.520462,"lon":-1.54732,"tags":{"name":"Darlington"},"category":"uk_national_rail"}
 {"type":"node","id":"DAN","lat":53.381084,"lon":-1.410661,"tags":{"name":"Darnall"},"category":"uk_national_rail"}
 {"type":"node","id":"DSM","lat":52.272812,"lon":1.522343,"tags":{"name":"Darsham"},"category":"uk_national_rail"}
@@ -1296,6 +1298,7 @@
 {"type":"node","id":"KBC","lat":58.258408,"lon":-3.941063,"tags":{"name":"Kinbrace"},"category":"uk_national_rail"}
 {"type":"node","id":"KGM","lat":51.902222,"lon":-1.629331,"tags":{"name":"Kingham"},"category":"uk_national_rail"}
 {"type":"node","id":"KGH","lat":56.069389,"lon":-3.174161,"tags":{"name":"Kinghorn"},"category":"uk_national_rail"}
+{"type":"node","id":"KIH","lat":52.43141,"lon":-1.89297,"tags":{"name":"Kings Heath"},"category":"uk_national_rail"}
 {"type":"node","id":"KGL","lat":51.70631,"lon":-0.438411,"tags":{"name":"Kings Langley"},"category":"uk_national_rail"}
 {"type":"node","id":"KLN","lat":52.754108,"lon":0.403475,"tags":{"name":"Kings Lynn"},"category":"uk_national_rail"}
 {"type":"node","id":"KNN","lat":52.413456,"lon":-1.933801,"tags":{"name":"Kings Norton"},"category":"uk_national_rail"}
@@ -1616,6 +1619,7 @@
 {"type":"node","id":"MOR","lat":51.371941,"lon":-1.035979,"tags":{"name":"Mortimer"},"category":"uk_national_rail"}
 {"type":"node","id":"MTL","lat":51.468288,"lon":-0.266575,"tags":{"name":"Mortlake"},"category":"uk_national_rail"}
 {"type":"node","id":"MSS","lat":53.55604,"lon":-2.400931,"tags":{"name":"Moses Gate"},"category":"uk_national_rail"}
+{"type":"node","id":"MOV","lat":52.44582,"lon":-1.88451,"tags":{"name":"Moseley Village"},"category":"uk_national_rail"}
 {"type":"node","id":"MOS","lat":53.764431,"lon":-2.943548,"tags":{"name":"Moss Side"},"category":"uk_national_rail"}
 {"type":"node","id":"MSL","lat":53.514963,"lon":-2.041263,"tags":{"name":"Mossley (Manchester)"},"category":"uk_national_rail"}
 {"type":"node","id":"MSH","lat":53.379025,"lon":-2.915464,"tags":{"name":"Mossley Hill"},"category":"uk_national_rail"}
@@ -1813,6 +1817,7 @@
 {"type":"node","id":"PEB","lat":50.818249,"lon":0.342453,"tags":{"name":"Pevensey Bay"},"category":"uk_national_rail"}
 {"type":"node","id":"PEW","lat":51.342411,"lon":-1.771691,"tags":{"name":"Pewsey"},"category":"uk_national_rail"}
 {"type":"node","id":"PIL","lat":51.556502,"lon":-2.627192,"tags":{"name":"Pilning"},"category":"uk_national_rail"}
+{"type":"node","id":"PIR","lat":52.42999,"lon":-1.90966,"tags":{"name":"Pineapple Road"},"category":"uk_national_rail"}
 {"type":"node","id":"PIN","lat":50.738079,"lon":-3.469582,"tags":{"name":"Pinhoe"},"category":"uk_national_rail"}
 {"type":"node","id":"PIT","lat":56.70256,"lon":-3.736085,"tags":{"name":"Pitlochry"},"category":"uk_national_rail"}
 {"type":"node","id":"PSE","lat":51.560387,"lon":0.508806,"tags":{"name":"Pitsea"},"category":"uk_national_rail"}
@@ -2533,6 +2538,7 @@
 {"type":"node","id":"WTI","lat":51.437233,"lon":-0.895052,"tags":{"name":"Winnersh Triangle"},"category":"uk_national_rail"}
 {"type":"node","id":"WSF","lat":53.190505,"lon":-2.494669,"tags":{"name":"Winsford"},"category":"uk_national_rail"}
 {"type":"node","id":"WSH","lat":55.772346,"lon":-3.927267,"tags":{"name":"Wishaw"},"category":"uk_national_rail"}
+{"type":"node","id":"WIA","lat":52.58192,"lon":-2.05475,"tags":{"name":"Willenhall"},"category":"uk_national_rail"}
 {"type":"node","id":"WTM","lat":51.805702,"lon":0.641373,"tags":{"name":"Witham"},"category":"uk_national_rail"}
 {"type":"node","id":"WTY","lat":51.133362,"lon":-0.645059,"tags":{"name":"Witley"},"category":"uk_national_rail"}
 {"type":"node","id":"WTT","lat":52.51141,"lon":-1.883566,"tags":{"name":"Witton"},"category":"uk_national_rail"}

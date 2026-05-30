@@ -45,7 +45,7 @@ for station in stations:
         "category": "belgium_all"
     })
 
-excludes = "../changes/excluded-belgium.json"
+excludes = "../excludes/excluded-belgium.json"
 to_remove = set()
 with open(excludes, 'r', encoding='utf-8') as f:
     # Assume same format as output
