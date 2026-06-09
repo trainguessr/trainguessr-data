@@ -42,6 +42,7 @@ def convert_from_json(input_path, output_path, rename_map):
     print(f"Loaded {len(excluded_ids)} excluded station IDs")
 
     nodes = []
+    modes = set()
     with open(input_path, 'r', encoding='utf-8') as infile:
         for line in infile:
             try:
@@ -72,7 +73,8 @@ def convert_from_json(input_path, output_path, rename_map):
                 private_code = feature.get("PrivateCode", "")
                 transport_mode = feature.get("TransportMode", "")
 
-                if transport_mode != "rail":
+                modes.add(transport_mode)
+                if transport_mode not in ("metro", "rail"):
                     print(f"Skipping feature with unsupported transport mode: {transport_mode}")
                     continue
                 
@@ -152,6 +154,7 @@ def convert_from_json(input_path, output_path, rename_map):
                 print(f"Error processing feature: {e}")  
 
         nodes.sort(key=lambda x: x['id']) 
+        print("Modes", modes)
 
         with open(output_path, 'w', encoding='utf-8') as outfile:
             for node in nodes:
