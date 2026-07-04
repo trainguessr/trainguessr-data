@@ -12,6 +12,9 @@ Stations on the Linea 2 of the Ferrovie del Sud Est (FSE) network are currently 
 * San Pancrazio Salentino
 * Sava
 
+### Removed because managed by another operator
+
+**Francavilla Fontana** (VT ID `S11603`) was removed from the FSE dataset on 2026-06-16. Although FSE trains call there, the station infrastructure is managed by RFI and the station is already present in the RFI dataset, so keeping it in FSE would create a duplicate.
 
 ## RFI
 

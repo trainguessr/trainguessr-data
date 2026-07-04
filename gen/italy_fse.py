@@ -19,9 +19,13 @@ VIAGGIATRENO_SEARCH_URL = (
     "http://www.viaggiatreno.it/infomobilitamobile/resteasy/"
     "viaggiatreno/cercaStazione/"
 )
+VIAGGIATRENO_ELenco_URL = (
+    "http://www.viaggiatreno.it/infomobilitamobile/resteasy/"
+    "viaggiatreno/elencoStazioni/0"
+)
 BOUNDING_BOX = "(39.0,14.5,42.5,19.5)"
 OUTPUT_FILE = BASE_DIR.parent / "nodes" / "nodes-italy-fse.json"
-UNRESOLVED_OUTPUT_FILE = "nodes-italy-fse-unresolved.json"
+UNRESOLVED_OUTPUT_FILE = BASE_DIR.parent.parent / "nodes-italy-fse-unresolved.json"
 
 HEADERS = {
     "User-Agent": "trainguessr-data"
@@ -32,12 +36,22 @@ HEADERS = {
 # the unresolved/manual-followup file rather than the main playable dataset.
 EXCLUDED_OSM_NAMES = {
     "Erchie-Torre Santa Susanna",
+    "Francavilla Fontana",
     "Gallipoli Porto",
     "Salice-Veglie",
     "San Cesario di Lecce",
     "San Donato di Lecce",
     "San Pancrazio Salentino",
     "Sava",
+}
+
+EXCLUDED_REASON_BY_OSM_NAME = {
+    "Francavilla Fontana": "managed_by_rfi_station_already_in_italy_rfi",
+}
+
+# Known non-S13 ViaggiaTreno IDs that belong to FSE.
+KNOWN_NON_S13_FSE_IDS = {
+    "S11672",  # Gallipoli
 }
 
 # OSM and ViaggiaTreno often disagree on punctuation/abbreviations.
@@ -173,20 +187,20 @@ def overpass_station_query(name: str | None = None) -> str:
     if name is not None:
         return (
             "[out:json][timeout:60];"
-            f"(node[railway~\"station|halt|stop\"][name=\"{name}\"]{BOUNDING_BOX};"
-            f"way[railway~\"station|halt|stop\"][name=\"{name}\"]{BOUNDING_BOX};"
-            f"relation[railway~\"station|halt|stop\"][name=\"{name}\"]{BOUNDING_BOX};);"
+            f'(node[railway~"station|halt|stop"][name="{name}"]{BOUNDING_BOX};'
+            f'way[railway~"station|halt|stop"][name="{name}"]{BOUNDING_BOX};'
+            f'relation[railway~"station|halt|stop"][name="{name}"]{BOUNDING_BOX};);'
             "out center tags;"
         )
 
     return (
         "[out:json][timeout:120];"
-        f"(node[operator~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};"
-        f"way[operator~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};"
-        f"relation[operator~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};"
-        f"node[network~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};"
-        f"way[network~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};"
-        f"relation[network~\"Ferrovie del Sud Est|FSE\"][railway~\"station|halt|stop\"]{BOUNDING_BOX};);"
+        f'(node[operator~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};'
+        f'way[operator~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};'
+        f'relation[operator~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};'
+        f'node[network~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};'
+        f'way[network~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};'
+        f'relation[network~"Ferrovie del Sud Est|FSE"][railway~"station|halt|stop"]{BOUNDING_BOX};);'
         "out center tags;"
     )
 
@@ -288,30 +302,42 @@ def build_node(station_name: str, osm_station: dict[str, Any], vt_station: dict[
     }
 
 
-def build_unresolved_node(station_name: str, vt_station: dict[str, Any],
-                          reason: str, osm_station: dict[str, Any] | None = None) -> dict[str, Any]:
-    tags = {
+def build_unresolved_node(
+    station_name: str,
+    vt_station: dict[str, Any] | None,
+    reason: str,
+    osm_station: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    tags: dict[str, Any] = {
         "name": station_name,
         "operator": "Ferrovie del Sud Est",
-        "ref": vt_station["id"],
-        "vt_name": vt_station.get("nomeLungo", station_name),
         "match_status": "unresolved",
         "match_reason": reason,
     }
 
-    if vt_station.get("nomeBreve"):
-        tags["vt_short_name"] = vt_station["nomeBreve"]
-    if vt_station.get("label"):
-        tags["vt_label"] = vt_station["label"]
+    if vt_station is not None:
+        tags["ref"] = vt_station["id"]
+        tags["vt_name"] = vt_station.get("nomeLungo", station_name)
+        if vt_station.get("nomeBreve"):
+            tags["vt_short_name"] = vt_station["nomeBreve"]
+        if vt_station.get("label"):
+            tags["vt_label"] = vt_station["label"]
+
     if osm_station is not None:
         tags["osm_name"] = osm_station.get("tags", {}).get("name", station_name)
         tags["osm_id"] = str(osm_station["id"])
 
+    lat, lon = "", ""
+    if osm_station is not None:
+        lat, lon = station_coordinates(osm_station)
+
+    node_id = vt_station["id"] if vt_station is not None else f"OSM_{osm_station['id']}" if osm_station is not None else "UNKNOWN"
+
     return {
         "type": "node",
-        "id": vt_station["id"],
-        "lat": "",
-        "lon": "",
+        "id": node_id,
+        "lat": lat,
+        "lon": lon,
         "tags": tags,
         "category": "italy_fse"
     }
@@ -339,20 +365,68 @@ def fetch_viaggiatreno_station(name: str) -> dict[str, Any] | None:
     return None
 
 
+def is_fse_vt_candidate(station: dict[str, Any]) -> bool:
+    """Heuristic to decide whether a VT elencoStazioni entry is an FSE station."""
+    sid = station.get("codiceStazione", "")
+    if sid in KNOWN_NON_S13_FSE_IDS:
+        return True
+    if not sid.startswith("S13"):
+        return False
+    lat = station.get("lat", 0.0)
+    lon = station.get("lon", 0.0)
+    # Exclude Swiss stations (Mendrisio ~ lat 45.88, lon 8.96)
+    if lat > 40 and lon < 10:
+        return False
+    return True
+
+
+def fetch_vt_only_stations(matched_ids: set[str]) -> list[dict[str, Any]]:
+    """Return VT stations that look like FSE but are not in the matched set."""
+    try:
+        all_stations = fetch_json(VIAGGIATRENO_ELenco_URL)
+    except Exception:
+        return []
+
+    if not isinstance(all_stations, list):
+        return []
+
+    unmatched: list[dict[str, Any]] = []
+    for station in all_stations:
+        if not is_fse_vt_candidate(station):
+            continue
+        sid = station.get("codiceStazione", "")
+        if sid and sid not in matched_ids:
+            unmatched.append(station)
+
+    return unmatched
+
+
 def main() -> None:
     osm_stations = fetch_osm_stations()
     nodes: list[dict[str, Any]] = []
     unresolved_nodes: list[dict[str, Any]] = []
-    unresolved_names: list[str] = []
+    matched_vt_ids: set[str] = set()
 
     for station_name in sorted(osm_stations):
         if station_name in EXCLUDED_OSM_NAMES:
             vt_station = fetch_viaggiatreno_station(station_name)
+            exclusion_reason = EXCLUDED_REASON_BY_OSM_NAME.get(
+                station_name,
+                "excluded_osm_station_with_vt_id",
+            )
             if vt_station is not None:
+                matched_vt_ids.add(vt_station["id"])
                 unresolved_nodes.append(build_unresolved_node(
                     station_name,
                     vt_station,
-                    "missing_safe_osm_to_viaggiatreno_coordinate_match",
+                    exclusion_reason,
+                    osm_stations[station_name]
+                ))
+            else:
+                unresolved_nodes.append(build_unresolved_node(
+                    station_name,
+                    None,
+                    "excluded_osm_station_no_vt_id",
                     osm_stations[station_name]
                 ))
             continue
@@ -361,6 +435,7 @@ def main() -> None:
         if vt_station is None:
             fallback_station = fetch_viaggiatreno_station(station_name)
             if fallback_station is not None:
+                matched_vt_ids.add(fallback_station["id"])
                 unresolved_nodes.append(build_unresolved_node(
                     station_name,
                     fallback_station,
@@ -368,15 +443,32 @@ def main() -> None:
                     osm_stations[station_name]
                 ))
             else:
-                unresolved_names.append(station_name)
+                unresolved_nodes.append(build_unresolved_node(
+                    station_name,
+                    None,
+                    "missing_viaggiatreno_id",
+                    osm_stations[station_name]
+                ))
             continue
 
+        matched_vt_ids.add(vt_station["id"])
         nodes.append(build_node(station_name, osm_stations[station_name], vt_station))
 
-    if unresolved_names:
-        raise RuntimeError(
-            "Failed to resolve ViaggiaTreno IDs for: " + ", ".join(unresolved_names)
-        )
+    # Add VT-only stations (VT has an ID but no corresponding OSM station)
+    vt_only_stations = fetch_vt_only_stations(matched_vt_ids)
+    for vt_station in vt_only_stations:
+        localita = vt_station.get("localita", {})
+        name = localita.get("nomeLungo") or localita.get("nomeBreve") or vt_station.get("codiceStazione", "")
+        unresolved_nodes.append(build_unresolved_node(
+            name,
+            {
+                "id": vt_station.get("codiceStazione", ""),
+                "nomeLungo": localita.get("nomeLungo", ""),
+                "nomeBreve": localita.get("nomeBreve", ""),
+                "label": localita.get("label", ""),
+            },
+            "missing_osm_coordinates",
+        ))
 
     nodes.sort(key=lambda node: node["id"])
     unresolved_nodes.sort(key=lambda node: node["id"])

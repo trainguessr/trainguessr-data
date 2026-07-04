@@ -57,6 +57,7 @@ All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti,
 
 - FerrovieNord (Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. The list of stations was scraped from ViaggiaTreno and manually matched to geolocation data.
 - Ferrovie del Sud Est (FSE) also uses ViaggiaTreno identifiers. The station list is generated reproducibly by matching FSE railway stations from OpenStreetMap/OpenRailwayMap-compatible rail data to ViaggiaTreno station identifiers. The generator also emits a separate unresolved file with ViaggiaTreno IDs but blank coordinates for manual completion.
+  - **Note:** stations that are served by FSE but managed by another infrastructure operator must stay in that operator's dataset. For example, _Francavilla Fontana_ is served by FSE but managed by RFI, so it belongs only in the RFI dataset and is documented in `excludes/excluded-italy.md`.
 - Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a documented API and the data was scraped and heavily processed to get something usable. Again, the stations were manually matched to geolocation data.
 - Ferrovie Emilia Romagna and Ente Autonomo Volturno have their web departure boards similar to RFI. They are fetched in a similar fashion.
 
@@ -130,7 +131,7 @@ The Switzerland dataset only contains stations within Switzerland, so no removal
 
 In the `excludes/` folder, there are files that contain a list of renamed stations for each country (and operator). These stations were renamed to avoid confusion with other stations with the same name in different countries or different operators within the same country.
 
-## Missing stations
+## Future expansion
 
 ### Italy
 
@@ -154,6 +155,18 @@ Several rail infrastructure managers exist in Italy apart from RFI. These smalle
 | FCE                                   | Paternò-Riposto (Circumetnea)                                   |
 
 The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviarie (SSIF) and connects Italy to Switzerland. SSIF links with the Swiss Federal Railways (SBB) in Switzerland territory and those stations are already included in the Switzerland dataset; however, the Italian stations are missing (from Ribellasca to Domodossola).
+
+## Other countries
+
+| Country | Operator | Notes |
+| --- | --- | --- | 
+| Norway | Vy / Bane NOR | Entur API reportedly provides open GTFS and real-time data |
+| Finland | VR | GTFS feed reportedly available |
+| Spain | Renfe / ADIF | Official site [renfe.com](https://www.renfe.com); large network. No public API; tried in the past, was complex |
+| Portugal | Comboios de Portugal (CP) | Still to find official GTFS feed or API |
+| Denmark | DSB / Rejseplanen | Official site [dsb.dk](https://www.dsb.dk). Rejseplanen API is reportedly well-documented |
+| Czech Republic | České dráhy | HAFAS-based APIs should be available, but a mess to implement |
+| Poland | PKP | Still to research |
 
 ## Contributing
 
