@@ -23,7 +23,22 @@ def load_rename_map(country: str, operator: str | None = None) -> dict[str, str]
         row_operator = row.get("operator")
         if operator is not None and row_operator != operator:
             continue
+        if row.get("id") not in (None, ""):
+            continue
         result[str(row["from"])] = str(row["to"])
+    return result
+
+
+def load_rename_id_map(country: str, operator: str | None = None) -> dict[str, str]:
+    rows = load_country_config(country).get("renamed", [])
+    result: dict[str, str] = {}
+    for row in rows:
+        row_operator = row.get("operator")
+        if operator is not None and row_operator != operator:
+            continue
+        station_id = row.get("id")
+        if station_id not in (None, ""):
+            result[str(station_id)] = str(row["to"])
     return result
 
 

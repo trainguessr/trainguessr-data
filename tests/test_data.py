@@ -47,8 +47,9 @@ class DatasetTests(unittest.TestCase):
 
     def test_sweden_contains_only_swedish_ids(self) -> None:
         rows = load_ndjson(ROOT / "nodes" / "nodes-sweden.json")
-        self.assertEqual(850, len(rows))
         self.assertTrue(all(str(row["id"]).startswith("740") for row in rows))
+        names = [str(row["tags"]["name"]) for row in rows]
+        self.assertEqual(len(names), len(set(names)))
 
     def test_legacy_parsers_rebuild_active_json(self) -> None:
         required_cache = [

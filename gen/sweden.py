@@ -3,7 +3,7 @@
 import json
 import sys
 import os
-from common.config import load_excluded_ids, load_rename_map
+from common.config import load_excluded_ids, load_rename_id_map, load_rename_map
 
 
 def load_rename_mapping(rename_file):
@@ -30,6 +30,7 @@ seen = set()
 def convert_from_json(input_path, output_path, rename_map):
     # Load excludes first
     excluded_ids = load_excluded_ids("sweden")
+    rename_id_map = load_rename_id_map("sweden")
 
     print(f"Loaded {len(excluded_ids)} excluded station IDs")
 
@@ -125,6 +126,8 @@ def convert_from_json(input_path, output_path, rename_map):
                 if str(station_id) in excluded_ids:
                     print(f"Skipping excluded station ID: {station_id}")
                     continue
+                if str(station_id) in rename_id_map:
+                    tags["name"] = rename_id_map[str(station_id)]
                 seen.add(station_id)
                 del key_values["rikshallplats"]
                 

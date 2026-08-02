@@ -1141,12 +1141,27 @@
         "sellable": "true"
       },
       "category": "sweden_trafikverket"
+    },
+    {
+      "id": 740076297,
+      "name": "Njurunda Resec",
+      "reason": "duplicate_of_740001622"
     }
   ],
   "renamed": [
     {
       "from": "Fors",
       "to": "Fors (Sweden)"
+    },
+    {
+      "id": 740000692,
+      "from": "Farsta strand",
+      "to": "Farsta strand (rail)"
+    },
+    {
+      "id": 740021696,
+      "from": "Farsta strand",
+      "to": "Farsta strand (metro)"
     }
   ]
 }
