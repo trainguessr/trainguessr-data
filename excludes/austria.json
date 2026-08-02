@@ -1,0 +1,33 @@
+{
+  "excluded": [],
+  "renamed": [
+    {
+      "from": "Westendorf",
+      "to": "Westendorf (Austria)"
+    },
+    {
+      "from": "Maria Rain",
+      "to": "Maria Rain (Austria)"
+    },
+    {
+      "from": "Haslach",
+      "to": "Haslach (Austria)"
+    },
+    {
+      "from": "Horn",
+      "to": "Horn (Austria)"
+    },
+    {
+      "from": "Stans",
+      "to": "Stans (Austria)"
+    },
+    {
+      "from": "Feldbach",
+      "to": "Feldbach (Austria)"
+    },
+    {
+      "from": "Baden",
+      "to": "Baden (Austria)"
+    }
+  ]
+}

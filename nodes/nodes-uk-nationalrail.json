@@ -288,6 +288,7 @@
 {"type":"node","id":"BLX","lat":52.61853,"lon":-2.011783,"tags":{"name":"Bloxwich"},"category":"uk_national_rail"}
 {"type":"node","id":"BWN","lat":52.625637,"lon":-2.019173,"tags":{"name":"Bloxwich North"},"category":"uk_national_rail"}
 {"type":"node","id":"BLN","lat":53.487675,"lon":-3.039889,"tags":{"name":"Blundellsands & Crosby"},"category":"uk_national_rail"}
+{"type":"node","id":"BLI","lat":55.125,"lon":-1.5571,"tags":{"name":"Blyth Bebside"},"category":"uk_national_rail"}
 {"type":"node","id":"BYB","lat":52.968124,"lon":-2.066966,"tags":{"name":"Blythe Bridge"},"category":"uk_national_rail"}
 {"type":"node","id":"BOD","lat":50.445822,"lon":-4.663026,"tags":{"name":"Bodmin Parkway"},"category":"uk_national_rail"}
 {"type":"node","id":"BOR","lat":53.204292,"lon":-4.418067,"tags":{"name":"Bodorgan"},"category":"uk_national_rail"}
@@ -432,6 +433,7 @@
 {"type":"node","id":"CBG","lat":52.194519,"lon":0.137584,"tags":{"name":"Cambridge"},"category":"uk_national_rail"}
 {"type":"node","id":"CBH","lat":51.53157,"lon":-0.057997,"tags":{"name":"Cambridge Heath"},"category":"uk_national_rail"}
 {"type":"node","id":"CMB","lat":52.223333,"lon":0.157778,"tags":{"name":"Cambridge North"},"category":"uk_national_rail"}
+{"type":"node","id":"CMS","lat":52.17448,"lon":0.131226,"tags":{"name":"Cambridge South"},"category":"uk_national_rail"}
 {"type":"node","id":"CBL","lat":55.819458,"lon":-4.173839,"tags":{"name":"Cambuslang"},"category":"uk_national_rail"}
 {"type":"node","id":"CMD","lat":51.541889,"lon":-0.139764,"tags":{"name":"Camden Road"},"category":"uk_national_rail"}
 {"type":"node","id":"CMO","lat":56.006775,"lon":-3.817015,"tags":{"name":"Camelon"},"category":"uk_national_rail"}
@@ -577,7 +579,7 @@
 {"type":"node","id":"CON","lat":56.451981,"lon":-5.384973,"tags":{"name":"Connel Ferry"},"category":"uk_national_rail"}
 {"type":"node","id":"CBD","lat":57.5617,"lon":-4.4404,"tags":{"name":"Conon Bridge"},"category":"uk_national_rail"}
 {"type":"node","id":"CEY","lat":53.917351,"lon":-2.010631,"tags":{"name":"Cononley"},"category":"uk_national_rail"}
-{"type":"node","id":"CNP","lat":53.386219,"lon":-3.026886,"tags":{"name":"Conway Park"},"category":"uk_national_rail"}
+{"type":"node","id":"CNP","lat":53.39353,"lon":-3.02309,"tags":{"name":"Conway Park"},"category":"uk_national_rail"}
 {"type":"node","id":"CNW","lat":53.280093,"lon":-3.83046,"tags":{"name":"Conwy"},"category":"uk_national_rail"}
 {"type":"node","id":"COB","lat":50.83271,"lon":0.426969,"tags":{"name":"Cooden Beach"},"category":"uk_national_rail"}
 {"type":"node","id":"COO","lat":51.556873,"lon":-0.721948,"tags":{"name":"Cookham"},"category":"uk_national_rail"}
@@ -1118,7 +1120,7 @@
 {"type":"node","id":"HLL","lat":51.515606,"lon":-3.183163,"tags":{"name":"Heath Low Level"},"category":"uk_national_rail"}
 {"type":"node","id":"HAF","lat":51.458214,"lon":-0.445447,"tags":{"name":"Heathrow Terminal 4 Rail"},"category":"uk_national_rail"}
 {"type":"node","id":"HWV","lat":51.47,"lon":-0.48,"tags":{"name":"Heathrow Terminal 5 Rail"},"category":"uk_national_rail"}
-{"type":"node","id":"HXX","lat":51.471,"lon":-0.456,"tags":{"name":"Heathrow Terminals 1-2-3 Rail"},"category":"uk_national_rail"}
+{"type":"node","id":"HXX","lat":51.471,"lon":-0.456,"tags":{"name":"Heathrow Terminals 2 & 3 Rail"},"category":"uk_national_rail"}
 {"type":"node","id":"HTC","lat":53.425556,"lon":-2.179046,"tags":{"name":"Heaton Chapel"},"category":"uk_national_rail"}
 {"type":"node","id":"HBD","lat":53.737587,"lon":-2.009063,"tags":{"name":"Hebden Bridge"},"category":"uk_national_rail"}
 {"type":"node","id":"HEC","lat":52.977463,"lon":-0.29316,"tags":{"name":"Heckington"},"category":"uk_national_rail"}
@@ -1718,7 +1720,8 @@
 {"type":"node","id":"NFD","lat":52.408073,"lon":-1.96469,"tags":{"name":"Northfield"},"category":"uk_national_rail"}
 {"type":"node","id":"NFL","lat":51.446384,"lon":0.324092,"tags":{"name":"Northfleet - Cooper Arms"},"category":"uk_national_rail"}
 {"type":"node","id":"NLT","lat":51.557762,"lon":-0.359827,"tags":{"name":"Northolt Park"},"category":"uk_national_rail"}
-{"type":"node","id":"NUM","lat":51.601643,"lon":-0.053558,"tags":{"name":"Northumberland Park"},"category":"uk_national_rail"}
+{"type":"node","id":"NUM","lat":51.601643,"lon":-0.053558,"tags":{"name":"Northumberland Park (London)"},"category":"uk_national_rail"}
+{"type":"node","id":"NOP","lat":55.033,"lon":-1.52,"tags":{"name":"Northumberland Park (Tyne and Wear)"},"category":"uk_national_rail"}
 {"type":"node","id":"NWI","lat":53.261414,"lon":-2.496815,"tags":{"name":"Northwich"},"category":"uk_national_rail"}
 {"type":"node","id":"NTB","lat":52.865513,"lon":-2.190102,"tags":{"name":"Norton Bridge"},"category":"uk_national_rail"}
 {"type":"node","id":"NRW","lat":52.627121,"lon":1.306879,"tags":{"name":"Norwich"},"category":"uk_national_rail"}
@@ -2237,7 +2240,7 @@
 {"type":"node","id":"SYA","lat":53.348137,"lon":-2.240313,"tags":{"name":"Styal"},"category":"uk_national_rail"}
 {"type":"node","id":"SUD","lat":51.554459,"lon":-0.316676,"tags":{"name":"Sudbury & Harrow Road"},"category":"uk_national_rail"}
 {"type":"node","id":"SDH","lat":51.558423,"lon":-0.336092,"tags":{"name":"Sudbury Hill Harrow"},"category":"uk_national_rail"}
-{"type":"node","id":"SUY","lat":52.035591,"lon":0.735111,"tags":{"name":"Sudbury Suffolk"},"category":"uk_national_rail"}
+{"type":"node","id":"SUY","lat":52.035591,"lon":0.735111,"tags":{"name":"Sudbury (Suffolk)"},"category":"uk_national_rail"}
 {"type":"node","id":"SUG","lat":52.082237,"lon":-3.686991,"tags":{"name":"Sugar Loaf"},"category":"uk_national_rail"}
 {"type":"node","id":"SUM","lat":55.89835,"lon":-4.283814,"tags":{"name":"Summerston"},"category":"uk_national_rail"}
 {"type":"node","id":"SUU","lat":51.418262,"lon":-0.416611,"tags":{"name":"Sunbury"},"category":"uk_national_rail"}
@@ -2253,7 +2256,7 @@
 {"type":"node","id":"SPK","lat":53.122108,"lon":-1.236385,"tags":{"name":"Sutton Parkway"},"category":"uk_national_rail"}
 {"type":"node","id":"SWL","lat":51.390434,"lon":0.748194,"tags":{"name":"Swale"},"category":"uk_national_rail"}
 {"type":"node","id":"SAY","lat":51.392727,"lon":0.16755,"tags":{"name":"Swanley"},"category":"uk_national_rail"}
-{"type":"node","id":"SWM","lat":51.449356,"lon":0.309854,"tags":{"name":"Swanscombe- George & Dragon"},"category":"uk_national_rail"}
+{"type":"node","id":"SWM","lat":51.449356,"lon":0.309854,"tags":{"name":"Swanscombe - George & Dragon"},"category":"uk_national_rail"}
 {"type":"node","id":"SWA","lat":51.625103,"lon":-3.941598,"tags":{"name":"Swansea"},"category":"uk_national_rail"}
 {"type":"node","id":"SNW","lat":50.875427,"lon":-1.265151,"tags":{"name":"Swanwick"},"category":"uk_national_rail"}
 {"type":"node","id":"SWY","lat":50.784454,"lon":-1.609864,"tags":{"name":"Sway"},"category":"uk_national_rail"}

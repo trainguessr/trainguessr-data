@@ -1,0 +1,32 @@
+[
+  {
+    "passengerTraffic": true,
+    "type": "STATION",
+    "stationName": "Helsinki asema",
+    "stationShortCode": "HKI",
+    "stationUICCode": 1,
+    "countryCode": "FI",
+    "longitude": 24.941249,
+    "latitude": 60.171871
+  },
+  {
+    "passengerTraffic": false,
+    "type": "STATION",
+    "stationName": "Freight only",
+    "stationShortCode": "FRT",
+    "stationUICCode": 999,
+    "countryCode": "FI",
+    "longitude": 25.0,
+    "latitude": 61.0
+  },
+  {
+    "passengerTraffic": true,
+    "type": "STATION",
+    "stationName": "Stockholm",
+    "stationShortCode": "STO",
+    "stationUICCode": 2,
+    "countryCode": "SE",
+    "longitude": 18.0,
+    "latitude": 59.0
+  }
+]

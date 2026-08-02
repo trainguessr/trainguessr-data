@@ -33,6 +33,10 @@ These station IDs are then used in the SNCF API, which requires an API key. The 
 To get started, cd into `gen/` and run `python3 france.py`. THe API key is not needed to get the stations, only for the real-time departures.
 
 
+### Finland
+
+Finnish passenger stations can be generated from Fintraffic's official station metadata endpoint with `python3 gen/finland.py`. The station short code is used as the ID so it can later be used by the real-time railway API. A saved official response can be supplied with `--input`.
+
 ### Germany
 
 The German railway system is a bit of a mess. The Deutsche Bahn API is not public, but it is possible to get the real time departures from the DB website: [DB](https://www.bahnhof.de/api/boards). The list of stations is obtained from the DB open data website: [DB Open Data](https://data.deutschebahn.com/). It thankfully uses UIC codes.
@@ -43,25 +47,49 @@ Then, cd into `gen/` and run `python3 germany.py`.
 
 ### Italy
 
-#### RFI
+Italy uses one dataset for each infrastructure provider. Run the command in the last column from the repository root. Each command downloads its source, stores working files in `cache/italy/<provider>/`, validates the result, and overwrites one file in `nodes/`.
 
-Italy has a fragmented railway system with many different operators. The main rail infrastructure manager is RFI (Rete Ferroviaria Italiana), which manages most of the national railway network.
+| Provider | Downloaded source | Output | Command |
+| --- | --- | --- | --- |
+| RFI | [RFI arrivals and departures](https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Home) | `nodes/nodes-italy-rfi.json` | `python3 gen/italy_rfi.py` |
+| Ferrovienord (FN) | [Trenord real-time page](https://www.trenord.it/linee-e-orari/circolazione/tempo-reale/) | `nodes/nodes-italy-fn.json` | `python3 gen/italy_fn.py` |
+| Trentino Trasporti (TT) | [Official GTFS](https://www.trentinotrasporti.it/opendata/google_transit_extraurbano_tte.zip) | `nodes/nodes-italy-tt.json` | `python3 gen/italy_tt.py` |
+| Ferrovie Emilia Romagna (FER) | FER PittiInfo line pages | `nodes/nodes-italy-fer.json` | `python3 gen/italy_fer.py` |
+| Ente Autonomo Volturno (EAV) | [EAV train information](https://orariotreni.eavsrl.it/) | `nodes/nodes-italy-eav.json` | `python3 gen/italy_eav.py` |
+| Ferrovie del Sud Est (FSE) | OpenStreetMap and ViaggiaTreno | `nodes/nodes-italy-fse.json` | `python3 gen/italy_fse.py` |
 
-Italy's RFI is notorious for its lack of public APIs. This website, written in pure HTML, allows someone to query data about train schedules and routes: [RFI](https://www.rfi.it/it/stazioni/pagine-stazioni/servizi-di-qualita/informazioni-al-pubblico/monitor-arrivi-partenze-live.html).
+The FN, TT, FER, EAV, and RFI datasets contain reviewed coordinates from the committed node files. Their generators match current provider records to these reviewed records by exact ID. New provider records without reviewed coordinates stay out of the playable dataset and appear in `cache/italy/<provider>/reports/audit.csv`.
 
-This dataset was compiled by _manually_ matching each RFI station to its geolocation data from OpenStreetMap. As a result, updating the dataset requires manual intervention to ensure accuracy.
+TT still uses numeric IDs from its former real-time service. The official GTFS does not publish these IDs. `gen/italy_tt.py` keeps the IDs from `nodes/nodes-italy-tt.json` and downloads the current GTFS for source review.
 
-#### Other operators
+FSE uses ViaggiaTreno IDs and OSM coordinates. Its unresolved records and audit are in `cache/italy/fse/reports/`. Stations served by FSE and managed by RFI remain in the RFI dataset.
 
-All non-RFI stations (at the time of writing: Ferrovie Nord, Trentino Trasporti, Ferrovie Emilia Romagna, Ente Autonomo Volturno) each have their own API and data sources:
+To review all five conservative rebuilds without changing `nodes/`, run `python3 gen/italy_legacy.py all --dry-run` after their source files exist in `cache/italy/`.
 
-- FerrovieNord (Trenord) relies on the ViaggiaTreno API (which is from Trenitalia) and uses their identifiers. The list of stations was scraped from ViaggiaTreno and manually matched to geolocation data.
-- Ferrovie del Sud Est (FSE) also uses ViaggiaTreno identifiers. The station list is generated reproducibly by matching FSE railway stations from OpenStreetMap/OpenRailwayMap-compatible rail data to ViaggiaTreno station identifiers. The generator also emits a separate unresolved file with ViaggiaTreno IDs but blank coordinates for manual completion.
-  - **Note:** stations that are served by FSE but managed by another infrastructure operator must stay in that operator's dataset. For example, _Francavilla Fontana_ is served by FSE but managed by RFI, so it belongs only in the RFI dataset and is documented in `excludes/excluded-italy.md`.
-- Trentino Trasporti has a bulletin board showing trains moving between stations: [here](http://trainview.algorab.net/). It is not a documented API and the data was scraped and heavily processed to get something usable. Again, the stations were manually matched to geolocation data.
-- Ferrovie Emilia Romagna and Ente Autonomo Volturno have their web departure boards similar to RFI. They are fetched in a similar fashion.
+#### Interactive review
 
-FN, TT, FER and EAV were matched to their geolocation data manually and thus still require manual updates. FSE is generated automatically from public sources.
+Each Italian generator starts an interactive review after it writes and validates its dataset. The review starts when the command runs in a terminal. It asks only about new or changed items.
+
+Available decisions include entering missing coordinates, excluding a provider record, retaining a reviewed station, keeping a reviewed name, and accepting a current provider name. You can defer any item. You can also confirm all remaining name differences for one provider with one choice.
+
+Decisions are stored in `excludes/italy.json`:
+
+- Coordinate entries are stored in `manual_stations` and are restored by later generations.
+- Exclusions are stored in `excluded`.
+- Name and retention confirmations are stored in `reviews` with the source and reviewed names. A changed source record creates a new question.
+
+Run the review queue again without downloading data:
+
+```bash
+python3 gen/italy_review.py all
+python3 gen/italy_review.py rfi
+```
+
+Automation can disable terminal review while keeping reports and validation:
+
+```bash
+TRAINGUESSR_SKIP_REVIEW=1 python3 gen/italy_rfi.py
+```
 
 ### Netherlands
 
@@ -89,7 +117,7 @@ Once you have your API key, cd into `gen/` and run `python3 sweden.py`.
 
 Given the low rate of requests allowed by the Trafiklab API, the script will cache the GTFS dataset locally in the `cache/` folder. If you want to refresh the cache, just delete the `cache/sweden.zip` file.
 
-Currently, there are some stations that are actually in Norway but have not been removed yet.
+The generator rejects non-Swedish national stop identifiers. The 32 foreign records found in the current dataset were moved to `excludes/sweden.json`.
 
 ### United Kingdom
 
@@ -105,23 +133,21 @@ To get started, cd into `gen/` and run `python3 uk.py`.
 
 ### Belgium
 
-The `excludes/excluded-belgium.json` file contains a list of stations that were removed. These stations lie outside of Belgium but are included in the NMBS/SNCB network. They are used for international connections, especially to France.
+The `excluded` list in `excludes/belgium.json` contains the stations that were removed. These stations lie outside of Belgium but are included in the NMBS/SNCB network. They are used for international connections, especially to France.
 
 The script that generates the Belgium stations (`gen/belgium.py`) automatically removes these stations.
 
 ### Italy
 
-Since a lot of manual work was done to match the RFI stations to their geolocation data, no automatic removal of stations is implemented.
-
-Nevertheless, the `excludes/excluded-italy.md` file contains a list of stations that were removed along with a small explanation for each of the removal(s).
+The `excluded` list in `excludes/italy.json` records removed stations and their reasons. Entries can name an operator.
 
 ### Sweden
 
-The `excludes/excluded-sweden.json` file contains a list of stations that were removed. These stations lie outside of Sweden but are included in the Trafikverket network. They are used for international connections, especially to Denmark and Germany.
+The `excluded` list in `excludes/sweden.json` contains the stations that were removed. These stations lie outside of Sweden but are included in the Trafikverket network. They are used for international connections, especially to Denmark and Germany.
 
 The script that generates the Sweden stations (`gen/sweden.py`) automatically removes these stations.
 
-As mentioned above, some stations in Norway are still present in the dataset.
+All active Swedish records now use the Swedish `740` national stop prefix.
 
 ### Switzerland
 
@@ -129,7 +155,7 @@ The Switzerland dataset only contains stations within Switzerland, so no removal
 
 ## Renamed stations
 
-In the `excludes/` folder, there are files that contain a list of renamed stations for each country (and operator). These stations were renamed to avoid confusion with other stations with the same name in different countries or different operators within the same country.
+Each country file in `excludes/` has a `renamed` list. Italy entries may also specify an operator. These names avoid ambiguity between countries and operators.
 
 ## Future expansion
 
@@ -161,12 +187,20 @@ The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviari
 | Country | Operator | Notes |
 | --- | --- | --- | 
 | Norway | Vy / Bane NOR | Entur API reportedly provides open GTFS and real-time data |
-| Finland | VR | GTFS feed reportedly available |
 | Spain | Renfe / ADIF | Official site [renfe.com](https://www.renfe.com); large network. No public API; tried in the past, was complex |
 | Portugal | Comboios de Portugal (CP) | Still to find official GTFS feed or API |
 | Denmark | DSB / Rejseplanen | Official site [dsb.dk](https://www.dsb.dk). Rejseplanen API is reportedly well-documented |
 | Czech Republic | České dráhy | HAFAS-based APIs should be available, but a mess to implement |
 | Poland | PKP | Still to research |
+
+## Maintenance commands
+
+Run these commands from the repository root:
+
+```bash
+python3 gen/validate_all.py
+python3 -m unittest discover -s tests -v
+```
 
 ## Contributing
 
@@ -174,7 +208,7 @@ Contributions to this dataset are welcome! If you find any errors, missing stati
 
 When submitting changes, please ensure that you provide clear explanations and references for any modifications made to the dataset. This will help maintain the accuracy and reliability of the data for all users.
 
-At the moment, datasets that have been manually compiled (Italy) need processing since they basically contain leftover random data from OpenStreetMap. If you want to help with that, please open an issue first so we can discuss the best approach.
+Italian generators must use exact IDs or reviewed mappings. Inspect `cache/italy/<provider>/reports/audit.csv` before accepting station changes.
 
 ## License
 

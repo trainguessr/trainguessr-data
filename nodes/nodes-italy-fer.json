@@ -113,3 +113,5 @@
 {"type":"node","id":"S05160","lat":44.9987061,"lon":11.2209519,"tags":{"name":"Vallazza Carbonara Po","operator":"Ferrovie Emilia Romagna","line":"Suzzara-Ferrara","osm_id":"1898640176","alt_name_1":"Vallazza Carbonara Po"},"category":"italy_fer"}
 {"type":"node","id":"S05942","lat":44.8057803,"lon":10.6979005,"tags":{"name":"Vezzola","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Guastalla","osm_id":"10299320302","alt_name_1":"Vezzola"},"category":"italy_fer"}
 {"type":"node","id":"S05163","lat":44.9510246,"lon":11.3683605,"tags":{"name":"Zerbinate","operator":"Ferrovie Emilia Romagna","line":"Suzzara-Ferrara","osm_id":1898636371,"alt_name_1":"Zerbinate"},"category":"italy_fer"}
+{"type":"node","id":"S05960","lat":44.9185945,"lon":10.6574506,"tags":{"name":"Guastalla","operator":"Ferrovie Emilia Romagna"},"category":"italy_fer"}
+{"type":"node","id":"S05987","lat":44.6597598,"lon":10.650887,"tags":{"name":"Due Maestà","operator":"Ferrovie Emilia Romagna"},"category":"italy_fer"}

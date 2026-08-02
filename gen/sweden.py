@@ -3,8 +3,8 @@
 import json
 import sys
 import os
+from common.config import load_excluded_ids, load_rename_map
 
-excludes = "../excludes/excluded-sweden.json"
 
 def load_rename_mapping(rename_file):
     """
@@ -29,15 +29,7 @@ def load_rename_mapping(rename_file):
 seen = set()
 def convert_from_json(input_path, output_path, rename_map):
     # Load excludes first
-    excluded_ids = set()
-    if os.path.exists(excludes):
-        with open(excludes, 'r', encoding='utf-8') as exfile:
-            lines = exfile.readlines()
-            for line in lines:
-                line = line.strip()
-                if line:
-                    entry = json.loads(line)
-                    excluded_ids.add(int(entry['id']))
+    excluded_ids = load_excluded_ids("sweden")
 
     print(f"Loaded {len(excluded_ids)} excluded station IDs")
 
@@ -127,7 +119,10 @@ def convert_from_json(input_path, output_path, rename_map):
                 if station_id in seen:
                     print(f"Skipping duplicate station ID: {station_id}")
                     continue
-                if int(station_id) in excluded_ids:
+                if not str(station_id).startswith("740"):
+                    print(f"Skipping foreign station ID: {station_id}")
+                    continue
+                if str(station_id) in excluded_ids:
                     print(f"Skipping excluded station ID: {station_id}")
                     continue
                 seen.add(station_id)
@@ -251,7 +246,7 @@ if __name__ == "__main__":
     
     # Load rename mapping
     print("Loading rename mapping...")
-    rename_map = load_rename_mapping("../excludes/renamed-sweden.txt")
+    rename_map = load_rename_map("sweden")
     print(f"Loaded {len(rename_map)} rename rules")
     
     convert_from_json(jlines_file, output_file, rename_map)

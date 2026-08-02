@@ -1,0 +1,5218 @@
+{
+  "excluded": [
+    {
+      "type": "node",
+      "id": 85099,
+      "lat": 45.8497166,
+      "lon": 8.9441291,
+      "tags": {
+        "ele": "344",
+        "name": "Stabio",
+        "operator": "SBB",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "STAF",
+        "station": "train",
+        "train": "yes",
+        "uic_name": "Stabio",
+        "uic_ref": "8517519",
+        "wikidata": "Q18420525",
+        "osm_id": 85099
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 1087,
+      "lat": 45.8322299,
+      "lon": 9.0314153,
+      "tags": {
+        "name": "Chiasso",
+        "name:azb": "کیاسو",
+        "name:lmo": "Ciass",
+        "old_name:de": "Pias",
+        "operator": "SBB",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "CHI",
+        "train": "yes",
+        "uic_name": "Chiasso",
+        "uic_ref": "8505307",
+        "wheelchair": "yes",
+        "wikidata": "Q683236",
+        "wikipedia": "it:Stazione di Chiasso",
+        "osm_id": 1087
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 1339,
+      "lat": 43.9966378,
+      "lon": 7.5516262,
+      "tags": {
+        "SNCF:stop_name": "Fontan-Saorge",
+        "name": "Fontan - Saorge",
+        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
+        "operator": "SNCF",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "uic_ref": "8775685",
+        "wheelchair": "yes",
+        "wikidata": "Q3096450",
+        "wikipedia": "fr:Gare de Fontan - Saorge",
+        "osm_id": 1339
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 1511,
+      "lat": 44.0625669,
+      "lon": 7.6056235,
+      "tags": {
+        "name": "La Brigue",
+        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
+        "official_name": "La Brigue",
+        "operator": "SNCF",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "uic_ref": "8775687",
+        "wikidata": "Q3096761",
+        "osm_id": 1511
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 2826,
+      "lat": 44.0900602,
+      "lon": 7.5940687,
+      "tags": {
+        "name": "Tende",
+        "name:it": "Tenda",
+        "network": "TER Provence-Alpes-Côte d'Azur",
+        "network:wikidata": "Q3512123",
+        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
+        "official_name": "Tende",
+        "operator": "SNCF",
+        "operator:wikidata": "Q13646",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "uic_ref": "8775688",
+        "wikidata": "Q2637328",
+        "osm_id": 2826
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 2780,
+      "lat": 44.0556825,
+      "lon": 7.5835191,
+      "tags": {
+        "name": "Saint-Dalmas-de-Tende",
+        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
+        "official_name": "St-Dalmas-de-Tende",
+        "operator": "SNCF",
+        "operator:wikidata": "Q13646",
+        "public_transport": "station",
+        "railway": "station",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012",
+        "train": "yes",
+        "uic_ref": "8775686",
+        "wikidata": "Q920420",
+        "osm_id": 2780
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 730,
+      "lat": 43.944039,
+      "lon": 7.5163276,
+      "tags": {
+        "name": "Breil sur Roya",
+        "network": "TER Provence-Alpes-Côte d'Azur",
+        "network:wikidata": "Q3512123",
+        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
+        "official_name": "Breil-sur-Roya",
+        "operator": "SNCF",
+        "operator:wikidata": "Q13646",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "uic_ref": "8775683",
+        "wheelchair": "yes",
+        "wikidata": "Q1922511",
+        "wikipedia": "fr:Gare de Breil-sur-Roya",
+        "osm_id": 730
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 3050,
+      "lat": 44.1125559,
+      "lon": 7.5631346,
+      "tags": {
+        "name": "Vievola",
+        "operator": "SNCF",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "train": "yes",
+        "uic_ref": "8775689",
+        "osm_id": 3050
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 1745,
+      "lat": 45.1933301,
+      "lon": 6.6590437,
+      "tags": {
+        "addr:city": "Modane",
+        "addr:housenumber": "7",
+        "addr:postcode": "73500",
+        "addr:street": "Place Sommeiller",
+        "name": "Modane",
+        "opening_hours": "Mo-Fr 05:00-23:30; Sa 05:00-21:30; Su 05:00-23:30",
+        "operator": "SNCF",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "uic_ref": "8774200",
+        "website": "https://www.garesetconnexions.sncf/fr/gare/fragr/modane",
+        "wheelchair": "yes",
+        "wikidata": "Q2767199",
+        "wikipedia": "fr:Gare de Modane",
+        "osm_id": 1745
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": 1746,
+      "lat": 45.1903424,
+      "lon": 6.6482279,
+      "tags": {
+        "name": "Modane Fourneaux",
+        "operator": "SNCF",
+        "osm_id": 10803999255
+      },
+      "category": "italy_rfi",
+      "operator": "rfi"
+    },
+    {
+      "type": "node",
+      "id": "S09999",
+      "lat": "45.5432105",
+      "lon": "10.1906841",
+      "tags": {
+        "name": "Brescia",
+        "short_name": "",
+        "ref": "S09999",
+        "operator": "FN",
+        "public_transport": "station",
+        "railway": "station",
+        "osm_id": "312050243"
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "S09998",
+      "lat": "45.7845585",
+      "lon": "9.0794041",
+      "tags": {
+        "name": "Como Camerlata",
+        "short_name": "",
+        "ref": "S09998",
+        "operator": "FN",
+        "public_transport": "station",
+        "railway": "station",
+        "osm_id": "3212140241"
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "S01318",
+      "lat": 45.6460871,
+      "lon": 9.2029631,
+      "tags": {
+        "description": "Area STIBM: Mi6",
+        "name": "Seregno",
+        "network": "STIBM",
+        "network:wikidata": "Q65125405",
+        "operator": "RFI",
+        "platforms": "6",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "wikidata": "Q3970949",
+        "wikipedia": "it:Stazione di Seregno",
+        "osm_id": 248861230
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "lat": 45.5777772,
+      "lon": 9.2728213,
+      "tags": {
+        "description": "Area STIBM: Mi4",
+        "name": "Monza",
+        "network": "STIBM",
+        "operator": "RFI;Centostazioni",
+        "platforms": "6",
+        "public_transport": "station",
+        "railway": "station",
+        "wheelchair": "yes",
+        "wikidata": "Q801199",
+        "wikipedia": "it:Stazione di Monza",
+        "osm_id": 256975055
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "S01206",
+      "lat": 45.8378369,
+      "lon": 8.9073973,
+      "tags": {
+        "name": "Cantello-Gaggiolo",
+        "railway": "halt",
+        "osm_id": 1543102156
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "S01030",
+      "lat": 45.6598865,
+      "lon": 8.7984831,
+      "tags": {
+        "internet_access": "no",
+        "name": "Gallarate",
+        "network": "RFI",
+        "network:wikidata": "Q1060049",
+        "operator": "RFI",
+        "platforms": "5",
+        "public_transport": "station",
+        "railway": "station",
+        "train": "yes",
+        "wheelchair": "yes",
+        "wheelchair:description": "-ascensori con diversi orari -bagni a pagamento",
+        "osm_id": 251033595
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "lat": 45.8587444,
+      "lon": 10.158937,
+      "tags": {
+        "disused": "yes",
+        "name": "Artogne - Gianico",
+        "operator": "FNM",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "train": "yes",
+        "wikidata": "Q34701063",
+        "osm_id": 7772999053
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "",
+      "lat": 46.0901543,
+      "lon": 10.3149439,
+      "tags": {
+        "name": "Forno d'Allione",
+        "operator": "FNM",
+        "public_transport": "stop_position",
+        "railway": "halt",
+        "train": "yes",
+        "wikidata": "Q21615984",
+        "wikipedia": "it:Stazione di Forno d'Allione",
+        "osm_id": 312271164
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "",
+      "lat": 45.5471337,
+      "lon": 10.1530124,
+      "tags": {
+        "disused:railway": "halt",
+        "name": "Mandolossa",
+        "operator": "Trenord",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "train": "yes",
+        "wikidata": "Q3970029",
+        "wikipedia": "it:Stazione di Mandolossa",
+        "osm_id": 665529059
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "",
+      "lat": 45.981461,
+      "lon": 10.3258378,
+      "tags": {
+        "name": "Niardo",
+        "public_transport": "stop_position",
+        "railway": "halt",
+        "train": "yes",
+        "osm_id": 1976777276
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "",
+      "lat": 46.0535009,
+      "lon": 10.3489097,
+      "tags": {
+        "name": "Sellero",
+        "operator": "Ferrovienord",
+        "public_transport": "stop_position",
+        "railway": "stop",
+        "train": "yes",
+        "osm_id": 9105549613
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "type": "node",
+      "id": "",
+      "lat": 45.8198645,
+      "lon": 8.9242211,
+      "tags": {
+        "abandoned:railway": "station",
+        "internet_access": "no",
+        "name": "Rodero-Valmorea",
+        "network": "FerrovieNord",
+        "public_transport": "station",
+        "railway": "station",
+        "start_date": "1915-12-31",
+        "train": "yes",
+        "wikidata": "Q18289249",
+        "wikimedia_commons": "Category:Valmorea_train_station",
+        "wikipedia": "it:Stazione di Valmorea",
+        "osm_id": 11116194967
+      },
+      "category": "italy_fn",
+      "operator": "fn"
+    },
+    {
+      "operator": "fse",
+      "name": "Francavilla Fontana",
+      "id": "S11603",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fse",
+      "name": "Gallipoli Porto",
+      "id": "S13174",
+      "reason": "identifier_or_coordinates_not_verified"
+    },
+    {
+      "operator": "fse",
+      "name": "Potenza S. Maria",
+      "id": "S13135",
+      "reason": "not_fse_geographic_scope"
+    },
+    {
+      "operator": "fse",
+      "name": "Maglie Via Otranto",
+      "id": "S13183",
+      "reason": "coordinates_not_verified"
+    },
+    {
+      "operator": "fse",
+      "name": "Sorbolo Levante",
+      "id": "S13200",
+      "reason": "not_fse_geographic_scope"
+    },
+    {
+      "operator": "fer",
+      "id": "S02340",
+      "name": "Suzzara",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05014",
+      "name": "Parma",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05023",
+      "name": "Reggio Emilia",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05032",
+      "name": "Modena",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05043",
+      "name": "Bologna Centrale",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05111",
+      "name": "Casalecchio Garibaldi",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05308",
+      "name": "Poggio Rusco",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05712",
+      "name": "Ferrara",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fer",
+      "id": "S05802",
+      "name": "Portomaggiore",
+      "reason": "managed_by_rfi"
+    },
+    {
+      "operator": "fn",
+      "id": "S01118",
+      "name": "Laveno Mombello",
+      "reason": "managed_by_rfi_duplicate_of_rfi_station"
+    },
+    {
+      "operator": "eav",
+      "id": "520",
+      "name": "VIA NOCERA",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "809",
+      "name": "ACCADIA P.M.",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "812",
+      "name": "CAPPUCCINI",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "814",
+      "name": "CANTIERI",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "817",
+      "name": "BAIA",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "1481",
+      "name": "Guidonia-Montecelio-Sant'Angelo",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "370",
+      "name": "Acerra",
+      "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "935",
+      "name": "Casalnuovo (RFI)",
+      "reason": "excluded_during_interactive_review"
+    }
+  ],
+  "renamed": [
+    {
+      "from": "Castellammare di Stabia",
+      "to": "Castellammare di Stabia (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Montesanto",
+      "to": "Montesanto (Napoli, EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Casalnuovo",
+      "to": "Casalnuovo (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Nola",
+      "to": "Nola (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Torre del Greco",
+      "to": "Torre del Greco (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Scafati",
+      "to": "Scafati (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Sarno",
+      "to": "Sarno (EAV)",
+      "operator": "eav"
+    },
+    {
+      "from": "Guarda",
+      "to": "Guarda (Molinella, FER)",
+      "operator": "fer"
+    },
+    {
+      "from": "Bazzano",
+      "to": "Bazzano (Valsamoggia, FER)",
+      "operator": "fer"
+    },
+    {
+      "from": "Nola",
+      "to": "Nola (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Torre del Greco",
+      "to": "Torre del Greco (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Scafati",
+      "to": "Scafati (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Sarno",
+      "to": "Sarno (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Montesanto",
+      "to": "Montesanto (Voghiera)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Castellammare di Stabia",
+      "to": "Castellammare di Stabia (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Casalnuovo",
+      "to": "Casalnuovo (RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Derby",
+      "to": "Derby (La Salle, RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Bazzano",
+      "to": "Bazzano (L'Aquila, RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Lison",
+      "to": "Lison (Portogruaro, RFI)",
+      "operator": "rfi"
+    },
+    {
+      "from": "Magenta",
+      "to": "Magenta (Milano, RFI)",
+      "operator": "rfi"
+    }
+  ],
+  "manual_stations": [
+    {
+      "operator": "fse",
+      "id": "S13109",
+      "name": "Sava",
+      "lat": 40.402249,
+      "lon": 17.557184,
+      "reason": "reviewed_from_route_sequence_and_station_location"
+    },
+    {
+      "operator": "fse",
+      "id": "S13111",
+      "name": "Erchie-Torre Santa Susanna",
+      "lat": 40.4132484,
+      "lon": 17.7443132,
+      "reason": "reviewed_osm_coordinate_and_viaggiatreno_sequence"
+    },
+    {
+      "operator": "fse",
+      "id": "S13112",
+      "name": "San Pancrazio Salentino",
+      "lat": 40.421337,
+      "lon": 17.8366385,
+      "reason": "reviewed_osm_coordinate_and_viaggiatreno_sequence"
+    },
+    {
+      "operator": "fse",
+      "id": "S13114",
+      "name": "Salice-Veglie",
+      "lat": 40.3898454,
+      "lon": 17.9653726,
+      "reason": "reviewed_osm_coordinate_and_viaggiatreno_sequence"
+    },
+    {
+      "operator": "fse",
+      "id": "S13163",
+      "name": "San Cesario di Lecce",
+      "lat": 40.3040912,
+      "lon": 18.1666069,
+      "reason": "reviewed_osm_coordinate_and_viaggiatreno_sequence"
+    },
+    {
+      "operator": "fse",
+      "id": "S13164",
+      "name": "San Donato di Lecce",
+      "lat": 40.2699071,
+      "lon": 18.1852947,
+      "reason": "reviewed_osm_coordinate_and_viaggiatreno_sequence"
+    },
+    {
+      "operator": "fer",
+      "id": "S05960",
+      "name": "Guastalla",
+      "lat": 44.9185945,
+      "lon": 10.6574506,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "fer",
+      "id": "S05987",
+      "name": "Due Maestà",
+      "lat": 44.6597598,
+      "lon": 10.650887,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "834",
+      "name": "MONTE SANT' ANGELO",
+      "lat": 40.8424252,
+      "lon": 14.18531,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "3612",
+      "name": "ACERRA",
+      "lat": 40.9406712,
+      "lon": 14.3919106,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "3613",
+      "name": "CASALNUOVO",
+      "lat": 40.9121504,
+      "lon": 14.328072,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "3614",
+      "name": "AFRAGOLA ZONA COMMERCIALE",
+      "lat": 40.933037,
+      "lon": 14.3525542,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "3616",
+      "name": "GUIDONIA-MONTECELIO",
+      "lat": 41.9779924,
+      "lon": 12.7222669,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5168",
+      "name": "FUNGHERA",
+      "lat": 45.2707812,
+      "lon": 7.4519108,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5169",
+      "name": "TRAVES",
+      "lat": 45.2715793,
+      "lon": 7.4367896,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5170",
+      "name": "LOSA",
+      "lat": 45.2832637,
+      "lon": 7.4186827,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5171",
+      "name": "PESSINETTO",
+      "lat": 45.2894492,
+      "lon": 7.402828,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5172",
+      "name": "MEZZENILE",
+      "lat": 45.2957857,
+      "lon": 7.3990474,
+      "reason": "coordinates_entered_during_interactive_review"
+    },
+    {
+      "operator": "rfi",
+      "id": "5173",
+      "name": "CERES",
+      "lat": 45.3112456,
+      "lon": 7.3899648,
+      "reason": "coordinates_entered_during_interactive_review"
+    }
+  ],
+  "reviews": [
+    {
+      "operator": "fn",
+      "id": "S01798",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Cesano Maderno Groane",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fn",
+      "id": "S01079",
+      "status": "matched_name_difference",
+      "source_name": "MILANO BRUZZANO PARCO NORD",
+      "reviewed_name": "Milano Bruzzano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01085",
+      "status": "matched_name_difference",
+      "source_name": "BOVISIO MASCIAGO",
+      "reviewed_name": "Bovisio M. - Mombello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01139",
+      "status": "matched_name_difference",
+      "source_name": "MALPENSA AEROPORTO T1",
+      "reviewed_name": "Malpensa Aeroporto Terminal 1",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01146",
+      "status": "matched_name_difference",
+      "source_name": "MALPENSA AEROPORTO T2",
+      "reviewed_name": "Malpensa Aeroporto Terminal 2",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01714",
+      "status": "matched_name_difference",
+      "source_name": "ROVATO",
+      "reviewed_name": "Rovato Centro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01735",
+      "status": "matched_name_difference",
+      "source_name": "VENEGONO SUPERIORE-CASTIGLIONE O.",
+      "reviewed_name": "Venegono Superiore-Castiglione Olona",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01736",
+      "status": "matched_name_difference",
+      "source_name": "VEDANO OLONA",
+      "reviewed_name": "Vedano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01780",
+      "status": "matched_name_difference",
+      "source_name": "PIAN CAMUNO-GRATACASOLO",
+      "reviewed_name": "Piancamuno-Gratacasolo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01790",
+      "status": "matched_name_difference",
+      "source_name": "CAZZAGO S. MARTINO",
+      "reviewed_name": "Cazzago San Martino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fn",
+      "id": "S01927",
+      "status": "matched_name_difference",
+      "source_name": "CERIANO LAGHETTO GROANE",
+      "reviewed_name": "Ceriano Laghetto Parco Groane",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "tt",
+      "id": "11",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Grumo San Michele",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "20",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Segno",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "24",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Cles",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "30",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Cavizzana",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "32",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Terzolas",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "34",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Croviana",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "36",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Dimaro - Pressòn",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "38",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Daolasa",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "4",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Gardolo",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "40",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Marilleva",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "41",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Mezzana",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "5",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Zona Industriale - Spini",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "tt",
+      "id": "9",
+      "status": "gtfs_name_missing",
+      "source_name": "",
+      "reviewed_name": "Nave San Felice",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fer",
+      "id": "S05100",
+      "status": "missing_coordinates",
+      "source_name": "BOLOGNA BORGO PANIGALE",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "fer",
+      "id": "S05102",
+      "status": "missing_coordinates",
+      "source_name": "CASTELDEBOLE",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "fer",
+      "id": "S05960",
+      "status": "missing_coordinates",
+      "source_name": "GUASTALLA",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "fer",
+      "id": "S05987",
+      "status": "missing_coordinates",
+      "source_name": "RE DUE MAESTA'",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "fer",
+      "id": "S05921",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Ciano d’Enza",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05922",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Ciano Via Tedaldo da Canossa",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05923",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "San Polo d'Enza",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05924",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Piazzola",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05925",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Corniano",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05926",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Bibbiano Via Monti",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05927",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Bibbiano",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05928",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Bibbiano Fossa",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05929",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Barco",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05930",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Bivio Barco",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05931",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Cavriago S.Nicolo'",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05932",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Cavriago",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05934",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Reggio Emilia All'Angelo",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05935",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Reggio Emilia Santo Stefano",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05936",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Reggio Emilia Via Fanti - Tribunale",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "fer",
+      "id": "S05155",
+      "status": "matched_name_difference",
+      "source_name": "S.BENEDETTO PO",
+      "reviewed_name": "San Benedetto Po",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05157",
+      "status": "matched_name_difference",
+      "source_name": "S.ROCCO MANTOVANO",
+      "reviewed_name": "San Rocco Mantovano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05173",
+      "status": "matched_name_difference",
+      "source_name": "ROVERETO S.V.M.",
+      "reviewed_name": "Rovereto - San Vito - Medelana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05187",
+      "status": "matched_name_difference",
+      "source_name": "MO FORNACI",
+      "reviewed_name": "Modena Fornaci",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05188",
+      "status": "matched_name_difference",
+      "source_name": "MO P.MANZONI",
+      "reviewed_name": "Modena P.Manzoni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05189",
+      "status": "matched_name_difference",
+      "source_name": "MO POLICLINICO",
+      "reviewed_name": "Modena Policlinico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05190",
+      "status": "matched_name_difference",
+      "source_name": "FE C.D.RAGAZZO",
+      "reviewed_name": "Ferrara Città del Ragazzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05191",
+      "status": "matched_name_difference",
+      "source_name": "RE STADIO",
+      "reviewed_name": "Reggio Emilia Stadio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05192",
+      "status": "matched_name_difference",
+      "source_name": "RE S.LAZZARO",
+      "reviewed_name": "Reggio Emilia San Lazzaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05193",
+      "status": "matched_name_difference",
+      "source_name": "FE CONA OSPEDALE",
+      "reviewed_name": "Ferrara Cona Ospedale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05195",
+      "status": "matched_name_difference",
+      "source_name": "RE MEDIOPADANA",
+      "reviewed_name": "Reggio Emilia Mediopadana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05196",
+      "status": "matched_name_difference",
+      "source_name": "FE BOSCHETTO",
+      "reviewed_name": "Ferrara Boschetto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05938",
+      "status": "matched_name_difference",
+      "source_name": "S.GIACOMO",
+      "reviewed_name": "San Giacomo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05939",
+      "status": "matched_name_difference",
+      "source_name": "S.BERNARDINO",
+      "reviewed_name": "San Bernardino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05941",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI",
+      "reviewed_name": "San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05943",
+      "status": "matched_name_difference",
+      "source_name": "S.TOMASO",
+      "reviewed_name": "San Tomaso",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05949",
+      "status": "matched_name_difference",
+      "source_name": "RE S.CROCE",
+      "reviewed_name": "Reggio Emilia Santa Croce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05975",
+      "status": "matched_name_difference",
+      "source_name": "BAZZANO",
+      "reviewed_name": "Bazzano (Valsamoggia)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05986",
+      "status": "matched_name_difference",
+      "source_name": "P.M. BOSCO",
+      "reviewed_name": "Posto di Movimento Bosco",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05988",
+      "status": "matched_name_difference",
+      "source_name": "RE OSPIZIO",
+      "reviewed_name": "Reggio Emilia Ospizio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fer",
+      "id": "S05998",
+      "status": "matched_name_difference",
+      "source_name": "GUARDA",
+      "reviewed_name": "Guarda (Molinella)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "520",
+      "status": "missing_coordinates",
+      "source_name": "VIA NOCERA",
+      "reviewed_name": "",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "809",
+      "status": "missing_coordinates",
+      "source_name": "ACCADIA P.M.",
+      "reviewed_name": "",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "812",
+      "status": "missing_coordinates",
+      "source_name": "CAPPUCCINI",
+      "reviewed_name": "",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "814",
+      "status": "missing_coordinates",
+      "source_name": "CANTIERI",
+      "reviewed_name": "",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "817",
+      "status": "missing_coordinates",
+      "source_name": "BAIA",
+      "reviewed_name": "",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "834",
+      "status": "missing_coordinates",
+      "source_name": "MONTE SANT' ANGELO",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "eav",
+      "id": "17",
+      "status": "matched_name_difference",
+      "source_name": "S.LEONARDO",
+      "reviewed_name": "San Leonardo (Ottaviano)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "24",
+      "status": "matched_name_difference",
+      "source_name": "SAN VALENTINO",
+      "reviewed_name": "San Valentino Torio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "25",
+      "status": "matched_name_difference",
+      "source_name": "SARNO",
+      "reviewed_name": "Sarno (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "3",
+      "status": "matched_name_difference",
+      "source_name": "NAPOLI PIAZZA GARIBALDI",
+      "reviewed_name": "Napoli Garibaldi (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "33",
+      "status": "matched_name_difference",
+      "source_name": "TORRE DEL GRECO",
+      "reviewed_name": "Torre del Greco (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "42",
+      "status": "matched_name_difference",
+      "source_name": "BOSCOTRECASE - PORTA DI ACCESSO AL CRATERE DEL VESUVIO",
+      "reviewed_name": "Boscotrecase - Cratere Vesuvio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "46",
+      "status": "matched_name_difference",
+      "source_name": "SCAFATI",
+      "reviewed_name": "Scafati (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "47",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO",
+      "reviewed_name": "San Pietro (Scafati)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "52",
+      "status": "matched_name_difference",
+      "source_name": "STABIA SCAVI",
+      "reviewed_name": "Via Nocera",
+      "decision": "use_source_name"
+    },
+    {
+      "operator": "eav",
+      "id": "53",
+      "status": "matched_name_difference",
+      "source_name": "CASTELLAMMARE DI STABIA",
+      "reviewed_name": "Castellammare di Stabia (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "60",
+      "status": "matched_name_difference",
+      "source_name": "PIANO",
+      "reviewed_name": "Piano di Sorrento",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "66",
+      "status": "matched_name_difference",
+      "source_name": "CASALNUOVO",
+      "reviewed_name": "Casalnuovo (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "78",
+      "status": "matched_name_difference",
+      "source_name": "NOLA",
+      "reviewed_name": "Nola (EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "801",
+      "status": "matched_name_difference",
+      "source_name": "MONTESANTO",
+      "reviewed_name": "Montesanto (Napoli, EAV)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "802",
+      "status": "matched_name_difference",
+      "source_name": "CORSO V. EMANUELE",
+      "reviewed_name": "Corso Vittorio Emanuele",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "822",
+      "status": "matched_name_difference",
+      "source_name": "RIONE TRAIANO",
+      "reviewed_name": "Traiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "83",
+      "status": "matched_name_difference",
+      "source_name": "AVELLA",
+      "reviewed_name": "Sperone - Avella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "eav",
+      "id": "95",
+      "status": "matched_name_difference",
+      "source_name": "VESUVIO DE MEIS (SA)",
+      "reviewed_name": "Vesuvio De Meis",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3612",
+      "status": "missing_coordinates",
+      "source_name": "ACERRA",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "3613",
+      "status": "missing_coordinates",
+      "source_name": "CASALNUOVO",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "3614",
+      "status": "missing_coordinates",
+      "source_name": "AFRAGOLA ZONA COMMERCIALE",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "3616",
+      "status": "missing_coordinates",
+      "source_name": "GUIDONIA-MONTECELIO",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5168",
+      "status": "missing_coordinates",
+      "source_name": "FUNGHERA",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5169",
+      "status": "missing_coordinates",
+      "source_name": "TRAVES",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5170",
+      "status": "missing_coordinates",
+      "source_name": "LOSA",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5171",
+      "status": "missing_coordinates",
+      "source_name": "PESSINETTO",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5172",
+      "status": "missing_coordinates",
+      "source_name": "MEZZENILE",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "5173",
+      "status": "missing_coordinates",
+      "source_name": "CERES",
+      "reviewed_name": "",
+      "decision": "added_coordinates"
+    },
+    {
+      "operator": "rfi",
+      "id": "1481",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Guidonia-Montecelio-Sant'Angelo",
+      "decision": "excluded"
+    },
+    {
+      "operator": "rfi",
+      "id": "2221",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Ponte San Cono",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "rfi",
+      "id": "3260",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Palermo Porto",
+      "decision": "excluded"
+    },
+    {
+      "operator": "eav",
+      "id": "75",
+      "status": "matched_name_difference",
+      "source_name": "S.VITALIANO",
+      "reviewed_name": "San Vitaliano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3261",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Palermo Politeama",
+      "decision": "keep_reviewed_station"
+    },
+    {
+      "operator": "rfi",
+      "id": "370",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Acerra",
+      "decision": "excluded"
+    },
+    {
+      "operator": "rfi",
+      "id": "935",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Casalnuovo (RFI)",
+      "decision": "excluded"
+    },
+    {
+      "operator": "rfi",
+      "id": "1004",
+      "status": "matched_name_difference",
+      "source_name": "CASTELLO D&#39;ANNONE",
+      "reviewed_name": "Castello d'Annone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1012",
+      "status": "matched_name_difference",
+      "source_name": "CASTELNUOVO DI GARFAGNANA",
+      "reviewed_name": "Castelnuovo Garfagnana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1035",
+      "status": "matched_name_difference",
+      "source_name": "CATTOLICA S.GIOVANNI GABICCE",
+      "reviewed_name": "Cattolica-San Giovanni-Gabicce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1911",
+      "status": "matched_name_difference",
+      "source_name": "NOLA",
+      "reviewed_name": "Nola (RFI)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1943",
+      "status": "matched_name_difference",
+      "source_name": "ORA",
+      "reviewed_name": "Auer - Ora",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1966",
+      "status": "matched_name_difference",
+      "source_name": "BOLZANO CASANOVA",
+      "reviewed_name": "Casanova - Kaiserau",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1967",
+      "status": "matched_name_difference",
+      "source_name": "BRUNICO NORD",
+      "reviewed_name": "Bruneck Nord - Brunico Nord",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1995",
+      "status": "matched_name_difference",
+      "source_name": "PACE DEL MELA",
+      "reviewed_name": "Pace del Mela - Giammoro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2003",
+      "status": "matched_name_difference",
+      "source_name": "BOLOGNA S.VITALE",
+      "reviewed_name": "Bologna San Vitale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2015",
+      "status": "matched_name_difference",
+      "source_name": "PALAZZOLO SULL&#39;OGLIO",
+      "reviewed_name": "Palazzolo sull'Oglio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2023",
+      "status": "matched_name_difference",
+      "source_name": "PALMA S.GENNARO",
+      "reviewed_name": "Palma-San Gennaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "204",
+      "status": "matched_name_difference",
+      "source_name": "GENOVA S.BIAGIO",
+      "reviewed_name": "Genova San Biagio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2040",
+      "status": "matched_name_difference",
+      "source_name": "PATERNO-S.PELINO",
+      "reviewed_name": "Paterno-San Pelino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2044",
+      "status": "matched_name_difference",
+      "source_name": "PATTI-S.PIERO PATTI",
+      "reviewed_name": "Patti-San Piero Patti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2067",
+      "status": "matched_name_difference",
+      "source_name": "PC MEANA",
+      "reviewed_name": "Meana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2088",
+      "status": "matched_name_difference",
+      "source_name": "PERGINE",
+      "reviewed_name": "Pergine Valsugana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2093",
+      "status": "matched_name_difference",
+      "source_name": "PERUGIA PONTE S.GIOVANNI",
+      "reviewed_name": "Perugia Ponte San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2096",
+      "status": "matched_name_difference",
+      "source_name": "PESCARA",
+      "reviewed_name": "Pescara Centrale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2115",
+      "status": "matched_name_difference",
+      "source_name": "ARECHI",
+      "reviewed_name": "Stadio Arechi - San Leonardo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2117",
+      "status": "matched_name_difference",
+      "source_name": "PIANA BELLA DI MONTELIBRETTI",
+      "reviewed_name": "Pianabella Di Montelibretti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2120",
+      "status": "matched_name_difference",
+      "source_name": "PIANEROTTOLO D&#39;ARIANO",
+      "reviewed_name": "Pianerottolo d'Ariano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2123",
+      "status": "matched_name_difference",
+      "source_name": "PIANO D&#39;ORTA BOLOGNANO",
+      "reviewed_name": "Piano d'Orta-Bolognano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2133",
+      "status": "matched_name_difference",
+      "source_name": "PIETRAGALLA",
+      "reviewed_name": "Pietragalla FS",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2134",
+      "status": "matched_name_difference",
+      "source_name": "PIETRARSA-S.GIORGIO A CREMANO",
+      "reviewed_name": "Pietrarsa-San Giorgio a Cremano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2157",
+      "status": "matched_name_difference",
+      "source_name": "PISA/BINARI PISA S.ROSSORE",
+      "reviewed_name": "Pisa San Rossore",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "216",
+      "status": "matched_name_difference",
+      "source_name": "BORGHETTO S.SPIRITO",
+      "reviewed_name": "Borghetto Santo Spirito",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2187",
+      "status": "matched_name_difference",
+      "source_name": "POGGIBONSI-S.GIMIGNANO",
+      "reviewed_name": "Poggibonsi-San Gimignano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2200",
+      "status": "matched_name_difference",
+      "source_name": "POLLINA-S.MAURO CASTELVERDE",
+      "reviewed_name": "Pollina-San Mauro Castelverde",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2202",
+      "status": "matched_name_difference",
+      "source_name": "POMEZIA-S.PALOMBA",
+      "reviewed_name": "Pomezia-Santa Palomba",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "221",
+      "status": "matched_name_difference",
+      "source_name": "CAMOGLI S.FRUTTUOSO",
+      "reviewed_name": "Camogli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2211",
+      "status": "matched_name_difference",
+      "source_name": "PONTE D&#39;ADDA",
+      "reviewed_name": "Ponte d'Adda",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2212",
+      "status": "matched_name_difference",
+      "source_name": "PONTE D&#39;ADIGE",
+      "reviewed_name": "Ponte d'Adige - Sigmundskron",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2216",
+      "status": "matched_name_difference",
+      "source_name": "PONTE GARDENA-LAION",
+      "reviewed_name": "Waidbruck-Lajen - Ponte Gardena-Laion",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2217",
+      "status": "matched_name_difference",
+      "source_name": "PONTE GINORI",
+      "reviewed_name": "Ponteginori",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2222",
+      "status": "matched_name_difference",
+      "source_name": "PONTE S.MARCO-CALCINATO",
+      "reviewed_name": "Ponte San Marco - Calcinato",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2223",
+      "status": "matched_name_difference",
+      "source_name": "PONTE S.PIETRO",
+      "reviewed_name": "Ponte San Pietro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2251",
+      "status": "matched_name_difference",
+      "source_name": "PORTO D&#39;ASCOLI",
+      "reviewed_name": "Porto d'Ascoli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2253",
+      "status": "matched_name_difference",
+      "source_name": "PORTO EMPEDOCLE",
+      "reviewed_name": "Porto Empedocle Centrale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2255",
+      "status": "matched_name_difference",
+      "source_name": "PORTO S.ELPIDIO",
+      "reviewed_name": "Porto Sant'Elpidio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2256",
+      "status": "matched_name_difference",
+      "source_name": "PORTO S.GIORGIO FERMO",
+      "reviewed_name": "Porto San Giorgio-Fermo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2278",
+      "status": "matched_name_difference",
+      "source_name": "OGNINA PES",
+      "reviewed_name": "Catania Ognina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2283",
+      "status": "matched_name_difference",
+      "source_name": "PICANELLO",
+      "reviewed_name": "Catania Picanello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2286",
+      "status": "matched_name_difference",
+      "source_name": "PRE&#39;-SAINT-DIDIER",
+      "reviewed_name": "Prè Saint Didier",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2288",
+      "status": "matched_name_difference",
+      "source_name": "EUROPA PES",
+      "reviewed_name": "Catania Europa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2306",
+      "status": "matched_name_difference",
+      "source_name": "PM QUART",
+      "reviewed_name": "Quart",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2308",
+      "status": "matched_name_difference",
+      "source_name": "QUARTO D&#39;ALTINO",
+      "reviewed_name": "Quarto d'Altino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2313",
+      "status": "matched_name_difference",
+      "source_name": "MAREDOLCE",
+      "reviewed_name": "Palermo Maredolce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2326",
+      "status": "matched_name_difference",
+      "source_name": "LOLLI",
+      "reviewed_name": "Palermo Lolli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2354",
+      "status": "matched_name_difference",
+      "source_name": "RIGNANO SULL&#39;ARNO REGGELLO",
+      "reviewed_name": "Rignano Sull'Arno Reggello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2359",
+      "status": "matched_name_difference",
+      "source_name": "RIO DI PUSTERIA",
+      "reviewed_name": "Mühlbach - Rio di Pusteria",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2363",
+      "status": "matched_name_difference",
+      "source_name": "RIPABOTTONI S.ELIA",
+      "reviewed_name": "Ripabottoni-Sant'Elia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2378",
+      "status": "matched_name_difference",
+      "source_name": "ROMA NOMENTANA LM",
+      "reviewed_name": "Roma Nomentana Linea Merci",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2382",
+      "status": "matched_name_difference",
+      "source_name": "ROMA S.FILIPPO NERI",
+      "reviewed_name": "Roma San Filippo Neri",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2383",
+      "status": "matched_name_difference",
+      "source_name": "ROMA S.PIETRO",
+      "reviewed_name": "Roma San Pietro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2394",
+      "status": "matched_name_difference",
+      "source_name": "ROCCA D&#39;EVANDRO-S.VITTORE",
+      "reviewed_name": "Rocca d'Evandro - San Vittore",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2397",
+      "status": "matched_name_difference",
+      "source_name": "ROCCA RAVINDOLA",
+      "reviewed_name": "Roccaravindola",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2411",
+      "status": "matched_name_difference",
+      "source_name": "ROCCHETTA S.ANTONIO-LACEDONIA",
+      "reviewed_name": "Rocchetta Sant'Antonio-Lacedonia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2428",
+      "status": "matched_name_difference",
+      "source_name": "ROSA&#39;",
+      "reviewed_name": "Rosà",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2441",
+      "status": "matched_name_difference",
+      "source_name": "SPINETOLI VILLA S.PIO X",
+      "reviewed_name": "Spinetoli Villa San Pio X",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2454",
+      "status": "matched_name_difference",
+      "source_name": "S.AGATA DI MILITELLO",
+      "reviewed_name": "Sant'Agata di Militello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2455",
+      "status": "matched_name_difference",
+      "source_name": "S.AGATA SUL SANTERNO",
+      "reviewed_name": "Sant'Agata sul Santerno",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2456",
+      "status": "matched_name_difference",
+      "source_name": "S.ALESSIO SICULO-FORZA D&#39;AGRO&#39;",
+      "reviewed_name": "S.Alessio Siculo Forza D'Agrò",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2457",
+      "status": "matched_name_difference",
+      "source_name": "S.AMBROGIO",
+      "reviewed_name": "Sant'Ambrogio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2460",
+      "status": "matched_name_difference",
+      "source_name": "S.ANNA DI CHIOGGIA",
+      "reviewed_name": "Sant'Anna di Chioggia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2461",
+      "status": "matched_name_difference",
+      "source_name": "S.ANNA ROBELLA",
+      "reviewed_name": "Sant'Anna-Robella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2462",
+      "status": "matched_name_difference",
+      "source_name": "S.ANTIMO-S.ARPINO",
+      "reviewed_name": "Sant'Antimo-Sant'Arpino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2463",
+      "status": "matched_name_difference",
+      "source_name": "S.ANTONINO DI SALUGGIA",
+      "reviewed_name": "Sant'Antonino di Saluggia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2464",
+      "status": "matched_name_difference",
+      "source_name": "S.ANTONINO VAIE",
+      "reviewed_name": "Sant'Antonino - Vaie",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2465",
+      "status": "matched_name_difference",
+      "source_name": "S.ANTONIO MANTOVANO",
+      "reviewed_name": "Sant’Antonio Mantovano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2469",
+      "status": "matched_name_difference",
+      "source_name": "S.BENEDETTO DEL TRONTO",
+      "reviewed_name": "San Benedetto del Tronto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2470",
+      "status": "matched_name_difference",
+      "source_name": "S.BENEDETTO SAMBRO-CASTIGLIONE PEPOLI",
+      "reviewed_name": "San Benedetto Sambro-Castiglione Pepoli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2473",
+      "status": "matched_name_difference",
+      "source_name": "S.BIAGIO",
+      "reviewed_name": "San Biagio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2474",
+      "status": "matched_name_difference",
+      "source_name": "S.BONIFACIO",
+      "reviewed_name": "San Bonifacio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2475",
+      "status": "matched_name_difference",
+      "source_name": "S.CANDIDO",
+      "reviewed_name": "Innichen - San Candido",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2476",
+      "status": "matched_name_difference",
+      "source_name": "S.CASSIANO",
+      "reviewed_name": "San Cassiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2477",
+      "status": "matched_name_difference",
+      "source_name": "S.CASSIANO VALCHIAVENNA",
+      "reviewed_name": "San Cassiano Valchiavenna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2478",
+      "status": "matched_name_difference",
+      "source_name": "S.CATALDO",
+      "reviewed_name": "San Cataldo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2479",
+      "status": "matched_name_difference",
+      "source_name": "S.CLAUDIO",
+      "reviewed_name": "San Claudio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2480",
+      "status": "matched_name_difference",
+      "source_name": "S.CRISTOFORO AL LAGO-ISCHIA",
+      "reviewed_name": "San Cristoforo al Lago - Ischia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2481",
+      "status": "matched_name_difference",
+      "source_name": "S.CRISTINA E BISSONE",
+      "reviewed_name": "Santa Cristina e Bissone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2482",
+      "status": "matched_name_difference",
+      "source_name": "S.CROCE DEL LAGO",
+      "reviewed_name": "Santa Croce del Lago",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2485",
+      "status": "matched_name_difference",
+      "source_name": "S.DAMIANO D&#39;ASTI",
+      "reviewed_name": "San Damiano d'Asti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2486",
+      "status": "matched_name_difference",
+      "source_name": "S.DEMETRIO DE&#39; VESTINI",
+      "reviewed_name": "San Demetrio de' Vestini",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2487",
+      "status": "matched_name_difference",
+      "source_name": "S.DONATO MILANESE",
+      "reviewed_name": "San Donato Milanese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2489",
+      "status": "matched_name_difference",
+      "source_name": "S.DONA&#39; DI PIAVE-JESOLO",
+      "reviewed_name": "S. Donà Di Piave",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2491",
+      "status": "matched_name_difference",
+      "source_name": "S.ELENA-ESTE",
+      "reviewed_name": "Sant'Elena - Este",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2492",
+      "status": "matched_name_difference",
+      "source_name": "S.ELLERO",
+      "reviewed_name": "Sant'Ellero",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2494",
+      "status": "matched_name_difference",
+      "source_name": "S.EUROSIA",
+      "reviewed_name": "Sant'Eurosia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2495",
+      "status": "matched_name_difference",
+      "source_name": "S.FELICE SUL PANARO",
+      "reviewed_name": "San Felice sul Panaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2496",
+      "status": "matched_name_difference",
+      "source_name": "S.FILIPPO",
+      "reviewed_name": "San Filippo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2498",
+      "status": "matched_name_difference",
+      "source_name": "S.FLAVIA-SOLUNTO-PORTICELLO",
+      "reviewed_name": "Santa Flavia-Solunto-Porticello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2499",
+      "status": "matched_name_difference",
+      "source_name": "ACQUEDOLCI-S.FRATELLO",
+      "reviewed_name": "Acquedolci-San Fratello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2500",
+      "status": "matched_name_difference",
+      "source_name": "S.FREDIANO A SETTIMO",
+      "reviewed_name": "San Frediano a Settimo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2501",
+      "status": "matched_name_difference",
+      "source_name": "S.GAVINO",
+      "reviewed_name": "San Gavino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2502",
+      "status": "matched_name_difference",
+      "source_name": "S.GERMANO VERCELLESE",
+      "reviewed_name": "San Germano Vercellese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2504",
+      "status": "matched_name_difference",
+      "source_name": "S.GIACOMO DI TEGLIO",
+      "reviewed_name": "San Giacomo di Teglio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2505",
+      "status": "matched_name_difference",
+      "source_name": "S.GIORGIO",
+      "reviewed_name": "San Giorgio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2506",
+      "status": "matched_name_difference",
+      "source_name": "S.GIORGIO CASALE",
+      "reviewed_name": "San Giorgio Casale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2507",
+      "status": "matched_name_difference",
+      "source_name": "S.GIORGIO DI NOGARO",
+      "reviewed_name": "San Giorgio di Nogaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2508",
+      "status": "matched_name_difference",
+      "source_name": "S.GIORGIO DELLE PERTICHE",
+      "reviewed_name": "San Giorgio delle Pertiche",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2510",
+      "status": "matched_name_difference",
+      "source_name": "S.GIORGIO DI PIANO",
+      "reviewed_name": "San Giorgio di Piano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2513",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI IN CROCE",
+      "reviewed_name": "San Giovanni in Croce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2515",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI AL NATISONE",
+      "reviewed_name": "San Giovanni al Natisone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2516",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI IN PERSICETO",
+      "reviewed_name": "San Giovanni in Persiceto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2517",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI VALDARNO",
+      "reviewed_name": "San Giovanni Valdarno",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2518",
+      "status": "matched_name_difference",
+      "source_name": "S.GIULETTA",
+      "reviewed_name": "Santa Giuletta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2520",
+      "status": "matched_name_difference",
+      "source_name": "S.GIULIANO MILANESE",
+      "reviewed_name": "San Giuliano Milanese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2521",
+      "status": "matched_name_difference",
+      "source_name": "S.GIULIANO PIACENTINO",
+      "reviewed_name": "San Giuliano Piacentino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2522",
+      "status": "matched_name_difference",
+      "source_name": "S.GIULIANO PIEMONTE",
+      "reviewed_name": "San Giuliano Piemonte",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2523",
+      "status": "matched_name_difference",
+      "source_name": "S.GIULIANO TERME",
+      "reviewed_name": "San Giuliano Terme",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2525",
+      "status": "matched_name_difference",
+      "source_name": "S.GIUSTINA-CESIO",
+      "reviewed_name": "Santa Giustina-Cesio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2526",
+      "status": "matched_name_difference",
+      "source_name": "S.ILARIO D&#39;ENZA",
+      "reviewed_name": "Sant'Ilario d'Enza",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2529",
+      "status": "matched_name_difference",
+      "source_name": "S.LIBERATO",
+      "reviewed_name": "San Liberato",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2530",
+      "status": "matched_name_difference",
+      "source_name": "S.LORENZO MAGGIORE",
+      "reviewed_name": "San Lorenzo Maggiore",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2531",
+      "status": "matched_name_difference",
+      "source_name": "PALERMO S.LORENZO",
+      "reviewed_name": "Palermo San Lorenzo Colli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2535",
+      "status": "matched_name_difference",
+      "source_name": "S.MARCELLINO FRIGNANO",
+      "reviewed_name": "San Marcellino-Frignano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2536",
+      "status": "matched_name_difference",
+      "source_name": "S.MARCO D&#39;ALUNZIO-TORRENOVA",
+      "reviewed_name": "San Marco d'Alunzio-Torrenova",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2538",
+      "status": "matched_name_difference",
+      "source_name": "S.MARIA CAPUA VETERE",
+      "reviewed_name": "Santa Maria Capua Vetere",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2540",
+      "status": "matched_name_difference",
+      "source_name": "S.MARIA DELLE MOLE",
+      "reviewed_name": "Santa Maria delle Mole",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2542",
+      "status": "matched_name_difference",
+      "source_name": "S.MARIA LA BRUNA",
+      "reviewed_name": "Santa Maria La Bruna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2544",
+      "status": "matched_name_difference",
+      "source_name": "S.MARINELLA",
+      "reviewed_name": "Santa Marinella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2545",
+      "status": "matched_name_difference",
+      "source_name": "S.MARINO",
+      "reviewed_name": "San Marino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2546",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO AL CIMINO",
+      "reviewed_name": "San Martino al Cimino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2548",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO BUONALBERGO",
+      "reviewed_name": "S.Martino Buon Albergo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2549",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO DI LUPARI",
+      "reviewed_name": "San Martino di Lupari",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2550",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO IN GATTARA",
+      "reviewed_name": "San Martino in Gattara",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2556",
+      "status": "matched_name_difference",
+      "source_name": "S.MICHELE DI SERINO",
+      "reviewed_name": "San Michele di Serino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2557",
+      "status": "matched_name_difference",
+      "source_name": "S.MICHELE IN BOSCO",
+      "reviewed_name": "San Michele in Bosco",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2558",
+      "status": "matched_name_difference",
+      "source_name": "S.MINIATO FUCECCHIO",
+      "reviewed_name": "San Miniato-Fucecchio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2559",
+      "status": "matched_name_difference",
+      "source_name": "S.MOMME&#39;",
+      "reviewed_name": "San Mommè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2560",
+      "status": "matched_name_difference",
+      "source_name": "S.NAZARIO",
+      "reviewed_name": "San Nazario",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2561",
+      "status": "matched_name_difference",
+      "source_name": "S.NICOLA TONNARA",
+      "reviewed_name": "San Nicola Tonnara",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2568",
+      "status": "matched_name_difference",
+      "source_name": "S.PAOLO SOLBRITO",
+      "reviewed_name": "San Paolo Solbrito",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2569",
+      "status": "matched_name_difference",
+      "source_name": "S.PATRIZIO",
+      "reviewed_name": "San Patrizio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2571",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO A VICO",
+      "reviewed_name": "San Pietro a Vico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2572",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO AVELLANA-CAPRACOTTA",
+      "reviewed_name": "San Pietro Avellana-Capracotta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2573",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO BERBENNO",
+      "reviewed_name": "San Pietro Berbenno",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2574",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO IN CASALE",
+      "reviewed_name": "San Pietro in Casale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2575",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO IN GU&#39;",
+      "reviewed_name": "S.Pietro In Gù",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2576",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO VERNOTICO",
+      "reviewed_name": "San Pietro Vernotico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2580",
+      "status": "matched_name_difference",
+      "source_name": "S.ROMANO-MONTOPOLI-S.CROCE",
+      "reviewed_name": "San Romano - Montopoli - Santa Croce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2581",
+      "status": "matched_name_difference",
+      "source_name": "S.SEBASTIANO PO",
+      "reviewed_name": "San Sebastiano Po",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2582",
+      "status": "matched_name_difference",
+      "source_name": "S.SEVERA",
+      "reviewed_name": "Santa Severa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2583",
+      "status": "matched_name_difference",
+      "source_name": "S.SEVERINO MARCHE",
+      "reviewed_name": "San Severino Marche",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2584",
+      "status": "matched_name_difference",
+      "source_name": "S.SEVERO",
+      "reviewed_name": "San Severo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2587",
+      "status": "matched_name_difference",
+      "source_name": "S.STEFANO BELBO",
+      "reviewed_name": "Santo Stefano Belbo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2588",
+      "status": "matched_name_difference",
+      "source_name": "S.STEFANO DI CAMASTRA-MISTRETTA",
+      "reviewed_name": "Santo Stefano Di Camastra",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2589",
+      "status": "matched_name_difference",
+      "source_name": "S.STEFANO LODIGIANO",
+      "reviewed_name": "Santo Stefano Lodigiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2590",
+      "status": "matched_name_difference",
+      "source_name": "S.STEFANO DI MAGRA",
+      "reviewed_name": "Santo Stefano di Magra",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2592",
+      "status": "matched_name_difference",
+      "source_name": "S.STINO DI LIVENZA",
+      "reviewed_name": "San Stino di Livenza",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2593",
+      "status": "matched_name_difference",
+      "source_name": "S.TERESA DI RIVA",
+      "reviewed_name": "Santa Teresa di Riva",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2594",
+      "status": "matched_name_difference",
+      "source_name": "S.TERESA LONGARINI",
+      "reviewed_name": "Santa Teresa Longarini",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2597",
+      "status": "matched_name_difference",
+      "source_name": "S.VINCENZO",
+      "reviewed_name": "San Vincenzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2598",
+      "status": "matched_name_difference",
+      "source_name": "S.VINCENZO VALLE ROVETO",
+      "reviewed_name": "San Vincenzo Valle Roveto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2599",
+      "status": "matched_name_difference",
+      "source_name": "S.VITO AL TAGLIAMENTO",
+      "reviewed_name": "San Vito al Tagliamento",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2600",
+      "status": "matched_name_difference",
+      "source_name": "S.VITO DEI NORMANNI",
+      "reviewed_name": "San Vito dei Normanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2601",
+      "status": "matched_name_difference",
+      "source_name": "S.VITO LANCIANO",
+      "reviewed_name": "San Vito-Lanciano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2602",
+      "status": "matched_name_difference",
+      "source_name": "S.VITTORIA",
+      "reviewed_name": "Santa Vittoria",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2603",
+      "status": "matched_name_difference",
+      "source_name": "S.ZENO FOLZANO",
+      "reviewed_name": "San Zeno-Folzano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2604",
+      "status": "matched_name_difference",
+      "source_name": "S.ZENONE AL LAMBRO",
+      "reviewed_name": "San Zenone al Lambro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2606",
+      "status": "matched_name_difference",
+      "source_name": "SACILE S.LIBERALE",
+      "reviewed_name": "Sacile - San Liberale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2622",
+      "status": "matched_name_difference",
+      "source_name": "SALORNO",
+      "reviewed_name": "Salorno - Salurn",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2627",
+      "status": "matched_name_difference",
+      "source_name": "VIGNA CLARA PES",
+      "reviewed_name": "Vigna Clara",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2640",
+      "status": "matched_name_difference",
+      "source_name": "SANNAZZARO",
+      "reviewed_name": "Sannazzaro de' Burgondi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2646",
+      "status": "matched_name_difference",
+      "source_name": "SANTERAMO",
+      "reviewed_name": "Santeramo in Colle",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2647",
+      "status": "matched_name_difference",
+      "source_name": "SANTHIA&#39;",
+      "reviewed_name": "Santhià",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2652",
+      "status": "matched_name_difference",
+      "source_name": "SARNO",
+      "reviewed_name": "Sarno (RFI)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2668",
+      "status": "matched_name_difference",
+      "source_name": "SCAFA S.VALENTINO-CARAMANICO TERME",
+      "reviewed_name": "Scafa-San Valentino-Caramanico Terme",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2669",
+      "status": "matched_name_difference",
+      "source_name": "SCAFATI",
+      "reviewed_name": "Scafati (RFI)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "27",
+      "status": "matched_name_difference",
+      "source_name": "CAMPORA S.GIOVANNI SERRA AIELLO",
+      "reviewed_name": "Campora S.Giov. Serra Aiello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2700",
+      "status": "matched_name_difference",
+      "source_name": "SERRA S.QUIRICO",
+      "reviewed_name": "Serra San Quirico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2705",
+      "status": "matched_name_difference",
+      "source_name": "SERRAVALLE D&#39;ASTI",
+      "reviewed_name": "Serravalle d'Asti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2707",
+      "status": "matched_name_difference",
+      "source_name": "SERRAVALLE ALL&#39;ADIGE",
+      "reviewed_name": "Serravalle all'Adige",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2710",
+      "status": "matched_name_difference",
+      "source_name": "SESSA AURUNCA-ROCCAMONFINA",
+      "reviewed_name": "Sessa Aurunca - Roccamonfina - Cellole",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2716",
+      "status": "matched_name_difference",
+      "source_name": "SESTO S.GIOVANNI",
+      "reviewed_name": "Sesto San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2718",
+      "status": "matched_name_difference",
+      "source_name": "SETTEQUERCE",
+      "reviewed_name": "Siebeneich - Settequerce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2720",
+      "status": "matched_name_difference",
+      "source_name": "SETTIMO",
+      "reviewed_name": "Settimo Torinese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2740",
+      "status": "matched_name_difference",
+      "source_name": "SIPICCIANO S.NICOLA",
+      "reviewed_name": "Sipicciano - San Nicola",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2775",
+      "status": "matched_name_difference",
+      "source_name": "NEPEZZANO-PIANO D&#39;ACCIO",
+      "reviewed_name": "Nepezzano-Piano d’Accio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2785",
+      "status": "matched_name_difference",
+      "source_name": "STAZIONE PER L&#39;ALPAGO",
+      "reviewed_name": "Stazione per l'Alpago",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2828",
+      "status": "matched_name_difference",
+      "source_name": "TERLANO-ANDRIANO",
+      "reviewed_name": "Terlan - Terlano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2880",
+      "status": "matched_name_difference",
+      "source_name": "TORRE ANNUNZIATA CITTA&#39;",
+      "reviewed_name": "Torre Annunziata Città",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2881",
+      "status": "matched_name_difference",
+      "source_name": "TORRE DE&#39; PICENARDI",
+      "reviewed_name": "Torre de' Picenardi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2883",
+      "status": "matched_name_difference",
+      "source_name": "TORRE DEL GRECO",
+      "reviewed_name": "Torre del Greco (RFI)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "290",
+      "status": "matched_name_difference",
+      "source_name": "OLIVETTA S.MICHELE",
+      "reviewed_name": "Olivetta San Michele",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2901",
+      "status": "matched_name_difference",
+      "source_name": "L&#39;AQUILA SASSA NUCLEO SVILUPPO",
+      "reviewed_name": "L’Aquila Sassa Nucleo Sviluppo Industriale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2917",
+      "status": "matched_name_difference",
+      "source_name": "L&#39;AQUILA S.GREGORIO",
+      "reviewed_name": "L’Aquila San Gregorio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2924",
+      "status": "matched_name_difference",
+      "source_name": "TRICESIMO-S.PELAGIO",
+      "reviewed_name": "Tricesimo - San Pelagio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2927",
+      "status": "matched_name_difference",
+      "source_name": "TRINITA&#39; BENE VAGIENNA",
+      "reviewed_name": "Trinità Bene Vagienna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2970",
+      "status": "matched_name_difference",
+      "source_name": "VALDAORA-ANTERSELVA",
+      "reviewed_name": "Olang-Antholz - Valdaora-Anterselva",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2977",
+      "status": "matched_name_difference",
+      "source_name": "VALLE DI MERCATO S.SEVERINO",
+      "reviewed_name": "Valle di Mercato San Severino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2978",
+      "status": "matched_name_difference",
+      "source_name": "VALLEDOLMO",
+      "reviewed_name": "Stazione di Valledolmo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2986",
+      "status": "matched_name_difference",
+      "source_name": "VANDOIES",
+      "reviewed_name": "Vintl - Vandoies",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2989",
+      "status": "matched_name_difference",
+      "source_name": "VAPRIO D&#39;AGOGNA",
+      "reviewed_name": "Vaprio d'Agogna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2993",
+      "status": "matched_name_difference",
+      "source_name": "VARENNA ESINO",
+      "reviewed_name": "Varenna-Esino-Perledo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "2998",
+      "status": "matched_name_difference",
+      "source_name": "VASTO S.SALVO",
+      "reviewed_name": "Vasto-San Salvo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3009",
+      "status": "matched_name_difference",
+      "source_name": "VENEZIA S.LUCIA",
+      "reviewed_name": "Venezia Santa Lucia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3015",
+      "status": "matched_name_difference",
+      "source_name": "VERCURAGO S.GIROLAMO",
+      "reviewed_name": "Vercurago-San Girolamo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "304",
+      "status": "matched_name_difference",
+      "source_name": "QUILIANO-VADO LIGURE",
+      "reviewed_name": "Quiliano Vado",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3046",
+      "status": "matched_name_difference",
+      "source_name": "VICOFORTE S.MICHELE",
+      "reviewed_name": "Vicoforte-San Michele",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3051",
+      "status": "matched_name_difference",
+      "source_name": "ASSEMINI S.LUCIA",
+      "reviewed_name": "Assemini Santa Lucia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3056",
+      "status": "matched_name_difference",
+      "source_name": "VIGLIANO D&#39;ASTI",
+      "reviewed_name": "Vigliano d'Asti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3069",
+      "status": "matched_name_difference",
+      "source_name": "S.LAZZARO DI SAVENA",
+      "reviewed_name": "San Lazzaro di Savena",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3076",
+      "status": "matched_name_difference",
+      "source_name": "VILLA S.MICHELE",
+      "reviewed_name": "Villa San Michele",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3077",
+      "status": "matched_name_difference",
+      "source_name": "VILLA S.SEBASTIANO",
+      "reviewed_name": "Villa San Sebastiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3080",
+      "status": "matched_name_difference",
+      "source_name": "VILLABASSA-BRAIES-VAL DI BRAIES",
+      "reviewed_name": "Villabassa - Braies",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3091",
+      "status": "matched_name_difference",
+      "source_name": "S.LORENZO",
+      "reviewed_name": "St. Lorenzen - San Lorenzo di Sebato",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3094",
+      "status": "matched_name_difference",
+      "source_name": "VILLANOVA D&#39;ARDA",
+      "reviewed_name": "Villanova d'Arda",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3095",
+      "status": "matched_name_difference",
+      "source_name": "VILLANOVA D&#39;ARDENGHI",
+      "reviewed_name": "Villanova d'Ardenghi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3096",
+      "status": "matched_name_difference",
+      "source_name": "VILLANOVA D&#39;ASTI",
+      "reviewed_name": "Villanova d'Asti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3110",
+      "status": "matched_name_difference",
+      "source_name": "VILLETTA S.ROMANO",
+      "reviewed_name": "Villetta-San Romano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3111",
+      "status": "matched_name_difference",
+      "source_name": "VILPIANO-NALLES",
+      "reviewed_name": "Vilpian-Nals - Vilpiano-Nalles",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3113",
+      "status": "matched_name_difference",
+      "source_name": "VIPITENO-VAL DI VIZZE",
+      "reviewed_name": "Sterzing-Pfitsch - Vipiteno-Val di Vizze",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "315",
+      "status": "matched_name_difference",
+      "source_name": "S.MARGHERITA LIGURE PORTOFINO",
+      "reviewed_name": "Santa Margherita Ligure - Portofino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3153",
+      "status": "matched_name_difference",
+      "source_name": "PONTE S.STEFANO",
+      "reviewed_name": "Ponte Santo Stefano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3164",
+      "status": "matched_name_difference",
+      "source_name": "CAGLIARI S.GILLA",
+      "reviewed_name": "Cagliari Santa Gilla",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3174",
+      "status": "matched_name_difference",
+      "source_name": "L&#39;AQUILA CAMPO DI PILE",
+      "reviewed_name": "L'Aquila Campo di Pile",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3179",
+      "status": "matched_name_difference",
+      "source_name": "BAZZANO",
+      "reviewed_name": "Bazzano (L'Aquila)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "318",
+      "status": "matched_name_difference",
+      "source_name": "S.GIUSEPPE DI CAIRO",
+      "reviewed_name": "San Giuseppe di Cairo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3199",
+      "status": "matched_name_difference",
+      "source_name": "DUCA D&#39;AOSTA",
+      "reviewed_name": "Duca d’Aosta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "320",
+      "status": "matched_name_difference",
+      "source_name": "SANREMO",
+      "reviewed_name": "Nuova Stazione Ferroviaria di Sanremo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3206",
+      "status": "matched_name_difference",
+      "source_name": "MACERATA UNIVERSITA&#39;",
+      "reviewed_name": "Macerata Università",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3207",
+      "status": "matched_name_difference",
+      "source_name": "S.MICHELE",
+      "reviewed_name": "San Michele di Pagana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3208",
+      "status": "matched_name_difference",
+      "source_name": "CUZZAGO (NO)",
+      "reviewed_name": "Cuzzago (verso Novara)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3233",
+      "status": "matched_name_difference",
+      "source_name": "BARI S.RITA",
+      "reviewed_name": "Bari Santa Rita",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3251",
+      "status": "matched_name_difference",
+      "source_name": "MILANO TIBALDI UNIVERSITA&#39; BOCCONI",
+      "reviewed_name": "Milano Tibaldi - Bocconi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3256",
+      "status": "matched_name_difference",
+      "source_name": "CANSANO SCAVI DI OCRITICUM",
+      "reviewed_name": "Ocriticum",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3259",
+      "status": "matched_name_difference",
+      "source_name": "PALERMO LIBERTA&#39;",
+      "reviewed_name": "Palermo Libertà",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3377",
+      "status": "matched_name_difference",
+      "source_name": "S.PIERO A SIEVE",
+      "reviewed_name": "San Piero a Sieve",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3404",
+      "status": "matched_name_difference",
+      "source_name": "S.BIAGIO DI CALLALTA",
+      "reviewed_name": "San Biagio di Callalta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3405",
+      "status": "matched_name_difference",
+      "source_name": "FAGARE&#39;",
+      "reviewed_name": "Fagarè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3411",
+      "status": "matched_name_difference",
+      "source_name": "ROMA NOMENTANA LL",
+      "reviewed_name": "Roma Nomentana Linea Lenta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3412",
+      "status": "matched_name_difference",
+      "source_name": "S.MARCO VECCHIO",
+      "reviewed_name": "Firenze San Marco Vecchio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "343",
+      "status": "matched_name_difference",
+      "source_name": "VISONE",
+      "reviewed_name": "Stazione di Visone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3431",
+      "status": "matched_name_difference",
+      "source_name": "S.GENNARO",
+      "reviewed_name": "San Gennaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3449",
+      "status": "matched_name_difference",
+      "source_name": "LE CURE",
+      "reviewed_name": "Firenze Le Cure",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3450",
+      "status": "matched_name_difference",
+      "source_name": "PIEDIMONTE-VILLA S.LUCIA-AQUINO",
+      "reviewed_name": "Piedimonte-Villa Santa Lucia-Aquino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3475",
+      "status": "matched_name_difference",
+      "source_name": "PERUGIA UNIVERSITA&#39;",
+      "reviewed_name": "Perugia Università",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3504",
+      "status": "matched_name_difference",
+      "source_name": "GARGAZZONE",
+      "reviewed_name": "Gargazon - Gargazzone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3516",
+      "status": "matched_name_difference",
+      "source_name": "OZZANO DELL&#39;EMILIA",
+      "reviewed_name": "Ozzano dell'Emilia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3550",
+      "status": "matched_name_difference",
+      "source_name": "SULMONA S.RUFINA",
+      "reviewed_name": "Sulmona Santa Rufina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "3562",
+      "status": "matched_name_difference",
+      "source_name": "S.GIOVANNI DI CASARSA",
+      "reviewed_name": "San Giovanni di Casarsa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "376",
+      "status": "matched_name_difference",
+      "source_name": "ACQUAVIVA CASTELTERMINI",
+      "reviewed_name": "Casteltermini - Acquaviva Platani",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "385",
+      "status": "matched_name_difference",
+      "source_name": "VAL D&#39;ALA",
+      "reviewed_name": "Val d'Ala Ovest",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "397",
+      "status": "matched_name_difference",
+      "source_name": "ALBANO S.ALESSANDRO",
+      "reviewed_name": "Albano Sant’Alessandro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "4030",
+      "status": "matched_name_difference",
+      "source_name": "TRENTO S.CHIARA",
+      "reviewed_name": "Trento Santa Chiara",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "4043",
+      "status": "matched_name_difference",
+      "source_name": "LA RUSTICA CITTA&#39;",
+      "reviewed_name": "La Rustica Città",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "4079",
+      "status": "matched_name_difference",
+      "source_name": "TRENTO S.BARTOLAMEO",
+      "reviewed_name": "Trento San Bartolameo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "4080",
+      "status": "matched_name_difference",
+      "source_name": "S.TROVASO",
+      "reviewed_name": "San Trovaso",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "41",
+      "status": "matched_name_difference",
+      "source_name": "CAULONIA",
+      "reviewed_name": "Caulonia Marina Stazione",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "413",
+      "status": "matched_name_difference",
+      "source_name": "ALI&#39; TERME",
+      "reviewed_name": "Alì Terme",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "414",
+      "status": "matched_name_difference",
+      "source_name": "ALICE BELCOLLE",
+      "reviewed_name": "Alice Bel Colle",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "426",
+      "status": "matched_name_difference",
+      "source_name": "POTENZA UNIVERSITA&#39;",
+      "reviewed_name": "Potenza Università",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "428",
+      "status": "matched_name_difference",
+      "source_name": "ANAGNI-FIUGGI",
+      "reviewed_name": "Anagni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "441",
+      "status": "matched_name_difference",
+      "source_name": "ANZOLA DELL&#39;EMILIA",
+      "reviewed_name": "Anzola dell’Emilia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "443",
+      "status": "matched_name_difference",
+      "source_name": "APICE S.ARCANGELO BONITO",
+      "reviewed_name": "Apice-Sant'Arcangelo-Bonito",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "46",
+      "status": "matched_name_difference",
+      "source_name": "CIRO&#39;",
+      "reviewed_name": "Cirò",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "463",
+      "status": "matched_name_difference",
+      "source_name": "ARQUA&#39;",
+      "reviewed_name": "Arquà",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "468",
+      "status": "matched_name_difference",
+      "source_name": "ASCIANO MONTE OLIVETO MAGGIORE",
+      "reviewed_name": "Asciano M. Oliveto M.",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "47",
+      "status": "matched_name_difference",
+      "source_name": "PESCARA S.MARCO",
+      "reviewed_name": "Pescara San Marco",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5022",
+      "status": "matched_name_difference",
+      "source_name": "S.BENIGNO",
+      "reviewed_name": "S. Benigno Canavese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5025",
+      "status": "matched_name_difference",
+      "source_name": "RIVAROLO",
+      "reviewed_name": "Rivarolo Canavese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5038",
+      "status": "matched_name_difference",
+      "source_name": "S.MAURIZIO CANAVESE",
+      "reviewed_name": "San Maurizio Canavese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5039",
+      "status": "matched_name_difference",
+      "source_name": "CIRIE&#39;",
+      "reviewed_name": "Ciriè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5041",
+      "status": "matched_name_difference",
+      "source_name": "VILLANOVA CANAVESE-GROSSO",
+      "reviewed_name": "Villanova - Grosso",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5174",
+      "status": "matched_name_difference",
+      "source_name": "SAN GOTTARDO",
+      "reviewed_name": "San Gottardo (Udine)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "520",
+      "status": "matched_name_difference",
+      "source_name": "BIVIO D&#39;AURISINA",
+      "reviewed_name": "Bivio d'Aurisina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5270",
+      "status": "matched_name_difference",
+      "source_name": "PISCILLE",
+      "reviewed_name": "Perugia Piscille",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5388",
+      "status": "matched_name_difference",
+      "source_name": "TORINO CORSO GROSSETO",
+      "reviewed_name": "Torino Grosseto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5414",
+      "status": "matched_name_difference",
+      "source_name": "S.GIUSTINO",
+      "reviewed_name": "San Giustino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5419",
+      "status": "matched_name_difference",
+      "source_name": "CITTA&#39; DI CASTELLO",
+      "reviewed_name": "Città di Castello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5421",
+      "status": "matched_name_difference",
+      "source_name": "SANSECONDO",
+      "reviewed_name": "San Secondo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5422",
+      "status": "matched_name_difference",
+      "source_name": "CANOSCIO",
+      "reviewed_name": "Canoscio-Fabbrecce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5425",
+      "status": "matched_name_difference",
+      "source_name": "MONTECASTELLI PONTE TEVERE",
+      "reviewed_name": "Montecastelli-Tevere",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5433",
+      "status": "matched_name_difference",
+      "source_name": "S.BARTOLOMEO-RESINA",
+      "reviewed_name": "San Bartolomeo-Resina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5434",
+      "status": "matched_name_difference",
+      "source_name": "PONTE PATTOLI",
+      "reviewed_name": "Ponte Pattoli-Civitella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5440",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO IN CAMPO",
+      "reviewed_name": "San Martino in Campo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5447",
+      "status": "matched_name_difference",
+      "source_name": "ILCI-PIAN DEI MORI",
+      "reviewed_name": "Ilci",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5450",
+      "status": "matched_name_difference",
+      "source_name": "COLLEVALENZA R.R.",
+      "reviewed_name": "Collevalenza",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5457",
+      "status": "matched_name_difference",
+      "source_name": "TERNI BORGO RIVO",
+      "reviewed_name": "Borgo Rivo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "5459",
+      "status": "matched_name_difference",
+      "source_name": "PERUGIA S.ANNA",
+      "reviewed_name": "Perugia Sant'Anna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "560",
+      "status": "matched_name_difference",
+      "source_name": "BARI S.SPIRITO",
+      "reviewed_name": "Bari-Santo Spirito",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "57",
+      "status": "matched_name_difference",
+      "source_name": "PM ECCELLENTE",
+      "reviewed_name": "Eccellente",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "572",
+      "status": "matched_name_difference",
+      "source_name": "TIVOLI TERME",
+      "reviewed_name": "Bagni di Tivoli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "587",
+      "status": "matched_name_difference",
+      "source_name": "BARBERINO DI VAL D&#39;ELSA",
+      "reviewed_name": "Barberino Val d'Elsa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "598",
+      "status": "matched_name_difference",
+      "source_name": "BARLETTA",
+      "reviewed_name": "Barletta Centrale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "605",
+      "status": "matched_name_difference",
+      "source_name": "BASTIA",
+      "reviewed_name": "Bastia Umbra",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "61",
+      "status": "matched_name_difference",
+      "source_name": "PM FEROLETO ANTICO PIANOPOLI",
+      "reviewed_name": "P.M. Feroleto Antico-Pianopoli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "619",
+      "status": "matched_name_difference",
+      "source_name": "BELLANTE RIPATTONE",
+      "reviewed_name": "Bellante-Ripattoni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "640",
+      "status": "matched_name_difference",
+      "source_name": "BIANZE&#39;",
+      "reviewed_name": "Bianzè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "646",
+      "status": "matched_name_difference",
+      "source_name": "BIBIANA",
+      "reviewed_name": "Santa Bibiana",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "649",
+      "status": "matched_name_difference",
+      "source_name": "BIELLA S.PAOLO",
+      "reviewed_name": "Biella San Paolo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "654",
+      "status": "matched_name_difference",
+      "source_name": "BISUSCHIO-VIGGIU&#39;",
+      "reviewed_name": "Bisuschio–Viggiù",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "655",
+      "status": "matched_name_difference",
+      "source_name": "BITETTO PALO DEL COLLE",
+      "reviewed_name": "Bitetto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "66",
+      "status": "matched_name_difference",
+      "source_name": "PM GABELLA GRANDE",
+      "reviewed_name": "P.M. Gabella Grande",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "679",
+      "status": "matched_name_difference",
+      "source_name": "BOLOGNA S.RUFFILLO",
+      "reviewed_name": "Bologna San Ruffillo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "681",
+      "status": "matched_name_difference",
+      "source_name": "BOIANO",
+      "reviewed_name": "Bojano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "685",
+      "status": "matched_name_difference",
+      "source_name": "BOLZANO",
+      "reviewed_name": "Bolzano - Bozen",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "687",
+      "status": "matched_name_difference",
+      "source_name": "BOLZANO SUD",
+      "reviewed_name": "Bolzano Sud - Bozen Süd",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "689",
+      "status": "matched_name_difference",
+      "source_name": "BONEFRO S.CROCE",
+      "reviewed_name": "Bonefro-Santa Croce",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "694",
+      "status": "matched_name_difference",
+      "source_name": "BORGHETTO SULL&#39;ADIGE",
+      "reviewed_name": "Borghetto sull'Adige",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "70",
+      "status": "matched_name_difference",
+      "source_name": "GRISOLIA S.MARIA",
+      "reviewed_name": "Grisolia-Santa Maria",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "700",
+      "status": "matched_name_difference",
+      "source_name": "BORGO S.DALMAZZO",
+      "reviewed_name": "Borgo San Dalmazzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "701",
+      "status": "matched_name_difference",
+      "source_name": "BORGO S.LORENZO",
+      "reviewed_name": "Borgo San Lorenzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "702",
+      "status": "matched_name_difference",
+      "source_name": "BORGO S.LORENZO RIMORELLI",
+      "reviewed_name": "Borgo San Lorenzo Rimorelli",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "703",
+      "status": "matched_name_difference",
+      "source_name": "BORGO S.MARTINO",
+      "reviewed_name": "Borgo San Martino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "709",
+      "status": "matched_name_difference",
+      "source_name": "BORGOFRANCO",
+      "reviewed_name": "Borgofranco d'Ivrea",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "712",
+      "status": "matched_name_difference",
+      "source_name": "BORGONE",
+      "reviewed_name": "Borgone di Susa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "717",
+      "status": "matched_name_difference",
+      "source_name": "BOSCHI S.ANNA",
+      "reviewed_name": "Boschi Sant’Anna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "723",
+      "status": "matched_name_difference",
+      "source_name": "PERCA-PLAN DE CORONES",
+      "reviewed_name": "Percha/Kronplatz - Perca/Plan de Corones",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "73",
+      "status": "matched_name_difference",
+      "source_name": "PM ISOLA CAPO RIZZUTO",
+      "reviewed_name": "P.M. Isola Capo Rizzuto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "732",
+      "status": "matched_name_difference",
+      "source_name": "BRENNERO",
+      "reviewed_name": "Brenner - Brennero",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "738",
+      "status": "matched_name_difference",
+      "source_name": "BRESSANONE",
+      "reviewed_name": "Brixen - Bressanone",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "741",
+      "status": "matched_name_difference",
+      "source_name": "BRINDISI",
+      "reviewed_name": "Brindisi Centrale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "747",
+      "status": "matched_name_difference",
+      "source_name": "BRONZOLO",
+      "reviewed_name": "Bronzolo - Branzoll",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "751",
+      "status": "matched_name_difference",
+      "source_name": "BRUNICO",
+      "reviewed_name": "Bruneck - Brunico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "753",
+      "status": "matched_name_difference",
+      "source_name": "BRUZOLO DI SUSA",
+      "reviewed_name": "Bruzolo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "754",
+      "status": "matched_name_difference",
+      "source_name": "BUCCINO S.GREGORIO MAGNO",
+      "reviewed_name": "Buccino-San Gregorio Magno",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "766",
+      "status": "matched_name_difference",
+      "source_name": "BUSTO ARSIZIO",
+      "reviewed_name": "Busto Arsizio FS",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "771",
+      "status": "matched_name_difference",
+      "source_name": "CAMPO DI GIOVE-MONTE MAIELLA",
+      "reviewed_name": "Campo di Giove Maiella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "778",
+      "status": "matched_name_difference",
+      "source_name": "CA` DI BOSCHETTI",
+      "reviewed_name": "Cà dei Boschetti",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "792",
+      "status": "matched_name_difference",
+      "source_name": "CALALZO PIEVE CADORE CORTINA",
+      "reviewed_name": "Calalzo - Pieve di Cadore - Cortina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "799",
+      "status": "matched_name_difference",
+      "source_name": "CIVIDATE-CALCIO",
+      "reviewed_name": "Cividate al Piano - Calcio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "801",
+      "status": "matched_name_difference",
+      "source_name": "CALDE&#39;",
+      "reviewed_name": "Caldè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "802",
+      "status": "matched_name_difference",
+      "source_name": "PC CALDIERO",
+      "reviewed_name": "Caldiero",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "818",
+      "status": "matched_name_difference",
+      "source_name": "CAMMARATA S.GIOVANNI GEMINI",
+      "reviewed_name": "Cammarata-San Giovanni Gemini",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "826",
+      "status": "matched_name_difference",
+      "source_name": "CAMPO DI TRENS",
+      "reviewed_name": "Freienfeld - Campo di Trens",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "832",
+      "status": "matched_name_difference",
+      "source_name": "CAMPOFELICE",
+      "reviewed_name": "Campofelice di Roccella",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "86",
+      "status": "matched_name_difference",
+      "source_name": "MARINA DI S.LORENZO",
+      "reviewed_name": "Marina di San Lorenzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "861",
+      "status": "matched_name_difference",
+      "source_name": "CANICATTI&#39;",
+      "reviewed_name": "Canicattì",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "866",
+      "status": "matched_name_difference",
+      "source_name": "CANNETO SULL&#39;OGLIO",
+      "reviewed_name": "Canneto sull'Oglio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "872",
+      "status": "matched_name_difference",
+      "source_name": "CANTU&#39;",
+      "reviewed_name": "Cantù",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "873",
+      "status": "matched_name_difference",
+      "source_name": "CANTU&#39;-CERMENATE",
+      "reviewed_name": "Cantù-Cermenate",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "879",
+      "status": "matched_name_difference",
+      "source_name": "CAPO D&#39;ORLANDO-NASO",
+      "reviewed_name": "Capo d'Orlando-Naso",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "891",
+      "status": "matched_name_difference",
+      "source_name": "CARATE-CALO&#39;",
+      "reviewed_name": "Carate-Calò",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "911",
+      "status": "matched_name_difference",
+      "source_name": "CARPANE&#39;-VALSTAGNA",
+      "reviewed_name": "Carpanè - Valstagna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "93",
+      "status": "matched_name_difference",
+      "source_name": "PM MONTALTO ROSE",
+      "reviewed_name": "P.M. Montalto-Rose",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "942",
+      "status": "matched_name_difference",
+      "source_name": "BOLOGNA C.LE/AV",
+      "reviewed_name": "Bologna Centrale AV",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "951",
+      "status": "matched_name_difference",
+      "source_name": "CASSANO D&#39;ADDA",
+      "reviewed_name": "Cassano d’Adda",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "96",
+      "status": "matched_name_difference",
+      "source_name": "MOTTA S.GIOVANNI LAZZARO",
+      "reviewed_name": "Motta San Giovanni - Lazzaro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "967",
+      "status": "matched_name_difference",
+      "source_name": "CASTEL D&#39;ARIO",
+      "reviewed_name": "Castel d'Ario",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "973",
+      "status": "matched_name_difference",
+      "source_name": "CASTEL S.ANGELO",
+      "reviewed_name": "Castel Sant'Angelo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "974",
+      "status": "matched_name_difference",
+      "source_name": "CASTEL S.GIORGIO ROCCAPIEMONTE",
+      "reviewed_name": "Castel San Giorgio-Roccapiemonte",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "975",
+      "status": "matched_name_difference",
+      "source_name": "CASTEL S.GIOVANNI",
+      "reviewed_name": "Castel San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "976",
+      "status": "matched_name_difference",
+      "source_name": "CASTEL S.PIETRO TERME",
+      "reviewed_name": "Castel San Pietro Terme",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "978",
+      "status": "matched_name_difference",
+      "source_name": "CASTELBOLOGNESE-RIOLO TERME",
+      "reviewed_name": "Castel Bolognese-Riolo Terme",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "981",
+      "status": "matched_name_difference",
+      "source_name": "CASTELDARNE",
+      "reviewed_name": "Ehrenburg - Casteldarne",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "982",
+      "status": "matched_name_difference",
+      "source_name": "CASTELFERRETTI-FALCONARA AEROPORTO",
+      "reviewed_name": "Castelferretti-Falconara Aeroporto delle Marche",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "985",
+      "status": "matched_name_difference",
+      "source_name": "CASTELFRANCO EMILIA",
+      "reviewed_name": "Stazione di Castelfranco Emilia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "989",
+      "status": "matched_name_difference",
+      "source_name": "CASTELL&#39;ALFERO",
+      "reviewed_name": "Castell’Alfero",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "992",
+      "status": "matched_name_difference",
+      "source_name": "CASTELLAMMARE DI STABIA",
+      "reviewed_name": "Castellammare di Stabia (RFI)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1039",
+      "status": "matched_name_difference",
+      "source_name": "S.MARTINO CAVA",
+      "reviewed_name": "San Martino Siccomario-Cava Manara",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1044",
+      "status": "matched_name_difference",
+      "source_name": "CAVANELLA D&#39;ADIGE",
+      "reviewed_name": "Cavanella d'Adige",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1046",
+      "status": "matched_name_difference",
+      "source_name": "CAVARIA OGGIONA IERAGO",
+      "reviewed_name": "Cavaria-Oggiona-Jerago",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1053",
+      "status": "matched_name_difference",
+      "source_name": "CEFALU&#39;",
+      "reviewed_name": "Cefalù",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1067",
+      "status": "matched_name_difference",
+      "source_name": "CERRETO D&#39;ESI",
+      "reviewed_name": "Cerreto d'Esi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1080",
+      "status": "matched_name_difference",
+      "source_name": "PM CHAMBAVE",
+      "reviewed_name": "P.M. Chambave",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1101",
+      "status": "matched_name_difference",
+      "source_name": "CHIUSA",
+      "reviewed_name": "Klausen - Chiusa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1121",
+      "status": "matched_name_difference",
+      "source_name": "CIVITA D&#39;ANTINO-MORINO",
+      "reviewed_name": "Civita d'Antino-Morino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1141",
+      "status": "matched_name_difference",
+      "source_name": "COLLE ISARCO",
+      "reviewed_name": "Gossensaß - Colle Isarco",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1158",
+      "status": "matched_name_difference",
+      "source_name": "COMO S.GIOVANNI",
+      "reviewed_name": "Como San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "116",
+      "status": "matched_name_difference",
+      "source_name": "REGGIO DI CALABRIA CENTRALE",
+      "reviewed_name": "Reggio Calabria Centrale",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1160",
+      "status": "matched_name_difference",
+      "source_name": "COMPRE S.VINCENZO",
+      "reviewed_name": "Compre-San Vincenzo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1162",
+      "status": "matched_name_difference",
+      "source_name": "CONDOVE-CHIUSA S.MICHELE",
+      "reviewed_name": "Condove - Chiusa San Michele",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1174",
+      "status": "matched_name_difference",
+      "source_name": "CORBETTA-S.STEFANO TICINO",
+      "reviewed_name": "Corbetta-Santo Stefano Ticino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1194",
+      "status": "matched_name_difference",
+      "source_name": "COSTIGLIOLE (MOTTA DI)",
+      "reviewed_name": "Motta di Costigliole",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1218",
+      "status": "matched_name_difference",
+      "source_name": "CUZZAGO (MI)",
+      "reviewed_name": "Cuzzago (verso Milano)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1227",
+      "status": "matched_name_difference",
+      "source_name": "DERBY",
+      "reviewed_name": "Derby (La Salle)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "123",
+      "status": "matched_name_difference",
+      "source_name": "REGGIO DI CALABRIA LIDO",
+      "reviewed_name": "Reggio Calabria Lido",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1247",
+      "status": "matched_name_difference",
+      "source_name": "DOBBIACO",
+      "reviewed_name": "Toblach - Dobbiaco",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1250",
+      "status": "matched_name_difference",
+      "source_name": "PC DOLCE&#39;",
+      "reviewed_name": "Dolcè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1252",
+      "status": "matched_name_difference",
+      "source_name": "DOMEGLIARA-S.AMBROGIO",
+      "reviewed_name": "Domegliara - Sant'Ambrogio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "126",
+      "status": "matched_name_difference",
+      "source_name": "REGGIO DI CALABRIA S.CATERINA",
+      "reviewed_name": "Reggio di Calabria Santa Caterina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1268",
+      "status": "matched_name_difference",
+      "source_name": "EGNA-TERMENO",
+      "reviewed_name": "Neumarkt-Tramin - Egna-Termeno",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1282",
+      "status": "matched_name_difference",
+      "source_name": "FABRIANO CA&#39; MAIANO",
+      "reviewed_name": "Fabriano Cà Maiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1286",
+      "status": "matched_name_difference",
+      "source_name": "FAE&#39;-FORTOGNA",
+      "reviewed_name": "Faè-Fortogna",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1288",
+      "status": "matched_name_difference",
+      "source_name": "FALCIANO-MONDRAGONE-CARINOLA",
+      "reviewed_name": "Falciano Mondragone Car.",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1296",
+      "status": "matched_name_difference",
+      "source_name": "FARA",
+      "reviewed_name": "Fara Novarese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1302",
+      "status": "matched_name_difference",
+      "source_name": "FEDERICO",
+      "reviewed_name": "Palermo Imperatore Federico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1305",
+      "status": "matched_name_difference",
+      "source_name": "REGGIO CALABRIA AEROPORTO",
+      "reviewed_name": "Reggio di Calabria Aeroporto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1310",
+      "status": "matched_name_difference",
+      "source_name": "ANNA&#39;",
+      "reviewed_name": "Annà di Melito di Porto Salvo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1312",
+      "status": "matched_name_difference",
+      "source_name": "FIRENZE CAMPO MARTE",
+      "reviewed_name": "Firenze Campo di Marte",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1318",
+      "status": "matched_name_difference",
+      "source_name": "FIERA",
+      "reviewed_name": "Palermo Fiera",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1350",
+      "status": "matched_name_difference",
+      "source_name": "FORLI&#39;",
+      "reviewed_name": "Forlì",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1356",
+      "status": "matched_name_difference",
+      "source_name": "FORTEZZA",
+      "reviewed_name": "Franzensfeste - Fortezza",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1371",
+      "status": "matched_name_difference",
+      "source_name": "DUGENTA - FRASSO TELESINO",
+      "reviewed_name": "Frasso T. Dugenta",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1372",
+      "status": "matched_name_difference",
+      "source_name": "FRATTA",
+      "reviewed_name": "Fratta Polesine",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1373",
+      "status": "matched_name_difference",
+      "source_name": "FRATTAMAGGIORE-GRUMO",
+      "reviewed_name": "Frattamaggiore-Grumo Nevano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "138",
+      "status": "matched_name_difference",
+      "source_name": "S.ANDREA DELLO JONIO",
+      "reviewed_name": "S.Andrea Dell'Jonio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1384",
+      "status": "matched_name_difference",
+      "source_name": "GUARDIA MANGANO S.VENERINA",
+      "reviewed_name": "Guardia-Mangano-Santa Venerina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "140",
+      "status": "matched_name_difference",
+      "source_name": "S.CATERINA DELLO JONIO",
+      "reviewed_name": "S.Caterina Dell'Jonio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1402",
+      "status": "matched_name_difference",
+      "source_name": "GAMBOLO&#39;-REMONDO&#39;",
+      "reviewed_name": "Gambolò-Remondò",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1404",
+      "status": "matched_name_difference",
+      "source_name": "GARBAGNA",
+      "reviewed_name": "Garbagna Novarese",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1415",
+      "status": "matched_name_difference",
+      "source_name": "GAZZO PIEVE S.GIACOMO",
+      "reviewed_name": "Gazzo-Pieve San Giacomo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1429",
+      "status": "matched_name_difference",
+      "source_name": "GIACHERY",
+      "reviewed_name": "Palermo Giachery",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "143",
+      "status": "matched_name_difference",
+      "source_name": "S.MARCO ROGGIANO",
+      "reviewed_name": "San Marco-Roggiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "145",
+      "status": "matched_name_difference",
+      "source_name": "S.PIETRO A MAIDA-MAIDA",
+      "reviewed_name": "San Pietro a Maida-Maida",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "147",
+      "status": "matched_name_difference",
+      "source_name": "PM S.LEONARDO DI CUTRO",
+      "reviewed_name": "P.M. San Leonardo di Cutro",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1472",
+      "status": "matched_name_difference",
+      "source_name": "GROTTE S.STEFANO",
+      "reviewed_name": "Grotte Santo Stefano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "148",
+      "status": "matched_name_difference",
+      "source_name": "PM S.MAURO LA BRUCA",
+      "reviewed_name": "San Mauro La Bruca",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1503",
+      "status": "matched_name_difference",
+      "source_name": "ISOLETTA-S.GIOVANNI INCARICO",
+      "reviewed_name": "Isoletta-San Giovanni Incarico",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1505",
+      "status": "matched_name_difference",
+      "source_name": "PM ISPRA",
+      "reviewed_name": "P.M. Ispra",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "151",
+      "status": "matched_name_difference",
+      "source_name": "S.DOMENICA",
+      "reviewed_name": "Santa Domenica di Ricadi",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1510",
+      "status": "matched_name_difference",
+      "source_name": "L&#39;AQUILA",
+      "reviewed_name": "L'Aquila",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1525",
+      "status": "matched_name_difference",
+      "source_name": "LAIVES",
+      "reviewed_name": "Laives - Leifers",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1529",
+      "status": "matched_name_difference",
+      "source_name": "LANA-POSTAL",
+      "reviewed_name": "Lana-Burgstall - Lana-Postal",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "154",
+      "status": "matched_name_difference",
+      "source_name": "SCALEA S.DOMENICA TALAO",
+      "reviewed_name": "Scalea-Santa Domenica Talao",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1576",
+      "status": "matched_name_difference",
+      "source_name": "LIMONE",
+      "reviewed_name": "Limone Piemonte",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1580",
+      "status": "matched_name_difference",
+      "source_name": "LISON",
+      "reviewed_name": "Lison (Portogruaro)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1581",
+      "status": "matched_name_difference",
+      "source_name": "LISSONE-MUGGIO&#39;",
+      "reviewed_name": "Lissone-Muggiò",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1618",
+      "status": "matched_name_difference",
+      "source_name": "MAGENTA",
+      "reviewed_name": "Magenta (Milano)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1623",
+      "status": "matched_name_difference",
+      "source_name": "MAGRE&#39;-CORTACCIA",
+      "reviewed_name": "Margreid-Kurtatsch - Magrè-Cortaccia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1631",
+      "status": "matched_name_difference",
+      "source_name": "VALLE DELL&#39;ANIENE-MANDELA-SAMBUCI",
+      "reviewed_name": "Valle dell'Aniene-Mandela-Sambuci",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "168",
+      "status": "matched_name_difference",
+      "source_name": "PM THURIO",
+      "reviewed_name": "P.M. Thurio",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1693",
+      "status": "matched_name_difference",
+      "source_name": "MERANO",
+      "reviewed_name": "Meran - Merano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1694",
+      "status": "matched_name_difference",
+      "source_name": "MERANO-MAIA BASSA",
+      "reviewed_name": "Meran Untermais - Merano Maia Bassa",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1695",
+      "status": "matched_name_difference",
+      "source_name": "MERCATO S.SEVERINO",
+      "reviewed_name": "Mercato San Severino",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1714",
+      "status": "matched_name_difference",
+      "source_name": "MILANO PORTA GARIBALDI SOTTERRANEA",
+      "reviewed_name": "Milano Porta Garibaldi (passante)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1715",
+      "status": "matched_name_difference",
+      "source_name": "MILANO PORTA GARIBALDI",
+      "reviewed_name": "Milano Porta Garibaldi (superficie)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1721",
+      "status": "matched_name_difference",
+      "source_name": "MILANO S.CRISTOFORO",
+      "reviewed_name": "Milano San Cristoforo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1773",
+      "status": "matched_name_difference",
+      "source_name": "MONGUELFO-VALLE DI CASIES",
+      "reviewed_name": "Welsberg-Gsies - Monguelfo-Valle di Casies",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1790",
+      "status": "matched_name_difference",
+      "source_name": "MONTE S.BIAGIO-TERRACINA MARE",
+      "reviewed_name": "Monte San Biagio-Terracina Mare",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1794",
+      "status": "matched_name_difference",
+      "source_name": "MONTECARLO S.SALVATORE",
+      "reviewed_name": "Montecarlo-San Salvatore",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1814",
+      "status": "matched_name_difference",
+      "source_name": "MONTENERO PETACCIATO",
+      "reviewed_name": "Petacciato - Montenero",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "182",
+      "status": "matched_name_difference",
+      "source_name": "VILLA S.GIOVANNI CANNITELLO",
+      "reviewed_name": "Villa San Giovanni-Cannitello",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1821",
+      "status": "matched_name_difference",
+      "source_name": "MONTERONI D&#39;ARBIA",
+      "reviewed_name": "Monteroni d'Arbia",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1824",
+      "status": "matched_name_difference",
+      "source_name": "MONTEROTONDO-MENTANA",
+      "reviewed_name": "Monterotondo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1825",
+      "status": "matched_name_difference",
+      "source_name": "MONTESANTO",
+      "reviewed_name": "Montesanto (Voghiera)",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "183",
+      "status": "matched_name_difference",
+      "source_name": "VILLA S.GIOVANNI",
+      "reviewed_name": "Villa San Giovanni",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1832",
+      "status": "matched_name_difference",
+      "source_name": "MONTICELLI D&#39;ONGINA",
+      "reviewed_name": "Monticelli d’Ongina",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1836",
+      "status": "matched_name_difference",
+      "source_name": "PM MONTJOVET",
+      "reviewed_name": "P.M. Montjovet",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1857",
+      "status": "matched_name_difference",
+      "source_name": "MORROVALLE MONTE S.GIUSTO",
+      "reviewed_name": "Morrovalle-Monte San Giusto",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1859",
+      "status": "matched_name_difference",
+      "source_name": "MOSCIANO S.ANGELO",
+      "reviewed_name": "Mosciano Sant'Angelo",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1863",
+      "status": "matched_name_difference",
+      "source_name": "MOTTA S.DAMIANO",
+      "reviewed_name": "Motta San Damiano",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1882",
+      "status": "matched_name_difference",
+      "source_name": "NAPOLI S.GIOVANNI BARRA",
+      "reviewed_name": "Napoli San Giovanni-Barra",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1904",
+      "status": "matched_name_difference",
+      "source_name": "NOALE-SCORZE&#39;",
+      "reviewed_name": "Noale - Scorzè",
+      "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "fse",
+      "id": "S13109",
+      "status": "manual_reviewed",
+      "source_name": "Sava",
+      "reviewed_name": "Sava",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fse",
+      "id": "S13111",
+      "status": "manual_reviewed",
+      "source_name": "Erchie-Torre Santa Susanna",
+      "reviewed_name": "Erchie-Torre Santa Susanna",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fse",
+      "id": "S13112",
+      "status": "manual_reviewed",
+      "source_name": "San Pancrazio Salentino",
+      "reviewed_name": "San Pancrazio Salentino",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fse",
+      "id": "S13114",
+      "status": "manual_reviewed",
+      "source_name": "Salice-Veglie",
+      "reviewed_name": "Salice-Veglie",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fse",
+      "id": "S13163",
+      "status": "manual_reviewed",
+      "source_name": "San Cesario di Lecce",
+      "reviewed_name": "San Cesario di Lecce",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "fse",
+      "id": "S13164",
+      "status": "manual_reviewed",
+      "source_name": "San Donato di Lecce",
+      "reviewed_name": "San Donato di Lecce",
+      "decision": "confirmed"
+    },
+    {
+      "operator": "rfi",
+      "id": "1420",
+      "status": "matched_name_difference",
+      "source_name": "GENGA S.VITTORE TERME",
+      "reviewed_name": "Genga - San Vittore Terme",
+      "decision": "keep_reviewed_name"
+    }
+  ]
+}

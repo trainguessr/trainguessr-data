@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import argparse
+import hashlib
 import json
 import time
 from pathlib import Path
@@ -8,8 +10,15 @@ from typing import Any
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+from common.config import load_country_config
+from common.io import ROOT, load_ndjson, write_csv, write_ndjson
+from common.validate import validate_nodes
+
 
 BASE_DIR = Path(__file__).resolve().parent
+ITALY_CONFIG = load_country_config("italy")
+MANUAL_STATIONS = [row for row in ITALY_CONFIG.get("manual_stations", []) if row.get("operator") == "fse"]
+MANUAL_NAMES = {str(row["name"]) for row in MANUAL_STATIONS}
 OVERPASS_URLS = [
     "https://lz4.overpass-api.de/api/interpreter",
     "https://z.overpass-api.de/api/interpreter",
@@ -24,8 +33,11 @@ VIAGGIATRENO_ELenco_URL = (
     "viaggiatreno/elencoStazioni/0"
 )
 BOUNDING_BOX = "(39.0,14.5,42.5,19.5)"
-OUTPUT_FILE = BASE_DIR.parent / "nodes" / "nodes-italy-fse.json"
-UNRESOLVED_OUTPUT_FILE = BASE_DIR.parent.parent / "nodes-italy-fse-unresolved.json"
+OUTPUT_FILE = ROOT / "nodes" / "nodes-italy-fse.json"
+FSE_CACHE = ROOT / "cache" / "italy" / "fse"
+REQUEST_CACHE = FSE_CACHE / "raw" / "requests"
+UNRESOLVED_OUTPUT_FILE = FSE_CACHE / "reports" / "unresolved.json"
+AUDIT_FILE = FSE_CACHE / "reports" / "audit.csv"
 
 HEADERS = {
     "User-Agent": "trainguessr-data"
@@ -35,18 +47,15 @@ HEADERS = {
 # resolve to a stable ViaggiaTreno station identifier, so they are emitted in
 # the unresolved/manual-followup file rather than the main playable dataset.
 EXCLUDED_OSM_NAMES = {
-    "Erchie-Torre Santa Susanna",
-    "Francavilla Fontana",
-    "Gallipoli Porto",
-    "Salice-Veglie",
-    "San Cesario di Lecce",
-    "San Donato di Lecce",
-    "San Pancrazio Salentino",
-    "Sava",
+    str(row.get("name"))
+    for row in ITALY_CONFIG.get("excluded", [])
+    if row.get("operator") == "fse" and row.get("name") and row.get("name") not in MANUAL_NAMES
 }
 
 EXCLUDED_REASON_BY_OSM_NAME = {
-    "Francavilla Fontana": "managed_by_rfi_station_already_in_italy_rfi",
+    str(row.get("name")): str(row.get("reason", "excluded_by_country_config"))
+    for row in ITALY_CONFIG.get("excluded", [])
+    if row.get("operator") == "fse" and row.get("name")
 }
 
 # Known non-S13 ViaggiaTreno IDs that belong to FSE.
@@ -152,7 +161,12 @@ VIAGGIATRENO_ALIASES = {
 def fetch_json(url: str, data: bytes | None = None) -> Any:
     req = Request(url, headers=HEADERS, data=data)
     with urlopen(req, timeout=180) as response:
-        return json.loads(response.read().decode("utf-8"))
+        payload = response.read()
+    key = hashlib.sha256(url.encode("utf-8") + (data or b"")).hexdigest()
+    cache_file = REQUEST_CACHE / f"{key}.json"
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    cache_file.write_bytes(payload)
+    return json.loads(payload.decode("utf-8"))
 
 
 def fetch_overpass_json(query: str) -> Any:
@@ -401,62 +415,97 @@ def fetch_vt_only_stations(matched_ids: set[str]) -> list[dict[str, Any]]:
     return unmatched
 
 
-def main() -> None:
+def manual_node(row: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "type": "node",
+        "id": str(row["id"]),
+        "lat": float(row["lat"]),
+        "lon": float(row["lon"]),
+        "tags": {
+            "name": str(row["name"]),
+            "operator": "Ferrovie del Sud Est",
+            "ref": str(row["id"]),
+            "match_status": "manual_reviewed",
+            "match_reason": str(row.get("reason", "manual_review")),
+        },
+        "category": "italy_fse",
+    }
+
+
+def apply_manual_stations(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    manual_ids = {str(row["id"]) for row in MANUAL_STATIONS}
+    manual_names = {normalize_name(str(row["name"])) for row in MANUAL_STATIONS}
+    kept = [
+        node for node in nodes
+        if str(node.get("id")) not in manual_ids
+        and normalize_name(str(node.get("tags", {}).get("name", ""))) not in manual_names
+    ]
+    kept.extend(manual_node(row) for row in MANUAL_STATIONS)
+    return sorted(kept, key=lambda node: str(node["id"]))
+
+
+def write_audit(nodes: list[dict[str, Any]], unresolved: list[dict[str, Any]]) -> None:
+    rows = []
+    for node in nodes:
+        tags = node.get("tags", {})
+        rows.append({
+            "id": node.get("id", ""),
+            "name": tags.get("name", ""),
+            "lat": node.get("lat", ""),
+            "lon": node.get("lon", ""),
+            "status": tags.get("match_status", "automatic_match"),
+            "reason": tags.get("match_reason", ""),
+        })
+    for node in unresolved:
+        tags = node.get("tags", {})
+        if str(node.get("id")) in {str(row["id"]) for row in MANUAL_STATIONS}:
+            continue
+        rows.append({
+            "id": node.get("id", ""),
+            "name": tags.get("name", ""),
+            "lat": node.get("lat", ""),
+            "lon": node.get("lon", ""),
+            "status": "excluded_or_unresolved",
+            "reason": tags.get("match_reason", ""),
+        })
+    write_csv(AUDIT_FILE, rows, ["id", "name", "lat", "lon", "status", "reason"])
+
+
+def generate_live() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     osm_stations = fetch_osm_stations()
     nodes: list[dict[str, Any]] = []
     unresolved_nodes: list[dict[str, Any]] = []
     matched_vt_ids: set[str] = set()
 
     for station_name in sorted(osm_stations):
+        if station_name in MANUAL_NAMES:
+            continue
         if station_name in EXCLUDED_OSM_NAMES:
             vt_station = fetch_viaggiatreno_station(station_name)
-            exclusion_reason = EXCLUDED_REASON_BY_OSM_NAME.get(
-                station_name,
-                "excluded_osm_station_with_vt_id",
-            )
+            reason = EXCLUDED_REASON_BY_OSM_NAME.get(station_name, "excluded_by_country_config")
             if vt_station is not None:
                 matched_vt_ids.add(vt_station["id"])
-                unresolved_nodes.append(build_unresolved_node(
-                    station_name,
-                    vt_station,
-                    exclusion_reason,
-                    osm_stations[station_name]
-                ))
-            else:
-                unresolved_nodes.append(build_unresolved_node(
-                    station_name,
-                    None,
-                    "excluded_osm_station_no_vt_id",
-                    osm_stations[station_name]
-                ))
+            unresolved_nodes.append(build_unresolved_node(
+                station_name, vt_station, reason, osm_stations[station_name]
+            ))
             continue
 
         vt_station = resolve_viaggiatreno_station(station_name)
         if vt_station is None:
-            fallback_station = fetch_viaggiatreno_station(station_name)
-            if fallback_station is not None:
-                matched_vt_ids.add(fallback_station["id"])
-                unresolved_nodes.append(build_unresolved_node(
-                    station_name,
-                    fallback_station,
-                    "missing_safe_osm_to_viaggiatreno_name_match",
-                    osm_stations[station_name]
-                ))
-            else:
-                unresolved_nodes.append(build_unresolved_node(
-                    station_name,
-                    None,
-                    "missing_viaggiatreno_id",
-                    osm_stations[station_name]
-                ))
+            fallback = fetch_viaggiatreno_station(station_name)
+            if fallback is not None:
+                matched_vt_ids.add(fallback["id"])
+            unresolved_nodes.append(build_unresolved_node(
+                station_name,
+                fallback,
+                "missing_safe_osm_to_viaggiatreno_name_match" if fallback else "missing_viaggiatreno_id",
+                osm_stations[station_name],
+            ))
             continue
-
         matched_vt_ids.add(vt_station["id"])
         nodes.append(build_node(station_name, osm_stations[station_name], vt_station))
 
-    # Add VT-only stations (VT has an ID but no corresponding OSM station)
-    vt_only_stations = fetch_vt_only_stations(matched_vt_ids)
-    for vt_station in vt_only_stations:
+    for vt_station in fetch_vt_only_stations(matched_vt_ids):
         localita = vt_station.get("localita", {})
         name = localita.get("nomeLungo") or localita.get("nomeBreve") or vt_station.get("codiceStazione", "")
         unresolved_nodes.append(build_unresolved_node(
@@ -469,21 +518,35 @@ def main() -> None:
             },
             "missing_osm_coordinates",
         ))
+    return apply_manual_stations(nodes), sorted(unresolved_nodes, key=lambda node: str(node["id"]))
 
-    nodes.sort(key=lambda node: node["id"])
-    unresolved_nodes.sort(key=lambda node: node["id"])
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as output_file:
-        for node in nodes:
-            output_file.write(json.dumps(node, ensure_ascii=False, separators=(",", ":")) + "\n")
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate and audit the FSE station dataset")
+    parser.add_argument("--offline", action="store_true", help="apply reviewed manual stations to the current JSON without network access")
+    args = parser.parse_args()
 
-    with open(UNRESOLVED_OUTPUT_FILE, "w", encoding="utf-8") as output_file:
-        for node in unresolved_nodes:
-            output_file.write(json.dumps(node, ensure_ascii=False, separators=(",", ":")) + "\n")
+    if args.offline:
+        nodes = apply_manual_stations(load_ndjson(OUTPUT_FILE))
+        unresolved: list[dict[str, Any]] = []
+    else:
+        nodes, unresolved = generate_live()
 
-    print(f"Generated {len(nodes)} FSE stations into {OUTPUT_FILE}")
-    print(f"Generated {len(unresolved_nodes)} unresolved FSE stations into {UNRESOLVED_OUTPUT_FILE}")
+    errors = validate_nodes(nodes)
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}")
+        return 1
+
+    write_ndjson(OUTPUT_FILE, nodes)
+    write_ndjson(UNRESOLVED_OUTPUT_FILE, unresolved)
+    write_audit(nodes, unresolved)
+    print(f"Wrote {len(nodes)} FSE stations to {OUTPUT_FILE}")
+    print(f"Wrote {len(unresolved)} unresolved/excluded records to {UNRESOLVED_OUTPUT_FILE}")
+    from italy_review import review_after_generation
+    review_after_generation("fse")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

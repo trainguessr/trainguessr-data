@@ -5,3 +5,4 @@ cache
 temp
 .direnv
 .env-secret
+__pycache__/

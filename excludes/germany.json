@@ -1,0 +1,45 @@
+{
+  "excluded": [],
+  "renamed": [
+    {
+      "from": "Westendorf",
+      "to": "Westedorf (Germany)"
+    },
+    {
+      "from": "Maria Rain",
+      "to": "Maria Rain (Germany)"
+    },
+    {
+      "from": "Haslach",
+      "to": "Haslach (Germany)"
+    },
+    {
+      "from": "Bellevue",
+      "to": "Bellevue (Germany)"
+    },
+    {
+      "from": "Speicher",
+      "to": "Speicher (Germany)"
+    },
+    {
+      "from": "Rietsheim",
+      "to": "Rietsheim (Germany)"
+    },
+    {
+      "from": "Brunnen",
+      "to": "Brunnen (Germany)"
+    },
+    {
+      "from": "Steinen",
+      "to": "Steinen (Germany)"
+    },
+    {
+      "from": "Langendorf",
+      "to": "Langendorf (Germany)"
+    },
+    {
+      "from": "Baden",
+      "to": "Baden (Germany)"
+    }
+  ]
+}

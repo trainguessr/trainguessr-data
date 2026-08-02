@@ -16,6 +16,8 @@ import json
 import sys
 import requests
 
+from common.config import load_excluded_ids
+
 output = []
 
 endpoint = "https://api.irail.be/stations/?format=json&lang=en"
@@ -45,13 +47,7 @@ for station in stations:
         "category": "belgium_all"
     })
 
-excludes = "../excludes/excluded-belgium.json"
-to_remove = set()
-with open(excludes, 'r', encoding='utf-8') as f:
-    # Assume same format as output
-    for line in f:
-        __id = json.loads(line)['id']
-        to_remove.add(__id)
+to_remove = load_excluded_ids("belgium")
 
 output_sorted = sorted(output, key=lambda x: x['tags']['name'])
 

@@ -1,0 +1,209 @@
+{"type":"node","id":"AIN","lat":60.453853,"lon":25.102241,"tags":{"name":"Ainola","uic":628,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ALV","lat":62.617769,"lon":23.600437,"tags":{"name":"Alavus","uic":284,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"AVP","lat":60.30435,"lon":24.956191,"tags":{"name":"Aviapolis","uic":1331,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"DRA","lat":59.990199,"lon":23.488607,"tags":{"name":"Dragsvik","uic":167,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ENO","lat":62.806375,"lon":30.141691,"tags":{"name":"Eno","uic":464,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"EPO","lat":60.205067,"lon":24.655992,"tags":{"name":"Espoo","uic":66,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"EPZ","lat":62.540677,"lon":24.191479,"tags":{"name":"Eläinpuisto-Zoo","uic":623,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HAA","lat":60.496261,"lon":25.13382,"tags":{"name":"Haarajoki","uic":13,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HH","lat":60.399764,"lon":25.477951,"tags":{"name":"Hinthaara","uic":561,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HK","lat":60.752588,"lon":24.919201,"tags":{"name":"Hikiä","uic":91,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HKH","lat":60.303067,"lon":25.049296,"tags":{"name":"Hiekkaharju","uic":556,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HKI","lat":60.171356,"lon":24.941444,"tags":{"name":"Helsinki asema","uic":1,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HKP","lat":59.830141,"lon":22.988361,"tags":{"name":"Hanko-Pohjoinen","uic":879,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HKS","lat":62.302807,"lon":26.478116,"tags":{"name":"Hankasalmi","uic":427,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HL","lat":61.002368,"lon":24.478851,"tags":{"name":"Hämeenlinna","uic":47,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HLS","lat":61.193088,"lon":26.789163,"tags":{"name":"Hillosensalmi","uic":988,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HM","lat":63.234321,"lon":22.876631,"tags":{"name":"Härmä","uic":300,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HNK","lat":59.826865,"lon":22.968291,"tags":{"name":"Hanko asema","uic":73,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HNN","lat":60.799132,"lon":25.494389,"tags":{"name":"Henna","uic":1164,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HNV","lat":62.382542,"lon":28.643419,"tags":{"name":"Heinävesi","uic":437,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HP","lat":60.919507,"lon":23.362536,"tags":{"name":"Humppila","uic":144,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HPJ","lat":63.754515,"lon":25.33434,"tags":{"name":"Haapajärvi","uic":330,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HPK","lat":62.246476,"lon":24.455067,"tags":{"name":"Haapamäki","uic":200,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HPL","lat":60.21835,"lon":24.893523,"tags":{"name":"Huopalahti","uic":72,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HR","lat":60.896944,"lon":25.475624,"tags":{"name":"Herrala","uic":96,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HSI","lat":60.408207,"lon":25.554663,"tags":{"name":"Haksi","uic":1015,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HVA","lat":61.309689,"lon":22.133261,"tags":{"name":"Harjavalta","uic":218,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HY","lat":60.63126,"lon":24.857481,"tags":{"name":"Hyvinkää asema","uic":30,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"HÖL","lat":63.454874,"lon":29.44413,"tags":{"name":"Höljäkkä","uic":938,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"IKO","lat":60.061511,"lon":23.93585,"tags":{"name":"Inkoo","uic":62,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"IKR","lat":60.696674,"lon":26.839178,"tags":{"name":"Inkeroinen","uic":530,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"IKY","lat":62.951072,"lon":22.394797,"tags":{"name":"Isokyrö","uic":295,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ILA","lat":60.207808,"lon":24.920829,"tags":{"name":"Ilmala asema","uic":9,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ILM","lat":63.560099,"lon":27.201109,"tags":{"name":"Iisalmi","uic":420,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"IMR","lat":61.195914,"lon":28.776017,"tags":{"name":"Imatra asema","uic":603,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ITA","lat":61.090616,"lon":24.140789,"tags":{"name":"Iittala","uic":154,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JJ","lat":61.796788,"lon":24.365046,"tags":{"name":"Juupajoki","uic":627,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JK","lat":60.552798,"lon":24.970682,"tags":{"name":"Jokela","uic":28,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JNS","lat":62.599536,"lon":29.777033,"tags":{"name":"Joensuu asema","uic":460,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JP","lat":60.473684,"lon":25.090796,"tags":{"name":"Järvenpää asema","uic":25,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JR","lat":60.867325,"lon":25.274659,"tags":{"name":"Järvelä","uic":95,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JRS","lat":60.137885,"lon":24.512776,"tags":{"name":"Jorvas","uic":578,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JTS","lat":61.120291,"lon":28.488252,"tags":{"name":"Joutseno","uic":499,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JY","lat":62.241455,"lon":25.754984,"tags":{"name":"Jyväskylä","uic":240,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"JÄS","lat":61.865627,"lon":25.173294,"tags":{"name":"Jämsä","uic":204,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KA","lat":60.885347,"lon":26.329366,"tags":{"name":"Kausala","uic":477,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KAJ","lat":64.219716,"lon":27.738374,"tags":{"name":"Kajaani","uic":387,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KAN","lat":60.239562,"lon":24.877004,"tags":{"name":"Kannelmäki","uic":658,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KE","lat":60.404297,"lon":25.106028,"tags":{"name":"Kerava asema","uic":20,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KEA","lat":60.216573,"lon":24.75564,"tags":{"name":"Kera","uic":621,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KEM","lat":65.736749,"lon":24.574339,"tags":{"name":"Kemi asema","uic":347,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KEU","lat":62.255309,"lon":24.707325,"tags":{"name":"Keuruu","uic":235,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KHA","lat":63.099643,"lon":23.0353,"tags":{"name":"Kauhava","uic":299,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KIA","lat":60.406719,"lon":25.613204,"tags":{"name":"Kiiala","uic":1113,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KIL","lat":60.217939,"lon":24.782393,"tags":{"name":"Kilo","uic":580,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KIT","lat":62.142774,"lon":30.049014,"tags":{"name":"Kitee","uic":453,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KIÄ","lat":61.861412,"lon":29.114053,"tags":{"name":"Kerimäki","uic":522,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KJÄ","lat":66.724273,"lon":27.403715,"tags":{"name":"Kemijärvi","uic":367,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KKI","lat":61.254199,"lon":22.30335,"tags":{"name":"Kokemäki","uic":170,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KKN","lat":60.119648,"lon":24.438814,"tags":{"name":"Kirkkonummi","uic":63,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KLH","lat":60.189456,"lon":24.600354,"tags":{"name":"Kauklahti asema","uic":65,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KLI","lat":67.348706,"lon":23.836254,"tags":{"name":"Kolari","uic":358,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KLN","lat":60.508258,"lon":26.895812,"tags":{"name":"Kyminlinna","uic":981,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KLO","lat":62.128049,"lon":24.507444,"tags":{"name":"Kolho","uic":199,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KML","lat":64.912904,"lon":25.514546,"tags":{"name":"Kempele","uic":769,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KNI","lat":60.211939,"lon":24.730884,"tags":{"name":"Kauniainen","uic":67,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KNS","lat":63.898425,"lon":23.915361,"tags":{"name":"Kannus","uic":317,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KOH","lat":63.514758,"lon":29.287006,"tags":{"name":"Kohtavaara","uic":848,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KOK","lat":63.834429,"lon":23.131096,"tags":{"name":"Kokkola","uic":312,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KON","lat":64.338219,"lon":28.114694,"tags":{"name":"Kontiomäki","uic":390,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KR","lat":60.068724,"lon":23.66126,"tags":{"name":"Karjaa","uic":60,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KRA","lat":60.847067,"lon":26.60131,"tags":{"name":"Koria","uic":478,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KRS","lat":60.35129,"lon":25.078507,"tags":{"name":"Korso","uic":19,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KRU","lat":61.443314,"lon":23.049129,"tags":{"name":"Karkku","uic":178,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KRV","lat":63.640907,"lon":26.611334,"tags":{"name":"Kiuruvesi","uic":417,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KTA","lat":60.464388,"lon":26.928611,"tags":{"name":"Kotka asema","uic":532,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KTI","lat":61.887467,"lon":29.802865,"tags":{"name":"Kesälahti","uic":966,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KTS","lat":60.466492,"lon":26.934952,"tags":{"name":"Kotkan satama","uic":644,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KTÖ","lat":60.314607,"lon":24.846938,"tags":{"name":"Kivistö","uic":1330,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KUO","lat":62.897218,"lon":27.679581,"tags":{"name":"Kuopio asema","uic":408,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KUT","lat":60.450274,"lon":22.297114,"tags":{"name":"Kupittaa","uic":126,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KV","lat":60.865613,"lon":26.704588,"tags":{"name":"Kouvola asema","uic":480,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KVH","lat":60.207144,"lon":24.701273,"tags":{"name":"Koivuhovi","uic":675,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KVY","lat":60.323284,"lon":25.059797,"tags":{"name":"Koivukylä","uic":559,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KY","lat":60.539229,"lon":26.90714,"tags":{"name":"Kymi","uic":534,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KYN","lat":63.361403,"lon":29.75243,"tags":{"name":"Kylänlahti","uic":937,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KÄP","lat":60.22017,"lon":24.946034,"tags":{"name":"Käpylä","uic":977,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LAA","lat":60.848954,"lon":25.17423,"tags":{"name":"Lappila","uic":94,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LAI","lat":62.990138,"lon":22.003444,"tags":{"name":"Laihia","uic":293,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LEN","lat":60.315732,"lon":24.968343,"tags":{"name":"Lentoasema","uic":1332,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LH","lat":60.97647,"lon":25.657397,"tags":{"name":"Lahti","uic":100,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LIS","lat":63.318195,"lon":30.016394,"tags":{"name":"Lieksa","uic":468,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LM","lat":60.847378,"lon":23.060408,"tags":{"name":"Loimaa","uic":142,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LNA","lat":63.360666,"lon":27.393552,"tags":{"name":"Lapinlahti","uic":416,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LNÄ","lat":60.322641,"lon":25.039419,"tags":{"name":"Leinelä","uic":1333,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LOH","lat":60.270798,"lon":24.853299,"tags":{"name":"Louhela","uic":661,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LPA","lat":62.971338,"lon":23.015112,"tags":{"name":"Lapua","uic":298,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LPO","lat":59.904082,"lon":23.236919,"tags":{"name":"Lappohja","uic":75,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LPV","lat":60.21948,"lon":24.813541,"tags":{"name":"Leppävaara","uic":68,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LPÄ","lat":61.314233,"lon":23.755094,"tags":{"name":"Lempäälä","uic":156,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LR","lat":61.047973,"lon":28.195304,"tags":{"name":"Lappeenranta","uic":495,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LUS","lat":61.800548,"lon":29.322269,"tags":{"name":"Lusto","uic":690,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"LVT","lat":62.259872,"lon":26.195893,"tags":{"name":"Lievestuore","uic":246,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MAS","lat":60.158661,"lon":24.539106,"tags":{"name":"Masala","uic":64,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MH","lat":64.805398,"lon":25.991997,"tags":{"name":"Muhos","uic":375,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MI","lat":61.687818,"lon":27.277969,"tags":{"name":"Mikkeli","uic":546,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MIS","lat":66.617923,"lon":26.687235,"tags":{"name":"Misi","uic":366,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MKI","lat":60.771013,"lon":26.78669,"tags":{"name":"Myllykoski","uic":536,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ML","lat":60.25166,"lon":25.011468,"tags":{"name":"Malmi","uic":17,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MLA","lat":60.821177,"lon":25.075141,"tags":{"name":"Mommila","uic":93,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MLO","lat":60.249316,"lon":24.861283,"tags":{"name":"Malminkartano","uic":659,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MLÄ","lat":60.647258,"lon":25.307475,"tags":{"name":"Mäntsälä","uic":27,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MR","lat":61.421104,"lon":26.881746,"tags":{"name":"Mäntyharju","uic":544,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MRL","lat":60.27808,"lon":24.852604,"tags":{"name":"Martinlaakso","uic":662,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MUL","lat":66.370875,"lon":25.37511,"tags":{"name":"Muurola","uic":363,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MY","lat":62.524753,"lon":24.280965,"tags":{"name":"Myllymäki","uic":263,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MYR","lat":60.261327,"lon":24.854751,"tags":{"name":"Myyrmäki","uic":660,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"MÄK","lat":60.22131,"lon":24.842976,"tags":{"name":"Mäkkylä","uic":693,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"NLÄ","lat":60.38237,"lon":25.26654,"tags":{"name":"Nikkilä","uic":22,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"NOA","lat":61.481059,"lon":23.49917,"tags":{"name":"Nokia","uic":181,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"NRM","lat":63.541078,"lon":29.137234,"tags":{"name":"Nurmes","uic":472,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"NSL","lat":60.935567,"lon":25.935467,"tags":{"name":"Nastola","uic":595,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"NVL","lat":63.936389,"lon":24.960768,"tags":{"name":"Nivala","uic":328,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OI","lat":60.789806,"lon":25.021316,"tags":{"name":"Oitti","uic":92,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OL","lat":65.012409,"lon":25.486121,"tags":{"name":"Oulu asema","uic":370,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OLK","lat":60.229,"lon":24.967676,"tags":{"name":"Oulunkylä","uic":15,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OU","lat":64.269509,"lon":24.82098,"tags":{"name":"Oulainen","uic":322,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OV","lat":61.650095,"lon":24.368047,"tags":{"name":"Orivesi","uic":190,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"OVK","lat":61.673906,"lon":24.369838,"tags":{"name":"Orivesi keskusta","uic":1316,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PAR","lat":61.55855,"lon":29.502884,"tags":{"name":"Parikkala","uic":510,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PAU","lat":60.208303,"lon":24.933169,"tags":{"name":"Pasila autojuna-asema","uic":1328,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PEL","lat":66.78466,"lon":23.993374,"tags":{"name":"Pello","uic":356,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PH","lat":62.346234,"lon":24.395608,"tags":{"name":"Pihlajavesi","uic":261,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PHÄ","lat":63.682935,"lon":25.982615,"tags":{"name":"Pyhäsalmi","uic":331,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PJM","lat":60.223412,"lon":24.859649,"tags":{"name":"Pitäjänmäki","uic":69,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PKO","lat":62.051967,"lon":23.078439,"tags":{"name":"Parkano","uic":215,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PKY","lat":61.862291,"lon":28.924534,"tags":{"name":"Pääskylahti","uic":519,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PLA","lat":60.276313,"lon":25.036683,"tags":{"name":"Puistola","uic":553,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PM","lat":62.301253,"lon":27.16753,"tags":{"name":"Pieksämäki asema","uic":400,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PMK","lat":60.242216,"lon":24.993288,"tags":{"name":"Pukinmäki","uic":551,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PNÄ","lat":63.595382,"lon":22.790363,"tags":{"name":"Pännäinen","uic":305,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"POH","lat":60.230156,"lon":24.883319,"tags":{"name":"Pohjois-Haaga","uic":657,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PRI","lat":61.477212,"lon":21.786607,"tags":{"name":"Pori","uic":220,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PRL","lat":61.049922,"lon":24.366497,"tags":{"name":"Parola","uic":49,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PRV","lat":60.396602,"lon":25.648462,"tags":{"name":"Porvoo","uic":23,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PSL","lat":60.198689,"lon":24.933521,"tags":{"name":"Pasila asema","uic":10,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PTI","lat":60.479685,"lon":26.919372,"tags":{"name":"Paimenportti","uic":768,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PTO","lat":64.40061,"lon":27.82218,"tags":{"name":"Paltamo","uic":379,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PUN","lat":61.761151,"lon":29.382354,"tags":{"name":"Punkaharju","uic":517,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PUR","lat":60.500329,"lon":25.050225,"tags":{"name":"Purola","uic":564,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PVI","lat":62.256974,"lon":25.189337,"tags":{"name":"Petäjävesi","uic":237,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"REE","lat":61.803308,"lon":29.294294,"tags":{"name":"Retretti","uic":793,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"RI","lat":60.736078,"lon":24.781241,"tags":{"name":"Riihimäki asema","uic":40,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"RKI","lat":64.660373,"lon":25.0982,"tags":{"name":"Ruukki","uic":337,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"RKL","lat":60.332871,"lon":25.068666,"tags":{"name":"Rekola","uic":554,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"RNN","lat":63.602052,"lon":26.886487,"tags":{"name":"Runni","uic":886,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ROI","lat":66.497675,"lon":25.705329,"tags":{"name":"Rovaniemi","uic":364,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"RY","lat":60.818048,"lon":24.758186,"tags":{"name":"Ryttylä","uic":42,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SAU","lat":60.487305,"lon":25.065568,"tags":{"name":"Saunakallio","uic":806,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SAV","lat":60.381296,"lon":25.097803,"tags":{"name":"Savio","uic":555,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SGY","lat":59.926668,"lon":23.312403,"tags":{"name":"Skogby","uic":817,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SIJ","lat":63.074953,"lon":27.666561,"tags":{"name":"Siilinjärvi asema","uic":413,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SK","lat":62.792016,"lon":22.844217,"tags":{"name":"Seinäjoki asema","uic":280,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SKV","lat":63.864618,"lon":27.422313,"tags":{"name":"Sukeva","uic":424,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SL","lat":61.8689,"lon":28.888266,"tags":{"name":"Savonlinna asema","uic":521,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SLO","lat":60.384777,"lon":23.121448,"tags":{"name":"Salo","uic":55,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SNJ","lat":62.623707,"lon":27.124495,"tags":{"name":"Suonenjoki","uic":404,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"SPL","lat":61.424787,"lon":29.371696,"tags":{"name":"Simpele","uic":507,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"STA","lat":59.875008,"lon":23.121052,"tags":{"name":"Santala","uic":827,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"STI","lat":60.140648,"lon":24.221671,"tags":{"name":"Siuntio","uic":576,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TK","lat":63.000773,"lon":22.171462,"tags":{"name":"Tervajoki","uic":294,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TKL","lat":60.292166,"lon":25.044055,"tags":{"name":"Tikkurila asema","uic":18,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TKU","lat":60.456488,"lon":22.260867,"tags":{"name":"Turku asema","uic":130,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TL","lat":61.170611,"lon":23.860905,"tags":{"name":"Toijala","uic":150,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TMS","lat":59.979553,"lon":23.443501,"tags":{"name":"Tammisaari","uic":76,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TNA","lat":60.2639,"lon":25.030033,"tags":{"name":"Tapanila","uic":552,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TOL","lat":60.118558,"lon":24.472724,"tags":{"name":"Tolsa","uic":830,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TOR","lat":65.84534,"lon":24.163576,"tags":{"name":"Tornio","uic":351,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TPE","lat":61.498236,"lon":23.773454,"tags":{"name":"Tampere asema","uic":160,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TRI","lat":65.850823,"lon":24.18508,"tags":{"name":"Tornio-Itäinen","uic":1318,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TRL","lat":60.20605,"lon":24.681767,"tags":{"name":"Tuomarila","uic":579,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TRV","lat":66.081811,"lon":24.772291,"tags":{"name":"Tervola","uic":361,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TSL","lat":60.573333,"lon":26.954701,"tags":{"name":"Tavastila","uic":837,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TSO","lat":61.503363,"lon":23.630271,"tags":{"name":"Tesoma","uic":1359,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TU","lat":60.918387,"lon":24.63865,"tags":{"name":"Turenki","uic":44,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TUS","lat":60.434245,"lon":22.226894,"tags":{"name":"Turku satama","uic":135,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"TUU","lat":62.605349,"lon":23.722323,"tags":{"name":"Tuuri","uic":283,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"UIM","lat":62.912482,"lon":30.241497,"tags":{"name":"Uimaharju","uic":465,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"UKÄ","lat":60.927722,"lon":25.993966,"tags":{"name":"Uusikylä","uic":105,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"UTJ","lat":64.758926,"lon":26.413565,"tags":{"name":"Utajärvi","uic":376,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VAA","lat":64.558015,"lon":26.842702,"tags":{"name":"Vaala","uic":377,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VAR","lat":62.312389,"lon":27.873415,"tags":{"name":"Varkaus","uic":432,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VEH","lat":60.295054,"lon":24.843716,"tags":{"name":"Vehkala","uic":1337,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VIA","lat":61.211787,"lon":23.770683,"tags":{"name":"Viiala","uic":155,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VIH","lat":62.380739,"lon":29.029282,"tags":{"name":"Vihtari","uic":438,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VKS","lat":60.286119,"lon":24.847966,"tags":{"name":"Vantaankoski","uic":839,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VLH","lat":60.946379,"lon":25.833724,"tags":{"name":"Villähde","uic":104,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VLP","lat":62.025888,"lon":24.506956,"tags":{"name":"Vilppula","uic":196,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VMA","lat":61.349519,"lon":22.887664,"tags":{"name":"Vammala","uic":176,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VMO","lat":60.222028,"lon":24.87583,"tags":{"name":"Valimo","uic":847,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VNA","lat":60.863835,"lon":28.303201,"tags":{"name":"Vainikkala asema","uic":492,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VNJ","lat":62.641687,"lon":29.237166,"tags":{"name":"Viinijärvi","uic":440,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VS","lat":63.097786,"lon":21.621824,"tags":{"name":"Vaasa","uic":288,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VSL","lat":63.152636,"lon":29.99331,"tags":{"name":"Vuonislahti","uic":467,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VTI","lat":64.48451,"lon":24.993624,"tags":{"name":"Vihanti","uic":334,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"YST","lat":62.917801,"lon":22.532729,"tags":{"name":"Ylistaro","uic":296,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"YTR","lat":66.324438,"lon":23.682508,"tags":{"name":"Ylitornio","uic":789,"station_type":"STOPPING_POINT","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"YV","lat":64.071898,"lon":24.540593,"tags":{"name":"Ylivieska","uic":320,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"ÄHT","lat":62.553265,"lon":24.064036,"tags":{"name":"Ähtäri","uic":265,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}

@@ -1,0 +1,25 @@
+{
+  "excluded": [],
+  "renamed": [
+    {
+      "from": "Lison",
+      "to": "Lison (France)"
+    },
+    {
+      "from": "Fors",
+      "to": "Fors (France)"
+    },
+    {
+      "from": "Dormans",
+      "to": "Dormans (France)"
+    },
+    {
+      "from": "Bellevue",
+      "to": "Bellevue (France)"
+    },
+    {
+      "from": "Magenta",
+      "to": "Magenta (Paris)"
+    }
+  ]
+}

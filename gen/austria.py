@@ -4,6 +4,8 @@ import json
 import sys
 import os
 
+from common.config import load_rename_map
+
 def load_rename_mapping(rename_file):
     """
     Load the rename mapping from a text file.
@@ -124,7 +126,7 @@ if __name__ == "__main__":
 
     # Load rename mapping
     print("Loading rename mapping...")
-    rename_map = load_rename_mapping("../excludes/renamed-austria.txt")
+    rename_map = load_rename_map("austria")
     print(f"Loaded {len(rename_map)} rename rules")
 
     convert_from_json(input_file, output_file, rename_map)

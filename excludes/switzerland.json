@@ -1,0 +1,49 @@
+{
+  "excluded": [],
+  "renamed": [
+    {
+      "from": "Feldbach",
+      "to": "Feldbach (Switzerland)"
+    },
+    {
+      "from": "Baden",
+      "to": "Baden (Switzerland)"
+    },
+    {
+      "from": "Stans",
+      "to": "Stans (Switzerland)"
+    },
+    {
+      "from": "Langendorf",
+      "to": "Langendorf (Switzerland)"
+    },
+    {
+      "from": "Steinen",
+      "to": "Steinen (Switzerland)"
+    },
+    {
+      "from": "Brunnen",
+      "to": "Brunnen (Switzerland)"
+    },
+    {
+      "from": "Rietheim",
+      "to": "Rietheim (Switzerland)"
+    },
+    {
+      "from": "Horn",
+      "to": "Horn (Switzerland)"
+    },
+    {
+      "from": "Ramsen",
+      "to": "Ramsen (Switzerland)"
+    },
+    {
+      "from": "Speicher",
+      "to": "Speicher (Switzerland)"
+    },
+    {
+      "from": "Guarda",
+      "to": "Guarda (Switzerland)"
+    }
+  ]
+}
