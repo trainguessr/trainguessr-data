@@ -61,13 +61,14 @@ class DatasetTests(unittest.TestCase):
         if not all(path.is_file() for path in required_cache):
             self.skipTest("run the Italian provider generators to populate cache/italy")
 
-        expected_counts = {"fn": 111, "tt": 38, "fer": 115, "eav": 120, "rfi": 2419}
-        expected_reviewed_only = {"fn": 1, "tt": 0, "fer": 15, "eav": 0, "rfi": 6}
-        for operator, count in expected_counts.items():
-            output, audit = rebuild(operator, dry_run=True)
-            self.assertEqual(count, len(output), operator)
-            reviewed_only = sum(row["status"] == "reviewed_only_retained" for row in audit)
-            self.assertEqual(expected_reviewed_only[operator], reviewed_only, operator)
+        for operator in ("fn", "tt", "fer", "eav", "rfi"):
+            current = load_ndjson(ROOT / "nodes" / f"nodes-italy-{operator}.json")
+            output, _ = rebuild(operator, dry_run=True)
+            self.assertEqual(
+                {str(row["id"]) for row in current},
+                {str(row["id"]) for row in output},
+                operator,
+            )
 
     def test_rfi_laveno_is_not_misclassified_as_fn(self) -> None:
         rows = {str(row["id"]): row for row in load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json")}

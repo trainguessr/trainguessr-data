@@ -1636,7 +1636,7 @@
       "status": "reviewed_only_retained",
       "source_name": "",
       "reviewed_name": "Palermo Porto",
-      "decision": "excluded"
+      "decision": "keep_reviewed_station"
     },
     {
       "operator": "eav",

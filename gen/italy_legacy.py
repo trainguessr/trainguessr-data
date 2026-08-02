@@ -57,15 +57,14 @@ def node_path(operator: str) -> Path:
 
 
 def reviewed_nodes_path(operator: str) -> Path:
-    """Return the reviewed cache seed, falling back to the committed nodes."""
+    """Use the tracked reviewed dataset, with cache as a bootstrap fallback."""
+    committed = node_path(operator)
+    if committed.exists():
+        return committed
 
     cached = cache_path(operator, "reviewed", "nodes.json")
     if cached.exists():
         return cached
-
-    committed = node_path(operator)
-    if committed.exists():
-        return committed
 
     raise FileNotFoundError(
         f"No reviewed seed exists for {operator}. Expected either:\n"
@@ -421,6 +420,12 @@ def rebuild(
         str(station_id)
         for station_id in load_excluded_ids("italy", operator)
     }
+    excluded.update(
+        str(review.get("id"))
+        for review in italy_config.get("reviews", [])
+        if review.get("operator") == operator
+        and review.get("decision") == "excluded"
+    )
 
     output: list[dict] = []
     audit: list[dict] = []
