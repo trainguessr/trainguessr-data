@@ -5,7 +5,7 @@ import csv
 import sys
 import os
 
-from common.config import load_rename_map
+from common.config import load_country_config, load_excluded_ids, load_rename_map
 
 def load_rename_mapping(rename_file):
     """
@@ -27,15 +27,15 @@ def load_rename_mapping(rename_file):
                     rename_map[old_name] = new_name
     return rename_map
 
-def convert_from_json(input_path, output_path, rename_map):
+def convert_from_json(input_path, output_path, rename_map, primary_uic, excluded_ids):
     with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
         data = json.load(infile)
         for feature in data:
             try:
                 # int(feature.get("codes_uic", 0)),
-                codes_uic = feature.get("codes_uic", "").split(";")
-                id1 = int(codes_uic[0])
-                further_ids = codes_uic[1:] if len(codes_uic) > 1 else []
+                codes_uic = [code.strip() for code in feature.get("codes_uic", "").split(";") if code.strip()]
+                if not codes_uic or codes_uic[0] in excluded_ids:
+                    continue
                 geo = feature.get("position_geographique", {})
                 if not geo:
                     print(f"Skipping feature with missing geographic data: {feature}")
@@ -48,6 +48,12 @@ def convert_from_json(input_path, output_path, rename_map):
                 # Apply rename mapping if needed
                 if nom in rename_map:
                     nom = rename_map[nom]
+
+                primary_id = primary_uic.get(nom, codes_uic[0])
+                if primary_id not in codes_uic:
+                    raise ValueError(f"Primary UIC {primary_id} is not listed for {nom}")
+                id1 = int(primary_id)
+                further_ids = [code for code in codes_uic if code != primary_id]
                 
                 node = {
                     "type": "node",
@@ -101,7 +107,10 @@ if __name__ == "__main__":
     # Load rename mapping
     print("Loading rename mapping...")
     rename_map = load_rename_map("france")
+    config = load_country_config("france")
+    primary_uic = config.get("primary_uic", {})
+    excluded_ids = load_excluded_ids("france")
     print(f"Loaded {len(rename_map)} rename rules")
 
-    convert_from_json(input_file, output_file, rename_map)
+    convert_from_json(input_file, output_file, rename_map, primary_uic, excluded_ids)
     print(f"Conversion complete. Output written to {output_file}")

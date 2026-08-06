@@ -1,5 +1,26 @@
 {
-  "excluded": [],
+  "excluded": [
+    {
+      "id": "87382812",
+      "name": "Mareil-Marly",
+      "reason": "No listed UIC code is exposed by the SNCF timetable API"
+    },
+    {
+      "id": "87393876",
+      "name": "Noisy-le-Roi",
+      "reason": "No listed UIC code is exposed by the SNCF timetable API"
+    },
+    {
+      "id": "87733675",
+      "name": "Saint-Germain-en-Laye Bel-Air – Fourqueux",
+      "reason": "No listed UIC code is exposed by the SNCF timetable API"
+    }
+  ],
+  "primary_uic": {
+    "Avignon TGV": "87318964",
+    "Paris Gare du Nord": "87271007",
+    "Paris Montparnasse": "87391003"
+  },
   "renamed": [
     {
       "from": "Lison",
