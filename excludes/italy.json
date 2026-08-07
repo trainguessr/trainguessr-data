@@ -571,6 +571,24 @@
       "id": "935",
       "name": "Casalnuovo (RFI)",
       "reason": "excluded_during_interactive_review"
+    },
+    {
+      "operator": "eav",
+      "id": "101",
+      "name": "Bivio Botteghelle",
+      "reason": "infrastructure_junction_not_passenger_station"
+    },
+    {
+      "operator": "eav",
+      "id": "102",
+      "name": "Bivio Madonnelle",
+      "reason": "infrastructure_junction_not_passenger_station"
+    },
+    {
+      "operator": "rfi",
+      "id": "2378",
+      "name": "Roma Nomentana Linea Merci",
+      "reason": "freight_line_not_open_to_passenger_service"
     }
   ],
   "renamed": [

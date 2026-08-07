@@ -51,6 +51,22 @@ class DatasetTests(unittest.TestCase):
         names = [str(row["tags"]["name"]) for row in rows]
         self.assertEqual(len(names), len(set(names)))
 
+    def test_reviewed_non_station_records_are_excluded(self) -> None:
+        expected_absent = {
+            "nodes-sweden.json": {
+                "740000622", "740001552", "740011647", "740012918",
+                "740013971", "740015886", "740020483", "740020490",
+                "740032989", "740053481", "740055861", "740062322",
+                "740069608", "740073734",
+            },
+            "nodes-italy-eav.json": {"101", "102"},
+            "nodes-italy-rfi.json": {"2378"},
+        }
+        for filename, excluded_ids in expected_absent.items():
+            rows = load_ndjson(ROOT / "nodes" / filename)
+            active_ids = {str(row["id"]) for row in rows}
+            self.assertTrue(excluded_ids.isdisjoint(active_ids), filename)
+
     def test_legacy_parsers_rebuild_active_json(self) -> None:
         required_cache = [
             ROOT / "cache" / "italy" / "fn" / "derived" / "stations.csv",

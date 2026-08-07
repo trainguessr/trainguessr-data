@@ -1146,6 +1146,76 @@
       "id": 740076297,
       "name": "Njurunda Resec",
       "reason": "duplicate_of_740001622"
+    },
+    {
+      "id": 740000622,
+      "name": "Cityterminalen",
+      "reason": "bus_terminal_not_rail_station"
+    },
+    {
+      "id": 740001552,
+      "name": "Svenstavik busstation",
+      "reason": "bus_station_not_rail_station"
+    },
+    {
+      "id": 740011647,
+      "name": "Torsåker",
+      "reason": "non_rail_alias_of_740001563"
+    },
+    {
+      "id": 740012918,
+      "name": "Fors centrum",
+      "reason": "bus_stop_not_rail_station"
+    },
+    {
+      "id": 740013971,
+      "name": "Mullsjö",
+      "reason": "non_sellable_alias_of_740000215"
+    },
+    {
+      "id": 740015886,
+      "name": "Malmö Östervärn",
+      "reason": "non_sellable_alias_of_740001483"
+    },
+    {
+      "id": 740020483,
+      "name": "Nils Ericson Terminalen",
+      "reason": "bus_terminal_not_rail_station"
+    },
+    {
+      "id": 740020490,
+      "name": "Åkareplatsen",
+      "reason": "bus_terminal_not_rail_station"
+    },
+    {
+      "id": 740032989,
+      "name": "Brinellgymnasiet",
+      "reason": "bus_stop_alias_near_740001443"
+    },
+    {
+      "id": 740053481,
+      "name": "Tjustskolan",
+      "reason": "non_sellable_alias_of_740000522"
+    },
+    {
+      "id": 740055861,
+      "name": "Stenstorp",
+      "reason": "non_sellable_alias_of_740000924"
+    },
+    {
+      "id": 740062322,
+      "name": "Habo",
+      "reason": "non_sellable_alias_of_740000231"
+    },
+    {
+      "id": 740069608,
+      "name": "Fors (Sweden)",
+      "reason": "non_sellable_alias_of_740000704"
+    },
+    {
+      "id": 740073734,
+      "name": "Halmstad Bredgatan",
+      "reason": "bus_stop_not_rail_station"
     }
   ],
   "renamed": [

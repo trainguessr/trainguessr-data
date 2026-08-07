@@ -1,7 +1,5 @@
 {"type":"node","id":"1","lat":40.8491254,"lon":14.2694638,"tags":{"name":"Napoli Porta Nolana","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"224814381"},"category":"italy_eav"}
 {"type":"node","id":"10","lat":40.8621065,"lon":14.3842104,"tags":{"name":"Guindazzi","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"281159312"},"category":"italy_eav"}
-{"type":"node","id":"101","lat":40.8721916,"lon":14.3155966,"tags":{"name":"Bivio Botteghelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11406225059"},"category":"italy_eav"}
-{"type":"node","id":"102","lat":40.8710751,"lon":14.3348515,"tags":{"name":"Bivio Madonnelle","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"11406225006"},"category":"italy_eav"}
 {"type":"node","id":"107","lat":40.829108,"lon":14.117681,"tags":{"name":"Pozzuoli","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"1359337154"},"category":"italy_eav"}
 {"type":"node","id":"109","lat":40.8802969,"lon":14.1361829,"tags":{"name":"Quarto","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"972225049"},"category":"italy_eav"}
 {"type":"node","id":"11","lat":40.8673467,"lon":14.3894802,"tags":{"name":"Madonna dell'Arco","operator":"Ente Autonomo Volturno","line":"EAV","osm_id":"253939142"},"category":"italy_eav"}
