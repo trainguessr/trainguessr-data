@@ -37,9 +37,7 @@ Finnish passenger stations can be generated from Fintraffic's official station m
 
 The German railway system is a bit of a mess. The Deutsche Bahn API is not public, but it is possible to get the real time departures from the DB website: [DB](https://www.bahnhof.de/api/boards). The list of stations is obtained from the DB open data website: [DB Open Data](https://data.deutschebahn.com/). It thankfully uses UIC codes.
 
-To get started, we rely on the `db-stations` Node.js package to get the list of stations. Thus, first run the `gen/germany.sh` script to download the package and extract the data. It will be stored in the `cache/germany/full.json` and `cache/germany/data.json` files. To use the script, make sure you have Docker installed.
-
-Then, cd into `gen/` and run `python3 germany.py`.
+Run `python3 gen/germany.py`. It automatically downloads the current `db-stations` package from npm when `cache/germany/full.json` is missing, validates and caches the source files, and reports the age of an existing cache on every run. `gen/germany.sh` is retained as a compatibility wrapper.
 
 ### Italy
 

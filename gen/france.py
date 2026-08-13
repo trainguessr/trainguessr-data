@@ -4,6 +4,7 @@ import json
 import csv
 import sys
 import os
+from datetime import datetime, timezone
 
 from common.config import load_country_config, load_excluded_ids, load_rename_map
 
@@ -105,6 +106,9 @@ if __name__ == "__main__":
         data = response.text
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(data)
+    else:
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
+        print(f"Using cached SNCF data (age: {int(age.total_seconds() // 86400)} days)")
 
     # Load rename mapping
     print("Loading rename mapping...")

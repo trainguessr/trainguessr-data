@@ -163,6 +163,7 @@ if __name__ == "__main__":
     import requests
     import zipfile
     import subprocess
+    from datetime import datetime, timezone
     
     cache_dir = "../cache"
     zip_file = os.path.join(cache_dir, "sweden.zip")
@@ -194,6 +195,9 @@ if __name__ == "__main__":
         with open(zip_file, 'wb') as f:
             f.write(response.content)
         print(f"Downloaded to {zip_file}")
+    else:
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(zip_file), timezone.utc)
+        print(f"Using cached Sweden source (age: {int(age.total_seconds() // 86400)} days)")
 
     # Extract the zip file
     if not os.path.exists(xml_file):

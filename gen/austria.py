@@ -72,6 +72,15 @@ def _float(value: Any) -> float:
     return float(str(value).strip().replace(",", "."))
 
 
+def _cache_age(path: Path) -> str:
+    seconds = max(0, int((datetime.now().timestamp() - path.stat().st_mtime)))
+    if seconds < 3600:
+        return f"{seconds // 60} minutes"
+    if seconds < 86400:
+        return f"{seconds // 3600} hours"
+    return f"{seconds // 86400} days"
+
+
 def _normal_name(value: str) -> str:
     value = html.unescape(value).casefold().replace("ß", "ss")
     value = re.sub(r"\b(?:bahnhof|bahnhst|hbf)\b", " ", value)
@@ -103,6 +112,7 @@ def _download_geonetz(session: requests.Session, timeout: int = 60) -> Path:
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     filtered = CACHE_DIR / "austria_stations_filtered.json"
     if filtered.is_file():
+        print(f"Using cached GeoNetz station data (age: {_cache_age(filtered)})")
         return filtered
 
     response = session.get(GEONETZ_URL, timeout=timeout)
@@ -279,12 +289,14 @@ def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_
         if not years:
             raise ValueError("MVO metadata exposes no active dataset year")
         log.info("Downloading authenticated MVO production snapshot for %s", years[0])
-        return _download_to_cache(
+        path = _download_to_cache(
             session,
             MVO_FILE_URL.format(dataset_id=dataset_id, year=years[0]),
             output,
             headers={"Authorization": f"Bearer {token}", "Accept": "application/zip"},
         )
+        print(f"Cached authenticated MVO snapshot (age: {_cache_age(path)})")
+        return path
 
     catalogue = session.get(MVO_CATALOGUE_URL, timeout=30)
     catalogue.raise_for_status()
@@ -293,7 +305,9 @@ def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_
         raise ValueError("Official MVO catalogue page contains no public sample ZIP")
     sample_url = urljoin(MVO_CATALOGUE_URL, html.unescape(match.group(1)))
     log.info("Downloading public MVO catalogue sample %s", sample_url)
-    return _download_to_cache(session, sample_url, output)
+    path = _download_to_cache(session, sample_url, output)
+    print(f"Cached public MVO sample (age: {_cache_age(path)})")
+    return path
 
 
 def validate_mvo_wgs84(rows: Iterable[dict[str, Any]]) -> None:

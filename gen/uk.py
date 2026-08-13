@@ -81,6 +81,7 @@ def convert_uk_stations(input_path, output_path, rename_map):
 if __name__ == "__main__":
     import os
     import requests
+    from datetime import datetime, timezone
 
     input_file = "../cache/uk_stations.json"
     output_file = "../nodes/nodes-uk-nationalrail.json"
@@ -92,6 +93,9 @@ if __name__ == "__main__":
         data = response.text
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(data)
+    else:
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
+        print(f"Using cached UK station data (age: {int(age.total_seconds() // 86400)} days)")
     
     # Load rename mapping
     print("Loading rename mapping...")

@@ -60,6 +60,7 @@ def convert_nl_stations(input_path, output_path):
 
 if __name__ == "__main__":
     import requests
+    from datetime import datetime, timezone
 
     input_file = "../cache/netherlands_stations.csv"
     output_file = "../nodes/nodes-netherlands.json"
@@ -71,6 +72,9 @@ if __name__ == "__main__":
         response.raise_for_status()
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(response.text)
+    else:
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
+        print(f"Using cached Netherlands station data (age: {int(age.total_seconds() // 86400)} days)")
     
     convert_nl_stations(input_file, output_file)
     print(f"Conversion complete. Output written to {output_file}")

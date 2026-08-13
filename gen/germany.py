@@ -1,10 +1,73 @@
 #!/usr/bin/env python3
 
 import json
-import sys
+import io
 import os
+import tarfile
+from datetime import datetime, timezone
+
+import requests
 
 from common.config import load_rename_map
+
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GERMANY_CACHE = os.path.join(ROOT, "cache", "germany")
+NPM_REGISTRY_URL = "https://registry.npmjs.org/db-stations/latest"
+
+
+def _cache_age(path):
+    age = datetime.now(timezone.utc) - datetime.fromtimestamp(
+        os.path.getmtime(path), timezone.utc
+    )
+    seconds = max(0, int(age.total_seconds()))
+    if seconds < 3600:
+        return f"{seconds // 60} minutes"
+    if seconds < 86400:
+        return f"{seconds // 3600} hours"
+    return f"{seconds // 86400} days"
+
+
+def ensure_station_cache(cache_dir=GERMANY_CACHE, session=None):
+    """Ensure db-stations data exists, downloading the current npm package if needed."""
+    os.makedirs(cache_dir, exist_ok=True)
+    full_path = os.path.join(cache_dir, "full.json")
+    data_path = os.path.join(cache_dir, "data.json")
+    if os.path.exists(full_path) and os.path.exists(data_path):
+        print(f"Using cached Germany station data (full.json age: {_cache_age(full_path)})")
+        return full_path
+
+    session = session or requests.Session()
+    metadata_response = session.get(NPM_REGISTRY_URL, timeout=30)
+    metadata_response.raise_for_status()
+    metadata = metadata_response.json()
+    version = metadata.get("version", "unknown")
+    tarball_url = metadata.get("dist", {}).get("tarball")
+    if not tarball_url:
+        raise ValueError("npm metadata for db-stations contains no package tarball")
+
+    print(f"Downloading db-stations {version} from npm...")
+    package_response = session.get(tarball_url, timeout=120)
+    package_response.raise_for_status()
+    with tarfile.open(fileobj=io.BytesIO(package_response.content), mode="r:gz") as archive:
+        members = {}
+        for name in ("package/full.json", "package/data.json"):
+            member = archive.getmember(name)
+            extracted = archive.extractfile(member)
+            if extracted is None:
+                raise ValueError(f"db-stations package is missing {name}")
+            payload = extracted.read()
+            json.loads(payload)
+            members[name.rsplit("/", 1)[-1]] = payload
+
+    for filename, payload in members.items():
+        temporary = os.path.join(cache_dir, f".{filename}.tmp")
+        with open(temporary, "wb") as handle:
+            handle.write(payload)
+        os.replace(temporary, os.path.join(cache_dir, filename))
+    print(f"Cached db-stations {version} (full.json age: {_cache_age(full_path)})")
+    return full_path
+
 
 def load_rename_mapping(rename_file):
     """
@@ -93,13 +156,9 @@ def convert_from_json(input_path, output_path, rename_map):
                 print(f"Error processing station: {e}")
 
 if __name__ == "__main__":
-    input_file = "../cache/germany/full.json"
-    output_file = "../nodes/nodes-germany.json"
-    
-    if not os.path.exists(input_file):
-        print(f"Input file not found: {input_file}")
-        sys.exit(1)
-    
+    input_file = ensure_station_cache()
+    output_file = os.path.join(ROOT, "nodes", "nodes-germany.json")
+
     # Load rename mapping
     print("Loading rename mapping...")
     rename_map = load_rename_map("germany")
