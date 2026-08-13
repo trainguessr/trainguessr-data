@@ -28,7 +28,7 @@
         "Stops served during the timetable year from all Austrian transport associations and ÖBB",
         "Conventional railway and S-Bahn stops selected from the documented transport-mode bitfield",
         "Stable IFOPT stop IDs",
-        "Daily-updated public WFS representation"
+        "Publisher-provided CSV/ZIP snapshots"
       ],
       "not_included_by_train_guessr": [
         "U-Bahn",
@@ -43,8 +43,8 @@
         "A candidate absent from GeoNetz is added only after a unique SCOTTY EVA match by name and coordinates.",
         "The MVO catalogue is multimodal; TrainGuessr deliberately accepts only stops whose aggregate mode bitfield contains Eisenbahn or S-Bahn.",
         "Light-rail/tram-only stops are deliberately outside this automatic migration even when they are rail-borne services; they require a separate scope decision.",
-        "The live WFS is requested in EPSG:4326 so generated TrainGuessr coordinates are WGS84 regardless of the service native CRS.",
-        "Offline ZIP/CSV input is accepted only when its hst_x/hst_y coordinates are WGS84; otherwise the generator fails instead of guessing a CRS."
+        "The former public WFS hostname no longer resolves. The generator discovers the official public sample by default, or uses the authenticated production API when MVO credentials are configured.",
+        "ZIP/CSV input is accepted only when its hst_x/hst_y coordinates are WGS84; otherwise the generator fails instead of guessing a CRS."
       ],
       "current_dataset_validity_at_review": "2025-12-01 to 2026-11-30",
       "update_frequency": "24h",

@@ -10,7 +10,7 @@ This README provides information about the data sources used for each country, i
 
 Austria uses ÖBB SCOTTY for live boards. The station catalogue keeps the existing [ÖBB GeoNetz](https://data.oebb.at/de/datensaetze~geo-netz~) EVA IDs and fills private/regional rail gaps from the nationwide [MVO stop dataset](https://mobilitaetsdaten.gv.at/en/daten/%C3%B6sterreichweite-haltestellen). New MVO stops are accepted only when they resolve unambiguously to a SCOTTY station.
 
-Run `python3 austria.py` from `gen/`; `--mvo-input` can be used with a WGS84 MVO ZIP/`haltestellen.csv` snapshot. Dataset scope and known limitations are recorded in `sources/austria-dataset-coverage.json`.
+Run `python3 austria.py` from `gen/` to preserve the GeoNetz catalogue and automatically enrich it from the official public MVO sample. Set `MVO_USERNAME` and `MVO_PASSWORD` to use the current authenticated production snapshot, or pass `--mvo-input` to use a reviewed MVO ZIP containing `haltestellen.csv` and `steige.csv`. Dataset scope and known limitations are recorded in `sources/austria-dataset-coverage.json`.
 
 ### Belgium
 

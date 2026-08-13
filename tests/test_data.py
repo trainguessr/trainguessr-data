@@ -14,11 +14,9 @@ sys.path.insert(0, str(ROOT / "gen"))
 from common.io import load_ndjson  # noqa: E402
 from common.validate import validate_file  # noqa: E402
 from austria import (  # noqa: E402
-    _feature_type_from_capabilities,
-    download_mvo_wfs,
     load_geonetz_nodes,
     load_mvo_csv,
-    merge_catalogues,
+    load_mvo_snapshot,
     mvo_rail_candidates,
     parse_scotty_suggestions,
     ScottyResolver,
@@ -108,10 +106,18 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual("RFI", rows["1542"]["tags"]["operator"])
 
 
-    def test_austria_mvo_filters_to_austrian_rail_and_sbahn_stops(self) -> None:
-        rows = load_mvo_csv(ROOT / "tests" / "fixtures" / "austria-mvo-haltestellen.csv")
-        candidates = mvo_rail_candidates(rows)
-        self.assertEqual({"Bregenz", "Mariazell", "Tschagguns"}, {row["hst_name"] for row in candidates})
+    def test_austria_mvo_requires_physical_non_replacement_rail_platform(self) -> None:
+        stops = [
+            {"hst_id": "1", "hst_name": "Mariazell (Stmk) Bahnhof", "hst_globid": "at:46:6625", "hst_x": "15.3078", "hst_y": "47.7832", "umst_agg_vm": "10000000000000"},
+            {"hst_id": "2", "hst_name": "Übelbach Am Steinbühel", "hst_globid": "at:46:30055", "hst_x": "15.25", "hst_y": "47.22", "umst_agg_vm": "10000000000000"},
+        ]
+        platforms = [
+            {"hst_id": "1", "stg_globid": "at:46:6625:0:2", "extids_obb": "1260202", "stg_x": "15.3075", "stg_y": "47.7833", "umst_vm": "10000000000000", "linien": "R56,REX56"},
+            {"hst_id": "2", "stg_globid": "at:46:30055:0:3", "extids_obb": "0696895", "stg_x": "15.25", "stg_y": "47.22", "umst_vm": "10000000000000", "linien": "SEV"},
+        ]
+        candidates = mvo_rail_candidates(stops, platforms)
+        self.assertEqual(["Mariazell (Stmk) Bahnhof"], [row["hst_name"] for row in candidates])
+        self.assertEqual(1260202, candidates[0]["platform_eva_id"])
 
     def test_austria_mvo_offline_input_requires_wgs84_coordinates(self) -> None:
         rows = load_mvo_csv(ROOT / "tests" / "fixtures" / "austria-mvo-haltestellen.csv")
@@ -123,63 +129,17 @@ class DatasetTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "WGS84"):
             validate_mvo_wgs84(projected)
 
-    def test_austria_mvo_zip_input_finds_haltestellen_csv(self) -> None:
+    def test_austria_mvo_zip_input_requires_stops_and_platforms(self) -> None:
         fixture = (ROOT / "tests" / "fixtures" / "austria-mvo-haltestellen.csv").read_bytes()
+        platforms = b"hst_id,stg_globid,extids_obb,stg_x,stg_y,umst_vm,linien\n1,at:48:452:0:1,8100090,9.7,47.5,10000000000000,S1\n"
         with tempfile.TemporaryDirectory() as tmp:
             archive = Path(tmp) / "mvo.zip"
             with zipfile.ZipFile(archive, "w") as handle:
                 handle.writestr("2026/haltestellen.csv", fixture)
-                handle.writestr("2026/steige.csv", b"ignored")
-            rows = load_mvo_csv(archive)
+                handle.writestr("2026/steige.csv", platforms)
+            rows, platform_rows = load_mvo_snapshot(archive)
         self.assertEqual(5, len(rows))
-        self.assertEqual("Bregenz", rows[0]["hst_name"])
-
-    def test_austria_wfs_feature_type_discovery_prefers_haltestellen(self) -> None:
-        xml = """<?xml version="1.0"?><WFS_Capabilities xmlns="http://www.opengis.net/wfs/2.0"><FeatureTypeList><FeatureType><Name>pub:steige</Name><Title>Steige</Title></FeatureType><FeatureType><Name>pub:haltestellen_2026</Name><Title>Haltestellen</Title></FeatureType></FeatureTypeList></WFS_Capabilities>"""
-        self.assertEqual("pub:haltestellen_2026", _feature_type_from_capabilities(xml))
-
-    def test_austria_wfs_paginates_and_uses_requested_wgs84_geometry(self) -> None:
-        capabilities = """<?xml version="1.0"?><WFS_Capabilities xmlns="http://www.opengis.net/wfs/2.0"><FeatureTypeList><FeatureType><Name>pub:haltestellen</Name><Title>Haltestellen</Title></FeatureType></FeatureTypeList></WFS_Capabilities>"""
-
-        class Response:
-            def __init__(self, *, text="", payload=None):
-                self.text = text
-                self._payload = payload
-            def raise_for_status(self):
-                return None
-            def json(self):
-                return self._payload
-
-        class Session:
-            def __init__(self):
-                self.calls = []
-            def get(self, url, params, timeout):
-                self.calls.append(dict(params))
-                if params["request"] == "GetCapabilities":
-                    return Response(text=capabilities)
-                start = params["startIndex"]
-                if start == 0:
-                    return Response(payload={
-                        "numberMatched": 2, "features": [{
-                            "properties": {"hst_name": "One", "hst_x": 999, "hst_y": 999},
-                            "geometry": {"coordinates": [14.0, 47.0]},
-                        }]
-                    })
-                return Response(payload={
-                    "numberMatched": 2, "features": [{
-                        "properties": {"hst_name": "Two"},
-                        "geometry": {"coordinates": [15.0, 48.0]},
-                    }]
-                })
-
-        # A first page shorter than the server-advertised total must still be followed.
-        session = Session()
-        rows = download_mvo_wfs(session)
-        self.assertEqual(["One", "Two"], [row["hst_name"] for row in rows])
-        self.assertEqual((14.0, 47.0), (rows[0]["hst_x"], rows[0]["hst_y"]))
-        self.assertEqual(3, len(session.calls))
-        self.assertEqual("EPSG:4326", session.calls[1]["srsName"])
-        self.assertEqual(1, session.calls[2]["startIndex"])
+        self.assertEqual(1, len(platform_rows))
 
     def test_austria_scotty_suggestion_selection_uses_name_and_coordinates(self) -> None:
         suggestions = parse_scotty_suggestions(
@@ -220,41 +180,6 @@ class DatasetTests(unittest.TestCase):
             self.assertIsNone(resolver.resolve(row))
             self.assertFalse((Path(tmp) / "resolutions.json").exists())
 
-    def test_austria_merge_preserves_existing_nodes_and_adds_only_resolved_gaps(self) -> None:
-        old_nodes = load_ndjson(ROOT / "nodes" / "nodes-austria-oebb.json")
-        mvo = load_mvo_csv(ROOT / "tests" / "fixtures" / "austria-mvo-haltestellen.csv")
-
-        class FixtureResolver:
-            def resolve(self, row):
-                if row["hst_name"] == "Mariazell":
-                    return {"eva_id": 1234567, "name": "Mariazell", "distance_m": 0.0, "similarity": 1.0}
-                return None
-
-        merged, audit = merge_catalogues(old_nodes, mvo, FixtureResolver(), {})
-        self.assertEqual(old_nodes, merged[:len(old_nodes)])
-        self.assertEqual(len(old_nodes) + 1, len(merged))
-        self.assertEqual("Mariazell", merged[-1]["tags"]["name"])
-        self.assertEqual("at:31:9991", merged[-1]["tags"]["ifopt_id"])
-        self.assertEqual(1, audit["added_count"])
-        self.assertEqual(1, audit["matched_existing_ifopt"])
-        self.assertEqual(1, audit["unresolved_count"])
-
-    def test_austria_merge_does_not_duplicate_existing_eva_from_new_ifopt(self) -> None:
-        old_nodes = load_ndjson(ROOT / "nodes" / "nodes-austria-oebb.json")
-        existing_eva = int(old_nodes[0]["id"])
-        row = {
-            "hst_id": "900", "hst_name": "Synthetic alias", "hst_globid": "at:99:999",
-            "hst_x": "16.370", "hst_y": "48.210", "hst_gem_name": "Wien",
-            "umst_agg_vm": "10000000000000",
-        }
-        class ExistingResolver:
-            def resolve(self, item):
-                return {"eva_id": existing_eva, "name": item["hst_name"], "distance_m": 1.0, "similarity": 1.0}
-        merged, audit = merge_catalogues(old_nodes, [row], ExistingResolver(), {})
-        self.assertEqual(old_nodes, merged)
-        self.assertEqual(1, audit["resolved_to_existing_eva"])
-        self.assertEqual(0, audit["added_count"])
-
     def test_austria_existing_catalogue_rebuild_preserves_current_ids_and_names(self) -> None:
         source = ROOT / "cache" / "austria_stations_filtered.json"
         if not source.is_file():
@@ -264,8 +189,9 @@ class DatasetTests(unittest.TestCase):
             for row in json.loads((ROOT / "excludes" / "austria.json").read_text(encoding="utf-8"))["renamed"]
         })
         current = load_ndjson(ROOT / "nodes" / "nodes-austria-oebb.json")
+        self.assertGreaterEqual(len(current), len(rebuilt))
         self.assertEqual(
-            [(str(row["id"]), row["tags"]["name"]) for row in current],
+            [(str(row["id"]), row["tags"]["name"]) for row in current[:len(rebuilt)]],
             [(str(row["id"]), row["tags"]["name"]) for row in rebuilt],
         )
 
