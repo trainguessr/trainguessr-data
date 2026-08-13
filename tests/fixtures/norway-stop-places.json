@@ -1,0 +1,27 @@
+[
+  {
+    "id": "NSR:StopPlace:59872",
+    "name": {"value": "Oslo S", "lang": "nor"},
+    "centroid": {"location": {"longitude": 10.7522, "latitude": 59.9110}},
+    "transportMode": "RAIL",
+    "stopPlaceType": "RAIL_STATION",
+    "railSubmode": "LOCAL",
+    "status_BasicModificationDetailsGroup": "ACTIVE"
+  },
+  {
+    "id": "NSR:StopPlace:99999",
+    "name": {"value": "Bussterminal", "lang": "nor"},
+    "centroid": {"location": {"longitude": 10.75, "latitude": 59.91}},
+    "transportMode": "BUS",
+    "stopPlaceType": "BUS_STATION",
+    "status_BasicModificationDetailsGroup": "ACTIVE"
+  },
+  {
+    "id": "NSR:StopPlace:99998",
+    "name": {"value": "Closed rail stop", "lang": "nor"},
+    "centroid": {"location": {"longitude": 10.70, "latitude": 59.90}},
+    "transportMode": "RAIL",
+    "stopPlaceType": "RAIL_STATION",
+    "status_BasicModificationDetailsGroup": "INACTIVE"
+  }
+]

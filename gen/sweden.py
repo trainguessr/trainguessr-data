@@ -184,7 +184,8 @@ if __name__ == "__main__":
             sys.exit(1)
         
         url = f"https://opendata.samtrafiken.se/stopsregister-netex-sweden/sweden.zip?key={api_key}"
-        response = requests.get(url, headers={"Accept-Encoding": "gzip"})
+        response = requests.get(url, headers={"Accept-Encoding": "gzip"}, timeout=60)
+        response.raise_for_status()
         
         if response.status_code != 200:
             print(f"Failed to download data: {response.status_code}")

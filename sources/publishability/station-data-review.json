@@ -1,0 +1,152 @@
+{
+  "austria_oebb": {
+    "category": "austria_oebb",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Datenquelle: ÖBB-Infrastruktur AG",
+    "source_url": "https://data.oebb.at/de/datensaetze~geo-netz~",
+    "terms_url": "https://creativecommons.org/licenses/by/3.0/at/deed.de",
+    "recommendation": "Retain the exact linked attribution required by the CC BY 3.0 Austria dataset.",
+    "reviewed_on": "2026-08-06"
+  },
+  "belgium_all": {
+    "category": "belgium_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Infrabel Open Data",
+    "source_url": "https://opendata.infrabel.be/explore/dataset/operationele-punten-van-het-netwerk/",
+    "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "recommendation": "The operational-points dataset is CC0; retaining source credit is still recommended.",
+    "reviewed_on": "2026-08-06"
+  },
+  "finland_all": {
+    "category": "finland_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Fintraffic / digitraffic.fi, CC BY 4.0",
+    "source_url": "https://www.digitraffic.fi/en/railway-traffic/",
+    "terms_url": "https://www.digitraffic.fi/en/terms-of-service/",
+    "recommendation": "Retain the required attribution, source and license references.",
+    "reviewed_on": "2026-08-06"
+  },
+  "france_sncf": {
+    "category": "france_sncf",
+    "review_state": "open_license_share_alike",
+    "public_ready": true,
+    "attribution": "Source: SNCF Gares & Connexions Open Data",
+    "source_url": "https://ressources.data.sncf.com/explore/dataset/gares-de-voyageurs/",
+    "terms_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "recommendation": "Retain attribution and satisfy ODbL database/share-alike obligations for published derivatives.",
+    "reviewed_on": "2026-08-06"
+  },
+  "germany_all": {
+    "category": "germany_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Deutsche Bahn open data, CC BY 4.0",
+    "source_url": "https://github.com/derhuerst/db-stations",
+    "terms_url": "https://creativecommons.org/licenses/by/4.0/",
+    "recommendation": "Retain DB attribution and the db-stations software/data notices.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_eav": {
+    "category": "italy_eav",
+    "review_state": "provenance_review_required",
+    "public_ready": false,
+    "attribution": "Source: reviewed EAV station records",
+    "source_url": "https://www.eavsrl.it/",
+    "terms_url": null,
+    "recommendation": "No public reuse terms were located for the source catalogue; obtain written permission or migrate to licensed data.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fer": {
+    "category": "italy_fer",
+    "review_state": "provenance_review_required",
+    "public_ready": false,
+    "attribution": "Source: reviewed FER station records",
+    "source_url": "https://www.fer.it/",
+    "terms_url": null,
+    "recommendation": "No public reuse terms were located for the source catalogue; obtain written permission or migrate to licensed data.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fn": {
+    "category": "italy_fn",
+    "review_state": "provenance_review_required",
+    "public_ready": false,
+    "attribution": "Source: reviewed Ferrovienord/Trenord station records",
+    "source_url": "https://www.trenord.it/en/copyright/",
+    "terms_url": "https://www.trenord.it/en/copyright/",
+    "recommendation": "Do not publish provider-derived records without written permission; Trenord expressly restricts reproduction and retransmission.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fse": {
+    "category": "italy_fse",
+    "review_state": "mixed_license_review_required",
+    "public_ready": false,
+    "attribution": "Source: OpenStreetMap, ViaggiaTreno and reviewed records",
+    "source_url": "https://www.openstreetmap.org/copyright",
+    "terms_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "recommendation": "Separate OSM-derived coordinates from undocumented provider identifiers and preserve ODbL attribution/share-alike.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_rfi": {
+    "category": "italy_rfi",
+    "review_state": "provenance_review_required",
+    "public_ready": false,
+    "attribution": "Source: reviewed RFI station records",
+    "source_url": "https://iechub.rfi.it/ArriviPartenze/",
+    "terms_url": null,
+    "recommendation": "No public license was located for the provider-derived station catalogue; obtain permission or replace the catalogue source.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_tt": {
+    "category": "italy_tt",
+    "review_state": "mixed_provenance_review_required",
+    "public_ready": false,
+    "attribution": "Source: Trentino Trasporti GTFS and reviewed legacy records",
+    "source_url": "https://www.trentinotrasporti.it/it/opendata-it",
+    "terms_url": "https://creativecommons.org/licenses/by/2.5/",
+    "recommendation": "The GTFS is licensed, but legacy real-time IDs and reviewed records need a provenance audit before publication.",
+    "reviewed_on": "2026-08-06"
+  },
+  "netherlands_all": {
+    "category": "netherlands_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Rijden de Treinen open station data",
+    "source_url": "https://www.rijdendetreinen.nl/en/open-data/stations",
+    "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "recommendation": "The station dataset is CC0; source acknowledgement is requested by its publisher.",
+    "reviewed_on": "2026-08-06"
+  },
+  "sweden_all": {
+    "category": "sweden_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Trafiklab Stops data, CC0 1.0",
+    "source_url": "https://www.trafiklab.se/api/netex-datasets/stops-data/",
+    "terms_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "recommendation": "Do not imply endorsement and continue respecting account and download limits.",
+    "reviewed_on": "2026-08-06"
+  },
+  "switzerland_all": {
+    "category": "switzerland_all",
+    "review_state": "open_terms",
+    "public_ready": true,
+    "attribution": "Source: opentransportdata.swiss",
+    "source_url": "https://data.sbb.ch/explore/dataset/haltestelle-haltekante/",
+    "terms_url": "https://opentransportdata.swiss/en/terms-of-use/",
+    "recommendation": "Cite opentransportdata.swiss, update the data regularly and comply with its database-publication terms.",
+    "reviewed_on": "2026-08-06"
+  },
+  "uk_national_rail": {
+    "category": "uk_national_rail",
+    "review_state": "open_license_share_alike",
+    "public_ready": true,
+    "attribution": "Source: davwheat/uk-railway-stations, Trainline EU and upstream contributors",
+    "source_url": "https://github.com/davwheat/uk-railway-stations",
+    "terms_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "recommendation": "Publish database modifications and retain the attribution chain required by ODbL.",
+    "reviewed_on": "2026-08-06"
+  }
+}

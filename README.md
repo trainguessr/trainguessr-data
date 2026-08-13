@@ -8,13 +8,9 @@ This README provides information about the data sources used for each country, i
 
 ### Austria
 
-Austria has good open data, but a somewhat janky API for real time departures. The API ([here](https://fahrplan.oebb.at/bin/stboard.exe/dn)) returns JavaScript objects, which are then parsed and converted to JSON. The API is not documented, but it works well enough.
+Austria uses ÖBB SCOTTY for live boards. The station catalogue keeps the existing [ÖBB GeoNetz](https://data.oebb.at/de/datensaetze~geo-netz~) EVA IDs and fills private/regional rail gaps from the nationwide [MVO stop dataset](https://mobilitaetsdaten.gv.at/en/daten/%C3%B6sterreichweite-haltestellen). New MVO stops are accepted only when they resolve unambiguously to a SCOTTY station.
 
-The list of stations was obtained from the ÖBB open data website: [ÖBB](https://data.oebb.at/de/datensaetze~geo-netz~).
-
-To get started, cd into `gen/` and run `python3 austria.py`.
-
-Given the size of the dataset, the script will cache the stations data locally in the `cache/` folder.
+Run `python3 austria.py` from `gen/`; `--mvo-input` can be used with a WGS84 MVO ZIP/`haltestellen.csv` snapshot. Dataset scope and known limitations are recorded in `sources/austria-dataset-coverage.json`.
 
 ### Belgium
 

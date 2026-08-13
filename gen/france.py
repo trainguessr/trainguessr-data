@@ -100,7 +100,9 @@ if __name__ == "__main__":
         os.makedirs(os.path.dirname(input_file))
 
     if not os.path.exists(input_file):
-        data = requests.get("https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe/Berlin").text
+        response = requests.get("https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe/Berlin", timeout=60)
+        response.raise_for_status()
+        data = response.text
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(data)
 

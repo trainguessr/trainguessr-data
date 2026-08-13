@@ -1,0 +1,152 @@
+{
+  "austria_oebb": {
+    "category": "austria_oebb",
+    "review_state": "permission_required",
+    "public_ready": false,
+    "attribution": "Source: ÖBB SCOTTY",
+    "source_url": "https://www.oebb.at/en/fahrplan/fahrplanauskunft/scottymobil",
+    "terms_url": "https://apiportal.oebb.at/",
+    "recommendation": "The adapter uses a consumer SCOTTY endpoint rather than the official embeddable widget or an API Portal product. Obtain permission, use the official widget, or migrate to an authorized API.",
+    "reviewed_on": "2026-08-06"
+  },
+  "belgium_all": {
+    "category": "belgium_all",
+    "review_state": "license_confirmation_required",
+    "public_ready": false,
+    "attribution": "Source: iRail",
+    "source_url": "https://api.irail.be/",
+    "terms_url": "https://api.irail.be/",
+    "recommendation": "The API invites application use and publishes limits, but a clear license for the returned railway data was not located. Obtain written confirmation.",
+    "reviewed_on": "2026-08-06"
+  },
+  "finland_all": {
+    "category": "finland_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Fintraffic / digitraffic.fi, CC BY 4.0",
+    "source_url": "https://www.digitraffic.fi/en/railway-traffic/",
+    "terms_url": "https://www.digitraffic.fi/en/terms-of-service/",
+    "recommendation": "Retain the required attribution, license reference, source link and modification notice.",
+    "reviewed_on": "2026-08-06"
+  },
+  "france_sncf": {
+    "category": "france_sncf",
+    "review_state": "terms_review_required",
+    "public_ready": false,
+    "attribution": "Source: SNCF API / Navitia",
+    "source_url": "https://ressources.data.sncf.com/api",
+    "terms_url": "https://ressources.data.sncf.com/pages/versions-cgu-api/",
+    "recommendation": "Confirm the current API terms and the licenses of the underlying coverage before public launch.",
+    "reviewed_on": "2026-08-06"
+  },
+  "germany_all": {
+    "category": "germany_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Deutsche Bahn AG, Timetables API (CC BY 4.0)",
+    "source_url": "https://developers.deutschebahn.com/db-api-marketplace/apis/product/timetables",
+    "terms_url": "https://developers.deutschebahn.com/db-api-marketplace/apis/product/timetables",
+    "recommendation": "Use an API subscription, retain attribution, and comply with the published request limits.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_eav": {
+    "category": "italy_eav",
+    "review_state": "permission_required",
+    "public_ready": false,
+    "attribution": "Source: Ente Autonomo Volturno station boards",
+    "source_url": "https://www.eavsrl.it/",
+    "terms_url": null,
+    "recommendation": "No public reuse terms for the undocumented timetable endpoint were located. Obtain written permission.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fer": {
+    "category": "italy_fer",
+    "review_state": "permission_required",
+    "public_ready": false,
+    "attribution": "Source: Ferrovie Emilia Romagna station boards",
+    "source_url": "https://www.fer.it/",
+    "terms_url": null,
+    "recommendation": "No public reuse terms for the scraped station-board pages were located. Obtain written permission.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fn": {
+    "category": "italy_fn",
+    "review_state": "do_not_publish_without_permission",
+    "public_ready": false,
+    "attribution": "Source: Trenord / ViaggiaTreno",
+    "source_url": "https://www.trenord.it/en/copyright/",
+    "terms_url": "https://www.trenord.it/en/copyright/",
+    "recommendation": "Trenord expressly restricts reproduction and retransmission of site content. Disable publicly unless written authorization is obtained.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_fse": {
+    "category": "italy_fse",
+    "review_state": "permission_required",
+    "public_ready": false,
+    "attribution": "Source: ViaggiaTreno / Ferrovie del Sud Est",
+    "source_url": "http://www.viaggiatreno.it/infomobilita/index.jsp",
+    "terms_url": null,
+    "recommendation": "The adapter uses an undocumented consumer endpoint. Obtain written permission or replace it with an expressly licensed feed.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_rfi": {
+    "category": "italy_rfi",
+    "review_state": "permission_required",
+    "public_ready": false,
+    "attribution": "Source: Rete Ferroviaria Italiana station boards",
+    "source_url": "https://iechub.rfi.it/ArriviPartenze/",
+    "terms_url": null,
+    "recommendation": "No public reuse license for the consumer station-board HTML was located. Obtain written permission; keep provider images disabled publicly.",
+    "reviewed_on": "2026-08-06"
+  },
+  "italy_tt": {
+    "category": "italy_tt",
+    "review_state": "live_source_unlicensed_and_unavailable",
+    "public_ready": false,
+    "attribution": "Source: Trentino Trasporti",
+    "source_url": "https://www.trentinotrasporti.it/it/opendata-it",
+    "terms_url": "https://www.trentinotrasporti.it/it/opendata-it",
+    "recommendation": "The published GTFS is CC BY 2.5, but the current live adapter uses a separate undocumented and unavailable endpoint. Disable the live provider or rebuild from licensed feeds.",
+    "reviewed_on": "2026-08-06"
+  },
+  "netherlands_all": {
+    "category": "netherlands_all",
+    "review_state": "permission_or_migration_required",
+    "public_ready": false,
+    "attribution": "Source: Rijden de Treinen",
+    "source_url": "https://www.rijdendetreinen.nl/en/open-data",
+    "terms_url": "https://www.rijdendetreinen.nl/en/open-data",
+    "recommendation": "The adapter uses an undocumented live AJAX endpoint, not the separately licensed downloads. Obtain permission or migrate to the official NS API.",
+    "reviewed_on": "2026-08-06"
+  },
+  "sweden_all": {
+    "category": "sweden_all",
+    "review_state": "open_license",
+    "public_ready": true,
+    "attribution": "Source: Trafiklab ResRobot (CC0 1.0)",
+    "source_url": "https://www.trafiklab.se/api/our-apis/resrobot-v21/",
+    "terms_url": "https://www.trafiklab.se/api/our-apis/resrobot-v21/license/",
+    "recommendation": "Use an account key, observe quotas and do not imply endorsement. Plan migration from deprecated ResRobot Timetables.",
+    "reviewed_on": "2026-08-06"
+  },
+  "switzerland_all": {
+    "category": "switzerland_all",
+    "review_state": "permission_or_migration_required",
+    "public_ready": false,
+    "attribution": "Source: search.ch timetable API",
+    "source_url": "https://search.ch/timetable/api/help.en.html",
+    "terms_url": "https://search.ch/timetable/api/help.en.html",
+    "recommendation": "Confirm public-product use with search.ch or migrate to opentransportdata.swiss under its registered-access terms.",
+    "reviewed_on": "2026-08-06"
+  },
+  "uk_national_rail": {
+    "category": "uk_national_rail",
+    "review_state": "official_terms_required",
+    "public_ready": false,
+    "attribution": "Source: National Rail Darwin",
+    "source_url": "https://www.nationalrail.co.uk/developers/darwin-data-feeds/",
+    "terms_url": "https://www.nationalrail.co.uk/developers/darwin-data-feeds/",
+    "recommendation": "Publish only with your own Rail Data Marketplace subscription and accepted terms. Do not rely on the public Huxley2 demo or use National Rail logos without permission.",
+    "reviewed_on": "2026-08-06"
+  }
+}

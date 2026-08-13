@@ -87,7 +87,9 @@ if __name__ == "__main__":
 
     if not os.path.exists(input_file):
         print(f"Input file not found: {input_file}")
-        data = requests.get("https://raw.githubusercontent.com/davwheat/uk-railway-stations/refs/heads/main/stations.json").text
+        response = requests.get("https://raw.githubusercontent.com/davwheat/uk-railway-stations/refs/heads/main/stations.json", timeout=60)
+        response.raise_for_status()
+        data = response.text
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(data)
     

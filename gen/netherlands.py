@@ -67,7 +67,8 @@ if __name__ == "__main__":
     if not os.path.exists(input_file):
         print("Downloading Netherlands stations data...")
         url = "https://opendata.rijdendetreinen.nl/public/stations/stations-2023-09-nl.csv"
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
+        response.raise_for_status()
         with open(input_file, 'w', encoding='utf-8') as f:
             f.write(response.text)
     

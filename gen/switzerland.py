@@ -1,5 +1,4 @@
 import json
-import random
 import os
 
 from common.config import load_rename_map
@@ -54,10 +53,14 @@ def transform_sbb_to_node_format(data, output_file, rename_map):
             if station_name in rename_map:
                 station_name = rename_map[station_name]
             
+            station_id = props.get('number')
+            if station_id in (None, ''):
+                continue
+
             # Create transformed node
             node = {
                 "type": "node",
-                "id": props.get('number', random.randint(10000000, 99999999)),  # Use number or generate random ID
+                "id": station_id,
                 "lat": lat,
                 "lon": lon,
                 "tags": {
@@ -100,9 +103,12 @@ if __name__ == "__main__":
 
     print("Downloading SBB station data...")
 
-    input_file = requests.get(
-        "https://data.sbb.ch/api/v2/catalog/datasets/haltestelle-haltekante/exports/geojson"
-    ).text
+    response = requests.get(
+        "https://data.sbb.ch/api/v2/catalog/datasets/haltestelle-haltekante/exports/geojson",
+        timeout=60,
+    )
+    response.raise_for_status()
+    input_file = response.text
 
     print("Transforming SBB station data...")
 

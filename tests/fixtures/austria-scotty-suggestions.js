@@ -1,0 +1,1 @@
+SLs.sls = {"suggestions":[{"type":1,"value":"Mariazell","xcoord":15316700,"ycoord":47773200,"id":"A=1@O=Mariazell@X=15316700@Y=47773200@L=001234567@"},{"type":1,"value":"Mariazell Postamt","xcoord":15315000,"ycoord":47774000,"id":"A=1@O=Mariazell Postamt@X=15315000@Y=47774000@L=001234568@"}]}; SLs.showSuggestion();

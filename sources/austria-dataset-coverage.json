@@ -1,0 +1,112 @@
+{
+  "reviewed_at": "2026-08-13",
+  "scope": "Passenger railway station inventory used by TrainGuessr Austria",
+  "datasets": [
+    {
+      "name": "ÖBB GeoNetz",
+      "url": "https://data.oebb.at/de/datensaetze~geo-netz~",
+      "role": "Stable base catalogue and EVA/IFOPT crosswalk",
+      "included": [
+        "railStation objects on ÖBB-Infrastruktur's network",
+        "EVA_NR identifiers already accepted by the SCOTTY station-board endpoint",
+        "IFOPT identifiers for direct matching to the national MVO inventory"
+      ],
+      "not_included": [
+        "A complete inventory of stations on independently owned Austrian railway infrastructure"
+      ],
+      "observed_train_guessr_count_before_migration": 1027,
+      "snapshot_used_by_train_guessr": "GeoNetz_12-2024",
+      "published_file_validity": "2024-12-17 to 2025-12-13",
+      "update_frequency": "annual"
+    },
+    {
+      "name": "MVO Österreichweite Haltestellen",
+      "url": "https://mobilitaetsdaten.gv.at/en/daten/%C3%B6sterreichweite-haltestellen",
+      "documentation": "https://mobilitaetsverbuende.atlassian.net/wiki/spaces/GEO/pages/181141530/Haltestellen",
+      "role": "Nationwide gap-filling station inventory",
+      "included": [
+        "Stops served during the timetable year from all Austrian transport associations and ÖBB",
+        "Conventional railway and S-Bahn stops selected from the documented transport-mode bitfield",
+        "Stable IFOPT stop IDs",
+        "Daily-updated public WFS representation"
+      ],
+      "not_included_by_train_guessr": [
+        "U-Bahn",
+        "tram",
+        "bus and coach",
+        "ship",
+        "on-demand transport",
+        "cable/funicular/rack-rail category unless it is also flagged as railway or S-Bahn"
+      ],
+      "notes": [
+        "MVO stop-centre coordinates are representative points, not necessarily the served platform coordinates.",
+        "A candidate absent from GeoNetz is added only after a unique SCOTTY EVA match by name and coordinates.",
+        "The MVO catalogue is multimodal; TrainGuessr deliberately accepts only stops whose aggregate mode bitfield contains Eisenbahn or S-Bahn.",
+        "Light-rail/tram-only stops are deliberately outside this automatic migration even when they are rail-borne services; they require a separate scope decision.",
+        "The live WFS is requested in EPSG:4326 so generated TrainGuessr coordinates are WGS84 regardless of the service native CRS.",
+        "Offline ZIP/CSV input is accepted only when its hst_x/hst_y coordinates are WGS84; otherwise the generator fails instead of guessing a CRS."
+      ],
+      "current_dataset_validity_at_review": "2025-12-01 to 2026-11-30",
+      "update_frequency": "24h",
+      "current_sample_named_by_publisher_at_review": "20260707-2340_hst_csv_2026.zip"
+    },
+    {
+      "name": "ÖBB SCOTTY",
+      "url": "https://www.oebb.at/en/fahrplan/fahrplanauskunft/scottymobil",
+      "role": "Runtime timetable source and identifier validation",
+      "included": [
+        "Timetables from Austrian public-transport operators represented in SCOTTY",
+        "Realtime data where supplied by the underlying operator"
+      ],
+      "not_guaranteed": [
+        "Realtime information for every third-party operator",
+        "Perfect completeness when an external operator has not supplied data"
+      ]
+    }
+  ],
+  "known_geonetz_gap_examples": [
+    "Mariazell",
+    "Laubenbachmühle",
+    "St. Pölten Alpenbahnhof",
+    "Schruns",
+    "Tschagguns",
+    "Mayrhofen",
+    "Zell am Ziller",
+    "Fulpmes",
+    "Murau",
+    "Übelbach",
+    "Attersee",
+    "Peuerbach"
+  ],
+  "migration_policy": [
+    "Keep every existing GeoNetz node and EVA ID unchanged.",
+    "Match MVO to GeoNetz by stable IFOPT before doing any name matching.",
+    "Use only MVO railway/S-Bahn mode bits for automatic additions.",
+    "Resolve each new stop to a unique SCOTTY EVA ID using station name and coordinates.",
+    "Reject ambiguous or distant resolutions instead of guessing.",
+    "Treat a temporary SCOTTY lookup failure as an unresolved candidate for this rebuild; do not cache the failure or abort the complete migration."
+  ],
+  "findings": {
+    "existing_catalogue": {
+      "count": 1027,
+      "result": "GeoNetz-only rebuild reproduces all existing TrainGuessr Austria records exactly"
+    },
+    "verified_active_stations_missing_from_existing_geonetz_catalogue": [
+      "Mariazell",
+      "Laubenbachmühle",
+      "St. Pölten Alpenbahnhof",
+      "Schruns",
+      "Tschagguns",
+      "Mayrhofen",
+      "Zell am Ziller",
+      "Murau",
+      "Übelbach",
+      "Attersee",
+      "Peuerbach"
+    ],
+    "scope_examples_requiring_separate_light_rail_decision": [
+      "Fulpmes / Stubaitalbahn"
+    ],
+    "full_mvo_migration_count": "generated at rebuild time; not hard-coded because MVO is updated daily"
+  }
+}

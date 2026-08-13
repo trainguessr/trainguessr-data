@@ -24,7 +24,9 @@ endpoint = "https://api.irail.be/stations/?format=json&lang=en"
 
 print("Fetching stations from iRail...")
 
-data = json.loads(requests.get(endpoint).text)
+response = requests.get(endpoint, timeout=60)
+response.raise_for_status()
+data = response.json()
 # GET /stations/?format=json&lang=en
 
 stations = data['station']

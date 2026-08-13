@@ -1,0 +1,6 @@
+hst_id;hst_name;hst_globid;hst_x;hst_y;hst_gem_name;umst_agg_vm;umst_agg_max;gis_agg_vm;linien_agg;gueltig_von;gueltig_bis;monitor_link
+1;Bregenz;at:48:452;9,73977;47,50237;Bregenz;11000000000000;1;111000;S1;2025-12-01;2026-11-30;https://example.invalid
+2;Mariazell;at:31:9991;15,3167;47,7732;Mariazell;10000000000000;1;111000;R;2025-12-01;2026-11-30;https://example.invalid
+3;Tschagguns;at:48:9992;9,9010;47,0780;Tschagguns;10000000000000;1;111000;S4;2025-12-01;2026-11-30;https://example.invalid
+4;Wien Rathaus;at:49:9993;16,3560;48,2100;Wien;00001000000000;5;110000;2;2025-12-01;2026-11-30;https://example.invalid
+5;Buchs SG;ch:8509404;9,4770;47,1680;Buchs;10000000000000;1;111000;RE;2025-12-01;2026-11-30;https://example.invalid
