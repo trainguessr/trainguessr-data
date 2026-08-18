@@ -1,0 +1,239 @@
+from __future__ import annotations
+
+import csv
+import json
+import sqlite3
+import sys
+import tempfile
+import unittest
+import zipfile
+from unittest.mock import Mock, patch
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "gen"))
+
+from denmark import build_nodes as build_denmark_nodes
+from spain import (
+    _clean_row, _download_official_feed, build as build_spain, load_feed, write_index
+)
+
+
+def write_gtfs(path: Path, tables: dict[str, list[dict[str, str]]]) -> None:
+    with zipfile.ZipFile(path, "w") as archive:
+        for filename, rows in tables.items():
+            if not rows:
+                continue
+            fieldnames = list(rows[0])
+            import io
+            stream = io.StringIO()
+            writer = csv.DictWriter(stream, fieldnames=fieldnames, lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(rows)
+            archive.writestr(filename, stream.getvalue())
+
+
+class NewCountryGeneratorTests(unittest.TestCase):
+    def test_spain_downloads_and_extracts_official_gtfs_into_cache(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            archive_bytes = __import__("io").BytesIO()
+            with zipfile.ZipFile(archive_bytes, "w") as archive:
+                archive.writestr("stops.txt", "stop_id,stop_name\\nA,Alpha\\n")
+            metadata = Mock()
+            metadata.raise_for_status.return_value = None
+            metadata.json.return_value = {"success": True, "result": {"url": "https://example.test/gtfs.zip"}}
+            download = Mock()
+            download.raise_for_status.return_value = None
+            download.iter_content.return_value = [archive_bytes.getvalue()]
+            download.__enter__ = Mock(return_value=download)
+            download.__exit__ = Mock(return_value=False)
+            session = Mock()
+            session.get.side_effect = [metadata, download]
+            with patch("spain.CACHE_ROOT", Path(tmp)):
+                result = _download_official_feed("cercanias", session=session)
+                self.assertEqual(Path(tmp) / "cercanias" / "gtfs.zip", result)
+                self.assertTrue((Path(tmp) / "cercanias" / "gtfs" / "stops.txt").is_file())
+            self.assertEqual(2, session.get.call_count)
+
+    def test_spain_strips_padded_renfe_headers_and_values(self):
+        self.assertEqual(
+            {"end_date": "20260817", "exception_type": "2"},
+            _clean_row({"end_date   ": "20260817   ", "exception_type ": "2 "}),
+        )
+
+    def test_denmark_keeps_only_stops_served_by_rail_routes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "dk.zip"
+            write_gtfs(path, {
+                "stops.txt": [
+                    {"stop_id":"8600001","stop_name":"Rail","stop_lat":"55","stop_lon":"12","parent_station":""},
+                    {"stop_id":"bus","stop_name":"Bus","stop_lat":"55.1","stop_lon":"12.1","parent_station":""},
+                ],
+                "routes.txt": [
+                    {"route_id":"r","route_type":"2"},
+                    {"route_id":"b","route_type":"3"},
+                ],
+                "trips.txt": [
+                    {"route_id":"r","trip_id":"tr"},
+                    {"route_id":"b","trip_id":"tb"},
+                ],
+                "stop_times.txt": [
+                    {"trip_id":"tr","stop_id":"8600001"},
+                    {"trip_id":"tb","stop_id":"bus"},
+                ],
+            })
+            nodes = build_denmark_nodes(path)
+            self.assertEqual(["8600001"], [node["id"] for node in nodes])
+
+    def test_spain_namespaces_trips_but_uses_stable_renfe_station_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "es.zip"
+            write_gtfs(path, {
+                "agency.txt": [{"agency_id":"a","agency_name":"Renfe"}],
+                "stops.txt": [
+                    {"stop_id":"A","stop_name":"Alpha","stop_lat":"40","stop_lon":"-3","parent_station":"","location_type":"1"},
+                    {"stop_id":"B","stop_name":"Beta","stop_lat":"41","stop_lon":"-2","parent_station":"","location_type":"1"},
+                ],
+                "routes.txt": [{"route_id":"R","agency_id":"a","route_short_name":"C1","route_long_name":"","route_type":"2"}],
+                "trips.txt": [{"route_id":"R","service_id":"S","trip_id":"T","trip_headsign":"Beta","trip_short_name":"123"}],
+                "stop_times.txt": [
+                    {"trip_id":"T","arrival_time":"12:00:00","departure_time":"12:00:00","stop_id":"A","stop_sequence":"1"},
+                    {"trip_id":"T","arrival_time":"12:30:00","departure_time":"12:30:00","stop_id":"B","stop_sequence":"2"},
+                ],
+                "calendar.txt": [{
+                    "service_id":"S","monday":"1","tuesday":"1","wednesday":"1","thursday":"1",
+                    "friday":"1","saturday":"1","sunday":"1","start_date":"20260101","end_date":"20261231",
+                }],
+            })
+            nodes, index = build_spain([("cercanias", load_feed(path))])
+            self.assertEqual({"A", "B"}, {node["id"] for node in nodes})
+            trip = index["trips"]["cercanias:T"]
+            self.assertEqual("T", trip["source_trip_id"])
+            self.assertEqual("A", trip["stops"][0]["stop_id"])
+            self.assertEqual("A", trip["stops"][0]["station_id"])
+
+    def test_spain_merges_shared_stations_and_excludes_bus_routes(self):
+        feed = {
+            "agency": [{"agency_id": "a", "agency_name": "Renfe"}],
+            "stops": [{"stop_id": "A", "stop_name": "Alpha", "stop_lat": "40",
+                       "stop_lon": "-3", "parent_station": ""}],
+            "routes": [
+                {"route_id": "rail", "agency_id": "a", "route_type": "2"},
+                {"route_id": "bus", "agency_id": "a", "route_type": "3"},
+            ],
+            "trips": [
+                {"route_id": "rail", "service_id": "S", "trip_id": "T"},
+                {"route_id": "bus", "service_id": "S", "trip_id": "B"},
+            ],
+            "stop_times": [
+                {"trip_id": "T", "stop_id": "A", "stop_sequence": "1"},
+                {"trip_id": "B", "stop_id": "A", "stop_sequence": "1"},
+            ],
+            "calendar": [],
+            "calendar_dates": [],
+        }
+        nodes, index = build_spain([("cercanias", feed), ("ld", feed)])
+        self.assertEqual(["A"], [node["id"] for node in nodes])
+        self.assertEqual(["cercanias", "ld"], nodes[0]["tags"]["feeds"])
+        self.assertEqual({"cercanias:T", "ld:T"}, set(index["trips"]))
+
+    def test_spain_index_writer_outputs_direct_sqlite(self):
+        feed = {
+            "stops": [
+                {"stop_id": "A", "stop_name": "A", "stop_lat": "40.0", "stop_lon": "-3.0"},
+                {"stop_id": "B", "stop_name": "B", "stop_lat": "41.0", "stop_lon": "-2.0"},
+            ],
+            "routes": [{"route_id": "R", "agency_id": "a", "route_type": "2"}],
+            "agency": [{"agency_id": "a", "agency_name": "Renfe"}],
+            "trips": [{"route_id": "R", "service_id": "S", "trip_id": "T", "trip_headsign": "B"}],
+            "stop_times": [
+                {"trip_id": "T", "stop_id": "A", "arrival_time": "12:00:00",
+                 "departure_time": "12:01:00", "stop_sequence": "1"},
+                {"trip_id": "T", "stop_id": "B", "arrival_time": "13:00:00",
+                 "departure_time": "13:01:00", "stop_sequence": "2"},
+            ],
+            "calendar": [{
+                "service_id": "S", "monday": "1", "tuesday": "1", "wednesday": "1",
+                "thursday": "1", "friday": "1", "saturday": "1", "sunday": "1",
+                "start_date": "20260101", "end_date": "20261231",
+            }],
+            "calendar_dates": [],
+        }
+        _, index = build_spain([("ld", feed)])
+        with tempfile.TemporaryDirectory() as tmp:
+            database = Path(tmp) / "cache" / "spain.sqlite"
+            write_index(index, database)
+            self.assertTrue(database.is_file())
+            self.assertEqual(b"SQLite format 3\x00", database.read_bytes()[:16])
+            connection = sqlite3.connect(database)
+            try:
+                self.assertEqual(
+                    ("1",),
+                    connection.execute("SELECT value FROM metadata WHERE key='version'").fetchone(),
+                )
+                self.assertEqual(2, connection.execute("SELECT count(*) FROM stop_times").fetchone()[0])
+            finally:
+                connection.close()
+
+    def test_generated_spain_database_is_queryable_and_matches_nodes(self):
+        database = ROOT / "cache" / "spain.sqlite"
+        if not database.is_file():
+            self.skipTest("generated Spain GTFS index is not committed; run gen/spain.py with official GTFS inputs")
+        connection = sqlite3.connect(database)
+        try:
+            version = connection.execute(
+                "SELECT value FROM metadata WHERE key='version'"
+            ).fetchone()
+            station_count = connection.execute("SELECT count(*) FROM stations").fetchone()[0]
+            rail_route_types = {
+                json.loads(row[0]).get("route_type")
+                for row in connection.execute("SELECT data FROM routes")
+            }
+        finally:
+            connection.close()
+        with (ROOT / "nodes" / "nodes-spain-renfe.json").open() as node_file:
+            node_count = sum(1 for _ in node_file)
+        self.assertEqual(("1",), version)
+        self.assertLessEqual(node_count, station_count)
+        excluded = json.loads((ROOT / "excludes" / "spain.json").read_text(encoding="utf-8"))
+        excluded_ids = {str(row["id"]) for row in excluded["excluded"]}
+        self.assertEqual(len(excluded_ids), station_count - node_count)
+        self.assertTrue(rail_route_types <= {"2", *map(str, range(100, 200))})
+
+    def test_spain_reviewed_foreign_stations_are_not_playable(self):
+        nodes = [
+            json.loads(line)
+            for line in (ROOT / "nodes" / "nodes-spain-renfe.json").read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        names = {str(row.get("tags", {}).get("name") or "") for row in nodes}
+        for foreign_name in {
+            "Narbonne", "Marseille St Charles", "Montpellier Saint-Roch", "Nimes",
+            "Lyon Part Dieu", "Perpignan", "Valence TGV", "Avignon TGV",
+            "Aix en Provence TGV",
+        }:
+            self.assertNotIn(foreign_name, names)
+
+
+class CuneoVentimigliaTests(unittest.TestCase):
+    def test_reviewed_french_stations_are_in_france_output_with_rfi_fallbacks(self):
+        expected = {
+            "Breil-sur-Roya": "730",
+            "Fontan - Saorge": "1339",
+            "Saint-Dalmas-de-Tende": "2780",
+            "La Brigue": "1511",
+            "Tende": "2826",
+            "Vievola": "3050",
+        }
+        found = {}
+        for line in (ROOT / "nodes" / "nodes-france-sncf.json").read_text(encoding="utf-8").splitlines():
+            import json
+            row = json.loads(line)
+            name = row.get("tags", {}).get("name")
+            if name in expected:
+                found[name] = str(row["tags"].get("rfi_fallback_id"))
+        self.assertEqual(expected, found)
+
+
+if __name__ == "__main__":
+    unittest.main()

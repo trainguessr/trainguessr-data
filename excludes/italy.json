@@ -49,136 +49,6 @@
     },
     {
       "type": "node",
-      "id": 1339,
-      "lat": 43.9966378,
-      "lon": 7.5516262,
-      "tags": {
-        "SNCF:stop_name": "Fontan-Saorge",
-        "name": "Fontan - Saorge",
-        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
-        "operator": "SNCF",
-        "public_transport": "station",
-        "railway": "station",
-        "train": "yes",
-        "uic_ref": "8775685",
-        "wheelchair": "yes",
-        "wikidata": "Q3096450",
-        "wikipedia": "fr:Gare de Fontan - Saorge",
-        "osm_id": 1339
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
-      "id": 1511,
-      "lat": 44.0625669,
-      "lon": 7.6056235,
-      "tags": {
-        "name": "La Brigue",
-        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
-        "official_name": "La Brigue",
-        "operator": "SNCF",
-        "public_transport": "station",
-        "railway": "station",
-        "train": "yes",
-        "uic_ref": "8775687",
-        "wikidata": "Q3096761",
-        "osm_id": 1511
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
-      "id": 2826,
-      "lat": 44.0900602,
-      "lon": 7.5940687,
-      "tags": {
-        "name": "Tende",
-        "name:it": "Tenda",
-        "network": "TER Provence-Alpes-Côte d'Azur",
-        "network:wikidata": "Q3512123",
-        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
-        "official_name": "Tende",
-        "operator": "SNCF",
-        "operator:wikidata": "Q13646",
-        "public_transport": "station",
-        "railway": "station",
-        "train": "yes",
-        "uic_ref": "8775688",
-        "wikidata": "Q2637328",
-        "osm_id": 2826
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
-      "id": 2780,
-      "lat": 44.0556825,
-      "lon": 7.5835191,
-      "tags": {
-        "name": "Saint-Dalmas-de-Tende",
-        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
-        "official_name": "St-Dalmas-de-Tende",
-        "operator": "SNCF",
-        "operator:wikidata": "Q13646",
-        "public_transport": "station",
-        "railway": "station",
-        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012",
-        "train": "yes",
-        "uic_ref": "8775686",
-        "wikidata": "Q920420",
-        "osm_id": 2780
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
-      "id": 730,
-      "lat": 43.944039,
-      "lon": 7.5163276,
-      "tags": {
-        "name": "Breil sur Roya",
-        "network": "TER Provence-Alpes-Côte d'Azur",
-        "network:wikidata": "Q3512123",
-        "note:railway": "Un seul tag railway=station par gare. A mettre sur un node au milieu des voies",
-        "official_name": "Breil-sur-Roya",
-        "operator": "SNCF",
-        "operator:wikidata": "Q13646",
-        "public_transport": "station",
-        "railway": "station",
-        "train": "yes",
-        "uic_ref": "8775683",
-        "wheelchair": "yes",
-        "wikidata": "Q1922511",
-        "wikipedia": "fr:Gare de Breil-sur-Roya",
-        "osm_id": 730
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
-      "id": 3050,
-      "lat": 44.1125559,
-      "lon": 7.5631346,
-      "tags": {
-        "name": "Vievola",
-        "operator": "SNCF",
-        "public_transport": "stop_position",
-        "railway": "stop",
-        "train": "yes",
-        "uic_ref": "8775689",
-        "osm_id": 3050
-      },
-      "category": "italy_rfi",
-      "operator": "rfi"
-    },
-    {
-      "type": "node",
       "id": 1745,
       "lat": 45.1933301,
       "lon": 6.6590437,
@@ -5231,6 +5101,54 @@
       "source_name": "GENGA S.VITTORE TERME",
       "reviewed_name": "Genga - San Vittore Terme",
       "decision": "keep_reviewed_name"
+    },
+    {
+      "operator": "rfi",
+      "id": "1339",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "Fontan - Saorge",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "rfi",
+      "id": "1511",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "La Brigue",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "rfi",
+      "id": "2826",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "Tende",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "rfi",
+      "id": "2780",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "Saint-Dalmas-de-Tende",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "rfi",
+      "id": "730",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "Breil sur Roya",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "rfi",
+      "id": "3050",
+      "status": "cross_border_france",
+      "decision": "handled_by_france_with_rfi_fallback",
+      "reviewed_name": "Vievola",
+      "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     }
   ]
 }

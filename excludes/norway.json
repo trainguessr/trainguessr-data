@@ -1,4 +1,761 @@
 {
-  "excluded": [],
+  "excluded": [
+    {
+      "id": "NSR:StopPlace:107",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Högboda station / Högboda station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:128",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Edane station / Edane station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:135",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Enafors station / Enafors järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:184",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hallsberg station / Hallsbergs resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:193",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Fagerås station / Fagerås resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:34",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Duved station / Duved järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:345",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Undersåker station / Undersåker järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:350",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Järpen station / Järpen järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:374",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Göteborg Centralstation / Göteborg Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:405",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Arvika station / Arvika station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:452",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Välsviken station / Välsviken station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:485",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Östersund Centralstation / Östersund Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:492",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Östersund västra station / Västra Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:496",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Öxnered station / Öxnered station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:525",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kil station / Kil resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:527",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ånn station / Ånn järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:532",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Åre station / Åre Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:559",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Åmotfors station / Åmotfors station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:565",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Mörsil station / Mörsil järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:566",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kornsjø stasjon / Kornsjö gräns); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:567",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kumla station / Kumla resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:570",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Örebro Centralstation, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:57777",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Riksgränsen station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:57778",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Abisko östra station / Abisko östra); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:57779",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kiruna station / Kiruna malmbangård); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:579",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Väse station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:581",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Örebro södra station / Södra station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58392",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Malmö Centralstation / Malmö Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58611",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Katterjåkk station / Katterjåkk); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58612",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Björkliden station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58613",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Abisko turiststation / Abisko Turist E10); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58614",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Gällivare station / Gällivare C/Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58615",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Nattavaara station / Nattavaara Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58616",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Murjek station / Murjek Järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58617",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Boden Centralstation / Boden Resecentrum Tät); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58618",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Sunderby sjukhus station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58619",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Luleå Centralstation / Luleå Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58620",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Älvsbyn station / Älvsbyn Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58621",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Jörn station / Jörn Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58622",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bastuträsk station / Bastuträsk Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58623",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Katrineholm Centralstation / Katrineholm Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58624",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Umeå Centralstation / Umeå Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58625",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Örnsköldsvik Centralstation / Örnsköldsvik ReseC); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58626",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kramfors station / Kramfors ReseC); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58628",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Härnösand Centralstation / Härnösand Central); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58629",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Sundsvall Centralstation / Sundsvall Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58630",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hudiksvall station / Hudiksvalls station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58631",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Söderhamn station / Söderhamn resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58632",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Gävle Centralstation / Gävle Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58633",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Uppsala Centralstation / Uppsala Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58634",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Arlanda Centralstation / Arlanda central); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58635",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Stockholm Centralstation, foreign); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58637",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Brunflo station / Brunflo järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58638",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Pilgrimstad station / Pilgrimstad järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58639",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Gällö station / Gällö järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58640",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Stavre station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58641",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bräcke station / Bräcke järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58642",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ånge station / Ånge bstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58643",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Erikslund station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58644",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ljungaverk station / Ljungaverk jvg); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58645",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Fränsta station / Fränsta jvg); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58646",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Torpshammar station / Torpshammar); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58647",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Stöde station / Stöde jvg); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58648",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Sundsvall västra station / Sundsvalls västra jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58651",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Låktatjåkko station / Låktatjåkka); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58660",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Södertälje syd station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58675",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Vassijaure station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:58955",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Stockholms södra station / Stockholms södra); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:58957",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Vännäs station / Vännäs Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:591",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Storlien station / Storlien järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:59304",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Flemingsberg station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:59392",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Västerås Centralstation / Västerås Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:598",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kristinehamn station / Kristinehamn resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:604",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Krokom station / Krokom järnvägsstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:60966",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Vindeln station / Vindeln Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:60967",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Umeå Östra station / Umeå Östra); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:60968",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Nordmaling station / Nordmaling Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:615",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Charlottenberg station / Charlottenberg resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:61818",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ottebol station / Ottebol station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:61819",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Lene station / Lene station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:623",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Karlstad Centralstation / Karlstad Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:62776",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Eskilstuna Centralstation / Eskilstuna Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63027",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Enköping station / Enköping station (Enköping)); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63028",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bålsta station / Bålsta station (SL-pendeln) (Håbo)); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63029",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Arboga station / Arboga Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63030",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Köping station / Köping Jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63107",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bollnäs station / Bollnäs jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63108",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Fjällåsen station / Fjällåsen); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63109",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ljusdal station / Ljusdals resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63110",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Mellansel station / Mellansel jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63171",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (København lufthavn stasjon, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63172",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (København H, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63173",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Nørreport stasjon, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63174",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Østerport stasjon, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63175",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Ørestad stasjon, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63176",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Tårnby stasjon, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63177",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hyllie station / Malmö Hyllie); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63178",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Triangeln station / Malmö Triangeln); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63179",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Burlöv station / Burlöv station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63180",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Lund Centralstation / Lund Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63182",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kävlinge station / Kävlinge station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63183",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Landskrona station / Landskrona station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63184",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ramlösa station / Ramlösa station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63185",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Helsingborg Centralstation / Helsingborg Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63186",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ängelholm station / Ängelholm station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63187",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Båstad station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63188",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Laholm station / Laholm Järnvägsstationen); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63189",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Halmstad Centralstation / Halmstad Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63190",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Falkenberg station / Falkenberg Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63191",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Varberg station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63192",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Åsa station / Åsa station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63193",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Kungsbacka station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63194",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Mölndal station / Mölndal station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63244",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Brussel-Centraal/Bruxelles-Central / Brussels Central); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63351",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Arbrå station / Arbrå station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63356",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Gnarp station / Gnarp station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63359",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hällnäs station / Hällnäs Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63362",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Holmsveden station / Holmsveden station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63365",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Iggesund station / Iggesund station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63368",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Järvsö station / Järvsö station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63371",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kilafors station / Kilafors station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63374",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Notviken station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63377",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ockelbo station / Ockelbo station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63382",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Örnsköldsvik Norra station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63384",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Timrå station / Timrå jvg); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63388",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Tvärålund station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63391",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Vallsta station / Vallsta station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:634",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Degerfors station / Degerfors jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63598",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Malmö Syd Svågertorp, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63627",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hörnefors station / Hörnefors Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63630",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Haparanda station / Haparanda Jvstn); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63637",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Husum station / Husum ReseC); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63648",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kalix station / Kalix Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63652",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kaitum station / Kaitum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63660",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Nälden station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:63670",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Sjisjka / Sjisjka); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63682",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Västeraspby station / Höga Kusten Flygplats); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63685",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Vännäsby station / Vännäsby); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63731",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hede station / Kungsbacka Hede station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63872",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Brunsberg station / Brunsberg station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:63963",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Liseberg station / Liseberg Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64086",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Norrköping Centralstation / Norrköping Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64087",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Linköping Centralstation / Linköping Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64088",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Nässjö Centralstation / Nässjö Resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64089",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Alvesta station / Alvesta station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64092",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hässleholm Centralstation / Hässleholm Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64093",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Eslöv station / Eslöv station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64094",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Röjan station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64107",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Odense station, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64108",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Høje Taastrup station, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64109",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (København syd station, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64110",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Kolding station, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64111",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hamburg Hbf / Hamburg Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64112",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hamburg-Bergedorf / Hamburg-Bergedorf); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64113",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hamburg-Harburg / Hamburg-Harburg); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64114",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Berlin Zoologischer Garten / Berlin Zoologischer Garten); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64115",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Berlin Gesundbrunnen / Berlin Gesundbrunnen); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64116",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Berlin Hauptbahnhof / Berlin Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64117",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Dresden Hbf / Dresden Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64118",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Dresden-Neustadt / Dresden Neustadt); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64119",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (München Ost / München Ost); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64120",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Salzburg Hbf / Salzburg Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64121",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bischofshofen / Bischofshofen); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64122",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (St.Johann im Pongau / St. Johann im Pongau); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64123",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Zell am See / Zell am See); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64124",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (St.Johann in Tirol / St. Johann in Tirol); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64125",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kitzbühel / Kitzbühel); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64126",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Kirchberg in Tirol / Kirchberg in Tirol); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64127",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Jenbach / Jenbach); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64128",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Innsbruck Hbf / Innsbruck Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64129",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Bad Gastein / Bad Gastein); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64130",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Wörgl Hbf / Wörgl Hauptbahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64131",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Korsør station, foreign); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64132",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Mjölby station / Mjölby resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64171",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Gamlestaden / Gamlestaden Station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64172",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Borlänge station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64173",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Falun station / Falun TÅG); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64174",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Mora station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64175",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Skövde station / Skövde Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64176",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Alingsås station, SE); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64179",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Jönköping Centralstation / Jönköping Centralstation); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64244",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Falköping station / Falköping resecentrum); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64276",
+      "reason": "Reviewed 2026-08: Entur NSR cross-border reference stop outside Norway (Padborg station, DK); not playable in norway_all."
+    },
+    {
+      "id": "NSR:StopPlace:64277",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Neumünster / Neumünster); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64372",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Hamburg-Altona / Hamburg-Altona); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64504",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Åstorp station / Åstorp station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:64507",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Pinneberg / Pinneberg bahnhof); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:681",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Trollhättan Centralstation / Trollhättan station); not a Norwegian playable station."
+    },
+    {
+      "id": "NSR:StopPlace:73",
+      "reason": "Reviewed 2026-08 cross-provider audit: Entur NSR foreign reference stop (Ed station / Ed busstation); not a Norwegian playable station."
+    }
+  ],
   "renamed": []
 }

@@ -1,0 +1,44 @@
+[
+  {
+    "sncf_id": "87756833",
+    "rfi_fallback_id": "730",
+    "name": "Breil-sur-Roya",
+    "lat": 43.944039,
+    "lon": 7.5163276
+  },
+  {
+    "sncf_id": "87756858",
+    "rfi_fallback_id": "1339",
+    "name": "Fontan - Saorge",
+    "lat": 43.9966378,
+    "lon": 7.5516262
+  },
+  {
+    "sncf_id": "87756866",
+    "rfi_fallback_id": "2780",
+    "name": "Saint-Dalmas-de-Tende",
+    "lat": 44.0556825,
+    "lon": 7.5835191
+  },
+  {
+    "sncf_id": "87756874",
+    "rfi_fallback_id": "1511",
+    "name": "La Brigue",
+    "lat": 44.0625669,
+    "lon": 7.6056235
+  },
+  {
+    "sncf_id": "87756882",
+    "rfi_fallback_id": "2826",
+    "name": "Tende",
+    "lat": 44.0900602,
+    "lon": 7.5940687
+  },
+  {
+    "sncf_id": "87756890",
+    "rfi_fallback_id": "3050",
+    "name": "Vievola",
+    "lat": 44.1125559,
+    "lon": 7.5631346
+  }
+]

@@ -26,7 +26,13 @@ SCNF export its stations as open data in a JSON file [here](https://data.sncf.co
 
 These station IDs are then used in the SNCF API, which requires an API key. The API key is obtained by creating a free account on the SNCF Numerique website: [SNCF Numerique](https://numerique.sncf.com/).
 
-To get started, cd into `gen/` and run `python3 france.py`. THe API key is not needed to get the stations, only for the real-time departures.
+Run `python3 gen/france.py` from the repository root. The generator refreshes a
+cache older than seven days; use `--refresh` to force a download. The API key is
+not needed to generate stations, only for live departures.
+
+The reviewed French section of Cuneo-Ventimiglia is supplemented from
+`sources/france/cuneo-ventimiglia.json`. SNCF remains the primary live source;
+the recorded RFI board IDs are explicit fallbacks.
 
 
 ### Finland
@@ -90,6 +96,38 @@ TRAINGUESSR_SKIP_REVIEW=1 python3 gen/italy_rfi.py
 Just like Sweden, the Netherlands has tremendous support for open data. The data was downloaded from the Rijden de Treinen website: [Rijden de Treinen](https://www.rijdendetreinen.nl/en/open-data). Their API is also used to get the real-time departures.
 
 To get started, cd into `gen/` and run `python3 netherlands.py`.
+
+### Spain
+
+Spain uses the official Renfe Cercanias/Rodalies and long-/medium-distance and
+high-speed GTFS archives. Download both archives to `cache/`, then run:
+
+```bash
+python3 gen/spain.py \
+  --cercanias cache/renfe-cercanias.zip \
+  --long-distance cache/renfe-av-ld-md.zip
+```
+
+This generates `nodes/nodes-spain-renfe.json` and the compressed, disk-backed
+runtime index `cache/spain.sqlite`.
+
+`gtfs/` is intentionally ignored by Git. Deploy `cache/spain.sqlite` alongside the node files in the data volume. When production uses `DATA_DIR=/data`, the application automatically reads `/data/cache/spain.sqlite`. Exact source URLs and attribution
+requirements are recorded in `sources/spain.md`.
+
+### Denmark
+
+Denmark uses Rejseplanen Labs GTFS Schedule/Static and API 2.0. Non-commercial
+API use is free up to 50,000 calls/month, but both the archive and API access ID
+require an approved Labs request. Request GTFS and API 2.0 access at
+<https://labs.rejseplanen.dk/hc/requests/new?ticket_form_id=17536468593565>.
+After downloading the archive, run:
+
+```bash
+python3 gen/denmark.py --input cache/denmark/rejseplanen-gtfs.zip
+```
+
+Set `REJSEPLANEN_API_KEY` in the application environment and live-smoke a
+generated station before enabling Denmark publicly.
 
 ### Switzerland
 
@@ -181,9 +219,7 @@ The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviari
 | Country | Operator | Notes |
 | --- | --- | --- | 
 | Norway | Vy / Bane NOR | Entur API reportedly provides open GTFS and real-time data |
-| Spain | Renfe / ADIF | Official site [renfe.com](https://www.renfe.com); large network. No public API; tried in the past, was complex |
 | Portugal | Comboios de Portugal (CP) | Still to find official GTFS feed or API |
-| Denmark | DSB / Rejseplanen | Official site [dsb.dk](https://www.dsb.dk). Rejseplanen API is reportedly well-documented |
 | Czech Republic | České dráhy | HAFAS-based APIs should be available, but a mess to implement |
 | Poland | PKP | Still to research |
 

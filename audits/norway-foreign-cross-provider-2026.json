@@ -1,0 +1,955 @@
+{
+  "reviewed": "2026-08-18",
+  "decision": "exclude_from_norway_all",
+  "count": 154,
+  "rows": [
+    {
+      "id": "NSR:StopPlace:107",
+      "matched_station": "Högboda station / Högboda station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:128",
+      "matched_station": "Edane station / Edane station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:135",
+      "matched_station": "Enafors station / Enafors järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:184",
+      "matched_station": "Hallsberg station / Hallsbergs resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:193",
+      "matched_station": "Fagerås station / Fagerås resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:34",
+      "matched_station": "Duved station / Duved järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:345",
+      "matched_station": "Undersåker station / Undersåker järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:350",
+      "matched_station": "Järpen station / Järpen järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:374",
+      "matched_station": "Göteborg Centralstation / Göteborg Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:405",
+      "matched_station": "Arvika station / Arvika station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:452",
+      "matched_station": "Välsviken station / Välsviken station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:485",
+      "matched_station": "Östersund Centralstation / Östersund Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:492",
+      "matched_station": "Östersund västra station / Västra Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:496",
+      "matched_station": "Öxnered station / Öxnered station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:525",
+      "matched_station": "Kil station / Kil resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:527",
+      "matched_station": "Ånn station / Ånn järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:532",
+      "matched_station": "Åre station / Åre Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:559",
+      "matched_station": "Åmotfors station / Åmotfors station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:565",
+      "matched_station": "Mörsil station / Mörsil järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:566",
+      "matched_station": "Kornsjø stasjon / Kornsjö gräns",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:567",
+      "matched_station": "Kumla station / Kumla resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:57778",
+      "matched_station": "Abisko östra station / Abisko östra",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:57779",
+      "matched_station": "Kiruna station / Kiruna malmbangård",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:581",
+      "matched_station": "Örebro södra station / Södra station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58392",
+      "matched_station": "Malmö Centralstation / Malmö Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58611",
+      "matched_station": "Katterjåkk station / Katterjåkk",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58613",
+      "matched_station": "Abisko turiststation / Abisko Turist E10",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58614",
+      "matched_station": "Gällivare station / Gällivare C/Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58615",
+      "matched_station": "Nattavaara station / Nattavaara Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58616",
+      "matched_station": "Murjek station / Murjek Järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58617",
+      "matched_station": "Boden Centralstation / Boden Resecentrum Tät",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58619",
+      "matched_station": "Luleå Centralstation / Luleå Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58620",
+      "matched_station": "Älvsbyn station / Älvsbyn Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58621",
+      "matched_station": "Jörn station / Jörn Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58622",
+      "matched_station": "Bastuträsk station / Bastuträsk Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58623",
+      "matched_station": "Katrineholm Centralstation / Katrineholm Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58624",
+      "matched_station": "Umeå Centralstation / Umeå Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58625",
+      "matched_station": "Örnsköldsvik Centralstation / Örnsköldsvik ReseC",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58626",
+      "matched_station": "Kramfors station / Kramfors ReseC",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58628",
+      "matched_station": "Härnösand Centralstation / Härnösand Central",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58629",
+      "matched_station": "Sundsvall Centralstation / Sundsvall Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58630",
+      "matched_station": "Hudiksvall station / Hudiksvalls station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58631",
+      "matched_station": "Söderhamn station / Söderhamn resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58632",
+      "matched_station": "Gävle Centralstation / Gävle Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58633",
+      "matched_station": "Uppsala Centralstation / Uppsala Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58634",
+      "matched_station": "Arlanda Centralstation / Arlanda central",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58637",
+      "matched_station": "Brunflo station / Brunflo järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58638",
+      "matched_station": "Pilgrimstad station / Pilgrimstad järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58639",
+      "matched_station": "Gällö station / Gällö järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58641",
+      "matched_station": "Bräcke station / Bräcke järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58642",
+      "matched_station": "Ånge station / Ånge bstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58644",
+      "matched_station": "Ljungaverk station / Ljungaverk jvg",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58645",
+      "matched_station": "Fränsta station / Fränsta jvg",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58646",
+      "matched_station": "Torpshammar station / Torpshammar",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58647",
+      "matched_station": "Stöde station / Stöde jvg",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58648",
+      "matched_station": "Sundsvall västra station / Sundsvalls västra jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58651",
+      "matched_station": "Låktatjåkko station / Låktatjåkka",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58955",
+      "matched_station": "Stockholms södra station / Stockholms södra",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:58957",
+      "matched_station": "Vännäs station / Vännäs Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:591",
+      "matched_station": "Storlien station / Storlien järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:59392",
+      "matched_station": "Västerås Centralstation / Västerås Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:598",
+      "matched_station": "Kristinehamn station / Kristinehamn resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:604",
+      "matched_station": "Krokom station / Krokom järnvägsstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:60966",
+      "matched_station": "Vindeln station / Vindeln Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:60967",
+      "matched_station": "Umeå Östra station / Umeå Östra",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:60968",
+      "matched_station": "Nordmaling station / Nordmaling Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:615",
+      "matched_station": "Charlottenberg station / Charlottenberg resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:61818",
+      "matched_station": "Ottebol station / Ottebol station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:61819",
+      "matched_station": "Lene station / Lene station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:623",
+      "matched_station": "Karlstad Centralstation / Karlstad Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:62776",
+      "matched_station": "Eskilstuna Centralstation / Eskilstuna Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63027",
+      "matched_station": "Enköping station / Enköping station (Enköping)",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63028",
+      "matched_station": "Bålsta station / Bålsta station (SL-pendeln) (Håbo)",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63029",
+      "matched_station": "Arboga station / Arboga Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63030",
+      "matched_station": "Köping station / Köping Jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63107",
+      "matched_station": "Bollnäs station / Bollnäs jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63108",
+      "matched_station": "Fjällåsen station / Fjällåsen",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63109",
+      "matched_station": "Ljusdal station / Ljusdals resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63110",
+      "matched_station": "Mellansel station / Mellansel jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63177",
+      "matched_station": "Hyllie station / Malmö Hyllie",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63178",
+      "matched_station": "Triangeln station / Malmö Triangeln",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63179",
+      "matched_station": "Burlöv station / Burlöv station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63180",
+      "matched_station": "Lund Centralstation / Lund Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63182",
+      "matched_station": "Kävlinge station / Kävlinge station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63183",
+      "matched_station": "Landskrona station / Landskrona station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63184",
+      "matched_station": "Ramlösa station / Ramlösa station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63185",
+      "matched_station": "Helsingborg Centralstation / Helsingborg Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63186",
+      "matched_station": "Ängelholm station / Ängelholm station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63188",
+      "matched_station": "Laholm station / Laholm Järnvägsstationen",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63189",
+      "matched_station": "Halmstad Centralstation / Halmstad Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63190",
+      "matched_station": "Falkenberg station / Falkenberg Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63192",
+      "matched_station": "Åsa station / Åsa station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63194",
+      "matched_station": "Mölndal station / Mölndal station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63244",
+      "matched_station": "Brussel-Centraal/Bruxelles-Central / Brussels Central",
+      "categories": "belgium_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:63351",
+      "matched_station": "Arbrå station / Arbrå station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63356",
+      "matched_station": "Gnarp station / Gnarp station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63359",
+      "matched_station": "Hällnäs station / Hällnäs Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63362",
+      "matched_station": "Holmsveden station / Holmsveden station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63365",
+      "matched_station": "Iggesund station / Iggesund station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63368",
+      "matched_station": "Järvsö station / Järvsö station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63371",
+      "matched_station": "Kilafors station / Kilafors station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63377",
+      "matched_station": "Ockelbo station / Ockelbo station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63384",
+      "matched_station": "Timrå station / Timrå jvg",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63391",
+      "matched_station": "Vallsta station / Vallsta station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:634",
+      "matched_station": "Degerfors station / Degerfors jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63627",
+      "matched_station": "Hörnefors station / Hörnefors Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63630",
+      "matched_station": "Haparanda station / Haparanda Jvstn",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63637",
+      "matched_station": "Husum station / Husum ReseC",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63648",
+      "matched_station": "Kalix station / Kalix Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63652",
+      "matched_station": "Kaitum station / Kaitum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63670",
+      "matched_station": "Sjisjka / Sjisjka",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63682",
+      "matched_station": "Västeraspby station / Höga Kusten Flygplats",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63685",
+      "matched_station": "Vännäsby station / Vännäsby",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63731",
+      "matched_station": "Hede station / Kungsbacka Hede station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63872",
+      "matched_station": "Brunsberg station / Brunsberg station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:63963",
+      "matched_station": "Liseberg station / Liseberg Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64086",
+      "matched_station": "Norrköping Centralstation / Norrköping Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64087",
+      "matched_station": "Linköping Centralstation / Linköping Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64088",
+      "matched_station": "Nässjö Centralstation / Nässjö Resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64089",
+      "matched_station": "Alvesta station / Alvesta station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64092",
+      "matched_station": "Hässleholm Centralstation / Hässleholm Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64093",
+      "matched_station": "Eslöv station / Eslöv station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64111",
+      "matched_station": "Hamburg Hbf / Hamburg Hauptbahnhof",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64112",
+      "matched_station": "Hamburg-Bergedorf / Hamburg-Bergedorf",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64113",
+      "matched_station": "Hamburg-Harburg / Hamburg-Harburg",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64114",
+      "matched_station": "Berlin Zoologischer Garten / Berlin Zoologischer Garten",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64115",
+      "matched_station": "Berlin Gesundbrunnen / Berlin Gesundbrunnen",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64116",
+      "matched_station": "Berlin Hauptbahnhof / Berlin Hauptbahnhof",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64117",
+      "matched_station": "Dresden Hbf / Dresden Hauptbahnhof",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64118",
+      "matched_station": "Dresden-Neustadt / Dresden Neustadt",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64119",
+      "matched_station": "München Ost / München Ost",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64120",
+      "matched_station": "Salzburg Hbf / Salzburg Hauptbahnhof",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64121",
+      "matched_station": "Bischofshofen / Bischofshofen",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64122",
+      "matched_station": "St.Johann im Pongau / St. Johann im Pongau",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64123",
+      "matched_station": "Zell am See / Zell am See",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64124",
+      "matched_station": "St.Johann in Tirol / St. Johann in Tirol",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64125",
+      "matched_station": "Kitzbühel / Kitzbühel",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64126",
+      "matched_station": "Kirchberg in Tirol / Kirchberg in Tirol",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64127",
+      "matched_station": "Jenbach / Jenbach",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64128",
+      "matched_station": "Innsbruck Hbf / Innsbruck Hauptbahnhof",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64129",
+      "matched_station": "Bad Gastein / Bad Gastein",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64130",
+      "matched_station": "Wörgl Hbf / Wörgl Hauptbahnhof",
+      "categories": "austria_oebb, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64132",
+      "matched_station": "Mjölby station / Mjölby resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64171",
+      "matched_station": "Gamlestaden / Gamlestaden Station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64173",
+      "matched_station": "Falun station / Falun TÅG",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64175",
+      "matched_station": "Skövde station / Skövde Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64179",
+      "matched_station": "Jönköping Centralstation / Jönköping Centralstation",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64244",
+      "matched_station": "Falköping station / Falköping resecentrum",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64277",
+      "matched_station": "Neumünster / Neumünster",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64372",
+      "matched_station": "Hamburg-Altona / Hamburg-Altona",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:64504",
+      "matched_station": "Åstorp station / Åstorp station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:64507",
+      "matched_station": "Pinneberg / Pinneberg bahnhof",
+      "categories": "germany_all, norway_all"
+    },
+    {
+      "id": "NSR:StopPlace:681",
+      "matched_station": "Trollhättan Centralstation / Trollhättan station",
+      "categories": "norway_all, sweden_all"
+    },
+    {
+      "id": "NSR:StopPlace:73",
+      "matched_station": "Ed station / Ed busstation",
+      "categories": "norway_all, sweden_all"
+    }
+  ],
+  "additional_reviewed_foreign_stops": [
+    {
+      "id": "NSR:StopPlace:64176",
+      "name": "Alingsås station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58612",
+      "name": "Björkliden station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:64172",
+      "name": "Borlänge station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63187",
+      "name": "Båstad station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58643",
+      "name": "Erikslund station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:59304",
+      "name": "Flemingsberg station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:64108",
+      "name": "Høje Taastrup station",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:64110",
+      "name": "Kolding station",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:64131",
+      "name": "Korsør station",
+      "country": null
+    },
+    {
+      "id": "NSR:StopPlace:63193",
+      "name": "Kungsbacka station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63172",
+      "name": "København H",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:63171",
+      "name": "København lufthavn stasjon",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:64109",
+      "name": "København syd station",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:63598",
+      "name": "Malmö Syd Svågertorp",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:64174",
+      "name": "Mora station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63374",
+      "name": "Notviken station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63660",
+      "name": "Nälden station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63173",
+      "name": "Nørreport stasjon",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:64107",
+      "name": "Odense station",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:64276",
+      "name": "Padborg station",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:57777",
+      "name": "Riksgränsen station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:64094",
+      "name": "Röjan station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58640",
+      "name": "Stavre station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58635",
+      "name": "Stockholm Centralstation",
+      "country": null
+    },
+    {
+      "id": "NSR:StopPlace:58618",
+      "name": "Sunderby sjukhus station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58660",
+      "name": "Södertälje syd station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63388",
+      "name": "Tvärålund station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63176",
+      "name": "Tårnby stasjon",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:63191",
+      "name": "Varberg station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:58675",
+      "name": "Vassijaure station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:579",
+      "name": "Väse station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:570",
+      "name": "Örebro Centralstation",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63382",
+      "name": "Örnsköldsvik Norra station",
+      "country": "SE"
+    },
+    {
+      "id": "NSR:StopPlace:63175",
+      "name": "Ørestad stasjon",
+      "country": "DK"
+    },
+    {
+      "id": "NSR:StopPlace:63174",
+      "name": "Østerport stasjon",
+      "country": "DK"
+    }
+  ],
+  "total_excluded_in_review": 189
+}

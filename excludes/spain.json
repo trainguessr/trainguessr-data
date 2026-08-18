@@ -1,0 +1,167 @@
+{
+  "excluded": [
+    {
+      "type": "node",
+      "id": "87088",
+      "lat": 43.190253,
+      "lon": 3.005716,
+      "tags": {
+        "name": "Narbonne",
+        "stop_ids": [
+          "87088"
+        ],
+        "renfe_stop_id": "87088",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87089",
+      "lat": 43.30349,
+      "lon": 5.382236,
+      "tags": {
+        "name": "Marseille St Charles",
+        "stop_ids": [
+          "87089"
+        ],
+        "renfe_stop_id": "87089",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87173",
+      "lat": 43.604852,
+      "lon": 3.880491,
+      "tags": {
+        "name": "Montpellier Saint-Roch",
+        "stop_ids": [
+          "87173"
+        ],
+        "renfe_stop_id": "87173",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87302",
+      "lat": 43.832291,
+      "lon": 4.365845,
+      "tags": {
+        "name": "Nimes",
+        "stop_ids": [
+          "87302"
+        ],
+        "renfe_stop_id": "87302",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87303",
+      "lat": 45.760281,
+      "lon": 4.859801,
+      "tags": {
+        "name": "Lyon Part Dieu",
+        "stop_ids": [
+          "87303"
+        ],
+        "renfe_stop_id": "87303",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87374",
+      "lat": 42.696421,
+      "lon": 2.880381,
+      "tags": {
+        "name": "Perpignan",
+        "stop_ids": [
+          "87374"
+        ],
+        "renfe_stop_id": "87374",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87810",
+      "lat": 44.991545,
+      "lon": 4.978703,
+      "tags": {
+        "name": "Valence TGV",
+        "stop_ids": [
+          "87810"
+        ],
+        "renfe_stop_id": "87810",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87814",
+      "lat": 43.921938,
+      "lon": 4.785813,
+      "tags": {
+        "name": "Avignon TGV",
+        "stop_ids": [
+          "87814"
+        ],
+        "renfe_stop_id": "87814",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "type": "node",
+      "id": "87912",
+      "lat": 43.455268,
+      "lon": 5.31723,
+      "tags": {
+        "name": "Aix en Provence TGV",
+        "stop_ids": [
+          "87912"
+        ],
+        "renfe_stop_id": "87912",
+        "feeds": [
+          "ld"
+        ]
+      },
+      "category": "spain_renfe",
+      "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    }
+  ],
+  "renamed": []
+}

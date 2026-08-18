@@ -37,7 +37,7 @@ class DatasetTests(unittest.TestCase):
     def test_one_exclude_file_per_country(self) -> None:
         expected = {
             "austria", "belgium", "finland", "france", "germany",
-            "italy", "netherlands", "norway", "sweden", "switzerland", "uk",
+            "italy", "netherlands", "norway", "spain", "sweden", "switzerland", "uk",
         }
         actual = {path.stem for path in (ROOT / "excludes").glob("*.json")}
         self.assertEqual(expected, actual)
@@ -209,6 +209,28 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual("NSR:StopPlace:59872", nodes[0]["id"])
         self.assertEqual("Oslo S", nodes[0]["tags"]["name"])
         self.assertEqual("norway_all", nodes[0]["category"])
+
+
+    def test_reviewed_norway_cross_provider_ids_are_excluded(self) -> None:
+        config = json.loads((ROOT / "excludes" / "norway.json").read_text(encoding="utf-8"))
+        excluded = {str(row["id"]) for row in config["excluded"]}
+        active = {
+            str(row["id"])
+            for row in load_ndjson(ROOT / "nodes" / "nodes-norway.json")
+        }
+        self.assertGreaterEqual(len(excluded), 154)
+        self.assertTrue(excluded.isdisjoint(active))
+
+    def test_spain_reviewed_vallecas_ids_are_retained_and_marked(self) -> None:
+        rows = {
+            str(row["id"]): row
+            for row in load_ndjson(ROOT / "nodes" / "nodes-spain-renfe.json")
+        }
+        self.assertIn("70001", rows)
+        self.assertIn("70005", rows)
+        for station_id in ("70001", "70005"):
+            self.assertTrue(rows[station_id]["tags"].get("audit_duplicate_name_reviewed"))
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,97 @@
+{
+  "reviewed": "2026-08-18",
+  "method": "Reviewed after station_audit.py proximity heuristic flagged cross-provider records within 120 m.",
+  "rows": [
+    {
+      "categories": [
+        "italy_fse",
+        "italy_rfi"
+      ],
+      "ids": [
+        "S13201",
+        "595"
+      ],
+      "names": "Bari Centrale (FSE) / Bari Centrale",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "italy_fer",
+        "italy_rfi"
+      ],
+      "ids": [
+        "S05990",
+        "2003"
+      ],
+      "names": "Bologna S.Rita / Bologna San Vitale",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "france_sncf",
+        "spain_renfe"
+      ],
+      "ids": [
+        "87785006",
+        "79316"
+      ],
+      "names": "Cerbère / Cerbère",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "france_sncf",
+        "spain_renfe"
+      ],
+      "ids": [
+        "87611483",
+        "77310"
+      ],
+      "names": "Latour-de-Carol - Enveitg / La Tor de Querol-Enveig",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "italy_eav",
+        "italy_rfi"
+      ],
+      "ids": [
+        "801",
+        "1877"
+      ],
+      "names": "Montesanto (Napoli, EAV) / Napoli Montesanto",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "italy_fer",
+        "italy_rfi"
+      ],
+      "ids": [
+        "S05195",
+        "4054"
+      ],
+      "names": "Reggio Emilia Mediopadana / Reggio Emilia AV Mediopadana",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    },
+    {
+      "categories": [
+        "italy_eav",
+        "italy_rfi"
+      ],
+      "ids": [
+        "41",
+        "2879"
+      ],
+      "names": "Torre Annunziata - Oplonti / Torre Annunziata Centrale",
+      "decision": "retain_distinct_provider_identities",
+      "reason": "Reviewed co-location/interchange: both provider-specific records are intentionally retained; proximity alone is not duplicate evidence."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "reviewed": [
+    {
+      "name": "Vallecas",
+      "ids": [
+        "70001",
+        "70005"
+      ],
+      "decision": "retain_distinct",
+      "reason": "Renfe publishes both 70001 (Cercanías Madrid) and 70005 (general station catalogue) as distinct official station identifiers."
+    }
+  ]
+}
