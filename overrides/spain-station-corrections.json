@@ -1,0 +1,53 @@
+{
+  "coordinate_overrides": [
+    {
+      "id": "23021",
+      "expected_name": "Padrón Barbanza",
+      "lat": 42.7812443,
+      "lon": -8.656552,
+      "source": "Renfe complete station list (official station-data export)",
+      "reason": "Current GTFS repeats Padrón coordinates for the separate Padrón Barbanza station.",
+      "source_url": "https://data.renfe.com/datastore/dump/b22cd560-3a2b-45dd-a25d-2406941f6fcc?format=xml"
+    },
+    {
+      "id": "05403",
+      "expected_name": "Tremañes-Langreo",
+      "lat": 43.527123,
+      "lon": -5.690694,
+      "source": "Renfe official FEVE station list",
+      "reason": "Current GTFS nearly co-locates Tremañes-Langreo with Tremañes-Carreño despite separate station records.",
+      "source_url": "https://data.renfe.com/dataset/f72abe7d-fea8-4af1-9e3d-cf0997b81955/resource/4de015e6-987c-43ae-9350-8bf941ef66c7/download/listado-de-estaciones-feve-2.csv"
+    }
+  ],
+  "aliases": [
+    {
+      "id": "99117",
+      "expected_name": "Ourense Turístico",
+      "canonical_id": "22100",
+      "canonical_expected_name": "Ourense",
+      "reason": "Renfe tourist/service code at the same physical passenger station."
+    },
+    {
+      "id": "99161",
+      "expected_name": "Pontevedra-Turístico",
+      "canonical_id": "23004",
+      "canonical_expected_name": "Pontevedra",
+      "reason": "Renfe tourist/service code at the same physical passenger station."
+    },
+    {
+      "id": "99159",
+      "expected_name": "Santiago-Turístico",
+      "canonical_id": "31400",
+      "canonical_expected_name": "Santiago de Compostela-Daniel Castelao",
+      "reason": "Renfe tourist/service code at the same physical passenger station."
+    },
+    {
+      "id": "70001",
+      "expected_name": "Vallecas",
+      "canonical_id": "70005",
+      "canonical_expected_name": "Vallecas",
+      "reason": "Cercanías feed identifier for the same physical Vallecas passenger station represented by ADIF code 70005.",
+      "source_url": "https://www.adif.es/w/70005-vallecas"
+    }
+  ]
+}

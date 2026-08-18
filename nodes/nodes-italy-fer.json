@@ -21,8 +21,8 @@
 {"type":"node","id":"S05982","lat":44.5844148,"lon":10.7374935,"tags":{"name":"Casalgrande","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Sassuolo","osm_id":"484479056"},"category":"italy_fer"}
 {"type":"node","id":"S05184","lat":44.5937414,"lon":10.8567186,"tags":{"name":"Casinalbo","operator":"Ferrovie Emilia Romagna","line":"Modena-Sassuolo","osm_id":"368183117"},"category":"italy_fer"}
 {"type":"node","id":"S05994","lat":44.5035096,"lon":11.4580515,"tags":{"name":"Castenaso Stellina","operator":"Ferrovie Emilia Romagna","line":"Bologna-Portomaggiore","osm_id":"257062663"},"category":"italy_fer"}
-{"type":"node","id":"S05995","lat":44.5035096,"lon":11.4580515,"tags":{"name":"Castenaso","operator":"Ferrovie Emilia Romagna","line":"Bologna-Portomaggiore","osm_id":"257062663"},"category":"italy_fer"}
-{"type":"node","id":"S05931","lat":44.6980073,"lon":10.530798,"tags":{"name":"Cavriago S.Nicolo'","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Ciano d'Enza","osm_id":"1575733112"},"category":"italy_fer"}
+{"type":"node","id":"S05995","lat":44.50343,"lon":11.47214,"tags":{"name":"Castenaso","operator":"Ferrovie Emilia Romagna","line":"Bologna-Portomaggiore","osm_id":"257066737","coordinate_override":true},"category":"italy_fer"}
+{"type":"node","id":"S05931","lat":44.699327,"lon":10.523291,"tags":{"name":"Cavriago S.Nicolo'","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Ciano d'Enza","coordinate_override":true},"category":"italy_fer"}
 {"type":"node","id":"S05932","lat":44.6980073,"lon":10.530798,"tags":{"name":"Cavriago","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Ciano d'Enza","osm_id":"1575733112"},"category":"italy_fer"}
 {"type":"node","id":"S05983","lat":44.5973991,"lon":10.7075106,"tags":{"name":"Chiozza","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Sassuolo","osm_id":"484760274"},"category":"italy_fer"}
 {"type":"node","id":"S05920","lat":44.8280757,"lon":10.3937971,"tags":{"name":"Chiozzola","operator":"Ferrovie Emilia Romagna","line":"Parma-Suzzara","osm_id":"12294175810"},"category":"italy_fer"}
@@ -84,7 +84,7 @@
 {"type":"node","id":"S05166","lat":44.8580954,"lon":11.5064906,"tags":{"name":"Vigarano Pieve","operator":"Ferrovie Emilia Romagna","line":"Suzzara-Ferrara","osm_id":"2122415610"},"category":"italy_fer"}
 {"type":"node","id":"S05978","lat":44.4817828,"lon":11.008299,"tags":{"name":"Vignola","operator":"Ferrovie Emilia Romagna","line":"Bologna-Vignola","osm_id":"614574734"},"category":"italy_fer"}
 {"type":"node","id":"S05980","lat":44.5575927,"lon":10.7630836,"tags":{"name":"Villalunga","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Sassuolo","osm_id":"820642265"},"category":"italy_fer"}
-{"type":"node","id":"S05971","lat":44.586842,"lon":11.5679525,"tags":{"name":"Zola Centro","operator":"Ferrovie Emilia Romagna","line":"Bologna-Vignola","osm_id":"256042824"},"category":"italy_fer"}
+{"type":"node","id":"S05971","lat":44.49252,"lon":11.21811,"tags":{"name":"Zola Centro","operator":"Ferrovie Emilia Romagna","line":"Bologna-Vignola","osm_id":"12294207482","coordinate_override":true},"category":"italy_fer"}
 {"type":"node","id":"S05918","lat":44.4941412,"lon":11.2094261,"tags":{"name":"Zola Chiesa","operator":"Ferrovie Emilia Romagna","line":"Bologna-Vignola","osm_id":"1232505138"},"category":"italy_fer"}
 {"type":"node","id":"S05929","lat":44.6904225,"lon":10.493069,"tags":{"name":"Barco","operator":"Ferrovie Emilia Romagna","line":"Reggio Emilia-Ciano d'Enza","osm_id":"3404115441"},"category":"italy_fer"}
 {"type":"node","id":"S05996","lat":44.5363824,"lon":11.5389834,"tags":{"name":"Budrio Centro","operator":"Ferrovie Emilia Romagna","line":"Bologna-Portomaggiore","osm_id":"255884160"},"category":"italy_fer"}

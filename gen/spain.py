@@ -23,6 +23,11 @@ from typing import Any
 
 from common.io import ROOT, write_ndjson
 from common.validate import validate_nodes
+from common.manual_overrides import (
+    apply_coordinate_overrides,
+    load_override_config,
+    require_alias,
+)
 
 OUTPUT = ROOT / "nodes" / "nodes-spain-renfe.json"
 CACHE_ROOT = ROOT / "cache" / "spain"
@@ -35,6 +40,7 @@ RENFE_RESOURCES = {
 }
 EXCLUSIONS = ROOT / "excludes" / "spain.json"
 REVIEWED_DUPLICATES = ROOT / "overrides" / "spain-reviewed-duplicate-names.json"
+STATION_CORRECTIONS = ROOT / "overrides" / "spain-station-corrections.json"
 
 
 
@@ -172,7 +178,109 @@ def _reviewed_duplicate_station_ids() -> set[str]:
         result.update(str(value) for value in row.get("ids", []) if value not in (None, ""))
     return result
 
-def build(feeds: list[tuple[str, dict[str, Any]]]) -> tuple[list[dict], dict]:
+def _apply_station_corrections(
+    nodes: dict[str, dict[str, Any]],
+    index: dict[str, Any],
+    *,
+    strict: bool = True,
+) -> set[str]:
+    """Apply guarded coordinate fixes and source aliases.
+
+    Alias rows remain in the static timetable index so trips referencing the
+    source-specific identifier are still queryable.  They are removed only from
+    playable nodes, and their stop IDs/feeds are attached to the canonical
+    passenger station.
+    """
+    config = load_override_config(STATION_CORRECTIONS)
+    configured_ids = {
+        str(row.get("id"))
+        for row in [
+            *config.get("coordinate_overrides", []),
+            *config.get("aliases", []),
+        ]
+        if row.get("id") not in (None, "")
+    }
+    configured_ids.update(
+        str(row.get("canonical_id"))
+        for row in config.get("aliases", [])
+        if row.get("canonical_id") not in (None, "")
+    )
+    # Synthetic/unit GTFS fixtures do not contain production Renfe IDs and
+    # call build() in non-strict mode.  The CLI generator always uses strict
+    # mode so a feed that drops/renames every reviewed ID still fails loudly.
+    if not strict and configured_ids and configured_ids.isdisjoint(nodes):
+        return set()
+
+    node_rows = list(nodes.values())
+    apply_coordinate_overrides(
+        node_rows,
+        config.get("coordinate_overrides", []),
+        context="spain_renfe",
+    )
+
+    alias_ids: set[str] = set()
+    excluded = _excluded_playable_station_ids()
+    for row in config.get("aliases", []):
+        alias_id = str(row.get("id", "")).strip()
+        canonical_id = str(row.get("canonical_id", "")).strip()
+        if alias_id not in excluded:
+            raise ValueError(
+                f"spain_renfe: alias {alias_id}->{canonical_id} must also be listed "
+                "in excludes/spain.json"
+            )
+        alias, canonical = require_alias(
+            nodes,
+            alias_id=alias_id,
+            alias_name=str(row.get("expected_name", "")),
+            canonical_id=canonical_id,
+            canonical_name=str(row.get("canonical_expected_name", "")),
+            context="spain_renfe",
+        )
+        alias_ids.add(alias_id)
+
+        alias_tags = alias.setdefault("tags", {})
+        canonical_tags = canonical.setdefault("tags", {})
+        alias_stop_ids = {
+            alias_id,
+            *(str(value) for value in alias_tags.get("stop_ids", []) if value not in (None, "")),
+        }
+        canonical_tags["stop_ids"] = sorted({
+            *(str(value) for value in canonical_tags.get("stop_ids", []) if value not in (None, "")),
+            *alias_stop_ids,
+        })
+        canonical_tags["feeds"] = sorted({
+            *(str(value) for value in canonical_tags.get("feeds", []) if value not in (None, "")),
+            *(str(value) for value in alias_tags.get("feeds", []) if value not in (None, "")),
+        })
+        canonical_tags["renfe_alias_ids"] = sorted({
+            *(str(value) for value in canonical_tags.get("renfe_alias_ids", []) if value not in (None, "")),
+            alias_id,
+        })
+
+        canonical_station = index["stations"].setdefault(canonical_id, {
+            "name": str(canonical_tags.get("name") or canonical_id),
+            "stop_ids": [],
+            "feeds": [],
+        })
+        alias_station = index["stations"].get(alias_id) or {}
+        canonical_station["stop_ids"] = sorted({
+            *(str(value) for value in canonical_station.get("stop_ids", []) if value not in (None, "")),
+            alias_id,
+            *(str(value) for value in alias_station.get("stop_ids", []) if value not in (None, "")),
+        })
+        canonical_station["feeds"] = sorted({
+            *(str(value) for value in canonical_station.get("feeds", []) if value not in (None, "")),
+            *(str(value) for value in alias_station.get("feeds", []) if value not in (None, "")),
+        })
+
+    return alias_ids
+
+
+def build(
+    feeds: list[tuple[str, dict[str, Any]]],
+    *,
+    strict_corrections: bool = False,
+) -> tuple[list[dict], dict]:
     reviewed_duplicate_ids = _reviewed_duplicate_station_ids()
     nodes: dict[str, dict[str, Any]] = {}
     index: dict[str, Any] = {
@@ -332,6 +440,7 @@ def build(feeds: list[tuple[str, dict[str, Any]]]) -> tuple[list[dict], dict]:
             station_row["stop_ids"] = sorted(set(station_row["stop_ids"]) | set(aliases))
             station_row["feeds"] = sorted(set(station_row["feeds"]) | {feed_name})
 
+    _apply_station_corrections(nodes, index, strict=strict_corrections)
     excluded = _excluded_playable_station_ids()
     playable_nodes = [row for station_id, row in nodes.items() if station_id not in excluded]
     return sorted(playable_nodes, key=lambda row: str(row["id"])), index
@@ -429,7 +538,7 @@ def main() -> int:
     else:
         inputs = fetch_official_feeds()
     feeds = [(name, load_feed(path)) for name, path in inputs if path is not None]
-    nodes, index = build(feeds)
+    nodes, index = build(feeds, strict_corrections=True)
     if not nodes or not index["trips"]:
         print("ERROR: Renfe GTFS inputs produced no railway stations or trips")
         return 1

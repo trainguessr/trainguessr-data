@@ -24,15 +24,70 @@ from austria import (  # noqa: E402
     validate_mvo_wgs84,
 )
 from finland import build_nodes, load_stations  # noqa: E402
+from germany import load_board_groups  # noqa: E402
 from norway import build_nodes as build_norway_nodes, load_stop_places  # noqa: E402
 from italy_fse import MANUAL_STATIONS, apply_manual_stations  # noqa: E402
 from italy_legacy import rebuild  # noqa: E402
+from common.manual_overrides import apply_coordinate_overrides  # noqa: E402
 
 
 class DatasetTests(unittest.TestCase):
     def test_all_node_files_are_valid(self) -> None:
         for path in sorted((ROOT / "nodes").glob("nodes-*.json")):
             self.assertEqual([], validate_file(path), path.name)
+
+
+    def test_germany_reviewed_board_groups_are_in_generated_nodes(self) -> None:
+        groups = load_board_groups()
+        self.assertGreaterEqual(len(groups), 10)
+        rows = load_ndjson(ROOT / "nodes" / "nodes-germany.json")
+        by_id = {str(row["id"]): row for row in rows}
+        for station_id, group in groups.items():
+            self.assertIn(station_id, by_id)
+            self.assertEqual(
+                group["provider_ids"],
+                by_id[station_id]["tags"].get("provider_place_ids"),
+                station_id,
+            )
+        self.assertEqual(
+            ["8011160", "8098160", "8089021"],
+            by_id["8011160"]["tags"]["provider_place_ids"],
+        )
+        self.assertEqual(
+            ["8000261", "8098261", "8098262", "8098263"],
+            by_id["8000261"]["tags"]["provider_place_ids"],
+        )
+
+
+    def test_split_station_complex_audit_matches_current_nodes(self) -> None:
+        audit = json.loads(
+            (ROOT / "audits" / "europe-split-station-complexes-2026.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        for group in audit["merge_via_provider_aliases"]:
+            category = group["category"]
+            self.assertEqual("germany_all", category)
+            rows = load_ndjson(ROOT / "nodes" / "nodes-germany.json")
+            by_id = {str(row["id"]): row for row in rows}
+            node = by_id[group["canonical_id"]]
+            self.assertEqual(
+                group["provider_ids"],
+                node["tags"]["provider_place_ids"],
+            )
+
+        filename_by_category = {
+            "italy_rfi": "nodes-italy-rfi.json",
+            "spain_renfe": "nodes-spain-renfe.json",
+            "switzerland_all": "nodes-switzerland.json",
+            "france_sncf": "nodes-france-sncf.json",
+        }
+        for group in audit["keep_separate_examples"]:
+            rows = load_ndjson(ROOT / "nodes" / filename_by_category[group["category"]])
+            ids = {str(row["id"]) for row in rows}
+            expected = {str(station["id"]) for station in group["stations"]}
+            self.assertTrue(expected.issubset(ids), group)
+            self.assertEqual(len(expected), len(group["stations"]))
 
     def test_one_exclude_file_per_country(self) -> None:
         expected = {
@@ -221,15 +276,59 @@ class DatasetTests(unittest.TestCase):
         self.assertGreaterEqual(len(excluded), 154)
         self.assertTrue(excluded.isdisjoint(active))
 
-    def test_spain_reviewed_vallecas_ids_are_retained_and_marked(self) -> None:
+    def test_spain_vallecas_feed_alias_is_not_a_second_playable_station(self) -> None:
         rows = {
             str(row["id"]): row
             for row in load_ndjson(ROOT / "nodes" / "nodes-spain-renfe.json")
         }
-        self.assertIn("70001", rows)
+        self.assertNotIn("70001", rows)
         self.assertIn("70005", rows)
-        for station_id in ("70001", "70005"):
-            self.assertTrue(rows[station_id]["tags"].get("audit_duplicate_name_reviewed"))
+        self.assertIn("70001", rows["70005"]["tags"]["stop_ids"])
+        self.assertIn("70001", rows["70005"]["tags"]["renfe_alias_ids"])
+
+    def test_reviewed_coordinate_corrections_are_present(self) -> None:
+        expected = {
+            ("nodes-italy-fer.json", "S05995"): (44.50343, 11.47214),
+            ("nodes-italy-fer.json", "S05931"): (44.699327, 10.523291),
+            ("nodes-italy-fer.json", "S05971"): (44.49252, 11.21811),
+            ("nodes-italy-eav.json", "32"): (40.80206, 14.36150),
+            ("nodes-italy-eav.json", "62"): (40.62585, 14.37979),
+            ("nodes-italy-eav.json", "41"): (40.75970, 14.45100),
+            ("nodes-spain-renfe.json", "23021"): (42.7812443, -8.656552),
+            ("nodes-spain-renfe.json", "05403"): (43.527123, -5.690694),
+        }
+        for (filename, station_id), coordinates in expected.items():
+            rows = {
+                str(row["id"]): row
+                for row in load_ndjson(ROOT / "nodes" / filename)
+            }
+            self.assertEqual(coordinates, (rows[station_id]["lat"], rows[station_id]["lon"]))
+            self.assertTrue(rows[station_id]["tags"].get("coordinate_override"))
+
+    def test_guarded_coordinate_override_fails_when_station_name_changes(self) -> None:
+        rows = [{
+            "type": "node", "id": "X", "lat": 1.0, "lon": 2.0,
+            "tags": {"name": "Renamed station"}, "category": "test",
+        }]
+        with self.assertRaisesRegex(ValueError, "stale coordinate override"):
+            apply_coordinate_overrides(
+                rows,
+                [{"id": "X", "expected_name": "Old station", "lat": 3.0, "lon": 4.0}],
+                context="test",
+            )
+
+    def test_museum_railway_stops_remain_playable(self) -> None:
+        rows = {
+            str(row["id"]): row
+            for row in load_ndjson(ROOT / "nodes" / "nodes-norway.json")
+        }
+        for station_id in {
+            "NSR:StopPlace:57940",
+            "NSR:StopPlace:57941",
+            "NSR:StopPlace:57942",
+        }:
+            self.assertIn(station_id, rows)
+            self.assertEqual("tourist_railway", rows[station_id]["tags"].get("rail_submode"))
 
 
 

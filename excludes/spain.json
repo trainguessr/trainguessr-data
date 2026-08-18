@@ -161,6 +161,26 @@
       },
       "category": "spain_renfe",
       "exclusion_reason": "French station included in Renfe international GTFS; keep in static timetable index only"
+    },
+    {
+      "id": "99117",
+      "name": "Ourense Turístico",
+      "exclusion_reason": "Renfe tourist/service alias of physical station 22100 Ourense; kept in static timetable index and attached as a stop alias."
+    },
+    {
+      "id": "99161",
+      "name": "Pontevedra-Turístico",
+      "exclusion_reason": "Renfe tourist/service alias of physical station 23004 Pontevedra; kept in static timetable index and attached as a stop alias."
+    },
+    {
+      "id": "99159",
+      "name": "Santiago-Turístico",
+      "exclusion_reason": "Renfe tourist/service alias of physical station 31400 Santiago de Compostela-Daniel Castelao; kept in static timetable index and attached as a stop alias."
+    },
+    {
+      "id": "70001",
+      "name": "Vallecas",
+      "exclusion_reason": "Cercanías source identifier for the physical Vallecas passenger station (ADIF 70005); kept in static timetable index and attached as a stop alias."
     }
   ],
   "renamed": []

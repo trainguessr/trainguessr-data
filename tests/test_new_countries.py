@@ -15,7 +15,8 @@ sys.path.insert(0, str(ROOT / "gen"))
 
 from denmark import build_nodes as build_denmark_nodes
 from spain import (
-    _clean_row, _download_official_feed, build as build_spain, load_feed, write_index
+    _apply_station_corrections, _clean_row, _download_official_feed,
+    build as build_spain, load_feed, write_index
 )
 
 
@@ -60,6 +61,79 @@ class NewCountryGeneratorTests(unittest.TestCase):
             {"end_date": "20260817", "exception_type": "2"},
             _clean_row({"end_date   ": "20260817   ", "exception_type ": "2 "}),
         )
+
+    def test_spain_guarded_alias_merges_stop_ids_and_requires_explicit_exclusion(self):
+        nodes = {
+            "A": {
+                "type": "node", "id": "A", "lat": 40.0, "lon": -3.0,
+                "tags": {"name": "Alias", "stop_ids": ["A"], "feeds": ["cercanias"]},
+                "category": "spain_renfe",
+            },
+            "B": {
+                "type": "node", "id": "B", "lat": 40.1, "lon": -3.1,
+                "tags": {"name": "Canonical", "stop_ids": ["B"], "feeds": ["ld"]},
+                "category": "spain_renfe",
+            },
+        }
+        index = {
+            "stations": {
+                "A": {"name": "Alias", "stop_ids": ["A"], "feeds": ["cercanias"]},
+                "B": {"name": "Canonical", "stop_ids": ["B"], "feeds": ["ld"]},
+            }
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            corrections = Path(tmp) / "corrections.json"
+            exclusions = Path(tmp) / "excludes.json"
+            corrections.write_text(json.dumps({
+                "coordinate_overrides": [],
+                "aliases": [{
+                    "id": "A", "expected_name": "Alias",
+                    "canonical_id": "B", "canonical_expected_name": "Canonical",
+                }],
+            }), encoding="utf-8")
+            exclusions.write_text(json.dumps({
+                "excluded": [{"id": "A"}], "renamed": [],
+            }), encoding="utf-8")
+            with patch("spain.STATION_CORRECTIONS", corrections), patch("spain.EXCLUSIONS", exclusions):
+                self.assertEqual({"A"}, _apply_station_corrections(nodes, index))
+        self.assertEqual(["A", "B"], nodes["B"]["tags"]["stop_ids"])
+        self.assertEqual(["cercanias", "ld"], nodes["B"]["tags"]["feeds"])
+        self.assertEqual(["A"], nodes["B"]["tags"]["renfe_alias_ids"])
+        self.assertEqual(["A", "B"], index["stations"]["B"]["stop_ids"])
+
+    def test_spain_guarded_alias_fails_on_renamed_source_station(self):
+        nodes = {
+            "A": {
+                "type": "node", "id": "A", "lat": 40.0, "lon": -3.0,
+                "tags": {"name": "Renamed alias", "stop_ids": ["A"], "feeds": ["cercanias"]},
+                "category": "spain_renfe",
+            },
+            "B": {
+                "type": "node", "id": "B", "lat": 40.1, "lon": -3.1,
+                "tags": {"name": "Canonical", "stop_ids": ["B"], "feeds": ["ld"]},
+                "category": "spain_renfe",
+            },
+        }
+        index = {"stations": {
+            "A": {"name": "Renamed alias", "stop_ids": ["A"], "feeds": ["cercanias"]},
+            "B": {"name": "Canonical", "stop_ids": ["B"], "feeds": ["ld"]},
+        }}
+        with tempfile.TemporaryDirectory() as tmp:
+            corrections = Path(tmp) / "corrections.json"
+            exclusions = Path(tmp) / "excludes.json"
+            corrections.write_text(json.dumps({
+                "coordinate_overrides": [],
+                "aliases": [{
+                    "id": "A", "expected_name": "Old alias",
+                    "canonical_id": "B", "canonical_expected_name": "Canonical",
+                }],
+            }), encoding="utf-8")
+            exclusions.write_text(json.dumps({
+                "excluded": [{"id": "A"}], "renamed": [],
+            }), encoding="utf-8")
+            with patch("spain.STATION_CORRECTIONS", corrections), patch("spain.EXCLUSIONS", exclusions):
+                with self.assertRaisesRegex(ValueError, "stale alias"):
+                    _apply_station_corrections(nodes, index)
 
     def test_denmark_keeps_only_stops_served_by_rail_routes(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -6,8 +6,8 @@
         "70001",
         "70005"
       ],
-      "decision": "retain_distinct",
-      "reason": "Renfe publishes both 70001 (Cercanías Madrid) and 70005 (general station catalogue) as distinct official station identifiers."
+      "decision": "alias_to_70005",
+      "reason": "Reviewed 2026-08: ADIF exposes passenger station 70005 Vallecas; Renfe Cercanías uses 70001 as a source/feed identifier. 70001 remains in the static timetable index but is not a second playable physical station."
     }
   ]
 }

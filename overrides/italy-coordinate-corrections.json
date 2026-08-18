@@ -1,0 +1,82 @@
+{
+  "coordinate_overrides": [
+    {
+      "operator": "fer",
+      "id": "S05995",
+      "expected_name": "Castenaso",
+      "lat": 44.50343,
+      "lon": 11.47214,
+      "source": "OpenStreetMap node 257066737; FER line documents Castenaso and Castenaso Stellina as separate stops",
+      "reason": "Legacy reviewed seed copied Castenaso Stellina coordinates into Castenaso.",
+      "tags": {
+        "osm_id": "257066737"
+      },
+      "source_url": "https://www.openstreetmap.org/node/257066737"
+    },
+    {
+      "operator": "fer",
+      "id": "S05931",
+      "expected_name": "Cavriago S.Nicolo'",
+      "lat": 44.699327,
+      "lon": 10.523291,
+      "source": "Provincia di Reggio Emilia 4000luoghi record 1426",
+      "reason": "Legacy reviewed seed copied Cavriago coordinates into Cavriago San Nicolo.",
+      "remove_tags": [
+        "osm_id"
+      ],
+      "source_url": "https://4000luoghi.provincia.re.it/ords/r/prov_re/4KL/luogo?clear=10&p10_id=1426"
+    },
+    {
+      "operator": "fer",
+      "id": "S05971",
+      "expected_name": "Zola Centro",
+      "lat": 44.49252,
+      "lon": 11.21811,
+      "source": "OpenStreetMap node 12294207482",
+      "reason": "Legacy reviewed seed copied Mezzolara coordinates into Zola Centro.",
+      "tags": {
+        "osm_id": "12294207482"
+      },
+      "source_url": "https://www.openstreetmap.org/node/12294207482"
+    },
+    {
+      "operator": "eav",
+      "id": "32",
+      "expected_name": "Ercolano Miglio d'Oro",
+      "lat": 40.80206,
+      "lon": 14.3615,
+      "source": "OpenStreetMap station 11407270275; EAV lists Miglio d'Oro separately from Ercolano Scavi",
+      "reason": "Legacy reviewed seed copied Ercolano Scavi coordinates into Miglio d'Oro.",
+      "tags": {
+        "osm_id": "11407270275"
+      },
+      "source_url": "https://www.openstreetmap.org/node/11407270275"
+    },
+    {
+      "operator": "eav",
+      "id": "62",
+      "expected_name": "Sorrento",
+      "lat": 40.62585,
+      "lon": 14.37979,
+      "source": "OpenStreetMap station 11061388820",
+      "reason": "Legacy reviewed seed copied Piano di Sorrento coordinates into Sorrento.",
+      "tags": {
+        "osm_id": "11061388820"
+      },
+      "source_url": "https://www.openstreetmap.org/node/11061388820"
+    },
+    {
+      "operator": "eav",
+      "id": "41",
+      "expected_name": "Torre Annunziata - Oplonti",
+      "lat": 40.7597,
+      "lon": 14.451,
+      "source": "OpenStreetMap node 11274717577; EAV lists Oplonti separately from RFI Torre Annunziata Centrale",
+      "reason": "Legacy reviewed seed copied RFI Torre Annunziata Centrale coordinates into EAV Oplonti.",
+      "tags": {
+        "osm_id": "11274717577"
+      },
+      "source_url": "https://www.openstreetmap.org/node/11274717577"
+    }
+  ]
+}

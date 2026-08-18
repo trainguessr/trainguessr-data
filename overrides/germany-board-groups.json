@@ -1,0 +1,116 @@
+{
+  "reviewed_board_groups": [
+    {
+      "canonical_id": "8011160",
+      "name": "Berlin Hauptbahnhof",
+      "provider_ids": [
+        "8011160",
+        "8098160",
+        "8089021"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main, lower-level and S-Bahn boards for the same public station."
+    },
+    {
+      "canonical_id": "8011113",
+      "name": "Berlin Südkreuz",
+      "provider_ids": [
+        "8011113",
+        "8089073"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the long-distance/regional and S-Bahn boards; bus is intentionally excluded."
+    },
+    {
+      "canonical_id": "8011102",
+      "name": "Berlin Gesundbrunnen",
+      "provider_ids": [
+        "8011102",
+        "8089015"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8010255",
+      "name": "Berlin Ostbahnhof",
+      "provider_ids": [
+        "8010255",
+        "8089185"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8010404",
+      "name": "Berlin-Spandau",
+      "provider_ids": [
+        "8010404",
+        "8089083"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8010403",
+      "name": "Berlin-Charlottenburg",
+      "provider_ids": [
+        "8010403",
+        "8089165"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8010405",
+      "name": "Berlin-Wannsee",
+      "provider_ids": [
+        "8010405",
+        "8089190"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8002549",
+      "name": "Hamburg Hbf",
+      "provider_ids": [
+        "8002549",
+        "8098549"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and S-Bahn boards."
+    },
+    {
+      "canonical_id": "8000105",
+      "name": "Frankfurt (Main) Hbf",
+      "provider_ids": [
+        "8000105",
+        "8098105"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and lower-level S-Bahn boards."
+    },
+    {
+      "canonical_id": "8000096",
+      "name": "Stuttgart Hbf",
+      "provider_ids": [
+        "8000096",
+        "8098096"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and lower-level S-Bahn boards."
+    },
+    {
+      "canonical_id": "8000261",
+      "name": "München Hbf",
+      "provider_ids": [
+        "8000261",
+        "8098261",
+        "8098262",
+        "8098263"
+      ],
+      "reason": "DB Web-Bahnhofstafel splits the same passenger station across the main hall, tracks 27–36, tracks 5–10, and the lower-level S-Bahn board."
+    },
+    {
+      "canonical_id": "8010205",
+      "name": "Leipzig Hbf",
+      "provider_ids": [
+        "8010205",
+        "8098205"
+      ],
+      "reason": "DB Web-Bahnhofstafel groups the main and City-Tunnel lower-level boards."
+    }
+  ],
+  "policy": "Use only where TrainGuessr has one public station node but DB Timetables splits the same passenger station across multiple EVA board locations. Do not use to collapse provider datasets that already expose separate passenger stations."
+}

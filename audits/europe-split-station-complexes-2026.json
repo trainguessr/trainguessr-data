@@ -1,0 +1,309 @@
+{
+  "snapshot_date": "2026-08-18",
+  "policy": {
+    "merge_only_when": "TrainGuessr has one public station node but the live provider requires multiple board identifiers for sections of that same passenger station.",
+    "keep_separate_when": "The provider/static source itself exposes distinct passenger station records, even if they are co-located or physically connected.",
+    "reason": "This avoids inventing station identity and keeps provider semantics truthful while fixing provider/API impedance mismatches."
+  },
+  "merge_via_provider_aliases": [
+    {
+      "category": "germany_all",
+      "canonical_id": "8011160",
+      "name": "Berlin Hauptbahnhof",
+      "provider_ids": [
+        "8011160",
+        "8098160",
+        "8089021"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8011113",
+      "name": "Berlin Südkreuz",
+      "provider_ids": [
+        "8011113",
+        "8089073"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8011102",
+      "name": "Berlin Gesundbrunnen",
+      "provider_ids": [
+        "8011102",
+        "8089015"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8010255",
+      "name": "Berlin Ostbahnhof",
+      "provider_ids": [
+        "8010255",
+        "8089185"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8010404",
+      "name": "Berlin-Spandau",
+      "provider_ids": [
+        "8010404",
+        "8089083"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8010403",
+      "name": "Berlin-Charlottenburg",
+      "provider_ids": [
+        "8010403",
+        "8089165"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8010405",
+      "name": "Berlin-Wannsee",
+      "provider_ids": [
+        "8010405",
+        "8089190"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8002549",
+      "name": "Hamburg Hbf",
+      "provider_ids": [
+        "8002549",
+        "8098549"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8000105",
+      "name": "Frankfurt (Main) Hbf",
+      "provider_ids": [
+        "8000105",
+        "8098105"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8000096",
+      "name": "Stuttgart Hbf",
+      "provider_ids": [
+        "8000096",
+        "8098096"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8000261",
+      "name": "München Hbf",
+      "provider_ids": [
+        "8000261",
+        "8098261",
+        "8098262",
+        "8098263"
+      ]
+    },
+    {
+      "category": "germany_all",
+      "canonical_id": "8010205",
+      "name": "Leipzig Hbf",
+      "provider_ids": [
+        "8010205",
+        "8098205"
+      ]
+    }
+  ],
+  "keep_separate_examples": [
+    {
+      "category": "italy_rfi",
+      "stations": [
+        {
+          "id": "683",
+          "name": "Bologna Centrale"
+        },
+        {
+          "id": "942",
+          "name": "Bologna Centrale AV"
+        }
+      ],
+      "reason": "RFI board data already exposes separate station identities."
+    },
+    {
+      "category": "italy_rfi",
+      "stations": [
+        {
+          "id": "1714",
+          "name": "Milano Porta Garibaldi (passante)"
+        },
+        {
+          "id": "1715",
+          "name": "Milano Porta Garibaldi (superficie)"
+        }
+      ],
+      "reason": "RFI data distinguishes passante and surface station identities."
+    },
+    {
+      "category": "italy_rfi",
+      "stations": [
+        {
+          "id": "255",
+          "name": "Genova Piazza Principe sotterranea"
+        },
+        {
+          "id": "257",
+          "name": "Genova Piazza Principe"
+        }
+      ],
+      "reason": "RFI data distinguishes underground and surface station identities."
+    },
+    {
+      "category": "italy_rfi",
+      "stations": [
+        {
+          "id": "1888",
+          "name": "Napoli Centrale"
+        },
+        {
+          "id": "1880",
+          "name": "Napoli Piazza Garibaldi"
+        }
+      ],
+      "reason": "RFI data exposes separate station identities within the interchange complex."
+    },
+    {
+      "category": "spain_renfe",
+      "stations": [
+        {
+          "id": "18000",
+          "name": "Madrid-Atocha Cercanías"
+        },
+        {
+          "id": "60000",
+          "name": "Madrid-Puerta de Atocha-Almudena Grandes"
+        }
+      ],
+      "reason": "Renfe GTFS exposes separate parent station IDs."
+    },
+    {
+      "category": "spain_renfe",
+      "stations": [
+        {
+          "id": "08240",
+          "name": "Medina del Campo AV"
+        },
+        {
+          "id": "10500",
+          "name": "Medina del Campo"
+        }
+      ],
+      "reason": "Renfe GTFS exposes separate station IDs."
+    },
+    {
+      "category": "switzerland_all",
+      "stations": [
+        {
+          "id": "8503000",
+          "name": "Zürich HB"
+        },
+        {
+          "id": "8503088",
+          "name": "Zürich HB SZU"
+        }
+      ],
+      "reason": "Search.ch/Swiss identifiers expose separate passenger stop locations."
+    },
+    {
+      "category": "switzerland_all",
+      "stations": [
+        {
+          "id": "8505300",
+          "name": "Lugano"
+        },
+        {
+          "id": "8505391",
+          "name": "Lugano FLP"
+        }
+      ],
+      "reason": "Separate railway systems and station identifiers."
+    },
+    {
+      "category": "france_sncf",
+      "stations": [
+        {
+          "id": "87382218",
+          "name": "La Défense"
+        },
+        {
+          "id": "87731430",
+          "name": "La Défense Grande Arche RER E"
+        }
+      ],
+      "reason": "SNCF source exposes distinct station records."
+    },
+    {
+      "category": "france_sncf",
+      "stations": [
+        {
+          "id": "87281873",
+          "name": "Magenta (Paris)"
+        },
+        {
+          "id": "87271007",
+          "name": "Paris Gare du Nord"
+        }
+      ],
+      "reason": "Physically connected interchange but distinct SNCF station identities."
+    },
+    {
+      "category": "switzerland_all",
+      "stations": [
+        {
+          "id": "8501609",
+          "name": "Brig"
+        },
+        {
+          "id": "8515296",
+          "name": "Brig Bahnhofplatz"
+        }
+      ],
+      "reason": "The Swiss source exposes the railway station and forecourt/other-system stop as separate passenger locations."
+    },
+    {
+      "category": "france_sncf",
+      "stations": [
+        {
+          "id": "87381020",
+          "name": "Neuilly - Porte Maillot"
+        },
+        {
+          "id": "87731448",
+          "name": "Neuilly Porte Maillot RER E"
+        }
+      ],
+      "reason": "SNCF source exposes the older station and RER E station as distinct station records."
+    }
+  ],
+  "providers_reviewed_no_merge_needed": [
+    "austria_oebb",
+    "belgium_all",
+    "finland_all",
+    "netherlands_all",
+    "norway_all",
+    "sweden_all",
+    "uk_national_rail",
+    "italy_eav",
+    "italy_fer",
+    "italy_fn",
+    "italy_fse",
+    "italy_tt"
+  ],
+  "review_scope": {
+    "datasets_scanned": 17,
+    "method": "Reviewed all current playable node datasets for same-provider co-location/name variants, then compared adapter identifier semantics. Provider aliases are only introduced when a single playable node cannot cover the live provider's own split board identifiers."
+  }
+}

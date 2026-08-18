@@ -14,6 +14,7 @@ from common.config import load_rename_map
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GERMANY_CACHE = os.path.join(ROOT, "cache", "germany")
 NPM_REGISTRY_URL = "https://registry.npmjs.org/db-stations/latest"
+BOARD_GROUPS_PATH = os.path.join(ROOT, "overrides", "germany-board-groups.json")
 
 
 def _cache_age(path):
@@ -69,6 +70,27 @@ def ensure_station_cache(cache_dir=GERMANY_CACHE, session=None):
     return full_path
 
 
+
+def load_board_groups(path=BOARD_GROUPS_PATH):
+    """Load reviewed DB Timetables EVA groups keyed by canonical station ID."""
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    groups = {}
+    for row in payload.get("reviewed_board_groups", []):
+        canonical_id = str(row.get("canonical_id") or "").strip()
+        provider_ids = [str(value).strip() for value in row.get("provider_ids", []) if str(value).strip()]
+        if not canonical_id or not provider_ids:
+            raise ValueError(f"Invalid Germany board group: {row}")
+        if canonical_id not in provider_ids:
+            provider_ids.insert(0, canonical_id)
+        groups[canonical_id] = {
+            "name": str(row.get("name") or "").strip(),
+            "provider_ids": list(dict.fromkeys(provider_ids)),
+        }
+    return groups
+
 def load_rename_mapping(rename_file):
     """
     Load the rename mapping from a text file.
@@ -89,9 +111,11 @@ def load_rename_mapping(rename_file):
                     rename_map[old_name] = new_name
     return rename_map
 
-def convert_from_json(input_path, output_path, rename_map):
+def convert_from_json(input_path, output_path, rename_map, board_groups=None):
     with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
         data = json.load(infile)
+        board_groups = board_groups or {}
+        seen_board_groups = set()
         for station in data:
             try:
                 # Extract required fields
@@ -132,28 +156,45 @@ def convert_from_json(input_path, output_path, rename_map):
                 if "address" in station:
                     address = station["address"]
                 
+                tags = {
+                    "name": name,
+                    "ril100": ril100,
+                    "station_nr": str(nr),
+                    "weight": str(weight),
+                    "operator": operator_name,
+                    "city": address.get("city", ""),
+                    "zipcode": address.get("zipcode", ""),
+                    "street": address.get("street", "")
+                }
+                group = board_groups.get(str(station_id))
+                if group:
+                    expected_name = group.get("name")
+                    if expected_name and expected_name != name:
+                        raise ValueError(
+                            f"Germany board group {station_id} expected {expected_name!r}, got {name!r}"
+                        )
+                    tags["provider_place_ids"] = group["provider_ids"]
+                    seen_board_groups.add(str(station_id))
+
                 # Create output node
                 node = {
                     "type": "node",
                     "id": int(station_id),
                     "lat": float(lat),
                     "lon": float(lon),
-                    "tags": {
-                        "name": name,
-                        "ril100": ril100,
-                        "station_nr": str(nr),
-                        "weight": str(weight),
-                        "operator": operator_name,
-                        "city": address.get("city", ""),
-                        "zipcode": address.get("zipcode", ""),
-                        "street": address.get("street", "")
-                    },
+                    "tags": tags,
                     "category": "germany_all"
                 }
-                
+
                 outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
             except Exception as e:
                 print(f"Error processing station: {e}")
+        missing_groups = sorted(set(board_groups) - seen_board_groups)
+        if missing_groups:
+            raise ValueError(
+                "Germany board groups reference stations absent from source: "
+                + ", ".join(missing_groups)
+            )
 
 if __name__ == "__main__":
     input_file = ensure_station_cache()
@@ -164,5 +205,7 @@ if __name__ == "__main__":
     rename_map = load_rename_map("germany")
     print(f"Loaded {len(rename_map)} rename rules")
     
-    convert_from_json(input_file, output_file, rename_map)
+    board_groups = load_board_groups()
+    print(f"Loaded {len(board_groups)} reviewed multi-EVA board groups")
+    convert_from_json(input_file, output_file, rename_map, board_groups)
     print(f"Conversion complete. Output written to {output_file}")

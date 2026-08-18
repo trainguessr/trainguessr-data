@@ -36,9 +36,11 @@ from common.config import load_country_config, load_excluded_ids
 from common.io import ROOT, load_ndjson, write_csv
 from common.normalize import normalize_name
 from common.validate import validate_nodes
+from common.manual_overrides import apply_coordinate_overrides, load_override_config
 
 
 ITALY_CACHE = ROOT / "cache" / "italy"
+COORDINATE_OVERRIDES = ROOT / "overrides" / "italy-coordinate-corrections.json"
 OPERATOR_NAMES = {
     "fn": "Ferrovienord",
     "tt": "Trentino Trasporti",
@@ -543,6 +545,25 @@ def rebuild(
                 ),
             }
         )
+
+    override_config = load_override_config(COORDINATE_OVERRIDES)
+    coordinate_overrides = [
+        row for row in override_config.get("coordinate_overrides", [])
+        if row.get("operator") == operator
+    ]
+    overridden_ids = apply_coordinate_overrides(
+        output,
+        coordinate_overrides,
+        context=f"italy/{operator}",
+    )
+    if overridden_ids:
+        for row in audit:
+            if str(row.get("id")) in overridden_ids:
+                details = str(row.get("details") or "")
+                row["details"] = (
+                    f"{details}; guarded coordinate override applied"
+                    if details else "guarded coordinate override applied"
+                )
 
     issues = validate_nodes(output)
 

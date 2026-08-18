@@ -162,7 +162,7 @@
 {"type":"node","id":"05385","lat":43.16077,"lon":-5.6248987,"tags":{"name":"Cabañaquinta","stop_ids":["05385"],"renfe_stop_id":"05385","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05387","lat":43.1511077,"lon":-5.6002937,"tags":{"name":"Levinco","stop_ids":["05387"],"renfe_stop_id":"05387","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05389","lat":43.1241004,"lon":-5.5661544,"tags":{"name":"Collanzo","stop_ids":["05389"],"renfe_stop_id":"05389","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"05403","lat":43.5285439,"lon":-5.6948684,"tags":{"name":"Tremañes-Langreo","stop_ids":["05403"],"renfe_stop_id":"05403","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"05403","lat":43.527123,"lon":-5.690694,"tags":{"name":"Tremañes-Langreo","stop_ids":["05403"],"renfe_stop_id":"05403","feeds":["cercanias"],"coordinate_override":true},"category":"spain_renfe"}
 {"type":"node","id":"05405","lat":43.5072386,"lon":-5.7265416,"tags":{"name":"Sotiello","stop_ids":["05405"],"renfe_stop_id":"05405","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05407","lat":43.4865408,"lon":-5.7197038,"tags":{"name":"Pinzales","stop_ids":["05407"],"renfe_stop_id":"05407","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05409","lat":43.4655199,"lon":-5.7260209,"tags":{"name":"Aguda","stop_ids":["05409"],"renfe_stop_id":"05409","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -708,7 +708,7 @@
 {"type":"node","id":"22004","lat":42.441353,"lon":-7.70412,"tags":{"name":"San Pedro Do Sil","stop_ids":["22004"],"renfe_stop_id":"22004","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"22005","lat":42.451439,"lon":-7.735523,"tags":{"name":"Os Peares","stop_ids":["22005"],"renfe_stop_id":"22005","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"22006","lat":42.401095,"lon":-7.802567,"tags":{"name":"Barra de Miño","stop_ids":["22006"],"renfe_stop_id":"22006","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"22100","lat":42.350389,"lon":-7.872777,"tags":{"name":"Ourense","stop_ids":["22100"],"renfe_stop_id":"22100","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"22100","lat":42.350389,"lon":-7.872777,"tags":{"name":"Ourense","stop_ids":["22100","99117"],"renfe_stop_id":"22100","feeds":["ld"],"renfe_alias_ids":["99117"]},"category":"spain_renfe"}
 {"type":"node","id":"22101","lat":42.338376,"lon":-8.011721,"tags":{"name":"Barbantes","stop_ids":["22101"],"renfe_stop_id":"22101","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"22102","lat":42.2931,"lon":-8.139261,"tags":{"name":"Ribadavia","stop_ids":["22102"],"renfe_stop_id":"22102","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"22103","lat":42.219917,"lon":-8.184788,"tags":{"name":"Filgueira","stop_ids":["22103"],"renfe_stop_id":"22103","feeds":["ld"]},"category":"spain_renfe"}
@@ -727,7 +727,7 @@
 {"type":"node","id":"23000","lat":42.286866,"lon":-8.607118,"tags":{"name":"Redondela-Picota","stop_ids":["23000"],"renfe_stop_id":"23000","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23001","lat":42.310258,"lon":-8.616541,"tags":{"name":"Cesantes","stop_ids":["23001"],"renfe_stop_id":"23001","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23002","lat":42.340549,"lon":-8.611178,"tags":{"name":"Arcade","stop_ids":["23002"],"renfe_stop_id":"23002","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"23004","lat":42.421969,"lon":-8.635546,"tags":{"name":"Pontevedra","stop_ids":["23004"],"renfe_stop_id":"23004","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"23004","lat":42.421969,"lon":-8.635546,"tags":{"name":"Pontevedra","stop_ids":["23004","99161"],"renfe_stop_id":"23004","feeds":["ld"],"renfe_alias_ids":["99161"]},"category":"spain_renfe"}
 {"type":"node","id":"23005","lat":42.517801,"lon":-8.654609,"tags":{"name":"Portela","stop_ids":["23005"],"renfe_stop_id":"23005","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23008","lat":42.602189,"lon":-8.762523,"tags":{"name":"Vilagarcía de Arousa","stop_ids":["23008"],"renfe_stop_id":"23008","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23009","lat":42.672166,"lon":-8.725291,"tags":{"name":"Catoira","stop_ids":["23009"],"renfe_stop_id":"23009","feeds":["ld"]},"category":"spain_renfe"}
@@ -735,7 +735,7 @@
 {"type":"node","id":"23011","lat":42.738967,"lon":-8.652614,"tags":{"name":"Padrón","stop_ids":["23011"],"renfe_stop_id":"23011","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23013","lat":42.825298,"lon":-8.61584,"tags":{"name":"Osebe","stop_ids":["23013"],"renfe_stop_id":"23013","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"23018","lat":42.4387499,"lon":-8.6304812,"tags":{"name":"Pontevedra Universidad","stop_ids":["23018"],"renfe_stop_id":"23018","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"23021","lat":42.738967,"lon":-8.652614,"tags":{"name":"Padrón Barbanza","stop_ids":["23021"],"renfe_stop_id":"23021","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"23021","lat":42.7812443,"lon":-8.656552,"tags":{"name":"Padrón Barbanza","stop_ids":["23021"],"renfe_stop_id":"23021","feeds":["ld"],"coordinate_override":true},"category":"spain_renfe"}
 {"type":"node","id":"30000","lat":39.937464,"lon":-6.10091,"tags":{"name":"Monfragüe","stop_ids":["30000"],"renfe_stop_id":"30000","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"30002","lat":40.022282,"lon":-6.099397,"tags":{"name":"Plasencia","stop_ids":["30002"],"renfe_stop_id":"30002","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"30100","lat":40.972235,"lon":-5.64899,"tags":{"name":"Salamanca","stop_ids":["30100"],"renfe_stop_id":"30100","feeds":["ld"]},"category":"spain_renfe"}
@@ -754,7 +754,7 @@
 {"type":"node","id":"31304","lat":42.43134,"lon":-8.068874,"tags":{"name":"O Carballiño","stop_ids":["31304"],"renfe_stop_id":"31304","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"31306","lat":42.519719,"lon":-8.105174,"tags":{"name":"O Irixo","stop_ids":["31306"],"renfe_stop_id":"31306","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"31308","lat":42.63253,"lon":-8.142715,"tags":{"name":"Lalín","stop_ids":["31308"],"renfe_stop_id":"31308","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"31400","lat":42.870842,"lon":-8.544697,"tags":{"name":"Santiago de Compostela-Daniel Castelao","stop_ids":["31400"],"renfe_stop_id":"31400","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"31400","lat":42.870842,"lon":-8.544697,"tags":{"name":"Santiago de Compostela-Daniel Castelao","stop_ids":["31400","99159"],"renfe_stop_id":"31400","feeds":["ld"],"renfe_alias_ids":["99159"]},"category":"spain_renfe"}
 {"type":"node","id":"31411","lat":43.297374,"lon":-8.444404,"tags":{"name":"Uxes","stop_ids":["31411"],"renfe_stop_id":"31411","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"31412","lat":43.3496932,"lon":-8.4155629,"tags":{"name":"A Coruña","stop_ids":["31412"],"renfe_stop_id":"31412","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"31415","lat":43.037544,"lon":-8.448447,"tags":{"name":"Ordes","stop_ids":["31415"],"renfe_stop_id":"31415","feeds":["ld"]},"category":"spain_renfe"}
@@ -1156,10 +1156,9 @@
 {"type":"node","id":"69107","lat":39.0261489,"lon":-0.2150346,"tags":{"name":"Xeraco","stop_ids":["69107"],"renfe_stop_id":"69107","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"69110","lat":38.970514,"lon":-0.1797829,"tags":{"name":"Gandia","stop_ids":["69110"],"renfe_stop_id":"69110","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"69111","lat":38.9902436,"lon":-0.1624339,"tags":{"name":"Platja i Grau de Gandia","stop_ids":["69111"],"renfe_stop_id":"69111","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"70001","lat":40.3819607,"lon":-3.6245835,"tags":{"name":"Vallecas","stop_ids":["70001"],"renfe_stop_id":"70001","feeds":["cercanias"],"audit_duplicate_name_reviewed":true},"category":"spain_renfe"}
 {"type":"node","id":"70002","lat":40.3818618,"lon":-3.6680454,"tags":{"name":"Asamblea de Madrid-Entrevías","stop_ids":["70002"],"renfe_stop_id":"70002","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"70003","lat":40.3760377,"lon":-3.6561407,"tags":{"name":"El Pozo","stop_ids":["70003"],"renfe_stop_id":"70003","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"70005","lat":40.382364,"lon":-3.623042,"tags":{"name":"Vallecas","stop_ids":["70005"],"renfe_stop_id":"70005","feeds":["ld"],"audit_duplicate_name_reviewed":true},"category":"spain_renfe"}
+{"type":"node","id":"70005","lat":40.382364,"lon":-3.623042,"tags":{"name":"Vallecas","stop_ids":["70001","70005"],"renfe_stop_id":"70005","feeds":["cercanias","ld"],"renfe_alias_ids":["70001"]},"category":"spain_renfe"}
 {"type":"node","id":"70100","lat":40.4012524,"lon":-3.595897,"tags":{"name":"Vicálvaro","stop_ids":["70100"],"renfe_stop_id":"70100","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"70101","lat":40.4427805,"lon":-3.5339866,"tags":{"name":"San Fernando de Henares","stop_ids":["70101"],"renfe_stop_id":"70101","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"70102","lat":40.4547895,"lon":-3.47973,"tags":{"name":"Torrejón de Ardoz","stop_ids":["70102"],"renfe_stop_id":"70102","feeds":["cercanias","ld"]},"category":"spain_renfe"}
@@ -1463,7 +1462,4 @@
 {"type":"node","id":"98003","lat":40.48472,"lon":-3.6630608,"tags":{"name":"Fuente de la Mora","stop_ids":["98003"],"renfe_stop_id":"98003","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"98304","lat":40.4821016,"lon":-3.6162874,"tags":{"name":"Valdebebas","stop_ids":["98304"],"renfe_stop_id":"98304","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"98305","lat":40.4924023,"lon":-3.5932297,"tags":{"name":"Madrid-Aeropuerto T4","stop_ids":["98305"],"renfe_stop_id":"98305","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"99117","lat":42.350389,"lon":-7.872777,"tags":{"name":"Ourense Turístico","stop_ids":["99117"],"renfe_stop_id":"99117","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"99143","lat":43.352761,"lon":-8.409755,"tags":{"name":"A Coruña-Turístico","stop_ids":["99143"],"renfe_stop_id":"99143","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"99159","lat":42.870842,"lon":-8.544697,"tags":{"name":"Santiago-Turístico","stop_ids":["99159"],"renfe_stop_id":"99159","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"99161","lat":42.421969,"lon":-8.635546,"tags":{"name":"Pontevedra-Turístico","stop_ids":["99161"],"renfe_stop_id":"99161","feeds":["ld"]},"category":"spain_renfe"}
