@@ -1,0 +1,458 @@
+{"type":"node","id":"8600001","lat":57.441235,"lon":10.539999,"tags":{"name":"Frederikshavn St.","stop_ids":["8600001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600005","lat":57.471997,"lon":10.412575,"tags":{"name":"Kvissel St.","stop_ids":["8600005"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600006","lat":57.485665,"lon":10.311646,"tags":{"name":"Tolne St.","stop_ids":["8600006"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600007","lat":57.470187,"lon":10.202411,"tags":{"name":"Sindal St.","stop_ids":["8600007"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600008","lat":57.45483,"lon":10.005957,"tags":{"name":"Hjørring Øst St.","stop_ids":["8600008"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600009","lat":57.456484,"lon":9.985385,"tags":{"name":"Hjørring St.","stop_ids":["8600009"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600013","lat":57.354579,"lon":9.942663,"tags":{"name":"Vrå St.","stop_ids":["8600013"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600015","lat":57.26968,"lon":9.943196,"tags":{"name":"Brønderslev St.","stop_ids":["8600015"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600020","lat":57.043035,"lon":9.917041,"tags":{"name":"Aalborg St.","stop_ids":["8600020"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600022","lat":57.008366,"lon":9.898371,"tags":{"name":"Skalborg St.","stop_ids":["8600022"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600023","lat":56.973094,"lon":9.856297,"tags":{"name":"Svenstrup St. (Jylland)","stop_ids":["8600023"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600026","lat":56.890974,"lon":9.843929,"tags":{"name":"Støvring St.","stop_ids":["8600026"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600027","lat":56.835718,"lon":9.887365,"tags":{"name":"Skørping St.","stop_ids":["8600027"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600029","lat":56.769732,"lon":9.859924,"tags":{"name":"Arden St.","stop_ids":["8600029"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600032","lat":56.643535,"lon":9.782791,"tags":{"name":"Hobro St.","stop_ids":["8600032"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600040","lat":56.461856,"lon":10.02201,"tags":{"name":"Randers St.","stop_ids":["8600040"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600044","lat":56.386395,"lon":9.896148,"tags":{"name":"Langå St.","stop_ids":["8600044"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600047","lat":56.3275,"lon":10.047235,"tags":{"name":"Hadsten St.","stop_ids":["8600047"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600048","lat":56.263085,"lon":10.06007,"tags":{"name":"Hinnerup St.","stop_ids":["8600048"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600053","lat":56.150441,"lon":10.20476,"tags":{"name":"Aarhus H","stop_ids":["8600053"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600054","lat":56.122349,"lon":10.160948,"tags":{"name":"Viby Jylland St.","stop_ids":["8600054"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600059","lat":56.08205,"lon":10.037787,"tags":{"name":"Hørning St.","stop_ids":["8600059"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600061","lat":56.043373,"lon":9.925359,"tags":{"name":"Skanderborg St.","stop_ids":["8600061"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600066","lat":55.862763,"lon":9.836537,"tags":{"name":"Horsens St.","stop_ids":["8600066"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600071","lat":55.767569,"lon":9.698458,"tags":{"name":"Hedensted St.","stop_ids":["8600071"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600073","lat":55.706734,"lon":9.536483,"tags":{"name":"Vejle St.","stop_ids":["8600073"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600076","lat":55.666509,"lon":9.659282,"tags":{"name":"Brejning St.","stop_ids":["8600076"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600077","lat":55.642017,"lon":9.651943,"tags":{"name":"Børkop St.","stop_ids":["8600077"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600079","lat":55.568217,"lon":9.740635,"tags":{"name":"Fredericia St.","stop_ids":["8600079"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600081","lat":55.545123,"lon":9.615757,"tags":{"name":"Taulov St.","stop_ids":["8600081"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600083","lat":55.490831,"lon":9.481095,"tags":{"name":"Kolding St.","stop_ids":["8600083"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600086","lat":55.47998,"lon":9.303374,"tags":{"name":"Lunderskov St.","stop_ids":["8600086"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600087","lat":55.428217,"lon":9.286401,"tags":{"name":"Vamdrup St.","stop_ids":["8600087"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600091","lat":55.248236,"lon":9.30557,"tags":{"name":"Vojens St.","stop_ids":["8600091"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600094","lat":55.069202,"lon":9.333457,"tags":{"name":"Rødekro St.","stop_ids":["8600094"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600097","lat":54.936323,"lon":9.257875,"tags":{"name":"Tinglev St.","stop_ids":["8600097"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600100","lat":54.822994,"lon":9.359753,"tags":{"name":"Padborg St.","stop_ids":["8600100"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600101","lat":54.816616,"lon":9.361968,"tags":{"name":"Padborg Grænse St.","stop_ids":["8600101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600115","lat":57.084805,"lon":9.874941,"tags":{"name":"Aalborg Lufthavn St.","stop_ids":["8600115"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600116","lat":57.066735,"lon":9.904498,"tags":{"name":"Lindholm St.","stop_ids":["8600116"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600117","lat":57.053284,"lon":9.908638,"tags":{"name":"Aalborg Vestby St.","stop_ids":["8600117"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600171","lat":56.39564,"lon":9.7932,"tags":{"name":"Ulstrup St.","stop_ids":["8600171"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600172","lat":56.374231,"lon":9.657947,"tags":{"name":"Bjerringbro St.","stop_ids":["8600172"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600174","lat":56.352651,"lon":9.499932,"tags":{"name":"Rødkærsbro St.","stop_ids":["8600174"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600176","lat":56.4474,"lon":9.398425,"tags":{"name":"Viborg St.","stop_ids":["8600176"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600179","lat":56.475161,"lon":9.227547,"tags":{"name":"Sparkær St.","stop_ids":["8600179"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600180","lat":56.487372,"lon":9.150063,"tags":{"name":"Stoholm St.","stop_ids":["8600180"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600182","lat":56.549324,"lon":9.110344,"tags":{"name":"Højslev St.","stop_ids":["8600182"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600183","lat":56.561678,"lon":9.025773,"tags":{"name":"Skive St.","stop_ids":["8600183"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600187","lat":56.482671,"lon":8.781809,"tags":{"name":"Vinderup St.","stop_ids":["8600187"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600189","lat":56.49138,"lon":8.601877,"tags":{"name":"Struer St.","stop_ids":["8600189"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600191","lat":56.438739,"lon":8.639859,"tags":{"name":"Hjerm St.","stop_ids":["8600191"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600192","lat":56.365307,"lon":8.620901,"tags":{"name":"Holstebro St.","stop_ids":["8600192"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600195","lat":56.367649,"lon":8.425973,"tags":{"name":"Bur St.","stop_ids":["8600195"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600196","lat":56.343734,"lon":8.344939,"tags":{"name":"Vemb St.","stop_ids":["8600196"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600197","lat":56.271658,"lon":8.324824,"tags":{"name":"Ulfborg St.","stop_ids":["8600197"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600198","lat":56.195171,"lon":8.305444,"tags":{"name":"Tim St.","stop_ids":["8600198"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600199","lat":56.143812,"lon":8.286429,"tags":{"name":"Hee St.","stop_ids":["8600199"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600200","lat":56.092911,"lon":8.249808,"tags":{"name":"Ringkøbing St.","stop_ids":["8600200"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600203","lat":56.024944,"lon":8.385742,"tags":{"name":"Lem St.","stop_ids":["8600203"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600205","lat":55.947582,"lon":8.492297,"tags":{"name":"Skjern St.","stop_ids":["8600205"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600206","lat":55.909902,"lon":8.520208,"tags":{"name":"Tarm St.","stop_ids":["8600206"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600208","lat":55.810989,"lon":8.622509,"tags":{"name":"Ølgod St.","stop_ids":["8600208"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600209","lat":55.765354,"lon":8.611395,"tags":{"name":"Gårde St.","stop_ids":["8600209"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600210","lat":55.716701,"lon":8.598348,"tags":{"name":"Tistrup St.","stop_ids":["8600210"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600211","lat":55.66578,"lon":8.576836,"tags":{"name":"Sig St.","stop_ids":["8600211"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600212","lat":55.616185,"lon":8.484236,"tags":{"name":"Varde St.","stop_ids":["8600212"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600213","lat":55.63132,"lon":8.500285,"tags":{"name":"Varde Nord St.","stop_ids":["8600213"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600214","lat":55.536037,"lon":8.440175,"tags":{"name":"Guldager St.","stop_ids":["8600214"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600215","lat":55.467924,"lon":8.458191,"tags":{"name":"Esbjerg St.","stop_ids":["8600215"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600217","lat":55.47454,"lon":8.485834,"tags":{"name":"Jerne St.","stop_ids":["8600217"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600218","lat":55.466388,"lon":8.57937,"tags":{"name":"Tjæreborg St.","stop_ids":["8600218"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600219","lat":55.464773,"lon":8.706802,"tags":{"name":"Bramming St.","stop_ids":["8600219"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600220","lat":55.469698,"lon":8.800725,"tags":{"name":"Gørding St.","stop_ids":["8600220"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600221","lat":55.484926,"lon":8.914455,"tags":{"name":"Holsted St.","stop_ids":["8600221"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600222","lat":55.482798,"lon":9.01614,"tags":{"name":"Brørup St.","stop_ids":["8600222"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600223","lat":55.475939,"lon":9.136183,"tags":{"name":"Vejen St.","stop_ids":["8600223"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600227","lat":55.492189,"lon":8.460818,"tags":{"name":"Spangsbjerg St.","stop_ids":["8600227"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600228","lat":55.509516,"lon":8.457351,"tags":{"name":"Gjesing St.","stop_ids":["8600228"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600249","lat":55.611992,"lon":8.472336,"tags":{"name":"Varde Kaserne St.","stop_ids":["8600249"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600260","lat":56.052556,"lon":9.84512,"tags":{"name":"Alken St.","stop_ids":["8600260"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600261","lat":56.091081,"lon":9.758449,"tags":{"name":"Ry St.","stop_ids":["8600261"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600263","lat":56.124847,"lon":9.717901,"tags":{"name":"Laven St.","stop_ids":["8600263"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600264","lat":56.132896,"lon":9.636235,"tags":{"name":"Svejbæk St.","stop_ids":["8600264"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600266","lat":56.164181,"lon":9.544162,"tags":{"name":"Silkeborg St.","stop_ids":["8600266"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600269","lat":56.125384,"lon":9.029952,"tags":{"name":"Birk Centerpark St.","stop_ids":["8600269"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600270","lat":56.167907,"lon":9.351321,"tags":{"name":"Engesvang St.","stop_ids":["8600270"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600271","lat":56.14688,"lon":9.278219,"tags":{"name":"Bording St.","stop_ids":["8600271"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600273","lat":56.144806,"lon":9.154343,"tags":{"name":"Ikast St.","stop_ids":["8600273"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600274","lat":56.131706,"lon":9.062907,"tags":{"name":"Hammerum St.","stop_ids":["8600274"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600275","lat":56.133328,"lon":8.977861,"tags":{"name":"Herning St.","stop_ids":["8600275"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600276","lat":56.123731,"lon":8.944763,"tags":{"name":"Herning Messecenter St.","stop_ids":["8600276"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600277","lat":56.09141,"lon":8.909998,"tags":{"name":"Studsgård St.","stop_ids":["8600277"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600278","lat":56.032512,"lon":8.851947,"tags":{"name":"Kibæk St.","stop_ids":["8600278"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600279","lat":55.990872,"lon":8.745072,"tags":{"name":"Troldhede St.","stop_ids":["8600279"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600280","lat":55.958537,"lon":8.644171,"tags":{"name":"Borris St.","stop_ids":["8600280"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600281","lat":55.7148,"lon":9.537007,"tags":{"name":"Vejle Sygehus St.","stop_ids":["8600281"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600285","lat":55.754234,"lon":9.420089,"tags":{"name":"Jelling St.","stop_ids":["8600285"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600289","lat":55.843123,"lon":9.236026,"tags":{"name":"Give St.","stop_ids":["8600289"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600290","lat":55.9087,"lon":9.252485,"tags":{"name":"Thyregod St.","stop_ids":["8600290"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600291","lat":55.94457,"lon":9.129609,"tags":{"name":"Brande St.","stop_ids":["8600291"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600295","lat":56.158666,"lon":8.893306,"tags":{"name":"Gødstrup St.","stop_ids":["8600295"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600298","lat":56.198262,"lon":8.768647,"tags":{"name":"Vildbjerg St.","stop_ids":["8600298"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600300","lat":56.265197,"lon":8.788602,"tags":{"name":"Aulum St.","stop_ids":["8600300"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600318","lat":54.935225,"lon":9.398477,"tags":{"name":"Kliplev St.","stop_ids":["8600318"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600322","lat":54.919051,"lon":9.593976,"tags":{"name":"Gråsten St.","stop_ids":["8600322"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600327","lat":54.912019,"lon":9.779157,"tags":{"name":"Sønderborg St.","stop_ids":["8600327"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600390","lat":56.541066,"lon":8.552749,"tags":{"name":"Humlum St.","stop_ids":["8600390"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600392","lat":56.582588,"lon":8.546838,"tags":{"name":"Oddesund Nord St.","stop_ids":["8600392"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600393","lat":56.612242,"lon":8.541106,"tags":{"name":"Uglev St.","stop_ids":["8600393"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600394","lat":56.650046,"lon":8.526409,"tags":{"name":"Hvidbjerg St.","stop_ids":["8600394"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600395","lat":56.664513,"lon":8.450591,"tags":{"name":"Lyngs St.","stop_ids":["8600395"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600396","lat":56.714485,"lon":8.398564,"tags":{"name":"Ydby St.","stop_ids":["8600396"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600397","lat":56.751195,"lon":8.417667,"tags":{"name":"Hurup Thy St.","stop_ids":["8600397"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600398","lat":56.80665,"lon":8.407505,"tags":{"name":"Bedsted Thy St.","stop_ids":["8600398"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600400","lat":56.850814,"lon":8.490691,"tags":{"name":"Hørdum St.","stop_ids":["8600400"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600401","lat":56.892344,"lon":8.526795,"tags":{"name":"Snedsted St.","stop_ids":["8600401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600403","lat":56.951591,"lon":8.587598,"tags":{"name":"Sjørring St.","stop_ids":["8600403"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600404","lat":56.952888,"lon":8.688053,"tags":{"name":"Thisted St.","stop_ids":["8600404"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600420","lat":55.435217,"lon":8.733446,"tags":{"name":"Sejstrup St.","stop_ids":["8600420"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600421","lat":55.39752,"lon":8.741152,"tags":{"name":"Gredstedbro St.","stop_ids":["8600421"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600423","lat":55.327668,"lon":8.770088,"tags":{"name":"Ribe St.","stop_ids":["8600423"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600424","lat":55.274605,"lon":8.73021,"tags":{"name":"Hviding St.","stop_ids":["8600424"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600425","lat":55.230424,"lon":8.731955,"tags":{"name":"Rejsby St.","stop_ids":["8600425"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600426","lat":55.194687,"lon":8.740914,"tags":{"name":"Brøns St.","stop_ids":["8600426"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600427","lat":55.158821,"lon":8.771186,"tags":{"name":"Skærbæk St.","stop_ids":["8600427"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600428","lat":55.117584,"lon":8.807765,"tags":{"name":"Døstrup St. (Sønderjylland)","stop_ids":["8600428"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600430","lat":55.056968,"lon":8.823569,"tags":{"name":"Bredebro St.","stop_ids":["8600430"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600431","lat":55.009505,"lon":8.802012,"tags":{"name":"Visby St.","stop_ids":["8600431"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600432","lat":54.933273,"lon":8.860959,"tags":{"name":"Tønder St.","stop_ids":["8600432"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600434","lat":54.938917,"lon":8.861049,"tags":{"name":"Tønder Nord St.","stop_ids":["8600434"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600436","lat":55.33972,"lon":8.776104,"tags":{"name":"Ribe Nørremark St.","stop_ids":["8600436"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600501","lat":55.501977,"lon":9.73404,"tags":{"name":"Middelfart St.","stop_ids":["8600501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600502","lat":55.475943,"lon":9.811095,"tags":{"name":"Kauslunde St.","stop_ids":["8600502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600503","lat":55.460246,"lon":9.869873,"tags":{"name":"Nørre Aaby St.","stop_ids":["8600503"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600504","lat":55.428597,"lon":9.929747,"tags":{"name":"Ejby St.","stop_ids":["8600504"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600505","lat":55.396061,"lon":9.974252,"tags":{"name":"Gelsted St.","stop_ids":["8600505"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600506","lat":55.382942,"lon":10.051224,"tags":{"name":"Aarup St.","stop_ids":["8600506"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600507","lat":55.373107,"lon":10.105611,"tags":{"name":"Bred St.","stop_ids":["8600507"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600508","lat":55.366192,"lon":10.141329,"tags":{"name":"Skalbjerg St.","stop_ids":["8600508"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600509","lat":55.349373,"lon":10.182528,"tags":{"name":"Tommerup St.","stop_ids":["8600509"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600511","lat":55.362061,"lon":10.272153,"tags":{"name":"Holmstrup St.","stop_ids":["8600511"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600512","lat":55.401776,"lon":10.386739,"tags":{"name":"Odense St.","stop_ids":["8600512"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600515","lat":55.361767,"lon":10.586241,"tags":{"name":"Langeskov St.","stop_ids":["8600515"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600518","lat":55.313893,"lon":10.802583,"tags":{"name":"Nyborg St.","stop_ids":["8600518"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600526","lat":55.381395,"lon":10.36669,"tags":{"name":"Odense Sygehus St.","stop_ids":["8600526"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600533","lat":55.369688,"lon":10.377695,"tags":{"name":"Fruens Bøge St.","stop_ids":["8600533"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600551","lat":55.059305,"lon":10.611789,"tags":{"name":"Svendborg St.","stop_ids":["8600551"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600555","lat":55.055707,"lon":10.581866,"tags":{"name":"Svendborg Vest St.","stop_ids":["8600555"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600559","lat":55.358234,"lon":10.392378,"tags":{"name":"Hjallese St.","stop_ids":["8600559"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600560","lat":55.330187,"lon":10.434289,"tags":{"name":"Højby Fyn St.","stop_ids":["8600560"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600561","lat":55.301302,"lon":10.466106,"tags":{"name":"Årslev St.","stop_ids":["8600561"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600562","lat":55.283383,"lon":10.486072,"tags":{"name":"Pederstrup St.","stop_ids":["8600562"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600563","lat":55.239141,"lon":10.481575,"tags":{"name":"Ringe","stop_ids":["8600563"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600564","lat":55.198678,"lon":10.48697,"tags":{"name":"Rudme St.","stop_ids":["8600564"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600565","lat":55.177708,"lon":10.519293,"tags":{"name":"Kværndrup St.","stop_ids":["8600565"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600566","lat":55.131759,"lon":10.508889,"tags":{"name":"Stenstrup St.","stop_ids":["8600566"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600567","lat":55.120394,"lon":10.515062,"tags":{"name":"Stenstrup Syd St.","stop_ids":["8600567"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600600","lat":55.66451,"lon":12.474346,"tags":{"name":"Hvidovre St.","stop_ids":["8600600"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600601","lat":55.356884,"lon":11.135334,"tags":{"name":"Korsør St.","stop_ids":["8600601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600605","lat":55.407308,"lon":11.348995,"tags":{"name":"Slagelse St.","stop_ids":["8600605"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600608","lat":55.419345,"lon":11.569246,"tags":{"name":"Sorø St.","stop_ids":["8600608"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600611","lat":55.438394,"lon":11.786376,"tags":{"name":"Ringsted St.","stop_ids":["8600611"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600614","lat":55.494621,"lon":11.972515,"tags":{"name":"Borup St.","stop_ids":["8600614"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600615","lat":55.549608,"lon":12.024494,"tags":{"name":"Viby Sjælland St.","stop_ids":["8600615"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600617","lat":55.639089,"lon":12.088547,"tags":{"name":"Roskilde St.","stop_ids":["8600617"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600619","lat":55.648986,"lon":12.197312,"tags":{"name":"Hedehusene St.","stop_ids":["8600619"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600620","lat":55.652546,"lon":12.302135,"tags":{"name":"Taastrup St.","stop_ids":["8600620"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600621","lat":55.65804,"lon":12.353124,"tags":{"name":"Albertslund St.","stop_ids":["8600621"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600622","lat":55.663148,"lon":12.397827,"tags":{"name":"Glostrup St.","stop_ids":["8600622"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600624","lat":55.663997,"lon":12.51445,"tags":{"name":"Valby St.","stop_ids":["8600624"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600626","lat":55.673059,"lon":12.565558,"tags":{"name":"København H","stop_ids":["8600626"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600631","lat":55.663257,"lon":12.537353,"tags":{"name":"Carlsberg St.","stop_ids":["8600631"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600634","lat":55.664828,"lon":12.559511,"tags":{"name":"Dybbølsbro St.","stop_ids":["8600634"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600636","lat":55.781255,"lon":12.483542,"tags":{"name":"Sorgenfri St.","stop_ids":["8600636"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600640","lat":55.695429,"lon":12.527382,"tags":{"name":"Fuglebakken St.","stop_ids":["8600640"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600641","lat":55.690738,"lon":12.516007,"tags":{"name":"Grøndal St.","stop_ids":["8600641"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600642","lat":55.700847,"lon":12.537806,"tags":{"name":"Nørrebro St.","stop_ids":["8600642"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600644","lat":55.715362,"lon":12.559492,"tags":{"name":"Ryparken St.","stop_ids":["8600644"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600645","lat":55.676011,"lon":12.562087,"tags":{"name":"Vesterport St.","stop_ids":["8600645"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600646","lat":55.683452,"lon":12.571804,"tags":{"name":"Nørreport St.","stop_ids":["8600646"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600650","lat":55.692499,"lon":12.587785,"tags":{"name":"Østerport St.","stop_ids":["8600650"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600653","lat":55.705616,"lon":12.590613,"tags":{"name":"Nordhavn St.","stop_ids":["8600653"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600654","lat":55.71555,"lon":12.578049,"tags":{"name":"Svanemøllen St.","stop_ids":["8600654"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600655","lat":55.731022,"lon":12.567658,"tags":{"name":"Hellerup St.","stop_ids":["8600655"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600657","lat":55.751851,"lon":12.572144,"tags":{"name":"Charlottenlund St.","stop_ids":["8600657"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600658","lat":55.76307,"lon":12.583649,"tags":{"name":"Ordrup St.","stop_ids":["8600658"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600659","lat":55.777446,"lon":12.58773,"tags":{"name":"Klampenborg St.","stop_ids":["8600659"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600661","lat":55.823531,"lon":12.571291,"tags":{"name":"Skodsborg St.","stop_ids":["8600661"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600662","lat":55.852904,"lon":12.563022,"tags":{"name":"Vedbæk St.","stop_ids":["8600662"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600663","lat":55.882227,"lon":12.531477,"tags":{"name":"Rungsted Kyst St.","stop_ids":["8600663"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600664","lat":55.903488,"lon":12.502057,"tags":{"name":"Kokkedal St.","stop_ids":["8600664"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600665","lat":55.933336,"lon":12.506578,"tags":{"name":"Nivå St.","stop_ids":["8600665"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600666","lat":55.963742,"lon":12.533408,"tags":{"name":"Humlebæk St.","stop_ids":["8600666"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600667","lat":55.995804,"lon":12.549379,"tags":{"name":"Espergærde St.","stop_ids":["8600667"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600668","lat":56.009237,"lon":12.583883,"tags":{"name":"Snekkersten St.","stop_ids":["8600668"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600669","lat":56.033618,"lon":12.614169,"tags":{"name":"Helsingør St.","stop_ids":["8600669"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600672","lat":55.743052,"lon":12.557488,"tags":{"name":"Bernstorffsvej St.","stop_ids":["8600672"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600673","lat":55.753509,"lon":12.54162,"tags":{"name":"Gentofte St.","stop_ids":["8600673"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600674","lat":55.761621,"lon":12.521561,"tags":{"name":"Jægersborg St.","stop_ids":["8600674"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600675","lat":55.768084,"lon":12.503101,"tags":{"name":"Lyngby St.","stop_ids":["8600675"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600676","lat":55.795606,"lon":12.473349,"tags":{"name":"Virum St.","stop_ids":["8600676"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600677","lat":55.807675,"lon":12.468821,"tags":{"name":"Holte St.","stop_ids":["8600677"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600678","lat":55.840508,"lon":12.424018,"tags":{"name":"Birkerød St.","stop_ids":["8600678"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600679","lat":55.665068,"lon":12.440211,"tags":{"name":"Brøndbyøster St.","stop_ids":["8600679"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600680","lat":55.66482,"lon":12.458641,"tags":{"name":"Rødovre St.","stop_ids":["8600680"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600681","lat":55.870983,"lon":12.357045,"tags":{"name":"Allerød St.","stop_ids":["8600681"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600683","lat":55.926923,"lon":12.310928,"tags":{"name":"Hillerød St.","stop_ids":["8600683"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600684","lat":55.968083,"lon":12.392806,"tags":{"name":"Kratbjerg St.","stop_ids":["8600684"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600685","lat":55.977252,"lon":12.406886,"tags":{"name":"Fredensborg St.","stop_ids":["8600685"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600686","lat":55.990363,"lon":12.50297,"tags":{"name":"Kvistgård St.","stop_ids":["8600686"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600688","lat":55.720887,"lon":12.540687,"tags":{"name":"Emdrup St.","stop_ids":["8600688"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600689","lat":55.739658,"lon":12.523342,"tags":{"name":"Vangede St.","stop_ids":["8600689"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600690","lat":55.747383,"lon":12.494038,"tags":{"name":"Buddinge St.","stop_ids":["8600690"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600691","lat":55.756534,"lon":12.473188,"tags":{"name":"Stengården St.","stop_ids":["8600691"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600692","lat":55.761872,"lon":12.453554,"tags":{"name":"Bagsværd St.","stop_ids":["8600692"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600693","lat":55.765173,"lon":12.43203,"tags":{"name":"Skovbrynet St.","stop_ids":["8600693"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600694","lat":55.766023,"lon":12.406029,"tags":{"name":"Hareskov St.","stop_ids":["8600694"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600695","lat":55.782034,"lon":12.373189,"tags":{"name":"Værløse St.","stop_ids":["8600695"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600696","lat":55.812027,"lon":12.373534,"tags":{"name":"Farum St.","stop_ids":["8600696"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600700","lat":55.910229,"lon":12.315235,"tags":{"name":"Favrholm St.","stop_ids":["8600700"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600701","lat":55.66705,"lon":12.504224,"tags":{"name":"Langgade St.","stop_ids":["8600701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600702","lat":55.67859,"lon":12.503443,"tags":{"name":"Peter Bangs Vej St.","stop_ids":["8600702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600703","lat":55.687355,"lon":12.490603,"tags":{"name":"Vanløse St.","stop_ids":["8600703"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600704","lat":55.699529,"lon":12.469383,"tags":{"name":"Islev St.","stop_ids":["8600704"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600705","lat":55.709409,"lon":12.464033,"tags":{"name":"Husum St.","stop_ids":["8600705"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600706","lat":55.718919,"lon":12.443674,"tags":{"name":"Herlev St.","stop_ids":["8600706"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600707","lat":55.722763,"lon":12.403533,"tags":{"name":"Skovlunde St.","stop_ids":["8600707"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600708","lat":55.729871,"lon":12.358344,"tags":{"name":"Ballerup St.","stop_ids":["8600708"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600709","lat":55.747485,"lon":12.318319,"tags":{"name":"Måløv St.","stop_ids":["8600709"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600710","lat":55.750211,"lon":12.238432,"tags":{"name":"Veksø St.","stop_ids":["8600710"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600711","lat":55.766379,"lon":12.190608,"tags":{"name":"Stenløse St.","stop_ids":["8600711"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600712","lat":55.795641,"lon":12.159712,"tags":{"name":"Ølstykke St.","stop_ids":["8600712"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600713","lat":55.810333,"lon":12.115244,"tags":{"name":"Vinge St.","stop_ids":["8600713"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600714","lat":55.835809,"lon":12.065636,"tags":{"name":"Frederikssund St.","stop_ids":["8600714"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600715","lat":55.604804,"lon":11.971702,"tags":{"name":"Lejre St.","stop_ids":["8600715"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600716","lat":55.595537,"lon":11.859821,"tags":{"name":"Hvalsø St.","stop_ids":["8600716"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600717","lat":55.611893,"lon":11.772803,"tags":{"name":"Tølløse St.","stop_ids":["8600717"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600718","lat":55.666828,"lon":11.73871,"tags":{"name":"Vipperød St.","stop_ids":["8600718"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600719","lat":55.71575,"lon":11.708598,"tags":{"name":"Holbæk St.","stop_ids":["8600719"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600720","lat":55.677551,"lon":11.61264,"tags":{"name":"Regstrup St.","stop_ids":["8600720"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600721","lat":55.664905,"lon":11.553673,"tags":{"name":"Knabstrup St.","stop_ids":["8600721"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600722","lat":55.654494,"lon":11.501851,"tags":{"name":"Mørkøv St.","stop_ids":["8600722"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600723","lat":55.660262,"lon":11.398026,"tags":{"name":"Jyderup St.","stop_ids":["8600723"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600724","lat":55.652203,"lon":11.291584,"tags":{"name":"Svebølle St.","stop_ids":["8600724"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600727","lat":55.677848,"lon":11.089056,"tags":{"name":"Kalundborg St.","stop_ids":["8600727"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600728","lat":55.676592,"lon":11.120864,"tags":{"name":"Kalundborg Øst St.","stop_ids":["8600728"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600734","lat":55.69081,"lon":12.477206,"tags":{"name":"Jyllingevej St.","stop_ids":["8600734"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600736","lat":55.685435,"lon":12.49866,"tags":{"name":"Flintholm St.","stop_ids":["8600736"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600739","lat":55.706348,"lon":12.541632,"tags":{"name":"Bispebjerg St.","stop_ids":["8600739"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600740","lat":55.677963,"lon":12.492328,"tags":{"name":"KB Hallen St.","stop_ids":["8600740"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600741","lat":55.67233,"lon":12.493114,"tags":{"name":"Ålholm St.","stop_ids":["8600741"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600742","lat":55.664274,"lon":12.493732,"tags":{"name":"Danshøj St.","stop_ids":["8600742"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600755","lat":55.647932,"lon":12.13228,"tags":{"name":"Trekroner St.","stop_ids":["8600755"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600756","lat":55.724632,"lon":12.386028,"tags":{"name":"Malmparken St.","stop_ids":["8600756"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600760","lat":55.654756,"lon":12.537174,"tags":{"name":"Sydhavn St.","stop_ids":["8600760"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600761","lat":55.651742,"lon":12.527265,"tags":{"name":"Sjælør St.","stop_ids":["8600761"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600763","lat":55.640079,"lon":12.499699,"tags":{"name":"Åmarken St.","stop_ids":["8600763"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600764","lat":55.628887,"lon":12.482553,"tags":{"name":"Friheden St.","stop_ids":["8600764"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600765","lat":55.625183,"lon":12.454256,"tags":{"name":"Avedøre St.","stop_ids":["8600765"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600766","lat":55.620936,"lon":12.42266,"tags":{"name":"Brøndby Strand St.","stop_ids":["8600766"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600767","lat":55.623253,"lon":12.388444,"tags":{"name":"Vallensbæk St.","stop_ids":["8600767"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600768","lat":55.613385,"lon":12.357934,"tags":{"name":"Ishøj St.","stop_ids":["8600768"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600769","lat":55.597449,"lon":12.333387,"tags":{"name":"Hundige St.","stop_ids":["8600769"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600770","lat":55.581217,"lon":12.295599,"tags":{"name":"Greve St.","stop_ids":["8600770"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600771","lat":55.56629,"lon":12.268851,"tags":{"name":"Karlslunde St.","stop_ids":["8600771"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600773","lat":55.353526,"lon":11.695302,"tags":{"name":"Glumsø St.","stop_ids":["8600773"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600777","lat":55.952957,"lon":12.369703,"tags":{"name":"Grønholt St.","stop_ids":["8600777"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600778","lat":55.981234,"lon":12.451161,"tags":{"name":"Langerød St.","stop_ids":["8600778"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600779","lat":56.002127,"lon":12.532437,"tags":{"name":"Mørdrup St.","stop_ids":["8600779"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600780","lat":55.732629,"lon":12.535743,"tags":{"name":"Dyssegård St.","stop_ids":["8600780"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600781","lat":55.744614,"lon":12.508535,"tags":{"name":"Kildebakke St.","stop_ids":["8600781"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600783","lat":55.652626,"lon":12.516849,"tags":{"name":"København Syd St.","stop_ids":["8600783"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600790","lat":55.533318,"lon":12.218064,"tags":{"name":"Solrød Strand St.","stop_ids":["8600790"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600791","lat":55.520686,"lon":12.208474,"tags":{"name":"Jersie St.","stop_ids":["8600791"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600792","lat":55.479751,"lon":12.175762,"tags":{"name":"Ølby St.","stop_ids":["8600792"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600793","lat":55.248323,"lon":11.786463,"tags":{"name":"Næstved Nord St.","stop_ids":["8600793"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600797","lat":55.49919,"lon":12.173986,"tags":{"name":"Køge Nord St.","stop_ids":["8600797"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600798","lat":55.648869,"lon":12.269581,"tags":{"name":"Høje Taastrup St.","stop_ids":["8600798"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600800","lat":55.572761,"lon":12.099488,"tags":{"name":"Gadstrup St.","stop_ids":["8600800"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600801","lat":55.543448,"lon":12.117047,"tags":{"name":"Havdrup St.","stop_ids":["8600801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600802","lat":55.511378,"lon":12.140302,"tags":{"name":"Lille Skensved St.","stop_ids":["8600802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600803","lat":55.457547,"lon":12.186333,"tags":{"name":"Køge St.","stop_ids":["8600803"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600804","lat":55.659898,"lon":12.498686,"tags":{"name":"Vigerslev Alle St.","stop_ids":["8600804"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600805","lat":55.417711,"lon":12.137254,"tags":{"name":"Herfølge St.","stop_ids":["8600805"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600806","lat":55.373227,"lon":12.076073,"tags":{"name":"Tureby St.","stop_ids":["8600806"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600807","lat":55.329365,"lon":11.961038,"tags":{"name":"Haslev St.","stop_ids":["8600807"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600809","lat":55.260954,"lon":11.84874,"tags":{"name":"Holme-Olstrup St.","stop_ids":["8600809"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600810","lat":55.231244,"lon":11.767053,"tags":{"name":"Næstved St.","stop_ids":["8600810"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600814","lat":55.11059,"lon":11.869264,"tags":{"name":"Lundby St.","stop_ids":["8600814"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600816","lat":55.012584,"lon":11.900147,"tags":{"name":"Vordingborg St.","stop_ids":["8600816"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600819","lat":54.939083,"lon":11.867757,"tags":{"name":"Orehoved St.","stop_ids":["8600819"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600821","lat":54.896586,"lon":11.885575,"tags":{"name":"Nørre Alslev St.","stop_ids":["8600821"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600822","lat":54.855932,"lon":11.885522,"tags":{"name":"Eskilstrup St.","stop_ids":["8600822"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600824","lat":54.767084,"lon":11.877373,"tags":{"name":"Nykøbing F St.","stop_ids":["8600824"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600856","lat":55.628434,"lon":12.578776,"tags":{"name":"Ørestad St.","stop_ids":["8600856"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600857","lat":55.629855,"lon":12.602095,"tags":{"name":"Tårnby St.","stop_ids":["8600857"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600858","lat":55.629443,"lon":12.649166,"tags":{"name":"CPH Lufthavn","stop_ids":["8600858"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600901","lat":55.423726,"lon":12.190041,"tags":{"name":"Egøje St.","stop_ids":["8600901"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600902","lat":55.400318,"lon":12.191961,"tags":{"name":"Vallø St.","stop_ids":["8600902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600903","lat":55.379951,"lon":12.202036,"tags":{"name":"Grubberholm St.","stop_ids":["8600903"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600904","lat":55.372343,"lon":12.215788,"tags":{"name":"Himlingøje St.","stop_ids":["8600904"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600905","lat":55.351583,"lon":12.22739,"tags":{"name":"Hårlev St.","stop_ids":["8600905"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600906","lat":55.336308,"lon":12.219206,"tags":{"name":"Li.Linde St.","stop_ids":["8600906"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600907","lat":55.352412,"lon":12.279958,"tags":{"name":"Varpelev St.","stop_ids":["8600907"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600909","lat":55.851051,"lon":12.388137,"tags":{"name":"Høvelte St.","stop_ids":["8600909"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600955","lat":55.751952,"lon":12.286623,"tags":{"name":"Kildedal St.","stop_ids":["8600955"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600956","lat":55.779952,"lon":12.185481,"tags":{"name":"Egedal St.","stop_ids":["8600956"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601013","lat":55.216988,"lon":12.162176,"tags":{"name":"Faxe Ladeplads St.","stop_ids":["8601013"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601014","lat":55.242104,"lon":12.136948,"tags":{"name":"Faxe Syd St.","stop_ids":["8601014"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601025","lat":55.306922,"lon":12.195734,"tags":{"name":"Karise St.","stop_ids":["8601025"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601027","lat":55.346151,"lon":12.325622,"tags":{"name":"Klippinge St.","stop_ids":["8601027"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601039","lat":55.259119,"lon":12.3762,"tags":{"name":"Rødvig St.","stop_ids":["8601039"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601045","lat":55.309286,"lon":12.385809,"tags":{"name":"St. Heddinge St.","stop_ids":["8601045"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601053","lat":55.283399,"lon":12.142884,"tags":{"name":"Tokkerup St.","stop_ids":["8601053"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601401","lat":56.009721,"lon":12.262617,"tags":{"name":"Duemose St.","stop_ids":["8601401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601402","lat":56.116331,"lon":12.298355,"tags":{"name":"Fjellenstrup St.","stop_ids":["8601402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601403","lat":56.123558,"lon":12.302789,"tags":{"name":"Gilleleje St.","stop_ids":["8601403"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601405","lat":56.059879,"lon":12.09769,"tags":{"name":"Godhavn St.","stop_ids":["8601405"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601407","lat":55.987424,"lon":12.30178,"tags":{"name":"Gribsø St.","stop_ids":["8601407"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601409","lat":56.072889,"lon":12.286587,"tags":{"name":"Græsted St.","stop_ids":["8601409"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601411","lat":56.022862,"lon":12.205181,"tags":{"name":"Helsinge St.","stop_ids":["8601411"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601417","lat":56.059497,"lon":12.117134,"tags":{"name":"Holløse St.","stop_ids":["8601417"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601421","lat":55.997578,"lon":12.285833,"tags":{"name":"Kagerup St. (Hillerød)","stop_ids":["8601421"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601424","lat":56.032959,"lon":12.189528,"tags":{"name":"Troldebakkerne St.","stop_ids":["8601424"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601427","lat":56.030727,"lon":12.317024,"tags":{"name":"Mårum (Græsted-Gilleleje) St.","stop_ids":["8601427"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601428","lat":56.063166,"lon":12.295497,"tags":{"name":"Græsted Syd St.","stop_ids":["8601428"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601429","lat":56.101008,"lon":12.301499,"tags":{"name":"Pårup St.","stop_ids":["8601429"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601431","lat":56.054477,"lon":12.321811,"tags":{"name":"Saltrup St.","stop_ids":["8601431"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601433","lat":55.941777,"lon":12.311236,"tags":{"name":"Slotspavillonen St.","stop_ids":["8601433"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601437","lat":56.059238,"lon":12.077716,"tags":{"name":"Tisvildeleje St.","stop_ids":["8601437"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601439","lat":56.062679,"lon":12.13632,"tags":{"name":"Vejby St.","stop_ids":["8601439"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601443","lat":56.055716,"lon":12.162552,"tags":{"name":"Ørby St.","stop_ids":["8601443"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601601","lat":56.097784,"lon":12.386955,"tags":{"name":"Dronningmølle St.","stop_ids":["8601601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601603","lat":56.098237,"lon":12.355886,"tags":{"name":"Firhøj St. (Gilleleje)","stop_ids":["8601603"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601604","lat":56.122681,"lon":12.309023,"tags":{"name":"Gilleleje Øst St.","stop_ids":["8601604"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601606","lat":56.04035,"lon":12.610912,"tags":{"name":"Grønnehave St. (Helsingør)","stop_ids":["8601606"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601607","lat":56.066659,"lon":12.553982,"tags":{"name":"Hellebæk St.","stop_ids":["8601607"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601613","lat":56.089218,"lon":12.459423,"tags":{"name":"Hornbæk St.","stop_ids":["8601613"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601615","lat":56.089915,"lon":12.435153,"tags":{"name":"Horneby Sand St.","stop_ids":["8601615"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601617","lat":56.047198,"lon":12.594089,"tags":{"name":"Højstrup St.","stop_ids":["8601617"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601620","lat":56.083155,"lon":12.468205,"tags":{"name":"Karinebæk St.","stop_ids":["8601620"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601621","lat":56.092687,"lon":12.423402,"tags":{"name":"Kildekrog St.","stop_ids":["8601621"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601623","lat":56.04329,"lon":12.602319,"tags":{"name":"Marienlyst St.","stop_ids":["8601623"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601625","lat":56.076971,"lon":12.484707,"tags":{"name":"Saunte St.","stop_ids":["8601625"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601627","lat":56.078261,"lon":12.512767,"tags":{"name":"Skibstrup St.","stop_ids":["8601627"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601630","lat":56.112314,"lon":12.318768,"tags":{"name":"Stæremosen St.","stop_ids":["8601630"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601631","lat":56.100491,"lon":12.333787,"tags":{"name":"Søborg St. (Gilleleje)","stop_ids":["8601631"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601633","lat":56.075138,"lon":12.538655,"tags":{"name":"Ålsgårde St.","stop_ids":["8601633"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601705","lat":55.893353,"lon":12.279331,"tags":{"name":"Brødeskov St.","stop_ids":["8601705"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601707","lat":55.98514,"lon":11.942123,"tags":{"name":"Dyssekilde St.","stop_ids":["8601707"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601709","lat":55.968144,"lon":12.019613,"tags":{"name":"Frederiksværk St.","stop_ids":["8601709"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601711","lat":55.915653,"lon":12.102034,"tags":{"name":"Grimstrup St.","stop_ids":["8601711"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601713","lat":55.886794,"lon":12.202409,"tags":{"name":"Gørløse St.","stop_ids":["8601713"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601715","lat":55.974935,"lon":12.001434,"tags":{"name":"Hanehoved St.","stop_ids":["8601715"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601721","lat":55.963569,"lon":11.852547,"tags":{"name":"Hundested St.","stop_ids":["8601721"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601722","lat":55.965799,"lon":11.846285,"tags":{"name":"Hundested Havn St.","stop_ids":["8601722"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601723","lat":55.9345,"lon":12.047551,"tags":{"name":"Kregme St.","stop_ids":["8601723"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601725","lat":55.946298,"lon":12.034669,"tags":{"name":"Lille Kregme St.","stop_ids":["8601725"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601729","lat":55.991601,"lon":11.971419,"tags":{"name":"Melby St.","stop_ids":["8601729"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601733","lat":55.907559,"lon":12.149241,"tags":{"name":"Skævinge St.","stop_ids":["8601733"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601737","lat":55.96025,"lon":11.873135,"tags":{"name":"Vibehus St.","stop_ids":["8601737"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601739","lat":55.923078,"lon":12.073023,"tags":{"name":"Ølsted St.","stop_ids":["8601739"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601741","lat":55.976697,"lon":11.913441,"tags":{"name":"Østerbjerg St.","stop_ids":["8601741"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601801","lat":57.571981,"lon":9.977469,"tags":{"name":"Emmersbæk St.","stop_ids":["8601801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601802","lat":57.473299,"lon":9.965811,"tags":{"name":"Herregårdsparken St.","stop_ids":["8601802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601803","lat":57.59178,"lon":9.962225,"tags":{"name":"Hirtshals St.","stop_ids":["8601803"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601813","lat":57.559201,"lon":9.972363,"tags":{"name":"Horne St.","stop_ids":["8601813"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601819","lat":57.45451,"lon":9.975782,"tags":{"name":"Kvægtorvet St.","stop_ids":["8601819"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601824","lat":57.585509,"lon":9.976293,"tags":{"name":"Lilleheden St.","stop_ids":["8601824"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601836","lat":57.459608,"lon":9.96355,"tags":{"name":"Teglgårdsvej St.","stop_ids":["8601836"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601839","lat":57.533854,"lon":9.94939,"tags":{"name":"Tornby St.","stop_ids":["8601839"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601842","lat":57.480229,"lon":9.968796,"tags":{"name":"Vellingshøj St.","stop_ids":["8601842"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8601843","lat":57.500961,"lon":9.947719,"tags":{"name":"Vidstrup St.","stop_ids":["8601843"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602501","lat":55.533891,"lon":11.50024,"tags":{"name":"Dianalund St.","stop_ids":["8602501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602503","lat":55.506755,"lon":11.28588,"tags":{"name":"Høng St.","stop_ids":["8602503"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602505","lat":55.573908,"lon":11.765062,"tags":{"name":"Kr. Eskilstrup St.","stop_ids":["8602505"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602506","lat":55.544204,"lon":11.683989,"tags":{"name":"Bagmarken St.","stop_ids":["8602506"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602509","lat":55.542333,"lon":11.65225,"tags":{"name":"Nyrup St.","stop_ids":["8602509"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602513","lat":55.539901,"lon":11.374857,"tags":{"name":"Ruds Vedby St.","stop_ids":["8602513"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602515","lat":55.537971,"lon":11.448667,"tags":{"name":"Skellebjerg St.","stop_ids":["8602515"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602517","lat":55.539047,"lon":11.591206,"tags":{"name":"Stenlille St.","stop_ids":["8602517"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602519","lat":55.544984,"lon":11.711392,"tags":{"name":"St. Merløse St.","stop_ids":["8602519"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602523","lat":55.532473,"lon":11.547204,"tags":{"name":"Vedde St.","stop_ids":["8602523"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602601","lat":54.829045,"lon":11.215215,"tags":{"name":"Avnede St.","stop_ids":["8602601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602604","lat":54.759905,"lon":11.836364,"tags":{"name":"Øster Toreby St.","stop_ids":["8602604"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602605","lat":54.773993,"lon":11.765175,"tags":{"name":"Grænge St.","stop_ids":["8602605"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602619","lat":54.776641,"lon":11.501673,"tags":{"name":"Maribo St.","stop_ids":["8602619"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602623","lat":54.833249,"lon":11.138193,"tags":{"name":"Nakskov St.","stop_ids":["8602623"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602635","lat":54.785123,"lon":11.372629,"tags":{"name":"Ryde St.","stop_ids":["8602635"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602641","lat":54.796733,"lon":11.635402,"tags":{"name":"Sakskøbing St.","stop_ids":["8602641"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8602645","lat":54.810959,"lon":11.270161,"tags":{"name":"Søllested St.","stop_ids":["8602645"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603001","lat":55.793804,"lon":12.500735,"tags":{"name":"Brede St.","stop_ids":["8603001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603003","lat":55.784449,"lon":12.497087,"tags":{"name":"Fuglevad St.","stop_ids":["8603003"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603007","lat":55.773905,"lon":12.50549,"tags":{"name":"Lyngby Lokal St.","stop_ids":["8603007"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603009","lat":55.813929,"lon":12.528317,"tags":{"name":"Nærum St.","stop_ids":["8603009"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603010","lat":55.770543,"lon":12.513019,"tags":{"name":"Nørgaardsvej St.","stop_ids":["8603010"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603011","lat":55.802085,"lon":12.519933,"tags":{"name":"Ravnholm St.","stop_ids":["8603011"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603013","lat":55.799584,"lon":12.508964,"tags":{"name":"Ørholm St.","stop_ids":["8603013"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603505","lat":55.808689,"lon":11.500214,"tags":{"name":"Asnæs St.","stop_ids":["8603505"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603513","lat":55.787979,"lon":11.469551,"tags":{"name":"Fårevejle St.","stop_ids":["8603513"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603515","lat":55.729612,"lon":11.546843,"tags":{"name":"Gislinge St.","stop_ids":["8603515"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603517","lat":55.802833,"lon":11.551177,"tags":{"name":"Grevinge St.","stop_ids":["8603517"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603525","lat":55.910833,"lon":11.603765,"tags":{"name":"Højby Sj St.","stop_ids":["8603525"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603527","lat":55.752481,"lon":11.456293,"tags":{"name":"Hørve St.","stop_ids":["8603527"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603541","lat":55.722816,"lon":11.63503,"tags":{"name":"Mårsø","stop_ids":["8603541"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603543","lat":55.72879,"lon":11.593827,"tags":{"name":"Ny Hagested St.","stop_ids":["8603543"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603545","lat":55.921504,"lon":11.672498,"tags":{"name":"Nykøbing Sj St.","stop_ids":["8603545"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603547","lat":55.883028,"lon":11.606492,"tags":{"name":"Nr. Asmindrup St.","stop_ids":["8603547"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603550","lat":55.92202,"lon":11.655324,"tags":{"name":"Nyled St.","stop_ids":["8603550"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603555","lat":55.898296,"lon":11.603692,"tags":{"name":"Sommerland Sj. St.","stop_ids":["8603555"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603557","lat":55.715479,"lon":11.687783,"tags":{"name":"Stenhus St.","stop_ids":["8603557"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603559","lat":55.723401,"lon":11.467159,"tags":{"name":"Svinninge St.","stop_ids":["8603559"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603565","lat":55.852365,"lon":11.581939,"tags":{"name":"Vig St.","stop_ids":["8603565"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604102","lat":57.629857,"lon":10.439231,"tags":{"name":"Bunken St.","stop_ids":["8604102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604103","lat":57.724659,"lon":10.563809,"tags":{"name":"Frederikshavnsvej St.","stop_ids":["8604103"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604105","lat":57.659572,"lon":10.463052,"tags":{"name":"Hulsig St.","stop_ids":["8604105"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604109","lat":57.532442,"lon":10.4173,"tags":{"name":"Jerup St.","stop_ids":["8604109"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604111","lat":57.554894,"lon":10.408312,"tags":{"name":"Napstjert St.","stop_ids":["8604111"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604113","lat":57.505024,"lon":10.444978,"tags":{"name":"Rimmen St.","stop_ids":["8604113"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604115","lat":57.723911,"lon":10.592087,"tags":{"name":"Skagen St.","stop_ids":["8604115"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604117","lat":57.489878,"lon":10.49041,"tags":{"name":"Strandby St.","stop_ids":["8604117"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604119","lat":57.592626,"lon":10.408348,"tags":{"name":"Ålbæk St.","stop_ids":["8604119"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604701","lat":55.617072,"lon":8.331212,"tags":{"name":"Billum St.","stop_ids":["8604701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604702","lat":55.623801,"lon":8.460442,"tags":{"name":"Boulevarden St.","stop_ids":["8604702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604704","lat":55.69979,"lon":8.298168,"tags":{"name":"Dyreby St.","stop_ids":["8604704"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604706","lat":55.627555,"lon":8.487167,"tags":{"name":"Frisvadvej St.","stop_ids":["8604706"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604711","lat":55.710409,"lon":8.304265,"tags":{"name":"Henne St.","stop_ids":["8604711"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604715","lat":55.626356,"lon":8.401043,"tags":{"name":"Hyllerslev St.","stop_ids":["8604715"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604717","lat":55.622895,"lon":8.373814,"tags":{"name":"Janderup St.","stop_ids":["8604717"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604718","lat":55.664586,"lon":8.301628,"tags":{"name":"Jegum St.","stop_ids":["8604718"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604719","lat":55.756093,"lon":8.364208,"tags":{"name":"Lunde J St.","stop_ids":["8604719"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604720","lat":55.729727,"lon":8.3533,"tags":{"name":"Løftgård St.","stop_ids":["8604720"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604725","lat":55.777435,"lon":8.29046,"tags":{"name":"Nørre Nebel St.","stop_ids":["8604725"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604726","lat":55.625924,"lon":8.283592,"tags":{"name":"Oksbøl St.","stop_ids":["8604726"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604727","lat":55.717279,"lon":8.344336,"tags":{"name":"Outrup St.","stop_ids":["8604727"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604735","lat":55.624401,"lon":8.476521,"tags":{"name":"Varde Vest St.","stop_ids":["8604735"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604736","lat":55.635823,"lon":8.283014,"tags":{"name":"Baunhøj St.","stop_ids":["8604736"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604739","lat":55.653856,"lon":8.292125,"tags":{"name":"Vrøgum St.","stop_ids":["8604739"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604801","lat":56.391278,"lon":8.329383,"tags":{"name":"Amstrup St.","stop_ids":["8604801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604803","lat":56.547576,"lon":8.240921,"tags":{"name":"Balleby St.","stop_ids":["8604803"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604805","lat":56.521013,"lon":8.222647,"tags":{"name":"Bonnet St.","stop_ids":["8604805"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604807","lat":56.412221,"lon":8.308091,"tags":{"name":"Bækmarksbro St.","stop_ids":["8604807"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604811","lat":56.45402,"lon":8.261658,"tags":{"name":"Fåre St.","stop_ids":["8604811"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604813","lat":56.621175,"lon":8.179831,"tags":{"name":"Harboøre St.","stop_ids":["8604813"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604814","lat":56.529451,"lon":8.265735,"tags":{"name":"Armose St.","stop_ids":["8604814"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604815","lat":56.564969,"lon":8.22046,"tags":{"name":"Klinkby St.","stop_ids":["8604815"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604817","lat":56.54704,"lon":8.299616,"tags":{"name":"Lemvig St.","stop_ids":["8604817"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604818","lat":56.565634,"lon":8.188112,"tags":{"name":"Nejrup St.","stop_ids":["8604818"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604819","lat":56.489103,"lon":8.210323,"tags":{"name":"Ramme St.","stop_ids":["8604819"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604821","lat":56.656662,"lon":8.194818,"tags":{"name":"Rønland St.","stop_ids":["8604821"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604822","lat":56.437664,"lon":8.284096,"tags":{"name":"Sinkbæk St.","stop_ids":["8604822"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604823","lat":56.568974,"lon":8.160813,"tags":{"name":"Strande St.","stop_ids":["8604823"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604824","lat":56.698579,"lon":8.20671,"tags":{"name":"Thyborøn Kirke St.","stop_ids":["8604824"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604825","lat":56.704082,"lon":8.214548,"tags":{"name":"Thyborøn St.","stop_ids":["8604825"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604828","lat":56.577309,"lon":8.143244,"tags":{"name":"Victoria Street Station","stop_ids":["8604828"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604829","lat":56.601665,"lon":8.148344,"tags":{"name":"Vrist St.","stop_ids":["8604829"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8604831","lat":56.692747,"lon":8.209478,"tags":{"name":"Sprogøvej St.","stop_ids":["8604831"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}

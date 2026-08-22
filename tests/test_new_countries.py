@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import csv
+import io
 import json
+import os
 import sqlite3
 import sys
 import tempfile
@@ -13,7 +15,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen"))
 
-from denmark import build_nodes as build_denmark_nodes
+from denmark import (
+    build_nodes as build_denmark_nodes,
+    download_gtfs,
+    validate_live_access,
+)
 from spain import (
     _apply_station_corrections, _clean_row, _download_official_feed,
     build as build_spain, load_feed, write_index
@@ -35,6 +41,59 @@ def write_gtfs(path: Path, tables: dict[str, list[dict[str, str]]]) -> None:
 
 
 class NewCountryGeneratorTests(unittest.TestCase):
+    def test_denmark_normalizes_zero_padded_rejseplanen_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "dk.zip"
+            write_gtfs(path, {
+                "stops.txt": [{
+                    "stop_id": "000008600001", "stop_name": "Rail",
+                    "stop_lat": "55", "stop_lon": "12", "parent_station": "",
+                }],
+                "routes.txt": [{"route_id": "r", "route_type": "2"}],
+                "trips.txt": [{"route_id": "r", "trip_id": "tr"}],
+                "stop_times.txt": [{"trip_id": "tr", "stop_id": "000008600001"}],
+            })
+            nodes = build_denmark_nodes(path)
+        self.assertEqual(["8600001"], [node["id"] for node in nodes])
+
+    def test_denmark_download_is_written_under_cache(self):
+        archive_bytes = io.BytesIO()
+        with zipfile.ZipFile(archive_bytes, "w") as archive:
+            archive.writestr("stops.txt", "stop_id,stop_name\n8600001,Rail\n")
+        response = Mock()
+        response.raise_for_status.return_value = None
+        response.iter_content.return_value = [archive_bytes.getvalue()]
+        response.__enter__ = Mock(return_value=response)
+        response.__exit__ = Mock(return_value=False)
+        session = Mock()
+        session.get.return_value = response
+        with tempfile.TemporaryDirectory() as tmp:
+            cache_dir = Path(tmp) / "cache" / "denmark"
+            archive_path = cache_dir / "rejseplanen-gtfs.zip"
+            with patch("denmark.CACHE_DIR", cache_dir), patch("denmark.GTFS_ARCHIVE", archive_path):
+                result = download_gtfs(session=session)
+            self.assertEqual(archive_path, result)
+            self.assertTrue(archive_path.is_file())
+        self.assertEqual("https://www.rejseplanen.info/labs/GTFS.zip", session.get.call_args.args[0])
+
+    def test_denmark_live_validation_checks_both_board_directions(self):
+        departure = Mock()
+        departure.raise_for_status.return_value = None
+        departure.json.return_value = {"Departure": []}
+        arrival = Mock()
+        arrival.raise_for_status.return_value = None
+        arrival.json.return_value = {"Arrival": []}
+        session = Mock()
+        session.get.side_effect = [departure, arrival]
+        with patch.dict(os.environ, {"REJSEPLANEN_API_KEY": "test-key"}):
+            validate_live_access("8600001", session=session)
+        self.assertEqual(2, session.get.call_count)
+        self.assertEqual(
+            "test-key",
+            session.get.call_args_list[0].kwargs["params"]["accessId"],
+        )
+        self.assertIn("arrivalBoard", session.get.call_args_list[1].args[0])
+
     def test_spain_downloads_and_extracts_official_gtfs_into_cache(self):
         with tempfile.TemporaryDirectory() as tmp:
             archive_bytes = __import__("io").BytesIO()

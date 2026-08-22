@@ -91,7 +91,7 @@ class DatasetTests(unittest.TestCase):
 
     def test_one_exclude_file_per_country(self) -> None:
         expected = {
-            "austria", "belgium", "finland", "france", "germany",
+            "austria", "belgium", "denmark", "finland", "france", "germany",
             "italy", "netherlands", "norway", "spain", "sweden", "switzerland", "uk",
         }
         actual = {path.stem for path in (ROOT / "excludes").glob("*.json")}

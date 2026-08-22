@@ -512,6 +512,7 @@ def write_index(index: dict[str, Any], output: Path) -> None:
             """)
         connection.close()
         os.replace(database, output)
+        os.chmod(output, 0o644)
         database = None
     finally:
         if database is not None:

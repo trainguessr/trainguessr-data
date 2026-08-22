@@ -4,6 +4,17 @@ This repository contains a dataset of geolocated railway stations across various
 
 This README provides information about the data sources used for each country, instructions on how to generate the datasets, and notes on any removed or renamed stations.
 
+## Repository layout
+
+Run generators from this repository's root with `python3 gen/<country>.py` when
+their section documents root-relative paths. Older scripts that use `../`
+paths must be run from `gen/`, as noted in their sections.
+Downloaded and intermediate source files belong under the ignored `cache/`
+directory, normally grouped as `cache/<country>/`. Playable station lists are
+written to `nodes/nodes-*.json`. Generated runtime assets that are not NDJSON,
+such as the Spain SQLite schedule index and geo-near cache, belong under the
+root `cache/` directory. Do not commit API keys or downloaded source archives.
+
 ## Data sources
 
 ### Austria
@@ -18,11 +29,11 @@ Infrabel exports its stations as open data in a JSON file [here](https://opendat
 
 Trainguessr uses the iRail API ([here](https://docs.irail.be/#)) as it makes things way easier. Stations and live departures are obtained from the iRail API, which is a public API that does not require an API key.
 
-To get started, cd into `gen/` and run `python3 belgium.py`.
+Run `cd gen && python3 belgium.py` because this legacy script uses `../nodes/`.
 
 ### France
 
-SCNF export its stations as open data in a JSON file [here](https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe%2FBerlin).
+SNCF exports its stations as open data in a JSON file [here](https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe%2FBerlin).
 
 These station IDs are then used in the SNCF API, which requires an API key. The API key is obtained by creating a free account on the SNCF Numerique website: [SNCF Numerique](https://numerique.sncf.com/).
 
@@ -95,47 +106,63 @@ TRAINGUESSR_SKIP_REVIEW=1 python3 gen/italy_rfi.py
 
 Just like Sweden, the Netherlands has tremendous support for open data. The data was downloaded from the Rijden de Treinen website: [Rijden de Treinen](https://www.rijdendetreinen.nl/en/open-data). Their API is also used to get the real-time departures.
 
-To get started, cd into `gen/` and run `python3 netherlands.py`.
+Run `cd gen && python3 netherlands.py` because this legacy script uses `../cache/` and `../nodes/`.
+
+### Norway
+
+Norwegian railway stations are generated from Entur's National Stop Register
+using `python3 gen/norway.py`. The generator requests active rail stations with
+the required `ET-Client-Name` header and writes `nodes/nodes-norway.json`.
+The optional `--input` argument accepts a saved Entur response for an offline
+rebuild. Source and runtime details are recorded in `sources/norway.md`.
 
 ### Spain
 
 Spain uses the official Renfe Cercanias/Rodalies and long-/medium-distance and
-high-speed GTFS archives. Download both archives to `cache/`, then run:
+high-speed GTFS archives. Run the generator from the repository root:
 
 ```bash
-python3 gen/spain.py \
-  --cercanias cache/renfe-cercanias.zip \
-  --long-distance cache/renfe-av-ld-md.zip
+python3 gen/spain.py
 ```
 
-This generates `nodes/nodes-spain-renfe.json` and the compressed, disk-backed
-runtime index `cache/spain.sqlite`.
+The generator downloads current official archives into `cache/spain/`, then
+generates `nodes/nodes-spain-renfe.json` and the disk-backed runtime index
+`cache/spain.sqlite`. Use the `--cercanias`, `--long-distance` and
+`--no-download` options when rebuilding from reviewed local archives.
 
-`gtfs/` is intentionally ignored by Git. Deploy `cache/spain.sqlite` alongside the node files in the data volume. When production uses `DATA_DIR=/data`, the application automatically reads `/data/cache/spain.sqlite`. Exact source URLs and attribution
+Downloaded GTFS archives are intentionally ignored by Git. Deploy
+`cache/spain.sqlite` alongside the `nodes/` directory in the data volume. When
+production uses `DATA_DIR=/data/nodes` and `DATA_CACHE_DIR=/data/cache`, the
+application reads `/data/cache/spain.sqlite`. Exact source URLs and attribution
 requirements are recorded in `sources/spain.md`.
 
 ### Denmark
 
-Denmark uses Rejseplanen Labs GTFS Schedule/Static and API 2.0. Non-commercial
-API use is free up to 50,000 calls/month, but both the archive and API access ID
-require an approved Labs request. Request GTFS and API 2.0 access at
+Denmark uses the official Rejseplanen Labs GTFS Schedule/Static feed and API
+2.0. The static feed is available at
+<https://www.rejseplanen.info/labs/GTFS.zip>. API 2.0 access requires an
+approved Labs request; non-commercial use is free up to 50,000 calls/month.
+Request access at
 <https://labs.rejseplanen.dk/hc/requests/new?ticket_form_id=17536468593565>.
-After downloading the archive, run:
+
+Set `REJSEPLANEN_API_KEY` in the environment (the application `.env-secret`
+already supplies it in development) and run from the repository root:
 
 ```bash
-python3 gen/denmark.py --input cache/denmark/rejseplanen-gtfs.zip
+python3 gen/denmark.py
 ```
 
-Set `REJSEPLANEN_API_KEY` in the application environment and live-smoke a
-generated station before enabling Denmark publicly.
+The script downloads the static archive to `cache/denmark/`, normalizes
+zero-padded Rejseplanen stop IDs, writes `nodes/nodes-denmark.json`, and
+smoke-tests both departure and arrival boards with the configured key.
 
 ### Switzerland
 
 Switzerland has a very good API for its stations. The data is available in JSON format and can be obtained from the SBB Open Data website: [SBB API](https://data.sbb.ch/api/v2/catalog/datasets/haltestelle-haltekante/exports/geojson)
 
-Once the IDs are gathered, they can be used into the Transport API, which relies on the same IDs: [Transport CH](https://transport.opendata.ch/).
+Once the IDs are gathered, they can be used in the Transport API, which relies on the same IDs: [Transport CH](https://transport.opendata.ch/).
 
-To get started, cd into `gen/` and run `python3 switzerland.py`.
+Run `cd gen && python3 switzerland.py` because this legacy script writes through `../nodes/`.
 
 ### Sweden
 
@@ -145,7 +172,7 @@ It requires a valid API key, which can be obtained by signing up on the Trafikla
 
 We downloaded the Stops dataset to get the stations. Some stations had to be removed, in particular, those situated outside of Sweden.
 
-Once you have your API key, cd into `gen/` and run `python3 sweden.py`.
+Once you have your API key, run `cd gen && python3 sweden.py` because this legacy script uses `../cache/` and `../nodes/`.
 
 Given the low rate of requests allowed by the Trafiklab API, the script will cache the GTFS dataset locally in the `cache/` folder. If you want to refresh the cache, just delete the `cache/sweden.zip` file.
 
@@ -153,13 +180,13 @@ The generator rejects non-Swedish national stop identifiers. The 32 foreign reco
 
 ### United Kingdom
 
-The UK has a million different services exposing train data, which is fortunate since the UK does not have a national rail service; rather, several operators run the trains. Yet, National Rail uses an airport-like system to identify stations, which is very usueful to us and is the one we use.
+The UK has a million different services exposing train data, which is fortunate since the UK does not have a national rail service; rather, several operators run the trains. Yet, National Rail uses an airport-like system to identify stations, which is very useful to us and is the one we use.
 
 The lists of stations are roughly public and can be downloaded from several sources, like from [Railway Codes](http://www.railwaycodes.org.uk/crs/crs0.shtm). Ours comes from this repository: [UK Railway Stations](https://github.com/davwheat/uk-railway-stations).
 
 The API endpoint we use to get the real-time departures is Huxley2: [Huxley2](https://huxley2.azurewebsites.net/).
 
-To get started, cd into `gen/` and run `python3 uk.py`.
+Run `cd gen && python3 uk.py` because this legacy script uses `../cache/` and `../nodes/`.
 
 ## Removed stations
 
@@ -218,7 +245,6 @@ The Domodossola-Locarno line is managed by Società Subalpina Imprese Ferroviari
 
 | Country | Operator | Notes |
 | --- | --- | --- | 
-| Norway | Vy / Bane NOR | Entur API reportedly provides open GTFS and real-time data |
 | Portugal | Comboios de Portugal (CP) | Still to find official GTFS feed or API |
 | Czech Republic | České dráhy | HAFAS-based APIs should be available, but a mess to implement |
 | Poland | PKP | Still to research |
@@ -242,6 +268,9 @@ Italian generators must use exact IDs or reviewed mappings. Inspect `cache/italy
 
 ## License
 
-A vast majority of the data sources used in this dataset are open data or publicly accessible APIs. The overall dataset is licensed under the [Open Database License (ODbL)]([https://opendatacommons.org/licenses/odbl/1.0/) and has been compiled with data from OpenStreetMap and other open data sources. Please refer to the individual data sources for their specific licensing terms.
+A vast majority of the data sources used in this dataset are open data or publicly accessible APIs. The overall dataset is licensed under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1.0/) and has been compiled with data from OpenStreetMap and other open data sources. Please refer to the individual data sources for their specific licensing terms.
 
 The data that was scraped from websites without public APIs is intended for personal and non-commercial use only. Please respect the terms of service of the original data providers when using this dataset.
+
+The canonical provider attribution and terms summary is maintained in
+[`ACKNOWLEDGMENTS.md`](ACKNOWLEDGMENTS.md).
