@@ -1,5 +1,6 @@
 import json
 import os
+from common.io import ROOT
 
 from common.config import load_rename_map
 
@@ -32,23 +33,18 @@ def transform_sbb_to_node_format(data, output_file, rename_map):
         output_file: Path to output JSON file for transformed data
         rename_map: Dictionary mapping old names to new names
     """
-    # Read the input file
     transformed_nodes = []
     
-    # Iterate through features
     for feature in data.get('features', []):
         if feature.get('type') == 'Feature' and 'geometry' in feature and 'properties' in feature:
-            # Get coordinates from geometry
             coordinates = feature['geometry'].get('coordinates', [0, 0])
             lon, lat = coordinates[0], coordinates[1]
             
-            # Get properties
             props = feature['properties']
 
             if props['meansoftransport'] != 'TRAIN':
                 continue
 
-            # Get the station name and apply rename mapping if needed
             station_name = props.get('designationofficial', '')
             if station_name in rename_map:
                 station_name = rename_map[station_name]
@@ -57,7 +53,6 @@ def transform_sbb_to_node_format(data, output_file, rename_map):
             if station_id in (None, ''):
                 continue
 
-            # Create transformed node
             node = {
                 "type": "node",
                 "id": station_id,
@@ -78,18 +73,13 @@ def transform_sbb_to_node_format(data, output_file, rename_map):
                 "category": "switzerland_all"
             }
             
-            # Add optional fields if they exist
             if props.get('height'):
                 node['tags']['height'] = str(props.get('height'))
-                
-            # if props.get('didok_url'):
-            #     node['tags']['website'] = props.get('didok_url')
             
             transformed_nodes.append(node)
 
     sorted_nodes = sorted(transformed_nodes, key=lambda x: x['id'])
     
-    # Write the output to a file
     with open(output_file, 'w', encoding='utf-8') as f:
         for node in sorted_nodes:
             json.dump(node, f, ensure_ascii=False, separators=(',', ':'))
@@ -114,10 +104,8 @@ if __name__ == "__main__":
 
     data = json.loads(input_file)
 
-    # Load rename mapping
     print("Loading rename mapping...")
     rename_map = load_rename_map("switzerland")
     print(f"Loaded {len(rename_map)} rename rules")
 
-    # Transform the data
-    transform_sbb_to_node_format(data, "../nodes/nodes-switzerland.json", rename_map)
+    transform_sbb_to_node_format(data, ROOT / "nodes" / "nodes-switzerland.json", rename_map)

@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def load_country_config(country: str) -> dict[str, Any]:
-    path = ROOT / "excludes" / f"{country}.json"
+    path = ROOT / "overrides" / "exclusions" / f"{country}.json"
     with path.open(encoding="utf-8") as handle:
         value = json.load(handle)
     if not isinstance(value, dict):

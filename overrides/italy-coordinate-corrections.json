@@ -77,6 +77,19 @@
         "osm_id": "11274717577"
       },
       "source_url": "https://www.openstreetmap.org/node/11274717577"
+    },
+    {
+      "operator": "fer",
+      "id": "S05100",
+      "expected_name": "Bologna Borgo Panigale",
+      "lat": 44.5151514,
+      "lon": 11.2849781,
+      "source": "OpenStreetMap railway station node 12294207485",
+      "reason": "Corrected the reviewed FER seed coordinate to the verified Bologna Borgo Panigale station object.",
+      "tags": {
+        "osm_id": "12294207485"
+      },
+      "source_url": "https://www.openstreetmap.org/node/12294207485"
     }
   ]
 }

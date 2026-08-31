@@ -1,64 +1,51 @@
-# {"version":"1.3","timestamp":"1755002972","station":[   {
-#       "@id": "http://irail.be/stations/NMBS/008883212",
-#       "id": "BE.NMBS.008883212",
-#       "name": "Écaussinnes",
-#       "locationX": "4.156639",
-#       "locationY": "50.56239",
-#       "standardname": "Écaussinnes"
-#     }
-#   ]}
-# 
-#   to
-# 
-#  {"type": "node", "id": "ATN", "lat": 51.921326524551, "lon": 6.5786272287369, "tags": {"name": "Aalten", "uic": "8400045", "name_short": "Aalten", "name_medium": "Aalten", "slug": "aalten", "type": "stoptreinstation"}, "category": "netherlands_all"}
+#!/usr/bin/env python3
+"""Generate Belgian NMBS/SNCB stations from the iRail station catalogue."""
+from __future__ import annotations
 
 import json
-import sys
+from pathlib import Path
+
 import requests
 
 from common.config import load_excluded_ids
+from common.io import ROOT
 
-output = []
+ENDPOINT = "https://api.irail.be/stations/?format=json&lang=en"
+OUTPUT = ROOT / "nodes" / "nodes-belgium.json"
 
-endpoint = "https://api.irail.be/stations/?format=json&lang=en"
 
-print("Fetching stations from iRail...")
-
-response = requests.get(endpoint, timeout=60)
-response.raise_for_status()
-data = response.json()
-# GET /stations/?format=json&lang=en
-
-stations = data['station']
-for station in stations:
-    if 'standardname' not in station:
-        raise ValueError("Missing 'standardname' in station data")
-    if 'locationX' not in station or 'locationY' not in station:
-        raise ValueError("Missing 'locationX' or 'locationY' in station data")
-    if 'id' not in station:
-        raise ValueError("Missing 'id' in station data")
-
-    output.append({
-        "type": "node",
-        "id": station['id'],
-        "lat": float(station['locationY']),
-        "lon": float(station['locationX']),
-        "tags": {
-            "name": station['standardname'],
-        },
-        "category": "belgium_all"
-    })
-
-to_remove = load_excluded_ids("belgium")
-
-output_sorted = sorted(output, key=lambda x: x['tags']['name'])
-
-output_file = "../nodes/nodes-belgium.json"
-
-with open(output_file, 'w', encoding='utf-8') as f:
-    for item in output:
-        if item['id'] in to_remove:
+def build_nodes(payload: dict) -> list[dict]:
+    excluded = load_excluded_ids("belgium")
+    nodes: list[dict] = []
+    for station in payload.get("station", []):
+        for key in ("standardname", "locationX", "locationY", "id"):
+            if key not in station:
+                raise ValueError(f"Missing {key!r} in station data")
+        if station["id"] in excluded:
             continue
-        f.write(json.dumps(item) + '\n')
+        nodes.append({
+            "type": "node",
+            "id": station["id"],
+            "lat": float(station["locationY"]),
+            "lon": float(station["locationX"]),
+            "tags": {"name": station["standardname"]},
+            "category": "belgium_all",
+        })
+    return sorted(nodes, key=lambda row: (row["tags"]["name"], str(row["id"])))
 
-print(f"Data has been written to {output_file}")
+
+def main() -> int:
+    print("Fetching stations from iRail...")
+    response = requests.get(ENDPOINT, timeout=60)
+    response.raise_for_status()
+    nodes = build_nodes(response.json())
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    with OUTPUT.open("w", encoding="utf-8") as handle:
+        for node in nodes:
+            handle.write(json.dumps(node, ensure_ascii=False, separators=(",", ":")) + "\n")
+    print(f"Wrote {len(nodes)} Belgian stations to {OUTPUT}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

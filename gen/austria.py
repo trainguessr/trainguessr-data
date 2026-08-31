@@ -21,7 +21,7 @@ from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 import requests
 
-from common.config import load_rename_map
+from common.config import load_country_config, load_excluded_ids, load_rename_map
 from common.io import write_ndjson
 
 
@@ -63,6 +63,43 @@ _REVIEWED_NAMES = {
     "at:46:6625": ("Mariazell", "Mariazell Bahnhof", "Mariazell Bahnhof [in St.Sebastian]"),
     "at:47:2217": ("Mayrhofen", "Mayrhofen im Zillertal Bahnhof", "Mayrhofen Bahnhof"),
     "at:43:7371": ("St. Pölten Alpenbahnhof-Kaiserwald", "St.Pölten Alpenbahnhof-Kaiserwald"),
+    "at:45:54150": ("Neukirchen am Großvenediger", "Neukirchen am Großvenediger Bahnhof"),
+    "at:45:54263": ("Rettenbach im Pinzgau", "Rettenbach im Pinzgau Bahnhst"),
+    "at:45:54201": ("Stuhlfelden Heilbad Burgwies", "Heilbad Burgwies", "Heilbad Burgwies Bahnhst"),
+    "at:45:54358": ("Lengdorf", "Lengdorf im Pinzgau", "Lengdorf im Pinzgau Bahnhst"),
+    "at:45:56408": ("Seekirchen Stadt", "Seekirchen/Wallersee Stadt", "Seekirchen/Wallersee Stadt Bahnhst"),
+    "at:43:72002": ("Weitersfeld (NÖ)", "Weitersfeld im Waldviertel", "Weitersfeld im Waldviertel Bahnhof"),
+    "at:46:3147": ("Wies Markt", "Wies in Stmk Markt", "Wies in Stmk Markt Bahnhof"),
+    "at:42:3916": ("Dellach im Gailtal", "Dellach im Gailtal", "Dellach im Gailtal Alter Bahnhof"),
+    "at:42:3915": ("Gundersheim im Gailtal", "Gundersheim im Gailtal", "Gundersheim Alter Bahnhof"),
+    "at:42:6166": ("St. Daniel", "St.Daniel", "St. Daniel B111"),
+    "at:42:6172": ("Kirchbach im Gailtal", "Kirchbach im Gailtal Ortsmitte", "Kirchbach (Hermagor) Ortsmitte"),
+    "at:42:3918": ("Kötschach-Mauthen", "Kötschach-Mauthen Alter Bahnhof"),
+    "at:42:3911": ("Rattendorf-Jenig", "Rattendorf", "Rattendorf-Jenig Alter Bahnhof"),
+    "at:42:7381": ("Waidegg", "Waidegg Ortsmitte", "Waidegg Ortsmitte"),
+    "at:42:3909": ("Watschig", "Watschig B111", "Watschig Alter Bahnhof"),
+    "at:42:6183": ("Postran", "Postran B111", "Postran B111"),
+    "at:42:6180": ("Tröpolach", "Tröpolach Gailbrücke", "Tröpolach Gailbrücke"),
+    "at:43:4876": ("Stetten Fossilienwelt", "Stetten b.Korneuburg Fossilienwelt Bahnhof"),
+    "at:43:6004": ("Hochschneeberg", "Hochschneeberg Bahnhof"),
+    "at:43:6005": ("Hengsthütte", "Hengsthütte Bahnhst"),
+    "at:43:6006": ("Baumgartner", "Baumgartner Bahnhst"),
+    "at:43:6056": ("Hengsttal", "Puchberg am Schneeberg Hengsttal Bahnhst"),
+    "at:43:17223": ("Pfaffenschlag", "Pfaffenschlag b.Lunz Nostalgiebahnhof"),
+    "at:43:17227": ("Gasthof zur Paula", "Holzapfel Gh Zur Paula Nostalgiebahnhof"),
+    "at:43:70101": ("Gaming", "Gaming Nostalgiebahnhof"),
+    "at:43:70103": ("Holzapfel", "Holzapfel Nostalgiebahnhof"),
+    "at:43:70104": ("Lunz am See Amonhaus", "Lunz am See Amonhaus"),
+    "at:43:70106": ("Reichenau an der Rax Kurhaus", "Reichenau an der Rax Kurhaus Bahnhst"),
+    "at:43:70107": ("Reichenau an der Rax Lokalbahn", "Reichenau an der Rax Bahnhof"),
+    "at:43:70108": ("Hirschwang/Rax Haaberg", "Reichenau an der Rax Haaberg Bahnhof"),
+    "at:43:70109": ("Hirschwang/Rax Bahnhof", "Hirschwang an der Rax Bahnhof"),
+    "at:43:7437": ("Kienberg", "Kienberg/Erlauf"),
+    "at:43:7917": ("Lunz am See Nostalgiebahnhof", "Lunz am See Nostalgiebahnhof"),
+    "at:43:71978": ("Draisinenalm Grafensulz", "Grafensulz Draisinenalm Bahnhst"),
+    "at:43:71979": ("Schletz", "Schletz Bahnhst"),
+    "at:43:71980": ("Asparn an der Zaya", "Asparn/Zaya Draisinenbahnhof"),
+    "at:43:71981": ("Mistelbach Interspar", "Mistelbach/Zaya Interspar Bahnhst"),
 }
 _REVIEWED_LIGHT_RAIL_IFOPTS = {"at:47:65344"}  # Fulpmes / Stubaitalbahn
 _VIENNA = ZoneInfo("Europe/Vienna")
@@ -97,6 +134,33 @@ def normalize_ifopt(value: Any) -> str:
     if match:
         return f"at:{int(match.group(1))}:{int(match.group(2))}"
     return value
+
+
+def _load_mvo_overrides() -> tuple[set[str], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+    excluded = {
+        normalize_ifopt(value)
+        for value in load_excluded_ids("austria", "mvo")
+    }
+    aliases: dict[str, dict[str, Any]] = {}
+    for row in load_country_config("austria").get("mvo_aliases", []):
+        if not isinstance(row, dict):
+            raise ValueError("austria: every mvo_aliases entry must be an object")
+        ifopt = normalize_ifopt(row.get("id"))
+        canonical_id = str(row.get("canonical_id") or "").strip()
+        if not ifopt.startswith("at:") or not canonical_id:
+            raise ValueError(f"austria: invalid MVO alias {row!r}")
+        aliases[ifopt] = row
+    resolutions: dict[str, dict[str, Any]] = {}
+    for row in load_country_config("austria").get("mvo_resolutions", []):
+        if not isinstance(row, dict):
+            raise ValueError("austria: every mvo_resolutions entry must be an object")
+        ifopt = normalize_ifopt(row.get("id"))
+        provider_id = str(row.get("provider_id") or "").strip()
+        expected_name = str(row.get("expected_name") or "").strip()
+        if not ifopt.startswith("at:") or not provider_id.isdigit() or not expected_name:
+            raise ValueError(f"austria: invalid MVO resolution {row!r}")
+        resolutions[ifopt] = row
+    return excluded, aliases, resolutions
 
 
 def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -361,6 +425,7 @@ def mvo_rail_candidates(
     rows: Iterable[dict[str, Any]],
     platforms: Iterable[dict[str, Any]],
 ) -> list[dict[str, Any]]:
+    reviewed_resolutions = _load_mvo_overrides()[2]
     platforms_by_stop: dict[str, list[dict[str, Any]]] = {}
     if platforms is not None:
         for platform in platforms:
@@ -379,7 +444,7 @@ def mvo_rail_candidates(
                 allow_light_rail=ifopt in _REVIEWED_LIGHT_RAIL_IFOPTS,
             )
         ]
-        if not qualifying_platforms:
+        if not qualifying_platforms and ifopt not in reviewed_resolutions:
             continue
         try:
             lon = _float(row.get("hst_x"))
@@ -395,9 +460,10 @@ def mvo_rail_candidates(
         if qualifying_platforms:
             evas = {_platform_eva(platform) for platform in qualifying_platforms}
             evas.discard(None)
-            if len(evas) != 1:
+            if len(evas) > 1:
                 continue
-            item["platform_eva_id"] = evas.pop()
+            if evas:
+                item["platform_eva_id"] = evas.pop()
             item["rail_lines"] = sorted({
                 token for platform in qualifying_platforms for token in _line_tokens(platform.get("linien"))
                 if _RAIL_LINE_RE.fullmatch(token) and not _REPLACEMENT_LINE_RE.fullmatch(token)
@@ -410,6 +476,10 @@ def mvo_rail_candidates(
             platform_lons = [_float(platform["stg_x"]) for platform in qualifying_platforms]
             item["rail_lat"] = statistics.median(platform_lats)
             item["rail_lon"] = statistics.median(platform_lons)
+        else:
+            # A reviewed physical station may be temporarily represented only by
+            # replacement-service, bus-only, or unclassified MVO platforms.
+            item["reviewed_rail_override"] = True
         result.append(item)
     return result
 
@@ -510,6 +580,7 @@ class ScottyResolver:
         self.offline = offline
         self.timeout = timeout
         self.cache: dict[str, Any] = {}
+        self.reviewed_evas = _load_mvo_overrides()[2]
         if cache_path.is_file():
             try:
                 payload = json.loads(cache_path.read_text(encoding="utf-8"))
@@ -530,6 +601,18 @@ class ScottyResolver:
                 "distance_m": 0.0,
                 "similarity": 1.0,
                 "method": "platform_eva",
+            }
+        reviewed = self.reviewed_evas.get(key)
+        if reviewed:
+            return {
+                "eva_id": int(reviewed["provider_id"]),
+                "name": reviewed["expected_name"],
+                "lat": _float(row.get("rail_lat", row["hst_y"])),
+                "lon": _float(row.get("rail_lon", row["hst_x"])),
+                "distance_m": reviewed.get("distance_m"),
+                "similarity": 1.0,
+                "method": "reviewed_provider_id",
+                "expected_provider_name": reviewed["expected_name"],
             }
         cached = self.cache.get(key)
         if isinstance(cached, dict):
@@ -637,13 +720,51 @@ def merge_catalogues(
         "resolved_to_existing_eva": 0,
         "failed_board_verification": 0,
         "added": [],
+        "aliases": [],
+        "excluded": [],
         "unresolved": [],
     }
+    mvo_excluded_ifopts, mvo_aliases, _ = _load_mvo_overrides()
+    existing_by_id = {str(node["id"]): node for node in geonetz_nodes}
     for row in sorted(mvo_rail_candidates(mvo_rows, mvo_platforms), key=lambda item: (str(item.get("hst_name")), str(item.get("hst_globid")))):
         audit["mvo_rail_candidates"] += 1
         ifopt = normalize_ifopt(row.get("hst_globid"))
         if ifopt in existing_by_ifopt:
             audit["matched_existing_ifopt"] += 1
+            continue
+        if ifopt in mvo_excluded_ifopts:
+            audit["excluded"].append({
+                "ifopt_id": ifopt,
+                "name": row.get("hst_name"),
+                "municipality": row.get("hst_gem_name"),
+                "reason": "reviewed_scope_exclusion",
+            })
+            continue
+        alias = mvo_aliases.get(ifopt)
+        if alias:
+            canonical_id = str(alias["canonical_id"])
+            canonical = existing_by_id.get(canonical_id)
+            expected_name = str(alias.get("expected_name") or "")
+            canonical_expected_name = str(alias.get("canonical_expected_name") or "")
+            if canonical is None:
+                raise ValueError(f"austria: stale MVO alias {ifopt}->{canonical_id}: canonical node is missing")
+            if _normal_name(str(row.get("hst_name") or "")) != _normal_name(expected_name):
+                raise ValueError(
+                    f"austria: stale MVO alias {ifopt}: expected {expected_name!r}, got {row.get('hst_name')!r}"
+                )
+            actual_canonical_name = str(canonical.get("tags", {}).get("name") or "")
+            if _normal_name(actual_canonical_name) != _normal_name(canonical_expected_name):
+                raise ValueError(
+                    f"austria: stale MVO alias target {canonical_id}: expected "
+                    f"{canonical_expected_name!r}, got {actual_canonical_name!r}"
+                )
+            audit["resolved_to_existing_eva"] += 1
+            audit["aliases"].append({
+                "ifopt_id": ifopt,
+                "name": row.get("hst_name"),
+                "canonical_id": int(canonical_id),
+                "reason": alias.get("reason", "reviewed_provider_alias"),
+            })
             continue
         resolution = resolver.resolve(row)
         if not resolution:
@@ -658,13 +779,35 @@ def merge_catalogues(
         if eva_id in used_ids:
             audit["resolved_to_existing_eva"] += 1
             continue
-        verification = verify_scotty_station(resolver.session, int(eva_id), resolver.timeout)
-        if not verification:
+        if resolver.offline:
+            verification = {
+                "station_name": str(
+                    resolution.get("expected_provider_name")
+                    or resolution.get("name")
+                    or row.get("hst_name")
+                    or ""
+                ),
+                "journey_count": 0,
+            }
+            board_status = "offline_cached_resolution"
+        else:
+            verification = verify_scotty_station(resolver.session, int(eva_id), resolver.timeout)
+            if not verification:
+                audit["failed_board_verification"] += 1
+                audit["unresolved"].append({
+                    "ifopt_id": ifopt,
+                    "name": row.get("hst_name"),
+                    "reason": "scotty_station_verification_failed",
+                })
+                continue
+            board_status = "board_available" if verification["journey_count"] else "valid_eva_empty_board"
+        expected_provider_name = resolution.get("expected_provider_name")
+        if expected_provider_name and _normal_name(verification["station_name"]) != _normal_name(str(expected_provider_name)):
             audit["failed_board_verification"] += 1
             audit["unresolved"].append({
                 "ifopt_id": ifopt,
                 "name": row.get("hst_name"),
-                "reason": "scotty_station_verification_failed",
+                "reason": "scotty_station_name_mismatch",
             })
             continue
         reviewed_names = _REVIEWED_NAMES.get(ifopt, ())
@@ -690,8 +833,8 @@ def merge_catalogues(
                 "mvo_rail_platform_ifopts": ",".join(row.get("rail_platform_ifopts") or []),
                 "source": "MVO Österreichweite Haltestellen",
                 "scotty_name": verification["station_name"],
-                "scotty_resolution": "platform_eva_confirmed",
-                "scotty_board_status": "board_available" if verification["journey_count"] else "valid_eva_empty_board",
+                "scotty_resolution": resolution.get("method", "platform_eva_confirmed"),
+                "scotty_board_status": board_status,
             },
             "category": "austria_oebb",
         }
@@ -707,30 +850,50 @@ def merge_catalogues(
             "board_journeys": verification["journey_count"],
         })
     audit["added_count"] = len(new_nodes)
+    audit["alias_count"] = len(audit["aliases"])
+    audit["excluded_count"] = len(audit["excluded"])
     audit["unresolved_count"] = len(audit["unresolved"])
     audit["output_nodes"] = len(geonetz_nodes) + len(new_nodes)
     return geonetz_nodes + new_nodes, audit
 
 
-def _parse_args() -> argparse.Namespace:
+def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Austria rail stations from GeoNetz and MVO")
     parser.add_argument("--mvo-input", type=Path, help="Use this MVO ZIP instead of downloading the official dataset")
-    parser.add_argument("--offline", action="store_true", help="Do not query SCOTTY for uncached MVO stops")
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="Use only cached GeoNetz/MVO inputs and persisted or reviewed SCOTTY resolutions",
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--audit", type=Path, default=DEFAULT_AUDIT)
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def main() -> int:
-    args = _parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = _parse_args(argv)
     session = requests.Session()
     rename_map = load_rename_map("austria")
-    geonetz_source = _download_geonetz(session)
+    if args.offline:
+        geonetz_source = CACHE_DIR / "austria_stations_filtered.json"
+        if not geonetz_source.is_file():
+            raise SystemExit(f"Offline Austria generation requires cached GeoNetz data: {geonetz_source}")
+    else:
+        geonetz_source = _download_geonetz(session)
     geonetz_nodes = load_geonetz_nodes(geonetz_source, rename_map)
-    mvo_source = args.mvo_input or download_mvo_snapshot(session)
+    if args.offline:
+        mvo_source = args.mvo_input or DEFAULT_MVO_CACHE
+        if not mvo_source.is_file():
+            raise SystemExit(f"Offline Austria generation requires a cached MVO ZIP: {mvo_source}")
+    else:
+        mvo_source = args.mvo_input or download_mvo_snapshot(session)
     mvo_rows, mvo_platforms = load_mvo_snapshot(mvo_source)
     validate_mvo_wgs84(mvo_rows)
-    resolver = ScottyResolver(session, offline=args.offline)
+    resolver = ScottyResolver(
+        session,
+        cache_path=DEFAULT_RESOLUTION_CACHE,
+        offline=args.offline,
+    )
     output, audit = merge_catalogues(geonetz_nodes, mvo_rows, mvo_platforms, resolver, rename_map)
     write_ndjson(args.output, output)
     args.audit.parent.mkdir(parents=True, exist_ok=True)

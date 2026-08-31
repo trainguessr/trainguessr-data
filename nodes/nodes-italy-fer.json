@@ -115,3 +115,5 @@
 {"type":"node","id":"S05163","lat":44.9510246,"lon":11.3683605,"tags":{"name":"Zerbinate","operator":"Ferrovie Emilia Romagna","line":"Suzzara-Ferrara","osm_id":1898636371,"alt_name_1":"Zerbinate"},"category":"italy_fer"}
 {"type":"node","id":"S05960","lat":44.9185945,"lon":10.6574506,"tags":{"name":"Guastalla","operator":"Ferrovie Emilia Romagna"},"category":"italy_fer"}
 {"type":"node","id":"S05987","lat":44.6597598,"lon":10.650887,"tags":{"name":"Due Maestà","operator":"Ferrovie Emilia Romagna"},"category":"italy_fer"}
+{"type":"node","id":"S05100","lat":44.5151514,"lon":11.2849781,"tags":{"name":"Bologna Borgo Panigale","operator":"Ferrovie Emilia Romagna","osm_id":"12294207485","coordinate_override":true},"category":"italy_fer"}
+{"type":"node","id":"S05102","lat":44.5035645,"lon":11.2745798,"tags":{"name":"Casteldebole","operator":"Ferrovie Emilia Romagna"},"category":"italy_fer"}

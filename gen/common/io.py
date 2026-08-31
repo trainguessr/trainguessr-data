@@ -8,6 +8,15 @@ from typing import Any, Iterable, Mapping, Sequence
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def logical_path(path: Path | str) -> str:
+    """Return a stable repository-relative label for durable evidence."""
+    candidate = Path(path).absolute()
+    try:
+        return candidate.relative_to(ROOT.absolute()).as_posix()
+    except ValueError:
+        return f"external/{candidate.name}"
+
+
 def load_ndjson(path: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     with path.open(encoding="utf-8") as handle:

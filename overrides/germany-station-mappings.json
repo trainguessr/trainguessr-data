@@ -1,0 +1,59 @@
+{
+  "mappings": {
+    "394215": {
+      "provider_ids": ["8011002"],
+      "reason": "The GTFS C11 stop Adorf, Haltepunkt is 71 m from the OSM railway halt Adorf (Erzgeb); the current DB station endpoint returns Adorf(Erzgeb) with db=true and the sampled plan is HTTP 200.",
+      "osm_url": "https://www.openstreetmap.org/node/12974540012",
+      "osm_distance_m": 71.0
+    }
+  },
+  "gap_notes": {
+    "14907": {
+      "classification": "separate_provider_gap",
+      "reason": "The GTFS S2 stop is a Karlsruhe urban-rail platform identity, not a DB passenger station. The exact DB namespace record 720238 returns HTTP 200 with db=false, while nearby OSM railway stops are operated by Verkehrsbetriebe Karlsruhe GmbH; this requires a separate KVV urban provider and must not receive a DB EVA.",
+      "db_station_url": "https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/station/720238",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "571527": {
+      "classification": "separate_provider_gap",
+      "reason": "The GTFS S2 stop is a Karlsruhe urban-rail platform identity, not a DB passenger station. The exact DB namespace record 209043 returns HTTP 200 with db=false, while nearby OSM railway stops are operated by Verkehrsbetriebe Karlsruhe GmbH; this requires a separate KVV urban provider and must not receive a DB EVA.",
+      "db_station_url": "https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/station/209043",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "212210": {
+      "classification": "physical_identity_blocker",
+      "reason": "The GTFS RE20 record is located at a bus-style Bahnhof Ort stop; its neighboring route stops are Wendestelle/Wartehalle records. The current DB candidate 8013039 has verified station and sampled plan responses, but its DB catalogue coordinate is 1749 m from the GTFS coordinate and OSM has no railway feature within 1200 m. The native EVA is therefore not promoted without physical identity evidence.",
+      "db_station_url": "https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/station/8013039",
+      "db_plan_url": "https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/plan/8013039/260828/13",
+      "db_catalogue_distance_m": 1749.4,
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "547101": {
+      "classification": "route_type_mismatch",
+      "reason": "The GTFS route_type=2 route-20 record is a street-address stop operated by Gesellschaft zur Förderung des ÖPNV Regensburg, with no exact current DB namespace identity. OSM physical review found railway features only at Regensburg Hauptbahnhof, not at this stop; a separate urban or bus provider would be required.",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "628774": {
+      "classification": "route_type_mismatch",
+      "reason": "The GTFS route_type=2 route-20 record is a street-address stop operated by Gesellschaft zur Förderung des ÖPNV Regensburg, with no exact current DB namespace identity. OSM physical review found railway features only at Regensburg Hauptbahnhof, not at this stop; a separate urban or bus provider would be required.",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "651906": {
+      "classification": "route_type_mismatch",
+      "reason": "The GTFS route_type=2 route-20 record is a street-address stop operated by Gesellschaft zur Förderung des ÖPNV Regensburg, with no exact current DB namespace identity. OSM physical review found railway features only at Regensburg Hauptbahnhof, not at this stop; a separate urban or bus provider would be required.",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    },
+    "668722": {
+      "classification": "route_type_mismatch",
+      "reason": "The GTFS route_type=2 route-20 record is a street-address stop operated by Gesellschaft zur Förderung des ÖPNV Regensburg, with no exact current DB namespace identity. OSM physical review found railway features only at Regensburg Hauptbahnhof, not at this stop; a separate urban or bus provider would be required.",
+      "osm_source_url": "https://overpass-api.de/api/interpreter",
+      "osm_radius_m": 1200
+    }
+  }
+}

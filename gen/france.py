@@ -13,7 +13,8 @@ from common.io import ROOT
 SOURCE_URL = "https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe/Berlin"
 CACHE = ROOT / "cache" / "sncf.json"
 OUTPUT = ROOT / "nodes" / "nodes-france-sncf.json"
-SUPPLEMENTS = ROOT / "sources" / "france" / "cuneo-ventimiglia.json"
+SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "cuneo-ventimiglia.json"
+PASSENGER_SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "liste-des-gares-supplement.json"
 
 def load_rename_mapping(rename_file):
     """
@@ -35,7 +36,15 @@ def load_rename_mapping(rename_file):
                     rename_map[old_name] = new_name
     return rename_map
 
-def convert_from_json(input_path, output_path, rename_map, primary_uic, excluded_ids, supplements=None):
+def convert_from_json(
+    input_path,
+    output_path,
+    rename_map,
+    primary_uic,
+    excluded_ids,
+    supplements=None,
+    passenger_supplements=None,
+):
     supplements_by_id = {
         str(item["sncf_id"]): item
         for item in (supplements or [])
@@ -113,34 +122,55 @@ def convert_from_json(input_path, output_path, rename_map, primary_uic, excluded
             }
             outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
             written_ids.add(station_id)
+
+        for station in passenger_supplements or []:
+            station_id = str(station.get("sncf_id") or "").strip()
+            if not station_id or station_id in written_ids or station_id in excluded_ids:
+                continue
+            tags = {
+                "name": str(station.get("name") or "").strip(),
+                "further_ids": [],
+            }
+            for key in (
+                "uic_stem",
+                "source",
+                "source_url",
+                "source_date",
+                "voyageurs",
+                "fret",
+                "code_ligne",
+            ):
+                value = station.get(key)
+                if value not in (None, ""):
+                    tags[key] = str(value)
+            node = {
+                "type": "node",
+                "id": int(station_id),
+                "lat": float(station["lat"]),
+                "lon": float(station["lon"]),
+                "tags": tags,
+                "category": "france_sncf",
+            }
+            outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
+            written_ids.add(station_id)
     if errors:
         temporary_output.unlink(missing_ok=True)
         raise ValueError(f"SNCF conversion failed for {len(errors)} records")
     os.replace(temporary_output, output_path)
 
+def main(argv: list[str] | None = None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "--audit":
+        from reconcile.france import main as reconcile_main
+        return reconcile_main(argv[1:])
 
-                    # 
-  #  {
-  #      "nom": "Narbonne",
-  #      "libellecourt": "NBN",
-  #      "segment_drg": "A",
-  #      "position_geographique": {
-  #          "lon": 3.00591,
-  #          "lat": 43.190387
-  #      },
-  #      "codeinsee": "11262",
-  #      "codes_uic": "87781104"
-  #  },
-
-
-if __name__ == "__main__":
     import argparse
     import requests
 
     parser = argparse.ArgumentParser(description="Generate French SNCF stations")
     parser.add_argument("--refresh", action="store_true", help="download SNCF data even if the cache is fresh")
     parser.add_argument("--max-cache-age-days", type=int, default=7)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     CACHE.parent.mkdir(parents=True, exist_ok=True)
     age_days = None
@@ -158,7 +188,6 @@ if __name__ == "__main__":
     else:
         print(f"Using cached SNCF data (age: {age_days} days)")
 
-    # Load rename mapping
     print("Loading rename mapping...")
     rename_map = load_rename_map("france")
     config = load_country_config("france")
@@ -168,5 +197,20 @@ if __name__ == "__main__":
 
     with SUPPLEMENTS.open(encoding="utf-8") as handle:
         supplements = json.load(handle)
-    convert_from_json(CACHE, OUTPUT, rename_map, primary_uic, excluded_ids, supplements)
+    with PASSENGER_SUPPLEMENTS.open(encoding="utf-8") as handle:
+        passenger_supplements = json.load(handle)
+    convert_from_json(
+        CACHE,
+        OUTPUT,
+        rename_map,
+        primary_uic,
+        excluded_ids,
+        supplements,
+        passenger_supplements,
+    )
     print(f"Conversion complete. Output written to {OUTPUT}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,1 @@
+"""Spanish provider-specific generators."""

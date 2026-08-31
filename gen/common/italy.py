@@ -51,15 +51,15 @@ def write_catalog(operator: str, rows: list[dict[str, str]], fields: list[str]) 
 
 
 def finish(operator: str) -> None:
-    from italy_legacy import rebuild
-    from italy_review import review_after_generation
+    from countries.italy.legacy import rebuild
+    from countries.italy.review import REVIEW_STATUSES, review_after_generation
 
     output, audit = rebuild(operator)
     path = ROOT / "nodes" / f"nodes-italy-{operator}.json"
     errors = validate_file(path)
     if errors:
         raise ValueError(f"{operator}: {'; '.join(errors)}")
-    review_count = sum(row["status"] != "matched" for row in audit)
+    review_count = sum(row["status"] in REVIEW_STATUSES for row in audit)
     print(f"Wrote {len(output)} stations to {path.relative_to(ROOT)}")
     print(f"Review items: {review_count}")
     review_after_generation(operator)

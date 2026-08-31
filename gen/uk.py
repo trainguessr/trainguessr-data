@@ -3,6 +3,7 @@
 import json
 import sys
 import os
+from common.io import ROOT
 
 from common.config import load_rename_map
 
@@ -33,7 +34,6 @@ def convert_uk_stations(input_path, output_path, rename_map):
             
             for station in data:
                 try:
-                    # Extract and validate required fields
                     station_id = station.get("crsCode")
                     if not station_id:
                         print(f"Skipping station with missing ID: {station}")
@@ -44,7 +44,6 @@ def convert_uk_stations(input_path, output_path, rename_map):
                         print(f"Skipping station with missing name: {station}")
                         continue
                     
-                    # Apply rename mapping if needed
                     if name in rename_map:
                         name = rename_map[name]
                     
@@ -54,7 +53,6 @@ def convert_uk_stations(input_path, output_path, rename_map):
                         print(f"Skipping station with missing coordinates: {station}")
                         continue
                     
-                    # Create node object
                     node = {
                         "type": "node",
                         "id": station_id,
@@ -83,10 +81,11 @@ if __name__ == "__main__":
     import requests
     from datetime import datetime, timezone
 
-    input_file = "../cache/uk_stations.json"
-    output_file = "../nodes/nodes-uk-nationalrail.json"
+    input_file = str(ROOT / "cache" / "uk" / "stations.json")
+    output_file = str(ROOT / "nodes" / "nodes-uk-nationalrail.json")
 
     if not os.path.exists(input_file):
+        os.makedirs(os.path.dirname(input_file), exist_ok=True)
         print(f"Input file not found: {input_file}")
         response = requests.get("https://raw.githubusercontent.com/davwheat/uk-railway-stations/refs/heads/main/stations.json", timeout=60)
         response.raise_for_status()
@@ -97,7 +96,6 @@ if __name__ == "__main__":
         age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
         print(f"Using cached UK station data (age: {int(age.total_seconds() // 86400)} days)")
     
-    # Load rename mapping
     print("Loading rename mapping...")
     rename_map = load_rename_map("uk")
     print(f"Loaded {len(rename_map)} rename rules")

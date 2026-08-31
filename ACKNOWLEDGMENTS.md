@@ -1,20 +1,19 @@
 # Data acknowledgments
 
-This is the canonical acknowledgment ledger for TrainGuessr station datasets
-and live timetable providers. TrainGuessr reformats provider data and is not
-affiliated with or endorsed by the named operators or data publishers. Names,
-logos, and trademarks remain the property of their respective owners.
+TrainGuessr reformats provider data and is not affiliated with or endorsed by
+the named operators or data publishers. Their owners hold all rights to names,
+logos, and trademarks.
 
 The generated station database is distributed under the repository's ODbL
 license, subject to the source-specific terms below. API responses and source
-archives remain subject to their publishers' licenses and access terms.
+archives are subject to their publishers' licenses and access terms.
 
 ## Austria
 
 - Stations: ÖBB-Infrastruktur GeoNetz and the national MVO stop dataset.
 - Live boards: ÖBB SCOTTY.
 - Attribution: `Datenquelle: ÖBB-Infrastruktur AG` for GeoNetz data, under CC BY 3.0 Austria.
-- Constraint: obtain authorization for public use of the consumer SCOTTY endpoint or migrate to an authorized API product.
+- Constraint: get authorization for public use of the consumer SCOTTY endpoint or move to an authorized API product.
 
 ## Belgium
 
@@ -27,7 +26,7 @@ archives remain subject to their publishers' licenses and access terms.
 - Stations: official Rejseplanen Labs GTFS Schedule/Static feed.
 - Live boards: Rejseplanen API 2.0.
 - Attribution: Source: Rejseplanen Labs.
-- Constraint: Labs approval and an access key are required. Observe the applicable non-commercial or commercial API quota.
+- Constraint: Labs approval and an access key are required. Follow the relevant non-commercial or commercial API quota.
 
 ## Finland
 
@@ -38,15 +37,19 @@ archives remain subject to their publishers' licenses and access terms.
 
 - Stations: SNCF Gares & Connexions `gares-de-voyageurs`, with a reviewed Cuneo-Ventimiglia supplement.
 - Live boards: SNCF API / Navitia; reviewed border stations may fall back to RFI boards.
+- Separate provider evidence: current Chemins de fer de la Corse operator schedules and network pages.
+- Île-de-France secondary-mode cross-check: Île-de-France Mobilités station registry and GTFS-aligned stop dataset, under Licence Ouverte/ODbL as published by the datasets.
+- Physical discovery audit: OpenStreetMap contributors through bounded Overpass captures, under ODbL.
 - Attribution: Source: SNCF Gares & Connexions Open Data. Station data is ODbL.
-- Constraint: retain ODbL attribution/share-alike and confirm current SNCF API and underlying coverage terms.
+- Constraint: follow ODbL attribution/share-alike rules and confirm current SNCF API and underlying coverage terms.
 
 ## Germany
 
 - Stations: Deutsche Bahn open data via `db-stations`.
+- Physical discovery and regional supplements: GTFS.de/DELFI GTFS feed, with the feed's DELFI e.V. and GTFS.de attribution, plus OpenStreetMap contributors through bounded Overpass captures under ODbL.
 - Live boards: official Deutsche Bahn Timetables API.
 - Attribution: Source: Deutsche Bahn AG, CC BY 4.0, including `db-stations` notices.
-- Constraint: use an API subscription and observe published request limits.
+- Constraint: use an API subscription and follow published request limits.
 
 ## Italy
 
@@ -55,20 +58,20 @@ archives remain subject to their publishers' licenses and access terms.
 - FSE stations and live boards: OpenStreetMap coordinates, reviewed records, and ViaggiaTreno.
 - Trentino Trasporti: official GTFS under CC BY 2.5 plus reviewed legacy IDs; its legacy live source is disabled by default.
 - FER and EAV: reviewed provider records and consumer station boards.
-- Constraint: the undocumented or consumer live endpoints and most provider-derived station catalogues require written permission before public publication. Preserve OSM/ODbL obligations where applicable.
+- Constraint: the undocumented or consumer live endpoints and most provider-derived station catalogues require written permission before public publication. Follow OSM/ODbL rules where applicable.
 
 ## Netherlands
 
 - Stations: [Rijden de Treinen open station data](https://www.rijdendetreinen.nl/en/open-data/stations), CC0.
 - Live boards: Rijden de Treinen consumer endpoint.
-- Constraint: obtain permission for the undocumented live endpoint or migrate to an authorized API.
+- Constraint: get permission for the undocumented live endpoint or move to an authorized API.
 
 ## Norway
 
 - Stations: Entur National Stop Register.
 - Live boards: Entur Journey Planner.
-- Attribution: Data made available by Entur under NLOD.
-- Constraint: identify requests with `ET-Client-Name` and retain Entur attribution.
+- Attribution: Entur data under NLOD.
+- Constraint: identify requests with `ET-Client-Name` and keep Entur attribution.
 
 ## Spain
 
@@ -82,20 +85,20 @@ archives remain subject to their publishers' licenses and access terms.
 - Stations: Trafiklab Stops data.
 - Live boards: Trafiklab ResRobot.
 - License: CC0 1.0 for the documented datasets.
-- Constraint: use registered account keys, observe quotas, and do not imply Trafiklab or Samtrafiken endorsement.
+- Constraint: use registered account keys, follow quotas, and do not imply Trafiklab or Samtrafiken endorsement.
 
 ## Switzerland
 
 - Stations: opentransportdata.swiss / SBB stop data.
 - Live boards: search.ch timetable API.
 - Attribution: cite opentransportdata.swiss and keep published station data current.
-- Constraint: confirm public-product use with search.ch or migrate to an authorized opentransportdata.swiss API.
+- Constraint: confirm public-product use with search.ch or move to an authorized opentransportdata.swiss API.
 
 ## United Kingdom
 
 - Stations: `davwheat/uk-railway-stations`, Trainline EU, and upstream contributors under ODbL.
 - Live boards: National Rail Darwin when configured, otherwise Huxley2 as an independent proxy.
-- Attribution: Source: National Rail Darwin for live railway information; preserve the station-data attribution chain and ODbL share-alike.
+- Attribution: Source: National Rail Darwin for live railway information; keep the station-data attribution chain and follow ODbL share-alike rules.
 - Constraint: public use requires the deployer's own Rail Data Marketplace subscription and accepted terms. Do not rely on the public Huxley2 demo for production.
 
 ## General map data
@@ -103,5 +106,9 @@ archives remain subject to their publishers' licenses and access terms.
 - Map data: OpenStreetMap contributors, ODbL.
 - Railway map data: OpenRailwayMap contributors, based on OpenStreetMap data.
 
-Detailed generator inputs and review notes are maintained under `sources/`,
-`excludes/`, `overrides/`, and `audits/` in this repository.
+## Spain: FGC
+
+- Stations and schedules: official FGC Open Data GTFS.
+- Live trip updates: official FGC GTFS-Realtime data.
+- Attribution: Ferrocarrils de la Generalitat de Catalunya (FGC), CC BY 4.0.
+- Source: <https://dadesobertes.fgc.cat/>.

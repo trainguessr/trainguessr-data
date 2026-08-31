@@ -2423,3 +2423,4 @@
 {"type":"node","id":5171,"lat":45.2894492,"lon":7.402828,"tags":{"name":"Pessinetto","operator":"RFI"},"category":"italy_rfi"}
 {"type":"node","id":5172,"lat":45.2957857,"lon":7.3990474,"tags":{"name":"Mezzenile","operator":"RFI"},"category":"italy_rfi"}
 {"type":"node","id":5173,"lat":45.3112456,"lon":7.3899648,"tags":{"name":"Ceres","operator":"RFI"},"category":"italy_rfi"}
+{"type":"node","id":3611,"lat":40.931823,"lon":14.331566,"tags":{"name":"Napoli Afragola PES","operator":"RFI"},"category":"italy_rfi"}

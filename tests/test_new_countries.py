@@ -56,6 +56,21 @@ class NewCountryGeneratorTests(unittest.TestCase):
             nodes = build_denmark_nodes(path)
         self.assertEqual(["8600001"], [node["id"] for node in nodes])
 
+    def test_denmark_includes_provider_supported_light_rail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "dk.zip"
+            write_gtfs(path, {
+                "stops.txt": [{
+                    "stop_id": "00000860005300", "stop_name": "Aarhus H (Letbane)",
+                    "stop_lat": "56.15", "stop_lon": "10.20", "parent_station": "",
+                }],
+                "routes.txt": [{"route_id": "l1", "route_type": "0"}],
+                "trips.txt": [{"route_id": "l1", "trip_id": "trip-l1"}],
+                "stop_times.txt": [{"trip_id": "trip-l1", "stop_id": "00000860005300"}],
+            })
+            nodes = build_denmark_nodes(path)
+        self.assertEqual(["860005300"], [node["id"] for node in nodes])
+
     def test_denmark_download_is_written_under_cache(self):
         archive_bytes = io.BytesIO()
         with zipfile.ZipFile(archive_bytes, "w") as archive:
@@ -270,6 +285,38 @@ class NewCountryGeneratorTests(unittest.TestCase):
         self.assertEqual(["cercanias", "ld"], nodes[0]["tags"]["feeds"])
         self.assertEqual({"cercanias:T", "ld:T"}, set(index["trips"]))
 
+    def test_spain_keeps_explicit_station_without_current_trip(self):
+        feed = {
+            "agency": [{"agency_id": "a", "agency_name": "Renfe"}],
+            "stops": [
+                {"stop_id": "A", "stop_name": "Alpha", "stop_lat": "40",
+                 "stop_lon": "-3", "parent_station": "", "location_type": "1"},
+                {"stop_id": "C", "stop_name": "Dormant", "stop_lat": "41",
+                 "stop_lon": "-4", "parent_station": "", "location_type": "1"},
+                {"stop_id": "BUS", "stop_name": "Replacement bus", "stop_lat": "42",
+                 "stop_lon": "-5", "parent_station": "", "location_type": "0"},
+            ],
+            "routes": [
+                {"route_id": "rail", "agency_id": "a", "route_type": "2"},
+                {"route_id": "bus", "agency_id": "a", "route_type": "3"},
+            ],
+            "trips": [
+                {"route_id": "rail", "service_id": "S", "trip_id": "T"},
+                {"route_id": "bus", "service_id": "S", "trip_id": "B"},
+            ],
+            "stop_times": [
+                {"trip_id": "T", "stop_id": "A", "stop_sequence": "1"},
+                {"trip_id": "B", "stop_id": "BUS", "stop_sequence": "1"},
+            ],
+            "calendar": [],
+            "calendar_dates": [],
+        }
+        nodes, index = build_spain([("cercanias", feed)])
+        self.assertEqual({"A", "C"}, {node["id"] for node in nodes})
+        self.assertIn("C", index["stations"])
+        self.assertNotIn("BUS", index["stations"])
+        self.assertNotIn("C", index["station_trips"])
+
     def test_spain_index_writer_outputs_direct_sqlite(self):
         feed = {
             "stops": [
@@ -328,7 +375,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
             node_count = sum(1 for _ in node_file)
         self.assertEqual(("1",), version)
         self.assertLessEqual(node_count, station_count)
-        excluded = json.loads((ROOT / "excludes" / "spain.json").read_text(encoding="utf-8"))
+        excluded = json.loads((ROOT / "overrides" / "exclusions" / "spain.json").read_text(encoding="utf-8"))
         excluded_ids = {str(row["id"]) for row in excluded["excluded"]}
         self.assertEqual(len(excluded_ids), station_count - node_count)
         self.assertTrue(rail_route_types <= {"2", *map(str, range(100, 200))})

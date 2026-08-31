@@ -2,7 +2,7 @@
 """Generate Spanish Renfe stations and a compact static GTFS timetable index.
 
 Inputs are the official Renfe Cercanias and long-distance GTFS ZIP archives.
-The generated provider index is consumed by trainguessr's Renfe GTFS-RT adapter.
+TrainGuessr's Renfe GTFS-RT adapter reads the generated provider index.
 """
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ RENFE_RESOURCES = {
     "cercanias": "6f1523c6-a9e3-48e3-9ace-bb107a762be6",
     "ld": "25d6b043-9e47-4f99-bd91-edd51d782450",
 }
-EXCLUSIONS = ROOT / "excludes" / "spain.json"
+EXCLUSIONS = ROOT / "overrides" / "exclusions" / "spain.json"
 REVIEWED_DUPLICATES = ROOT / "overrides" / "spain-reviewed-duplicate-names.json"
 STATION_CORRECTIONS = ROOT / "overrides" / "spain-station-corrections.json"
 
@@ -105,7 +105,7 @@ def _download_official_feed(feed_name: str, *, session: requests.Session | None 
 
 
 def fetch_official_feeds() -> list[tuple[str, Path]]:
-    """Fetch both official Renfe static feeds, retaining ZIPs and extracted GTFS in cache/."""
+    """Fetch both official Renfe static feeds and save ZIPs and extracted GTFS in cache/."""
     with requests.Session() as session:
         return [
             (name, _download_official_feed(name, session=session))
@@ -186,7 +186,7 @@ def _apply_station_corrections(
 ) -> set[str]:
     """Apply guarded coordinate fixes and source aliases.
 
-    Alias rows remain in the static timetable index so trips referencing the
+    Alias rows stay in the static timetable index so trips referencing the
     source-specific identifier are still queryable.  They are removed only from
     playable nodes, and their stop IDs/feeds are attached to the canonical
     passenger station.
@@ -226,7 +226,7 @@ def _apply_station_corrections(
         if alias_id not in excluded:
             raise ValueError(
                 f"spain_renfe: alias {alias_id}->{canonical_id} must also be listed "
-                "in excludes/spain.json"
+                "in overrides/exclusions/spain.json"
             )
         alias, canonical = require_alias(
             nodes,
@@ -328,10 +328,18 @@ def build(
             }
 
         station_alias: dict[str, str] = {}
+        explicit_stations: set[str] = set()
         for stop_id, row in stops.items():
             parent = row.get("parent_station", "").strip()
             station_id = parent or stop_id
             station_alias[stop_id] = station_id
+            # A GTFS StopPlace/station is a provider-native station identity in
+            # its own right.  Do not make catalogue membership depend on there
+            # being a trip in the current service window: temporarily unserved
+            # Renfe stations must stay playable. Child/platform/bus stops
+            # are still excluded unless a rail trip resolves them to a station.
+            if str(row.get("location_type") or "").strip() == "1":
+                explicit_stations.add(stop_id)
 
         served: set[str] = set()
         trip_rows: dict[str, dict[str, str]] = {}
@@ -395,7 +403,8 @@ def build(
                     "exception_type": row.get("exception_type", ""),
                 })
 
-        for station_id in sorted(served):
+        station_ids = served | explicit_stations
+        for station_id in sorted(station_ids):
             row = stops.get(station_id)
             if row is None:
                 candidates = [stops[s] for s in children.get(station_id, []) if s in stops]
@@ -525,33 +534,60 @@ def main() -> int:
                         help="Override download with a local Renfe Cercanias/Rodalies GTFS ZIP")
     parser.add_argument("--long-distance", type=Path,
                         help="Override download with a local Renfe high-speed/long-/medium-distance GTFS ZIP")
+    parser.add_argument("--fgc", type=Path,
+                        help="Override download with a local official FGC google_transit.zip")
+    parser.add_argument("--skip-renfe", action="store_true",
+                        help="Do not regenerate the existing Renfe catalogue/index")
+    parser.add_argument("--skip-fgc", action="store_true",
+                        help="Do not regenerate the FGC catalogue/index")
     parser.add_argument("--no-download", action="store_true",
-                        help="Require both local --cercanias and --long-distance inputs")
+                        help="Require local inputs for every enabled provider")
     args = parser.parse_args()
-    if args.no_download:
-        if not args.cercanias or not args.long_distance:
-            parser.error("--no-download requires both local GTFS ZIP arguments")
-        inputs = [("cercanias", args.cercanias), ("ld", args.long_distance)]
-    elif args.cercanias or args.long_distance:
-        if not args.cercanias or not args.long_distance:
-            parser.error("provide both local GTFS ZIPs, or neither to download current Renfe data")
-        inputs = [("cercanias", args.cercanias), ("ld", args.long_distance)]
-    else:
-        inputs = fetch_official_feeds()
-    feeds = [(name, load_feed(path)) for name, path in inputs if path is not None]
-    nodes, index = build(feeds, strict_corrections=True)
-    if not nodes or not index["trips"]:
-        print("ERROR: Renfe GTFS inputs produced no railway stations or trips")
-        return 1
-    errors = validate_nodes(nodes)
-    if errors:
-        for error in errors:
-            print(f"ERROR: {error}")
-        return 1
-    write_ndjson(OUTPUT, nodes)
-    write_index(index, INDEX_OUTPUT)
-    print(f"Wrote {len(nodes)} Spanish stations to {OUTPUT}")
-    print(f"Wrote static timetable index to {INDEX_OUTPUT}")
+
+    if args.skip_renfe and args.skip_fgc:
+        parser.error("at least one Spanish provider must be enabled")
+
+    if not args.skip_renfe:
+        if args.no_download:
+            if not args.cercanias or not args.long_distance:
+                parser.error("--no-download requires both Renfe ZIPs unless --skip-renfe is used")
+            inputs = [("cercanias", args.cercanias), ("ld", args.long_distance)]
+        elif args.cercanias or args.long_distance:
+            if not args.cercanias or not args.long_distance:
+                parser.error("provide both local Renfe GTFS ZIPs, or neither")
+            inputs = [("cercanias", args.cercanias), ("ld", args.long_distance)]
+        else:
+            inputs = fetch_official_feeds()
+        feeds = [(name, load_feed(path)) for name, path in inputs if path is not None]
+        nodes, index = build(feeds, strict_corrections=True)
+        if not nodes or not index["trips"]:
+            print("ERROR: Renfe GTFS inputs produced no railway stations or trips")
+            return 1
+        errors = validate_nodes(nodes)
+        if errors:
+            for error in errors:
+                print(f"ERROR: {error}")
+            return 1
+        write_ndjson(OUTPUT, nodes)
+        write_index(index, INDEX_OUTPUT)
+        print(f"Wrote {len(nodes)} Renfe stations to {OUTPUT}")
+        print(f"Wrote Renfe static timetable index to {INDEX_OUTPUT}")
+
+    if not args.skip_fgc:
+        from countries.spain import fgc
+        if args.no_download and not args.fgc:
+            parser.error("--no-download requires --fgc unless --skip-fgc is used")
+        source = args.fgc
+        try:
+            stats = fgc.generate(source)
+        except (OSError, ValueError, RuntimeError, requests.RequestException) as exc:
+            print(f"ERROR: FGC generation failed: {exc}")
+            return 1
+        print(f"Wrote {stats['playable_stations']} FGC rail stations to {fgc.OUTPUT}")
+        print(f"Wrote FGC static timetable index to {fgc.INDEX_OUTPUT}")
+        print("FGC scope: "
+              f"{stats['rail_routes']} rail routes; "
+              f"{stats['deferred_nonrail_routes']} non-rail routes deferred")
     return 0
 
 

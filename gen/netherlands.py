@@ -4,17 +4,15 @@ import csv
 import json
 import sys
 import os
+from common.io import ROOT
 
 def convert_nl_stations(input_path, output_path):
     with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
         try:
-            # Skip the header row and use csv reader
             reader = csv.DictReader(infile)
             
             for row in reader:
                 try:
-                    # Extract and validate required fields
-                    # Use "code" as the primary ID (changed from "uic")
                     station_id = row.get("code")
                     if not station_id:
                         print(f"Skipping station with missing code: {row}")
@@ -31,7 +29,6 @@ def convert_nl_stations(input_path, output_path):
                         print(f"Skipping station with missing coordinates: {row}")
                         continue
                     
-                    # Create node object with "code" as ID
                     node = {
                         "type": "node",
                         "id": station_id,
@@ -62,8 +59,8 @@ if __name__ == "__main__":
     import requests
     from datetime import datetime, timezone
 
-    input_file = "../cache/netherlands_stations.csv"
-    output_file = "../nodes/nodes-netherlands.json"
+    input_file = str(ROOT / "cache" / "netherlands_stations.csv")
+    output_file = str(ROOT / "nodes" / "nodes-netherlands.json")
 
     if not os.path.exists(input_file):
         print("Downloading Netherlands stations data...")

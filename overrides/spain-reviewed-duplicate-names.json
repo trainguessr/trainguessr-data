@@ -1,13 +1,1 @@
-{
-  "reviewed": [
-    {
-      "name": "Vallecas",
-      "ids": [
-        "70001",
-        "70005"
-      ],
-      "decision": "alias_to_70005",
-      "reason": "Reviewed 2026-08: ADIF exposes passenger station 70005 Vallecas; Renfe Cercanías uses 70001 as a source/feed identifier. 70001 remains in the static timetable index but is not a second playable physical station."
-    }
-  ]
-}
+{"reviewed":[{"name":"Vallecas","ids":["70001","70005"],"decision":"alias_to_70005","reason":"Reviewed 2026-08: ADIF exposes passenger station 70005 Vallecas; Renfe Cercanías uses 70001 as a source/feed identifier. 70001 remains in the static timetable index but is not a second playable physical station."}]}

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import io
+import argparse
 import os
 import time
 import zipfile
@@ -92,14 +93,15 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
         routes = {row["route_id"]: row for row in _table(archive, "routes.txt") if row.get("route_id")}
         trips = {row["trip_id"]: row for row in _table(archive, "trips.txt") if row.get("trip_id")}
 
-        # GTFS route_type 2 is rail; extended 100-199 are railway services.
+        # GTFS route_type 0 is provider-supported tram/light rail (Letbane),
+        # route_type 2 is rail, and extended 100-199 are railway services.
         rail_routes: set[str] = set()
         for route_id, row in routes.items():
             try:
                 route_type = int(row.get("route_type") or -1)
             except ValueError:
                 continue
-            if route_type == 2 or 100 <= route_type <= 199:
+            if route_type in {0, 2} or 100 <= route_type <= 199:
                 rail_routes.add(route_id)
 
         rail_trips = {
@@ -119,9 +121,9 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
 
     result: dict[str, dict[str, Any]] = {}
     for station_id, child_ids in station_to_children.items():
-        # Rejseplanen documents Danish railway station IDs as seven-digit 86xxxxx IDs.
-        # This also excludes Swedish/German stops carried by cross-border services.
-        if len(station_id) != 7 or not station_id.startswith("86"):
+        # Danish Rejseplanen IDs start with 86. Heavy-rail IDs are usually
+        # seven digits; Letbane IDs in the same provider namespace are longer.
+        if len(station_id) < 7 or not station_id.startswith("86"):
             continue
         row = stops.get(station_id)
         if row is None:
@@ -189,8 +191,22 @@ def validate_live_access(station_id: str, *, session: requests.Session | None = 
             client.close()
 
 
-def main() -> int:
-    archive = download_gtfs()
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="rebuild from cache/denmark/rejseplanen-gtfs.zip without network or API access",
+    )
+    args = parser.parse_args(argv)
+
+    if args.offline:
+        archive = GTFS_ARCHIVE
+        if not archive.is_file() or not zipfile.is_zipfile(archive):
+            print(f"ERROR: missing or invalid cached GTFS archive: {archive}")
+            return 1
+    else:
+        archive = download_gtfs()
     nodes = build_nodes(archive)
     if not nodes:
         print("ERROR: Rejseplanen GTFS input produced no railway stations")
@@ -200,10 +216,14 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    validate_live_access(str(nodes[0]["id"]))
+    if not args.offline:
+        validate_live_access(str(nodes[0]["id"]))
     write_ndjson(OUTPUT, nodes)
     print(f"Prepared current Rejseplanen GTFS at {archive}")
-    print(f"Validated Rejseplanen API 2.0 using station {nodes[0]['id']}")
+    if args.offline:
+        print("Skipped Rejseplanen API 2.0 validation in offline mode")
+    else:
+        print(f"Validated Rejseplanen API 2.0 using station {nodes[0]['id']}")
     print(f"Wrote {len(nodes)} Danish railway stations to {OUTPUT}")
     return 0
 
