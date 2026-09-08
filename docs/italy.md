@@ -70,4 +70,4 @@ TRAINGUESSR_SKIP_REVIEW=1 python3 gen/italy.py generate rfi
 
 ## Other providers
 
-The current scope excludes new providers for the additional systems documented in `docs/new-providers.md`: SSIF, AMT Genova–Casella, STA/Vinschgau, Infrastrutture Venete residuals, TFT/RFT, TUA/Sangritana, Ferrovie del Gargano, Ferrotramviaria, FAL, Ferrovie della Calabria, ARST, FCE, and bounded ASTRAL/metro-like systems.
+The current scope excludes new providers for these additional systems: SSIF, AMT Genova–Casella, STA/Vinschgau, Infrastrutture Venete residuals, TFT/RFT, TUA/Sangritana, Ferrovie del Gargano, Ferrotramviaria, FAL, Ferrovie della Calabria, ARST, FCE, and bounded ASTRAL/metro-like systems.

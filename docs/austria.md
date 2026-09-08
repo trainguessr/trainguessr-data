@@ -48,4 +48,4 @@ Austria follows the repository cache policy: durable source material and audits 
 
 ## Other providers
 
-The 55 physical provider gaps span 12 private/regional systems and are recorded in `docs/review/austria-dataset-coverage.json` and summarized in `docs/new-providers.md`.
+The 55 physical provider gaps span 12 private/regional systems and are recorded in `docs/review/austria-dataset-coverage.json`.

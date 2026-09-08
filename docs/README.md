@@ -22,7 +22,6 @@ licensing, and completeness checks.
 ## Cross-country documentation
 
 - [Provider inventory](provider-inventory.md)
-- [New-provider research](new-providers.md)
 - `review/`: machine-readable evidence and reconciliation ledgers read by
   generators and tests or kept to show how reviewed decisions were made.
 - [Repository maintenance and reproducibility](maintenance/reproducibility.md)

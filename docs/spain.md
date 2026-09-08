@@ -77,7 +77,7 @@ and update metadata where supplied, and do not imply Renfe endorsement.
 Euskotren and other non-Renfe regional rail are outside the current scope. They
 require their own provider namespace; do not assign them Renfe IDs.
 
-See [`new-providers.md`](new-providers.md) for sources and next steps.
+Known non-Renfe provider gaps are summarized in [`provider-inventory.md`](provider-inventory.md).
 
 
 ## FGC (`spain_fgc`)

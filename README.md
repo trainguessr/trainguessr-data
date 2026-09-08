@@ -22,8 +22,6 @@ See [`docs/README.md`](docs/README.md). Each country page lists:
 - source licence/attribution constraints;
 - gaps outside the current scope.
 
-New-provider research is in
-[`docs/new-providers.md`](docs/new-providers.md).
 
 ## Generating data
 

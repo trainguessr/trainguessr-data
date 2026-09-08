@@ -829,7 +829,6 @@ class DatasetTests(unittest.TestCase):
             self.assertIn("## Other providers", content, country)
             self.assertTrue((ROOT / "gen" / entrypoint).is_file(), country)
 
-        self.assertTrue((ROOT / "docs" / "new-providers.md").is_file())
         self.assertTrue((ROOT / "docs" / "provider-inventory.md").is_file())
 
 
