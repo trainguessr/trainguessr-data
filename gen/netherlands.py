@@ -59,7 +59,14 @@ if __name__ == "__main__":
     import requests
     from datetime import datetime, timezone
 
-    input_file = str(ROOT / "cache" / "netherlands_stations.csv")
+    country_cache = ROOT / "cache" / "netherlands"
+    country_cache.mkdir(parents=True, exist_ok=True)
+    current_input = country_cache / "stations.csv"
+    legacy_input = ROOT / "cache" / "netherlands_stations.csv"
+    if legacy_input.exists() and not current_input.exists():
+        legacy_input.replace(current_input)
+        print(f"Moved legacy cache artifact: {legacy_input.relative_to(ROOT)} -> {current_input.relative_to(ROOT)}")
+    input_file = str(current_input)
     output_file = str(ROOT / "nodes" / "nodes-netherlands.json")
 
     if not os.path.exists(input_file):

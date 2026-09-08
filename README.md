@@ -46,7 +46,13 @@ python3 gen/italy.py review all
 python3 gen/italy.py rebuild all --dry-run
 ```
 
-Inputs that can be downloaded again and generated runtime indexes go under `cache/`.
+Cache layout is intentional:
+
+- `cache/*.sqlite`: deployable runtime indexes consumed by TrainGuessr services.
+- `cache/<country>/`: durable, reproducible source downloads, reviewed resolution state, and audit outputs.
+- `cache/temp/<country>/`: disposable extraction trees and intermediate files; generators should remove these after use.
+
+Country-specific archives and snapshots must not be created at the cache root. Existing legacy root files may be adopted into their country directory by the relevant generator.
 
 ## Validation
 

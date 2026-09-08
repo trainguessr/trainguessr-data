@@ -5,11 +5,15 @@ from __future__ import annotations
 import argparse
 import csv
 import html
+import hashlib
 import io
 import json
 import logging as log
 import math
 import os
+import shutil
+import sqlite3
+import tempfile
 import re
 import statistics
 import zipfile
@@ -28,6 +32,13 @@ from common.io import write_ndjson
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_DIR = ROOT / "cache"
 AUSTRIA_CACHE = CACHE_DIR / "austria"
+TEMP_CACHE = CACHE_DIR / "temp"
+AUSTRIA_TEMP = TEMP_CACHE / "austria"
+GEONETZ_FILTERED = AUSTRIA_CACHE / "austria_stations_filtered.json"
+GEONETZ_ARCHIVE = AUSTRIA_CACHE / "GeoNetz_12-2024.zip"
+GEONETZ_TEMP = AUSTRIA_TEMP / "geonetz"
+DEFAULT_OEBB_OPERATOR_INDEX = CACHE_DIR / "austria-oebb-operators.sqlite"
+DEFAULT_OEBB_OPERATOR_AUDIT = AUSTRIA_CACHE / "oebb-operator-index-audit.json"
 GEONETZ_URL = "https://data.oebb.at/dam/jcr:d4780bb2-390e-4288-b540-dff1ae1b27ae/GeoNetz_12-2024.zip"
 MVO_CATALOGUE_URL = "https://www.mobilitaetsdaten.gv.at/daten/%C3%B6sterreichweite-haltestellen"
 MVO_DATASETS_URL = "https://data.mobilitaetsverbuende.at/api/public/v1/data-sets?tagIds=&tagFilterModeInclusive=false"
@@ -172,32 +183,65 @@ def _haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return radius * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
+def _adopt_legacy_cache(old: Path, new: Path) -> Path:
+    """Move an old root-level cache artifact into its durable country directory."""
+    if new.exists() or not old.exists():
+        return new
+    new.parent.mkdir(parents=True, exist_ok=True)
+    old.replace(new)
+    try:
+        old_label = old.relative_to(ROOT)
+        new_label = new.relative_to(ROOT)
+    except ValueError:
+        old_label, new_label = old, new
+    print(f"Moved legacy cache artifact: {old_label} -> {new_label}")
+    return new
+
+
 def _download_geonetz(session: requests.Session, timeout: int = 60) -> Path:
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    filtered = CACHE_DIR / "austria_stations_filtered.json"
-    if filtered.is_file():
-        print(f"Using cached GeoNetz station data (age: {_cache_age(filtered)})")
-        return filtered
+    AUSTRIA_CACHE.mkdir(parents=True, exist_ok=True)
+    _adopt_legacy_cache(CACHE_DIR / "austria_stations_filtered.json", GEONETZ_FILTERED)
+    _adopt_legacy_cache(CACHE_DIR / "GeoNetz_12-2024.zip", GEONETZ_ARCHIVE)
+    if GEONETZ_FILTERED.is_file():
+        print(f"Using cached GeoNetz station data (age: {_cache_age(GEONETZ_FILTERED)})")
+        return GEONETZ_FILTERED
 
-    response = session.get(GEONETZ_URL, timeout=timeout)
-    response.raise_for_status()
-    archive = CACHE_DIR / "GeoNetz_12-2024.zip"
-    archive.write_bytes(response.content)
-    with zipfile.ZipFile(archive) as outer:
-        outer.extractall(CACHE_DIR)
-    inner_path = CACHE_DIR / "GeoNetz_12-2024" / "OEBB_NETWORK_GeoJSON.zip"
-    with zipfile.ZipFile(inner_path) as inner:
-        inner.extractall(CACHE_DIR)
+    if not GEONETZ_ARCHIVE.is_file():
+        response = session.get(GEONETZ_URL, timeout=timeout)
+        response.raise_for_status()
+        GEONETZ_ARCHIVE.write_bytes(response.content)
 
-    geojson_path = CACHE_DIR / "OEBB_NETWORK.json"
-    payload = json.loads(geojson_path.read_text(encoding="utf-8"))
-    with filtered.open("w", encoding="utf-8", newline="\n") as handle:
-        for feature in payload.get("features", []):
-            properties = feature.get("properties", {})
-            if "railStation" in str(properties.get("STP_TYPE", "")):
-                handle.write(json.dumps(properties, ensure_ascii=False) + "\n")
-    return filtered
-
+    shutil.rmtree(GEONETZ_TEMP, ignore_errors=True)
+    outer_dir = GEONETZ_TEMP / "outer"
+    inner_dir = GEONETZ_TEMP / "inner"
+    outer_dir.mkdir(parents=True, exist_ok=True)
+    inner_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        with zipfile.ZipFile(GEONETZ_ARCHIVE) as outer:
+            outer.extractall(outer_dir)
+        inner_matches = list(outer_dir.rglob("OEBB_NETWORK_GeoJSON.zip"))
+        if len(inner_matches) != 1:
+            raise ValueError(
+                f"{GEONETZ_ARCHIVE}: expected exactly one OEBB_NETWORK_GeoJSON.zip, "
+                f"found {len(inner_matches)}"
+            )
+        with zipfile.ZipFile(inner_matches[0]) as inner:
+            inner.extractall(inner_dir)
+        geojson_matches = list(inner_dir.rglob("OEBB_NETWORK.json"))
+        if len(geojson_matches) != 1:
+            raise ValueError(
+                f"{inner_matches[0]}: expected exactly one OEBB_NETWORK.json, "
+                f"found {len(geojson_matches)}"
+            )
+        payload = json.loads(geojson_matches[0].read_text(encoding="utf-8"))
+        with GEONETZ_FILTERED.open("w", encoding="utf-8", newline="\n") as handle:
+            for feature in payload.get("features", []):
+                properties = feature.get("properties", {})
+                if "railStation" in str(properties.get("STP_TYPE", "")):
+                    handle.write(json.dumps(properties, ensure_ascii=False) + "\n")
+    finally:
+        shutil.rmtree(GEONETZ_TEMP, ignore_errors=True)
+    return GEONETZ_FILTERED
 
 def load_geonetz_nodes(path: Path, rename_map: dict[str, str]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
@@ -857,6 +901,367 @@ def merge_catalogues(
     return geonetz_nodes + new_nodes, audit
 
 
+
+OEBB_RAIL_ROUTE_TYPES = {2, *range(100, 200)}
+_OEBB_GTFS_REQUIRED = {"agency.txt", "routes.txt", "trips.txt", "stops.txt", "stop_times.txt"}
+
+
+def _gtfs_member_map(names: list[str]) -> dict[str, str] | None:
+    """Return canonical GTFS filename -> archive member for one coherent directory."""
+    normalized = [name.replace("\\", "/") for name in names if not name.endswith("/")]
+    by_name: dict[str, list[str]] = {}
+    for name in normalized:
+        by_name.setdefault(Path(name).name.casefold(), []).append(name)
+    for agency_member in by_name.get("agency.txt", []):
+        prefix = agency_member[: -len("agency.txt")]
+        mapping = {}
+        for required in _OEBB_GTFS_REQUIRED:
+            candidate = prefix + required
+            if candidate not in normalized:
+                break
+            mapping[required] = candidate
+        else:
+            for optional in ("calendar.txt", "calendar_dates.txt", "feed_info.txt"):
+                candidate = prefix + optional
+                if candidate in normalized:
+                    mapping[optional] = candidate
+            return mapping
+    return None
+
+
+def _gtfs_rows(archive: zipfile.ZipFile, member: str | None) -> list[dict[str, str]]:
+    if not member:
+        return []
+    raw = archive.read(member).decode("utf-8-sig", errors="replace")
+    return [
+        {str(key or "").strip(): str(value or "").strip() for key, value in row.items()}
+        for row in csv.DictReader(io.StringIO(raw))
+    ]
+
+
+def _read_gtfs_archive(archive: zipfile.ZipFile) -> dict[str, list[dict[str, str]]] | None:
+    mapping = _gtfs_member_map(archive.namelist())
+    if not mapping:
+        return None
+    return {
+        "agency": _gtfs_rows(archive, mapping.get("agency.txt")),
+        "routes": _gtfs_rows(archive, mapping.get("routes.txt")),
+        "trips": _gtfs_rows(archive, mapping.get("trips.txt")),
+        "stops": _gtfs_rows(archive, mapping.get("stops.txt")),
+        "stop_times": _gtfs_rows(archive, mapping.get("stop_times.txt")),
+        "calendar": _gtfs_rows(archive, mapping.get("calendar.txt")),
+        "calendar_dates": _gtfs_rows(archive, mapping.get("calendar_dates.txt")),
+        "feed_info": _gtfs_rows(archive, mapping.get("feed_info.txt")),
+    }
+
+
+def load_oebb_gtfs(path: Path) -> dict[str, Any]:
+    """Load ÖBB GTFS from a root ZIP, wrapper directory, or one nested ZIP."""
+    path = Path(path)
+    if not zipfile.is_zipfile(path):
+        raise ValueError(f"Not a GTFS ZIP: {path}")
+    source_sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
+    with zipfile.ZipFile(path) as outer:
+        feed = _read_gtfs_archive(outer)
+        if feed is None:
+            inner_zips = [name for name in outer.namelist() if name.casefold().endswith(".zip")]
+            matches: list[dict[str, list[dict[str, str]]]] = []
+            for member in inner_zips:
+                try:
+                    with zipfile.ZipFile(io.BytesIO(outer.read(member))) as inner:
+                        candidate = _read_gtfs_archive(inner)
+                except zipfile.BadZipFile:
+                    candidate = None
+                if candidate is not None:
+                    matches.append(candidate)
+            if len(matches) == 1:
+                feed = matches[0]
+            elif len(matches) > 1:
+                raise ValueError(
+                    f"{path}: found {len(matches)} nested GTFS ZIPs; expected exactly one"
+                )
+        if feed is None:
+            preview = ", ".join(outer.namelist()[:12])
+            raise ValueError(
+                f"{path}: ÖBB GTFS files not found at archive root, under one wrapper "
+                f"directory, or in exactly one nested ZIP. First members: {preview}"
+            )
+    feed["sha256"] = source_sha256
+    return feed
+
+
+def _oebb_is_rail_route(row: dict[str, str]) -> bool:
+    try:
+        return int(row.get("route_type", "")) in OEBB_RAIL_ROUTE_TYPES
+    except ValueError:
+        return False
+
+
+def _oebb_feed_bounds(feed: dict[str, Any]) -> tuple[str, str]:
+    starts = [row.get("start_date", "") for row in feed["calendar"] if row.get("start_date")]
+    ends = [row.get("end_date", "") for row in feed["calendar"] if row.get("end_date")]
+    info = feed.get("feed_info") or []
+    start = (info[0].get("feed_start_date") if info else "") or (min(starts) if starts else "")
+    end = (info[0].get("feed_end_date") if info else "") or (max(ends) if ends else "")
+    return start, end
+
+
+def _oebb_station_ifopt(stop_id: str, parent_station: str) -> str:
+    """Return the canonical Austrian IFOPT represented exactly by a GTFS stop.
+
+    ÖBB models parent stop places as IDs such as ``Pat:47:1187`` while their
+    platform children use ``at:47:1187:...``.  This normalizes only those
+    structural GTFS identifiers; it never derives a station from names,
+    coordinates, or proximity.
+    """
+    for value in (parent_station, stop_id):
+        value = str(value or "").strip()
+        if value.startswith("Pat:"):
+            value = value[1:]
+        match = re.match(r"^(at:\d+:\d+)(?::.*)?$", value)
+        if match:
+            return match.group(1)
+    return ""
+
+
+def _oebb_line_key(value: str) -> str:
+    """Normalize an official route short name / SCOTTY line label."""
+    return re.sub(r"[^A-Z0-9]+", "", str(value or "").upper())
+
+
+def build_oebb_operator_index(feed: dict[str, Any], output: Path) -> dict[str, Any]:
+    """Build the optional runtime operator-enrichment index from official ÖBB GTFS."""
+    agencies = {row["agency_id"]: row for row in feed["agency"] if row.get("agency_id")}
+    if not agencies:
+        if len(feed["agency"]) != 1:
+            raise ValueError("ÖBB GTFS does not expose a usable agency namespace")
+        agencies = {"__default__": dict(feed["agency"][0], agency_id="__default__")}
+
+    rail_routes: dict[str, dict[str, str]] = {}
+    for row in feed["routes"]:
+        route_id = row.get("route_id", "")
+        if not route_id or not _oebb_is_rail_route(row):
+            continue
+        agency_id = row.get("agency_id", "")
+        if not agency_id and len(agencies) == 1:
+            agency_id = next(iter(agencies))
+        if agency_id in agencies:
+            rail_routes[route_id] = dict(row, agency_id=agency_id)
+
+    trips = {
+        row["trip_id"]: row
+        for row in feed["trips"]
+        if row.get("trip_id") and row.get("route_id") in rail_routes
+    }
+    stops = {row["stop_id"]: row for row in feed["stops"] if row.get("stop_id")}
+    stop_times = [
+        row for row in feed["stop_times"]
+        if row.get("trip_id") in trips and row.get("stop_id") in stops
+    ]
+    calendar = {row["service_id"]: row for row in feed["calendar"] if row.get("service_id")}
+    calendar_dates = [row for row in feed["calendar_dates"] if row.get("service_id")]
+
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(
+        prefix="austria-oebb-operators-", suffix=".sqlite", dir=output.parent
+    )
+    os.close(fd)
+    temp = Path(temp_name)
+    start, end = _oebb_feed_bounds(feed)
+    metadata = {
+        "version": "2",
+        "provider": "oebb_gtfs_operator_enrichment",
+        "source_page": "https://data.oebb.at/de/datensaetze~soll-fahrplan-gtfs~",
+        "license": "CC BY 4.0",
+        "source_sha256": feed["sha256"],
+        "feed_start_date": start,
+        "feed_end_date": end,
+    }
+    try:
+        connection = sqlite3.connect(temp)
+        with connection:
+            connection.executescript("""
+                PRAGMA journal_mode=OFF;
+                PRAGMA synchronous=OFF;
+                CREATE TABLE metadata(key TEXT PRIMARY KEY, value TEXT NOT NULL);
+                CREATE TABLE agencies(agency_id TEXT PRIMARY KEY, agency_name TEXT NOT NULL);
+                CREATE TABLE routes(\n                    route_id TEXT PRIMARY KEY,\n                    agency_id TEXT NOT NULL,\n                    short_name TEXT NOT NULL,\n                    line_key TEXT NOT NULL\n                );
+                CREATE TABLE trips(
+                    trip_id TEXT PRIMARY KEY,
+                    route_id TEXT NOT NULL,
+                    service_id TEXT NOT NULL,
+                    short_name TEXT NOT NULL
+                );
+                CREATE TABLE stops(
+                    stop_id TEXT PRIMARY KEY,
+                    parent_station TEXT NOT NULL,
+                    stop_code TEXT NOT NULL,
+                    station_ifopt TEXT NOT NULL
+                );
+                CREATE TABLE stop_times(trip_id TEXT NOT NULL, stop_id TEXT NOT NULL);
+                CREATE TABLE calendar(
+                    service_id TEXT PRIMARY KEY,
+                    monday INTEGER NOT NULL, tuesday INTEGER NOT NULL,
+                    wednesday INTEGER NOT NULL, thursday INTEGER NOT NULL,
+                    friday INTEGER NOT NULL, saturday INTEGER NOT NULL,
+                    sunday INTEGER NOT NULL, start_date TEXT NOT NULL, end_date TEXT NOT NULL
+                );
+                CREATE TABLE calendar_dates(
+                    service_id TEXT NOT NULL, date TEXT NOT NULL, exception_type INTEGER NOT NULL
+                );
+            """)
+            connection.executemany("INSERT INTO metadata VALUES (?, ?)", sorted(metadata.items()))
+            connection.executemany(
+                "INSERT INTO agencies VALUES (?, ?)",
+                [(key, row.get("agency_name", "").strip()) for key, row in sorted(agencies.items())],
+            )
+            connection.executemany(
+                "INSERT INTO routes VALUES (?, ?, ?, ?)",
+                [
+                    (
+                        key,
+                        row["agency_id"],
+                        row.get("route_short_name", "").strip(),
+                        _oebb_line_key(row.get("route_short_name", "")),
+                    )
+                    for key, row in sorted(rail_routes.items())
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO trips VALUES (?, ?, ?, ?)",
+                [
+                    (
+                        trip_id, row["route_id"], row.get("service_id", ""),
+                        row.get("trip_short_name", "").strip(),
+                    )
+                    for trip_id, row in sorted(trips.items())
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO stops VALUES (?, ?, ?, ?)",
+                [
+                    (
+                        key,
+                        row.get("parent_station", "").strip(),
+                        row.get("stop_code", "").strip(),
+                        _oebb_station_ifopt(key, row.get("parent_station", "")),
+                    )
+                    for key, row in sorted(stops.items())
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO stop_times VALUES (?, ?)",
+                [(row["trip_id"], row["stop_id"]) for row in stop_times],
+            )
+            connection.executemany(
+                "INSERT INTO calendar VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [
+                    (
+                        service_id,
+                        *(int(row.get(day, "0") or 0) for day in (
+                            "monday", "tuesday", "wednesday", "thursday",
+                            "friday", "saturday", "sunday",
+                        )),
+                        row.get("start_date", ""), row.get("end_date", ""),
+                    )
+                    for service_id, row in sorted(calendar.items())
+                ],
+            )
+            connection.executemany(
+                "INSERT INTO calendar_dates VALUES (?, ?, ?)",
+                [
+                    (
+                        row.get("service_id", ""), row.get("date", ""),
+                        int(row.get("exception_type", "0") or 0),
+                    )
+                    for row in calendar_dates if row.get("exception_type", "").isdigit()
+                ],
+            )
+            connection.executescript("""
+                CREATE INDEX idx_oebb_trip_short ON trips(short_name);
+                CREATE INDEX idx_oebb_route_line ON routes(line_key);
+                CREATE INDEX idx_oebb_stop_ifopt ON stops(station_ifopt);
+                CREATE INDEX idx_oebb_stop_times_stop ON stop_times(stop_id);
+                CREATE INDEX idx_oebb_stop_times_trip ON stop_times(trip_id);
+                CREATE INDEX idx_oebb_stops_parent ON stops(parent_station);
+                CREATE INDEX idx_oebb_calendar_dates ON calendar_dates(service_id, date);
+            """)
+        connection.close()
+        os.replace(temp, output)
+        os.chmod(output, 0o644)
+        temp = None
+    finally:
+        if temp is not None:
+            temp.unlink(missing_ok=True)
+
+    with sqlite3.connect(output) as connection:
+        short_ambiguous = connection.execute("""
+            SELECT COUNT(*) FROM (
+                SELECT t.short_name
+                FROM trips t JOIN routes r ON r.route_id=t.route_id
+                WHERE t.short_name <> ''
+                GROUP BY t.short_name HAVING COUNT(DISTINCT r.agency_id) > 1
+            )
+        """).fetchone()[0]
+        station_short_ambiguous = connection.execute("""
+            SELECT COUNT(*) FROM (
+                SELECT st.stop_id, t.short_name
+                FROM stop_times st
+                JOIN trips t ON t.trip_id=st.trip_id
+                JOIN routes r ON r.route_id=t.route_id
+                WHERE t.short_name <> ''
+                GROUP BY st.stop_id, t.short_name
+                HAVING COUNT(DISTINCT r.agency_id) > 1
+            )
+        """).fetchone()[0]
+        station_line_ambiguous = connection.execute("""
+            SELECT COUNT(*) FROM (
+                SELECT s.station_ifopt, r.line_key
+                FROM stop_times st
+                JOIN stops s ON s.stop_id=st.stop_id
+                JOIN trips t ON t.trip_id=st.trip_id
+                JOIN routes r ON r.route_id=t.route_id
+                WHERE s.station_ifopt <> '' AND r.line_key <> ''
+                GROUP BY s.station_ifopt, r.line_key
+                HAVING COUNT(DISTINCT r.agency_id) > 1
+            )
+        """).fetchone()[0]
+
+    return {
+        "agencies": len(agencies),
+        "rail_routes": len(rail_routes),
+        "rail_trips": len(trips),
+        "trips_with_short_name": sum(
+            bool(row.get("trip_short_name", "").strip()) for row in trips.values()
+        ),
+        "indexed_stop_times": len(stop_times),
+        "short_names_with_multiple_agencies": short_ambiguous,
+        "station_short_names_with_multiple_agencies": station_short_ambiguous,
+        "station_line_names_with_multiple_agencies": station_line_ambiguous,
+        "feed_start_date": start,
+        "feed_end_date": end,
+        "source_sha256": feed["sha256"],
+    }
+
+
+def _build_requested_oebb_index(args: argparse.Namespace) -> dict[str, Any] | None:
+    if not args.oebb_gtfs:
+        return None
+    stats = build_oebb_operator_index(load_oebb_gtfs(args.oebb_gtfs), args.oebb_operator_index)
+    args.oebb_operator_audit.parent.mkdir(parents=True, exist_ok=True)
+    args.oebb_operator_audit.write_text(
+        json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    print(
+        "ÖBB operator index: "
+        f"{stats['rail_trips']} rail trips, "
+        f"{stats['station_short_names_with_multiple_agencies']} "
+        "station/train-number agency ambiguities"
+    )
+    return stats
+
+
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Austria rail stations from GeoNetz and MVO")
     parser.add_argument("--mvo-input", type=Path, help="Use this MVO ZIP instead of downloading the official dataset")
@@ -867,15 +1272,45 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--audit", type=Path, default=DEFAULT_AUDIT)
+    parser.add_argument(
+        "--oebb-gtfs",
+        type=Path,
+        help="Official ÖBB GTFS ZIP, downloaded after accepting ÖBB's terms; builds optional operator enrichment",
+    )
+    parser.add_argument(
+        "--oebb-operator-index",
+        type=Path,
+        default=DEFAULT_OEBB_OPERATOR_INDEX,
+        help="Runtime SQLite output (root cache is reserved for deployable runtime indexes)",
+    )
+    parser.add_argument(
+        "--oebb-operator-audit",
+        type=Path,
+        default=DEFAULT_OEBB_OPERATOR_AUDIT,
+        help="Durable country audit JSON",
+    )
+    parser.add_argument(
+        "--oebb-operator-index-only",
+        action="store_true",
+        help="Build only the ÖBB GTFS operator index; requires --oebb-gtfs",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
+    if args.oebb_operator_index_only:
+        if not args.oebb_gtfs:
+            raise SystemExit("--oebb-operator-index-only requires --oebb-gtfs")
+        _build_requested_oebb_index(args)
+        return 0
+
     session = requests.Session()
     rename_map = load_rename_map("austria")
     if args.offline:
-        geonetz_source = CACHE_DIR / "austria_stations_filtered.json"
+        offline_geonetz = CACHE_DIR / "austria" / "austria_stations_filtered.json"
+        _adopt_legacy_cache(CACHE_DIR / "austria_stations_filtered.json", offline_geonetz)
+        geonetz_source = offline_geonetz
         if not geonetz_source.is_file():
             raise SystemExit(f"Offline Austria generation requires cached GeoNetz data: {geonetz_source}")
     else:
@@ -902,6 +1337,7 @@ def main(argv: list[str] | None = None) -> int:
         f"Austria: {len(geonetz_nodes)} GeoNetz + {audit['added_count']} MVO additions "
         f"= {len(output)} stations; {audit['unresolved_count']} MVO candidates unresolved"
     )
+    _build_requested_oebb_index(args)
     return 0
 
 

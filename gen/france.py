@@ -11,7 +11,8 @@ from common.config import load_country_config, load_excluded_ids, load_rename_ma
 from common.io import ROOT
 
 SOURCE_URL = "https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe/Berlin"
-CACHE = ROOT / "cache" / "sncf.json"
+CACHE = ROOT / "cache" / "france" / "sncf.json"
+LEGACY_CACHE = ROOT / "cache" / "sncf.json"
 OUTPUT = ROOT / "nodes" / "nodes-france-sncf.json"
 SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "cuneo-ventimiglia.json"
 PASSENGER_SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "liste-des-gares-supplement.json"
@@ -173,6 +174,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     CACHE.parent.mkdir(parents=True, exist_ok=True)
+    if LEGACY_CACHE.exists() and not CACHE.exists():
+        LEGACY_CACHE.replace(CACHE)
+        print(f"Moved legacy cache artifact: {LEGACY_CACHE.relative_to(ROOT)} -> {CACHE.relative_to(ROOT)}")
     age_days = None
     if CACHE.exists():
         age = datetime.now(timezone.utc) - datetime.fromtimestamp(CACHE.stat().st_mtime, timezone.utc)
