@@ -767,7 +767,7 @@ class DatasetTests(unittest.TestCase):
                 continue
             self.assertTrue(path.exists(), required)
 
-        provider_inventory = (ROOT / "docs" / "provider-inventory.md").read_text(encoding="utf-8")
+        provider_inventory = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
         seen_full_ids: set[str] = set()
         categories: set[str] = set()
         for path in sorted((ROOT / "nodes").glob("nodes-*.json")):
@@ -829,7 +829,7 @@ class DatasetTests(unittest.TestCase):
             self.assertIn("## Other providers", content, country)
             self.assertTrue((ROOT / "gen" / entrypoint).is_file(), country)
 
-        self.assertTrue((ROOT / "docs" / "provider-inventory.md").is_file())
+        self.assertTrue((ROOT / "docs" / "README.md").is_file())
 
 
 if __name__ == "__main__":

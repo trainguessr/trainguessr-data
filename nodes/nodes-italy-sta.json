@@ -1,0 +1,17 @@
+{"type":"node","id":"66000154","lat":46.626876,"lon":10.897915,"tags":{"name":"Castelbello/Kastelbell","operator":"STA / südtirolmobil","sta_station_name":"Castelbello, Stazione di Castelbello"},"category":"italy_sta"}
+{"type":"node","id":"66000157","lat":46.635213,"lon":10.940603,"tags":{"name":"Ciardes/Tschars","operator":"STA / südtirolmobil","sta_station_name":"Ciardes, Stazione di Ciardes"},"category":"italy_sta"}
+{"type":"node","id":"66000123","lat":46.618797,"lon":10.821315,"tags":{"name":"Coldrano/Goldrain","operator":"STA / südtirolmobil","sta_station_name":"Coldrano, Stazione di Coldrano"},"category":"italy_sta"}
+{"type":"node","id":"66000144","lat":46.61953,"lon":10.860798,"tags":{"name":"Laces/Latsch","operator":"STA / südtirolmobil","sta_station_name":"Laces, Stazione di Laces"},"category":"italy_sta"}
+{"type":"node","id":"66000206","lat":46.679018,"lon":11.131967,"tags":{"name":"Lagundo/Algund","operator":"STA / südtirolmobil","sta_station_name":"Lagundo, Stazione di Lagundo"},"category":"italy_sta"}
+{"type":"node","id":"66000097","lat":46.618364,"lon":10.695575,"tags":{"name":"Lasa/Laas","operator":"STA / südtirolmobil","sta_station_name":"Lasa, Stazione di Lasa"},"category":"italy_sta"}
+{"type":"node","id":"66000036","lat":46.684272,"lon":10.548677,"tags":{"name":"Malles/Mals","operator":"STA / südtirolmobil","sta_station_name":"Malles Venosta, Stazione di Malles"},"category":"italy_sta"}
+{"type":"node","id":"66002374","lat":46.66417,"lon":11.138625,"tags":{"name":"Marlengo/Marling","operator":"STA / südtirolmobil","sta_station_name":"Marlengo, Stazione di Marlengo"},"category":"italy_sta"}
+{"type":"node","id":"66000171","lat":46.645137,"lon":11.003918,"tags":{"name":"Naturno/Naturns","operator":"STA / südtirolmobil","sta_station_name":"Naturno, Stazione di Naturno"},"category":"italy_sta"}
+{"type":"node","id":"66000094","lat":46.626781,"lon":10.646133,"tags":{"name":"Oris/Eyrs","operator":"STA / südtirolmobil","sta_station_name":"Oris, Stazione di Oris"},"category":"italy_sta"}
+{"type":"node","id":"66000201","lat":46.65842,"lon":11.041072,"tags":{"name":"Plaus","operator":"STA / südtirolmobil","sta_station_name":"Plaus, Stazione di Plaus"},"category":"italy_sta"}
+{"type":"node","id":"66000102","lat":46.626154,"lon":10.766593,"tags":{"name":"Silandro/Schlanders","operator":"STA / südtirolmobil","sta_station_name":"Silandro, Stazione di Silandro"},"category":"italy_sta"}
+{"type":"node","id":"66000047","lat":46.664883,"lon":10.581797,"tags":{"name":"Sluderno/Schluderns","operator":"STA / südtirolmobil","sta_station_name":"Sluderno, Stazione di Sluderno - Glorenza"},"category":"italy_sta"}
+{"type":"node","id":"66000160","lat":46.645634,"lon":10.965425,"tags":{"name":"Stava/Staben","operator":"STA / südtirolmobil","sta_station_name":"Stava"},"category":"italy_sta"}
+{"type":"node","id":"66000203","lat":46.66563,"lon":11.068522,"tags":{"name":"Rablà/Rabland","operator":"STA / südtirolmobil","sta_station_name":"Stazione di Rablà"},"category":"italy_sta"}
+{"type":"node","id":"66000075","lat":46.634345,"lon":10.611034,"tags":{"name":"Spondigna/Spondinig","operator":"STA / südtirolmobil","sta_station_name":"Stazione di Spondigna - Prato"},"category":"italy_sta"}
+{"type":"node","id":"66000205","lat":46.672737,"lon":11.081593,"tags":{"name":"Tel/Töll","operator":"STA / südtirolmobil","sta_station_name":"Tel, Stazione di Tel"},"category":"italy_sta"}

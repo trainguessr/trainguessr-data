@@ -4,6 +4,7 @@
 
 | Country | Category | Runtime provider | Generator | Coverage |
 | --- | --- | --- | --- | --- |
+| Italy | `italy_sta` | STA / südtirolmobil EFA + Info Monitor | `gen/italy.py generate sta --write-nodes` | 17 native Vinschgau nodes; exact STA IDs also augment 29 shared RFI nodes and 10 shared ÖBB nodes through explicit `sta_station_id` tags. |
 | Italy | `italy_rfi` | Rete Ferroviaria Italiana / ViaggiaTreno | `gen/italy.py generate rfi` | 2,426 nodes from 2,438 source rows; six French cross-border boards are handled by `france_sncf`, and six records are excluded. |
 | Italy | `italy_fn` | Ferrovienord / Trenord | `gen/italy.py generate fn` | 111 nodes from 117 source rows; six explicit exclusions. |
 | Italy | `italy_fse` | Ferrovie del Sud Est / ViaggiaTreno | `gen/italy.py generate fse` | 92 nodes from 95 source rows; 85 automatic matches, seven manual records including disused Gallipoli Porto, and three explicit non-FSE/duplicate exclusions. |
@@ -17,6 +18,7 @@ Italy uses one dataset for each infrastructure provider. Run the command in the 
 
 | Provider | Downloaded source | Output | Command |
 | --- | --- | --- | --- |
+| STA / südtirolmobil | Official EFA StopFinder plus reviewed STA station catalogue | `nodes/nodes-italy-sta.json` plus exact `sta_station_id` augmentation on shared RFI/ÖBB nodes | `python3 gen/italy.py generate sta --write-nodes` |
 | RFI | [RFI arrivals and departures](https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Home) | `nodes/nodes-italy-rfi.json` | `python3 gen/italy.py generate rfi` |
 | Ferrovienord (FN) | [Trenord real-time page](https://www.trenord.it/linee-e-orari/circolazione/tempo-reale/) | `nodes/nodes-italy-fn.json` | `python3 gen/italy.py generate fn` |
 | Trentino Trasporti (TT) | [Official GTFS](https://www.trentinotrasporti.it/opendata/google_transit_extraurbano_tte.zip) | `nodes/nodes-italy-tt.json` | `python3 gen/italy.py generate tt` |
@@ -71,3 +73,33 @@ TRAINGUESSR_SKIP_REVIEW=1 python3 gen/italy.py generate rfi
 ## Other providers
 
 The current scope excludes new providers for these additional systems: SSIF, AMT Genova–Casella, STA/Vinschgau, Infrastrutture Venete residuals, TFT/RFT, TUA/Sangritana, Ferrovie del Gargano, Ferrotramviaria, FAL, Ferrovie della Calabria, ARST, FCE, and bounded ASTRAL/metro-like systems.
+
+
+## Guarded coordinate corrections
+
+### FER
+
+- `S05100` Bologna Borgo Panigale
+  - corrected to 44.5151514, 11.2849781
+  - evidence: OpenStreetMap railway station node 12294207485
+- `S05995` Castenaso
+  - corrected to 44.50343, 11.47214
+  - evidence: OpenStreetMap railway station node 257066737
+- `S05931` Cavriago S.Nicolo'
+  - corrected to 44.699327, 10.523291
+  - evidence: Provincia di Reggio Emilia station/accessibility coordinates
+- `S05971` Zola Centro
+  - corrected to 44.49252, 11.21811
+  - evidence: OpenStreetMap railway station node 12294207482
+
+### EAV
+
+- `32` Ercolano Miglio d'Oro
+  - corrected to 40.80206, 14.36150
+  - evidence: OpenStreetMap railway station node 11407270275; EAV lists Miglio d'Oro separately from Ercolano Scavi
+- `62` Sorrento
+  - corrected to 40.62585, 14.37979
+  - evidence: OpenStreetMap railway station node 11061388820
+- `41` Torre Annunziata - Oplonti
+  - corrected to 40.75970, 14.45100
+  - evidence: OpenStreetMap railway station node 11274717577; EAV and RFI list Oplonti and Centrale separately

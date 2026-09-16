@@ -6,15 +6,14 @@ This repository contains a dataset of geolocated railway stations across various
 
 - `nodes/`: generated `ndjson` datasets.
 - `cache/`: ignored source archives that can be downloaded again, plus generated runtime files.
-- `docs/`: country and provider guides, reconciliation
-  ledgers, current gaps, and maintenance notes.
+- `docs/`: canonical documentation: one page per country plus the cross-country `docs/README.md`.
 - `gen/`: entrypoints for each supported country and lower-level shared/country modules.
 - `overrides/`: reviewed settings that change generation behaviour, including exclusions, renames, aliases, coordinate corrections, and reviewed provider mappings.
 - `tests/` — regression and data-integrity tests.
 
 ## Country documentation
 
-See [`docs/README.md`](docs/README.md). Each country page lists:
+See [`docs/README.md`](docs/README.md) for provider inventory, generator and maintenance conventions. Each country page lists:
 - current providers for the country;
 - sources and commands;
 - override files;
@@ -40,6 +39,7 @@ Italian providers use a single script:
 ```bash
 python3 gen/italy.py generate all
 python3 gen/italy.py generate rfi
+python3 gen/italy.py generate sta
 python3 gen/italy.py review all
 python3 gen/italy.py rebuild all --dry-run
 ```
@@ -90,3 +90,5 @@ The generated station database is distributed under the repository's ODbL
 licence, subject to source-specific terms. See
 [`ACKNOWLEDGMENTS.md`](ACKNOWLEDGMENTS.md) for source/provider attribution and
 `docs/` for country details.
+
+Generator layout and canonical commands are documented in [`docs/README.md`](docs/README.md).

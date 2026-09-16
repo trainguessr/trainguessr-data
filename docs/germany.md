@@ -78,7 +78,7 @@ exclusions were added from this audit.
 
 U-Bahn, tram, foreign, and operator-specific systems are outside the DB
 heavy-rail provider until their own provider identities are verified. The
-separate-system backlog is recorded in `docs/provider-inventory.md`.
+separate-system backlog is recorded in `docs/README.md`.
 
 Sources:
 
