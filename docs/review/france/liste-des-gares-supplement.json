@@ -372,19 +372,6 @@
     "code_ligne": "420000"
   },
   {
-    "sncf_id": "87517912",
-    "uic_stem": "8751791",
-    "name": "Bidos",
-    "lat": 43.178929807723755,
-    "lon": -0.606976661061633,
-    "source": "SNCF Reseau liste-des-gares",
-    "source_url": "https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json",
-    "source_date": "2024-03-28",
-    "voyageurs": "O",
-    "fret": "N",
-    "code_ligne": "664000"
-  },
-  {
     "sncf_id": "87561143",
     "uic_stem": "8756114",
     "name": "Halte de Fontanil-Lycée de Drap",

@@ -4,7 +4,7 @@
 
 | Country | Category | Runtime provider | Generator | Coverage |
 | --- | --- | --- | --- | --- |
-| Denmark | `denmark_all` | Rejseplanen GTFS/API 2.0 | `gen/denmark.py` | 631 nodes, including 173 current Letbane stop IDs. Current provider/operator services are listed in `docs/denmark.md`; 44 metro stops are assigned to a later mode phase. |
+| Denmark | `denmark_all` | Rejseplanen GTFS/API 2.0 | `gen/denmark.py` | 563 nodes: 458 conventional/S-tog nodes plus 105 provider-linked Letbane boarding places retaining all 173 current service-bearing Letbane stop IDs. Current provider/operator services are listed in `docs/denmark.md`; 44 metro stops are assigned to a later mode phase. |
 
 ## Generation and source notes
 
@@ -37,8 +37,8 @@ Runtime source: Rejseplanen API 2.0 departure/arrival boards at
 <https://www.rejseplanen.dk/api>. Both require approved Labs access and
 `REJSEPLANEN_API_KEY`; credentials are never stored in this repository.
 
-The checked-in snapshot covers `20260810` through `20261104` and contains
-1,589 routes, 36,309 stops, 173,685 trips, and 4,113,661 stop-times. The
+The checked-in snapshot covers `20260907` through `20261202` and contains
+1,608 routes, 36,364 stops, 175,501 trips, and 4,015,707 stop-times. The
 generator keeps provider stop IDs beginning with `86` when they occur in
 selected provider rail services. Heavy-rail IDs are commonly seven digits;
 Letbane IDs are longer and use the same Rejseplanen namespace.
@@ -70,11 +70,16 @@ and other non-rail records are not station candidates for `denmark_all`.
 
 ## Completeness and gaps
 
-The offline rebuild produces 631 nodes: 458 conventional/S-tog
-nodes plus 173 Letbane stop IDs. There are no explicit Denmark exclusions or
-reviewed provider-ID mappings.
+The offline rebuild produces 563 nodes: 458 conventional/S-tog nodes plus 105
+Letbane boarding-place nodes. Rejseplanen publishes 173 service-bearing native
+Letbane stop IDs; exact-name families are consolidated only when the feed also
+publishes a complete bidirectional `transfer_type=2` relation between every
+member, and every native ID remains in the node's `stop_ids`. Multi-ID families also expose those exact IDs as `provider_place_ids`; the runtime queries each native board and deduplicates exact occurrences, so no direction/platform-specific service is lost behind the canonical map ID. The feed leaves
+`location_type=0`, `parent_station`, and `platform_code` uninformative for these
+stops, so name or proximity alone is never used as reconciliation evidence.
+There are no explicit Denmark exclusions or reviewed provider-ID mappings.
 
-The current snapshot contains 567 additional `86...` stop records not used by
+The current snapshot contains 413 additional `86...` stop records not used by
 selected rail trips. They are a mixed set of bus, ferry, replacement-bus,
 metro, inactive, and other records rather than a clean no-service railway
 inventory. They must not be placed in exclusions automatically. A future

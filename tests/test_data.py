@@ -665,7 +665,7 @@ class DatasetTests(unittest.TestCase):
             str(row["id"]): row
             for row in load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
         }
-        self.assertEqual(61, len(supplements))
+        self.assertEqual(60, len(supplements))
         self.assertTrue(
             all(
                 str(row["sncf_id"]) in nodes
@@ -675,6 +675,8 @@ class DatasetTests(unittest.TestCase):
         )
         self.assertIn("87561143", nodes)
         self.assertNotIn("87565143", nodes)
+        self.assertIn("87691949", nodes)
+        self.assertNotIn("87517912", nodes)
 
     def test_france_uic_parser_accepts_non_string_tag_values(self) -> None:
         self.assertEqual(

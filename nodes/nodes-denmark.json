@@ -18,8 +18,7 @@
 {"type":"node","id":"8600047","lat":56.3275,"lon":10.047235,"tags":{"name":"Hadsten St.","stop_ids":["8600047"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600048","lat":56.263085,"lon":10.06007,"tags":{"name":"Hinnerup St.","stop_ids":["8600048"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600053","lat":56.150441,"lon":10.20476,"tags":{"name":"Aarhus H","stop_ids":["8600053"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860005300","lat":56.149988,"lon":10.2032,"tags":{"name":"Aarhus H (Letbane)","stop_ids":["860005300"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860005301","lat":56.149934,"lon":10.203278,"tags":{"name":"Aarhus H (Letbane)","stop_ids":["860005301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860005300","lat":56.149988,"lon":10.2032,"tags":{"name":"Aarhus H (Letbane)","stop_ids":["860005300","860005301"],"provider_place_ids":["860005300","860005301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600054","lat":56.122349,"lon":10.160948,"tags":{"name":"Viby Jylland St.","stop_ids":["8600054"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600059","lat":56.08205,"lon":10.037787,"tags":{"name":"Hørning St.","stop_ids":["8600059"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600061","lat":56.043373,"lon":9.925359,"tags":{"name":"Skanderborg St.","stop_ids":["8600061"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -41,36 +40,23 @@
 {"type":"node","id":"8600115","lat":57.084805,"lon":9.874941,"tags":{"name":"Aalborg Lufthavn St.","stop_ids":["8600115"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600116","lat":57.066735,"lon":9.904498,"tags":{"name":"Lindholm St.","stop_ids":["8600116"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600117","lat":57.053284,"lon":9.908638,"tags":{"name":"Aalborg Vestby St.","stop_ids":["8600117"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860012901","lat":56.156928,"lon":10.213061,"tags":{"name":"Skolebakken (Letbane)","stop_ids":["860012901"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860012902","lat":56.156964,"lon":10.212998,"tags":{"name":"Skolebakken (Letbane)","stop_ids":["860012902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860014801","lat":56.163039,"lon":10.216619,"tags":{"name":"Østbanetorvet (Letbane)","stop_ids":["860014801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860014802","lat":56.162389,"lon":10.215987,"tags":{"name":"Østbanetorvet (Letbane)","stop_ids":["860014802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860014901","lat":56.193785,"lon":10.237592,"tags":{"name":"Vestre Strandalle (Letbane)","stop_ids":["860014901"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860014902","lat":56.195424,"lon":10.236372,"tags":{"name":"Vestre Strandalle (Letbane)","stop_ids":["860014902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860012901","lat":56.156928,"lon":10.213061,"tags":{"name":"Skolebakken (Letbane)","stop_ids":["860012901","860012902"],"provider_place_ids":["860012901","860012902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860014801","lat":56.163039,"lon":10.216619,"tags":{"name":"Østbanetorvet (Letbane)","stop_ids":["860014801","860014802"],"provider_place_ids":["860014801","860014802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860014901","lat":56.193785,"lon":10.237592,"tags":{"name":"Vestre Strandalle (Letbane)","stop_ids":["860014901","860014902"],"provider_place_ids":["860014901","860014902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860015001","lat":56.184258,"lon":10.237011,"tags":{"name":"Risskov Strandpark (Letbane)","stop_ids":["860015001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015101","lat":56.205351,"lon":10.228485,"tags":{"name":"Torsøvej (Letbane)","stop_ids":["860015101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015102","lat":56.206101,"lon":10.228074,"tags":{"name":"Torsøvej (Letbane)","stop_ids":["860015102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015202","lat":56.230767,"lon":10.234235,"tags":{"name":"Lystrup (Letbane)","stop_ids":["860015202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015203","lat":56.231034,"lon":10.235373,"tags":{"name":"Lystrup (Letbane)","stop_ids":["860015203"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015205","lat":56.230807,"lon":10.234688,"tags":{"name":"Lystrup (Letbane)","stop_ids":["860015205"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015301","lat":56.244424,"lon":10.268046,"tags":{"name":"Hjortshøj (Letbane)","stop_ids":["860015301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015302","lat":56.245441,"lon":10.270517,"tags":{"name":"Hjortshøj (Letbane)","stop_ids":["860015302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015401","lat":56.261434,"lon":10.302674,"tags":{"name":"Skødstrup (Letbane)","stop_ids":["860015401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015402","lat":56.262171,"lon":10.303522,"tags":{"name":"Skødstrup (Letbane)","stop_ids":["860015402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015501","lat":56.275221,"lon":10.316806,"tags":{"name":"Løgten (Letbane)","stop_ids":["860015501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015502","lat":56.276724,"lon":10.318214,"tags":{"name":"Løgten (Letbane)","stop_ids":["860015502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015602","lat":56.320854,"lon":10.3138,"tags":{"name":"Hornslet (Letbane)","stop_ids":["860015602"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015603","lat":56.320692,"lon":10.313795,"tags":{"name":"Hornslet (Letbane)","stop_ids":["860015603"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015101","lat":56.205351,"lon":10.228485,"tags":{"name":"Torsøvej (Letbane)","stop_ids":["860015101","860015102"],"provider_place_ids":["860015101","860015102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015202","lat":56.230767,"lon":10.234235,"tags":{"name":"Lystrup (Letbane)","stop_ids":["860015202","860015203","860015205"],"provider_place_ids":["860015202","860015203","860015205"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015301","lat":56.244424,"lon":10.268046,"tags":{"name":"Hjortshøj (Letbane)","stop_ids":["860015301","860015302"],"provider_place_ids":["860015301","860015302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015401","lat":56.261434,"lon":10.302674,"tags":{"name":"Skødstrup (Letbane)","stop_ids":["860015401","860015402"],"provider_place_ids":["860015401","860015402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015501","lat":56.275221,"lon":10.316806,"tags":{"name":"Løgten (Letbane)","stop_ids":["860015501","860015502"],"provider_place_ids":["860015501","860015502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015602","lat":56.320854,"lon":10.3138,"tags":{"name":"Hornslet (Letbane)","stop_ids":["860015602","860015603"],"provider_place_ids":["860015602","860015603"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860015701","lat":56.339264,"lon":10.375956,"tags":{"name":"Mørke (Letbane)","stop_ids":["860015701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860015801","lat":56.356132,"lon":10.448279,"tags":{"name":"Thorsager (Letbane)","stop_ids":["860015801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015902","lat":56.380132,"lon":10.499719,"tags":{"name":"Ryomgård (Letbane)","stop_ids":["860015902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860015903","lat":56.379934,"lon":10.50125,"tags":{"name":"Ryomgård (Letbane)","stop_ids":["860015903"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860015902","lat":56.380132,"lon":10.499719,"tags":{"name":"Ryomgård (Letbane)","stop_ids":["860015902","860015903"],"provider_place_ids":["860015902","860015903"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860016001","lat":56.3629,"lon":10.587527,"tags":{"name":"Kolind (Letbane)","stop_ids":["860016001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860016201","lat":56.35054,"lon":10.770905,"tags":{"name":"Trustrup (Letbane)","stop_ids":["860016201"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860016202","lat":56.350649,"lon":10.770845,"tags":{"name":"Trustrup (Letbane)","stop_ids":["860016202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860016201","lat":56.35054,"lon":10.770905,"tags":{"name":"Trustrup (Letbane)","stop_ids":["860016201","860016202"],"provider_place_ids":["860016201","860016202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860016301","lat":56.390012,"lon":10.872127,"tags":{"name":"Hessel (Letbane)","stop_ids":["860016301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860016502","lat":56.412262,"lon":10.878651,"tags":{"name":"Grenaa (Letbane)","stop_ids":["860016502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860016503","lat":56.412822,"lon":10.880834,"tags":{"name":"Grenaa (Letbane)","stop_ids":["860016503"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860016502","lat":56.412262,"lon":10.878651,"tags":{"name":"Grenaa (Letbane)","stop_ids":["860016502","860016503"],"provider_place_ids":["860016502","860016503"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600171","lat":56.39564,"lon":9.7932,"tags":{"name":"Ulstrup St.","stop_ids":["8600171"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600172","lat":56.374231,"lon":9.657947,"tags":{"name":"Bjerringbro St.","stop_ids":["8600172"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600174","lat":56.352651,"lon":9.499932,"tags":{"name":"Rødkærsbro St.","stop_ids":["8600174"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -363,32 +349,21 @@
 {"type":"node","id":"8601437","lat":56.059238,"lon":12.077716,"tags":{"name":"Tisvildeleje St.","stop_ids":["8601437"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8601439","lat":56.062679,"lon":12.13632,"tags":{"name":"Vejby St.","stop_ids":["8601439"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8601443","lat":56.055716,"lon":12.162552,"tags":{"name":"Ørby St.","stop_ids":["8601443"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860150101","lat":56.003748,"lon":10.181845,"tags":{"name":"Assedrup (Letbane)","stop_ids":["860150101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860150102","lat":56.004052,"lon":10.182896,"tags":{"name":"Assedrup (Letbane)","stop_ids":["860150102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860150101","lat":56.003748,"lon":10.181845,"tags":{"name":"Assedrup (Letbane)","stop_ids":["860150101","860150102"],"provider_place_ids":["860150101","860150102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860150301","lat":56.057091,"lon":10.198153,"tags":{"name":"Beder (Letbane)","stop_ids":["860150301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860150901","lat":56.111041,"lon":10.125453,"tags":{"name":"Gunnar Clausens Vej (Letbane)","stop_ids":["860150901"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860150902","lat":56.111976,"lon":10.126397,"tags":{"name":"Gunnar Clausens Vej (Letbane)","stop_ids":["860150902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151001","lat":56.091809,"lon":10.15212,"tags":{"name":"Nørrevænget (Letbane)","stop_ids":["860151001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151002","lat":56.092438,"lon":10.150178,"tags":{"name":"Nørrevænget (Letbane)","stop_ids":["860151002"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860150901","lat":56.111041,"lon":10.125453,"tags":{"name":"Gunnar Clausens Vej (Letbane)","stop_ids":["860150901","860150902"],"provider_place_ids":["860150901","860150902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860151001","lat":56.091809,"lon":10.15212,"tags":{"name":"Nørrevænget (Letbane)","stop_ids":["860151001","860151002"],"provider_place_ids":["860151001","860151002"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860151201","lat":56.135109,"lon":10.174189,"tags":{"name":"Kongsvang (Letbane)","stop_ids":["860151201"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151301","lat":56.037695,"lon":10.191212,"tags":{"name":"Malling (Letbane)","stop_ids":["860151301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151302","lat":56.037658,"lon":10.191388,"tags":{"name":"Malling (Letbane)","stop_ids":["860151302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860151301","lat":56.037695,"lon":10.191212,"tags":{"name":"Malling (Letbane)","stop_ids":["860151301","860151302"],"provider_place_ids":["860151301","860151302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860151401","lat":56.072387,"lon":10.154529,"tags":{"name":"Mølleparken (Letbane)","stop_ids":["860151401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151501","lat":56.068653,"lon":10.164618,"tags":{"name":"Mårslet (Letbane)","stop_ids":["860151501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151502","lat":56.068891,"lon":10.164111,"tags":{"name":"Mårslet (Letbane)","stop_ids":["860151502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151902","lat":55.971786,"lon":10.150473,"tags":{"name":"Odder (Letbane)","stop_ids":["860151902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860151903","lat":55.972497,"lon":10.150398,"tags":{"name":"Odder (Letbane)","stop_ids":["860151903"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860151501","lat":56.068653,"lon":10.164618,"tags":{"name":"Mårslet (Letbane)","stop_ids":["860151501","860151502"],"provider_place_ids":["860151501","860151502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860151902","lat":55.971786,"lon":10.150473,"tags":{"name":"Odder (Letbane)","stop_ids":["860151902","860151903"],"provider_place_ids":["860151902","860151903"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860152101","lat":56.117101,"lon":10.147488,"tags":{"name":"Rosenhøj (Letbane)","stop_ids":["860152101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152201","lat":55.98271,"lon":10.153635,"tags":{"name":"Rude Havvej (Letbane)","stop_ids":["860152201"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152202","lat":55.984183,"lon":10.15464,"tags":{"name":"Rude Havvej (Letbane)","stop_ids":["860152202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152301","lat":56.097086,"lon":10.13535,"tags":{"name":"Tranbjerg (Letbane)","stop_ids":["860152301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152302","lat":56.096434,"lon":10.135942,"tags":{"name":"Tranbjerg (Letbane)","stop_ids":["860152302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152501","lat":56.122245,"lon":10.160494,"tags":{"name":"Viby Jylland (Letbane)","stop_ids":["860152501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152502","lat":56.121724,"lon":10.159561,"tags":{"name":"Viby Jylland (Letbane)","stop_ids":["860152502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152601","lat":56.063838,"lon":10.179667,"tags":{"name":"Vilhelmsborg (Letbane)","stop_ids":["860152601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152602","lat":56.064374,"lon":10.178077,"tags":{"name":"Vilhelmsborg (Letbane)","stop_ids":["860152602"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152801","lat":56.114441,"lon":10.132999,"tags":{"name":"Øllegårdsvej (Letbane)","stop_ids":["860152801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860152802","lat":56.114813,"lon":10.134505,"tags":{"name":"Øllegårdsvej (Letbane)","stop_ids":["860152802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860152201","lat":55.98271,"lon":10.153635,"tags":{"name":"Rude Havvej (Letbane)","stop_ids":["860152201","860152202"],"provider_place_ids":["860152201","860152202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860152301","lat":56.097086,"lon":10.13535,"tags":{"name":"Tranbjerg (Letbane)","stop_ids":["860152301","860152302"],"provider_place_ids":["860152301","860152302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860152501","lat":56.122245,"lon":10.160494,"tags":{"name":"Viby Jylland (Letbane)","stop_ids":["860152501","860152502"],"provider_place_ids":["860152501","860152502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860152601","lat":56.063838,"lon":10.179667,"tags":{"name":"Vilhelmsborg (Letbane)","stop_ids":["860152601","860152602"],"provider_place_ids":["860152601","860152602"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860152801","lat":56.114441,"lon":10.132999,"tags":{"name":"Øllegårdsvej (Letbane)","stop_ids":["860152801","860152802"],"provider_place_ids":["860152801","860152802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8601601","lat":56.097784,"lon":12.386955,"tags":{"name":"Dronningmølle St.","stop_ids":["8601601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8601603","lat":56.098237,"lon":12.355886,"tags":{"name":"Firhøj St. (Gilleleje)","stop_ids":["8601603"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8601604","lat":56.122681,"lon":12.309023,"tags":{"name":"Gilleleje Øst St.","stop_ids":["8601604"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -481,7 +456,7 @@
 {"type":"node","id":"8603424","lat":55.770881,"lon":12.505548,"tags":{"name":"Lyngby Centrum (Letbane)","stop_ids":["8603424"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603425","lat":55.774818,"lon":12.519591,"tags":{"name":"Fortunbyen (Letbane)","stop_ids":["8603425"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603427","lat":55.780223,"lon":12.519488,"tags":{"name":"Akademivej -  DTU (Letbane)","stop_ids":["8603427"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8603428","lat":55.785542,"lon":12.522632,"tags":{"name":"Akademivej -  DTU (Letbane)","stop_ids":["8603428"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603428","lat":55.785542,"lon":12.522632,"tags":{"name":"Anker Engelundsvej - DTU (Letbane)","stop_ids":["8603428"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603429","lat":55.787183,"lon":12.528282,"tags":{"name":"Rævehøjvej (Letbane)","stop_ids":["8603429"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603430","lat":55.794648,"lon":12.53029,"tags":{"name":"Lundtofte St. (Letbane)","stop_ids":["8603430"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603505","lat":55.808689,"lon":11.500214,"tags":{"name":"Asnæs St.","stop_ids":["8603505"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -508,40 +483,23 @@
 {"type":"node","id":"8604115","lat":57.723911,"lon":10.592087,"tags":{"name":"Skagen St.","stop_ids":["8604115"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604117","lat":57.489878,"lon":10.49041,"tags":{"name":"Strandby St.","stop_ids":["8604117"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604119","lat":57.592626,"lon":10.408348,"tags":{"name":"Ålbæk St.","stop_ids":["8604119"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430201","lat":56.153962,"lon":10.213112,"tags":{"name":"Dokk1 (Letbane)","stop_ids":["860430201"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430202","lat":56.153954,"lon":10.213015,"tags":{"name":"Dokk1 (Letbane)","stop_ids":["860430202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430301","lat":56.161676,"lon":10.211729,"tags":{"name":"Nørreport Aarhus (Letbane)","stop_ids":["860430301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430302","lat":56.16157,"lon":10.2115,"tags":{"name":"Nørreport Aarhus (Letbane)","stop_ids":["860430302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430401","lat":56.167062,"lon":10.207711,"tags":{"name":"Universitetsparken (Letbane)","stop_ids":["860430401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430402","lat":56.167045,"lon":10.207598,"tags":{"name":"Universitetsparken (Letbane)","stop_ids":["860430402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430501","lat":56.172136,"lon":10.204327,"tags":{"name":"Aarhus Universitet (Ringgaden) (Letbane)","stop_ids":["860430501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430502","lat":56.171214,"lon":10.204846,"tags":{"name":"Aarhus Universitet (Ringgaden) (Letbane)","stop_ids":["860430502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430601","lat":56.173898,"lon":10.203223,"tags":{"name":"Stjernepladsen (Letbane)","stop_ids":["860430601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430602","lat":56.173891,"lon":10.203093,"tags":{"name":"Stjernepladsen (Letbane)","stop_ids":["860430602"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430701","lat":56.178728,"lon":10.200007,"tags":{"name":"Stockholmsgade (Letbane)","stop_ids":["860430701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430702","lat":56.177987,"lon":10.200419,"tags":{"name":"Stockholmsgade (Letbane)","stop_ids":["860430702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430801","lat":56.182944,"lon":10.197061,"tags":{"name":"Vandtårnet (Ringvejen) (Letbane)","stop_ids":["860430801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430802","lat":56.182049,"lon":10.197581,"tags":{"name":"Vandtårnet (Ringvejen) (Letbane)","stop_ids":["860430802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430901","lat":56.186528,"lon":10.193386,"tags":{"name":"Nehrus Allé (Letbane)","stop_ids":["860430901"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860430902","lat":56.186483,"lon":10.193401,"tags":{"name":"Nehrus Allé (Letbane)","stop_ids":["860430902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431001","lat":56.189719,"lon":10.183962,"tags":{"name":"Olof Palmes Allé (Letbane)","stop_ids":["860431001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431002","lat":56.189683,"lon":10.183928,"tags":{"name":"Olof Palmes Allé (Letbane)","stop_ids":["860431002"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431101","lat":56.192478,"lon":10.176376,"tags":{"name":"Aarhus Universitetshospital (Letbane)","stop_ids":["860431101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431102","lat":56.192461,"lon":10.176262,"tags":{"name":"Aarhus Universitetshospital (Letbane)","stop_ids":["860431102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431103","lat":56.192478,"lon":10.17636,"tags":{"name":"Aarhus Universitetshospital (Letbane)","stop_ids":["860431103"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431201","lat":56.197544,"lon":10.169004,"tags":{"name":"Gl. Skejby (Agro Food Park) (Letbane)","stop_ids":["860431201"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431202","lat":56.197604,"lon":10.168361,"tags":{"name":"Gl. Skejby (Agro Food Park) (Letbane)","stop_ids":["860431202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431301","lat":56.20324,"lon":10.166243,"tags":{"name":"Humlehuse (Letbane)","stop_ids":["860431301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431302","lat":56.203626,"lon":10.166255,"tags":{"name":"Humlehuse (Letbane)","stop_ids":["860431302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431401","lat":56.212103,"lon":10.163884,"tags":{"name":"Klokhøjen (Letbane)","stop_ids":["860431401"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431402","lat":56.212546,"lon":10.163688,"tags":{"name":"Klokhøjen (Letbane)","stop_ids":["860431402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431501","lat":56.216507,"lon":10.164792,"tags":{"name":"Lisbjerg Bygade (Letbane)","stop_ids":["860431501"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431502","lat":56.216841,"lon":10.164624,"tags":{"name":"Lisbjerg Bygade (Letbane)","stop_ids":["860431502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430201","lat":56.153962,"lon":10.213112,"tags":{"name":"Dokk1 (Letbane)","stop_ids":["860430201","860430202"],"provider_place_ids":["860430201","860430202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430301","lat":56.161676,"lon":10.211729,"tags":{"name":"Nørreport Aarhus (Letbane)","stop_ids":["860430301","860430302"],"provider_place_ids":["860430301","860430302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430401","lat":56.167062,"lon":10.207711,"tags":{"name":"Universitetsparken (Letbane)","stop_ids":["860430401","860430402"],"provider_place_ids":["860430401","860430402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430501","lat":56.172136,"lon":10.204327,"tags":{"name":"Aarhus Universitet (Ringgaden) (Letbane)","stop_ids":["860430501","860430502"],"provider_place_ids":["860430501","860430502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430601","lat":56.173898,"lon":10.203223,"tags":{"name":"Stjernepladsen (Letbane)","stop_ids":["860430601","860430602"],"provider_place_ids":["860430601","860430602"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430701","lat":56.178728,"lon":10.200007,"tags":{"name":"Stockholmsgade (Letbane)","stop_ids":["860430701","860430702"],"provider_place_ids":["860430701","860430702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430801","lat":56.182944,"lon":10.197061,"tags":{"name":"Vandtårnet (Ringvejen) (Letbane)","stop_ids":["860430801","860430802"],"provider_place_ids":["860430801","860430802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860430901","lat":56.186528,"lon":10.193386,"tags":{"name":"Nehrus Allé (Letbane)","stop_ids":["860430901","860430902"],"provider_place_ids":["860430901","860430902"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431001","lat":56.189719,"lon":10.183962,"tags":{"name":"Olof Palmes Allé (Letbane)","stop_ids":["860431001","860431002"],"provider_place_ids":["860431001","860431002"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431101","lat":56.192478,"lon":10.176376,"tags":{"name":"Aarhus Universitetshospital (Letbane)","stop_ids":["860431101","860431102","860431103"],"provider_place_ids":["860431101","860431102","860431103"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431201","lat":56.197544,"lon":10.169004,"tags":{"name":"Gl. Skejby (Agro Food Park) (Letbane)","stop_ids":["860431201","860431202"],"provider_place_ids":["860431201","860431202"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431301","lat":56.20324,"lon":10.166243,"tags":{"name":"Humlehuse (Letbane)","stop_ids":["860431301","860431302"],"provider_place_ids":["860431301","860431302"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431401","lat":56.212103,"lon":10.163884,"tags":{"name":"Klokhøjen (Letbane)","stop_ids":["860431401","860431402"],"provider_place_ids":["860431401","860431402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431501","lat":56.216507,"lon":10.164792,"tags":{"name":"Lisbjerg Bygade (Letbane)","stop_ids":["860431501","860431502"],"provider_place_ids":["860431501","860431502"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"860431601","lat":56.218098,"lon":10.157019,"tags":{"name":"Lisbjergskolen (Letbane)","stop_ids":["860431601"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431701","lat":56.219498,"lon":10.174413,"tags":{"name":"Lisbjerg-Terp (Letbane)","stop_ids":["860431701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431702","lat":56.219424,"lon":10.173637,"tags":{"name":"Lisbjerg-Terp (Letbane)","stop_ids":["860431702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431801","lat":56.227303,"lon":10.20096,"tags":{"name":"Nye (Letbane)","stop_ids":["860431801"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"860431802","lat":56.227149,"lon":10.200181,"tags":{"name":"Nye (Letbane)","stop_ids":["860431802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431701","lat":56.219498,"lon":10.174413,"tags":{"name":"Lisbjerg-Terp (Letbane)","stop_ids":["860431701","860431702"],"provider_place_ids":["860431701","860431702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"860431801","lat":56.227303,"lon":10.20096,"tags":{"name":"Nye (Letbane)","stop_ids":["860431801","860431802"],"provider_place_ids":["860431801","860431802"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604701","lat":55.617072,"lon":8.331212,"tags":{"name":"Billum St.","stop_ids":["8604701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604702","lat":55.623801,"lon":8.460442,"tags":{"name":"Boulevarden St.","stop_ids":["8604702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604704","lat":55.69979,"lon":8.298168,"tags":{"name":"Dyreby St.","stop_ids":["8604704"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -577,55 +535,29 @@
 {"type":"node","id":"8604828","lat":56.577309,"lon":8.143244,"tags":{"name":"Victoria Street Station","stop_ids":["8604828"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604829","lat":56.601665,"lon":8.148344,"tags":{"name":"Vrist St.","stop_ids":["8604829"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8604831","lat":56.692747,"lon":8.209478,"tags":{"name":"Sprogøvej St.","stop_ids":["8604831"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608701","lat":55.396567,"lon":10.390377,"tags":{"name":"Albani Torv (Odense Letbane)","stop_ids":["8608701"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608702","lat":55.392892,"lon":10.397448,"tags":{"name":"Benedikts Plads (Odense Letbane)","stop_ids":["8608702"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608703","lat":55.376825,"lon":10.43457,"tags":{"name":"Bilka (Odense Letbane)","stop_ids":["8608703"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608704","lat":55.393994,"lon":10.353813,"tags":{"name":"Bolbro (Odense Letbane)","stop_ids":["8608704"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608705","lat":55.370733,"lon":10.427549,"tags":{"name":"Campus Odense (Odense Letbane)","stop_ids":["8608705"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608706","lat":55.375251,"lon":10.428516,"tags":{"name":"Cortex Park (Odense Letbane)","stop_ids":["8608706"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608707","lat":55.389198,"lon":10.424741,"tags":{"name":"Ejerslykke (Odense Letbane)","stop_ids":["8608707"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608708","lat":55.356784,"lon":10.403637,"tags":{"name":"Hestehaven (Odense Letbane)","stop_ids":["8608708"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608709","lat":55.357995,"lon":10.393552,"tags":{"name":"Hjallese St. (Odense Letbane)","stop_ids":["8608709"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608710","lat":55.35965,"lon":10.426929,"tags":{"name":"Hospital Syd (Odense Letbane)","stop_ids":["8608710"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608711","lat":55.402021,"lon":10.339748,"tags":{"name":"Højstrup Fyn (Odense Letbane)","stop_ids":["8608711"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608712","lat":55.39783,"lon":10.347407,"tags":{"name":"Idrætsparken (Odense Letbane)","stop_ids":["8608712"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608713","lat":55.381265,"lon":10.432237,"tags":{"name":"IKEA (Odense Letbane)","stop_ids":["8608713"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608714","lat":55.398614,"lon":10.378653,"tags":{"name":"Kongensgade (Odense Letbane)","stop_ids":["8608714"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608715","lat":55.393033,"lon":10.421026,"tags":{"name":"Korsløkke (Odense Letbane)","stop_ids":["8608715"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608716","lat":55.400899,"lon":10.387181,"tags":{"name":"Odense Banegård (Odense Letbane)","stop_ids":["8608716"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608717","lat":55.399825,"lon":10.389923,"tags":{"name":"ODEON (Odense Letbane)","stop_ids":["8608717"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608718","lat":55.394258,"lon":10.403702,"tags":{"name":"Palnatokesvej (Odense Letbane)","stop_ids":["8608718"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608719","lat":55.35695,"lon":10.42109,"tags":{"name":"Parkering Odense Syd (Odense Letbane)","stop_ids":["8608719"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608720","lat":55.384908,"lon":10.428801,"tags":{"name":"Rosengårdscentret (Odense Letbane)","stop_ids":["8608720"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608721","lat":55.36689,"lon":10.428057,"tags":{"name":"SDU (Odense Letbane)","stop_ids":["8608721"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608722","lat":55.36358,"lon":10.427528,"tags":{"name":"SDU Syd / Hospital Nord (Odense Letbane)","stop_ids":["8608722"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608723","lat":55.408308,"lon":10.340103,"tags":{"name":"Tarup Center (Odense Letbane)","stop_ids":["8608723"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608724","lat":55.39433,"lon":10.367214,"tags":{"name":"Vesterbro (Odense Letbane)","stop_ids":["8608724"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608725","lat":55.396296,"lon":10.372225,"tags":{"name":"Vestre Stationsvej (Odense Letbane)","stop_ids":["8608725"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608726","lat":55.39347,"lon":10.415942,"tags":{"name":"Østerbæksvej (Odense Letbane)","stop_ids":["8608726"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608751","lat":55.396664,"lon":10.39057,"tags":{"name":"Albani Torv (Odense Letbane)","stop_ids":["8608751"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608752","lat":55.392991,"lon":10.397373,"tags":{"name":"Benedikts Plads (Odense Letbane)","stop_ids":["8608752"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608753","lat":55.376825,"lon":10.43457,"tags":{"name":"Bilka (Odense Letbane)","stop_ids":["8608753"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608754","lat":55.393994,"lon":10.353813,"tags":{"name":"Bolbro (Odense Letbane)","stop_ids":["8608754"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608755","lat":55.370812,"lon":10.427694,"tags":{"name":"Campus Odense (Odense Letbane)","stop_ids":["8608755"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608756","lat":55.375251,"lon":10.428516,"tags":{"name":"Cortex Park (Odense Letbane)","stop_ids":["8608756"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608757","lat":55.389198,"lon":10.424741,"tags":{"name":"Ejerslykke (Odense Letbane)","stop_ids":["8608757"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608758","lat":55.356892,"lon":10.403625,"tags":{"name":"Hestehaven (Odense Letbane)","stop_ids":["8608758"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608759","lat":55.357995,"lon":10.393552,"tags":{"name":"Hjallese St. (Odense Letbane)","stop_ids":["8608759"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608760","lat":55.359531,"lon":10.427098,"tags":{"name":"Hospital Syd (Odense Letbane)","stop_ids":["8608760"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608761","lat":55.40193,"lon":10.33984,"tags":{"name":"Højstrup Fyn (Odense Letbane)","stop_ids":["8608761"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608762","lat":55.397874,"lon":10.347488,"tags":{"name":"Idrætsparken (Odense Letbane)","stop_ids":["8608762"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608763","lat":55.381265,"lon":10.432237,"tags":{"name":"IKEA (Odense Letbane)","stop_ids":["8608763"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608764","lat":55.398743,"lon":10.378373,"tags":{"name":"Kongensgade (Odense Letbane)","stop_ids":["8608764"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608765","lat":55.393033,"lon":10.421026,"tags":{"name":"Korsløkke (Odense Letbane)","stop_ids":["8608765"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608766","lat":55.400899,"lon":10.387181,"tags":{"name":"Odense Banegård (Odense Letbane)","stop_ids":["8608766"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608767","lat":55.399788,"lon":10.390048,"tags":{"name":"ODEON (Odense Letbane)","stop_ids":["8608767"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608768","lat":55.39431,"lon":10.403845,"tags":{"name":"Palnatokesvej (Odense Letbane)","stop_ids":["8608768"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608769","lat":55.35686,"lon":10.42115,"tags":{"name":"Parkering Odense Syd (Odense Letbane)","stop_ids":["8608769"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608770","lat":55.384908,"lon":10.428801,"tags":{"name":"Rosengårdscentret (Odense Letbane)","stop_ids":["8608770"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608771","lat":55.366897,"lon":10.428215,"tags":{"name":"SDU (Odense Letbane)","stop_ids":["8608771"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608772","lat":55.363533,"lon":10.4277,"tags":{"name":"SDU Syd / Hospital Nord (Odense Letbane)","stop_ids":["8608772"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608773","lat":55.408308,"lon":10.340103,"tags":{"name":"Tarup Center (Odense Letbane)","stop_ids":["8608773"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608774","lat":55.394419,"lon":10.367265,"tags":{"name":"Vesterbro (Odense Letbane)","stop_ids":["8608774"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608775","lat":55.396341,"lon":10.372147,"tags":{"name":"Vestre Stationsvej (Odense Letbane)","stop_ids":["8608775"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8608776","lat":55.39347,"lon":10.415942,"tags":{"name":"Østerbæksvej (Odense Letbane)","stop_ids":["8608776"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608701","lat":55.396567,"lon":10.390377,"tags":{"name":"Albani Torv (Odense Letbane)","stop_ids":["8608701","8608751"],"provider_place_ids":["8608701","8608751"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608702","lat":55.392892,"lon":10.397448,"tags":{"name":"Benedikts Plads (Odense Letbane)","stop_ids":["8608702","8608752"],"provider_place_ids":["8608702","8608752"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608703","lat":55.376825,"lon":10.43457,"tags":{"name":"Bilka (Odense Letbane)","stop_ids":["8608703","8608753"],"provider_place_ids":["8608703","8608753"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608704","lat":55.393994,"lon":10.353813,"tags":{"name":"Bolbro (Odense Letbane)","stop_ids":["8608704","8608754"],"provider_place_ids":["8608704","8608754"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608705","lat":55.370733,"lon":10.427549,"tags":{"name":"Campus Odense (Odense Letbane)","stop_ids":["8608705","8608755"],"provider_place_ids":["8608705","8608755"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608706","lat":55.375251,"lon":10.428516,"tags":{"name":"Cortex Park (Odense Letbane)","stop_ids":["8608706","8608756"],"provider_place_ids":["8608706","8608756"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608707","lat":55.389198,"lon":10.424741,"tags":{"name":"Ejerslykke (Odense Letbane)","stop_ids":["8608707","8608757"],"provider_place_ids":["8608707","8608757"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608708","lat":55.356784,"lon":10.403637,"tags":{"name":"Hestehaven (Odense Letbane)","stop_ids":["8608708","8608758"],"provider_place_ids":["8608708","8608758"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608709","lat":55.357995,"lon":10.393552,"tags":{"name":"Hjallese St. (Odense Letbane)","stop_ids":["8608709","8608759"],"provider_place_ids":["8608709","8608759"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608710","lat":55.35965,"lon":10.426929,"tags":{"name":"Hospital Syd (Odense Letbane)","stop_ids":["8608710","8608760"],"provider_place_ids":["8608710","8608760"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608711","lat":55.402021,"lon":10.339748,"tags":{"name":"Højstrup Fyn (Odense Letbane)","stop_ids":["8608711","8608761"],"provider_place_ids":["8608711","8608761"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608712","lat":55.39783,"lon":10.347407,"tags":{"name":"Idrætsparken (Odense Letbane)","stop_ids":["8608712","8608762"],"provider_place_ids":["8608712","8608762"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608713","lat":55.381265,"lon":10.432237,"tags":{"name":"IKEA (Odense Letbane)","stop_ids":["8608713","8608763"],"provider_place_ids":["8608713","8608763"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608714","lat":55.398614,"lon":10.378653,"tags":{"name":"Kongensgade (Odense Letbane)","stop_ids":["8608714","8608764"],"provider_place_ids":["8608714","8608764"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608715","lat":55.393033,"lon":10.421026,"tags":{"name":"Korsløkke (Odense Letbane)","stop_ids":["8608715","8608765"],"provider_place_ids":["8608715","8608765"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608716","lat":55.400899,"lon":10.387181,"tags":{"name":"Odense Banegård (Odense Letbane)","stop_ids":["8608716","8608766"],"provider_place_ids":["8608716","8608766"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608717","lat":55.399825,"lon":10.389923,"tags":{"name":"ODEON (Odense Letbane)","stop_ids":["8608717","8608767"],"provider_place_ids":["8608717","8608767"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608718","lat":55.394258,"lon":10.403702,"tags":{"name":"Palnatokesvej (Odense Letbane)","stop_ids":["8608718","8608768"],"provider_place_ids":["8608718","8608768"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608719","lat":55.35695,"lon":10.42109,"tags":{"name":"Parkering Odense Syd (Odense Letbane)","stop_ids":["8608719","8608769"],"provider_place_ids":["8608719","8608769"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608720","lat":55.384908,"lon":10.428801,"tags":{"name":"Rosengårdscentret (Odense Letbane)","stop_ids":["8608720","8608770"],"provider_place_ids":["8608720","8608770"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608721","lat":55.36689,"lon":10.428057,"tags":{"name":"SDU (Odense Letbane)","stop_ids":["8608721","8608771"],"provider_place_ids":["8608721","8608771"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608722","lat":55.36358,"lon":10.427528,"tags":{"name":"SDU Syd / Hospital Nord (Odense Letbane)","stop_ids":["8608722","8608772"],"provider_place_ids":["8608722","8608772"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608723","lat":55.408308,"lon":10.340103,"tags":{"name":"Tarup Center (Odense Letbane)","stop_ids":["8608723","8608773"],"provider_place_ids":["8608723","8608773"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608724","lat":55.39433,"lon":10.367214,"tags":{"name":"Vesterbro (Odense Letbane)","stop_ids":["8608724","8608774"],"provider_place_ids":["8608724","8608774"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608725","lat":55.396296,"lon":10.372225,"tags":{"name":"Vestre Stationsvej (Odense Letbane)","stop_ids":["8608725","8608775"],"provider_place_ids":["8608725","8608775"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8608726","lat":55.39347,"lon":10.415942,"tags":{"name":"Østerbæksvej (Odense Letbane)","stop_ids":["8608726","8608776"],"provider_place_ids":["8608726","8608776"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}

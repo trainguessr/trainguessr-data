@@ -119,6 +119,47 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
             station_id = stop.get("parent_station", "").strip() or stop_id
             station_to_children.setdefault(station_id, set()).add(stop_id)
 
+        # Rejseplanen currently leaves location_type/parent_station/platform_code
+        # empty for its Letbane boarding stops.  It does, however, publish
+        # explicit bidirectional transfer edges between the native stop IDs
+        # that form one boarding-place family.  Collapse only exact-name
+        # families for which every ordered pair has a provider transfer_type=2
+        # edge; the transfer graph, not name or proximity, is the identity
+        # evidence.  Keep every service-bearing native ID in stop_ids.
+        transfer_edges: set[tuple[str, str]] = set()
+        if "transfers.txt" in archive.namelist():
+            for row in _table(archive, "transfers.txt"):
+                if row.get("transfer_type") != "2":
+                    continue
+                source = _normalise_stop_id(row.get("from_stop_id"))
+                target = _normalise_stop_id(row.get("to_stop_id"))
+                if source and target and source != target:
+                    transfer_edges.add((source, target))
+
+        by_name: dict[str, list[str]] = {}
+        for station_id in station_to_children:
+            stop = stops.get(station_id)
+            name = str((stop or {}).get("stop_name") or "").strip()
+            if name:
+                by_name.setdefault(name, []).append(station_id)
+
+        for station_ids in by_name.values():
+            if len(station_ids) < 2:
+                continue
+            station_ids = sorted(station_ids)
+            if not all(
+                (source, target) in transfer_edges
+                for source in station_ids
+                for target in station_ids
+                if source != target
+            ):
+                continue
+            canonical_id = station_ids[0]
+            canonical_children = station_to_children[canonical_id]
+            for alias_id in station_ids[1:]:
+                canonical_children.update(station_to_children.pop(alias_id))
+                canonical_children.add(alias_id)
+
     result: dict[str, dict[str, Any]] = {}
     for station_id, child_ids in station_to_children.items():
         # Danish Rejseplanen IDs start with 86. Heavy-rail IDs are usually
@@ -145,6 +186,8 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
             "tags": {
                 "name": name,
                 "stop_ids": sorted(child_ids | {station_id}),
+                **({"provider_place_ids": sorted(child_ids | {station_id})}
+                   if len(child_ids | {station_id}) > 1 else {}),
                 "source": "Rejseplanen GTFS",
             },
             "category": "denmark_all",
