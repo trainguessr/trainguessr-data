@@ -390,7 +390,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
         for foreign_name in {
             "Narbonne", "Marseille St Charles", "Montpellier Saint-Roch", "Nimes",
             "Lyon Part Dieu", "Perpignan", "Valence TGV", "Avignon TGV",
-            "Aix en Provence TGV",
+            "Aix en Provence TGV", "Cerbère",
         }:
             self.assertNotIn(foreign_name, names)
 

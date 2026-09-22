@@ -511,6 +511,18 @@
       "source": "FER RESAS line page, Casalgrande station history, and OpenStreetMap passenger-station mapping",
       "source_url": "https://it.wikipedia.org/wiki/Stazione_di_Casalgrande",
       "osm_url": "https://www.openstreetmap.org/node/3404093454"
+    },
+    {
+      "operator": "fer",
+      "id": "S05100",
+      "name": "Bologna Borgo Panigale",
+      "reason": "managed_by_rfi_duplicate_of_rfi_station; RFI board already carries the Vignola services and the RFI node retains this exact ViaggiaTreno station ID"
+    },
+    {
+      "operator": "fer",
+      "id": "S05102",
+      "name": "Casteldebole",
+      "reason": "managed_by_rfi_duplicate_of_rfi_station; RFI board already carries the Vignola services and the RFI node retains this exact ViaggiaTreno station ID"
     }
   ],
   "renamed": [

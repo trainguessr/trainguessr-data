@@ -25,6 +25,7 @@ from common.io import ROOT, write_ndjson
 from common.validate import validate_nodes
 from common.manual_overrides import (
     apply_coordinate_overrides,
+    apply_name_overrides,
     load_override_config,
     require_alias,
 )
@@ -196,6 +197,7 @@ def _apply_station_corrections(
         str(row.get("id"))
         for row in [
             *config.get("coordinate_overrides", []),
+            *config.get("name_overrides", []),
             *config.get("aliases", []),
         ]
         if row.get("id") not in (None, "")
@@ -215,6 +217,11 @@ def _apply_station_corrections(
     apply_coordinate_overrides(
         node_rows,
         config.get("coordinate_overrides", []),
+        context="spain_renfe",
+    )
+    apply_name_overrides(
+        node_rows,
+        config.get("name_overrides", []),
         context="spain_renfe",
     )
 

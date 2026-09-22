@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "description": "Known RFI stations deliberately deferred from ViaggiaTreno mapping. Runtime remains fail-closed; these are review hints, not provider identities.",
+  "stations": [
+    {
+      "rfi_place_id": 646,
+      "name": "Santa Bibiana",
+      "reason": "Santa Bibiana: outside the current Trenitalia/RFI passenger-service context used for this bridge; no applicable VT identity established."
+    },
+    {
+      "rfi_place_id": 2313,
+      "name": "Palermo Maredolce",
+      "reason": "Without traffic since 2020"
+    },
+    {
+      "rfi_place_id": 2595,
+      "name": "Lercara Diramazione",
+      "reason": "P.C. with no trains stopping"
+    },
+    {
+      "rfi_place_id": 3181,
+      "name": "Cansano",
+      "reason": "Cansano: no independent provider-native ViaggiaTreno ID established; S08907 belongs to Ocriticum."
+    },
+    {
+      "rfi_place_id": 3207,
+      "name": "San Michele di Pagana",
+      "reason": "San Michele di Pagana: no current ordinary passenger service and no current provider-native VT identity established."
+    },
+    {
+      "rfi_place_id": 3261,
+      "name": "Palermo Politeama",
+      "reason": "Palermo Politeama: no usable current ViaggiaTreno train call/provider-native station identity established yet."
+    },
+    {
+      "rfi_place_id": 5168,
+      "name": "Funghera",
+      "reason": "Funghera: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5169,
+      "name": "Traves",
+      "reason": "Traves: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5170,
+      "name": "Losa",
+      "reason": "Losa: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5171,
+      "name": "Pessinetto",
+      "reason": "Pessinetto: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5172,
+      "name": "Mezzenile",
+      "reason": "Mezzenile: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5173,
+      "name": "Ceres",
+      "reason": "Ceres: RFI/Trenitalia service exists, but ViaggiaTreno does not expose a usable provider-native journey/station identity."
+    },
+    {
+      "rfi_place_id": 5174,
+      "name": "San Gottardo (Udine)",
+      "reason": "Without traffic due to works, will reopen in 2026"
+    },
+    {
+      "rfi_place_id": 5267,
+      "name": "Cesi",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5386,
+      "name": "Todi Ponte Rio",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5413,
+      "name": "La Dogana",
+      "reason": "La Dogana: Citta di Castello-Sansepolcro rail section closed; current service is replacement bus, so no current VT train fermate[] evidence."
+    },
+    {
+      "rfi_place_id": 5414,
+      "name": "San Giustino",
+      "reason": "San Giustino: Citta di Castello-Sansepolcro rail section closed; current service is replacement bus, so no current VT train fermate[] evidence."
+    },
+    {
+      "rfi_place_id": 5420,
+      "name": "Baucca-Garavelle",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5422,
+      "name": "Canoscio-Fabbrecce",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5429,
+      "name": "Montecorona",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5433,
+      "name": "San Bartolomeo-Resina",
+      "reason": "Without traffic as of 2026"
+    },
+    {
+      "rfi_place_id": 5440,
+      "name": "San Martino in Campo",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5446,
+      "name": "Fratta Todina",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5447,
+      "name": "Ilci",
+      "reason": "Without traffic as of 2026"
+    },
+    {
+      "rfi_place_id": 5448,
+      "name": "Pian di Porto",
+      "reason": "Station removed in 2017"
+    },
+    {
+      "rfi_place_id": 5450,
+      "name": "Collevalenza",
+      "reason": "Without traffic as of 2026"
+    },
+    {
+      "rfi_place_id": 5457,
+      "name": "Borgo Rivo",
+      "reason": "Without traffic as of 2026"
+    }
+  ]
+}

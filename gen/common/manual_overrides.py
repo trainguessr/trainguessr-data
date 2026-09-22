@@ -70,6 +70,35 @@ def apply_coordinate_overrides(
     return used
 
 
+
+def apply_name_overrides(
+    rows: list[dict[str, Any]],
+    overrides: Iterable[dict[str, Any]],
+    *,
+    context: str,
+) -> set[str]:
+    """Rename rows only when provider ID and current source name still match."""
+    by_id = {str(row.get("id")): row for row in rows}
+    used: set[str] = set()
+    for override in overrides:
+        station_id = str(override.get("id", "")).strip()
+        expected_name = str(override.get("expected_name", "")).strip()
+        new_name = str(override.get("name", "")).strip()
+        if not station_id or not expected_name or not new_name:
+            raise ValueError(f"{context}: name override requires id, expected_name and name")
+        row = by_id.get(station_id)
+        if row is None:
+            raise ValueError(f"{context}: stale name override {station_id}: station ID is no longer generated")
+        actual_name = str((row.get("tags") or {}).get("name") or "")
+        if _norm_name(actual_name) != _norm_name(expected_name):
+            raise ValueError(
+                f"{context}: stale name override {station_id}: expected name "
+                f"{expected_name!r}, generated name is {actual_name!r}; review before regenerating"
+            )
+        row.setdefault("tags", {})["name"] = new_name
+        used.add(station_id)
+    return used
+
 def require_alias(
     rows_by_id: dict[str, dict[str, Any]],
     *,

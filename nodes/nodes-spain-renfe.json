@@ -1259,7 +1259,7 @@
 {"type":"node","id":"72206","lat":41.3957338,"lon":1.76817358,"tags":{"name":"Lavern-Subirats","stop_ids":["72206"],"renfe_stop_id":"72206","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"72207","lat":41.4205181,"lon":1.79468769,"tags":{"name":"Sant Sadurní d'Anoia","stop_ids":["72207"],"renfe_stop_id":"72207","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"72208","lat":41.4485405,"lon":1.86552988,"tags":{"name":"Gelida","stop_ids":["72208"],"renfe_stop_id":"72208","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"72209","lat":41.4792866,"lon":1.92533467,"tags":{"name":"Martorell Central","stop_ids":["72209"],"renfe_stop_id":"72209","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"72209","lat":41.4792866,"lon":1.92533467,"tags":{"name":"Martorell Central (ADIF)","stop_ids":["72209"],"renfe_stop_id":"72209","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"72210","lat":41.4734152,"lon":1.96756971,"tags":{"name":"Castellbisbal","stop_ids":["72210"],"renfe_stop_id":"72210","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"72211","lat":41.4353713,"lon":2.00257792,"tags":{"name":"El Papiol","stop_ids":["72211"],"renfe_stop_id":"72211","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"72300","lat":41.4098958,"lon":2.02077275,"tags":{"name":"Molins de Rei","stop_ids":["72300"],"renfe_stop_id":"72300","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -1356,7 +1356,7 @@
 {"type":"node","id":"78706","lat":41.4925608,"lon":2.14752164,"tags":{"name":"Cerdanyola del Vallès","stop_ids":["78706"],"renfe_stop_id":"78706","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"78707","lat":41.4811409,"lon":2.16698683,"tags":{"name":"Montcada i Reixac-Santa Maria","stop_ids":["78707"],"renfe_stop_id":"78707","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"78708","lat":41.4839402,"lon":2.1854042,"tags":{"name":"Montcada i Reixac-Manresa","stop_ids":["78708"],"renfe_stop_id":"78708","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"78709","lat":41.5619773,"lon":2.09622844,"tags":{"name":"Sabadell Nord","stop_ids":["78709"],"renfe_stop_id":"78709","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"78709","lat":41.5619773,"lon":2.09622844,"tags":{"name":"Sabadell Nord (ADIF)","stop_ids":["78709"],"renfe_stop_id":"78709","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"78710","lat":41.5675296,"lon":2.03963639,"tags":{"name":"Terrassa Est","stop_ids":["78710"],"renfe_stop_id":"78710","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"78800","lat":41.4698402,"lon":2.18001578,"tags":{"name":"Montcada-Bifurcació","stop_ids":["78800"],"renfe_stop_id":"78800","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"78801","lat":41.4609684,"lon":2.18102036,"tags":{"name":"Barcelona Torre Baró -Vallbona","stop_ids":["78801"],"renfe_stop_id":"78801","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -1397,7 +1397,6 @@
 {"type":"node","id":"79312","lat":42.3666194,"lon":3.1489746,"tags":{"name":"Llançà","stop_ids":["79312"],"renfe_stop_id":"79312","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"79314","lat":42.4068837,"lon":3.15434316,"tags":{"name":"Colera","stop_ids":["79314"],"renfe_stop_id":"79314","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"79315","lat":42.4245908,"lon":3.15801841,"tags":{"name":"Portbou","stop_ids":["79315"],"renfe_stop_id":"79315","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"79316","lat":42.441664,"lon":3.16314935,"tags":{"name":"Cerbère","stop_ids":["79316"],"renfe_stop_id":"79316","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"79400","lat":41.3844866,"lon":2.18534785,"tags":{"name":"Barcelona Estació de França","stop_ids":["79400"],"renfe_stop_id":"79400","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"79403","lat":41.4244316,"lon":2.23048178,"tags":{"name":"Sant Adrià de Besòs","stop_ids":["79403"],"renfe_stop_id":"79403","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"79404","lat":41.4458838,"lon":2.24892096,"tags":{"name":"Badalona","stop_ids":["79404"],"renfe_stop_id":"79404","feeds":["cercanias"]},"category":"spain_renfe"}

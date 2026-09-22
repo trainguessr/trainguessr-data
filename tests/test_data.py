@@ -40,7 +40,7 @@ from norway import build_nodes as build_norway_nodes, load_stop_places  # noqa: 
 from countries.italy.fse import MANUAL_STATIONS, apply_manual_stations  # noqa: E402
 from countries.italy.legacy import rebuild  # noqa: E402
 from countries.italy.review import load_review_rows, review_key, saved_review_keys  # noqa: E402
-from common.manual_overrides import apply_coordinate_overrides  # noqa: E402
+from common.manual_overrides import apply_coordinate_overrides, apply_name_overrides  # noqa: E402
 
 
 class DatasetTests(unittest.TestCase):
@@ -715,7 +715,6 @@ class DatasetTests(unittest.TestCase):
 
     def test_reviewed_coordinate_corrections_are_present(self) -> None:
         expected = {
-            ("nodes-italy-fer.json", "S05100"): (44.5151514, 11.2849781),
             ("nodes-italy-fer.json", "S05995"): (44.50343, 11.47214),
             ("nodes-italy-fer.json", "S05931"): (44.699327, 10.523291),
             ("nodes-italy-fer.json", "S05971"): (44.49252, 11.21811),
@@ -732,6 +731,32 @@ class DatasetTests(unittest.TestCase):
             }
             self.assertEqual(coordinates, (rows[station_id]["lat"], rows[station_id]["lon"]))
             self.assertTrue(rows[station_id]["tags"].get("coordinate_override"))
+
+    def test_reviewed_cross_provider_station_overrides(self) -> None:
+        fer_ids = {
+            str(row["id"]) for row in load_ndjson(ROOT / "nodes" / "nodes-italy-fer.json")
+        }
+        self.assertTrue({"S05100", "S05102"}.isdisjoint(fer_ids))
+
+        renfe = {
+            str(row["id"]): row
+            for row in load_ndjson(ROOT / "nodes" / "nodes-spain-renfe.json")
+        }
+        self.assertNotIn("79316", renfe)
+        self.assertEqual("Martorell Central (ADIF)", renfe["72209"]["tags"]["name"])
+        self.assertEqual("Sabadell Nord (ADIF)", renfe["78709"]["tags"]["name"])
+
+    def test_guarded_name_override_fails_when_station_name_changes(self) -> None:
+        rows = [{
+            "type": "node", "id": "X", "lat": 1.0, "lon": 2.0,
+            "tags": {"name": "Renamed station"}, "category": "test",
+        }]
+        with self.assertRaisesRegex(ValueError, "stale name override"):
+            apply_name_overrides(
+                rows,
+                [{"id": "X", "expected_name": "Old station", "name": "Old station (ADIF)"}],
+                context="test",
+            )
 
     def test_guarded_coordinate_override_fails_when_station_name_changes(self) -> None:
         rows = [{
