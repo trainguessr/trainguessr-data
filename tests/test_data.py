@@ -212,6 +212,19 @@ class DatasetTests(unittest.TestCase):
                 operator,
             )
 
+    def test_rfi_viaggiatreno_review_is_exact_and_collision_free(self) -> None:
+        rows = load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json")
+        mappings = []
+        for row in rows:
+            station_id = row.get("tags", {}).get("viaggiatreno_station_id")
+            if not station_id:
+                continue
+            self.assertRegex(str(station_id), r"^S\d{5}$")
+            mappings.append(str(station_id))
+        self.assertEqual(2399, len(mappings))
+        self.assertEqual(len(mappings), len(set(mappings)))
+        self.assertEqual(27, len(rows) - len(mappings))
+
     def test_rfi_laveno_is_not_misclassified_as_fn(self) -> None:
         rows = {str(row["id"]): row for row in load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json")}
         self.assertEqual("italy_rfi", rows["1542"]["category"])

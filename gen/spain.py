@@ -332,6 +332,8 @@ def build(
                 "long_name": row.get("route_long_name", ""),
                 "route_type": row.get("route_type", ""),
                 "agency": agency_names.get(row.get("agency_id", ""), ""),
+                "color": row.get("route_color", ""),
+                "text_color": row.get("route_text_color", ""),
             }
 
         station_alias: dict[str, str] = {}
