@@ -75,7 +75,7 @@ def convert_from_json(
                 primary_id = str(primary_uic.get(nom, codes_uic[0]))
                 if primary_id not in codes_uic:
                     raise ValueError(f"Primary UIC {primary_id} is not listed for {nom}")
-                further_ids = [code for code in codes_uic if code != primary_id]
+                further_ids = sorted(code for code in codes_uic if code != primary_id)
                 tags = {
                     "name": nom,
                     "further_ids": further_ids,
@@ -169,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
     import requests
 
     parser = argparse.ArgumentParser(description="Generate French SNCF stations")
-    parser.add_argument("--refresh", action="store_true", help="download SNCF data even if the cache is fresh")
+    parser.add_argument("--cache", action="store_true", help="reuse a fresh SNCF cache instead of downloading again")
     parser.add_argument("--max-cache-age-days", type=int, default=7)
     args = parser.parse_args(argv)
 
@@ -181,7 +181,7 @@ def main(argv: list[str] | None = None) -> int:
     if CACHE.exists():
         age = datetime.now(timezone.utc) - datetime.fromtimestamp(CACHE.stat().st_mtime, timezone.utc)
         age_days = int(age.total_seconds() // 86400)
-    if args.refresh or age_days is None or age_days > args.max_cache_age_days:
+    if not args.cache or age_days is None or age_days > args.max_cache_age_days:
         response = requests.get(SOURCE_URL, timeout=60)
         response.raise_for_status()
         temporary_cache = CACHE.with_suffix(".json.tmp")

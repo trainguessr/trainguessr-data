@@ -26,11 +26,12 @@ USER_AGENT = "TrainGuessr-data/1.0"
 CACHE_MAX_AGE_SECONDS = 14 * 24 * 60 * 60
 
 
-def download_gtfs(*, session: requests.Session | None = None) -> Path:
+def download_gtfs(*, session: requests.Session | None = None, use_cache: bool = False) -> Path:
     """Download the current official static feed into the ignored data cache."""
     temporary = GTFS_ARCHIVE.with_suffix(".zip.tmp")
     if (
-        GTFS_ARCHIVE.is_file()
+        use_cache
+        and GTFS_ARCHIVE.is_file()
         and time.time() - GTFS_ARCHIVE.stat().st_mtime < CACHE_MAX_AGE_SECONDS
     ):
         if zipfile.is_zipfile(GTFS_ARCHIVE):
@@ -236,6 +237,8 @@ def validate_live_access(station_id: str, *, session: requests.Session | None = 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--cache", action="store_true",
+                        help="reuse a fresh cached GTFS archive instead of downloading it again")
     parser.add_argument(
         "--offline",
         action="store_true",
@@ -249,7 +252,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"ERROR: missing or invalid cached GTFS archive: {archive}")
             return 1
     else:
-        archive = download_gtfs()
+        archive = download_gtfs(use_cache=args.cache)
     nodes = build_nodes(archive)
     if not nodes:
         print("ERROR: Rejseplanen GTFS input produced no railway stations")

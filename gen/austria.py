@@ -1266,6 +1266,11 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Austria rail stations from GeoNetz and MVO")
     parser.add_argument("--mvo-input", type=Path, help="Use this MVO ZIP instead of downloading the official dataset")
     parser.add_argument(
+        "--cache",
+        action="store_true",
+        help="reuse cached GeoNetz/MVO inputs and SCOTTY resolutions when available",
+    )
+    parser.add_argument(
         "--offline",
         action="store_true",
         help="Use only cached GeoNetz/MVO inputs and persisted or reviewed SCOTTY resolutions",
@@ -1307,6 +1312,10 @@ def main(argv: list[str] | None = None) -> int:
 
     session = requests.Session()
     rename_map = load_rename_map("austria")
+    if not args.cache and not args.offline:
+        # A normal generation is a clean refresh. Cache reuse is always opt-in.
+        for cached in (GEONETZ_FILTERED, GEONETZ_ARCHIVE, DEFAULT_MVO_CACHE, DEFAULT_RESOLUTION_CACHE):
+            cached.unlink(missing_ok=True)
     if args.offline:
         offline_geonetz = CACHE_DIR / "austria" / "austria_stations_filtered.json"
         _adopt_legacy_cache(CACHE_DIR / "austria_stations_filtered.json", offline_geonetz)

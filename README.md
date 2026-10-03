@@ -52,6 +52,40 @@ Cache layout is intentional:
 
 Country-specific archives and snapshots must not be created at the cache root. Existing legacy root files may be adopted into their country directory by the relevant generator.
 
+
+### Generator classes and cache policy
+
+Generators are:
+
+- **automated**: the primary fetched source contains the provider-native station
+  identity and geographic coordinates together, so generation does not need to
+  invent or reconcile identity from a separate geographic catalogue;
+- **heuristic**: no such single source is available, so provider identity and
+  geography are reconciled from separate sources. Reviewed overrides remain
+  authoritative and ambiguous candidates must fail or remain for review.
+
+Current heuristic generators are Austria and all Italian provider generators
+(EAV, FER, FN, FSE, RFI, STA and TT). The other country generators are
+automated under the definition above. Some automated generators still apply
+reviewed exclusions, aliases or supplements.
+
+A normal generator run is a **fresh run**. Where a generator has reusable
+download/source cache inputs, it must download/rebuild those inputs by default.
+Pass `--cache` explicitly to reuse them. `--offline` is stronger: it forbids
+network access and therefore requires cached/local inputs. Deployable SQLite
+runtime indexes are outputs, not source caches, and are rebuilt normally.
+
+Check the current generated-file ages and timetable calendar coverage with:
+
+```bash
+python3 gen/freshness.py
+```
+
+The report uses source-specific limits where the generator already defines one
+(France 7 days, Denmark 14 days) and otherwise flags files older than 30 days
+for maintenance review. Spanish timetable indexes are checked by
+service-calendar coverage instead. 
+
 ## Validation
 
 From the repository root:

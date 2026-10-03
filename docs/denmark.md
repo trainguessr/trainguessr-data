@@ -25,7 +25,7 @@ python3 gen/denmark.py
 The script downloads the static archive to `cache/denmark/`, normalizes
 zero-padded Rejseplanen stop IDs, writes `nodes/nodes-denmark.json`, and
 smoke-tests both departure and arrival boards with the configured key.
-Use `python3 gen/denmark.py --offline` to rebuild from the checked-in cache
+Use `python3 gen/denmark.py --cache` to reuse a fresh local GTFS cache, or `python3 gen/denmark.py --offline` to rebuild without network access from the local cache
 without network or API-key access.
 
 

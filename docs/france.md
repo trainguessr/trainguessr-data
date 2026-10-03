@@ -12,9 +12,9 @@ SNCF exports its stations as open data in a JSON file [here](https://data.sncf.c
 
 These station IDs are then used in the SNCF API, which requires an API key. Get a free API key from the [SNCF Numerique](https://numerique.sncf.com/) website.
 
-Run `python3 gen/france.py` from the repository root. The generator refreshes a
-cache older than seven days; use `--refresh` to force a download. The API key is
-not needed to generate stations, only for live departures.
+Run `python3 gen/france.py` from the repository root. Normal runs download the
+station export afresh; use `--cache` to reuse a cache that is at most seven days
+old. The API key is not needed to generate stations, only for live departures.
 
 The reviewed French section of Cuneo-Ventimiglia is supplemented from
 `docs/review/france/cuneo-ventimiglia.json`. SNCF is the primary live source;
@@ -29,6 +29,28 @@ contains nine explicitly historical passenger-ID additions backed by the
 official `frequentation-gares` register and the corrected current Fontanil UIC
 crosswalk.
 
+
+## Multi-UIC passenger stations
+
+SNCF's `gares-de-voyageurs` source can attach multiple UIC codes to one
+passenger-station record. Live API verification on 2026-10-03 showed that these
+codes are not interchangeable timetable aliases: different UICs for the same
+passenger station can expose disjoint service groups, while other members can
+return HTTP 404 or a valid empty board.
+
+The generated node therefore keeps one reviewed, stable primary UIC as its
+TrainGuessr identity and stores the other source-listed UICs in `further_ids`.
+For SNCF runtime boards only, the primary plus `further_ids` form an equivalence
+group: a request entering through any member queries every member, ignores
+member-level 404/empty results when another member is usable, merges and
+deduplicates the resulting services, and returns the same combined station
+board. This SNCF-specific behavior must not be generalized to `further_ids`
+from other providers without equivalent provider evidence.
+
+The nine current multi-UIC groups have reviewed primary identities in
+`overrides/exclusions/france.json`. Their primary choice is deliberately
+independent of source-list ordering so a regeneration cannot rotate TrainGuessr
+station identity when SNCF reorders `codes_uic`.
 
 ## SNCF export checkpoint
 
@@ -62,10 +84,8 @@ La Brigue, Tende and Vievola). The repository's cached `gares-de-voyageurs`
 snapshot contains none of their names/codes, so the supplement is explicit
 rather than pretending the existing generator source is complete.
 
-The SNCF API adapter gets first choice at runtime. A direct authenticated
-`api.sncf.com` smoke test could not be run in the test environment
-because no SNCF API credential was available. The reviewed RFI IDs therefore
-are a deliberate fallback, not proof that SNCF live API lacks the stops.
+The SNCF API adapter gets first choice at runtime. The reviewed RFI IDs are
+deliberate fallbacks and are not evidence that SNCF live API lacks the stops.
 
 ## Chemins de fer de la Corse
 

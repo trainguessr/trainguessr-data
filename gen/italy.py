@@ -45,7 +45,7 @@ def main(argv: list[str] | None = None) -> int:
             parser.error("--write-nodes is only valid with 'generate sta'")
         for provider in providers:
             provider_args = ["--write-nodes"] if provider == "sta" and args.write_nodes else []
-            rc = PROVIDERS[provider](provider_args) if provider == "sta" else PROVIDERS[provider]()
+            rc = PROVIDERS[provider](provider_args) if provider in {"sta", "fse"} else PROVIDERS[provider]()
             if rc:
                 return int(rc)
         return 0

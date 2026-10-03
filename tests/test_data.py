@@ -38,12 +38,47 @@ from reconcile.france import uic_stems  # noqa: E402
 from germany import load_board_groups, load_reconciled_stations  # noqa: E402
 from norway import build_nodes as build_norway_nodes, load_stop_places  # noqa: E402
 from countries.italy.fse import MANUAL_STATIONS, apply_manual_stations  # noqa: E402
+from countries.italy.eav import parse_station_catalog  # noqa: E402
 from countries.italy.legacy import rebuild  # noqa: E402
 from countries.italy.review import load_review_rows, review_key, saved_review_keys  # noqa: E402
 from common.manual_overrides import apply_coordinate_overrides, apply_name_overrides  # noqa: E402
 
 
 class DatasetTests(unittest.TestCase):
+    def test_eav_current_homepage_station_payload(self) -> None:
+        payload = [
+            {
+                "id": "1",
+                "descrizione": "NAPOLI PORTA NOLANA",
+                "visualizzato": "true",
+                "idLinea": "L1",
+                "linea": "NAPOLI-SORRENTO",
+            },
+            {
+                "id": "1",
+                "descrizione": "NAPOLI PORTA NOLANA",
+                "visualizzato": "true",
+                "idLinea": "L2",
+                "linea": "NAPOLI-POGGIOMARINO",
+            },
+            {
+                "id": "999",
+                "descrizione": "HIDDEN",
+                "visualizzato": "false",
+                "idLinea": "LX",
+                "linea": "HIDDEN",
+            },
+        ]
+        page = (
+            '<script id="data-localita" type="application/json">'
+            + json.dumps(payload)
+            + "</script>"
+        )
+        self.assertEqual(
+            [{"id": "1", "name": "NAPOLI PORTA NOLANA"}],
+            parse_station_catalog(page),
+        )
+
     def test_all_node_files_are_valid(self) -> None:
         for path in sorted((ROOT / "nodes").glob("nodes-*.json")):
             self.assertEqual([], validate_file(path), path.name)
@@ -598,6 +633,27 @@ class DatasetTests(unittest.TestCase):
             {str(row["stationShortCode"]) for row in audit["retained_extant_no_service"]},
             set(retained),
         )
+
+    def test_france_all_current_multi_uic_groups_have_reviewed_primaries(self) -> None:
+        config = load_country_config("france")
+        expected = {
+            "Aéroport Charles de Gaulle 2 TGV": "87271494",
+            "Avignon TGV": "87318964",
+            "Châteaubriant": "87590372",
+            "Ermont - Eaubonne": "87534131",
+            "Paris Austerlitz": "87547026",
+            "Paris Gare de Lyon": "87686030",
+            "Paris Gare du Nord": "87271007",
+            "Paris Montparnasse": "87391003",
+            "Saint-Gervais-les-Bains Le Fayet": "87746479",
+        }
+        self.assertEqual(expected, config.get("primary_uic"))
+        generated = {
+            row["tags"]["name"]: str(row["id"])
+            for row in load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
+            if row.get("tags", {}).get("name") in expected
+        }
+        self.assertEqual(expected, generated)
 
     def test_france_configured_primary_uic_is_stable_when_source_order_changes(self) -> None:
         feature = [{

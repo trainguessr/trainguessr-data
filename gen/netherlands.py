@@ -55,9 +55,15 @@ def convert_nl_stations(input_path, output_path):
         except Exception as e:
             print(f"Error processing file: {e}")
 
-if __name__ == "__main__":
+def main(argv=None):
+    import argparse
     import requests
     from datetime import datetime, timezone
+
+    parser = argparse.ArgumentParser(description="Generate Netherlands railway stations")
+    parser.add_argument("--cache", action="store_true",
+                        help="reuse cached station CSV instead of downloading again")
+    args = parser.parse_args(argv)
 
     country_cache = ROOT / "cache" / "netherlands"
     country_cache.mkdir(parents=True, exist_ok=True)
@@ -66,19 +72,23 @@ if __name__ == "__main__":
     if legacy_input.exists() and not current_input.exists():
         legacy_input.replace(current_input)
         print(f"Moved legacy cache artifact: {legacy_input.relative_to(ROOT)} -> {current_input.relative_to(ROOT)}")
-    input_file = str(current_input)
     output_file = str(ROOT / "nodes" / "nodes-netherlands.json")
 
-    if not os.path.exists(input_file):
+    if not args.cache or not current_input.exists():
         print("Downloading Netherlands stations data...")
         url = "https://opendata.rijdendetreinen.nl/public/stations/stations-2023-09-nl.csv"
         response = requests.get(url, timeout=60)
         response.raise_for_status()
-        with open(input_file, 'w', encoding='utf-8') as f:
-            f.write(response.text)
+        temporary = current_input.with_suffix(".csv.tmp")
+        temporary.write_text(response.text, encoding="utf-8")
+        os.replace(temporary, current_input)
     else:
-        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(current_input.stat().st_mtime, timezone.utc)
         print(f"Using cached Netherlands station data (age: {int(age.total_seconds() // 86400)} days)")
-    
-    convert_nl_stations(input_file, output_file)
+
+    convert_nl_stations(str(current_input), output_file)
     print(f"Conversion complete. Output written to {output_file}")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

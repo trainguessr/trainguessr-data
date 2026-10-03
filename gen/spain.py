@@ -549,8 +549,10 @@ def main() -> int:
                         help="Do not regenerate the existing Renfe catalogue/index")
     parser.add_argument("--skip-fgc", action="store_true",
                         help="Do not regenerate the FGC catalogue/index")
+    parser.add_argument("--cache", action="store_true",
+                        help="reuse cached official GTFS ZIPs instead of downloading again")
     parser.add_argument("--no-download", action="store_true",
-                        help="Require local inputs for every enabled provider")
+                        help="require explicit local inputs for every enabled provider")
     args = parser.parse_args()
 
     if args.skip_renfe and args.skip_fgc:
@@ -565,6 +567,12 @@ def main() -> int:
             if not args.cercanias or not args.long_distance:
                 parser.error("provide both local Renfe GTFS ZIPs, or neither")
             inputs = [("cercanias", args.cercanias), ("ld", args.long_distance)]
+        elif args.cache:
+            cached = [(name, CACHE_ROOT / name / "gtfs.zip") for name in ("cercanias", "ld")]
+            missing = [str(path) for _, path in cached if not path.is_file()]
+            if missing:
+                parser.error("--cache requested but Renfe cache is missing: " + ", ".join(missing))
+            inputs = cached
         else:
             inputs = fetch_official_feeds()
         feeds = [(name, load_feed(path)) for name, path in inputs if path is not None]
@@ -587,6 +595,10 @@ def main() -> int:
         if args.no_download and not args.fgc:
             parser.error("--no-download requires --fgc unless --skip-fgc is used")
         source = args.fgc
+        if source is None and args.cache:
+            source = fgc.CACHE_ROOT / "google_transit.zip"
+            if not source.is_file():
+                parser.error(f"--cache requested but FGC cache is missing: {source}")
         try:
             stats = fgc.generate(source)
         except (OSError, ValueError, RuntimeError, requests.RequestException) as exc:

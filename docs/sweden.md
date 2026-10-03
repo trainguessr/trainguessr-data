@@ -35,3 +35,8 @@ The generator rejects non-Swedish national stop identifiers. The 32 foreign reco
 ## Other providers
 
 The existing provider covers national rail and metro. Ordinary tram expansion is out of scope; only a railway-like light-rail exception may be considered later.
+
+
+## Generator resource usage
+
+`gen/sweden.py` streams `StopPlace` records directly from the NeTEx XML and reports discarded records as aggregate counts. It no longer builds the full JSON/JSON-lines intermediates or prints one line for every filtered bus/duplicate. The source ZIP/XML is refreshed by default; use `--cache` to reuse it.

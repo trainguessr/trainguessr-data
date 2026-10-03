@@ -27,6 +27,7 @@ The generated operator index is version 2. It stores both exact GTFS `trip_short
 The same `--oebb-gtfs` flag may be supplied during a normal station generation run. Relevant flags are:
 
 - `--mvo-input PATH`: reviewed/local MVO ZIP instead of downloading it.
+- `--cache`: reuse durable GeoNetz/MVO inputs and SCOTTY resolutions when available; normal runs start from fresh source inputs.
 - `--offline`: zero-network station rebuild from durable cached inputs.
 - `--output PATH`: station node output.
 - `--audit PATH`: station reconciliation audit output.

@@ -538,10 +538,10 @@ def generate_live() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     return apply_manual_stations(nodes), sorted(unresolved_nodes, key=lambda node: str(node["id"]))
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Generate and audit the FSE station dataset")
     parser.add_argument("--offline", action="store_true", help="apply reviewed manual stations to the current JSON without network access")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if args.offline:
         nodes = apply_manual_stations(load_ndjson(OUTPUT_FILE))

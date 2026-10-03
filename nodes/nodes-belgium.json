@@ -477,6 +477,7 @@
 {"type":"node","id":"BE.NMBS.008871217","lat":50.443112,"lon":4.393199,"tags":{"name":"Roux"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008814365","lat":50.79183,"lon":4.295333,"tags":{"name":"Ruisbroek"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008822848","lat":51.081022,"lon":4.324998,"tags":{"name":"Ruisbroek-Sauvegarde"},"category":"belgium_all"}
+{"type":"node","id":"BE.NMBS.8860012","lat":50.466045,"lon":4.839569,"tags":{"name":"SALZINNES-A.C."},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008861432","lat":50.5213,"lon":4.767788,"tags":{"name":"Saint-Denis-Bovesse"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008884004","lat":50.44286,"lon":3.820253,"tags":{"name":"Saint-Ghislain"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008864956","lat":50.406373,"lon":4.949739,"tags":{"name":"Sart-Bernard"},"category":"belgium_all"}

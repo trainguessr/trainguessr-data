@@ -482,6 +482,8 @@
 {"type":"node","id":"12004","lat":40.6928982,"lon":-4.0359271,"tags":{"name":"Collado Mediano","stop_ids":["12004"],"renfe_stop_id":"12004","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12005","lat":40.7066407,"lon":-4.0671991,"tags":{"name":"Los Molinos-Guadarrama","stop_ids":["12005"],"renfe_stop_id":"12005","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12006","lat":40.7376129,"lon":-4.0662985,"tags":{"name":"Cercedilla","stop_ids":["12006"],"renfe_stop_id":"12006","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"12007","lat":40.705648,"lon":-4.12531,"tags":{"name":"Tablada","stop_ids":["12007"],"renfe_stop_id":"12007","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"12008","lat":40.716914,"lon":-4.157681,"tags":{"name":"Gudillos","stop_ids":["12008"],"renfe_stop_id":"12008","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12009","lat":40.714944,"lon":-4.18143,"tags":{"name":"San Rafael","stop_ids":["12009"],"renfe_stop_id":"12009","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12010","lat":40.740852,"lon":-4.189482,"tags":{"name":"El Espinar","stop_ids":["12010"],"renfe_stop_id":"12010","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12011","lat":40.777909,"lon":-4.206933,"tags":{"name":"Los Ángeles de San Rafael","stop_ids":["12011"],"renfe_stop_id":"12011","feeds":["ld"]},"category":"spain_renfe"}
@@ -947,14 +949,14 @@
 {"type":"node","id":"54403","lat":36.907335,"lon":-4.759258,"tags":{"name":"El Chorro-Caminito del Rey","stop_ids":["54403"],"renfe_stop_id":"54403","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"54404","lat":36.873306,"lon":-4.719433,"tags":{"name":"Las Mellizas","stop_ids":["54404"],"renfe_stop_id":"54404","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"54405","lat":36.8198747,"lon":-4.6996105,"tags":{"name":"Álora","stop_ids":["54405"],"renfe_stop_id":"54405","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"54406","lat":36.7641515,"lon":-4.7118313,"tags":{"name":"Pizarra","stop_ids":["54406"],"renfe_stop_id":"54406","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"54407","lat":36.7330833,"lon":-4.6645001,"tags":{"name":"Aljaima","stop_ids":["54407"],"renfe_stop_id":"54407","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"54408","lat":36.7337392,"lon":-4.6083966,"tags":{"name":"Cártama","stop_ids":["54408"],"renfe_stop_id":"54408","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"54410","lat":36.7050436,"lon":-4.5454825,"tags":{"name":"Campanillas","stop_ids":["54410"],"renfe_stop_id":"54410","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"54412","lat":36.6986108,"lon":-4.47815,"tags":{"name":"Málaga-Los Prados","stop_ids":["54412"],"renfe_stop_id":"54412","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"54406","lat":36.7641515,"lon":-4.7118313,"tags":{"name":"Pizarra","stop_ids":["54406"],"renfe_stop_id":"54406","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"54407","lat":36.7330833,"lon":-4.6645001,"tags":{"name":"Aljaima","stop_ids":["54407"],"renfe_stop_id":"54407","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"54408","lat":36.7337392,"lon":-4.6083966,"tags":{"name":"Cártama","stop_ids":["54408"],"renfe_stop_id":"54408","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"54410","lat":36.7050436,"lon":-4.5454825,"tags":{"name":"Campanillas","stop_ids":["54410"],"renfe_stop_id":"54410","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"54412","lat":36.6986108,"lon":-4.47815,"tags":{"name":"Málaga-Los Prados","stop_ids":["54412"],"renfe_stop_id":"54412","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54413","lat":36.7113388,"lon":-4.4313888,"tags":{"name":"Málaga María Zambrano","stop_ids":["54413"],"renfe_stop_id":"54413","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"54500","lat":36.7113885,"lon":-4.4328909,"tags":{"name":"Málaga M.Z. Cercanías","stop_ids":["54500"],"renfe_stop_id":"54500","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"54501","lat":36.7012229,"lon":-4.4544145,"tags":{"name":"Victoria Kent","stop_ids":["54501"],"renfe_stop_id":"54501","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"54501","lat":36.7012229,"lon":-4.4544145,"tags":{"name":"Victoria Kent","stop_ids":["54501"],"renfe_stop_id":"54501","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54503","lat":36.6920757,"lon":-4.4836844,"tags":{"name":"Guadalhorce","stop_ids":["54503"],"renfe_stop_id":"54503","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54505","lat":36.6777169,"lon":-4.4901607,"tags":{"name":"Málaga-Aeropuerto","stop_ids":["54505"],"renfe_stop_id":"54505","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54508","lat":36.6419236,"lon":-4.4926383,"tags":{"name":"La Colina","stop_ids":["54508"],"renfe_stop_id":"54508","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -966,7 +968,7 @@
 {"type":"node","id":"54514","lat":36.5649071,"lon":-4.6067106,"tags":{"name":"Torreblanca del Sol","stop_ids":["54514"],"renfe_stop_id":"54514","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54515","lat":36.5546583,"lon":-4.6145767,"tags":{"name":"Los Boliches","stop_ids":["54515"],"renfe_stop_id":"54515","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54516","lat":36.5418947,"lon":-4.623858,"tags":{"name":"Fuengirola","stop_ids":["54516"],"renfe_stop_id":"54516","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"54517","lat":36.7159539,"lon":-4.4265335,"tags":{"name":"Málaga-Centro Alameda","stop_ids":["54517"],"renfe_stop_id":"54517","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"54517","lat":36.7159539,"lon":-4.4265335,"tags":{"name":"Málaga-Centro Alameda","stop_ids":["54517"],"renfe_stop_id":"54517","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54518","lat":36.6450587,"lon":-4.4851186,"tags":{"name":"Los Álamos","stop_ids":["54518"],"renfe_stop_id":"54518","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54519","lat":36.6136673,"lon":-4.5094259,"tags":{"name":"Montemar Alto","stop_ids":["54519"],"renfe_stop_id":"54519","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"54520","lat":36.6562029,"lon":-4.4803044,"tags":{"name":"Plaza Mayor","stop_ids":["54520"],"renfe_stop_id":"54520","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -1128,15 +1130,7 @@
 {"type":"node","id":"67206","lat":40.123142,"lon":-0.786145,"tags":{"name":"Mora de Rubielos","stop_ids":["67206"],"renfe_stop_id":"67206","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"67207","lat":40.118006,"lon":-0.773463,"tags":{"name":"Rubielos de Mora","stop_ids":["67207"],"renfe_stop_id":"67207","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"67208","lat":40.01174,"lon":-0.696151,"tags":{"name":"Barracas","stop_ids":["67208"],"renfe_stop_id":"67208","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"67211","lat":39.9473696,"lon":-0.5720537,"tags":{"name":"Caudiel","stop_ids":["67211"],"renfe_stop_id":"67211","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67212","lat":39.9149777,"lon":-0.5693896,"tags":{"name":"Jérica-Viver","stop_ids":["67212"],"renfe_stop_id":"67212","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67213","lat":39.8744166,"lon":-0.5059546,"tags":{"name":"Navajas","stop_ids":["67213"],"renfe_stop_id":"67213","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67214","lat":39.854557,"lon":-0.493863,"tags":{"name":"Segorbe-Arrabal","stop_ids":["67214"],"renfe_stop_id":"67214","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67215","lat":39.8471755,"lon":-0.4823544,"tags":{"name":"Segorbe-Ciudad","stop_ids":["67215"],"renfe_stop_id":"67215","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"67216","lat":39.7529934,"lon":-0.3657542,"tags":{"name":"Algimia-Ciudad","stop_ids":["67216"],"renfe_stop_id":"67216","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67217","lat":39.8126015,"lon":-0.4318206,"tags":{"name":"Soneja","stop_ids":["67217"],"renfe_stop_id":"67217","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67221","lat":39.706408,"lon":-0.348324,"tags":{"name":"Estivella-Albalat Dels Tarongers","stop_ids":["67221"],"renfe_stop_id":"67221","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"67223","lat":39.6793985,"lon":-0.3206548,"tags":{"name":"Gilet","stop_ids":["67223"],"renfe_stop_id":"67223","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"67215","lat":39.8471755,"lon":-0.4823544,"tags":{"name":"Segorbe-Ciudad","stop_ids":["67215"],"renfe_stop_id":"67215","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"69001","lat":38.98773,"lon":-0.47988,"tags":{"name":"Genovés","stop_ids":["69001"],"renfe_stop_id":"69001","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"69002","lat":38.938499,"lon":-0.453424,"tags":{"name":"Benigànim","stop_ids":["69002"],"renfe_stop_id":"69002","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"69003","lat":38.907606,"lon":-0.453386,"tags":{"name":"La Pobla del Duc","stop_ids":["69003"],"renfe_stop_id":"69003","feeds":["ld"]},"category":"spain_renfe"}
@@ -1275,13 +1269,13 @@
 {"type":"node","id":"73001","lat":41.5537015,"lon":0.73342706,"tags":{"name":"Puigverd de Lleida-Artesa de Lleida","stop_ids":["73001"],"renfe_stop_id":"73001","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"73002","lat":41.5439328,"lon":0.82554185,"tags":{"name":"Juneda","stop_ids":["73002"],"renfe_stop_id":"73002","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"73003","lat":41.5213973,"lon":0.87791022,"tags":{"name":"Les Borges Blanques","stop_ids":["73003"],"renfe_stop_id":"73003","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73004","lat":41.5042013,"lon":0.924432,"tags":{"name":"La Floresta","stop_ids":["73004"],"renfe_stop_id":"73004","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73005","lat":41.425141,"lon":0.9703737,"tags":{"name":"Vinaixa","stop_ids":["73005"],"renfe_stop_id":"73005","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73006","lat":41.4027277,"lon":1.04603327,"tags":{"name":"Vimbodí i Poblet","stop_ids":["73006"],"renfe_stop_id":"73006","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73007","lat":41.4006616,"lon":1.10336094,"tags":{"name":"L'Espluga de Francolí","stop_ids":["73007"],"renfe_stop_id":"73007","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73008","lat":41.3766254,"lon":1.16554869,"tags":{"name":"Montblanc","stop_ids":["73008"],"renfe_stop_id":"73008","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73009","lat":41.3376633,"lon":1.17653235,"tags":{"name":"Vilaverd","stop_ids":["73009"],"renfe_stop_id":"73009","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"73010","lat":41.3184926,"lon":1.1813126,"tags":{"name":"La Riba","stop_ids":["73010"],"renfe_stop_id":"73010","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73004","lat":41.5042013,"lon":0.924432,"tags":{"name":"La Floresta","stop_ids":["73004"],"renfe_stop_id":"73004","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73005","lat":41.425141,"lon":0.9703737,"tags":{"name":"Vinaixa","stop_ids":["73005"],"renfe_stop_id":"73005","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73006","lat":41.4027277,"lon":1.04603327,"tags":{"name":"Vimbodí i Poblet","stop_ids":["73006"],"renfe_stop_id":"73006","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73007","lat":41.4006616,"lon":1.10336094,"tags":{"name":"L'Espluga de Francolí","stop_ids":["73007"],"renfe_stop_id":"73007","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73008","lat":41.3766254,"lon":1.16554869,"tags":{"name":"Montblanc","stop_ids":["73008"],"renfe_stop_id":"73008","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73009","lat":41.3376633,"lon":1.17653235,"tags":{"name":"Vilaverd","stop_ids":["73009"],"renfe_stop_id":"73009","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"73010","lat":41.3184926,"lon":1.1813126,"tags":{"name":"La Riba","stop_ids":["73010"],"renfe_stop_id":"73010","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"73100","lat":41.3061987,"lon":1.19488293,"tags":{"name":"La Plana-Picamoixons","stop_ids":["73100"],"renfe_stop_id":"73100","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"73101","lat":41.2616066,"lon":1.17416002,"tags":{"name":"Alcover","stop_ids":["73101"],"renfe_stop_id":"73101","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"73102","lat":41.2111544,"lon":1.14396003,"tags":{"name":"La Selva del Camp","stop_ids":["73102"],"renfe_stop_id":"73102","feeds":["cercanias","ld"]},"category":"spain_renfe"}

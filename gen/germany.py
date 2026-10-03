@@ -5,6 +5,7 @@ import io
 import os
 import sys
 import tarfile
+import argparse
 from datetime import datetime, timezone
 
 import requests
@@ -31,12 +32,12 @@ def _cache_age(path):
     return f"{seconds // 86400} days"
 
 
-def ensure_station_cache(cache_dir=GERMANY_CACHE, session=None):
+def ensure_station_cache(cache_dir=GERMANY_CACHE, session=None, use_cache=False):
     """Ensure db-stations data exists, downloading the current npm package if needed."""
     os.makedirs(cache_dir, exist_ok=True)
     full_path = os.path.join(cache_dir, "full.json")
     data_path = os.path.join(cache_dir, "data.json")
-    if os.path.exists(full_path) and os.path.exists(data_path):
+    if use_cache and os.path.exists(full_path) and os.path.exists(data_path):
         print(f"Using cached Germany station data (full.json age: {_cache_age(full_path)})")
         return full_path
 
@@ -287,10 +288,12 @@ def main(argv: list[str] | None = None) -> int:
     if argv and argv[0] == "--audit":
         from reconcile.germany import main as reconcile_main
         return reconcile_main(argv[1:])
-    if argv:
-        raise SystemExit("Germany generation accepts only --audit options; normal generation takes no arguments.")
+    parser = argparse.ArgumentParser(description="Generate German DB stations")
+    parser.add_argument("--cache", action="store_true",
+                        help="reuse cached db-stations source files instead of downloading again")
+    args = parser.parse_args(argv)
 
-    input_file = ensure_station_cache()
+    input_file = ensure_station_cache(use_cache=args.cache)
     output_file = os.path.join(ROOT, "nodes", "nodes-germany.json")
 
     print("Loading rename mapping...")

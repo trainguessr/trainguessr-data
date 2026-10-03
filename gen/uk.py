@@ -76,29 +76,38 @@ def convert_uk_stations(input_path, output_path, rename_map):
         except Exception as e:
             print(f"Error processing file: {e}")
 
-if __name__ == "__main__":
-    import os
+def main(argv=None):
+    import argparse
     import requests
     from datetime import datetime, timezone
 
-    input_file = str(ROOT / "cache" / "uk" / "stations.json")
-    output_file = str(ROOT / "nodes" / "nodes-uk-nationalrail.json")
+    parser = argparse.ArgumentParser(description="Generate UK National Rail stations")
+    parser.add_argument("--cache", action="store_true",
+                        help="reuse cached station JSON instead of downloading again")
+    args = parser.parse_args(argv)
 
-    if not os.path.exists(input_file):
-        os.makedirs(os.path.dirname(input_file), exist_ok=True)
-        print(f"Input file not found: {input_file}")
+    input_path = ROOT / "cache" / "uk" / "stations.json"
+    output_file = str(ROOT / "nodes" / "nodes-uk-nationalrail.json")
+    input_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if not args.cache or not input_path.exists():
+        print("Downloading UK station data...")
         response = requests.get("https://raw.githubusercontent.com/davwheat/uk-railway-stations/refs/heads/main/stations.json", timeout=60)
         response.raise_for_status()
-        data = response.text
-        with open(input_file, 'w', encoding='utf-8') as f:
-            f.write(data)
+        json.loads(response.text)
+        temporary = input_path.with_suffix(".json.tmp")
+        temporary.write_text(response.text, encoding="utf-8")
+        os.replace(temporary, input_path)
     else:
-        age = datetime.now(timezone.utc) - datetime.fromtimestamp(os.path.getmtime(input_file), timezone.utc)
+        age = datetime.now(timezone.utc) - datetime.fromtimestamp(input_path.stat().st_mtime, timezone.utc)
         print(f"Using cached UK station data (age: {int(age.total_seconds() // 86400)} days)")
-    
+
     print("Loading rename mapping...")
     rename_map = load_rename_map("uk")
     print(f"Loaded {len(rename_map)} rename rules")
-    
-    convert_uk_stations(input_file, output_file, rename_map)
+    convert_uk_stations(str(input_path), output_file, rename_map)
     print(f"Conversion complete. Output written to {output_file}")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -5264,6 +5264,14 @@
       "decision": "handled_by_france_with_rfi_fallback",
       "reviewed_name": "Vievola",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
+    },
+    {
+      "operator": "eav",
+      "id": "92",
+      "status": "reviewed_only_retained",
+      "source_name": "",
+      "reviewed_name": "Vesuvio De Meis (SGV)",
+      "decision": "keep_reviewed_station"
     }
   ]
 }

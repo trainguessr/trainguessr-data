@@ -1904,8 +1904,8 @@
 {"type":"node","id":87547026,"lat":48.842285,"lon":2.364891,"tags":{"name":"Paris Austerlitz","further_ids":["87547000"],"libellecourt":"PAZ","segment_drg":"A;B","codeinsee":"75113"},"category":"france_sncf"}
 {"type":"node","id":87686667,"lat":48.83917,"lon":2.38278,"tags":{"name":"Paris Bercy Bourgogne - Pays d'Auvergne","further_ids":[],"libellecourt":"PBY","segment_drg":"A","codeinsee":"75112"},"category":"france_sncf"}
 {"type":"node","id":87113001,"lat":48.876742,"lon":2.358424,"tags":{"name":"Paris Est","further_ids":[],"libellecourt":"PES","segment_drg":"A","codeinsee":"75110"},"category":"france_sncf"}
-{"type":"node","id":87686030,"lat":48.844888,"lon":2.37352,"tags":{"name":"Paris Gare de Lyon","further_ids":["87686006"],"libellecourt":"PLY","segment_drg":"A;B","codeinsee":"75112"},"category":"france_sncf"}
-{"type":"node","id":87271007,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord","further_ids":["87271031","87271023"],"libellecourt":"PNO","segment_drg":"A;A;B","codeinsee":"75110"},"category":"france_sncf"}
+{"type":"node","id":87686030,"lat":48.844888,"lon":2.37352,"tags":{"name":"Paris Gare de Lyon","further_ids":["87686006"],"libellecourt":"PLY","segment_drg":"B;A","codeinsee":"75112"},"category":"france_sncf"}
+{"type":"node","id":87271007,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord","further_ids":["87271031","87271023"],"libellecourt":"PNO","segment_drg":"A;B;A","codeinsee":"75110"},"category":"france_sncf"}
 {"type":"node","id":87391003,"lat":48.841172,"lon":2.320514,"tags":{"name":"Paris Montparnasse","further_ids":["87391011","87391102"],"libellecourt":"PMP","segment_drg":"A;A","codeinsee":"75115"},"category":"france_sncf"}
 {"type":"node","id":87384008,"lat":48.876242,"lon":2.325331,"tags":{"name":"Paris Saint-Lazare","further_ids":[],"libellecourt":"PSL","segment_drg":"A","codeinsee":"75108"},"category":"france_sncf"}
 {"type":"node","id":87597724,"lat":46.1986154,"lon":2.1744416,"tags":{"name":"Parsac - Gouzon","further_ids":[],"libellecourt":"PCG","segment_drg":"C","codeinsee":"23149"},"category":"france_sncf"}
@@ -2236,7 +2236,7 @@
 {"type":"node","id":87576405,"lat":47.0965233,"lon":2.4846102,"tags":{"name":"Saint-Germain-du-Puy","further_ids":[],"libellecourt":"SGP","segment_drg":"C","codeinsee":"18213"},"category":"france_sncf"}
 {"type":"node","id":87592287,"lat":45.6098703,"lon":1.4800397,"tags":{"name":"Saint-Germain-les-Belles","further_ids":[],"libellecourt":"SGN","segment_drg":"C","codeinsee":"87146"},"category":"france_sncf"}
 {"type":"node","id":87478016,"lat":48.2394802,"lon":-1.6541804,"tags":{"name":"Saint-Germain-sur-Ille","further_ids":[],"libellecourt":"SMW","segment_drg":"C","codeinsee":"35274"},"category":"france_sncf"}
-{"type":"node","id":87746479,"lat":45.906423,"lon":6.701331,"tags":{"name":"Saint-Gervais-les-Bains Le Fayet","further_ids":[],"libellecourt":"SGB","segment_drg":"B","codeinsee":"74236"},"category":"france_sncf"}
+{"type":"node","id":87746479,"lat":45.906423,"lon":6.701331,"tags":{"name":"Saint-Gervais-les-Bains Le Fayet","further_ids":["87744078"],"libellecourt":"SGB","segment_drg":"C;B","codeinsee":"74236"},"category":"france_sncf"}
 {"type":"node","id":87476762,"lat":47.516614,"lon":-2.0438923,"tags":{"name":"Saint-Gildas-des-Bois","further_ids":[],"libellecourt":"SOK","segment_drg":"C","codeinsee":"44161"},"category":"france_sncf"}
 {"type":"node","id":87181552,"lat":48.0758611,"lon":7.2609746,"tags":{"name":"Saint-Gilles Lycée Haut-Rhin","further_ids":[],"libellecourt":"GLL","segment_drg":"B","codeinsee":"68374"},"category":"france_sncf"}
 {"type":"node","id":87486571,"lat":46.696466,"lon":-1.941296,"tags":{"name":"Saint-Gilles-Croix-de-Vie","further_ids":[],"libellecourt":"SGV","segment_drg":"B","codeinsee":"85222"},"category":"france_sncf"}

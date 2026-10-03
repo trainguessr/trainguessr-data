@@ -4,7 +4,7 @@
 {"type":"node","id":"NSR:StopPlace:59168","lat":60.424744,"lon":5.469349,"tags":{"name":"Arna Gamle stasjon","transport_mode":"rail","stop_place_type":"railStation","rail_submode":"tourist_railway","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:398","lat":60.420097,"lon":5.46609,"tags":{"name":"Arna stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:418","lat":59.833343,"lon":10.434492,"tags":{"name":"Asker stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
-{"type":"node","id":"NSR:StopPlace:412","lat":59.581799,"lon":11.163343,"tags":{"name":"Askim stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
+{"type":"node","id":"NSR:StopPlace:412","lat":59.581784,"lon":11.163355,"tags":{"name":"Askim stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:427","lat":61.732338,"lon":10.835149,"tags":{"name":"Atna stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:434","lat":58.318928,"lon":7.367484,"tags":{"name":"Audnedal stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:441","lat":60.039008,"lon":11.351679,"tags":{"name":"Auli stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
@@ -235,7 +235,7 @@
 {"type":"node","id":"NSR:StopPlace:4","lat":61.772281,"lon":9.536819,"tags":{"name":"Otta stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:8","lat":58.956101,"lon":5.742198,"tags":{"name":"Paradis stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:57952","lat":58.310567,"lon":7.961523,"tags":{"name":"Paulen stasjon","transport_mode":"rail","stop_place_type":"railStation","rail_submode":"tourist_railway","source":"Entur NSR"},"category":"norway_all"}
-{"type":"node","id":"NSR:StopPlace:12","lat":59.139364,"lon":9.658688,"tags":{"name":"Porsgrunn stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
+{"type":"node","id":"NSR:StopPlace:12","lat":59.14009,"lon":9.658791,"tags":{"name":"Porsgrunn stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:64","lat":59.427256,"lon":11.339387,"tags":{"name":"Rakkestad stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:33","lat":63.427978,"lon":10.534298,"tags":{"name":"Ranheim stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
 {"type":"node","id":"NSR:StopPlace:15","lat":60.722108,"lon":10.613335,"tags":{"name":"Raufoss stasjon","transport_mode":"rail","stop_place_type":"railStation","source":"Entur NSR"},"category":"norway_all"}
