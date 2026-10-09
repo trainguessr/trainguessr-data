@@ -398,20 +398,20 @@ class NewCountryGeneratorTests(unittest.TestCase):
 class CuneoVentimigliaTests(unittest.TestCase):
     def test_reviewed_french_stations_are_in_france_output_with_rfi_fallbacks(self):
         expected = {
-            "Breil-sur-Roya": "730",
-            "Fontan - Saorge": "1339",
-            "Saint-Dalmas-de-Tende": "2780",
-            "La Brigue": "1511",
-            "Tende": "2826",
-            "Vievola": "3050",
+            "87756833": "730",  # Breil-sur-Roya
+            "87756858": "1339",  # Fontan - Saorge
+            "87756866": "2780",  # Saint-Dalmas-de-Tende
+            "87756874": "1511",  # La Brigue
+            "87756882": "2826",  # Tende
+            "87756890": "3050",  # Vievola
         }
         found = {}
         for line in (ROOT / "nodes" / "nodes-france-sncf.json").read_text(encoding="utf-8").splitlines():
             import json
             row = json.loads(line)
-            name = row.get("tags", {}).get("name")
-            if name in expected:
-                found[name] = str(row["tags"].get("rfi_fallback_id"))
+            station_id = str(row["id"])
+            if station_id in expected:
+                found[station_id] = str(row["tags"].get("rfi_fallback_id"))
         self.assertEqual(expected, found)
 
 

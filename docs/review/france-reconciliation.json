@@ -38,7 +38,7 @@
     "official_sncf_export_uic_stems": 2795,
     "official_sncf_records_with_missing_identity_fields": 0,
     "official_sncf_records_with_multiple_uic": 11,
-    "generated_sncf_nodes": 2846,
+    "generated_sncf_nodes": 2856,
     "official_sncf_infrastructure_records": 6469,
     "candidate_official_passenger_records": 51,
     "candidate_official_uic_correction_records": 1,

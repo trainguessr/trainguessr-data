@@ -4,7 +4,7 @@
 
 | Country | Category | Runtime provider | Generator | Coverage |
 | --- | --- | --- | --- | --- |
-| France | `france_sncf` | SNCF API/Navitia-compatible station namespace | `gen/france.py`; `gen/france.py --audit` | 2,846 nodes from the current 2,782-record SNCF export, 52 exact current SNCF Reseau passenger supplements (including one corrected Fontanil UIC), nine exact-UIC historical passenger supplements, and six reviewed Cuneo-Ventimiglia supplements, after three explicit API-identity exclusions. The physical audit records 20 deferred RATP/RER records, six separate-provider candidates, one Monaco scope gap, and seven unresolved SNCF/Occitanie candidates. Corsica CFC is a separate 65-stop `new_provider_needed` system. |
+| France | `france_sncf` | SNCF API/Navitia-compatible station namespace | `gen/france.py`; `gen/france.py --audit` | 2,854 nodes from the current 2,782-record SNCF export, 52 exact current SNCF Reseau passenger supplements (including one corrected Fontanil UIC), nine exact-UIC historical passenger supplements, and six reviewed Cuneo-Ventimiglia supplements, after five explicit API-identity exclusions. The physical audit records 20 deferred RATP/RER records, six separate-provider candidates, one Monaco scope gap, and seven unresolved SNCF/Occitanie candidates. Corsica CFC is a separate 65-stop `new_provider_needed` system. |
 
 ## Generation and source notes
 
@@ -33,24 +33,44 @@ crosswalk.
 ## Multi-UIC passenger stations
 
 SNCF's `gares-de-voyageurs` source can attach multiple UIC codes to one
-passenger-station record. Live API verification on 2026-10-03 showed that these
-codes are not interchangeable timetable aliases: different UICs for the same
-passenger station can expose disjoint service groups, while other members can
-return HTTP 404 or a valid empty board.
+public station record. Live API verification showed that these codes are not
+timetable aliases: they can represent distinct passenger facilities or railway
+systems with disjoint boards even when SNCF publishes one aggregate name and
+geometry for the complex.
 
-The generated node therefore keeps one reviewed, stable primary UIC as its
-TrainGuessr identity and stores the other source-listed UICs in `further_ids`.
-For SNCF runtime boards only, the primary plus `further_ids` form an equivalence
-group: a request entering through any member queries every member, ignores
-member-level 404/empty results when another member is usable, merges and
-deduplicates the resulting services, and returns the same combined station
-board. This SNCF-specific behavior must not be generalized to `further_ids`
-from other providers without equivalent provider evidence.
+TrainGuessr therefore preserves each reviewed operational UIC as its own
+`france_sncf` station. `overrides/exclusions/france.json` contains an explicit
+`split_uic_names` mapping for every retained current multi-UIC source record. Generation
+fails if the source UIC set and reviewed split differ, so a source change cannot
+silently merge, drop, or rotate station identity. The aggregate source geometry
+is retained for each split identity because `gares-de-voyageurs` exposes only
+one coordinate for the source record.
+Explicit exclusions in reviewed splits apply to individual UICs after validating the complete
+reviewed source mapping; excluding a faulty secondary identity preserves its
+working sibling in the same source complex. Legacy exclusions of unreviewed
+complexes such as Mareil-Marly and Noisy-le-Roi still remove the whole record.
 
-The nine current multi-UIC groups have reviewed primary identities in
-`overrides/exclusions/france.json`. Their primary choice is deliberately
-independent of source-list ordering so a regeneration cannot rotate TrainGuessr
-station identity when SNCF reorders `codes_uic`.
+This follows the global station-complex policy used by providers such as RFI:
+co-location or a shared public interchange name is not evidence that separate
+provider passenger identities should be collapsed. The France provider uses a
+reviewed board mapping: a selected catalogue UIC may query a parent Navitia
+stop area for exact secondary stop-point events, and Gares & Connexions boards
+are filtered by returned event UIC, line and mode before merging. Gare de Lyon's
+RER A/D board is selected through source UIC `87686030` and includes observed
+RER A event UIC `87758581`; the surface board retains Transilien R and R Bus
+(`CAR`). Runtime board merging through `further_ids` is not used here.
+
+The reviewed current splits include the mainline/RER or surface/underground
+identities at Paris Gare de Lyon, Gare du Nord and Austerlitz; the Montparnasse
+halls/Pasteur identities; the TGV/TER identities at Avignon TGV; the TGV/RER
+identities at Charles-de-Gaulle 2; the two Châteaubriant railway identities;
+and the separate Ermont-Eaubonne and Saint-Gervais-Le Fayet boards.
+The source-listed Avignon terminal `87981902` and Montparnasse 2 Pasteur
+`87391011` are excluded after empty/error samples on both 2026-10-08 and
+2026-10-09 across G&C, Navitia and SNCF Connect. The complete reviewed source
+mapping remains intact; 18 of its 20 UICs are selectable. Avignon `87318964`
+and Montparnasse `87391003`/`87391102` remain generated. See
+[the root technical status](../../status.md); dated evidence is in the root diary.
 
 ## SNCF export checkpoint
 
@@ -59,11 +79,10 @@ refreshed on 2026-08-27:
 
 - 2,782 records were returned;
 - every record had a name, geographic position, and at least one UIC code;
-- 11 records contain multiple UIC codes, with no duplicate UIC across records;
-- the generated output contains 2,846 nodes: 2,779 export records after the
-  three explicit API-identity exclusions, plus 52 reviewed SNCF Reseau
-  infrastructure supplements, nine historical Gares & Connexions supplements,
-  and the six reviewed Cuneo-Ventimiglia supplements below.
+- reviewed multi-UIC records are emitted as separate operational station identities, with no duplicate UIC across records;
+- the generated output contains 2,854 nodes after the reviewed UIC splits, the
+  explicit API-identity exclusions, SNCF Reseau infrastructure supplements,
+  historical Gares & Connexions supplements, and the Cuneo-Ventimiglia supplements below.
 
 The SNCF source conversion covers the complete official export. A separate
 physical audit covers no-current-service or dismantled sites because the SNCF
@@ -137,7 +156,7 @@ fabricated captures.
 - 36,311 captured OSM elements were deduplicated;
 - 2,480 French `train=yes` `railway=station|halt` elements were selected;
 - 2,183 distinct seven-digit UIC stems beginning with `87` were found;
-- 2,088 stems matched an existing SNCF output ID or `further_ids`;
+- 2,088 stems matched an existing SNCF output ID;
 - 95 unmatched stems are explicit audit candidates.
 
 The 95 candidates are classified as 61 existing-provider additions, 20 deferred

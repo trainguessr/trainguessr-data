@@ -634,28 +634,63 @@ class DatasetTests(unittest.TestCase):
             set(retained),
         )
 
-    def test_france_all_current_multi_uic_groups_have_reviewed_primaries(self) -> None:
+    def test_france_all_current_multi_uic_groups_have_reviewed_splits(self) -> None:
         config = load_country_config("france")
         expected = {
-            "Aéroport Charles de Gaulle 2 TGV": "87271494",
-            "Avignon TGV": "87318964",
-            "Châteaubriant": "87590372",
-            "Ermont - Eaubonne": "87534131",
-            "Paris Austerlitz": "87547026",
-            "Paris Gare de Lyon": "87686030",
-            "Paris Gare du Nord": "87271007",
-            "Paris Montparnasse": "87391003",
-            "Saint-Gervais-les-Bains Le Fayet": "87746479",
+            "Aéroport Charles de Gaulle 2 TGV": {
+                "87271494": "Aéroport Charles de Gaulle 2 TGV",
+                "87001479": "Aéroport Charles-de-Gaulle 2 RER",
+            },
+            "Avignon TGV": {
+                "87318964": "Avignon TGV",
+                "87981902": "Avignon TGV terminal TER",
+            },
+            "Châteaubriant": {
+                "87590372": "Châteaubriant Tram Train",
+                "87481648": "Châteaubriant",
+            },
+            "Ermont - Eaubonne": {
+                "87534131": "Ermont - Eaubonne Ligne J",
+                "87276055": "Ermont - Eaubonne",
+            },
+            "Paris Austerlitz": {
+                "87547026": "Paris Austerlitz RER C",
+                "87547000": "Paris Austerlitz",
+            },
+            "Paris Gare de Lyon": {
+                "87686030": "Paris Gare de Lyon - RER A/D",
+                "87686006": "Paris Gare de Lyon - Hall 1 & 2",
+            },
+            "Paris Gare du Nord": {
+                "87271007": "Paris Gare du Nord - Grandes lignes",
+                "87271031": "Paris Gare du Nord - Surface banlieue",
+                "87271023": "Paris Gare du Nord - RER",
+            },
+            "Paris Montparnasse": {
+                "87391003": "Paris Montparnasse - Hall 1 & 2",
+                "87391011": "Paris Montparnasse 2 Pasteur",
+                "87391102": "Paris Montparnasse - Hall 3 Vaugirard",
+            },
+            "Saint-Gervais-les-Bains Le Fayet": {
+                "87746479": "Saint-Gervais-les-Bains Le Fayet",
+                "87744078": "Saint-Gervais-les-Bains",
+            },
         }
-        self.assertEqual(expected, config.get("primary_uic"))
-        generated = {
-            row["tags"]["name"]: str(row["id"])
-            for row in load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
-            if row.get("tags", {}).get("name") in expected
-        }
-        self.assertEqual(expected, generated)
+        self.assertEqual(expected, config.get("split_uic_names"))
+        nodes = load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
+        by_id = {str(row["id"]): row for row in nodes}
+        excluded = {str(row["id"]) for row in config["excluded"]}
+        self.assertTrue({"87981902", "87391011"}.issubset(excluded))
+        self.assertTrue({"87318964", "87391003", "87391102"}.issubset(by_id))
+        for group in expected.values():
+            for station_id, station_name in group.items():
+                if station_id in excluded:
+                    self.assertNotIn(station_id, by_id)
+                    continue
+                self.assertEqual(station_name, by_id[station_id]["tags"]["name"])
+                self.assertEqual([], by_id[station_id]["tags"].get("further_ids"))
 
-    def test_france_configured_primary_uic_is_stable_when_source_order_changes(self) -> None:
+    def test_france_reviewed_uic_split_is_stable_when_source_order_changes(self) -> None:
         feature = [{
             "nom": "Paris Gare de Lyon",
             "codes_uic": "87686006;87686030",
@@ -664,21 +699,75 @@ class DatasetTests(unittest.TestCase):
             "segment_drg": "A;B",
             "codeinsee": "75112",
         }]
+        reviewed = {
+            "Paris Gare de Lyon": {
+                "87686030": "Paris Gare de Lyon - RER A/D",
+                "87686006": "Paris Gare de Lyon - Hall 1 & 2",
+            }
+        }
         with tempfile.TemporaryDirectory() as tmp:
             source = Path(tmp) / "france.json"
             output = Path(tmp) / "nodes.json"
             source.write_text(json.dumps(feature), encoding="utf-8")
-            convert_from_json(
-                source,
-                output,
-                {},
-                {"Paris Gare de Lyon": "87686030"},
-                set(),
-                [],
-            )
+            convert_from_json(source, output, {}, reviewed, set(), [])
             rows = load_ndjson(output)
-        self.assertEqual(87686030, rows[0]["id"])
-        self.assertEqual(["87686006"], rows[0]["tags"]["further_ids"])
+        self.assertEqual(
+            {
+                87686006: "Paris Gare de Lyon - Hall 1 & 2",
+                87686030: "Paris Gare de Lyon - RER A/D",
+            },
+            {row["id"]: row["tags"]["name"] for row in rows},
+        )
+        self.assertTrue(all(row["tags"]["further_ids"] == [] for row in rows))
+
+    def test_france_multi_uic_source_requires_exact_reviewed_split(self) -> None:
+        feature = [{
+            "nom": "Paris Gare de Lyon",
+            "codes_uic": "87686006;87686030",
+            "position_geographique": {"lat": 48.844888, "lon": 2.37352},
+        }]
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "france.json"
+            output = Path(tmp) / "nodes.json"
+            source.write_text(json.dumps(feature), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                convert_from_json(
+                    source, output, {},
+                    {"Paris Gare de Lyon": {"87686006": "Paris Gare de Lyon"}},
+                    set(), [],
+                )
+
+    def test_france_excluded_uic_preserves_working_station_complex_sibling(self) -> None:
+        feature = [{
+            "nom": "Avignon TGV", "codes_uic": "87318964;87981902",
+            "position_geographique": {"lat": 43.92194, "lon": 4.786111},
+        }]
+        reviewed = {"Avignon TGV": {
+            "87318964": "Avignon TGV", "87981902": "Avignon TGV terminal TER",
+        }}
+        for excluded, expected in (
+            ({"87981902"}, [87318964]),
+            ({"87318964"}, [87981902]),
+            ({"87318964", "87981902"}, []),
+        ):
+            with self.subTest(excluded=excluded), tempfile.TemporaryDirectory() as tmp:
+                source = Path(tmp) / "france.json"
+                output = Path(tmp) / "nodes.json"
+                source.write_text(json.dumps(feature), encoding="utf-8")
+                convert_from_json(source, output, {}, reviewed, excluded, [])
+                self.assertEqual(expected, [row["id"] for row in load_ndjson(output)])
+
+    def test_france_legacy_unreviewed_complex_exclusion_is_preserved(self) -> None:
+        feature = [{
+            "nom": "Mareil-Marly", "codes_uic": "87382812;87733667",
+            "position_geographique": {"lat": 48.882, "lon": 2.079},
+        }]
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "france.json"
+            output = Path(tmp) / "nodes.json"
+            source.write_text(json.dumps(feature), encoding="utf-8")
+            convert_from_json(source, output, {}, {}, {"87382812"}, [])
+            self.assertEqual([], load_ndjson(output))
 
     def test_france_reconciliation_keeps_unmatched_provider_candidates_explicit(self) -> None:
         audit_path = ROOT / "docs" / "review" / "france-reconciliation.json"
@@ -735,13 +824,18 @@ class DatasetTests(unittest.TestCase):
             for row in load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
         }
         self.assertEqual(60, len(supplements))
-        self.assertTrue(
-            all(
-                str(row["sncf_id"]) in nodes
-                and nodes[str(row["sncf_id"])]["tags"].get("source") == row["source"]
-                for row in supplements
+        current_source_ids = {
+            code.strip()
+            for station in json.loads((ROOT / "cache" / "france" / "sncf.json").read_text(encoding="utf-8"))
+            for code in station.get("codes_uic", "").split(";") if code.strip()
+        }
+        self.assertTrue(all(
+            str(row["sncf_id"]) in nodes and (
+                nodes[str(row["sncf_id"])]["tags"].get("source") == row["source"]
+                or str(row["sncf_id"]) in current_source_ids
             )
-        )
+            for row in supplements
+        ))
         self.assertIn("87561143", nodes)
         self.assertNotIn("87565143", nodes)
         self.assertIn("87691949", nodes)

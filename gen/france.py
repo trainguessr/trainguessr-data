@@ -41,7 +41,7 @@ def convert_from_json(
     input_path,
     output_path,
     rename_map,
-    primary_uic,
+    split_uic_names,
     excluded_ids,
     supplements=None,
     passenger_supplements=None,
@@ -59,7 +59,7 @@ def convert_from_json(
         for feature in data:
             try:
                 codes_uic = [code.strip() for code in feature.get("codes_uic", "").split(";") if code.strip()]
-                if not codes_uic or any(code in excluded_ids for code in codes_uic):
+                if not codes_uic or all(code in excluded_ids for code in codes_uic):
                     continue
                 geo = feature.get("position_geographique", {})
                 if not geo:
@@ -72,33 +72,59 @@ def convert_from_json(
                 if nom in rename_map:
                     nom = rename_map[nom]
 
-                primary_id = str(primary_uic.get(nom, codes_uic[0]))
-                if primary_id not in codes_uic:
-                    raise ValueError(f"Primary UIC {primary_id} is not listed for {nom}")
-                further_ids = sorted(code for code in codes_uic if code != primary_id)
-                tags = {
-                    "name": nom,
-                    "further_ids": further_ids,
-                    "libellecourt": feature.get("libellecourt", ""),
-                    "segment_drg": feature.get("segment_drg", ""),
-                    "codeinsee": feature.get("codeinsee", ""),
-                }
-                reviewed = next((supplements_by_id[code] for code in codes_uic
-                                 if code in supplements_by_id), None)
-                if reviewed:
-                    tags["rfi_fallback_id"] = str(reviewed["rfi_fallback_id"])
-                    tags["source_review"] = "cuneo-ventimiglia"
+                split_names = split_uic_names.get(nom)
+                if not isinstance(split_names, dict) and any(code in excluded_ids for code in codes_uic):
+                    # Historical exclusions such as Mareil-Marly represent an
+                    # entire source complex with no reviewed SNCF identities.
+                    # Reviewed split complexes instead exclude each UIC below.
+                    continue
+                if len(codes_uic) > 1:
+                    if not isinstance(split_names, dict):
+                        raise ValueError(
+                            f"Multi-UIC station {nom} requires a reviewed split_uic_names mapping"
+                        )
+                    reviewed_ids = {str(code) for code in split_names}
+                    source_ids = set(codes_uic)
+                    if reviewed_ids != source_ids:
+                        raise ValueError(
+                            f"Reviewed UIC split for {nom} does not match source: "
+                            f"reviewed={sorted(reviewed_ids)} source={sorted(source_ids)}"
+                        )
+                else:
+                    split_names = {codes_uic[0]: nom}
 
-                node = {
-                    "type": "node",
-                    "id": int(primary_id),
-                    "lat": float(geo["lat"]),
-                    "lon": float(geo["lon"]),
-                    "tags": tags,
-                    "category": "france_sncf",
-                }
-                outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
-                written_ids.add(primary_id)
+                # The SNCF source supplies one geometry for the aggregate public
+                # station record.  Preserve that source geometry for each reviewed
+                # operational UIC instead of collapsing distinct live boards into
+                # one TrainGuessr station.
+                for station_id in codes_uic:
+                    if station_id in excluded_ids:
+                        continue
+                    station_name = str(split_names.get(station_id) or "").strip()
+                    if not station_name:
+                        raise ValueError(f"Missing reviewed display name for UIC {station_id} ({nom})")
+                    tags = {
+                        "name": station_name,
+                        "further_ids": [],
+                        "libellecourt": feature.get("libellecourt", ""),
+                        "segment_drg": feature.get("segment_drg", ""),
+                        "codeinsee": feature.get("codeinsee", ""),
+                    }
+                    reviewed = supplements_by_id.get(station_id)
+                    if reviewed:
+                        tags["rfi_fallback_id"] = str(reviewed["rfi_fallback_id"])
+                        tags["source_review"] = "cuneo-ventimiglia"
+
+                    node = {
+                        "type": "node",
+                        "id": int(station_id),
+                        "lat": float(geo["lat"]),
+                        "lon": float(geo["lon"]),
+                        "tags": tags,
+                        "category": "france_sncf",
+                    }
+                    outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
+                    written_ids.add(station_id)
             except Exception as e:
                 print(f"Error processing feature: {e}")
                 errors.append(str(e))
@@ -195,7 +221,7 @@ def main(argv: list[str] | None = None) -> int:
     print("Loading rename mapping...")
     rename_map = load_rename_map("france")
     config = load_country_config("france")
-    primary_uic = config.get("primary_uic", {})
+    split_uic_names = config.get("split_uic_names", {})
     excluded_ids = load_excluded_ids("france")
     print(f"Loaded {len(rename_map)} rename rules")
 
@@ -207,7 +233,7 @@ def main(argv: list[str] | None = None) -> int:
         CACHE,
         OUTPUT,
         rename_map,
-        primary_uic,
+        split_uic_names,
         excluded_ids,
         supplements,
         passenger_supplements,

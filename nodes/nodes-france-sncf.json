@@ -6,7 +6,8 @@
 {"type":"node","id":87381657,"lat":48.97011,"lon":2.07739,"tags":{"name":"Achères Ville","further_ids":[],"libellecourt":"ACW","segment_drg":"B","codeinsee":"78005"},"category":"france_sncf"}
 {"type":"node","id":87342048,"lat":50.1317525,"lon":2.780168,"tags":{"name":"Achiet-le-Grand","further_ids":[],"libellecourt":"ACT","segment_drg":"C","codeinsee":"62005"},"category":"france_sncf"}
 {"type":"node","id":87271460,"lat":49.00956,"lon":2.56135,"tags":{"name":"Aéroport Charles de Gaulle 1","further_ids":[],"libellecourt":"RSY","segment_drg":"B","codeinsee":"93073"},"category":"france_sncf"}
-{"type":"node","id":87271494,"lat":49.003652,"lon":2.570892,"tags":{"name":"Aéroport Charles de Gaulle 2 TGV","further_ids":["87001479"],"libellecourt":"RYT","segment_drg":"A;A","codeinsee":"93073"},"category":"france_sncf"}
+{"type":"node","id":87001479,"lat":49.003652,"lon":2.570892,"tags":{"name":"Aéroport Charles-de-Gaulle 2 RER","further_ids":[],"libellecourt":"RYT","segment_drg":"A;A","codeinsee":"93073"},"category":"france_sncf"}
+{"type":"node","id":87271494,"lat":49.003652,"lon":2.570892,"tags":{"name":"Aéroport Charles de Gaulle 2 TGV","further_ids":[],"libellecourt":"RYT","segment_drg":"A;A","codeinsee":"93073"},"category":"france_sncf"}
 {"type":"node","id":87757559,"lat":43.4313701,"lon":6.8564997,"tags":{"name":"Agay","further_ids":[],"libellecourt":"AGH","segment_drg":"C","codeinsee":"83118"},"category":"france_sncf"}
 {"type":"node","id":87781278,"lat":43.31728,"lon":3.466203,"tags":{"name":"Agde","further_ids":[],"libellecourt":"AGD","segment_drg":"B","codeinsee":"34003"},"category":"france_sncf"}
 {"type":"node","id":87586008,"lat":44.208311,"lon":0.620932,"tags":{"name":"Agen","further_ids":[],"libellecourt":"AGN","segment_drg":"A","codeinsee":"47001"},"category":"france_sncf"}
@@ -148,7 +149,7 @@
 {"type":"node","id":87295725,"lat":50.1185513,"lon":3.9485876,"tags":{"name":"Avesnelles","further_ids":[],"libellecourt":"AVS","segment_drg":"C","codeinsee":"59035"},"category":"france_sncf"}
 {"type":"node","id":87295733,"lat":50.12674,"lon":3.93295,"tags":{"name":"Avesnes-sur-Helpe","further_ids":[],"libellecourt":"AVN","segment_drg":"B","codeinsee":"59036"},"category":"france_sncf"}
 {"type":"node","id":87765008,"lat":43.9419,"lon":4.805281,"tags":{"name":"Avignon Centre","further_ids":[],"libellecourt":"AVI","segment_drg":"A","codeinsee":"84007"},"category":"france_sncf"}
-{"type":"node","id":87318964,"lat":43.921586,"lon":4.786079,"tags":{"name":"Avignon TGV","further_ids":["87981902"],"libellecourt":"AVV","segment_drg":"A;A","codeinsee":"84007"},"category":"france_sncf"}
+{"type":"node","id":87318964,"lat":43.921586,"lon":4.786079,"tags":{"name":"Avignon TGV","further_ids":[],"libellecourt":"AVV","segment_drg":"A;A","codeinsee":"84007"},"category":"france_sncf"}
 {"type":"node","id":87616011,"lat":43.3638769,"lon":1.7872687,"tags":{"name":"Avignonet-Lauragais","further_ids":[],"libellecourt":"AWG","segment_drg":"C","codeinsee":"31037"},"category":"france_sncf"}
 {"type":"node","id":87342584,"lat":50.40723,"lon":2.83365,"tags":{"name":"Avion","further_ids":[],"libellecourt":"AON","segment_drg":"C","codeinsee":"62065"},"category":"france_sncf"}
 {"type":"node","id":87576439,"lat":47.0349061,"lon":2.6523757,"tags":{"name":"Avord","further_ids":[],"libellecourt":"ADG","segment_drg":"C","codeinsee":"18018"},"category":"france_sncf"}
@@ -352,6 +353,7 @@
 {"type":"node","id":87713644,"lat":47.1314549,"lon":5.2121276,"tags":{"name":"Brazey-en-Plaine","further_ids":[],"libellecourt":"BEP","segment_drg":"C","codeinsee":"21103"},"category":"france_sncf"}
 {"type":"node","id":87413344,"lat":49.603396,"lon":0.417489,"tags":{"name":"Bréauté - Beuzeville","further_ids":[],"libellecourt":"BTB","segment_drg":"B","codeinsee":"76141"},"category":"france_sncf"}
 {"type":"node","id":87345108,"lat":50.33624,"lon":3.0142,"tags":{"name":"Brebières","further_ids":[],"libellecourt":"BSU","segment_drg":"C","codeinsee":"62173"},"category":"france_sncf"}
+{"type":"node","id":87756833,"lat":43.944039,"lon":7.5163276,"tags":{"name":"Breil-sur-Roya","further_ids":[],"libellecourt":"BRE","segment_drg":"C","codeinsee":"06023","rfi_fallback_id":"730","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87182659,"lat":48.0285326,"lon":7.1040522,"tags":{"name":"Breitenbach","further_ids":[],"libellecourt":"BHH","segment_drg":"C","codeinsee":"68051"},"category":"france_sncf"}
 {"type":"node","id":87473827,"lat":48.669204,"lon":-3.196269,"tags":{"name":"Brélidy - Plouëc","further_ids":[],"libellecourt":"BYP","segment_drg":"C","codeinsee":"22212"},"category":"france_sncf"}
 {"type":"node","id":87487249,"lat":46.8384462,"lon":-0.4963269,"tags":{"name":"Bressuire","further_ids":[],"libellecourt":"BRS","segment_drg":"C","codeinsee":"79049"},"category":"france_sncf"}
@@ -522,7 +524,8 @@
 {"type":"node","id":87574665,"lat":47.5877961,"lon":0.9015238,"tags":{"name":"Château-Renault","further_ids":[],"libellecourt":"CTI","segment_drg":"B","codeinsee":"37063"},"category":"france_sncf"}
 {"type":"node","id":87116582,"lat":49.038224,"lon":3.409514,"tags":{"name":"Château-Thierry","further_ids":[],"libellecourt":"CTH","segment_drg":"B","codeinsee":"02168"},"category":"france_sncf"}
 {"type":"node","id":87471524,"lat":48.106361,"lon":-1.405159,"tags":{"name":"Châteaubourg","further_ids":[],"libellecourt":"CTG","segment_drg":"B","codeinsee":"35068"},"category":"france_sncf"}
-{"type":"node","id":87590372,"lat":47.7175212,"lon":-1.3715152,"tags":{"name":"Châteaubriant","further_ids":["87481648"],"libellecourt":"CTB","segment_drg":"B;B","codeinsee":"44036"},"category":"france_sncf"}
+{"type":"node","id":87590372,"lat":47.7175212,"lon":-1.3715152,"tags":{"name":"Châteaubriant Tram Train","further_ids":[],"libellecourt":"CTB","segment_drg":"B;B","codeinsee":"44036"},"category":"france_sncf"}
+{"type":"node","id":87481648,"lat":47.7175212,"lon":-1.3715152,"tags":{"name":"Châteaubriant","further_ids":[],"libellecourt":"CTB","segment_drg":"B;B","codeinsee":"44036"},"category":"france_sncf"}
 {"type":"node","id":87545756,"lat":48.073463,"lon":1.338133,"tags":{"name":"Châteaudun","further_ids":[],"libellecourt":"CUN","segment_drg":"B","codeinsee":"28088"},"category":"france_sncf"}
 {"type":"node","id":87474064,"lat":48.2016033,"lon":-4.094308,"tags":{"name":"Châteaulin","further_ids":[],"libellecourt":"CEM","segment_drg":"C","codeinsee":"29026"},"category":"france_sncf"}
 {"type":"node","id":87592105,"lat":45.759316,"lon":1.6453027,"tags":{"name":"Châteauneuf - Bujaleuf","further_ids":[],"libellecourt":"CBF","segment_drg":"C","codeinsee":"87105"},"category":"france_sncf"}
@@ -534,7 +537,7 @@
 {"type":"node","id":87485110,"lat":46.0783303,"lon":-1.0908909,"tags":{"name":"Châtelaillon-Plage","further_ids":[],"libellecourt":"CTL","segment_drg":"B","codeinsee":"17094"},"category":"france_sncf"}
 {"type":"node","id":87473140,"lat":48.5332189,"lon":-2.9746782,"tags":{"name":"Châtelaudren - Plouagat","further_ids":[],"libellecourt":"CDN","segment_drg":"C","codeinsee":"22206"},"category":"france_sncf"}
 {"type":"node","id":87575142,"lat":46.818594,"lon":0.549279,"tags":{"name":"Châtellerault","further_ids":[],"libellecourt":"CRT","segment_drg":"B","codeinsee":"86066"},"category":"france_sncf"}
-{"type":"node","id":87721753,"lat":45.8751815,"lon":4.6451164,"tags":{"name":"Châtillon d'Azergues","further_ids":[],"libellecourt":"CDZ","segment_drg":"C","codeinsee":"03069"},"category":"france_sncf"}
+{"type":"node","id":87721753,"lat":45.8751815,"lon":4.6451164,"tags":{"name":"Châtillon d'Azergues","further_ids":[],"libellecourt":"CDZ","segment_drg":"C","codeinsee":"69050"},"category":"france_sncf"}
 {"type":"node","id":87694778,"lat":46.2074552,"lon":4.3454278,"tags":{"name":"Chauffailles","further_ids":[],"libellecourt":"CHF","segment_drg":"C","codeinsee":"71120"},"category":"france_sncf"}
 {"type":"node","id":87712679,"lat":47.0872036,"lon":5.2551914,"tags":{"name":"Chaugey","further_ids":[],"libellecourt":"CFJ","segment_drg":"C","codeinsee":"21356"},"category":"france_sncf"}
 {"type":"node","id":87313478,"lat":49.8076201,"lon":2.8011421,"tags":{"name":"Chaulnes","further_ids":[],"libellecourt":"CHL","segment_drg":"B","codeinsee":"80186"},"category":"france_sncf"}
@@ -587,7 +590,7 @@
 {"type":"node","id":87396895,"lat":45.7680954,"lon":3.0909704,"tags":{"name":"Clermont La Rotonde","further_ids":[],"libellecourt":"RTD","segment_drg":"C","codeinsee":"63113"},"category":"france_sncf"}
 {"type":"node","id":87734004,"lat":45.778945,"lon":3.100543,"tags":{"name":"Clermont-Ferrand","further_ids":[],"libellecourt":"CLF","segment_drg":"A","codeinsee":"63113"},"category":"france_sncf"}
 {"type":"node","id":87184622,"lat":47.3966577,"lon":6.4920574,"tags":{"name":"Clerval","further_ids":[],"libellecourt":"CVL","segment_drg":"C","codeinsee":"25156"},"category":"france_sncf"}
-{"type":"node","id":87381129,"lat":48.89678,"lon":2.2982,"tags":{"name":"Clichy - Levallois","further_ids":[],"libellecourt":"CLL","segment_drg":"B","codeinsee":"75117"},"category":"france_sncf"}
+{"type":"node","id":87381129,"lat":48.89678,"lon":2.2982,"tags":{"name":"Clichy - Levallois","further_ids":[],"libellecourt":"CLL","segment_drg":"B","codeinsee":"92044"},"category":"france_sncf"}
 {"type":"node","id":87481440,"lat":47.086142,"lon":-1.286172,"tags":{"name":"Clisson","further_ids":[],"libellecourt":"CLI","segment_drg":"B","codeinsee":"44043"},"category":"france_sncf"}
 {"type":"node","id":87574509,"lat":47.9921032,"lon":1.2433542,"tags":{"name":"Cloyes-sur-le-Loir","further_ids":[],"libellecourt":"CLO","segment_drg":"C","codeinsee":"28103"},"category":"france_sncf"}
 {"type":"node","id":87746370,"lat":46.061447,"lon":6.582663,"tags":{"name":"Cluses","further_ids":[],"libellecourt":"CLU","segment_drg":"B","codeinsee":"74081"},"category":"france_sncf"}
@@ -786,7 +789,8 @@
 {"type":"node","id":87386763,"lat":48.9631225,"lon":1.8085932,"tags":{"name":"Épône - Mézières","further_ids":[],"libellecourt":"EPO","segment_drg":"B","codeinsee":"78217"},"category":"france_sncf"}
 {"type":"node","id":87381418,"lat":49.01824,"lon":2.09104,"tags":{"name":"Éragny - Neuville","further_ids":[],"libellecourt":"ERA","segment_drg":"B","codeinsee":"95218"},"category":"france_sncf"}
 {"type":"node","id":87590356,"lat":47.282902,"lon":-1.544552,"tags":{"name":"Erdre Active","further_ids":[],"libellecourt":"ERD","segment_drg":"C","codeinsee":"44035"},"category":"france_sncf"}
-{"type":"node","id":87534131,"lat":48.98032,"lon":2.27176,"tags":{"name":"Ermont - Eaubonne","further_ids":["87276055"],"libellecourt":"ERT","segment_drg":"B;B","codeinsee":"95219"},"category":"france_sncf"}
+{"type":"node","id":87276055,"lat":48.98032,"lon":2.27176,"tags":{"name":"Ermont - Eaubonne","further_ids":[],"libellecourt":"ERT","segment_drg":"B;B","codeinsee":"95219"},"category":"france_sncf"}
+{"type":"node","id":87534131,"lat":48.98032,"lon":2.27176,"tags":{"name":"Ermont - Eaubonne Ligne J","further_ids":[],"libellecourt":"ERT","segment_drg":"B;B","codeinsee":"95219"},"category":"france_sncf"}
 {"type":"node","id":87276584,"lat":48.9898,"lon":2.26323,"tags":{"name":"Ermont Halte","further_ids":[],"libellecourt":"ERM","segment_drg":"B","codeinsee":"95219"},"category":"france_sncf"}
 {"type":"node","id":87214148,"lat":48.4229857,"lon":7.6387869,"tags":{"name":"Erstein","further_ids":[],"libellecourt":"EEN","segment_drg":"B","codeinsee":"67130"},"category":"france_sncf"}
 {"type":"node","id":87116327,"lat":48.90314191,"lon":2.81059946,"tags":{"name":"Esbly","further_ids":[],"libellecourt":"EYA","segment_drg":"B","codeinsee":"77171"},"category":"france_sncf"}
@@ -847,6 +851,7 @@
 {"type":"node","id":87682427,"lat":48.4871358,"lon":2.7514043,"tags":{"name":"Fontaine-le-Port","further_ids":[],"libellecourt":"FPO","segment_drg":"C","codeinsee":"77188"},"category":"france_sncf"}
 {"type":"node","id":87682211,"lat":48.416371,"lon":2.72634,"tags":{"name":"Fontainebleau - Avon","further_ids":[],"libellecourt":"FON","segment_drg":"B","codeinsee":"77014"},"category":"france_sncf"}
 {"type":"node","id":87713586,"lat":46.8512109,"lon":4.7750693,"tags":{"name":"Fontaines - Mercurey","further_ids":[],"libellecourt":"FAE","segment_drg":"C","codeinsee":"71202"},"category":"france_sncf"}
+{"type":"node","id":87756858,"lat":43.9966378,"lon":7.5516262,"tags":{"name":"Fontan - Saorge","further_ids":[],"libellecourt":"FTO","segment_drg":"C","codeinsee":"06062","rfi_fallback_id":"1339","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87393405,"lat":48.8074032,"lon":2.0404603,"tags":{"name":"Fontenay-le-Fleury","further_ids":[],"libellecourt":"FAF","segment_drg":"B","codeinsee":"78242"},"category":"france_sncf"}
 {"type":"node","id":87141051,"lat":48.711721,"lon":5.9803654,"tags":{"name":"Fontenoy-sur-Moselle","further_ids":[],"libellecourt":"FBE","segment_drg":"C","codeinsee":"54202"},"category":"france_sncf"}
 {"type":"node","id":87784769,"lat":42.5138062,"lon":2.1886585,"tags":{"name":"Fontpédrouse","further_ids":[],"libellecourt":"FTB","segment_drg":"C","codeinsee":"66080"},"category":"france_sncf"}
@@ -1095,6 +1100,7 @@
 {"type":"node","id":87721431,"lat":45.833299,"lon":4.618319,"tags":{"name":"L'Arbresle","further_ids":[],"libellecourt":"LBL","segment_drg":"B","codeinsee":"69010"},"category":"france_sncf"}
 {"type":"node","id":87763557,"lat":44.7909802,"lon":6.5564162,"tags":{"name":"L'Argentière Les Écrins","further_ids":[],"libellecourt":"LEE","segment_drg":"C","codeinsee":"05006"},"category":"france_sncf"}
 {"type":"node","id":87751529,"lat":43.7343716,"lon":7.3025298,"tags":{"name":"L'Ariane La Trinité","further_ids":[],"libellecourt":"ATJ","segment_drg":"C","codeinsee":"06149"},"category":"france_sncf"}
+{"type":"node","id":87756809,"lat":43.8397674,"lon":7.3517085,"tags":{"name":"L'Escarène","further_ids":[],"libellecourt":"ESR","segment_drg":"C","codeinsee":"06057"},"category":"france_sncf"}
 {"type":"node","id":87751602,"lat":43.363628,"lon":5.3213598,"tags":{"name":"L'Estaque","further_ids":[],"libellecourt":"LES","segment_drg":"B","codeinsee":"13216"},"category":"france_sncf"}
 {"type":"node","id":87726109,"lat":48.872302065217156,"lon":2.0688744062680113,"tags":{"name":"L'Etang les Sablons","further_ids":[],"libellecourt":"LEB","segment_drg":"B","codeinsee":"78224"},"category":"france_sncf"}
 {"type":"node","id":87382473,"lat":48.86822,"lon":2.0766932,"tags":{"name":"L'Étang-la-Ville","further_ids":[],"libellecourt":"ELW","segment_drg":"B","codeinsee":"78224"},"category":"france_sncf"}
@@ -1118,6 +1124,7 @@
 {"type":"node","id":87487843,"lat":47.4342356,"lon":-0.4000426,"tags":{"name":"La Bohalle","further_ids":[],"libellecourt":"WBH","segment_drg":"C","codeinsee":"49032"},"category":"france_sncf"}
 {"type":"node","id":87387142,"lat":48.9884615,"lon":1.035014,"tags":{"name":"La Bonneville-sur-Iton","further_ids":[],"libellecourt":"BVU","segment_drg":"C","codeinsee":"27082"},"category":"france_sncf"}
 {"type":"node","id":87276287,"lat":49.126985,"lon":2.5058656,"tags":{"name":"La Borne Blanche","further_ids":[],"libellecourt":"BBN","segment_drg":"B","codeinsee":"60482"},"category":"france_sncf"}
+{"type":"node","id":87756874,"lat":44.0625669,"lon":7.6056235,"tags":{"name":"La Brigue","further_ids":[],"libellecourt":"WBI","segment_drg":"C","codeinsee":"06162","rfi_fallback_id":"1511","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87751271,"lat":43.9247771,"lon":5.8923199,"tags":{"name":"La Brillanne - Oraison","further_ids":[],"libellecourt":"LBO","segment_drg":"C","codeinsee":"04034"},"category":"france_sncf"}
 {"type":"node","id":87471094,"lat":48.2134717,"lon":-2.110452,"tags":{"name":"La Brohinière","further_ids":[],"libellecourt":"LBR","segment_drg":"C","codeinsee":"35184"},"category":"france_sncf"}
 {"type":"node","id":87382432,"lat":48.84259,"lon":2.13797,"tags":{"name":"La Celle-Saint-Cloud","further_ids":[],"libellecourt":"LCB","segment_drg":"B","codeinsee":"78126"},"category":"france_sncf"}
@@ -1281,7 +1288,7 @@
 {"type":"node","id":87734707,"lat":45.1214503,"lon":3.9054101,"tags":{"name":"Lavoûte-sur-Loire","further_ids":[],"libellecourt":"LVL","segment_drg":"C","codeinsee":"43119"},"category":"france_sncf"}
 {"type":"node","id":87271478,"lat":48.93248,"lon":2.47747,"tags":{"name":"Le Blanc-Mesnil","further_ids":[],"libellecourt":"BAM","segment_drg":"B","codeinsee":"93029"},"category":"france_sncf"}
 {"type":"node","id":87757757,"lat":43.5515285,"lon":6.9816599,"tags":{"name":"Le Bosquet","further_ids":[],"libellecourt":"BQJ","segment_drg":"B","codeinsee":"06029"},"category":"france_sncf"}
-{"type":"node","id":87271395,"lat":48.93096,"lon":2.42571,"tags":{"name":"Le Bourget","further_ids":[],"libellecourt":"LBT","segment_drg":"B","codeinsee":"93029"},"category":"france_sncf"}
+{"type":"node","id":87271395,"lat":48.93096,"lon":2.42571,"tags":{"name":"Le Bourget","further_ids":[],"libellecourt":"LBT","segment_drg":"B","codeinsee":"93013"},"category":"france_sncf"}
 {"type":"node","id":87697359,"lat":48.93086,"lon":2.42571,"tags":{"name":"Le Bourget T11","further_ids":[],"libellecourt":"BOT","segment_drg":"B","codeinsee":"93029"},"category":"france_sncf"}
 {"type":"node","id":87738096,"lat":44.870926495346204,"lon":-0.614049444932229,"tags":{"name":"Le Bouscat - Saint-Germaine","further_ids":[],"libellecourt":"LGM","segment_drg":"C","codeinsee":"33069"},"category":"france_sncf"}
 {"type":"node","id":87781583,"lat":43.6912097,"lon":3.1689379,"tags":{"name":"Le Bousquet-d'Orb","further_ids":[],"libellecourt":"LBD","segment_drg":"C","codeinsee":"34038"},"category":"france_sncf"}
@@ -1901,12 +1908,17 @@
 {"type":"node","id":87271486,"lat":48.97334,"lon":2.51382,"tags":{"name":"Parc des Expositions","further_ids":[],"libellecourt":"PEX","segment_drg":"B","codeinsee":"93078"},"category":"france_sncf"}
 {"type":"node","id":87581710,"lat":44.9447032,"lon":-0.6193396,"tags":{"name":"Parempuyre","further_ids":[],"libellecourt":"PPY","segment_drg":"C","codeinsee":"33312"},"category":"france_sncf"}
 {"type":"node","id":87734194,"lat":45.6139737,"lon":3.2178245,"tags":{"name":"Parent - Coudes - Champeix","further_ids":[],"libellecourt":"PCC","segment_drg":"C","codeinsee":"63269"},"category":"france_sncf"}
-{"type":"node","id":87547026,"lat":48.842285,"lon":2.364891,"tags":{"name":"Paris Austerlitz","further_ids":["87547000"],"libellecourt":"PAZ","segment_drg":"A;B","codeinsee":"75113"},"category":"france_sncf"}
+{"type":"node","id":87547000,"lat":48.842285,"lon":2.364891,"tags":{"name":"Paris Austerlitz","further_ids":[],"libellecourt":"PAZ","segment_drg":"A;B","codeinsee":"75113"},"category":"france_sncf"}
+{"type":"node","id":87547026,"lat":48.842285,"lon":2.364891,"tags":{"name":"Paris Austerlitz RER C","further_ids":[],"libellecourt":"PAZ","segment_drg":"A;B","codeinsee":"75113"},"category":"france_sncf"}
 {"type":"node","id":87686667,"lat":48.83917,"lon":2.38278,"tags":{"name":"Paris Bercy Bourgogne - Pays d'Auvergne","further_ids":[],"libellecourt":"PBY","segment_drg":"A","codeinsee":"75112"},"category":"france_sncf"}
 {"type":"node","id":87113001,"lat":48.876742,"lon":2.358424,"tags":{"name":"Paris Est","further_ids":[],"libellecourt":"PES","segment_drg":"A","codeinsee":"75110"},"category":"france_sncf"}
-{"type":"node","id":87686030,"lat":48.844888,"lon":2.37352,"tags":{"name":"Paris Gare de Lyon","further_ids":["87686006"],"libellecourt":"PLY","segment_drg":"B;A","codeinsee":"75112"},"category":"france_sncf"}
-{"type":"node","id":87271007,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord","further_ids":["87271031","87271023"],"libellecourt":"PNO","segment_drg":"A;B;A","codeinsee":"75110"},"category":"france_sncf"}
-{"type":"node","id":87391003,"lat":48.841172,"lon":2.320514,"tags":{"name":"Paris Montparnasse","further_ids":["87391011","87391102"],"libellecourt":"PMP","segment_drg":"A;A","codeinsee":"75115"},"category":"france_sncf"}
+{"type":"node","id":87686006,"lat":48.844888,"lon":2.37352,"tags":{"name":"Paris Gare de Lyon - Hall 1 & 2","further_ids":[],"libellecourt":"PLY","segment_drg":"A;B","codeinsee":"75112"},"category":"france_sncf"}
+{"type":"node","id":87686030,"lat":48.844888,"lon":2.37352,"tags":{"name":"Paris Gare de Lyon - RER A/D","further_ids":[],"libellecourt":"PLY","segment_drg":"A;B","codeinsee":"75112"},"category":"france_sncf"}
+{"type":"node","id":87271031,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord - Surface banlieue","further_ids":[],"libellecourt":"PNO","segment_drg":"A;A;B","codeinsee":"75110"},"category":"france_sncf"}
+{"type":"node","id":87271007,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord - Grandes lignes","further_ids":[],"libellecourt":"PNO","segment_drg":"A;A;B","codeinsee":"75110"},"category":"france_sncf"}
+{"type":"node","id":87271023,"lat":48.880185,"lon":2.355151,"tags":{"name":"Paris Gare du Nord - RER","further_ids":[],"libellecourt":"PNO","segment_drg":"A;A;B","codeinsee":"75110"},"category":"france_sncf"}
+{"type":"node","id":87391003,"lat":48.841172,"lon":2.320514,"tags":{"name":"Paris Montparnasse - Hall 1 & 2","further_ids":[],"libellecourt":"PMP","segment_drg":"A;A","codeinsee":"75115"},"category":"france_sncf"}
+{"type":"node","id":87391102,"lat":48.841172,"lon":2.320514,"tags":{"name":"Paris Montparnasse - Hall 3 Vaugirard","further_ids":[],"libellecourt":"PMP","segment_drg":"A;A","codeinsee":"75115"},"category":"france_sncf"}
 {"type":"node","id":87384008,"lat":48.876242,"lon":2.325331,"tags":{"name":"Paris Saint-Lazare","further_ids":[],"libellecourt":"PSL","segment_drg":"A","codeinsee":"75108"},"category":"france_sncf"}
 {"type":"node","id":87597724,"lat":46.1986154,"lon":2.1744416,"tags":{"name":"Parsac - Gouzon","further_ids":[],"libellecourt":"PCG","segment_drg":"C","codeinsee":"23149"},"category":"france_sncf"}
 {"type":"node","id":87753285,"lat":43.409655,"lon":5.253822,"tags":{"name":"Pas des Lanciers","further_ids":[],"libellecourt":"PDL","segment_drg":"B","codeinsee":"13054"},"category":"france_sncf"}
@@ -1914,6 +1926,8 @@
 {"type":"node","id":87581256,"lat":45.2038438,"lon":-0.7551342,"tags":{"name":"Pauillac","further_ids":[],"libellecourt":"PAC","segment_drg":"C","codeinsee":"33314"},"category":"france_sncf"}
 {"type":"node","id":87734293,"lat":45.2101978,"lon":3.5004445,"tags":{"name":"Paulhaguet","further_ids":[],"libellecourt":"PLH","segment_drg":"C","codeinsee":"43232"},"category":"france_sncf"}
 {"type":"node","id":87411272,"lat":49.563897,"lon":0.950644,"tags":{"name":"Pavilly","further_ids":[],"libellecourt":"PSB","segment_drg":"B","codeinsee":"76495"},"category":"france_sncf"}
+{"type":"node","id":87756791,"lat":43.7920239,"lon":7.3800257,"tags":{"name":"Peille","further_ids":[],"libellecourt":"PEI","segment_drg":"C","codeinsee":"06091"},"category":"france_sncf"}
+{"type":"node","id":87756783,"lat":43.767846,"lon":7.366807,"tags":{"name":"Peillon Sainte-Thècle","further_ids":[],"libellecourt":"PXT","segment_drg":"C","codeinsee":"06092"},"category":"france_sncf"}
 {"type":"node","id":87192203,"lat":49.073877,"lon":6.2220476,"tags":{"name":"Peltre","further_ids":[],"libellecourt":"PTE","segment_drg":"C","codeinsee":"57534"},"category":"france_sncf"}
 {"type":"node","id":87321745,"lat":47.2907444,"lon":-2.2008664,"tags":{"name":"Penhoët","further_ids":[],"libellecourt":"SZP","segment_drg":"C","codeinsee":"44184"},"category":"france_sncf"}
 {"type":"node","id":87586438,"lat":44.3799858,"lon":0.8029779,"tags":{"name":"Penne-d'Agenais","further_ids":[],"libellecourt":"PNE","segment_drg":"C","codeinsee":"47203"},"category":"france_sncf"}
@@ -2170,7 +2184,7 @@
 {"type":"node","id":87723494,"lat":45.544518,"lon":5.524187,"tags":{"name":"Saint-André-le-Gaz","further_ids":[],"libellecourt":"SAG","segment_drg":"B","codeinsee":"38357"},"category":"france_sncf"}
 {"type":"node","id":87286195,"lat":50.6544842,"lon":3.0475916,"tags":{"name":"Saint-André-lez-Lille","further_ids":[],"libellecourt":"STA","segment_drg":"C","codeinsee":"59527"},"category":"france_sncf"}
 {"type":"node","id":87751826,"lat":43.3695993,"lon":5.3578102,"tags":{"name":"Saint-Antoine","further_ids":[],"libellecourt":"SNT","segment_drg":"C","codeinsee":"13215"},"category":"france_sncf"}
-{"type":"node","id":87584201,"lat":44.8466877,"lon":0.15196,"tags":{"name":"Saint-Antoine-de-Breuilh","further_ids":[],"libellecourt":"XAB","segment_drg":"C","codeinsee":"24335"},"category":"france_sncf"}
+{"type":"node","id":87584201,"lat":44.8466877,"lon":0.15196,"tags":{"name":"Saint-Antoine-de-Breuilh","further_ids":[],"libellecourt":"XAB","segment_drg":"C","codeinsee":"24370"},"category":"france_sncf"}
 {"type":"node","id":87571539,"lat":47.503839,"lon":0.6164676,"tags":{"name":"Saint-Antoine-du-Rocher","further_ids":[],"libellecourt":"XAO","segment_drg":"C","codeinsee":"37206"},"category":"france_sncf"}
 {"type":"node","id":87471318,"lat":48.014405,"lon":-1.5948867,"tags":{"name":"Saint-Armel","further_ids":[],"libellecourt":"XAL","segment_drg":"C","codeinsee":"35250"},"category":"france_sncf"}
 {"type":"node","id":87595249,"lat":45.139027,"lon":0.522808,"tags":{"name":"Saint-Astier","further_ids":[],"libellecourt":"STK","segment_drg":"B","codeinsee":"24372"},"category":"france_sncf"}
@@ -2201,6 +2215,7 @@
 {"type":"node","id":87755215,"lat":43.185509,"lon":5.703858,"tags":{"name":"Saint-Cyr Les Lecques - La Cadière","further_ids":[],"libellecourt":"SAQ","segment_drg":"B","codeinsee":"83112"},"category":"france_sncf"}
 {"type":"node","id":87543116,"lat":47.8192,"lon":1.9476045,"tags":{"name":"Saint-Cyr-en-Val La Source","further_ids":[],"libellecourt":"SCV","segment_drg":"C","codeinsee":"45272"},"category":"france_sncf"}
 {"type":"node","id":87393223,"lat":48.7990666,"lon":2.0733739,"tags":{"name":"Saint-Cyr-l'École","further_ids":[],"libellecourt":"SCR","segment_drg":"B","codeinsee":"78545"},"category":"france_sncf"}
+{"type":"node","id":87756866,"lat":44.05582,"lon":7.5834505,"tags":{"name":"Saint-Dalmas de Tende","further_ids":[],"libellecourt":"SDD","segment_drg":"C","codeinsee":"06162","rfi_fallback_id":"2780","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87271015,"lat":48.9354933,"lon":2.3459524,"tags":{"name":"Saint-Denis","further_ids":[],"libellecourt":"SDE","segment_drg":"B","codeinsee":"93066"},"category":"france_sncf"}
 {"type":"node","id":87584508,"lat":44.9786053,"lon":-0.1980825,"tags":{"name":"Saint-Denis-de-Pile","further_ids":[],"libellecourt":"XDS","segment_drg":"C","codeinsee":"33393"},"category":"france_sncf"}
 {"type":"node","id":87592097,"lat":45.7889106,"lon":1.5514368,"tags":{"name":"Saint-Denis-des-Murs","further_ids":[],"libellecourt":"XDN","segment_drg":"C","codeinsee":"87142"},"category":"france_sncf"}
@@ -2236,7 +2251,8 @@
 {"type":"node","id":87576405,"lat":47.0965233,"lon":2.4846102,"tags":{"name":"Saint-Germain-du-Puy","further_ids":[],"libellecourt":"SGP","segment_drg":"C","codeinsee":"18213"},"category":"france_sncf"}
 {"type":"node","id":87592287,"lat":45.6098703,"lon":1.4800397,"tags":{"name":"Saint-Germain-les-Belles","further_ids":[],"libellecourt":"SGN","segment_drg":"C","codeinsee":"87146"},"category":"france_sncf"}
 {"type":"node","id":87478016,"lat":48.2394802,"lon":-1.6541804,"tags":{"name":"Saint-Germain-sur-Ille","further_ids":[],"libellecourt":"SMW","segment_drg":"C","codeinsee":"35274"},"category":"france_sncf"}
-{"type":"node","id":87746479,"lat":45.906423,"lon":6.701331,"tags":{"name":"Saint-Gervais-les-Bains Le Fayet","further_ids":["87744078"],"libellecourt":"SGB","segment_drg":"C;B","codeinsee":"74236"},"category":"france_sncf"}
+{"type":"node","id":87744078,"lat":45.906423,"lon":6.701331,"tags":{"name":"Saint-Gervais-les-Bains","further_ids":[],"libellecourt":"SGB","segment_drg":"C;B","codeinsee":"74236"},"category":"france_sncf"}
+{"type":"node","id":87746479,"lat":45.906423,"lon":6.701331,"tags":{"name":"Saint-Gervais-les-Bains Le Fayet","further_ids":[],"libellecourt":"SGB","segment_drg":"C;B","codeinsee":"74236"},"category":"france_sncf"}
 {"type":"node","id":87476762,"lat":47.516614,"lon":-2.0438923,"tags":{"name":"Saint-Gildas-des-Bois","further_ids":[],"libellecourt":"SOK","segment_drg":"C","codeinsee":"44161"},"category":"france_sncf"}
 {"type":"node","id":87181552,"lat":48.0758611,"lon":7.2609746,"tags":{"name":"Saint-Gilles Lycée Haut-Rhin","further_ids":[],"libellecourt":"GLL","segment_drg":"B","codeinsee":"68374"},"category":"france_sncf"}
 {"type":"node","id":87486571,"lat":46.696466,"lon":-1.941296,"tags":{"name":"Saint-Gilles-Croix-de-Vie","further_ids":[],"libellecourt":"SGV","segment_drg":"B","codeinsee":"85222"},"category":"france_sncf"}
@@ -2465,6 +2481,7 @@
 {"type":"node","id":87345314,"lat":50.3557,"lon":3.27738,"tags":{"name":"Somain","further_ids":[],"libellecourt":"SOM","segment_drg":"B","codeinsee":"59574"},"category":"france_sncf"}
 {"type":"node","id":87411462,"lat":49.6297244,"lon":1.4353726,"tags":{"name":"Sommery","further_ids":[],"libellecourt":"SKY","segment_drg":"C","codeinsee":"76678"},"category":"france_sncf"}
 {"type":"node","id":87765206,"lat":44.0053909,"lon":4.8756182,"tags":{"name":"Sorgues - Châteauneuf-du-Pape","further_ids":[],"libellecourt":"SCP","segment_drg":"B","codeinsee":"84129"},"category":"france_sncf"}
+{"type":"node","id":87756825,"lat":43.876545,"lon":7.453788,"tags":{"name":"Sospel","further_ids":[],"libellecourt":"SOP","segment_drg":"C","codeinsee":"06136"},"category":"france_sncf"}
 {"type":"node","id":87411223,"lat":49.4129479,"lon":1.102362,"tags":{"name":"Sotteville-lès-Rouen","further_ids":[],"libellecourt":"SOV","segment_drg":"C","codeinsee":"76681"},"category":"france_sncf"}
 {"type":"node","id":87594333,"lat":44.902127,"lon":1.466605,"tags":{"name":"Souillac","further_ids":[],"libellecourt":"SOU","segment_drg":"B","codeinsee":"46309"},"category":"france_sncf"}
 {"type":"node","id":87581371,"lat":45.5081769,"lon":-1.1175894,"tags":{"name":"Soulac-sur-Mer","further_ids":[],"libellecourt":"SUU","segment_drg":"C","codeinsee":"33514"},"category":"france_sncf"}
@@ -2502,6 +2519,7 @@
 {"type":"node","id":87396051,"lat":48.1812341,"lon":0.1913397,"tags":{"name":"Teillé","further_ids":[],"libellecourt":"TEI","segment_drg":"C","codeinsee":"72349"},"category":"france_sncf"}
 {"type":"node","id":87286625,"lat":50.52863,"lon":3.17559,"tags":{"name":"Templeuve","further_ids":[],"libellecourt":"TEM","segment_drg":"B","codeinsee":"59586"},"category":"france_sncf"}
 {"type":"node","id":87743757,"lat":45.9222096,"lon":5.5016101,"tags":{"name":"Tenay - Hauteville","further_ids":[],"libellecourt":"TEN","segment_drg":"C","codeinsee":"01416"},"category":"france_sncf"}
+{"type":"node","id":87756882,"lat":44.089922,"lon":7.5941608,"tags":{"name":"Tende","further_ids":[],"libellecourt":"TND","segment_drg":"C","codeinsee":"06163","rfi_fallback_id":"2826","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87296442,"lat":49.6591862,"lon":3.2972491,"tags":{"name":"Tergnier","further_ids":[],"libellecourt":"TGR","segment_drg":"B","codeinsee":"02738"},"category":"france_sncf"}
 {"type":"node","id":87594408,"lat":45.1357901,"lon":1.3004219,"tags":{"name":"Terrasson-Lavilledieu","further_ids":[],"libellecourt":"TOD","segment_drg":"C","codeinsee":"24547"},"category":"france_sncf"}
 {"type":"node","id":87615245,"lat":43.9284209,"lon":1.9369531,"tags":{"name":"Tessonnières","further_ids":[],"libellecourt":"TES","segment_drg":"C","codeinsee":"81099"},"category":"france_sncf"}
@@ -2537,6 +2555,7 @@
 {"type":"node","id":87713198,"lat":47.85938,"lon":3.97355,"tags":{"name":"Tonnerre","further_ids":[],"libellecourt":"TNE","segment_drg":"B","codeinsee":"89418"},"category":"france_sncf"}
 {"type":"node","id":87486894,"lat":47.0331153,"lon":-1.1173797,"tags":{"name":"Torfou-Sèvremoine","further_ids":[],"libellecourt":"TFU","segment_drg":"C","codeinsee":"49350"},"category":"france_sncf"}
 {"type":"node","id":87718114,"lat":47.1637546,"lon":5.8887804,"tags":{"name":"Torpes - Boussières","further_ids":[],"libellecourt":"GZO","segment_drg":"C","codeinsee":"25564"},"category":"france_sncf"}
+{"type":"node","id":87756817,"lat":43.8470835,"lon":7.364363,"tags":{"name":"Touët-de-l'Escarène","further_ids":[],"libellecourt":"TDO","segment_drg":"C","codeinsee":"06142"},"category":"france_sncf"}
 {"type":"node","id":87141044,"lat":48.679018,"lon":5.880615,"tags":{"name":"Toul","further_ids":[],"libellecourt":"TOL","segment_drg":"B","codeinsee":"54528"},"category":"france_sncf"}
 {"type":"node","id":87755009,"lat":43.12837,"lon":5.929293,"tags":{"name":"Toulon","further_ids":[],"libellecourt":"TLN","segment_drg":"A","codeinsee":"83137"},"category":"france_sncf"}
 {"type":"node","id":87742262,"lat":43.125113642636705,"lon":5.972755104236321,"tags":{"name":"Toulon Sainte-Musse","further_ids":[],"libellecourt":"TSM","segment_drg":"C","codeinsee":"83137"},"category":"france_sncf"}
@@ -2666,6 +2685,7 @@
 {"type":"node","id":87271783,"lat":49.2910309,"lon":3.2773026,"tags":{"name":"Vierzy","further_ids":[],"libellecourt":"VYA","segment_drg":"C","codeinsee":"02799"},"category":"france_sncf"}
 {"type":"node","id":87182550,"lat":47.8058505,"lon":7.1194904,"tags":{"name":"Vieux-Thann","further_ids":[],"libellecourt":"VXT","segment_drg":"B","codeinsee":"68348"},"category":"france_sncf"}
 {"type":"node","id":87181289,"lat":47.8020615,"lon":7.1326428,"tags":{"name":"Vieux-Thann Zone Industrielle","further_ids":[],"libellecourt":"VXZ","segment_drg":"C","codeinsee":"68348"},"category":"france_sncf"}
+{"type":"node","id":87756890,"lat":44.1125561,"lon":7.5627976,"tags":{"name":"Viévola","further_ids":[],"libellecourt":"VVA","segment_drg":"C","codeinsee":"06163","rfi_fallback_id":"3050","source_review":"cuneo-ventimiglia"},"category":"france_sncf"}
 {"type":"node","id":87747576,"lat":45.0476532,"lon":5.6854542,"tags":{"name":"Vif","further_ids":[],"libellecourt":"VIF","segment_drg":"C","codeinsee":"38545"},"category":"france_sncf"}
 {"type":"node","id":87594218,"lat":45.3829467,"lon":1.5149455,"tags":{"name":"Vigeois","further_ids":[],"libellecourt":"VGE","segment_drg":"C","codeinsee":"19285"},"category":"france_sncf"}
 {"type":"node","id":87681304,"lat":48.70816,"lon":2.41446,"tags":{"name":"Vigneux-sur-Seine","further_ids":[],"libellecourt":"VGS","segment_drg":"B","codeinsee":"91657"},"category":"france_sncf"}
@@ -2777,12 +2797,6 @@
 {"type":"node","id":87645101,"lat":44.9106891,"lon":2.3644474,"tags":{"name":"Ytrac","further_ids":[],"libellecourt":"YTC","segment_drg":"C","codeinsee":"15267"},"category":"france_sncf"}
 {"type":"node","id":87413385,"lat":49.622035,"lon":0.750115,"tags":{"name":"Yvetot","further_ids":[],"libellecourt":"YVT","segment_drg":"B","codeinsee":"76758"},"category":"france_sncf"}
 {"type":"node","id":87182196,"lat":47.6943143,"lon":7.2945376,"tags":{"name":"Zillisheim","further_ids":[],"libellecourt":"ZIL","segment_drg":"C","codeinsee":"68384"},"category":"france_sncf"}
-{"type":"node","id":87756833,"lat":43.944039,"lon":7.5163276,"tags":{"name":"Breil-sur-Roya","rfi_fallback_id":"730","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
-{"type":"node","id":87756858,"lat":43.9966378,"lon":7.5516262,"tags":{"name":"Fontan - Saorge","rfi_fallback_id":"1339","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
-{"type":"node","id":87756866,"lat":44.0556825,"lon":7.5835191,"tags":{"name":"Saint-Dalmas-de-Tende","rfi_fallback_id":"2780","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
-{"type":"node","id":87756874,"lat":44.0625669,"lon":7.6056235,"tags":{"name":"La Brigue","rfi_fallback_id":"1511","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
-{"type":"node","id":87756882,"lat":44.0900602,"lon":7.5940687,"tags":{"name":"Tende","rfi_fallback_id":"2826","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
-{"type":"node","id":87756890,"lat":44.1125559,"lon":7.5631346,"tags":{"name":"Vievola","rfi_fallback_id":"3050","source":"reviewed-cuneo-ventimiglia-supplement"},"category":"france_sncf"}
 {"type":"node","id":87171637,"lat":49.20333762280652,"lon":4.144159305459811,"tags":{"name":"Sillery","further_ids":[],"uic_stem":"8717163","source":"SNCF Gares & Connexions frequentation-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/frequentation-gares/exports/json","source_date":"2015-2024","voyageurs":"N","fret":"O","code_ligne":"081000"},"category":"france_sncf"}
 {"type":"node","id":87172544,"lat":49.7703600406561,"lon":4.3353915984698075,"tags":{"name":"Liart","further_ids":[],"uic_stem":"8717254","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"212000"},"category":"france_sncf"}
 {"type":"node","id":87181057,"lat":47.65581982905566,"lon":7.2643191801651525,"tags":{"name":"Tagolsheim","further_ids":[],"uic_stem":"8718105","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"001000"},"category":"france_sncf"}
@@ -2825,11 +2839,6 @@
 {"type":"node","id":87641464,"lat":45.59064229007699,"lon":2.746227304440891,"tags":{"name":"La Bourboule","further_ids":[],"uic_stem":"8764146","source":"SNCF Gares & Connexions frequentation-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/frequentation-gares/exports/json","source_date":"2015-2024","voyageurs":"N","fret":"N","code_ligne":"710000"},"category":"france_sncf"}
 {"type":"node","id":87694596,"lat":46.90848957594309,"lon":4.206993420666482,"tags":{"name":"Brion-Laizy","further_ids":[],"uic_stem":"8769459","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"761000"},"category":"france_sncf"}
 {"type":"node","id":87747238,"lat":45.34375721071476,"lon":5.474016394967158,"tags":{"name":"Beaucroissant","further_ids":[],"uic_stem":"8774723","source":"SNCF Gares & Connexions frequentation-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/frequentation-gares/exports/json","source_date":"2015-2024","voyageurs":"N","fret":"N","code_ligne":"905000"},"category":"france_sncf"}
-{"type":"node","id":87756783,"lat":43.7679262437941,"lon":7.366860146547884,"tags":{"name":"Peillon-Ste-Thècle","further_ids":[],"uic_stem":"8775678","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"945000"},"category":"france_sncf"}
-{"type":"node","id":87756791,"lat":43.791936473064396,"lon":7.380069988960343,"tags":{"name":"Peille","further_ids":[],"uic_stem":"8775679","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"945000"},"category":"france_sncf"}
-{"type":"node","id":87756809,"lat":43.839631442020284,"lon":7.352028086651033,"tags":{"name":"L'Escarène","further_ids":[],"uic_stem":"8775680","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"945000"},"category":"france_sncf"}
-{"type":"node","id":87756817,"lat":43.84703661020427,"lon":7.3646684919829,"tags":{"name":"Touët-de-l'Escarène","further_ids":[],"uic_stem":"8775681","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"945000"},"category":"france_sncf"}
-{"type":"node","id":87756825,"lat":43.876482570997105,"lon":7.453890137493691,"tags":{"name":"Sospel","further_ids":[],"uic_stem":"8775682","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"945000"},"category":"france_sncf"}
 {"type":"node","id":87764472,"lat":44.55262971161194,"lon":4.686544297614275,"tags":{"name":"Le Teil","further_ids":[],"uic_stem":"8776447","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"O","code_ligne":"800000"},"category":"france_sncf"}
 {"type":"node","id":87784702,"lat":42.56698185636394,"lon":2.3232219954155737,"tags":{"name":"Serdinya","further_ids":[],"uic_stem":"8778470","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"669000"},"category":"france_sncf"}
 {"type":"node","id":87784736,"lat":42.54164503823846,"lon":2.2630259970944437,"tags":{"name":"Nyers","further_ids":[],"uic_stem":"8778473","source":"SNCF Reseau liste-des-gares","source_url":"https://data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/exports/json","source_date":"2024-03-28","voyageurs":"O","fret":"N","code_ligne":"669000"},"category":"france_sncf"}
