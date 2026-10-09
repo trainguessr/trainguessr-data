@@ -40,7 +40,7 @@ import xml.etree.ElementTree as ET
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from common.io import ROOT, write_csv, write_ndjson
+from common.io import ROOT, publish_nodes, write_csv
 from common.validate import validate_nodes
 
 BASE = "https://efa.sta.bz.it/apb"
@@ -499,19 +499,6 @@ def _augment_nodes(nodes, mappings, provider):
 
 
 
-def _atomic_write_ndjson(path: Path, rows: list[dict]) -> None:
-    """Write one NDJSON dataset by atomic same-directory replacement."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_name(f".{path.name}.sta-tmp-{os.getpid()}")
-    try:
-        write_ndjson(tmp, rows)
-        os.replace(tmp, path)
-    finally:
-        try:
-            tmp.unlink()
-        except FileNotFoundError:
-            pass
-
 def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str, int]]:
     """Write complete Vinschgau nodes and best-effort exact RFI/ÖBB augmentation.
 
@@ -562,9 +549,9 @@ def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str,
             raise ValueError(f"{label} after STA augmentation: " + "; ".join(errors))
 
     sta_path = ROOT / "nodes" / "nodes-italy-sta.json"
-    _atomic_write_ndjson(sta_path, sta_nodes)
-    _atomic_write_ndjson(RFI_NODES, augmented_rfi)
-    _atomic_write_ndjson(OEBB_NODES, augmented_oebb)
+    publish_nodes(sta_path, sta_nodes)
+    publish_nodes(RFI_NODES, augmented_rfi)
+    publish_nodes(OEBB_NODES, augmented_oebb)
     stats = {
         "sta_nodes": len(sta_nodes),
         "rfi_augmented": sum(1 for _, provider, _ in mapped if provider == "rfi"),

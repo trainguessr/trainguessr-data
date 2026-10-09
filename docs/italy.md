@@ -32,7 +32,7 @@ TT still uses numeric IDs from its former real-time service. The official GTFS d
 
 FSE uses ViaggiaTreno IDs and OSM coordinates. Its unresolved records and audit are in `cache/italy/fse/reports/`. Stations served by FSE and managed by RFI are in the RFI dataset.
 
-To review all five conservative rebuilds without changing `nodes/`, run `python3 gen/italy.py rebuild all --dry-run` after their source files exist in `cache/italy/`.
+To review all six conservative rebuilds without changing `nodes/`, run `python3 gen/italy.py rebuild all --dry-run` after their source files exist in `cache/italy/`. The shared reviewed rebuild is implemented in `gen/countries/italy/reviewed.py`; interactive review lives in `gen/reconcile/italy_review.py`.
 
 #### Interactive review
 
@@ -43,8 +43,16 @@ Available decisions include entering missing coordinates, excluding a provider r
 Decisions are stored in `overrides/exclusions/italy.json`:
 
 - Coordinate entries are stored in `manual_stations` and are restored by later generations.
-- Exclusions are stored in `excluded`.
+- Exclusions are stored in `excluded`. The conservative rebuild checks their
+  recorded identity against the current source when present, falling back to
+  the historical seed only for IDs absent from that source. Cross-provider
+  decisions also check `source_name`, or the recorded `reviewed_name` when no
+  distinct source spelling was recorded. A changed spelling requires review.
 - Name confirmations are stored in `reviews` with the source and reviewed names. A changed source record creates a new question.
+
+FSE manual replacements also reject a generated ID with a different name, or
+the same station name under a different ID, before replacing generated records.
+These conflicts require an explicit review of the native identity.
 
 Run the review queue again without downloading data:
 
@@ -78,7 +86,7 @@ node seed until they are deliberately removed.
 ViaggiaTreno station-ID review is maintained separately:
 
 ```bash
-python3 gen/countries/italy/rfi_viaggiatreno_review.py
+PYTHONPATH=gen python3 gen/reconcile/italy_rfi_viaggiatreno.py
 ```
 
 Its durable state is `cache/italy/rfi/viaggiatreno/progress.json`. On a fresh cache it bootstraps all existing accepted

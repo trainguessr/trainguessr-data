@@ -21,7 +21,7 @@ from pathlib import Path
 from collections.abc import Iterable
 from typing import Any
 
-from common.io import ROOT, write_ndjson
+from common.io import ROOT, publish_nodes
 from common.validate import validate_nodes
 from common.manual_overrides import (
     apply_coordinate_overrides,
@@ -29,6 +29,7 @@ from common.manual_overrides import (
     load_override_config,
     require_alias,
 )
+from common.config import require_reviewed_identity
 
 OUTPUT = ROOT / "nodes" / "nodes-spain-renfe.json"
 CACHE_ROOT = ROOT / "cache" / "spain"
@@ -154,16 +155,20 @@ def _stop_times(feed: dict[str, Any]) -> Iterable[dict[str, str]]:
     return _iter_archive_table(Path(feed["_archive_path"]), "stop_times.txt")
 
 
-def _excluded_playable_station_ids() -> set[str]:
+def _excluded_playable_station_rules() -> dict[str, dict[str, Any]]:
     if not EXCLUSIONS.is_file():
-        return set()
+        return {}
     payload = json.loads(EXCLUSIONS.read_text(encoding="utf-8"))
     rows = payload.get("excluded", []) if isinstance(payload, dict) else []
     return {
-        str(row.get("id"))
+        str(row.get("id")): row
         for row in rows
         if isinstance(row, dict) and row.get("id") not in (None, "")
     }
+
+
+def _excluded_playable_station_ids() -> set[str]:
+    return set(_excluded_playable_station_rules())
 
 
 
@@ -459,7 +464,14 @@ def build(
             station_row["feeds"] = sorted(set(station_row["feeds"]) | {feed_name})
 
     _apply_station_corrections(nodes, index, strict=strict_corrections)
-    excluded = _excluded_playable_station_ids()
+    exclusion_rules = _excluded_playable_station_rules()
+    excluded = set(exclusion_rules)
+    for station_id in excluded & nodes.keys():
+        require_reviewed_identity(
+            exclusion_rules[station_id],
+            nodes[station_id].get("tags", {}).get("name", ""),
+            context=f"spain_renfe:{station_id}",
+        )
     playable_nodes = [row for station_id, row in nodes.items() if station_id not in excluded]
     return sorted(playable_nodes, key=lambda row: str(row["id"])), index
 
@@ -585,7 +597,7 @@ def main() -> int:
             for error in errors:
                 print(f"ERROR: {error}")
             return 1
-        write_ndjson(OUTPUT, nodes)
+        publish_nodes(OUTPUT, nodes)
         write_index(index, INDEX_OUTPUT)
         print(f"Wrote {len(nodes)} Renfe stations to {OUTPUT}")
         print(f"Wrote Renfe static timetable index to {INDEX_OUTPUT}")

@@ -52,6 +52,14 @@ Cache layout is intentional:
 
 Country-specific archives and snapshots must not be created at the cache root. Existing legacy root files may be adopted into their country directory by the relevant generator.
 
+Every normal generator publishes playable node data through the shared
+`publish_nodes` safeguard. It validates the complete dataset, rejects empty
+output, and refuses to replace an existing catalogue when the new one is more
+than 20% smaller. Successful output is replaced atomically. If a large shrink
+is intentional, inspect the source and generated diff, move the existing output
+aside for the reviewed run, and let Git compare the replacement with the
+committed file.
+
 
 ### Generator classes and cache policy
 
@@ -78,21 +86,22 @@ runtime indexes are outputs, not source caches, and are rebuilt normally.
 Check the current generated-file ages and timetable calendar coverage with:
 
 ```bash
-python3 gen/freshness.py
+python3 gen/maintenance/freshness.py
 ```
 
 The report uses source-specific limits where the generator already defines one
 (France 7 days, Denmark 14 days) and otherwise flags files older than 30 days
 for maintenance review. Spanish timetable indexes are checked by
-service-calendar coverage instead. 
+service-calendar coverage instead. The terminal report uses aligned columns
+and right-aligns file ages.
 
 ## Validation
 
 From the repository root:
 
 ```bash
-python3 gen/validate_all.py
-python3 -m unittest discover -s tests -v
+python3 gen/maintenance/validate_all.py
+python3 -m pytest -q
 ```
 
 Also run:
@@ -112,9 +121,14 @@ Stations are so far excluded only when they are physically demolished, i.e.,
 a station that has seen no train stop in 20 years but remains open for routing purposes
 is still included.
 
-Exceptions must be machine-readable and contain a small description. 
+Exceptions must be machine-readable and contain a small description.
+Destructive ID-based overrides must retain the reviewed station identity;
+a changed source name must fail generation for review. See the
+[reviewed-decision contract](docs/README.md#reviewed-decisions).
 
 When an upstream API/schema changes, generation should fail and throw errors.
+Do not catch and continue past malformed station records: filtering is allowed
+only when the source rule or a reviewed exclusion makes the omission explicit.
 
 See the relevant `docs/<country>.md` before changing a country's nodes.
 

@@ -1,35 +1,28 @@
 #!/usr/bin/env python3
 
 import csv
-import json
-import sys
 import os
-from common.io import ROOT
+from pathlib import Path
 
-def convert_nl_stations(input_path, output_path):
-    with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
-        try:
-            reader = csv.DictReader(infile)
-            
-            for row in reader:
-                try:
-                    station_id = row.get("code")
-                    if not station_id:
-                        print(f"Skipping station with missing code: {row}")
-                        continue
-                    
-                    name = row.get("name_long")
-                    if not name:
-                        print(f"Skipping station with missing name: {row}")
-                        continue
-                    
-                    lat = row.get("geo_lat")
-                    lon = row.get("geo_lng")
-                    if not lat or not lon:
-                        print(f"Skipping station with missing coordinates: {row}")
-                        continue
-                    
-                    node = {
+from common.io import ROOT, publish_nodes
+
+def build_nodes(input_path: Path) -> list[dict]:
+    nodes = []
+    with input_path.open(encoding="utf-8", newline="") as infile:
+        reader = csv.DictReader(infile)
+        required = {"code", "name_long", "geo_lat", "geo_lng"}
+        missing = required - set(reader.fieldnames or [])
+        if missing:
+            raise ValueError(f"{input_path}: missing columns: {', '.join(sorted(missing))}")
+        for line_number, row in enumerate(reader, 2):
+            station_id = str(row.get("code") or "").strip()
+            name = str(row.get("name_long") or "").strip()
+            lat = str(row.get("geo_lat") or "").strip()
+            lon = str(row.get("geo_lng") or "").strip()
+            if not station_id or not name or not lat or not lon:
+                raise ValueError(f"{input_path}:{line_number}: missing station identity, name, or coordinates")
+            try:
+                nodes.append({
                         "type": "node",
                         "id": station_id,
                         "lat": float(lat),
@@ -43,17 +36,10 @@ def convert_nl_stations(input_path, output_path):
                             "type": row.get("type", "")
                         },
                         "category": "netherlands_all"
-                    }
-                    
-                    outfile.write(json.dumps(node, ensure_ascii=False,
-                                            separators=(',', ':')
-                                             ) + '\n')
-                    
-                except Exception as e:
-                    print(f"Error processing station: {e}")
-                    
-        except Exception as e:
-            print(f"Error processing file: {e}")
+                    })
+            except ValueError as exc:
+                raise ValueError(f"{input_path}:{line_number}: invalid coordinates") from exc
+    return sorted(nodes, key=lambda row: str(row["id"]))
 
 def main(argv=None):
     import argparse
@@ -72,7 +58,7 @@ def main(argv=None):
     if legacy_input.exists() and not current_input.exists():
         legacy_input.replace(current_input)
         print(f"Moved legacy cache artifact: {legacy_input.relative_to(ROOT)} -> {current_input.relative_to(ROOT)}")
-    output_file = str(ROOT / "nodes" / "nodes-netherlands.json")
+    output_file = ROOT / "nodes" / "nodes-netherlands.json"
 
     if not args.cache or not current_input.exists():
         print("Downloading Netherlands stations data...")
@@ -86,7 +72,7 @@ def main(argv=None):
         age = datetime.now(timezone.utc) - datetime.fromtimestamp(current_input.stat().st_mtime, timezone.utc)
         print(f"Using cached Netherlands station data (age: {int(age.total_seconds() // 86400)} days)")
 
-    convert_nl_stations(str(current_input), output_file)
+    publish_nodes(output_file, build_nodes(current_input))
     print(f"Conversion complete. Output written to {output_file}")
     return 0
 

@@ -9,7 +9,7 @@ from pathlib import Path
 
 import requests
 
-from common.io import ROOT, write_ndjson
+from common.io import ROOT, publish_nodes
 from common.validate import validate_nodes
 
 ENDPOINT = "https://rata.digitraffic.fi/api/v1/metadata/stations"
@@ -158,7 +158,7 @@ def main(argv: list[str] | None = None) -> int:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    write_ndjson(OUTPUT, nodes)
+    publish_nodes(OUTPUT, nodes)
     print(f"Wrote {len(nodes)} Finnish stations to {OUTPUT}")
     return 0
 

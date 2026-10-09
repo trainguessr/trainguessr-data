@@ -79,9 +79,13 @@ Provider-specific Italian code is under `gen/countries/italy/`.
 ### Reviewed decisions
 
 Put exclusions, renames, coordinate corrections, aliases, and manually reviewed
-provider mappings under `overrides/`. Each record must check station identity so
-an upstream rename or ID change cannot silently apply an old decision to another
-station.
+provider mappings under `overrides/`. Destructive ID-based decisions check the
+recorded source identity before applying them. Exclusions use `expected_name`,
+`name`, or an existing `tags.name`; ID-based renames use `from`. Matching ignores
+case and whitespace only. A mismatch fails generation for review before playable
+output is replaced. An exclusion absent from the source is allowed to remain
+historical. Name-based display renames do not need additional identity records.
+Coordinate, alias and native crosswalk rules keep their specific checks.
 
 Put large discovery and reconciliation results under `docs/review/`. Generators
 may read reviewed source and evidence records there, but code must use only
@@ -129,6 +133,34 @@ and put provider-specific source/crawling logic under
 `gen/common/` contains shared deterministic I/O, normalization, validation and
 manual-review helpers. `gen/reconcile/` contains reconciliation/capture helpers
 that are not normal generation entrypoints.
+
+All country launchers and provider generators use `common.io.publish_nodes`
+for their final playable dataset. Publication validates the node schema and
+identity uniqueness, rejects an empty dataset or a reduction greater than 20%,
+and replaces the old file only after the complete candidate has been written.
+Country-specific source checks still belong in the relevant generator.
+
+### Audited repository inventory
+
+The 2026-10-09 maintenance audit covered all 125 tracked or newly added files:
+four repository/configuration files, 25 documentation/evidence files, 42
+generator modules, 20 generated node datasets, 20 reviewed override files, one
+requirements file, and 13 tests/fixtures. The provider table above enumerates
+all generated datasets. The public country launchers are `gen/austria.py`,
+`belgium.py`, `denmark.py`, `finland.py`, `france.py`, `germany.py`, `italy.py`,
+`netherlands.py`, `norway.py`, `spain.py`, `sweden.py`, `switzerland.py`, and
+`uk.py`. Only country launchers live at the top level of `gen/`;
+repository maintenance CLIs live in `gen/maintenance/freshness.py` and
+`gen/maintenance/validate_all.py`. Both support direct execution from the
+repository root.
+
+Provider implementations are confined to `gen/countries/italy/` and
+`gen/countries/spain/`. Shared Italian review/reconciliation tools are under
+`gen/reconcile/italy_review.py` and
+`gen/reconcile/italy_rfi_viaggiatreno.py`; the active reviewed-node rebuild is
+`gen/countries/italy/reviewed.py`. This placement is intentional and supersedes
+the old `legacy.py`, provider-local review, and provider-local ViaggiaTreno
+review paths.
 
 ### Italy
 

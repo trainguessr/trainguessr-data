@@ -39,6 +39,11 @@ The same `--oebb-gtfs` flag may be supplied during a normal station generation r
 Austria follows the repository cache policy: durable source material and audits live in `cache/austria/`, deployable runtime SQLite indexes may live directly in `cache/`, and disposable GeoNetz extraction is staged under `cache/temp/austria/` and removed after use. Older root-level Austria cache artifacts are moved into `cache/austria/` when encountered.
 
 
+MVO exclusions check their recorded `expected_name` against `hst_name` before
+removing a source candidate. The five expected names were recovered from the
+existing reviewed exclusion reasons; a fresh MVO run must confirm them. Existing
+alias and SCOTTY resolution checks remain separate.
+
 ## Attribution and provider constraints
 
 - Stations: ÖBB-Infrastruktur GeoNetz and the national MVO stop dataset.

@@ -14,7 +14,7 @@ from typing import Any
 
 import requests
 
-from common.io import ROOT, write_ndjson
+from common.io import ROOT, publish_nodes
 from common.validate import validate_nodes
 
 GTFS_URL = "https://www.rejseplanen.info/labs/GTFS.zip"
@@ -264,7 +264,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if not args.offline:
         validate_live_access(str(nodes[0]["id"]))
-    write_ndjson(OUTPUT, nodes)
+    publish_nodes(OUTPUT, nodes)
     print(f"Prepared current Rejseplanen GTFS at {archive}")
     if args.offline:
         print("Skipped Rejseplanen API 2.0 validation in offline mode")

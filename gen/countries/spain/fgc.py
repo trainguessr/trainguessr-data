@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 import requests
 
-from common.io import ROOT, write_ndjson
+from common.io import ROOT, publish_nodes
 from common.validate import validate_nodes
 
 OFFICIAL_GTFS_URL = "https://www.fgc.cat/google/google_transit.zip"
@@ -206,5 +206,6 @@ def generate(path=None):
     nodes,index,stats=build(load_feed(source))
     errors=validate_nodes(nodes)
     if errors: raise ValueError("FGC node validation failed: "+"; ".join(errors[:10]))
-    write_ndjson(OUTPUT,nodes); write_index(index)
+    publish_nodes(OUTPUT, nodes)
+    write_index(index)
     return stats

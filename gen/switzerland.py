@@ -1,94 +1,76 @@
+#!/usr/bin/env python3
+"""Generate Swiss train stations from the official service-point GeoJSON."""
+from __future__ import annotations
+
 import json
-import os
-from common.io import ROOT
+from common.io import ROOT, publish_nodes
 
 from common.config import load_rename_map
 
-def load_rename_mapping(rename_file):
-    """
-    Load the rename mapping from a text file.
-    
-    Args:
-        rename_file: Path to the rename file
-        
-    Returns:
-        Dictionary mapping old names to new names
-    """
-    rename_map = {}
-    if os.path.exists(rename_file):
-        with open(rename_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and ',' in line:
-                    old_name, new_name = line.split(',', 1)
-                    rename_map[old_name] = new_name
-    return rename_map
-
-def transform_sbb_to_node_format(data, output_file, rename_map):
+def build_nodes(data, rename_map):
     """
     Transform SBB station JSON data into a simpler node format.
     
     Args:
         data: Input JSON data as a dictionary
-        output_file: Path to output JSON file for transformed data
         rename_map: Dictionary mapping old names to new names
     """
+    if not isinstance(data, dict) or not isinstance(data.get("features"), list):
+        raise ValueError("Swiss source must contain a features list")
     transformed_nodes = []
     
-    for feature in data.get('features', []):
-        if feature.get('type') == 'Feature' and 'geometry' in feature and 'properties' in feature:
-            coordinates = feature['geometry'].get('coordinates', [0, 0])
-            lon, lat = coordinates[0], coordinates[1]
+    for index, feature in enumerate(data["features"], 1):
+        if not isinstance(feature, dict) or feature.get("type") != "Feature":
+            raise ValueError(f"Swiss feature {index} is not a GeoJSON Feature")
+        geometry = feature.get("geometry")
+        props = feature.get("properties")
+        if not isinstance(geometry, dict) or not isinstance(props, dict):
+            raise ValueError(f"Swiss feature {index} lacks geometry or properties")
+        coordinates = geometry.get("coordinates")
+        if not isinstance(coordinates, list) or len(coordinates) < 2:
+            raise ValueError(f"Swiss feature {index} has invalid coordinates")
+        lon, lat = coordinates[0], coordinates[1]
             
-            props = feature['properties']
+        if "meansoftransport" not in props:
+            raise ValueError(f"Swiss feature {index} lacks meansoftransport")
+        if props['meansoftransport'] != 'TRAIN':
+            continue
 
-            if props['meansoftransport'] != 'TRAIN':
-                continue
-
-            station_name = props.get('designationofficial', '')
-            if station_name in rename_map:
-                station_name = rename_map[station_name]
+        station_name = str(props.get('designationofficial') or '').strip()
+        station_name = rename_map.get(station_name, station_name)
             
-            station_id = props.get('number')
-            if station_id in (None, ''):
-                continue
+        station_id = props.get('number')
+        if station_id in (None, '') or not station_name:
+            raise ValueError(f"Swiss train feature {index} lacks station number or name")
 
-            node = {
-                "type": "node",
-                "id": station_id,
-                "lat": lat,
-                "lon": lon,
-                "tags": {
-                    "name": station_name,
-                    "operator": props.get('businessorganisationabbreviationde', 'SBB'),
-                    "public_transport": "station",
-                    "railway": "station",
-                    "station": "train",
-                    "train": "yes",
-                    "wheelchair": "yes" if props.get('haltekante') == 'ok' else "limited",
-                    "abbreviation": props.get('abbreviation', ''),
-                    "isocountrycode": props.get('isocountrycode', 'CH'),
-                    "canton": props.get('cantonname', ''),
-                },
-                "category": "switzerland_all"
-            }
+        node = {
+            "type": "node",
+            "id": station_id,
+            "lat": lat,
+            "lon": lon,
+            "tags": {
+                "name": station_name,
+                "operator": props.get('businessorganisationabbreviationde', 'SBB'),
+                "public_transport": "station",
+                "railway": "station",
+                "station": "train",
+                "train": "yes",
+                "wheelchair": "yes" if props.get('haltekante') == 'ok' else "limited",
+                "abbreviation": props.get('abbreviation', ''),
+                "isocountrycode": props.get('isocountrycode', 'CH'),
+                "canton": props.get('cantonname', ''),
+            },
+            "category": "switzerland_all"
+        }
             
-            if props.get('height'):
-                node['tags']['height'] = str(props.get('height'))
+        if props.get('height'):
+            node['tags']['height'] = str(props.get('height'))
             
-            transformed_nodes.append(node)
+        transformed_nodes.append(node)
 
-    sorted_nodes = sorted(transformed_nodes, key=lambda x: x['id'])
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        for node in sorted_nodes:
-            json.dump(node, f, ensure_ascii=False, separators=(',', ':'))
-            f.write('\n')
-    
-    print(f"Transformed {len(transformed_nodes)} stations to {output_file}")
+    return sorted(transformed_nodes, key=lambda x: x['id'])
 
-if __name__ == "__main__":
-    import sys 
+def main() -> int:
     import requests
 
     print("Downloading SBB station data...")
@@ -108,4 +90,12 @@ if __name__ == "__main__":
     rename_map = load_rename_map("switzerland")
     print(f"Loaded {len(rename_map)} rename rules")
 
-    transform_sbb_to_node_format(data, ROOT / "nodes" / "nodes-switzerland.json", rename_map)
+    output = ROOT / "nodes" / "nodes-switzerland.json"
+    nodes = build_nodes(data, rename_map)
+    publish_nodes(output, nodes)
+    print(f"Transformed {len(nodes)} stations to {output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import argparse
 
-from countries.italy import eav, fer, fn, fse, legacy, review, rfi, sta, tt
+from countries.italy import eav, fer, fn, fse, reviewed, rfi, sta, tt
+from reconcile import italy_review
 
 PROVIDERS = {
     "rfi": rfi.main,
@@ -15,8 +16,8 @@ PROVIDERS = {
     "eav": eav.main,
     "sta": sta.main,
 }
-LEGACY_ORDER = ("rfi", "fn", "fse", "tt", "fer", "eav")
-GENERATE_ORDER = (*LEGACY_ORDER, "sta")
+REVIEWED_ORDER = ("rfi", "fn", "fse", "tt", "fer", "eav")
+GENERATE_ORDER = (*REVIEWED_ORDER, "sta")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -31,10 +32,10 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     review_parser = sub.add_parser("review", help="review provider changes")
-    review_parser.add_argument("provider", choices=[*LEGACY_ORDER, "all"])
+    review_parser.add_argument("provider", choices=[*REVIEWED_ORDER, "all"])
 
-    rebuild = sub.add_parser("rebuild", help="run the conservative legacy rebuild")
-    rebuild.add_argument("provider", choices=[*LEGACY_ORDER, "all"])
+    rebuild = sub.add_parser("rebuild", help="rebuild from reviewed nodes and provider catalogues")
+    rebuild.add_argument("provider", choices=[*REVIEWED_ORDER, "all"])
     rebuild.add_argument("--dry-run", action="store_true")
 
     args = parser.parse_args(argv)
@@ -51,12 +52,12 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "review":
-        return review.main([args.provider])
+        return italy_review.main([args.provider])
 
-    legacy_args = [args.provider]
+    rebuild_args = [args.provider]
     if args.dry_run:
-        legacy_args.append("--dry-run")
-    return legacy.main(legacy_args)
+        rebuild_args.append("--dry-run")
+    return reviewed.main(rebuild_args)
 
 
 if __name__ == "__main__":

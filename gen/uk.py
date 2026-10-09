@@ -1,80 +1,42 @@
 #!/usr/bin/env python3
 
 import json
-import sys
 import os
-from common.io import ROOT
+from pathlib import Path
+
+from common.io import ROOT, publish_nodes
 
 from common.config import load_rename_map
 
-def load_rename_mapping(rename_file):
-    """
-    Load the rename mapping from a text file.
-    
-    Args:
-        rename_file: Path to the rename file
-        
-    Returns:
-        Dictionary mapping old names to new names
-    """
-    rename_map = {}
-    if os.path.exists(rename_file):
-        with open(rename_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and ',' in line:
-                    old_name, new_name = line.split(',', 1)
-                    rename_map[old_name] = new_name
-    return rename_map
-
-def convert_uk_stations(input_path, output_path, rename_map):
-    with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
+def build_nodes(input_path: Path, rename_map: dict[str, str]) -> list[dict]:
+    with input_path.open(encoding="utf-8") as infile:
+        data = json.load(infile)
+    if not isinstance(data, list):
+        raise ValueError(f"{input_path}: expected a station list")
+    nodes = []
+    for index, station in enumerate(data, 1):
+        if not isinstance(station, dict):
+            raise ValueError(f"{input_path}: station {index} is not an object")
+        station_id = str(station.get("crsCode") or "").strip()
+        name = str(station.get("stationName") or "").strip()
+        lat = station.get("lat")
+        lon = station.get("long")
+        if not station_id or not name or lat in (None, "") or lon in (None, ""):
+            raise ValueError(f"{input_path}: station {index} lacks identity, name, or coordinates")
         try:
-            data = json.load(infile)
-            
-            for station in data:
-                try:
-                    station_id = station.get("crsCode")
-                    if not station_id:
-                        print(f"Skipping station with missing ID: {station}")
-                        continue
-                    
-                    name = station.get("stationName")
-                    if not name:
-                        print(f"Skipping station with missing name: {station}")
-                        continue
-                    
-                    if name in rename_map:
-                        name = rename_map[name]
-                    
-                    lat = station.get("lat")
-                    lon = station.get("long")
-                    if not lat or not lon:
-                        print(f"Skipping station with missing coordinates: {station}")
-                        continue
-                    
-                    node = {
+            nodes.append({
                         "type": "node",
                         "id": station_id,
                         "lat": float(lat),
                         "lon": float(lon),
                         "tags": {
-                            "name": name,
+                            "name": rename_map.get(name, name),
                         },
                         "category": "uk_national_rail"
-                    }
-                    
-                    outfile.write(json.dumps(node,
-                                            ensure_ascii=False, separators=(',', ':')
-                                             ) + '\n')
-                    
-                except Exception as e:
-                    print(f"Error processing station: {e}")
-                    
-        except json.JSONDecodeError:
-            print("Invalid JSON format in input file")
-        except Exception as e:
-            print(f"Error processing file: {e}")
+                    })
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{input_path}: station {index} has invalid coordinates") from exc
+    return sorted(nodes, key=lambda row: str(row["id"]))
 
 def main(argv=None):
     import argparse
@@ -87,7 +49,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     input_path = ROOT / "cache" / "uk" / "stations.json"
-    output_file = str(ROOT / "nodes" / "nodes-uk-nationalrail.json")
+    output_file = ROOT / "nodes" / "nodes-uk-nationalrail.json"
     input_path.parent.mkdir(parents=True, exist_ok=True)
 
     if not args.cache or not input_path.exists():
@@ -105,7 +67,7 @@ def main(argv=None):
     print("Loading rename mapping...")
     rename_map = load_rename_map("uk")
     print(f"Loaded {len(rename_map)} rename rules")
-    convert_uk_stations(str(input_path), output_file, rename_map)
+    publish_nodes(output_file, build_nodes(input_path, rename_map))
     print(f"Conversion complete. Output written to {output_file}")
     return 0
 

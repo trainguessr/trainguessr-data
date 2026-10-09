@@ -11,8 +11,11 @@ from typing import Any
 
 import requests
 
-from common.config import load_excluded_ids, load_rename_id_map, load_rename_map
-from common.io import ROOT, write_ndjson
+from common.config import (
+    load_exclusion_rules, load_rename_id_rules, load_rename_map,
+    require_reviewed_identity,
+)
+from common.io import ROOT, publish_nodes
 from common.validate import validate_nodes
 
 ENDPOINT = "https://api.entur.io/stop-places/v1/read/stop-places"
@@ -89,17 +92,29 @@ def _is_active_rail_stop(stop: dict[str, Any]) -> bool:
 
 
 def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    excluded = load_excluded_ids("norway")
+    excluded = load_exclusion_rules("norway")
     rename_by_name = load_rename_map("norway")
-    rename_by_id = load_rename_id_map("norway")
+    rename_id_rules = load_rename_id_rules("norway")
+    rename_by_id = {station_id: str(rule["to"]) for station_id, rule in rename_id_rules.items()}
     result: dict[str, dict[str, Any]] = {}
     for stop in stops:
         if not _is_active_rail_stop(stop):
             continue
         station_id = str(stop.get("id") or "").strip()
-        if not station_id.startswith("NSR:StopPlace:") or station_id in excluded:
+        if not station_id.startswith("NSR:StopPlace:"):
             continue
-        name = rename_by_id.get(station_id) or rename_by_name.get(_text(stop.get("name"))) or _text(stop.get("name"))
+        source_name = _text(stop.get("name"))
+        rule = excluded.get(station_id)
+        if rule is not None:
+            require_reviewed_identity(rule, source_name, context=f"norway:{station_id}")
+            continue
+        if station_id in rename_id_rules:
+            require_reviewed_identity(
+                {"expected_name": rename_id_rules[station_id]["from"]},
+                source_name,
+                context=f"norway rename:{station_id}",
+            )
+        name = rename_by_id.get(station_id) or rename_by_name.get(source_name) or source_name
         location = (stop.get("centroid") or {}).get("location") or {}
         lat = location.get("latitude")
         lon = location.get("longitude")
@@ -135,7 +150,7 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    write_ndjson(OUTPUT, nodes)
+    publish_nodes(OUTPUT, nodes)
     print(f"Wrote {len(nodes)} Norwegian railway stop places to {OUTPUT}")
     return 0
 

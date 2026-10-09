@@ -28,7 +28,11 @@ python3 gen/norway.py
 
 The optional `--input` argument reads a saved National Stop Register response
 for an offline rebuild. Active cross-provider records and reviewed names are
-kept in `overrides/exclusions/norway.json`.
+kept in `overrides/exclusions/norway.json`. The 189 reviewed exclusions record
+expected NSR source names from `docs/review/norway/foreign-cross-provider.json`.
+Present active rail IDs must still match those names before exclusion; ID-based
+renames likewise check their `from` name. An absent historical exclusion is
+allowed to remain in the file.
 
 Entur requires a meaningful `ET-Client-Name` header. Include Entur attribution
 and comply with the Norwegian Licence for Open Government Data (NLOD) terms.

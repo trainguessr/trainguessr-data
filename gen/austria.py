@@ -25,8 +25,11 @@ from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
 import requests
 
-from common.config import load_country_config, load_excluded_ids, load_rename_map
-from common.io import write_ndjson
+from common.config import (
+    load_country_config, load_exclusion_rules, load_rename_map,
+    require_reviewed_identity,
+)
+from common.io import publish_nodes
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -147,10 +150,10 @@ def normalize_ifopt(value: Any) -> str:
     return value
 
 
-def _load_mvo_overrides() -> tuple[set[str], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
+def _load_mvo_overrides() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     excluded = {
-        normalize_ifopt(value)
-        for value in load_excluded_ids("austria", "mvo")
+        normalize_ifopt(station_id): row
+        for station_id, row in load_exclusion_rules("austria", "mvo").items()
     }
     aliases: dict[str, dict[str, Any]] = {}
     for row in load_country_config("austria").get("mvo_aliases", []):
@@ -776,7 +779,11 @@ def merge_catalogues(
         if ifopt in existing_by_ifopt:
             audit["matched_existing_ifopt"] += 1
             continue
-        if ifopt in mvo_excluded_ifopts:
+        exclusion = mvo_excluded_ifopts.get(ifopt)
+        if exclusion is not None:
+            require_reviewed_identity(
+                exclusion, row.get("hst_name"), context=f"austria:{ifopt}"
+            )
             audit["excluded"].append({
                 "ifopt_id": ifopt,
                 "name": row.get("hst_name"),
@@ -1339,7 +1346,7 @@ def main(argv: list[str] | None = None) -> int:
         offline=args.offline,
     )
     output, audit = merge_catalogues(geonetz_nodes, mvo_rows, mvo_platforms, resolver, rename_map)
-    write_ndjson(args.output, output)
+    publish_nodes(args.output, output)
     args.audit.parent.mkdir(parents=True, exist_ok=True)
     args.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(

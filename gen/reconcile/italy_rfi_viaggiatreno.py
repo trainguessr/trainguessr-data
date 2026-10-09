@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-Interactive reviewer for TrainGuessr RFI -> ViaggiaTreno station mappings.
-
-Repository-integrated reviewer for RFI -> ViaggiaTreno station mappings.
+"""Interactive reviewer for TrainGuessr RFI -> ViaggiaTreno station mappings.
 
 State is stored under cache/italy/rfi/viaggiatreno/. On first run, accepted
 mappings are bootstrapped from the committed RFI nodes and known temporary
@@ -19,15 +16,9 @@ Use --snapshot to immediately write an intermediate nodes JSONL from the decisio
 already saved in the progress file, without entering the interactive reviewer.
 The progress file is not changed by snapshot mode.
 
-Typical use
------------
-python3 rfi-vt-interactive-review.py \
-  trainguessr-data/nodes/nodes-italy-rfi.json \
-  rfi-vt-promotion-review.json
+Typical use from the repository root::
 
-Then, after reviewing:
-  cp nodes-italy-rfi.reviewed.json \
-     trainguessr-data/nodes/nodes-italy-rfi.json
+    PYTHONPATH=gen python3 gen/reconcile/italy_rfi_viaggiatreno.py
 
 Review commands
 ---------------
@@ -69,16 +60,15 @@ import json
 import os
 from pathlib import Path
 import re
-import shutil
 import sys
 from typing import Any
 
 # Allow direct execution from a normal repository checkout.
-GEN_ROOT = Path(__file__).resolve().parents[2]
+GEN_ROOT = Path(__file__).resolve().parents[1]
 if str(GEN_ROOT) not in sys.path:
     sys.path.insert(0, str(GEN_ROOT))
 
-from common.io import ROOT
+from common.io import ROOT, publish_nodes
 
 CACHE_DIR = ROOT / "cache" / "italy" / "rfi" / "viaggiatreno"
 DEFAULT_NODES = ROOT / "nodes" / "nodes-italy-rfi.json"
@@ -115,13 +105,8 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    with tmp.open("w", encoding="utf-8", newline="\n") as fh:
-        for row in rows:
-            fh.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
-    os.replace(tmp, path)
+def publish_reviewed_nodes(path: Path, rows: list[dict[str, Any]]) -> None:
+    publish_nodes(path, rows)
 
 
 def load_review(path: Path) -> dict[str, dict[str, Any]]:
@@ -453,7 +438,7 @@ def main() -> int:
     ap.add_argument(
         "--output",
         type=Path,
-        help="Replacement JSONL output (default: nodes-italy-rfi.reviewed.json beside input)",
+        help="Replacement JSONL output (default: update --nodes in place)",
     )
     ap.add_argument(
         "--progress",
@@ -665,7 +650,7 @@ def main() -> int:
             print("Use --include-decided to revisit accepted/rejected stations.")
             print("If stations were deferred in this pass, use --new-pass to present them again.")
             final_rows = apply_decisions(nodes, decisions)
-            write_jsonl(output, final_rows)
+            publish_reviewed_nodes(output, final_rows)
             save_progress(progress_path, progress)
             print(f"Wrote replacement nodes file: {output}")
             return 0
@@ -694,7 +679,7 @@ def main() -> int:
 
     if args.snapshot:
         final_rows = apply_decisions(nodes, decisions)
-        write_jsonl(output, final_rows)
+        publish_reviewed_nodes(output, final_rows)
         undecided_total = sum(
             1 for node in rfi_nodes
             if str(node.get("id") or "") not in decisions
@@ -874,7 +859,7 @@ def main() -> int:
         return 2
 
     final_rows = apply_decisions(nodes, decisions)
-    write_jsonl(output, final_rows)
+    publish_reviewed_nodes(output, final_rows)
     save_progress(progress_path, progress)
 
     accepted_ids = {

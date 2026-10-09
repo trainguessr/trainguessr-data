@@ -263,7 +263,7 @@ def test_write_nodes_allows_partial_non_vinschgau_augmentation(monkeypatch, tmp_
     monkeypatch.setattr(sta, "_read_nodes",
                         lambda path: rfi if path.name == "rfi.json" else oebb)
     written = {}
-    monkeypatch.setattr(sta, "_atomic_write_ndjson",
+    monkeypatch.setattr(sta, "publish_nodes",
                         lambda path, rows: written.__setitem__(path.name, rows))
 
     rows = [{
@@ -287,32 +287,13 @@ def test_write_nodes_allows_partial_non_vinschgau_augmentation(monkeypatch, tmp_
     assert len(written["nodes-italy-sta.json"]) == 17
 
 
-def test_atomic_write_ndjson_replaces_only_after_temp_write(monkeypatch, tmp_path):
-    target = tmp_path / "nodes.json"
-    target.write_text("old\n")
-    calls = []
-    def fake_write(path, rows):
-        calls.append(("write", path.name))
-        path.write_text("new\n")
-    real_replace = sta.os.replace
-    def fake_replace(src, dst):
-        calls.append(("replace", src.name, dst.name))
-        real_replace(src, dst)
-    monkeypatch.setattr(sta, "write_ndjson", fake_write)
-    monkeypatch.setattr(sta.os, "replace", fake_replace)
-    sta._atomic_write_ndjson(target, [{"id": 1}])
-    assert target.read_text() == "new\n"
-    assert calls[0][0] == "write"
-    assert calls[1][0] == "replace"
-
-
 def test_native_sta_nodes_use_official_bilingual_catalogue_name(monkeypatch, tmp_path):
     monkeypatch.setattr(sta, "RFI_NODES", tmp_path / "rfi.json")
     monkeypatch.setattr(sta, "OEBB_NODES", tmp_path / "oebb.json")
     monkeypatch.setattr(sta, "ROOT", tmp_path)
     monkeypatch.setattr(sta, "_read_nodes", lambda path: [])
     written = {}
-    monkeypatch.setattr(sta, "_atomic_write_ndjson",
+    monkeypatch.setattr(sta, "publish_nodes",
                         lambda path, rows: written.__setitem__(path.name, rows))
     rows = [{
         "id": f"sta-{code}", "name": f"Localized provider label {code}",

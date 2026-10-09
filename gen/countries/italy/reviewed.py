@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Temporary deterministic rebuilds for manually assembled Italian datasets.
+"""Deterministic reviewed-coordinate rebuilds for Italian provider datasets.
 
 Inputs are stored under::
 
@@ -33,8 +33,10 @@ import re
 from pathlib import Path
 from typing import Callable, Iterable
 
-from common.config import load_country_config, load_excluded_ids
-from common.io import ROOT, load_ndjson, write_csv
+from common.config import (
+    load_country_config, load_exclusion_rules, require_reviewed_identity,
+)
+from common.io import ROOT, load_ndjson, publish_nodes, write_csv
 from common.normalize import normalize_name
 from common.validate import validate_nodes
 from common.manual_overrides import apply_coordinate_overrides, load_override_config
@@ -342,50 +344,15 @@ def handled_outside_provider_review(
     return None
 
 
-def write_preserving_seed(
+def publish_reviewed_nodes(
     operator: str,
     seed_path: Path,
     output: list[dict],
 ) -> None:
-    """Keep unchanged reviewed records byte-for-byte where possible."""
-
-    original_lines: dict[str, tuple[dict, str]] = {}
-
-    for line_number, line in enumerate(
-        seed_path.read_text(encoding="utf-8").splitlines(),
-        1,
-    ):
-        if not line.strip():
-            continue
-
-        try:
-            row = json.loads(line)
-        except json.JSONDecodeError as exc:
-            raise ValueError(
-                f"{seed_path}:{line_number}: invalid JSON: {exc}"
-            ) from exc
-
-        original_lines[str(row["id"])] = (row, line)
-
-    target = node_path(operator)
-    target.parent.mkdir(parents=True, exist_ok=True)
-
-    with target.open("w", encoding="utf-8", newline="\n") as handle:
-        for row in output:
-            original = original_lines.get(str(row["id"]))
-
-            if original is not None and original[0] == row:
-                handle.write(original[1])
-            else:
-                handle.write(
-                    json.dumps(
-                        row,
-                        ensure_ascii=False,
-                        separators=(",", ":"),
-                    )
-                )
-
-            handle.write("\n")
+    """Publish a reviewed rebuild through the repository node safeguards."""
+    if seed_path != node_path(operator) and not seed_path.is_file():
+        raise FileNotFoundError(seed_path)
+    publish_nodes(node_path(operator), output)
 
 
 def format_validation_issue(issue: object) -> str:
@@ -438,16 +405,17 @@ def rebuild(
         })
         seed_ids.add(str(station_id))
 
-    excluded = {
-        str(station_id)
-        for station_id in load_excluded_ids("italy", operator)
-    }
-    excluded.update(
-        str(review.get("id"))
+    exclusion_rules = load_exclusion_rules("italy", operator)
+    review_exclusions = {
+        str(review.get("id")): {
+            "expected_name": review.get("source_name") or review.get("reviewed_name")
+        }
         for review in italy_config.get("reviews", [])
         if review.get("operator") == operator
         and review.get("decision") == "excluded"
-    )
+        and review.get("id") not in (None, "")
+    }
+    excluded = set(exclusion_rules) | set(review_exclusions)
 
     output: list[dict] = []
     audit: list[dict] = []
@@ -471,11 +439,18 @@ def rebuild(
         station_id = str(reviewed["id"])
 
         if station_id in excluded:
+            source_name = source.get(station_id, {}).get("name", "")
+            reviewed_name = reviewed.get("tags", {}).get("name", "")
+            require_reviewed_identity(
+                exclusion_rules.get(station_id) or review_exclusions[station_id],
+                source_name if station_id in source else reviewed_name,
+                context=f"italy/{operator}:{station_id}",
+            )
             audit.append(
                 {
                     "id": station_id,
-                    "source_name": source.get(station_id, {}).get("name", ""),
-                    "reviewed_name": reviewed.get("tags", {}).get("name", ""),
+                    "source_name": source_name,
+                    "reviewed_name": reviewed_name,
                     "status": "excluded",
                     "details": "listed in overrides/exclusions/italy.json",
                 }
@@ -551,6 +526,12 @@ def rebuild(
             continue
 
         is_excluded = station_id in excluded
+        if is_excluded:
+            require_reviewed_identity(
+                exclusion_rules.get(station_id) or review_exclusions[station_id],
+                source_row.get("name", ""),
+                context=f"italy/{operator}:{station_id}",
+            )
         outside_provider = handled_outside_provider_review(
             italy_config,
             operator,
@@ -558,6 +539,11 @@ def rebuild(
         )
 
         if outside_provider is not None:
+            require_reviewed_identity(
+                {"expected_name": outside_provider.get("source_name") or outside_provider.get("reviewed_name")},
+                source_row.get("name", ""),
+                context=f"italy/{operator} cross-provider:{station_id}",
+            )
             audit.append(
                 {
                     "id": station_id,
@@ -636,7 +622,7 @@ def rebuild(
     )
 
     if not dry_run:
-        write_preserving_seed(operator, seed_path, output)
+        publish_reviewed_nodes(operator, seed_path, output)
 
     return output, audit
 
@@ -685,7 +671,7 @@ def main(argv: list[str] | None = None) -> int:
         )
 
         if not args.dry_run:
-            from countries.italy.review import review_after_generation
+            from reconcile.italy_review import review_after_generation
             review_after_generation(operator)
 
     return 0

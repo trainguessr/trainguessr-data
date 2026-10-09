@@ -36,7 +36,7 @@
 {"type":"node","id":"8600094","lat":55.069202,"lon":9.333457,"tags":{"name":"Rødekro St.","stop_ids":["8600094"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600097","lat":54.936323,"lon":9.257875,"tags":{"name":"Tinglev St.","stop_ids":["8600097"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600100","lat":54.822994,"lon":9.359753,"tags":{"name":"Padborg St.","stop_ids":["8600100"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8600101","lat":54.816616,"lon":9.361968,"tags":{"name":"Padborg Grænse St.","stop_ids":["8600101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8600101","lat":54.816616,"lon":9.361968,"tags":{"name":"Flensburg Grænse","stop_ids":["8600101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600115","lat":57.084805,"lon":9.874941,"tags":{"name":"Aalborg Lufthavn St.","stop_ids":["8600115"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600116","lat":57.066735,"lon":9.904498,"tags":{"name":"Lindholm St.","stop_ids":["8600116"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8600117","lat":57.053284,"lon":9.908638,"tags":{"name":"Aalborg Vestby St.","stop_ids":["8600117"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
@@ -467,7 +467,7 @@
 {"type":"node","id":"8603527","lat":55.752481,"lon":11.456293,"tags":{"name":"Hørve St.","stop_ids":["8603527"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603541","lat":55.722816,"lon":11.63503,"tags":{"name":"Mårsø","stop_ids":["8603541"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603543","lat":55.72879,"lon":11.593827,"tags":{"name":"Ny Hagested St.","stop_ids":["8603543"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"8603545","lat":55.921504,"lon":11.672498,"tags":{"name":"Nykøbing Sj St.","stop_ids":["8603545"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8603545","lat":55.921504,"lon":11.672498,"tags":{"name":"Nykøbing Sj. St.","stop_ids":["8603545"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603547","lat":55.883028,"lon":11.606492,"tags":{"name":"Nr. Asmindrup St.","stop_ids":["8603547"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603550","lat":55.92202,"lon":11.655324,"tags":{"name":"Nyled St.","stop_ids":["8603550"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"8603555","lat":55.898296,"lon":11.603692,"tags":{"name":"Sommerland Sj. St.","stop_ids":["8603555"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}

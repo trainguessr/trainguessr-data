@@ -7,8 +7,11 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from common.config import load_country_config, load_excluded_ids, load_rename_map
-from common.io import ROOT
+from common.config import (
+    load_country_config, load_exclusion_rules, load_rename_map,
+    require_reviewed_identity,
+)
+from common.io import ROOT, load_ndjson, publish_nodes
 
 SOURCE_URL = "https://data.sncf.com/api/explore/v2.1/catalog/datasets/gares-de-voyageurs/exports/json?lang=fr&timezone=Europe/Berlin"
 CACHE = ROOT / "cache" / "france" / "sncf.json"
@@ -17,35 +20,18 @@ OUTPUT = ROOT / "nodes" / "nodes-france-sncf.json"
 SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "cuneo-ventimiglia.json"
 PASSENGER_SUPPLEMENTS = ROOT / "docs" / "review" / "france" / "liste-des-gares-supplement.json"
 
-def load_rename_mapping(rename_file):
-    """
-    Load the rename mapping from a text file.
-    
-    Args:
-        rename_file: Path to the rename file
-        
-    Returns:
-        Dictionary mapping old names to new names
-    """
-    rename_map = {}
-    if os.path.exists(rename_file):
-        with open(rename_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and ',' in line:
-                    old_name, new_name = line.split(',', 1)
-                    rename_map[old_name] = new_name
-    return rename_map
-
 def convert_from_json(
     input_path,
     output_path,
     rename_map,
     split_uic_names,
-    excluded_ids,
+    exclusion_rules,
     supplements=None,
     passenger_supplements=None,
+    *,
+    guard_publication=False,
 ):
+    excluded_ids = set(exclusion_rules)
     supplements_by_id = {
         str(item["sncf_id"]): item
         for item in (supplements or [])
@@ -59,20 +45,24 @@ def convert_from_json(
         for feature in data:
             try:
                 codes_uic = [code.strip() for code in feature.get("codes_uic", "").split(";") if code.strip()]
-                if not codes_uic or all(code in excluded_ids for code in codes_uic):
-                    continue
-                geo = feature.get("position_geographique", {})
-                if not geo:
-                    print(f"Skipping feature with missing geographic data: {feature}")
+                if not codes_uic:
                     continue
                 nom = feature.get("nom", "")
-                if not nom:
-                    print(f"Skipping feature with missing name: {feature}")
-                    continue
                 if nom in rename_map:
                     nom = rename_map[nom]
 
                 split_names = split_uic_names.get(nom)
+                for station_id in codes_uic:
+                    rule = exclusion_rules.get(station_id)
+                    if rule is not None:
+                        reviewed_name = (
+                            split_names.get(station_id)
+                            if isinstance(split_names, dict)
+                            else nom
+                        )
+                        require_reviewed_identity(
+                            rule, reviewed_name, context=f"france:{station_id}"
+                        )
                 if not isinstance(split_names, dict) and any(code in excluded_ids for code in codes_uic):
                     # Historical exclusions such as Mareil-Marly represent an
                     # entire source complex with no reviewed SNCF identities.
@@ -92,6 +82,16 @@ def convert_from_json(
                         )
                 else:
                     split_names = {codes_uic[0]: nom}
+
+                if all(code in excluded_ids for code in codes_uic):
+                    continue
+                geo = feature.get("position_geographique", {})
+                if not geo:
+                    print(f"Skipping feature with missing geographic data: {feature}")
+                    continue
+                if not nom:
+                    print(f"Skipping feature with missing name: {feature}")
+                    continue
 
                 # The SNCF source supplies one geometry for the aggregate public
                 # station record.  Preserve that source geometry for each reviewed
@@ -183,7 +183,13 @@ def convert_from_json(
     if errors:
         temporary_output.unlink(missing_ok=True)
         raise ValueError(f"SNCF conversion failed for {len(errors)} records")
-    os.replace(temporary_output, output_path)
+    if guard_publication:
+        try:
+            publish_nodes(output_path, load_ndjson(temporary_output))
+        finally:
+            temporary_output.unlink(missing_ok=True)
+    else:
+        os.replace(temporary_output, output_path)
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
@@ -222,7 +228,7 @@ def main(argv: list[str] | None = None) -> int:
     rename_map = load_rename_map("france")
     config = load_country_config("france")
     split_uic_names = config.get("split_uic_names", {})
-    excluded_ids = load_excluded_ids("france")
+    exclusion_rules = load_exclusion_rules("france")
     print(f"Loaded {len(rename_map)} rename rules")
 
     with SUPPLEMENTS.open(encoding="utf-8") as handle:
@@ -234,9 +240,10 @@ def main(argv: list[str] | None = None) -> int:
         OUTPUT,
         rename_map,
         split_uic_names,
-        excluded_ids,
+        exclusion_rules,
         supplements,
         passenger_supplements,
+        guard_publication=True,
     )
     print(f"Conversion complete. Output written to {OUTPUT}")
     return 0

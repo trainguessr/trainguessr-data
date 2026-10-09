@@ -286,7 +286,6 @@
 {"type":"node","id":"05655","lat":43.4160163,"lon":-3.8411016,"tags":{"name":"Maliaño Vidriera","stop_ids":["05655"],"renfe_stop_id":"05655","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05657","lat":43.4036508,"lon":-3.8206798,"tags":{"name":"Astillero","stop_ids":["05657"],"renfe_stop_id":"05657","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05658","lat":43.3973661,"lon":-3.8149679,"tags":{"name":"La Cantábrica","stop_ids":["05658"],"renfe_stop_id":"05658","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"05659","lat":43.393766,"lon":-3.803854,"tags":{"name":"San Salvador","stop_ids":["05659"],"renfe_stop_id":"05659","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05661","lat":43.4008996,"lon":-3.7666376,"tags":{"name":"Heras","stop_ids":["05661"],"renfe_stop_id":"05661","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05663","lat":43.3994776,"lon":-3.7383974,"tags":{"name":"Orejo","stop_ids":["05663"],"renfe_stop_id":"05663","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05665","lat":43.387247,"lon":-3.7313834,"tags":{"name":"Solares","stop_ids":["05665"],"renfe_stop_id":"05665","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -1203,13 +1202,13 @@
 {"type":"node","id":"70806","lat":41.6527361,"lon":-0.8958759,"tags":{"name":"Zaragoza-Portillo","stop_ids":["70806"],"renfe_stop_id":"70806","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"70807","lat":41.6438779,"lon":-0.8912574,"tags":{"name":"Zaragoza-Goya","stop_ids":["70807"],"renfe_stop_id":"70807","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71100","lat":41.6334311,"lon":-0.8681653,"tags":{"name":"Zaragoza-Miraflores","stop_ids":["71100"],"renfe_stop_id":"71100","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"71103","lat":41.515065,"lon":-0.618625,"tags":{"name":"Fuentes de Ebro","stop_ids":["71103"],"renfe_stop_id":"71103","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"71103","lat":41.515065,"lon":-0.618625,"tags":{"name":"Fuentes de Ebro","stop_ids":["71103"],"renfe_stop_id":"71103","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71105","lat":41.419528,"lon":-0.490673,"tags":{"name":"Quinto","stop_ids":["71105"],"renfe_stop_id":"71105","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71108","lat":41.320542,"lon":-0.427115,"tags":{"name":"La Zaida-Sástago","stop_ids":["71108"],"renfe_stop_id":"71108","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71200","lat":41.2244,"lon":-0.438595,"tags":{"name":"La Puebla de Híjar","stop_ids":["71200"],"renfe_stop_id":"71200","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71201","lat":41.182183,"lon":-0.368761,"tags":{"name":"Samper","stop_ids":["71201"],"renfe_stop_id":"71201","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71204","lat":41.239738,"lon":-0.042701,"tags":{"name":"Caspe","stop_ids":["71204"],"renfe_stop_id":"71204","feeds":["cercanias","ld"]},"category":"spain_renfe"}
-{"type":"node","id":"71205","lat":41.230056,"lon":0.070145,"tags":{"name":"Val de Pilas","stop_ids":["71205"],"renfe_stop_id":"71205","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"71205","lat":41.230056,"lon":0.070145,"tags":{"name":"Val de Pilas","stop_ids":["71205"],"renfe_stop_id":"71205","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71206","lat":41.234405,"lon":0.143284,"tags":{"name":"Fabara","stop_ids":["71206"],"renfe_stop_id":"71206","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71207","lat":41.213788,"lon":0.242472,"tags":{"name":"Nonaspe","stop_ids":["71207"],"renfe_stop_id":"71207","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"71208","lat":41.2250555,"lon":0.35110259,"tags":{"name":"Faió-La Pobla de Massaluca","stop_ids":["71208"],"renfe_stop_id":"71208","feeds":["cercanias","ld"]},"category":"spain_renfe"}
@@ -1315,8 +1314,8 @@
 {"type":"node","id":"77307","lat":42.3768624,"lon":1.89685307,"tags":{"name":"Urtx-Alp","stop_ids":["77307"],"renfe_stop_id":"77307","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"77309","lat":42.4296256,"lon":1.92458355,"tags":{"name":"Puigcerdà","stop_ids":["77309"],"renfe_stop_id":"77309","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"77310","lat":42.4590288,"lon":1.90438312,"tags":{"name":"La Tor de Querol-Enveig","stop_ids":["77310"],"renfe_stop_id":"77310","feeds":["cercanias"]},"category":"spain_renfe"}
-{"type":"node","id":"78005","lat":41.76551,"lon":-0.822204,"tags":{"name":"Villanueva de Gállego","stop_ids":["78005"],"renfe_stop_id":"78005","feeds":["ld"]},"category":"spain_renfe"}
-{"type":"node","id":"78200","lat":41.975716,"lon":-0.538223,"tags":{"name":"Tardienta","stop_ids":["78200"],"renfe_stop_id":"78200","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"78005","lat":41.76551,"lon":-0.822204,"tags":{"name":"Villanueva de Gállego","stop_ids":["78005"],"renfe_stop_id":"78005","feeds":["cercanias","ld"]},"category":"spain_renfe"}
+{"type":"node","id":"78200","lat":41.975716,"lon":-0.538223,"tags":{"name":"Tardienta","stop_ids":["78200"],"renfe_stop_id":"78200","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"78201","lat":41.938033,"lon":-0.369329,"tags":{"name":"Grañén","stop_ids":["78201"],"renfe_stop_id":"78201","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"78203","lat":41.817529,"lon":-0.17076,"tags":{"name":"Sariñena","stop_ids":["78203"],"renfe_stop_id":"78203","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"78301","lat":41.913679,"lon":0.196939,"tags":{"name":"Monzón-Río Cinca","stop_ids":["78301"],"renfe_stop_id":"78301","feeds":["ld"]},"category":"spain_renfe"}

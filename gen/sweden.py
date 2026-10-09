@@ -1,33 +1,15 @@
 #!/usr/bin/env python3
 
-import json
-import sys
 import os
 import argparse
 import shutil
-from common.io import ROOT
-from common.config import load_excluded_ids, load_rename_id_map, load_rename_map
+from pathlib import Path
+from common.io import ROOT, publish_nodes
+from common.config import (
+    load_exclusion_rules, load_rename_id_rules, load_rename_map,
+    require_reviewed_identity,
+)
 
-
-def load_rename_mapping(rename_file):
-    """
-    Load the rename mapping from a text file.
-    
-    Args:
-        rename_file: Path to the rename file
-        
-    Returns:
-        Dictionary mapping old names to new names
-    """
-    rename_map = {}
-    if os.path.exists(rename_file):
-        with open(rename_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and ',' in line:
-                    old_name, new_name = line.split(',', 1)
-                    rename_map[old_name] = new_name
-    return rename_map
 
 def _local_name(tag):
     return tag.rsplit("}", 1)[-1]
@@ -51,9 +33,10 @@ def convert_from_xml(input_path, output_path, rename_map):
     import xml.etree.ElementTree as ET
     from collections import Counter
 
-    excluded_ids = load_excluded_ids("sweden")
-    rename_id_map = load_rename_id_map("sweden")
-    print(f"Loaded {len(excluded_ids)} excluded station IDs")
+    exclusions = load_exclusion_rules("sweden")
+    rename_id_rules = load_rename_id_rules("sweden")
+    rename_id_map = {station_id: str(rule["to"]) for station_id, rule in rename_id_rules.items()}
+    print(f"Loaded {len(exclusions)} excluded station IDs")
     seen, nodes = set(), []
     modes, skipped = Counter(), Counter()
 
@@ -89,8 +72,16 @@ def convert_from_xml(input_path, output_path, rename_map):
                 skipped["duplicate station ID"] += 1; continue
             if not station_id.startswith("740"):
                 skipped["foreign station ID"] += 1; continue
-            if station_id in excluded_ids:
+            rule = exclusions.get(station_id)
+            if rule is not None:
+                require_reviewed_identity(rule, name, context=f"sweden:{station_id}")
                 skipped["excluded station ID"] += 1; continue
+            if station_id in rename_id_rules:
+                require_reviewed_identity(
+                    {"expected_name": rename_id_rules[station_id]["from"]},
+                    name,
+                    context=f"sweden rename:{station_id}",
+                )
 
             tags = {
                 "name": rename_id_map.get(station_id, rename_map.get(name, name)),
@@ -121,15 +112,14 @@ def convert_from_xml(input_path, output_path, rename_map):
                 "lat": float(lat), "lon": float(lon),
                 "tags": tags, "category": "sweden_all",
             })
-        except Exception:
-            skipped["malformed StopPlace"] += 1
+        except (TypeError, ValueError) as exc:
+            station_label = element.attrib.get("id", "unknown")
+            raise ValueError(f"Malformed Swedish StopPlace {station_label}: {exc}") from exc
         finally:
             element.clear()
 
     nodes.sort(key=lambda node: node["id"])
-    with open(output_path, "w", encoding="utf-8") as outfile:
-        for node in nodes:
-            outfile.write(json.dumps(node, ensure_ascii=False, separators=(",", ":")) + "\n")
+    publish_nodes(Path(output_path), nodes)
     print(f"Parsed {sum(modes.values())} stop places; wrote {len(nodes)} railway/metro stations")
     print("Modes: " + ", ".join(f"{name}={count}" for name, count in sorted(modes.items())))
     if skipped:
@@ -150,7 +140,7 @@ def main(argv=None):
     cache_dir = str(ROOT / "cache" / "sweden")
     zip_file = os.path.join(cache_dir, "stops.zip")
     xml_file = os.path.join(cache_dir, "_stops.xml")
-    output_file = str(ROOT / "nodes" / "nodes-sweden.json")
+    output_file = ROOT / "nodes" / "nodes-sweden.json"
 
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
@@ -167,7 +157,7 @@ def main(argv=None):
         if not api_key:
             print("Please set the TRAFIKLAB_API_KEY_STOPS environment variable.")
             print("Get your API key from: https://www.trafiklab.se/")
-            sys.exit(1)
+            return 1
         
         try:
             response = requests.get(
@@ -179,11 +169,11 @@ def main(argv=None):
             response.raise_for_status()
         except requests.RequestException:
             print("Failed to download Sweden stops data.")
-            sys.exit(1)
+            return 1
         
         if response.status_code != 200:
             print(f"Failed to download data: {response.status_code}")
-            sys.exit(1)
+            return 1
         
         with open(zip_file, 'wb') as f:
             f.write(response.content)

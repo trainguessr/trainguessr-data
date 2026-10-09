@@ -11,7 +11,7 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 from common.config import load_country_config
-from common.io import ROOT, load_ndjson, write_csv, write_ndjson
+from common.io import ROOT, load_ndjson, publish_nodes, write_ndjson, write_csv
 from common.validate import validate_nodes
 
 
@@ -439,11 +439,34 @@ def manual_node(row: dict[str, Any]) -> dict[str, Any]:
 
 def apply_manual_stations(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
     manual_ids = {str(row["id"]) for row in MANUAL_STATIONS}
-    manual_names = {normalize_name(str(row["name"])) for row in MANUAL_STATIONS}
+    by_id = {str(node.get("id")): node for node in nodes}
+    by_name: dict[str, list[dict[str, Any]]] = {}
+    for node in nodes:
+        name = normalize_name(str(node.get("tags", {}).get("name", "")))
+        by_name.setdefault(name, []).append(node)
+    for row in MANUAL_STATIONS:
+        station_id = str(row["id"])
+        expected_name = normalize_name(str(row["name"]))
+        same_id = by_id.get(station_id)
+        if same_id is not None:
+            actual_name = normalize_name(str(same_id.get("tags", {}).get("name", "")))
+            if actual_name != expected_name:
+                raise ValueError(
+                    f"italy/fse: stale manual station {station_id}: expected "
+                    f"{row['name']!r}, generated {same_id.get('tags', {}).get('name')!r}"
+                )
+        conflicting_ids = {
+            str(node.get("id")) for node in by_name.get(expected_name, [])
+            if str(node.get("id")) != station_id
+        }
+        if conflicting_ids:
+            raise ValueError(
+                f"italy/fse: manual station {station_id} name {row['name']!r} "
+                f"is now generated under {sorted(conflicting_ids)}"
+            )
     kept = [
         node for node in nodes
         if str(node.get("id")) not in manual_ids
-        and normalize_name(str(node.get("tags", {}).get("name", ""))) not in manual_names
     ]
     kept.extend(manual_node(row) for row in MANUAL_STATIONS)
     return sorted(kept, key=lambda node: str(node["id"]))
@@ -555,12 +578,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"ERROR: {error}")
         return 1
 
-    write_ndjson(OUTPUT_FILE, nodes)
+    publish_nodes(OUTPUT_FILE, nodes)
     write_ndjson(UNRESOLVED_OUTPUT_FILE, unresolved)
     write_audit(nodes, unresolved)
     print(f"Wrote {len(nodes)} FSE stations to {OUTPUT_FILE}")
     print(f"Wrote {len(unresolved)} unresolved/excluded records to {UNRESOLVED_OUTPUT_FILE}")
-    from countries.italy.review import review_after_generation
+    from reconcile.italy_review import review_after_generation
     review_after_generation("fse")
     return 0
 

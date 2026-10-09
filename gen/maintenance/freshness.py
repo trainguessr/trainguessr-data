@@ -4,8 +4,12 @@ from __future__ import annotations
 
 import argparse
 import sqlite3
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from common.io import ROOT
 
@@ -63,6 +67,17 @@ def sqlite_calendar_end(path: Path) -> str | None:
     return str(row[0]) if row and row[0] else None
 
 
+def print_table(rows: list[tuple[str, ...]]) -> None:
+    """Align columns using the complete report, including timetable statuses."""
+    headers = ("dataset", "kind", "age_days", "status", "command")
+    widths = [max(len(row[column]) for row in [headers, *rows]) for column in range(len(headers))]
+    for row in [headers, *rows]:
+        print("  ".join(
+            value.rjust(widths[column]) if column == 2 else value.ljust(widths[column])
+            for column, value in enumerate(row)
+        ).rstrip())
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stale-after-days", type=int, default=30,
@@ -71,7 +86,7 @@ def main(argv=None) -> int:
     now = datetime.now(timezone.utc)
     today = now.strftime("%Y%m%d")
 
-    print("dataset\tkind\tage_days\tstatus\tcommand")
+    rows = []
     due = []
     for name, kind, relative, command in DATASETS:
         age = age_days(ROOT / relative, now)
@@ -82,7 +97,7 @@ def main(argv=None) -> int:
             status = f"stale>{limit}d"
         else:
             status = "current"
-        print(f"{name}\t{kind}\t{age if age is not None else '-'}\t{status}\t{command}")
+        rows.append((name, kind, str(age) if age is not None else "-", status, command))
         if status != "current":
             due.append(command)
 
@@ -92,14 +107,15 @@ def main(argv=None) -> int:
     ):
         end = sqlite_calendar_end(ROOT / relative)
         if end is None:
-            print(f"{label}\tautomated\t-\tindex-missing/unreadable\tpython3 gen/spain.py")
+            rows.append((label, "automated", "-", "index-missing/unreadable", "python3 gen/spain.py"))
             due.append("python3 gen/spain.py")
         else:
             status = "expired" if end < today else f"calendar-through-{end}"
-            print(f"{label}\tautomated\t-\t{status}\tpython3 gen/spain.py")
+            rows.append((label, "automated", "-", status, "python3 gen/spain.py"))
             if end < today:
                 due.append("python3 gen/spain.py")
 
+    print_table(rows)
     print("\nRerun:")
     for command in dict.fromkeys(due):
         print(f"  {command}")

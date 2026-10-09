@@ -7,10 +7,12 @@ import sys
 import tarfile
 import argparse
 from datetime import datetime, timezone
+from pathlib import Path
 
 import requests
 
 from common.config import load_rename_map
+from common.io import publish_nodes
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -142,26 +144,6 @@ def load_reconciled_stations(path=RECONCILIATION_PATH):
         seen_ids.add(station_id)
     return stations
 
-def load_rename_mapping(rename_file):
-    """
-    Load the rename mapping from a text file.
-    
-    Args:
-        rename_file: Path to the rename file
-        
-    Returns:
-        Dictionary mapping old names to new names
-    """
-    rename_map = {}
-    if os.path.exists(rename_file):
-        with open(rename_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and ',' in line:
-                    old_name, new_name = line.split(',', 1)
-                    rename_map[old_name] = new_name
-    return rename_map
-
 def convert_from_json(
     input_path,
     output_path,
@@ -169,8 +151,11 @@ def convert_from_json(
     board_groups=None,
     reconciled_stations=None,
 ):
-    with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', encoding='utf-8') as outfile:
+    with open(input_path, 'r', encoding='utf-8') as infile:
         data = json.load(infile)
+        if not isinstance(data, list):
+            raise ValueError(f"{input_path}: expected a station list")
+        nodes = []
         board_groups = board_groups or {}
         reconciled_stations = (
             load_reconciled_stations() if reconciled_stations is None else reconciled_stations
@@ -181,20 +166,17 @@ def convert_from_json(
             try:
                 station_id = station.get("id")
                 if not station_id:
-                    print(f"Skipping station with missing ID: {station}")
-                    continue
+                    raise ValueError("missing station ID")
                 
                 location = station.get("location", {})
                 lat = location.get("latitude")
                 lon = location.get("longitude")
-                if not lat or not lon:
-                    print(f"Skipping station with missing coordinates: {station}")
-                    continue
+                if lat in (None, "") or lon in (None, ""):
+                    raise ValueError("missing coordinates")
                 
                 name = station.get("name", "")
                 if not name:
-                    print(f"Skipping station with missing name: {station}")
-                    continue
+                    raise ValueError("missing station name")
                 
                 if name in rename_map:
                     name = rename_map[name]
@@ -240,10 +222,10 @@ def convert_from_json(
                     "category": "germany_all"
                 }
 
-                outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
+                nodes.append(node)
                 written_ids.add(str(station_id))
-            except Exception as e:
-                print(f"Error processing station: {e}")
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError(f"Invalid Germany source station {station!r}: {exc}") from exc
 
         for station in reconciled_stations:
             station_id = str(station.get("id") or "").strip()
@@ -274,7 +256,7 @@ def convert_from_json(
                 },
                 "category": "germany_all",
             }
-            outfile.write(json.dumps(node, ensure_ascii=False, separators=(',', ':')) + '\n')
+            nodes.append(node)
             written_ids.add(station_id)
         missing_groups = sorted(set(board_groups) - seen_board_groups)
         if missing_groups:
@@ -282,6 +264,7 @@ def convert_from_json(
                 "Germany board groups reference stations absent from source: "
                 + ", ".join(missing_groups)
             )
+        publish_nodes(Path(output_path), nodes)
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)

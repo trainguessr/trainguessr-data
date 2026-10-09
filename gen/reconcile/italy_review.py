@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from common.config import load_country_config, load_excluded_ids, load_rename_map
-from common.io import ROOT, load_ndjson, write_ndjson
+from common.io import ROOT, load_ndjson, publish_nodes
 from common.validate import validate_nodes
 
 
@@ -148,7 +148,7 @@ def update_node_name(operator: str, station_id: str, name: str) -> None:
             errors = validate_nodes(rows)
             if errors:
                 raise ValueError("; ".join(errors))
-            write_ndjson(path, rows)
+            publish_nodes(path, rows)
             return
     raise ValueError(f"{operator}: station {station_id} is not in {path}")
 
@@ -158,7 +158,7 @@ def remove_node(operator: str, station_id: str) -> None:
     rows = load_ndjson(path)
     kept = [row for row in rows if str(row.get("id")) != station_id]
     if len(kept) != len(rows):
-        write_ndjson(path, kept)
+        publish_nodes(path, kept)
 
 
 def exclude_station(
@@ -228,7 +228,7 @@ def add_coordinates(
         errors = validate_nodes(nodes)
         if errors:
             raise ValueError("; ".join(errors))
-        write_ndjson(path, nodes)
+        publish_nodes(path, nodes)
 
 
 def prompt_coordinates() -> tuple[float, float] | None:
