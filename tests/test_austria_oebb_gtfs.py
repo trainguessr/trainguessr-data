@@ -10,7 +10,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen"))
-from austria import build_oebb_operator_index as build_index, load_oebb_gtfs as load_gtfs, main as austria_main
+from countries.austria.operators import build_oebb_operator_index as build_index, load_oebb_gtfs as load_gtfs
+from countries.austria.generate import main as austria_main
 
 
 def _csv(rows):

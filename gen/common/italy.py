@@ -51,8 +51,9 @@ def write_catalog(operator: str, rows: list[dict[str, str]], fields: list[str]) 
 
 
 def finish(operator: str) -> None:
-    from countries.italy.reviewed import rebuild
-    from reconcile.italy_review import REVIEW_STATUSES, review_after_generation
+    from countries.italy.reviewed.rebuild import rebuild
+    from reconcile.italy.settings import REVIEW_STATUSES
+    from reconcile.italy.review import review_after_generation
 
     output, audit = rebuild(operator)
     path = ROOT / "nodes" / f"nodes-italy-{operator}.json"

@@ -2,25 +2,26 @@
 
 ## Current providers
 
-| Country | Category | Runtime provider | Generator | Coverage |
-| --- | --- | --- | --- | --- |
-| Netherlands | `netherlands_all` | Rijden de Treinen / NS and other Dutch operators | `gen/netherlands.py` | 397 nodes. Rijden de Treinen describes its NL catalogue as all Dutch railway stations, sourced directly from NS and refreshed for station openings, closures, and renames. The data includes two `facultatiefStation` records. Metro/tram is separate. |
+- **Category:** `netherlands_all`
+- **Current nodes:** 397
+- **Runtime and station source:** Rijden de Treinen / Dutch railway data
 
-## Generation and source notes
+## Generate
 
-Station data comes from [Rijden de Treinen open data](https://www.rijdendetreinen.nl/en/open-data).
-Its API supplies live departures.
+```bash
+python3 gen/netherlands.py
+```
 
-Run `python3 gen/netherlands.py` from the repository root.
+Use `--cache` to reuse the cached station CSV.
 
+The current category covers the national heavy-rail station namespace. Metro and tram systems are separate.
 
-## Attribution and provider constraints
-
-- Stations: [Rijden de Treinen open station data](https://www.rijdendetreinen.nl/en/open-data/stations), CC0.
-- Live boards: Rijden de Treinen consumer endpoint.
-- Constraint: get permission for the undocumented live endpoint or migrate to an authorized API.
-
+Reviewed exclusions are in `../overrides/exclusions/netherlands.json`.
 
 ## Other providers
 
-No new heavy-rail provider is needed for the existing-provider checkpoint. Metro/light rail is deferred to the secondary-mode phase.
+Metro and tram systems need a separate provider or mode.
+
+## Terms
+
+Rijden de Treinen station data is CC0. Its live endpoint needs suitable permission for public production use. See `../ACKNOWLEDGMENTS.md`.

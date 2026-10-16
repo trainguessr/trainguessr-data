@@ -13,18 +13,12 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen"))
 
-from reconcile.germany import (  # noqa: E402
-    _boundary_geometry,
-    _read_json,
-    build_node_grid,
-    build_gtfs_candidates,
-    load_reviewed_station_overrides,
-    load_reviewed_gap_notes,
-    nearby_nodes,
-    name_score,
-    parse_station_xml,
-    reconcile,
-)
+from reconcile.germany.candidates import _boundary_geometry, build_gtfs_candidates
+from reconcile.germany.io import _read_json
+from reconcile.germany.matching import build_node_grid, nearby_nodes, name_score
+from reconcile.germany.decisions import load_reviewed_station_overrides, load_reviewed_gap_notes
+from reconcile.germany.db import parse_station_xml
+from reconcile.germany.workflow import reconcile
 
 
 def write_gtfs(path: Path, tables: dict[str, list[dict[str, str]]]) -> None:

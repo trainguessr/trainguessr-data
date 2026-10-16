@@ -2,28 +2,25 @@
 
 ## Current providers
 
-| Country | Category | Runtime provider | Generator | Coverage |
-| --- | --- | --- | --- | --- |
-| Switzerland | `switzerland_all` | Search.ch stationboard / Swiss Transport API | `gen/switzerland.py` | 1,697 current `TRAIN` service-point nodes. Swiss service-point v2 also publishes full past/future validity records; the generator reads current service points and filters `meansoftransport=TRAIN`. Non-TRAIN and historical records need proof of a physical passenger station addressable by search.ch. |
+- **Category:** `switzerland_all`
+- **Current nodes:** 1,697
+- **Runtime:** search.ch stationboard / Swiss transport data
+- **Station source:** Swiss/SBB open service-point data
 
-## Generation and source notes
+## Generate
 
-Station data is available as GeoJSON from the [SBB Open Data
-API](https://data.sbb.ch/api/v2/catalog/datasets/haltestelle-haltekante/exports/geojson).
+```bash
+python3 gen/switzerland.py
+```
 
-Once the IDs are gathered, they can be used in the Transport API, which relies on the same IDs: [Transport CH](https://transport.opendata.ch/).
+The generator keeps current service points marked for train service. Non-train or historical records need separate physical and provider evidence before inclusion.
 
-Run `python3 gen/switzerland.py` from the repository root.
-
-
-## Attribution and provider constraints
-
-- Stations: opentransportdata.swiss / SBB stop data.
-- Live boards: search.ch timetable API.
-- Attribution: cite opentransportdata.swiss and keep published station data current.
-- Constraint: confirm public-product use with search.ch or migrate to an authorized opentransportdata.swiss API.
-
+Reviewed exclusions are in `../overrides/exclusions/switzerland.json`.
 
 ## Other providers
 
-No new heavy-rail provider is needed for the current TRAIN namespace. Non-TRAIN/historical service points need physical/provider proof before inclusion.
+No extra heavy-rail provider is planned for the current train namespace. Non-train modes are separate.
+
+## Terms
+
+Keep the required opentransportdata.swiss/SBB attribution. Confirm suitable terms for public use of the search.ch live timetable service. See `../ACKNOWLEDGMENTS.md`.

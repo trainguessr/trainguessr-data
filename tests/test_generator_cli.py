@@ -59,7 +59,7 @@ def test_sweden_streams_and_aggregates_nonrail_stops(tmp_path, monkeypatch, caps
     assert "Skipping feature" not in captured
 
 
-def test_old_country_converters_reject_malformed_source_rows(tmp_path):
+def test_country_converters_reject_malformed_source_rows(tmp_path):
     netherlands = load("netherlands_generator_test", GEN / "netherlands.py")
     nl_source = tmp_path / "nl.csv"
     nl_source.write_text("code,name_long,geo_lat,geo_lng\nABC,Alpha,,4.0\n")
@@ -72,11 +72,11 @@ def test_old_country_converters_reject_malformed_source_rows(tmp_path):
     with pytest.raises(ValueError, match="lacks identity, name, or coordinates"):
         uk.build_nodes(uk_source, {})
 
-    germany = load("germany_generator_test", GEN / "germany.py")
+    from countries.germany.nodes import convert_from_json
     de_source = tmp_path / "de.json"
     de_source.write_text(json.dumps([{"id": "1", "name": "Alpha", "location": {}}]))
     with pytest.raises(ValueError, match="missing coordinates"):
-        germany.convert_from_json(de_source, tmp_path / "de-out.json", {}, {}, [])
+        convert_from_json(de_source, tmp_path / "de-out.json", {}, {}, [])
 
     switzerland = load("switzerland_generator_test", GEN / "switzerland.py")
     with pytest.raises(ValueError, match="lacks meansoftransport"):

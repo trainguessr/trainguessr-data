@@ -583,7 +583,7 @@ def main(argv: list[str] | None = None) -> int:
     write_audit(nodes, unresolved)
     print(f"Wrote {len(nodes)} FSE stations to {OUTPUT_FILE}")
     print(f"Wrote {len(unresolved)} unresolved/excluded records to {UNRESOLVED_OUTPUT_FILE}")
-    from reconcile.italy_review import review_after_generation
+    from reconcile.italy.review import review_after_generation
     review_after_generation("fse")
     return 0
 

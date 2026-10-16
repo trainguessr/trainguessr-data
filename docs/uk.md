@@ -2,28 +2,28 @@
 
 ## Current providers
 
-| Country | Category | Runtime provider | Generator | Coverage |
-| --- | --- | --- | --- | --- |
-| United Kingdom | `uk_national_rail` | National Rail Darwin, with Huxley2 fallback | `gen/uk.py` | 2,608 nodes. The upstream catalogue contains 2,608 stations queryable through National Rail Darwin, including Cambridge South (`CMS`) and Beaulieu Park (`BPA`). Northern Ireland Railways and heritage/private systems are future-provider entries; metro is deferred. |
+- **Category:** `uk_national_rail`
+- **Current nodes:** 2,609
+- **Runtime:** National Rail Darwin, with Huxley2 fallback
+- **Station ID:** CRS code
+- **Station source:** UK railway station catalogue used by the generator
 
-## Generation and source notes
+## Generate
 
-National Rail uses CRS station codes across the UK operators. The station list
-comes from [UK Railway Stations](https://github.com/davwheat/uk-railway-stations).
-Live departures use National Rail Darwin when configured, with [Huxley2](https://huxley2.azurewebsites.net/)
-as the fallback.
+```bash
+python3 gen/uk.py
+```
 
-Run `python3 gen/uk.py` from the repository root.
+Use `--cache` to reuse the cached station JSON.
 
+The current category covers National Rail. Northern Ireland Railways, heritage/private railways, Underground, metro, subway, and tram systems need separate providers or modes.
 
-## Attribution and provider constraints
-
-- Stations: `davwheat/uk-railway-stations`, Trainline EU, and upstream contributors under ODbL.
-- Live boards: National Rail Darwin when configured, otherwise Huxley2 as an independent proxy.
-- Attribution: Source: National Rail Darwin for live railway information; keep the station-data attribution chain and ODbL share-alike.
-- Constraint: public use requires the deployer's own Rail Data Marketplace subscription and accepted terms. Do not rely on the public Huxley2 demo for production.
-
+Reviewed exclusions are in `../overrides/exclusions/uk.json`.
 
 ## Other providers
 
-Northern Ireland Railways and private/heritage rail need future providers. Underground, Glasgow Subway, Tyne & Wear Metro, and tram systems are deferred to the secondary-mode phase.
+Northern Ireland Railways, heritage/private railways, Underground, metro, subway, and tram systems need separate providers or modes.
+
+## Terms
+
+Keep the station-data attribution chain and ODbL obligations. Production Darwin use requires the deployer's own Rail Data Marketplace access and terms. Do not rely on the public Huxley2 demo for production. See `../ACKNOWLEDGMENTS.md`.

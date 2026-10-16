@@ -1,142 +1,67 @@
-# TrainGuessr railway stations dataset
+# Railway station datasets
 
-This repository contains a dataset of geolocated railway stations across various European countries, along with scripts to generate and update the data.
+This repository builds ready-to-use railway station datasets for several European countries and networks.
 
-## Repository layout
+The generated files are in [`nodes/`](nodes/). Each file is newline-delimited JSON: one station per line. A station normally has:
 
-- `nodes/`: generated `ndjson` datasets.
-- `cache/`: ignored source archives that can be downloaded again, plus generated runtime files.
-- `docs/`: canonical documentation: one page per country plus the cross-country `docs/README.md`.
-- `gen/`: entrypoints for each supported country and lower-level shared/country modules.
-- `overrides/`: reviewed settings that change generation behaviour, including exclusions, renames, aliases, coordinate corrections, and reviewed provider mappings.
-- `tests/` — regression and data-integrity tests.
+```json
+{"type":"node","id":"...","lat":0.0,"lon":0.0,"tags":{"name":"..."},"category":"..."}
+```
 
-## Country documentation
+`id` is the station ID used by the source or timetable provider. `category` is the provider namespace. Extra source fields are kept in `tags` when useful.
 
-See [`docs/README.md`](docs/README.md) for provider inventory, generator and maintenance conventions. Each country page lists:
-- current providers for the country;
-- sources and commands;
-- override files;
-- current status;
-- source licence/attribution constraints;
-- gaps outside the current scope.
+You can use the files directly. TrainGuessr is one consumer of this repository, but the data repository does not depend on the TrainGuessr application.
 
+## Quick start
 
-## Generating data
-
-Run generators from the repository root:
+Run commands from this repository root.
 
 ```bash
 python3 gen/<country>.py
 ```
 
-For countries with a physical/provider reconciliation mode, use the same
-country entrypoint with `--audit`. See each relevant documentation page for required inputs and
-credentials.
-
-Italian providers use a single script:
+Italy uses one command for several providers:
 
 ```bash
 python3 gen/italy.py generate all
 python3 gen/italy.py generate rfi
-python3 gen/italy.py generate sta
 python3 gen/italy.py review all
-python3 gen/italy.py rebuild all --dry-run
 ```
 
-Cache layout is intentional:
+See [`docs/README.md`](docs/README.md) for the full country list and source notes.
 
-- `cache/*.sqlite`: deployable runtime indexes consumed by TrainGuessr services.
-- `cache/<country>/`: durable, reproducible source downloads, reviewed resolution state, and audit outputs.
-- `cache/temp/<country>/`: disposable extraction trees and intermediate files; generators should remove these after use.
+## Repository layout
 
-Country-specific archives and snapshots must not be created at the cache root. Existing legacy root files may be adopted into their country directory by the relevant generator.
+- `nodes/` — generated station datasets.
+- `gen/` — generators and review tools.
+- `overrides/` — reviewed exclusions, renames, aliases, coordinates, and provider mappings.
+- `docs/` — short country guides.
+- `docs/review/` — large audit and reconciliation records.
+- `cache/` — disposable downloaded or generated working data.
+- `tests/` — data and generator tests.
 
-Every normal generator publishes playable node data through the shared
-`publish_nodes` safeguard. It validates the complete dataset, rejects empty
-output, and refuses to replace an existing catalogue when the new one is more
-than 20% smaller. Successful output is replaced atomically. If a large shrink
-is intentional, inspect the source and generated diff, move the existing output
-aside for the reviewed run, and let Git compare the replacement with the
-committed file.
+## Safe generation
 
+Generators validate output before replacing a station file. Empty output and unexpected large drops are rejected.
 
-### Generator classes and cache policy
+Use `--cache` only when you want to reuse downloaded input. Some generators also support `--offline` or local source files; see the country guide.
 
-Generators are:
+Reviewed decisions belong in `overrides/`. Large evidence files belong in `docs/review/`. If a source record changes identity, generation should stop for review instead of silently reusing an old decision.
 
-- **automated**: the primary fetched source contains the provider-native station
-  identity and geographic coordinates together, so generation does not need to
-  invent or reconcile identity from a separate geographic catalogue;
-- **heuristic**: no such single source is available, so provider identity and
-  geography are reconciled from separate sources. Reviewed overrides remain
-  authoritative and ambiguous candidates must fail or remain for review.
+## Validation
 
-Current heuristic generators are Austria and all Italian provider generators
-(EAV, FER, FN, FSE, RFI, STA and TT). The other country generators are
-automated under the definition above. Some automated generators still apply
-reviewed exclusions, aliases or supplements.
+```bash
+python3 gen/maintenance/validate_all.py
+python3 -m pytest -q
+git diff --check
+```
 
-A normal generator run is a **fresh run**. Where a generator has reusable
-download/source cache inputs, it must download/rebuild those inputs by default.
-Pass `--cache` explicitly to reuse them. `--offline` is stronger: it forbids
-network access and therefore requires cached/local inputs. Deployable SQLite
-runtime indexes are outputs, not source caches, and are rebuilt normally.
-
-Check the current generated-file ages and timetable calendar coverage with:
+To see which datasets may need a refresh:
 
 ```bash
 python3 gen/maintenance/freshness.py
 ```
 
-The report uses source-specific limits where the generator already defines one
-(France 7 days, Denmark 14 days) and otherwise flags files older than 30 days
-for maintenance review. Spanish timetable indexes are checked by
-service-calendar coverage instead. The terminal report uses aligned columns
-and right-aligns file ages.
+## Sources and licences
 
-## Validation
-
-From the repository root:
-
-```bash
-python3 gen/maintenance/validate_all.py
-python3 -m pytest -q
-```
-
-Also run:
-
-```bash
-git diff --check
-python3 -m compileall -q gen tests
-```
-
-## Contribution rules
-
-TrainGuessr station identity uses the timetable provider's native namespace.
-OpenStreetMap/OpenRailwayMap can show that a physical station exists;
-the runtime provider ID must be fetched from the provider's API or timetable data.
-
-Stations are so far excluded only when they are physically demolished, i.e.,
-a station that has seen no train stop in 20 years but remains open for routing purposes
-is still included.
-
-Exceptions must be machine-readable and contain a small description.
-Destructive ID-based overrides must retain the reviewed station identity;
-a changed source name must fail generation for review. See the
-[reviewed-decision contract](docs/README.md#reviewed-decisions).
-
-When an upstream API/schema changes, generation should fail and throw errors.
-Do not catch and continue past malformed station records: filtering is allowed
-only when the source rule or a reviewed exclusion makes the omission explicit.
-
-See the relevant `docs/<country>.md` before changing a country's nodes.
-
-## License and attribution
-
-The generated station database is distributed under the repository's ODbL
-licence, subject to source-specific terms. See
-[`ACKNOWLEDGMENTS.md`](ACKNOWLEDGMENTS.md) for source/provider attribution and
-`docs/` for country details.
-
-Generator layout and canonical commands are documented in [`docs/README.md`](docs/README.md).
+See [`ACKNOWLEDGMENTS.md`](ACKNOWLEDGMENTS.md) for source, licence, and attribution notes. Country-specific details are in [`docs/`](docs/).

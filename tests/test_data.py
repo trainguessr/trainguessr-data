@@ -17,18 +17,11 @@ from common.config import (  # noqa: E402
     load_country_config, require_reviewed_identity, reviewed_name,
 )
 from common.validate import validate_file  # noqa: E402
-from austria import (  # noqa: E402
-    load_geonetz_nodes,
-    load_mvo_csv,
-    load_mvo_snapshot,
-    main as austria_main,
-    merge_catalogues,
-    mvo_rail_candidates,
-    parse_scotty_suggestions,
-    ScottyResolver,
-    select_scotty_suggestion,
-    validate_mvo_wgs84,
-)
+from countries.austria.sources import load_geonetz_nodes, load_mvo_csv, load_mvo_snapshot, validate_mvo_wgs84
+from countries.austria.generate import main as austria_main
+from countries.austria.catalogue import merge_catalogues
+from countries.austria.selection import mvo_rail_candidates, parse_scotty_suggestions, select_scotty_suggestion
+from countries.austria.scotty import ScottyResolver
 from finland import (  # noqa: E402
     build_nodes,
     load_reconciled_extant_stations,
@@ -37,12 +30,13 @@ from finland import (  # noqa: E402
 )
 from france import convert_from_json  # noqa: E402
 from reconcile.france import uic_stems  # noqa: E402
-from germany import load_board_groups, load_reconciled_stations  # noqa: E402
+from countries.germany.decisions import load_board_groups, load_reconciled_stations
 from norway import build_nodes as build_norway_nodes, load_stop_places  # noqa: E402
 from countries.italy.fse import MANUAL_STATIONS, apply_manual_stations  # noqa: E402
 from countries.italy.eav import parse_station_catalog  # noqa: E402
-from countries.italy.reviewed import rebuild  # noqa: E402
-from reconcile.italy_review import load_review_rows, review_key, saved_review_keys  # noqa: E402
+from countries.italy.reviewed.rebuild import rebuild
+from reconcile.italy.nodes import load_review_rows
+from reconcile.italy.decisions import review_key, saved_review_keys
 from common.manual_overrides import apply_coordinate_overrides, apply_name_overrides  # noqa: E402
 
 
@@ -68,7 +62,7 @@ class DatasetTests(unittest.TestCase):
             )
 
     def test_italy_exclusion_checks_current_source_before_historical_seed(self) -> None:
-        module = "countries.italy.reviewed"
+        module = "countries.italy.reviewed.rebuild"
         with (
             patch(f"{module}.PARSERS", {"fn": lambda: [{"id": "ABC", "name": "Different station"}]}),
             patch(f"{module}.load_country_config", return_value={}),
@@ -79,7 +73,7 @@ class DatasetTests(unittest.TestCase):
                 rebuild("fn", dry_run=True)
 
     def test_italy_cross_provider_decision_checks_source_identity(self) -> None:
-        module = "countries.italy.reviewed"
+        module = "countries.italy.reviewed.rebuild"
         config = {"reviews": [{
             "operator": "rfi", "id": "ABC", "reviewed_name": "Original station",
             "decision": "handled_by_france_with_rfi_fallback",
@@ -580,9 +574,9 @@ class DatasetTests(unittest.TestCase):
                 )
             output = tmp_path / "nodes.json"
             audit = tmp_path / "audit.json"
-            with patch("austria.requests.Session", return_value=NetworkDisabledSession()), \
-                 patch("austria.CACHE_DIR", cache_dir), \
-                 patch("austria.DEFAULT_RESOLUTION_CACHE", resolution_cache):
+            with patch("countries.austria.generate.requests.Session", return_value=NetworkDisabledSession()), \
+                 patch("countries.austria.generate.CACHE_DIR", cache_dir), \
+                 patch("countries.austria.generate.DEFAULT_RESOLUTION_CACHE", resolution_cache):
                 self.assertEqual(
                     0,
                     austria_main([
@@ -626,7 +620,7 @@ class DatasetTests(unittest.TestCase):
             "linien": "R56",
         }]
         with patch(
-            "austria.verify_scotty_station",
+            "countries.austria.catalogue.verify_scotty_station",
             return_value={"station_name": "Mariazell", "journey_count": 1},
         ) as verify:
             resolver = OnlineResolver()
