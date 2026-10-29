@@ -33,3 +33,36 @@ def test_invalid_accepted_vt_identity_is_rejected():
         apply_decisions([{"id": 1, "tags": {"name": "Central"}}], {
             "1": {"action": "accept", "vt_station_id": "12345"},
         })
+
+
+def test_french_cross_border_reviews_guard_native_names_separately_from_display_names():
+    import pytest
+    from common.config import load_country_config
+    from countries.italy.reviewed.classification import classify_reviewed
+
+    names = {"730": "BREIL SUR ROYA", "1339": "FONTAN SAORGE", "1511": "LA BRIGUE",
+             "2780": "ST.DALMAS DE TENDE", "2826": "TENDE", "3050": "VIEVOLA"}
+    source = {uid: {"id": uid, "name": name} for uid, name in names.items()}
+    config = load_country_config("italy")
+    output, audit = classify_reviewed("rfi", source, [], config, {})
+    assert output == []
+    assert len(audit) == 6
+    assert {row["status"] for row in audit} == {"handled_by_other_provider"}
+    assert next(row for row in audit if row["id"] == "1339")["reviewed_name"] == "Fontan - Saorge"
+    source["1339"]["name"] = "Different station"
+    with pytest.raises(ValueError, match="stale reviewed override"):
+        classify_reviewed("rfi", source, [], config, {})
+
+
+def test_rfi_freight_exclusion_keeps_reviewed_display_and_guards_native_identity():
+    from common.config import load_country_config, load_exclusion_rules
+    from countries.italy.reviewed.classification import classify_reviewed
+    config = load_country_config("italy")
+    rules = load_exclusion_rules("italy", "rfi")
+    source = {"2378": {"id": "2378", "name": "ROMA NOMENTANA LM"}}
+    output, audit = classify_reviewed("rfi", source, [], config, rules)
+    assert output == []
+    assert audit[0]["status"] == "excluded"
+    source["2378"]["name"] = "Roma Nomentana"
+    with pytest.raises(ValueError, match="stale reviewed override"):
+        classify_reviewed("rfi", source, [], config, rules)

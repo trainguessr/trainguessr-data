@@ -33,7 +33,8 @@ def build_nodes(data, rename_map):
             
         if "meansoftransport" not in props:
             raise ValueError(f"Swiss feature {index} lacks meansoftransport")
-        if props['meansoftransport'] != 'TRAIN':
+        modes = {mode.strip() for mode in str(props.get('meansoftransport') or '').split('|')}
+        if 'TRAIN' not in modes:
             continue
 
         station_name = str(props.get('designationofficial') or '').strip()
@@ -63,6 +64,10 @@ def build_nodes(data, rename_map):
             "category": "switzerland_all"
         }
             
+        sloid = str(props.get('sloid') or '').strip()
+        if sloid:
+            node['tags']['sloid'] = sloid
+
         if props.get('height'):
             node['tags']['height'] = str(props.get('height'))
             

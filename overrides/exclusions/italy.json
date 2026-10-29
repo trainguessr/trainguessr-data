@@ -466,6 +466,7 @@
       "operator": "rfi",
       "id": "2378",
       "name": "Roma Nomentana Linea Merci",
+      "expected_name": "ROMA NOMENTANA LM",
       "reason": "freight_line_not_open_to_passenger_service"
     },
     {
@@ -5222,6 +5223,7 @@
       "id": "1339",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "FONTAN SAORGE",
       "reviewed_name": "Fontan - Saorge",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },
@@ -5230,6 +5232,7 @@
       "id": "1511",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "LA BRIGUE",
       "reviewed_name": "La Brigue",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },
@@ -5238,6 +5241,7 @@
       "id": "2826",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "TENDE",
       "reviewed_name": "Tende",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },
@@ -5246,6 +5250,7 @@
       "id": "2780",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "ST.DALMAS DE TENDE",
       "reviewed_name": "Saint-Dalmas-de-Tende",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },
@@ -5254,6 +5259,7 @@
       "id": "730",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "BREIL SUR ROYA",
       "reviewed_name": "Breil sur Roya",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },
@@ -5262,6 +5268,7 @@
       "id": "3050",
       "status": "cross_border_france",
       "decision": "handled_by_france_with_rfi_fallback",
+      "source_name": "VIEVOLA",
       "reviewed_name": "Vievola",
       "details": "French Cuneo–Ventimiglia station. Playable in france_sncf with this RFI board ID as fallback."
     },

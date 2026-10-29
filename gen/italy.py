@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import argparse
 
-from countries.italy import eav, fer, fn, fse, reviewed, rfi, sta, tt
+from countries.italy import eav, fer, fn, fse, rfi, sta, tt
+from countries.italy.reviewed import rebuild as reviewed_rebuild
 from reconcile import italy_review
 
 PROVIDERS = {
@@ -57,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
     rebuild_args = [args.provider]
     if args.dry_run:
         rebuild_args.append("--dry-run")
-    return reviewed.main(rebuild_args)
+    return reviewed_rebuild.main(rebuild_args)
 
 
 if __name__ == "__main__":

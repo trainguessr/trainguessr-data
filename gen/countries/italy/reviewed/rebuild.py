@@ -25,10 +25,10 @@ from __future__ import annotations
 import argparse
 from typing import Callable
 from common.config import load_country_config, load_exclusion_rules
-from common.io import load_ndjson
+from common.io import ROOT, load_ndjson
 from common.manual_overrides import load_override_config
 from countries.italy.reviewed.decisions import index_source_rows
-from countries.italy.reviewed.paths import reviewed_nodes_path
+from countries.italy.reviewed.paths import audit_report_path, reviewed_nodes_path
 from countries.italy.reviewed.publication import write_reviewed_output
 from countries.italy.reviewed.settings import COORDINATE_OVERRIDES
 from countries.italy.reviewed.classification import classify_reviewed, apply_reviewed_coordinates, prepare_reviewed_seed

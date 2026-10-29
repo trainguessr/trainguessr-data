@@ -59,6 +59,21 @@ def test_sweden_streams_and_aggregates_nonrail_stops(tmp_path, monkeypatch, caps
     assert "Skipping feature" not in captured
 
 
+def test_switzerland_preserves_native_sloid_for_ojp_identity():
+    switzerland = load("switzerland_sloid_test", GEN / "switzerland.py")
+    nodes = switzerland.build_nodes({"features": [{
+        "type": "Feature",
+        "geometry": {"coordinates": [7.987, 46.319]},
+        "properties": {
+            "meansoftransport": "TRAIN",
+            "designationofficial": "Brig",
+            "number": "8501609",
+            "sloid": "ch:1:sloid:1609",
+        },
+    }]}, {})
+    assert nodes[0]["tags"]["sloid"] == "ch:1:sloid:1609"
+
+
 def test_country_converters_reject_malformed_source_rows(tmp_path):
     netherlands = load("netherlands_generator_test", GEN / "netherlands.py")
     nl_source = tmp_path / "nl.csv"
@@ -85,3 +100,36 @@ def test_country_converters_reject_malformed_source_rows(tmp_path):
             "geometry": {"coordinates": [8.0, 47.0]},
             "properties": {},
         }]}, {})
+
+
+def test_switzerland_includes_mixed_train_modes_without_nonrail_false_positives():
+    switzerland = load("switzerland_mixed_modes_test", GEN / "switzerland.py")
+    features = [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [8.802636, 46.172645]},
+                 "properties": {"number": 8505470 + index, "designationofficial": "Locarno FART",
+                                "meansoftransport": mode, "sloid": "ch:1:sloid:5470"}}
+                for index, mode in enumerate(["BUS|TRAIN", "TRAIN|BUS", "BUS", "TRAINING", None])]
+    nodes = switzerland.build_nodes({"features": features}, {})
+    assert [node["id"] for node in nodes] == [8505470, 8505471]
+    assert nodes[0]["tags"]["sloid"] == "ch:1:sloid:5470"
+
+
+def test_italy_dispatches_rebuild_to_owning_module_with_dry_run(monkeypatch):
+    module = load("italy_rebuild_dispatch_test", GEN / "italy.py")
+    seen = []
+    monkeypatch.setattr(module.reviewed_rebuild, "main", lambda argv: seen.append(argv) or 0)
+    assert module.main(["rebuild", "rfi", "--dry-run"]) == 0
+    assert seen == [["rfi", "--dry-run"]]
+
+
+def test_reviewed_rebuild_cli_reports_dry_run_without_publishing(monkeypatch, capsys):
+    from countries.italy.reviewed import rebuild as workflow
+    calls = []
+    def dry_rebuild(operator, *, dry_run):
+        calls.append((operator, dry_run))
+        return [{}], [{"status": "matched_name_difference"}]
+    monkeypatch.setattr(workflow, "rebuild", dry_rebuild)
+    assert workflow.main(["rfi", "--dry-run"]) == 0
+    assert calls == [("rfi", True)]
+    text = capsys.readouterr().out
+    assert "RFI: would write 1 stations; 1 review items" in text
+    assert "cache/italy/rfi/reports/audit.csv" in text

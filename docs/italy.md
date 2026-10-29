@@ -38,7 +38,9 @@ python3 gen/italy.py rebuild all --dry-run
 
 Set `TRAINGUESSR_SKIP_REVIEW=1` when an automated run must skip the interactive review UI.
 
-Most Italian generators compare the current provider catalogue with reviewed station records. New or changed provider records are not silently accepted. Review decisions live mainly in `../overrides/exclusions/italy.json`; guarded coordinate fixes are in `../overrides/italy-coordinate-corrections.json`.
+Most Italian generators compare the current provider catalogue with reviewed station records. New or changed provider records are not silently accepted. Native `source_name`
+(or an exclusion's `expected_name`) is guarded separately from the reviewed
+display name, including French-border RFI spellings. Review decisions live mainly in `../overrides/exclusions/italy.json`; guarded coordinate fixes are in `../overrides/italy-coordinate-corrections.json`.
 
 ## Important provider notes
 
