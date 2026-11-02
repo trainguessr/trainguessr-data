@@ -1,12 +1,12 @@
-"""Guarded manual station corrections.
+"""Checked station corrections.
 
-Manual corrections are deliberately strict: an override must still match the
-expected station name and ID, otherwise generation fails instead of silently
-applying a stale correction to a renamed/reused provider record.
+Each correction must still match the saved station ID and name. If they
+changed, generation stops so a correction is not applied to another station.
 """
 from __future__ import annotations
 
 import json
+import csv
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -18,6 +18,25 @@ def _norm_name(value: object) -> str:
 def load_override_config(path: Path) -> dict[str, Any]:
     if not path.is_file():
         return {}
+    if path.suffix.lower() == ".csv":
+        rows = []
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            for line, row in enumerate(csv.DictReader(handle), 2):
+                try:
+                    tags = json.loads(row.get("tags_json") or "{}")
+                    remove_tags = json.loads(row.get("remove_tags_json") or "[]")
+                    if not isinstance(tags, dict) or not isinstance(remove_tags, list):
+                        raise ValueError
+                    rows.append({
+                        "operator": row["operator"], "id": row["id"],
+                        "expected_name": row["expected_name"], "lat": float(row["lat"]),
+                        "lon": float(row["lon"]), "reason": row["reason"],
+                        "source": row["source"], "source_url": row["source_url"],
+                        "tags": tags, "remove_tags": remove_tags,
+                    })
+                except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+                    raise ValueError(f"{path}:{line}: check this coordinate correction") from exc
+        return {"coordinate_overrides": rows}
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError(f"{path}: override file must contain a JSON object")
@@ -38,25 +57,25 @@ def apply_coordinate_overrides(
         station_id = str(override.get("id", "")).strip()
         expected_name = str(override.get("expected_name", "")).strip()
         if not station_id or not expected_name:
-            raise ValueError(f"{context}: coordinate override requires id and expected_name")
+            raise ValueError(f"{context}: Check this station ID and its saved name.")
         row = by_id.get(station_id)
         if row is None:
             raise ValueError(
-                f"{context}: stale coordinate override {station_id}: station ID is no longer generated"
+                f"{context}: Check station ID {station_id}. It is missing from the downloaded station list."
             )
         actual_name = str((row.get("tags") or {}).get("name") or "")
         if _norm_name(actual_name) != _norm_name(expected_name):
             raise ValueError(
-                f"{context}: stale coordinate override {station_id}: expected name "
-                f"{expected_name!r}, generated name is {actual_name!r}; review before regenerating"
+                f"{context}: Check station ID {station_id}. The saved name is {expected_name!r}; "
+                f"the downloaded name is {actual_name!r}."
             )
         try:
             lat = float(override["lat"])
             lon = float(override["lon"])
         except (KeyError, TypeError, ValueError) as exc:
-            raise ValueError(f"{context}: invalid coordinates for override {station_id}") from exc
+            raise ValueError(f"{context}: Check the coordinates for station ID {station_id}.") from exc
         if not (-90 <= lat <= 90 and -180 <= lon <= 180):
-            raise ValueError(f"{context}: out-of-range coordinates for override {station_id}")
+            raise ValueError(f"{context}: Check the coordinates for station ID {station_id}.")
         row["lat"] = lat
         row["lon"] = lon
         tags = row.setdefault("tags", {})
@@ -85,15 +104,15 @@ def apply_name_overrides(
         expected_name = str(override.get("expected_name", "")).strip()
         new_name = str(override.get("name", "")).strip()
         if not station_id or not expected_name or not new_name:
-            raise ValueError(f"{context}: name override requires id, expected_name and name")
+            raise ValueError(f"{context}: Check the station ID and the two saved names.")
         row = by_id.get(station_id)
         if row is None:
-            raise ValueError(f"{context}: stale name override {station_id}: station ID is no longer generated")
+            raise ValueError(f"{context}: Check station ID {station_id}. It is missing from the downloaded station list.")
         actual_name = str((row.get("tags") or {}).get("name") or "")
         if _norm_name(actual_name) != _norm_name(expected_name):
             raise ValueError(
-                f"{context}: stale name override {station_id}: expected name "
-                f"{expected_name!r}, generated name is {actual_name!r}; review before regenerating"
+                f"{context}: Check station ID {station_id}. The saved name is {expected_name!r}; "
+                f"the downloaded name is {actual_name!r}."
             )
         row.setdefault("tags", {})["name"] = new_name
         used.add(station_id)
@@ -108,24 +127,25 @@ def require_alias(
     canonical_name: str,
     context: str,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Return a guarded alias/canonical pair or fail loudly when source identity changed."""
+    """Return the checked station pair or stop if either station changed."""
     alias = rows_by_id.get(str(alias_id))
     canonical = rows_by_id.get(str(canonical_id))
     if alias is None:
-        raise ValueError(f"{context}: stale alias {alias_id}: alias station is no longer generated")
+        raise ValueError(f"{context}: Check station ID {alias_id}. It is missing from the downloaded station list.")
     if canonical is None:
         raise ValueError(
-            f"{context}: stale alias {alias_id}->{canonical_id}: canonical station is no longer generated"
+            f"{context}: Check station ID {canonical_id}. It is missing from the downloaded station list."
         )
     actual_alias = str((alias.get("tags") or {}).get("name") or "")
     actual_canonical = str((canonical.get("tags") or {}).get("name") or "")
     if _norm_name(actual_alias) != _norm_name(alias_name):
         raise ValueError(
-            f"{context}: stale alias {alias_id}: expected {alias_name!r}, got {actual_alias!r}"
+            f"{context}: Check station ID {alias_id}. The saved name is {alias_name!r}; "
+            f"the downloaded name is {actual_alias!r}."
         )
     if _norm_name(actual_canonical) != _norm_name(canonical_name):
         raise ValueError(
-            f"{context}: stale alias target {canonical_id}: expected {canonical_name!r}, "
-            f"got {actual_canonical!r}"
+            f"{context}: Check station ID {canonical_id}. The saved name is {canonical_name!r}; "
+            f"the downloaded name is {actual_canonical!r}."
         )
     return alias, canonical

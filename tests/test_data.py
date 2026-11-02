@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "gen"))
 
 from common.io import load_ndjson, logical_path  # noqa: E402
 from common.config import (  # noqa: E402
-    load_country_config, require_reviewed_identity, reviewed_name,
+    load_country_config, load_exclusion_rules, require_reviewed_identity, reviewed_name,
 )
 from common.validate import validate_file  # noqa: E402
 from countries.austria.sources import load_geonetz_nodes, load_mvo_csv, load_mvo_snapshot, validate_mvo_wgs84
@@ -22,29 +22,34 @@ from countries.austria.generate import main as austria_main
 from countries.austria.catalogue import merge_catalogues
 from countries.austria.selection import mvo_rail_candidates, parse_scotty_suggestions, select_scotty_suggestion
 from countries.austria.scotty import ScottyResolver
-from finland import (  # noqa: E402
+from countries.finland.generate import (  # noqa: E402
     build_nodes,
-    load_reconciled_extant_stations,
     load_reviewed_stations,
     load_stations,
 )
-from france import convert_from_json  # noqa: E402
-from reconcile.france import uic_stems  # noqa: E402
+from countries.france.generate import convert_from_json  # noqa: E402
+from bootstrap.france import uic_stems  # noqa: E402
 from countries.germany.decisions import load_board_groups, load_reconciled_stations
-from norway import build_nodes as build_norway_nodes, load_stop_places  # noqa: E402
+from countries.norway.generate import build_nodes as build_norway_nodes, load_stop_places  # noqa: E402
 from countries.italy.fse import MANUAL_STATIONS, apply_manual_stations  # noqa: E402
 from countries.italy.eav import parse_station_catalog  # noqa: E402
 from countries.italy.reviewed.rebuild import rebuild
-from reconcile.italy.nodes import load_review_rows
-from reconcile.italy.decisions import review_key, saved_review_keys
+from countries.italy.review_nodes import load_review_rows
+from countries.italy.review_decisions import review_key, saved_review_keys
 from common.manual_overrides import apply_coordinate_overrides, apply_name_overrides  # noqa: E402
 
 
 class DatasetTests(unittest.TestCase):
     def test_destructive_id_exclusions_record_expected_station_identity(self) -> None:
-        for path in sorted((ROOT / "overrides" / "exclusions").glob("*.json")):
-            config = json.loads(path.read_text(encoding="utf-8"))
-            for row in config.get("excluded", []):
+        paths = sorted((ROOT / "overrides" / "exclusions").glob("*.json"))
+        paths += sorted((ROOT / "overrides" / "exclusions").glob("*.csv"))
+        for path in paths:
+            if path.suffix == ".csv":
+                with path.open(encoding="utf-8-sig", newline="") as handle:
+                    rows = list(csv.DictReader(handle))
+            else:
+                rows = json.loads(path.read_text(encoding="utf-8")).get("excluded", [])
+            for row in rows:
                 if row.get("id") in (None, ""):
                     continue
                 with self.subTest(path=path.name, station_id=row.get("id")):
@@ -54,7 +59,7 @@ class DatasetTests(unittest.TestCase):
         require_reviewed_identity(
             {"expected_name": "Original station"}, " ORIGINAL   STATION ", context="test:ABC"
         )
-        with self.assertRaisesRegex(ValueError, "stale reviewed override"):
+        with self.assertRaisesRegex(ValueError, "Check this station"):
             require_reviewed_identity(
                 {"id": "ABC", "expected_name": "Original station"},
                 "Different station",
@@ -63,14 +68,16 @@ class DatasetTests(unittest.TestCase):
 
     def test_italy_exclusion_checks_current_source_before_historical_seed(self) -> None:
         module = "countries.italy.reviewed.rebuild"
-        with (
-            patch(f"{module}.PARSERS", {"fn": lambda: [{"id": "ABC", "name": "Different station"}]}),
-            patch(f"{module}.load_country_config", return_value={}),
-            patch(f"{module}.load_ndjson", return_value=[{"id": "ABC", "tags": {"name": "Original station"}}]),
-            patch(f"{module}.load_exclusion_rules", return_value={"ABC": {"name": "Original station"}}),
-        ):
-            with self.assertRaisesRegex(ValueError, "stale reviewed override"):
-                rebuild("fn", dry_run=True)
+        with tempfile.TemporaryDirectory() as temporary:
+            with (
+                patch(f"{module}.PARSERS", {"fn": lambda: [{"id": "ABC", "name": "Different station"}]}),
+                patch(f"{module}.load_country_config", return_value={}),
+                patch(f"{module}.load_ndjson", return_value=[{"id": "ABC", "tags": {"name": "Original station"}}]),
+                patch(f"{module}.load_exclusion_rules", return_value={"ABC": {"name": "Original station"}}),
+                patch("countries.italy.reviewed.publication.audit_report_path", return_value=Path(temporary) / "audit.csv"),
+            ):
+                with self.assertRaisesRegex(ValueError, "Check this station"):
+                    rebuild("fn", dry_run=True)
 
     def test_italy_cross_provider_decision_checks_source_identity(self) -> None:
         module = "countries.italy.reviewed.rebuild"
@@ -78,14 +85,16 @@ class DatasetTests(unittest.TestCase):
             "operator": "rfi", "id": "ABC", "reviewed_name": "Original station",
             "decision": "handled_by_france_with_rfi_fallback",
         }]}
-        with (
-            patch(f"{module}.PARSERS", {"rfi": lambda: [{"id": "ABC", "name": "Different station"}]}),
-            patch(f"{module}.load_country_config", return_value=config),
-            patch(f"{module}.load_ndjson", return_value=[]),
-            patch(f"{module}.load_exclusion_rules", return_value={}),
-        ):
-            with self.assertRaisesRegex(ValueError, "stale reviewed override"):
-                rebuild("rfi", dry_run=True)
+        with tempfile.TemporaryDirectory() as temporary:
+            with (
+                patch(f"{module}.PARSERS", {"rfi": lambda: [{"id": "ABC", "name": "Different station"}]}),
+                patch(f"{module}.load_country_config", return_value=config),
+                patch(f"{module}.load_ndjson", return_value=[]),
+                patch(f"{module}.load_exclusion_rules", return_value={}),
+                patch("countries.italy.reviewed.publication.audit_report_path", return_value=Path(temporary) / "audit.csv"),
+            ):
+                with self.assertRaisesRegex(ValueError, "Check this station"):
+                    rebuild("rfi", dry_run=True)
 
     def test_france_wholly_excluded_changed_identity_preserves_output(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -160,7 +169,7 @@ class DatasetTests(unittest.TestCase):
     def test_germany_reconciled_supplements_are_in_generated_nodes(self) -> None:
         reviewed = load_reconciled_stations()
         audit = json.loads(
-            (ROOT / "docs" / "review" / "germany-reconciliation.json").read_text(encoding="utf-8")
+            (ROOT / "gen" / "bootstrap" / "evidence" / "germany-reconciliation.json").read_text(encoding="utf-8")
         )
         self.assertEqual(1264, len(reviewed))
         self.assertEqual(1264, audit["counts"]["verified_additions"])
@@ -217,12 +226,33 @@ class DatasetTests(unittest.TestCase):
             "austria", "belgium", "denmark", "finland", "france", "germany",
             "italy", "netherlands", "norway", "spain", "sweden", "switzerland", "uk",
         }
-        actual = {path.stem for path in (ROOT / "overrides" / "exclusions").glob("*.json")}
+        actual = {
+            path.stem
+            for suffix in ("*.json", "*.csv")
+            for path in (ROOT / "overrides" / "exclusions").glob(suffix)
+        }
         self.assertEqual(expected, actual)
+        self.assertFalse((ROOT / "overrides" / "exclusions" / "italy.json").exists())
         for path in (ROOT / "overrides" / "exclusions").glob("*.json"):
             data = json.loads(path.read_text(encoding="utf-8"))
             self.assertIn("excluded", data)
-            self.assertIn("renamed", data)
+            if path.stem != "italy":
+                self.assertIn("renamed", data)
+        with (ROOT / "overrides" / "italy-decisions.csv").open(
+            encoding="utf-8-sig", newline=""
+        ) as handle:
+            self.assertTrue(any(row["record"] == "rename" for row in csv.DictReader(handle)))
+
+    def test_italy_exclusion_csv_keeps_checked_names_and_source_evidence(self) -> None:
+        config = load_country_config("italy")
+        exclusions = config["excluded"]
+        self.assertEqual(47, len(exclusions))
+        stabio = next(row for row in exclusions if row.get("id") == "85099")
+        self.assertEqual("Stabio", reviewed_name(stabio))
+        self.assertEqual("8517519", stabio["tags"]["uic_ref"])
+        self.assertEqual(45.8497166, stabio["lat"])
+        cas = next(row for row in exclusions if row.get("id") == "S13199")
+        self.assertTrue(cas["source_url"].startswith("https://"))
 
     def test_belgium_reviewed_physical_stations_are_in_generated_nodes(self) -> None:
         reviewed_ids = {
@@ -253,7 +283,7 @@ class DatasetTests(unittest.TestCase):
 
     def test_fse_manual_station_rejects_reused_provider_id(self) -> None:
         station = MANUAL_STATIONS[0]
-        with self.assertRaisesRegex(ValueError, "stale manual station"):
+        with self.assertRaisesRegex(ValueError, "Check station ID"):
             apply_manual_stations([{
                 "type": "node",
                 "id": station["id"],
@@ -266,6 +296,127 @@ class DatasetTests(unittest.TestCase):
         self.assertTrue(
             all(review_key("fse", row) in saved for row in load_review_rows("fse"))
         )
+
+    def test_fse_noninteractive_review_does_not_publish_nodes(self) -> None:
+        from countries.italy import fse
+
+        pending = [{
+            "id": "S13999",
+            "status": "missing_coordinates",
+            "source_name": "New station",
+            "reviewed_name": "New station",
+            "details": "",
+        }]
+        with (
+            patch.object(fse, "CACHE_ONLY", False),
+            patch.object(fse, "generate_live", return_value=([], [])),
+            patch.object(fse, "validate_nodes", return_value=[]),
+            patch.object(fse, "write_ndjson"),
+            patch.object(fse, "write_audit"),
+            patch("countries.italy.review.pending_review_rows", return_value=pending),
+            patch("countries.italy.review.review_after_generation", return_value=None),
+            patch.object(fse, "publish_nodes") as publish,
+        ):
+            self.assertEqual(2, fse.main([]))
+        publish.assert_not_called()
+
+    def test_fse_terminal_review_rebuilds_from_saved_source_files(self) -> None:
+        from countries.italy import fse
+
+        pending = [{
+            "id": "S13999",
+            "status": "missing_coordinates",
+            "source_name": "New station",
+            "reviewed_name": "New station",
+            "details": "",
+        }]
+        node = {
+            "type": "node",
+            "id": "S13999",
+            "lat": 40.0,
+            "lon": 17.0,
+            "tags": {"name": "New station"},
+            "category": "italy_fse",
+        }
+        cache_modes = []
+
+        def generate_from_saved_files():
+            cache_modes.append(fse.CACHE_ONLY)
+            return [node], []
+
+        with (
+            patch.object(fse, "CACHE_ONLY", False),
+            patch.object(fse, "generate_live", side_effect=generate_from_saved_files),
+            patch.object(fse, "validate_nodes", return_value=[]),
+            patch.object(fse, "write_ndjson"),
+            patch.object(fse, "write_audit"),
+            patch.object(fse, "apply_saved_name_decisions"),
+            patch("countries.italy.review.pending_review_rows", side_effect=[pending, []]),
+            patch("countries.italy.review.review_after_generation", return_value=0),
+            patch.object(fse, "publish_nodes") as publish,
+        ):
+            self.assertEqual(0, fse.main([]))
+
+        self.assertEqual([False, True], cache_modes)
+        publish.assert_called_once_with(fse.OUTPUT_FILE, [node])
+
+    def test_fse_missing_native_id_report_keeps_osm_id_as_a_placeholder(self) -> None:
+        from countries.italy import fse, review_nodes
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            report = root / "cache" / "italy" / "fse" / "reports" / "audit.csv"
+            unresolved = fse.build_unresolved_node(
+                "New station",
+                None,
+                "missing_viaggiatreno_id",
+                {"type": "node", "id": 123, "lat": 40.1, "lon": 17.2, "tags": {"name": "New station"}},
+            )
+            with patch.object(fse, "AUDIT_FILE", report), patch.object(review_nodes, "ROOT", root):
+                fse.write_audit([], [unresolved])
+                rows = review_nodes.load_review_rows("fse")
+
+        self.assertEqual(1, len(rows))
+        self.assertEqual("OSM_123", rows[0]["id"])
+        self.assertEqual("missing_native_id", rows[0]["status"])
+        self.assertEqual("40.1", rows[0]["lat"])
+        self.assertIn("No ViaggiaTreno ID", rows[0]["details"])
+
+    def test_fse_shared_review_saves_only_an_exact_provider_id(self) -> None:
+        from countries.italy import review, review_nodes
+        from countries.italy.review_decisions import review_key
+
+        row = {
+            "id": "OSM_123",
+            "status": "missing_native_id",
+            "source_name": "New station",
+            "reviewed_name": "New station",
+            "details": "No ViaggiaTreno ID was found.",
+            "lat": "40.1",
+            "lon": "17.2",
+        }
+        config = {}
+        with self.assertRaisesRegex(ValueError, "exact ViaggiaTreno station ID"):
+            review_nodes.add_native_id(config, "fse", row, row["id"])
+        with (
+            patch.object(review, "load_country_config", return_value=config),
+            patch.object(review, "pending_review_rows", side_effect=[[row], []]),
+            patch.object(review_nodes, "load_ndjson", return_value=[]),
+            patch.object(review_nodes, "save_config"),
+            patch("countries.italy.review_decisions.save_config"),
+            patch("builtins.input", side_effect=["i", "S13999"]),
+        ):
+            self.assertEqual(0, review.review_operator("fse"))
+
+        self.assertEqual("S13999", config["manual_stations"][0]["id"])
+        self.assertNotEqual(row["id"], config["manual_stations"][0]["id"])
+        self.assertIn(review_key("fse", row), {
+            (
+                saved["operator"], saved["id"], saved["status"],
+                saved["source_name"], saved["reviewed_name"],
+            )
+            for saved in config["reviews"]
+        })
 
     def test_sweden_contains_only_swedish_ids(self) -> None:
         rows = load_ndjson(ROOT / "nodes" / "nodes-sweden.json")
@@ -284,7 +435,7 @@ class DatasetTests(unittest.TestCase):
             "nodes-italy-eav.json": {"101", "102"},
             "nodes-italy-fse.json": {"S13135", "S13183", "S13200"},
             "nodes-italy-fer.json": {"S05198", "S05321", "S05713", "S13199"},
-            "nodes-italy-rfi.json": {"2378", "3619"},
+            "nodes-italy-rfi.json": {"3619"},
         }
         for filename, excluded_ids in expected_absent.items():
             rows = load_ndjson(ROOT / "nodes" / filename)
@@ -292,24 +443,31 @@ class DatasetTests(unittest.TestCase):
             self.assertTrue(excluded_ids.isdisjoint(active_ids), filename)
 
     def test_reviewed_provider_parsers_rebuild_active_json(self) -> None:
-        required_cache = [
-            ROOT / "cache" / "italy" / "fn" / "derived" / "stations.csv",
-            ROOT / "cache" / "italy" / "tt" / "raw" / "legacy-station-map.html",
-            ROOT / "cache" / "italy" / "fer" / "derived" / "stations.csv",
-            ROOT / "cache" / "italy" / "eav" / "derived" / "stations.csv",
-            ROOT / "cache" / "italy" / "rfi" / "raw" / "stations-page.html",
-        ]
-        if not all(path.is_file() for path in required_cache):
-            self.skipTest("run the Italian provider generators to populate cache/italy")
+        sources = {
+            "fn": ROOT / "cache" / "italy" / "fn" / "derived" / "stations.csv",
+            "tt": ROOT / "cache" / "italy" / "tt" / "raw" / "legacy-station-map.html",
+            "fer": ROOT / "cache" / "italy" / "fer" / "derived" / "stations.csv",
+            "eav": ROOT / "cache" / "italy" / "eav" / "raw" / "stations-page.html",
+            "rfi": ROOT / "cache" / "italy" / "rfi" / "raw" / "stations-page.html",
+        }
+        available = [operator for operator, path in sources.items() if path.is_file()]
+        if not available:
+            self.skipTest("no saved Italian provider sources are available")
 
-        for operator in ("fn", "tt", "fer", "eav", "rfi"):
-            current = load_ndjson(ROOT / "nodes" / f"nodes-italy-{operator}.json")
-            output, _ = rebuild(operator, dry_run=True)
-            self.assertEqual(
-                {str(row["id"]) for row in current},
-                {str(row["id"]) for row in output},
-                operator,
-            )
+        with tempfile.TemporaryDirectory() as temporary:
+            report_dir = Path(temporary)
+            with patch(
+                "countries.italy.reviewed.publication.audit_report_path",
+                side_effect=lambda operator: report_dir / f"{operator}.csv",
+            ):
+                for operator in available:
+                    current = load_ndjson(ROOT / "nodes" / f"nodes-italy-{operator}.json")
+                    output, _ = rebuild(operator, dry_run=True)
+                    self.assertEqual(
+                        {str(row["id"]): row for row in current},
+                        {str(row["id"]): row for row in output},
+                        operator,
+                    )
 
     def test_rfi_viaggiatreno_review_is_exact_and_collision_free(self) -> None:
         rows = load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json")
@@ -320,9 +478,14 @@ class DatasetTests(unittest.TestCase):
                 continue
             self.assertRegex(str(station_id), r"^S\d{5}$")
             mappings.append(str(station_id))
-        self.assertEqual(2399, len(mappings))
+        # Disused Ponte San Cono (2221) was excluded with its reviewed VT ID.
+        # The reviewed Roma Nomentana LM node (2378) has no ViaggiaTreno ID.
+        self.assertEqual(2398, len(mappings))
         self.assertEqual(len(mappings), len(set(mappings)))
-        self.assertEqual(27, len(rows) - len(mappings))
+        self.assertEqual(28, len(rows) - len(mappings))
+        rome_nomentana = next(row for row in rows if str(row["id"]) == "2378")
+        self.assertEqual("ROMA NOMENTANA LM", rome_nomentana["tags"]["name"])
+        self.assertNotIn("viaggiatreno_station_id", rome_nomentana["tags"])
 
     def test_rfi_laveno_is_not_misclassified_as_fn(self) -> None:
         rows = {str(row["id"]): row for row in load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json")}
@@ -335,7 +498,15 @@ class DatasetTests(unittest.TestCase):
         rfi_cache = ROOT / "cache" / "italy" / "rfi" / "raw"
         if not (rfi_cache / "stations-page.html").is_file() and not list((rfi_cache / "snapshots").glob("*.html")):
             self.skipTest("run the RFI generator to populate cache/italy/rfi")
-        _, audit = rebuild("rfi", dry_run=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_root = Path(tmp)
+            report = tmp_root / "cache" / "italy" / "rfi" / "reports" / "audit.csv"
+            with patch(
+                "countries.italy.reviewed.publication.audit_report_path",
+                return_value=report,
+            ), patch("countries.italy.review_nodes.ROOT", tmp_root):
+                _, audit = rebuild("rfi", dry_run=True)
+                review_ids = {row["id"] for row in load_review_rows("rfi")}
         audit_by_id = {str(row["id"]): row for row in audit}
         cross_border_ids = {"730", "1339", "1511", "2780", "2826", "3050"}
 
@@ -346,7 +517,6 @@ class DatasetTests(unittest.TestCase):
                 station_id,
             )
 
-        review_ids = {row["id"] for row in load_review_rows("rfi")}
         self.assertTrue(cross_border_ids.isdisjoint(review_ids))
 
 
@@ -460,14 +630,20 @@ class DatasetTests(unittest.TestCase):
         self.assertIsNotNone(resolution)
         self.assertEqual(1250624, resolution["eva_id"])
 
-    def test_austria_reviewed_mvo_resolutions_are_in_generated_output(self) -> None:
+    def test_austria_published_reviewed_resolutions_keep_native_ids(self) -> None:
         config = json.loads((ROOT / "overrides" / "exclusions" / "austria.json").read_text(encoding="utf-8"))
         rows = {
             str(row["tags"].get("ifopt_id")): row
             for row in load_ndjson(ROOT / "nodes" / "nodes-austria-oebb.json")
         }
         for resolution in config["mvo_resolutions"]:
-            row = rows[resolution["id"]]
+            row = rows.get(resolution["id"])
+            if row is None:
+                # A checked mapping does not force publication when current
+                # native verification fails or generation has not run yet.
+                self.assertTrue(str(resolution["provider_id"]).isdigit())
+                self.assertTrue(resolution["expected_name"])
+                continue
             self.assertEqual(int(resolution["provider_id"]), row["id"])
             self.assertEqual("reviewed_provider_id", row["tags"].get("scotty_resolution"))
 
@@ -532,7 +708,7 @@ class DatasetTests(unittest.TestCase):
             self.assertIsNone(resolver.resolve(row))
             self.assertFalse((Path(tmp) / "resolutions.json").exists())
 
-    def test_austria_offline_generation_uses_cached_resolution_without_network(self) -> None:
+    def test_austria_cache_generation_uses_cached_resolution_without_network(self) -> None:
         class NetworkDisabledSession:
             def get(self, *args, **kwargs):
                 raise AssertionError("offline Austria generation attempted a network request")
@@ -544,11 +720,13 @@ class DatasetTests(unittest.TestCase):
             tmp_path = Path(tmp)
             cache_dir = tmp_path / "cache"
             cache_dir.mkdir()
-            (cache_dir / "austria_stations_filtered.json").write_text("", encoding="utf-8")
+            geonetz_cache = cache_dir / "austria_stations_filtered.json"
+            geonetz_cache.write_text("", encoding="utf-8")
             resolution_cache = cache_dir / "scotty-resolutions.json"
             resolution_cache.write_text(
                 json.dumps({
                     "version": 2,
+                    "verifications": {"1234567": {"station_name": "Mariazell", "journey_count": 0}},
                     "entries": {
                         "at:31:9991": {
                             "eva_id": 1234567,
@@ -575,12 +753,12 @@ class DatasetTests(unittest.TestCase):
             output = tmp_path / "nodes.json"
             audit = tmp_path / "audit.json"
             with patch("countries.austria.generate.requests.Session", return_value=NetworkDisabledSession()), \
-                 patch("countries.austria.generate.CACHE_DIR", cache_dir), \
+                 patch("countries.austria.generate._download_geonetz", return_value=geonetz_cache), \
                  patch("countries.austria.generate.DEFAULT_RESOLUTION_CACHE", resolution_cache):
                 self.assertEqual(
                     0,
                     austria_main([
-                        "--offline",
+                        "--cache",
                         "--mvo-input", str(mvo_zip),
                         "--output", str(output),
                         "--audit", str(audit),
@@ -588,10 +766,13 @@ class DatasetTests(unittest.TestCase):
                 )
             rows = load_ndjson(output)
             self.assertEqual([1234567], [row["id"] for row in rows])
-            self.assertEqual("offline_cached_resolution", rows[0]["tags"]["scotty_board_status"])
+            self.assertEqual("offline_cached_verification", rows[0]["tags"]["scotty_board_status"])
 
     def test_austria_online_resolution_still_verifies_scotty_board(self) -> None:
         class OnlineResolver:
+            def record_verifications(self, results):
+                self.results = results
+
             offline = False
             session = object()
             timeout = 20
@@ -626,7 +807,9 @@ class DatasetTests(unittest.TestCase):
             resolver = OnlineResolver()
             output, _ = merge_catalogues([], stops, platforms, resolver, {})
         self.assertEqual([1234567], [row["id"] for row in output])
-        verify.assert_called_once_with(resolver.session, 1234567, 20)
+        verify.assert_called_once()
+        self.assertEqual((1234567, 20), verify.call_args.args[1:])
+        self.assertEqual({"attempts": 1}, verify.call_args.kwargs)
 
     def test_austria_existing_catalogue_rebuild_preserves_current_ids_and_names(self) -> None:
         source = ROOT / "cache" / "austria_stations_filtered.json"
@@ -643,12 +826,13 @@ class DatasetTests(unittest.TestCase):
             [(str(row["id"]), row["tags"]["name"]) for row in rebuilt],
         )
 
-    def test_finland_fixture_filters_non_playable_stations(self) -> None:
+    def test_finland_fixture_keeps_provider_stations_without_current_service(self) -> None:
         stations = load_stations(ROOT / "tests" / "fixtures" / "finland-stations.json")
         nodes = build_nodes(stations)
-        self.assertEqual(1, len(nodes))
-        self.assertEqual("HKI", nodes[0]["id"])
-        self.assertEqual("finland_all", nodes[0]["category"])
+        self.assertEqual({"HKI", "FRT"}, {node["id"] for node in nodes})
+        freight = next(node for node in nodes if node["id"] == "FRT")
+        self.assertEqual("no_current_passenger_traffic", freight["tags"]["station_status"])
+        self.assertEqual("finland_all", freight["category"])
 
     def test_finland_reviewed_no_service_station_is_retained(self) -> None:
         reviewed = load_reviewed_stations()
@@ -665,38 +849,14 @@ class DatasetTests(unittest.TestCase):
         nodes = build_nodes(stations, reviewed)
         self.assertEqual(["PP"], [node["id"] for node in nodes])
         self.assertEqual(
-            "extant_no_current_passenger_traffic",
+            "no_current_passenger_traffic",
             nodes[0]["tags"]["station_status"],
         )
 
-    def test_finland_reconciliation_covers_every_no_traffic_station(self) -> None:
-        audit_path = ROOT / "docs" / "review" / "finland-reconciliation.json"
-        if not audit_path.is_file():
-            self.skipTest("Finland reconciliation has not been generated")
-        audit = json.loads(audit_path.read_text(encoding="utf-8"))
-        outcomes = audit.get("outcomes", [])
-        outcome_ids = [str(row["stationShortCode"]) for row in outcomes]
-        self.assertEqual(299, audit["counts"]["candidate_records"])
-        self.assertEqual(299, len(outcomes))
-        self.assertEqual(299, len(set(outcome_ids)))
-        self.assertEqual(299, sum(audit["counts"]["candidate_statuses"].values()))
-        self.assertTrue(
-            {
-                "added_existing_provider",
-                "dismantled_exclusion",
-                "not_passenger_station",
-                "provider_gap",
-                "provider_verification_blocked_live_board",
-                "unresolved",
-            }.issuperset(audit["counts"]["candidate_statuses"])
-        )
-        self.assertTrue({"HYT", "IOA", "KOI", "LO", "PP", "UKP", "VI", "VKT"}.issubset(set(outcome_ids)))
-        self.assertTrue(all(row.get("reason") and row.get("evidence") for row in outcomes))
-        retained = load_reconciled_extant_stations()
-        self.assertEqual(
-            {str(row["stationShortCode"]) for row in audit["retained_extant_no_service"]},
-            set(retained),
-        )
+    def test_finland_reviewed_station_ids_and_names_are_in_csv(self) -> None:
+        reviewed = load_reviewed_stations()
+        self.assertEqual(13, len(reviewed))
+        self.assertTrue({"HYT", "ILR", "IOA", "KOI", "LO", "PP", "UKP", "VI", "VKT"}.issubset(reviewed))
 
     def test_france_all_current_multi_uic_groups_have_reviewed_splits(self) -> None:
         config = load_country_config("france")
@@ -842,7 +1002,7 @@ class DatasetTests(unittest.TestCase):
             self.assertEqual([], load_ndjson(output))
 
     def test_france_reconciliation_keeps_unmatched_provider_candidates_explicit(self) -> None:
-        audit_path = ROOT / "docs" / "review" / "france-reconciliation.json"
+        audit_path = ROOT / "gen" / "bootstrap" / "evidence" / "france-reconciliation.json"
         if not audit_path.is_file():
             self.skipTest("France reconciliation has not been generated")
         audit = json.loads(audit_path.read_text(encoding="utf-8"))
@@ -887,7 +1047,7 @@ class DatasetTests(unittest.TestCase):
 
     def test_france_official_infrastructure_supplements_are_in_generated_nodes(self) -> None:
         supplements = json.loads(
-            (ROOT / "docs" / "review" / "france" / "liste-des-gares-supplement.json").read_text(
+            (ROOT / "overrides" / "france" / "station-supplements.json").read_text(
                 encoding="utf-8"
             )
         )
@@ -896,22 +1056,34 @@ class DatasetTests(unittest.TestCase):
             for row in load_ndjson(ROOT / "nodes" / "nodes-france-sncf.json")
         }
         self.assertEqual(60, len(supplements))
-        current_source_ids = {
-            code.strip()
-            for station in json.loads((ROOT / "cache" / "france" / "sncf.json").read_text(encoding="utf-8"))
-            for code in station.get("codes_uic", "").split(";") if code.strip()
-        }
-        self.assertTrue(all(
-            str(row["sncf_id"]) in nodes and (
+        self.assertTrue(all(str(row["sncf_id"]) in nodes for row in supplements))
+        source_cache = ROOT / "cache" / "france" / "sncf.json"
+        if source_cache.is_file():
+            current_source_ids = {
+                code.strip()
+                for station in json.loads(source_cache.read_text(encoding="utf-8"))
+                for code in station.get("codes_uic", "").split(";") if code.strip()
+            }
+            self.assertTrue(all(
                 nodes[str(row["sncf_id"])]["tags"].get("source") == row["source"]
                 or str(row["sncf_id"]) in current_source_ids
-            )
-            for row in supplements
-        ))
+                for row in supplements
+            ))
         self.assertIn("87561143", nodes)
         self.assertNotIn("87565143", nodes)
         self.assertIn("87691949", nodes)
         self.assertNotIn("87517912", nodes)
+
+    def test_france_border_station_mappings_are_kept_in_csv(self) -> None:
+        path = ROOT / "overrides" / "france" / "cuneo-ventimiglia.csv"
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        self.assertEqual(6, len(rows))
+        self.assertEqual(
+            {"87756833": "730", "87756858": "1339", "87756866": "2780",
+             "87756874": "1511", "87756882": "2826", "87756890": "3050"},
+            {row["sncf_id"]: row["rfi_fallback_id"] for row in rows},
+        )
 
     def test_france_uic_parser_accepts_non_string_tag_values(self) -> None:
         self.assertEqual(
@@ -929,16 +1101,15 @@ class DatasetTests(unittest.TestCase):
 
 
     def test_reviewed_norway_cross_provider_ids_are_excluded(self) -> None:
-        config = json.loads((ROOT / "overrides" / "exclusions" / "norway.json").read_text(encoding="utf-8"))
-        excluded = {str(row["id"]) for row in config["excluded"]}
+        excluded = set(load_exclusion_rules("norway"))
         active = {
             str(row["id"])
             for row in load_ndjson(ROOT / "nodes" / "nodes-norway.json")
         }
-        self.assertGreaterEqual(len(excluded), 154)
+        self.assertEqual(189, len(excluded))
         self.assertTrue(excluded.isdisjoint(active))
 
-    def test_spain_vallecas_feed_alias_is_not_a_second_playable_station(self) -> None:
+    def test_spain_vallecas_feed_alias_is_not_a_second_station(self) -> None:
         rows = {
             str(row["id"]): row
             for row in load_ndjson(ROOT / "nodes" / "nodes-spain-renfe.json")
@@ -986,7 +1157,7 @@ class DatasetTests(unittest.TestCase):
             "type": "node", "id": "X", "lat": 1.0, "lon": 2.0,
             "tags": {"name": "Renamed station"}, "category": "test",
         }]
-        with self.assertRaisesRegex(ValueError, "stale name override"):
+        with self.assertRaisesRegex(ValueError, "Check station ID"):
             apply_name_overrides(
                 rows,
                 [{"id": "X", "expected_name": "Old station", "name": "Old station (ADIF)"}],
@@ -998,14 +1169,14 @@ class DatasetTests(unittest.TestCase):
             "type": "node", "id": "X", "lat": 1.0, "lon": 2.0,
             "tags": {"name": "Renamed station"}, "category": "test",
         }]
-        with self.assertRaisesRegex(ValueError, "stale coordinate override"):
+        with self.assertRaisesRegex(ValueError, "Check station ID"):
             apply_coordinate_overrides(
                 rows,
                 [{"id": "X", "expected_name": "Old station", "lat": 3.0, "lon": 4.0}],
                 context="test",
             )
 
-    def test_museum_railway_stops_remain_playable(self) -> None:
+    def test_museum_railway_stops_remain_in_the_dataset(self) -> None:
         rows = {
             str(row["id"]): row
             for row in load_ndjson(ROOT / "nodes" / "nodes-norway.json")
@@ -1047,9 +1218,9 @@ class DatasetTests(unittest.TestCase):
 
     def test_reconciliation_evidence_uses_machine_independent_paths(self) -> None:
         audits = (
-            ROOT / "docs" / "review" / "finland-reconciliation.json",
-            ROOT / "docs" / "review" / "france-reconciliation.json",
-            ROOT / "docs" / "review" / "germany-reconciliation.json",
+            ROOT / "gen" / "bootstrap" / "evidence" / "finland-reconciliation.json",
+            ROOT / "gen" / "bootstrap" / "evidence" / "france-reconciliation.json",
+            ROOT / "gen" / "bootstrap" / "evidence" / "germany-reconciliation.json",
         )
         for path in audits:
             payload = json.loads(path.read_text(encoding="utf-8"))
@@ -1069,19 +1240,19 @@ class DatasetTests(unittest.TestCase):
 
     def test_country_documentation_and_public_entrypoints_are_complete(self) -> None:
         expected = {
-            "austria": "austria.py",
-            "belgium": "belgium.py",
-            "denmark": "denmark.py",
-            "finland": "finland.py",
-            "france": "france.py",
-            "germany": "germany.py",
-            "italy": "italy.py",
-            "netherlands": "netherlands.py",
-            "norway": "norway.py",
-            "spain": "spain.py",
-            "sweden": "sweden.py",
-            "switzerland": "switzerland.py",
-            "uk": "uk.py",
+            "austria": "countries/austria/generate.py",
+            "belgium": "countries/belgium/generate.py",
+            "denmark": "countries/denmark/generate.py",
+            "finland": "countries/finland/generate.py",
+            "france": "countries/france/generate.py",
+            "germany": "countries/germany/generate.py",
+            "italy": "countries/italy/generate.py",
+            "netherlands": "countries/netherlands/generate.py",
+            "norway": "countries/norway/generate.py",
+            "spain": "countries/spain/generate.py",
+            "sweden": "countries/sweden/generate.py",
+            "switzerland": "countries/switzerland/generate.py",
+            "uk": "countries/uk/generate.py",
         }
         for country, entrypoint in expected.items():
             doc = ROOT / "docs" / f"{country}.md"

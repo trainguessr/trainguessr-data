@@ -1,22 +1,10 @@
 #!/usr/bin/env python3
-"""Build a reviewed STA/südtirolmobil rail-stop catalogue from official sources.
+"""Build the STA station file from the provider's station list and stop data.
 
-Authority chain:
-1. südtirolmobil's official train-station-code page supplies the physical rail
-   station names to enumerate.
-2. STA's official EFA StopFinder supplies provider-native stop IDs and
-   coordinates.
-
-The generator accepts only deterministic provider-owned StopFinder evidence.
-The official catalogue's bilingual names are queried as individual aliases.
-A result may resolve when either its name is an exact alias, or when exactly
-one candidate identifies itself as the railway station for an exact catalogue
-alias (for example ``Naturno/Naturns`` -> ``Stazione di Naturno``). Ambiguous
-or unmatched stations are written to review and are never guessed from
-proximity, RFI IDs, ticket codes, or fuzzy similarity.
-
-Default operation is non-destructive: it refreshes raw/derived cache files.
-Pass --write-nodes only after reviewing the generated reports.
+The generator checks names against exact provider station entries. It does
+not fill in an ID from a nearby station or a different provider. Unclear
+matches and missing coordinates go into the saved report. Use --audit-only to
+save a report without changing station files.
 """
 from __future__ import annotations
 
@@ -35,12 +23,12 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
-# Provider modules normally run through ``gen/italy.py``. Keep this module
+# Provider modules normally run through ``python3 -m gen.countries italy``. Keep this module
 # directly executable as well for data-maintenance/debugging workflows.
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from common.io import ROOT, publish_nodes, write_csv
+from common.io import ROOT, add_cache_flag, publish_nodes, require_cached_file, write_csv
 from common.validate import validate_nodes
 
 BASE = "https://efa.sta.bz.it/apb"
@@ -54,6 +42,15 @@ USER_AGENT = "trainguessr-data/1.0 (STA EFA station catalogue)"
 # Official südtirolmobil line 250 (Vinschgau / Val Venosta) non-RFI station
 # block. Merano (code 13) is the RFI interchange and is augmented, not copied.
 VINSCHGAU_STA_TICKET_CODES = {str(code) for code in range(38, 55)}
+RESOLUTION_LABELS = {
+    "exact_alias": "exact station name match",
+    "exact_railway_label": "exact railway name match",
+    "reviewed_exact_provider_exception": "saved station match",
+}
+REVIEW_REASON_LABELS = {
+    "no_unique_exact_stopfinder_match": "No exact station match was found. Check this station.",
+    "resolved_id_missing_provider_coordinates": "The station ID was found, but coordinates are missing.",
+}
 RFI_NODES = ROOT / "nodes" / "nodes-italy-rfi.json"
 OEBB_NODES = ROOT / "nodes" / "nodes-austria-oebb.json"
 
@@ -116,9 +113,19 @@ class _TableParser(HTMLParser):
             self._row = None
 
 
-def _download(url: str, *, params: dict[str, str] | None = None) -> bytes:
+def _download(
+    url: str,
+    *,
+    params: dict[str, str] | None = None,
+    cache_file: Path | None = None,
+    use_cache: bool = False,
+) -> bytes:
     if params:
         url = f"{url}?{urlencode(params)}"
+    if use_cache:
+        if cache_file is None:
+            raise ValueError("A saved STA source file is required when --cache is used")
+        return require_cached_file(cache_file, "STA source data").read_bytes()
     request = Request(
         url,
         headers={
@@ -188,7 +195,7 @@ def parse_stopfinder(raw: bytes) -> list[dict[str, str]]:
     return rows
 
 
-def stopfinder(name: str) -> tuple[bytes, list[dict[str, str]]]:
+def stopfinder(name: str, *, cache_file: Path | None = None, use_cache: bool = False) -> tuple[bytes, list[dict[str, str]]]:
     raw = _download(
         STOPFINDER,
         params={
@@ -200,11 +207,13 @@ def stopfinder(name: str) -> tuple[bytes, list[dict[str, str]]]:
             "anyObjFilter_sf": "2",
             "coordOutputFormat": "WGS84[DD.DDDDD]",
         },
+        cache_file=cache_file,
+        use_cache=use_cache,
     )
     return raw, parse_stopfinder(raw)
 
 
-def stopfinder_by_id(provider_id: str) -> tuple[bytes, list[dict[str, str]]]:
+def stopfinder_by_id(provider_id: str, *, cache_file: Path | None = None, use_cache: bool = False) -> tuple[bytes, list[dict[str, str]]]:
     """Hydrate coordinates for an already proven exact STA stop ID."""
     raw = _download(
         STOPFINDER,
@@ -217,6 +226,8 @@ def stopfinder_by_id(provider_id: str) -> tuple[bytes, list[dict[str, str]]]:
             "anyObjFilter_sf": "2",
             "coordOutputFormat": "WGS84[DD.DDDDD]",
         },
+        cache_file=cache_file,
+        use_cache=use_cache,
     )
     return raw, parse_stopfinder(raw)
 
@@ -348,26 +359,30 @@ def _merge_candidates(groups: list[list[dict[str, str]]]) -> list[dict[str, str]
     return list(merged.values())
 
 
-def crawl() -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+def crawl(*, verbose: bool = False, use_cache: bool = False) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     date = datetime.now(timezone.utc).strftime("%Y%m%d")
-    raw_page = _download(STATION_CODES)
-    page_path = CACHE / "raw" / f"station-codes-{date}.html"
-    page_path.parent.mkdir(parents=True, exist_ok=True)
-    page_path.write_bytes(raw_page)
-    (CACHE / "raw" / "station-codes.html").write_bytes(raw_page)
+    page_path = CACHE / "raw" / "station-codes.html"
+    raw_page = _download(STATION_CODES, cache_file=page_path, use_cache=use_cache)
+    if not use_cache:
+        page_path.parent.mkdir(parents=True, exist_ok=True)
+        (CACHE / "raw" / f"station-codes-{date}.html").write_bytes(raw_page)
+        page_path.write_bytes(raw_page)
 
     source = parse_station_code_page(raw_page)
     resolved: list[dict[str, str]] = []
     review: list[dict[str, str]] = []
     sf_dir = CACHE / "raw" / "stopfinder"
-    sf_dir.mkdir(parents=True, exist_ok=True)
+    if not use_cache:
+        sf_dir.mkdir(parents=True, exist_ok=True)
 
     for index, station in enumerate(source, 1):
         safe = re.sub(r"[^A-Za-z0-9._-]+", "-", station["ticket_code"]).strip("-")
         groups: list[list[dict[str, str]]] = []
         for alias_index, alias in enumerate(_query_aliases(station["name"]), 1):
-            raw, alias_candidates = stopfinder(alias)
-            (sf_dir / f"{safe}-{alias_index}.xml").write_bytes(raw)
+            cache_file = sf_dir / f"{safe}-{alias_index}.xml"
+            raw, alias_candidates = stopfinder(alias, cache_file=cache_file, use_cache=use_cache)
+            if not use_cache:
+                cache_file.write_bytes(raw)
             groups.append(alias_candidates)
         candidates = _merge_candidates(groups)
         match, resolution = _resolve_candidates(station["name"], candidates)
@@ -385,8 +400,10 @@ def crawl() -> tuple[list[dict[str, str]], list[dict[str, str]]]:
         # must not turn an authoritative STA ID into an "unresolved" ID.
         coords = _coordinate_pair(match)
         if coords is None:
-            id_raw, id_candidates = stopfinder_by_id(match["id"])
-            (sf_dir / f"{station['ticket_code']}-id-{match['id']}.xml").write_bytes(id_raw)
+            cache_file = sf_dir / f"{station['ticket_code']}-id-{match['id']}.xml"
+            id_raw, id_candidates = stopfinder_by_id(match["id"], cache_file=cache_file, use_cache=use_cache)
+            if not use_cache:
+                cache_file.write_bytes(id_raw)
             coordinate_rows = [
                 row for row in id_candidates
                 if row.get("id") == match["id"] and _coordinate_pair(row) is not None
@@ -415,16 +432,17 @@ def crawl() -> tuple[list[dict[str, str]], list[dict[str, str]]]:
                 "reason": "resolved_id_missing_provider_coordinates",
                 "candidates": json.dumps([match], ensure_ascii=False, separators=(",", ":")),
             })
-        print(
-            f"[{index}/{len(source)}] {station['name']} -> "
-            f"{match['id']} ({resolution})"
-        )
+        if verbose:
+            print(
+                f"[{index}/{len(source)}] {station['name']}: station ID {match['id']} "
+                f"checked ({RESOLUTION_LABELS.get(resolution, 'station match checked')})"
+            )
 
     ids: dict[str, dict[str, str]] = {}
     for row in resolved:
         previous = ids.get(row["id"])
         if previous is not None and previous != row:
-            raise ValueError(f"STA StopFinder ID {row['id']!r} resolved to multiple station records")
+            raise ValueError(f"Check STA station ID {row['id']!r}. It matched more than one station.")
         ids[row["id"]] = row
 
     derived = CACHE / "derived"
@@ -432,9 +450,13 @@ def crawl() -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     derived.mkdir(parents=True, exist_ok=True)
     reports.mkdir(parents=True, exist_ok=True)
     write_csv(derived / "stations.csv", sorted(resolved, key=lambda r: (r["name"].casefold(), r["id"])), FIELDS)
+    report_rows = [
+        {**row, "reason": REVIEW_REASON_LABELS.get(row["reason"], "Station ID checked against the source.")}
+        for row in review
+    ]
     write_csv(
         reports / "stopfinder-review.csv",
-        review,
+        report_rows,
         ["source_name", "ticket_code", "reason", "candidates"],
     )
     return resolved, review
@@ -514,8 +536,8 @@ def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str,
     missing_native = sorted(expected_native - present_native, key=int)
     if missing_native:
         raise ValueError(
-            "STA Vinschgau node write blocked: exact STA identity is missing for "
-            f"ticket codes {', '.join(missing_native)}"
+            "STA could not update the Vinschgau station file. The station ID is "
+            f"missing for ticket codes {', '.join(missing_native)}."
         )
 
     incomplete = [row for row in native if not row.get("lat") or not row.get("lon")]
@@ -523,8 +545,8 @@ def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str,
         names = ", ".join(row["source_name"] for row in incomplete[:5])
         suffix = "" if len(incomplete) <= 5 else f" (+{len(incomplete)-5} more)"
         raise ValueError(
-            "STA Vinschgau node write blocked: provider coordinates are missing for "
-            f"{len(incomplete)} stations: {names}{suffix}"
+            "STA could not update the Vinschgau station file. Coordinates are "
+            f"missing for {len(incomplete)} stations: {names}{suffix}."
         )
 
     sta_nodes = [{
@@ -549,9 +571,11 @@ def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str,
             raise ValueError(f"{label} after STA augmentation: " + "; ".join(errors))
 
     sta_path = ROOT / "nodes" / "nodes-italy-sta.json"
-    publish_nodes(sta_path, sta_nodes)
-    publish_nodes(RFI_NODES, augmented_rfi)
-    publish_nodes(OEBB_NODES, augmented_oebb)
+    from common.io import preserve_outputs_on_failure
+    with preserve_outputs_on_failure(sta_path, RFI_NODES, OEBB_NODES):
+        publish_nodes(sta_path, sta_nodes)
+        publish_nodes(RFI_NODES, augmented_rfi)
+        publish_nodes(OEBB_NODES, augmented_oebb)
     stats = {
         "sta_nodes": len(sta_nodes),
         "rfi_augmented": sum(1 for _, provider, _ in mapped if provider == "rfi"),
@@ -562,38 +586,45 @@ def write_nodes(rows: list[dict[str, str]]) -> tuple[Path, Path, Path, dict[str,
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Enumerate exact STA EFA train-stop IDs.")
-    parser.add_argument(
-        "--write-nodes",
-        action="store_true",
-        help="replace nodes-italy-sta.json with unique exact reviewed-source matches",
-    )
+    parser = argparse.ArgumentParser(description="Build and check the STA station list.")
+    parser.add_argument("--audit-only", action="store_true",
+                        help="save a report without changing station files")
+    parser.add_argument("--verbose", action="store_true",
+                        help="show each station match and any missing IDs")
+    add_cache_flag(parser)
     args = parser.parse_args(argv)
-    rows, review = crawl()
-    unresolved = sum(row["reason"] == "no_unique_exact_stopfinder_match" for row in review)
-    missing_coords = sum(row["reason"] == "resolved_id_missing_provider_coordinates" for row in review)
-    print(
-        f"Resolved {len(rows)} exact STA stop IDs; "
-        f"{unresolved} IDs unresolved; {missing_coords} resolved IDs lack StopFinder coordinates "
-        "(does not block RFI/ÖBB augmentation)."
-    )
-    if args.write_nodes:
-        sta_path, rfi_path, oebb_path, stats = write_nodes(rows)
-        print(f"Wrote {stats['sta_nodes']} Vinschgau stations to {sta_path.relative_to(ROOT)}")
-        print(f"Augmented {stats['rfi_augmented']} shared RFI stations in {rfi_path.relative_to(ROOT)}")
-        print(f"Augmented {stats['oebb_augmented']} shared ÖBB stations in {oebb_path.relative_to(ROOT)}")
-        if stats["resolved_but_unmapped"]:
+    rows, review = crawl(verbose=args.verbose, use_cache=args.cache)
+    unresolved = [row for row in review if row["reason"] == "no_unique_exact_stopfinder_match"]
+    missing_coords = [row for row in review if row["reason"] == "resolved_id_missing_provider_coordinates"]
+    if not args.audit_only:
+        try:
+            sta_path, rfi_path, oebb_path, stats = write_nodes(rows)
+        except ValueError as exc:
+            print(f"Check the STA station details: {exc}. The station file is unchanged.")
+            return 2
+        print(
+            f"OK | italy/sta | {stats['sta_nodes']} Vinschgau stations with STA IDs; "
+            f"STA IDs attached to {stats['rfi_augmented']} RFI and "
+            f"{stats['oebb_augmented']} ÖBB stations"
+        )
+        # Only the 17 native Vinschgau stations are mandatory. Other entries
+        # describe optional STA metadata for already represented RFI/ÖBB stops.
+        # Do not manufacture a "review" obligation after successful publication.
+        if args.verbose:
             print(
-                f"Left {stats['resolved_but_unmapped']} resolved non-Vinschgau STA IDs "
-                "unmapped for review; valid node writes were not blocked."
+                "DETAILS | italy/sta | Stations were kept when extra IDs were missing. "
+                f"Check the ID for {len(unresolved)} provider records; "
+                f"{stats['resolved_but_unmapped']} STA IDs were not found in the RFI or ÖBB station lists. "
+                "No IDs were guessed."
             )
-        if unresolved:
-            print(
-                f"Left {unresolved} unresolved STA catalogue identities in the review report; "
-                "valid node writes were not blocked."
-            )
+            for row in unresolved:
+                print(f"  Check the STA ID for {row['source_name']} (ticket code {row['ticket_code']}).")
+            for row in missing_coords:
+                print(f"  Coordinates are missing for {row['source_name']} (ticket code {row['ticket_code']}).")
+            for row in classify_rows(rows, _read_nodes(RFI_NODES), _read_nodes(OEBB_NODES))[2]:
+                print(f"  Check whether STA ID {row['id']} belongs to an RFI or ÖBB station ({row['source_name']}).")
     else:
-        print("Node dataset unchanged; inspect cache/italy/sta/reports/stopfinder-review.csv.")
+        print("AUDIT ONLY | italy/sta | no nodes published; station evidence saved locally")
     return 0
 
 

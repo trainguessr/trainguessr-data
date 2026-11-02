@@ -40,7 +40,7 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
         }
         for review in italy_config.get("reviews", [])
         if review.get("operator") == operator
-        and review.get("decision") == "excluded"
+        and review.get("decision") in {"excluded", "not_fn"}
         and review.get("id") not in (None, "")
     }
     excluded = set(exclusion_rules) | set(review_exclusions)
@@ -80,7 +80,7 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
                     "source_name": source_name,
                     "reviewed_name": reviewed_name,
                     "status": "excluded",
-                    "details": "listed in overrides/exclusions/italy.json",
+                    "details": "This station was excluded after review.",
                 }
             )
             continue
@@ -88,16 +88,12 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
         node = copy.deepcopy(reviewed)
 
         if node.get("category") != expected_category:
-            previous_category = node.get("category", "")
             node["category"] = expected_category
 
             if operator == "rfi":
                 node.setdefault("tags", {})["operator"] = "RFI"
 
-            category_detail = (
-                f"category corrected from {previous_category!r} "
-                f"to {expected_category!r}"
-            )
+            category_detail = "Station category updated."
         else:
             category_detail = ""
 
@@ -113,10 +109,7 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
                     "source_name": "",
                     "reviewed_name": reviewed_name,
                     "status": "reviewed_only_retained",
-                    "details": (
-                        "absent from current provider snapshot"
-                        + (f"; {category_detail}" if category_detail else "")
-                    ),
+                    "details": "Not found in the new download. Kept the old station.",
                 }
             )
             continue
@@ -132,7 +125,7 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
         else:
             status = "matched_name_difference"
 
-        details = "provider ID match"
+        details = "Provider station ID matches."
 
         if category_detail:
             details += f"; {category_detail}"
@@ -180,8 +173,32 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
                     "status": "handled_by_other_provider",
                     "details": str(
                         outside_provider.get("details")
-                        or "handled by another provider"
+                        or "Listed in another station file."
                     ),
+                }
+            )
+            continue
+
+        if is_excluded:
+            audit.append(
+                {
+                    "id": station_id,
+                    "source_name": source_row.get("name", ""),
+                    "reviewed_name": "",
+                    "status": "excluded",
+                    "details": "This station was excluded after review.",
+                }
+            )
+            continue
+
+        if source_row.get("scope_review") == "check":
+            audit.append(
+                {
+                    "id": station_id,
+                    "source_name": source_row.get("name", ""),
+                    "reviewed_name": "",
+                    "status": "provider_scope_review",
+                    "details": "Trenord lists this ID, but it has not been checked as an FN station.",
                 }
             )
             continue
@@ -193,9 +210,9 @@ def classify_reviewed(operator, source, seed_rows, italy_config, exclusion_rules
                 "reviewed_name": "",
                 "status": "excluded" if is_excluded else "missing_coordinates",
                 "details": (
-                    "listed in overrides/exclusions/italy.json"
+                    "This station was excluded after review."
                     if is_excluded
-                    else "provider record has no reviewed coordinate match"
+                    else "This station has no reviewed coordinates."
                 ),
             }
         )
@@ -214,6 +231,6 @@ def apply_reviewed_coordinates(operator, output, audit, coordinate_overrides):
             if str(row.get("id")) in overridden_ids:
                 details = str(row.get("details") or "")
                 row["details"] = (
-                    f"{details}; guarded coordinate override applied"
-                    if details else "guarded coordinate override applied"
+                    f"{details}; saved coordinate correction applied"
+                    if details else "Saved coordinate correction applied."
                 )

@@ -15,13 +15,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "gen"))
 
-from denmark import (
+from countries.denmark.generate import (
     build_nodes as build_denmark_nodes,
     download_gtfs,
     validate_live_access,
 )
-from spain import (
+from countries.spain.generate import (
     _apply_station_corrections, _clean_row, _download_official_feed,
+    _load_station_corrections,
     build as build_spain, load_feed, write_index
 )
 
@@ -41,6 +42,15 @@ def write_gtfs(path: Path, tables: dict[str, list[dict[str, str]]]) -> None:
 
 
 class NewCountryGeneratorTests(unittest.TestCase):
+    def test_spain_station_corrections_are_editable_csv_rows(self):
+        config = _load_station_corrections()
+        self.assertEqual(2, len(config["coordinate_overrides"]))
+        self.assertEqual(4, len(config["aliases"]))
+        self.assertEqual(2, len(config["name_overrides"]))
+        padron = next(row for row in config["coordinate_overrides"] if row["id"] == "23021")
+        self.assertEqual(42.7812443, padron["lat"])
+        self.assertTrue(padron["source_url"].startswith("https://"))
+
     def test_denmark_normalizes_zero_padded_rejseplanen_ids(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dk.zip"
@@ -85,7 +95,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             cache_dir = Path(tmp) / "cache" / "denmark"
             archive_path = cache_dir / "rejseplanen-gtfs.zip"
-            with patch("denmark.CACHE_DIR", cache_dir), patch("denmark.GTFS_ARCHIVE", archive_path):
+            with patch("countries.denmark.generate.CACHE_DIR", cache_dir), patch("countries.denmark.generate.GTFS_ARCHIVE", archive_path):
                 result = download_gtfs(session=session)
             self.assertEqual(archive_path, result)
             self.assertTrue(archive_path.is_file())
@@ -124,7 +134,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
             download.__exit__ = Mock(return_value=False)
             session = Mock()
             session.get.side_effect = [metadata, download]
-            with patch("spain.CACHE_ROOT", Path(tmp)):
+            with patch("countries.spain.generate.CACHE_ROOT", Path(tmp)):
                 result = _download_official_feed("cercanias", session=session)
                 self.assertEqual(Path(tmp) / "cercanias" / "gtfs.zip", result)
                 self.assertTrue((Path(tmp) / "cercanias" / "gtfs" / "stops.txt").is_file())
@@ -156,19 +166,22 @@ class NewCountryGeneratorTests(unittest.TestCase):
             }
         }
         with tempfile.TemporaryDirectory() as tmp:
-            corrections = Path(tmp) / "corrections.json"
+            corrections = Path(tmp) / "corrections.csv"
             exclusions = Path(tmp) / "excludes.json"
-            corrections.write_text(json.dumps({
-                "coordinate_overrides": [],
-                "aliases": [{
-                    "id": "A", "expected_name": "Alias",
+            with corrections.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=[
+                    "record", "id", "expected_name", "name", "canonical_id",
+                    "canonical_expected_name", "lat", "lon", "source", "source_url", "reason",
+                ])
+                writer.writeheader()
+                writer.writerow({
+                    "record": "alias", "id": "A", "expected_name": "Alias",
                     "canonical_id": "B", "canonical_expected_name": "Canonical",
-                }],
-            }), encoding="utf-8")
+                })
             exclusions.write_text(json.dumps({
                 "excluded": [{"id": "A"}], "renamed": [],
             }), encoding="utf-8")
-            with patch("spain.STATION_CORRECTIONS", corrections), patch("spain.EXCLUSIONS", exclusions):
+            with patch("countries.spain.generate.STATION_CORRECTIONS", corrections), patch("countries.spain.generate.EXCLUSIONS", exclusions):
                 self.assertEqual({"A"}, _apply_station_corrections(nodes, index))
         self.assertEqual(["A", "B"], nodes["B"]["tags"]["stop_ids"])
         self.assertEqual(["cercanias", "ld"], nodes["B"]["tags"]["feeds"])
@@ -193,20 +206,23 @@ class NewCountryGeneratorTests(unittest.TestCase):
             "B": {"name": "Canonical", "stop_ids": ["B"], "feeds": ["ld"]},
         }}
         with tempfile.TemporaryDirectory() as tmp:
-            corrections = Path(tmp) / "corrections.json"
+            corrections = Path(tmp) / "corrections.csv"
             exclusions = Path(tmp) / "excludes.json"
-            corrections.write_text(json.dumps({
-                "coordinate_overrides": [],
-                "aliases": [{
-                    "id": "A", "expected_name": "Old alias",
+            with corrections.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=[
+                    "record", "id", "expected_name", "name", "canonical_id",
+                    "canonical_expected_name", "lat", "lon", "source", "source_url", "reason",
+                ])
+                writer.writeheader()
+                writer.writerow({
+                    "record": "alias", "id": "A", "expected_name": "Old alias",
                     "canonical_id": "B", "canonical_expected_name": "Canonical",
-                }],
-            }), encoding="utf-8")
+                })
             exclusions.write_text(json.dumps({
                 "excluded": [{"id": "A"}], "renamed": [],
             }), encoding="utf-8")
-            with patch("spain.STATION_CORRECTIONS", corrections), patch("spain.EXCLUSIONS", exclusions):
-                with self.assertRaisesRegex(ValueError, "stale alias"):
+            with patch("countries.spain.generate.STATION_CORRECTIONS", corrections), patch("countries.spain.generate.EXCLUSIONS", exclusions):
+                with self.assertRaisesRegex(ValueError, "Check station ID"):
                     _apply_station_corrections(nodes, index)
 
     def test_denmark_keeps_only_stops_served_by_rail_routes(self):
@@ -358,7 +374,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
     def test_generated_spain_database_is_queryable_and_matches_nodes(self):
         database = ROOT / "cache" / "spain.sqlite"
         if not database.is_file():
-            self.skipTest("generated Spain GTFS index is not committed; run gen/spain.py with official GTFS inputs")
+            self.skipTest("generated Spain GTFS index is not committed; run python3 -m gen.countries spain with official GTFS inputs")
         connection = sqlite3.connect(database)
         try:
             version = connection.execute(
@@ -380,7 +396,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
         self.assertEqual(len(excluded_ids), station_count - node_count)
         self.assertTrue(rail_route_types <= {"2", *map(str, range(100, 200))})
 
-    def test_spain_reviewed_foreign_stations_are_not_playable(self):
+    def test_spain_reviewed_foreign_stations_are_outside_the_dataset(self):
         nodes = [
             json.loads(line)
             for line in (ROOT / "nodes" / "nodes-spain-renfe.json").read_text(encoding="utf-8").splitlines()
@@ -417,3 +433,90 @@ class CuneoVentimigliaTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_official_exclusions_use_native_ids_after_source_name_changes(tmp_path):
+    from countries.belgium.generate import build_nodes as belgium
+    from countries.norway.generate import build_nodes as norway
+    from countries.sweden.generate import convert_from_xml
+    from common.io import load_ndjson
+    assert belgium({'station': [{'id': 'BE.NMBS.008400058', 'standardname': 'Amsterdam Centraal', 'locationX': '4.9', 'locationY': '52.4'}]}) == []
+    assert norway([{'id': 'NSR:StopPlace:63244', 'name': 'Brussels Central', 'transportMode': 'RAIL'}]) == []
+    def stop(station_id, name):
+        return f'<StopPlace><Name>{name}</Name><TransportMode>rail</TransportMode><Centroid><Location><Longitude>16</Longitude><Latitude>60</Latitude></Location></Centroid><keyList><KeyValue><Key>rikshallplats</Key><Value>{station_id}</Value></KeyValue></keyList></StopPlace>'
+    source = tmp_path / 'stops.xml'
+    source.write_text('<root>' + stop('740069608', 'Fors') + stop('740000704', 'Fors') + stop('740999999', 'Fors') + '</root>')
+    output = tmp_path / 'nodes.json'
+    convert_from_xml(source, output, {})
+    rows = load_ndjson(output)
+    assert [r['id'] for r in rows] == [740000704, 740999999]
+    assert [r['tags']['name'] for r in rows] == ['Fors', 'Fors']
+
+
+def test_austria_reviewed_id_wins_over_stale_mvo_platform_id(tmp_path):
+    from countries.austria.scotty import ScottyResolver
+    resolver = ScottyResolver(None, tmp_path / 'absent.json', offline=True)
+    result = resolver.resolve({'hst_globid': 'at:44:46263', 'hst_name': 'Weidach (Vorchdorf) Lokalbahn', 'hst_x': 13.908346, 'hst_y': 47.9897634, 'platform_eva_id': 1240712})
+    assert result['eva_id'] == 8101751
+    assert result['expected_provider_name'] == 'Vorchdorf Weidach Bahnhst'
+
+
+def test_austria_retries_only_failed_native_checks(monkeypatch):
+    from types import SimpleNamespace
+    from countries.austria import catalogue
+    from unittest.mock import Mock
+    monkeypatch.setattr(catalogue, '_load_mvo_overrides', lambda: ({}, {}, {}))
+    verify = Mock(side_effect=[None, {'station_name': 'Example', 'journey_count': 0}])
+    monkeypatch.setattr(catalogue, 'verify_scotty_station', verify)
+    resolver = SimpleNamespace(offline=False, timeout=1, record_verifications=lambda results: None, resolve=lambda row: {'eva_id': 1234567, 'name': 'Example'})
+    rows = [{'hst_id': '1', 'hst_globid': 'at:43:99999', 'hst_name': 'Example', 'hst_x': 15, 'hst_y': 48}]
+    platforms = [{'hst_id': '1', 'stg_x': 15, 'stg_y': 48, 'umst_vm': '10000000000000', 'linien': 'R1'}]
+    result, audit = catalogue.merge_catalogues([], rows, platforms, resolver, {})
+    assert [node['id'] for node in result] == [1234567]
+    assert audit['unresolved'] == []
+    assert verify.call_count == 2
+    assert all(call.kwargs == {'attempts': 1} for call in verify.call_args_list)
+
+
+def test_austria_offline_never_invents_a_successful_board_check(tmp_path):
+    from countries.austria.scotty import ScottyResolver
+    from countries.austria.catalogue import merge_catalogues
+    resolver = ScottyResolver(None, tmp_path / 'cache.json', offline=True)
+    rows = [{'hst_id': '1', 'hst_globid': 'at:43:99999', 'hst_name': 'Example', 'hst_x': 15, 'hst_y': 48}]
+    platforms = [{'hst_id': '1', 'stg_x': 15, 'stg_y': 48, 'umst_vm': '10000000000000', 'linien': 'R1', 'extids_obb': '1234567'}]
+    result, audit = merge_catalogues([], rows, platforms, resolver, {})
+    assert result == []
+    assert audit['unresolved'][0]['reason'] == 'missing_cached_verification'
+    resolver.record_verifications({1234567: {'station_name': 'Example', 'journey_count': 2}})
+    resolver = ScottyResolver(None, tmp_path / 'cache.json', offline=True)
+    result, audit = merge_catalogues([], rows, platforms, resolver, {})
+    assert [row['id'] for row in result] == [1234567]
+    assert result[0]['tags']['scotty_board_status'] == 'offline_cached_verification'
+    assert audit['added'][0]['board_journeys'] is None
+
+
+def test_austria_unmapped_railway_stops_have_a_permanent_home(tmp_path):
+    from countries.austria.decisions import load_unmapped_stations, _load_mvo_overrides
+    from countries.austria.catalogue import merge_catalogues
+    from countries.austria.scotty import ScottyResolver
+    stops = load_unmapped_stations()
+    assert set(stops) == {'at:43:70106', 'at:43:70107', 'at:43:70108', 'at:43:20834'}
+    assert not set(stops).intersection(_load_mvo_overrides()[2])
+    rows = [{'hst_id': str(i), 'hst_globid': key, 'hst_name': row['name'], 'hst_x': row['lon'], 'hst_y': row['lat']} for i, (key, row) in enumerate(stops.items())]
+    result, audit = merge_catalogues([], rows, [], ScottyResolver(None, tmp_path / 'none', offline=True), {})
+    assert result == []
+    assert {row['ifopt_id'] for row in audit['unresolved']} == set(stops)
+    assert all(row['source_url'].startswith('https://') and row['operator'] for row in audit['unresolved'])
+
+
+def test_austria_refresh_preserves_sta_ids_on_the_same_native_station():
+    import pytest
+    from countries.austria.catalogue import preserve_sta_tags
+    previous = [{'id': 8100106, 'tags': {'ifopt_id': 'at:47:1', 'sta_station_id': '66001375', 'sta_station_name': 'Matrei'}}]
+    current = [{'id': 8100106, 'tags': {'ifopt_id': 'at:47:1', 'name': 'Updated label'}}]
+    preserve_sta_tags(current, previous)
+    assert current[0]['tags']['sta_station_id'] == '66001375'
+    assert current[0]['tags']['sta_station_name'] == 'Matrei'
+    assert current[0]['tags']['name'] == 'Updated label'
+    with pytest.raises(ValueError, match='IFOPT changed'):
+        preserve_sta_tags([{'id': 8100106, 'tags': {'ifopt_id': 'at:47:2'}}], previous)

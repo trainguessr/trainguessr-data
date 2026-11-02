@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 import requests
 
-from common.io import ROOT, publish_nodes
+from common.io import ROOT, publish_nodes, preserve_outputs_on_failure
 from common.validate import validate_nodes
 
 OFFICIAL_GTFS_URL = "https://www.fgc.cat/google/google_transit.zip"
@@ -166,7 +166,7 @@ def build(feed, *, retained_station_ids=None):
     }
     return nodes,index,{
         "raw_stops":len(feed["stops"]), "raw_routes":len(feed["routes"]),
-        "rail_routes":len(rail_routes), "rail_trips":len(trips), "playable_stations":len(nodes),
+        "rail_routes":len(rail_routes), "rail_trips":len(trips), "stations":len(nodes),
         "retained_without_current_trip":sum(1 for s in retained if s not in station_routes),
         "deferred_nonrail_routes":len(routes_all)-len(rail_routes),
     }
@@ -206,6 +206,7 @@ def generate(path=None):
     nodes,index,stats=build(load_feed(source))
     errors=validate_nodes(nodes)
     if errors: raise ValueError("FGC node validation failed: "+"; ".join(errors[:10]))
-    publish_nodes(OUTPUT, nodes)
-    write_index(index)
+    with preserve_outputs_on_failure(OUTPUT, INDEX_OUTPUT):
+        publish_nodes(OUTPUT, nodes)
+        write_index(index)
     return stats

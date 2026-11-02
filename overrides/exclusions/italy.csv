@@ -1,0 +1,48 @@
+operator,id,name,reason,source,source_url,osm_url,osm_railway_url,osm_bus_url,viaggiatreno_url,fal_url,rfi_monitor_url,definition_url,wikipedia_url,evidence_ref
+rfi,85099,Stabio,,,,,,,,,,,,rfi:85099
+rfi,1087,Chiasso,,,,,,,,,,,,rfi:1087
+rfi,1745,Modane,,,,,,,,,,,,rfi:1745
+rfi,1746,Modane Fourneaux,,,,,,,,,,,,rfi:1746
+fn,S09999,Brescia,,,,,,,,,,,,fn:S09999
+fn,S09998,Como Camerlata,,,,,,,,,,,,fn:S09998
+fn,S01318,Seregno,,,,,,,,,,,,fn:S01318
+fn,,Monza,,,,,,,,,,,,fn:osm:256975055
+fn,S01206,CANTELLO GAGGIOLO,,,,,,,,,,,,fn:S01206
+fn,S01030,Gallarate,,,,,,,,,,,,fn:S01030
+fn,,Artogne - Gianico,,,,,,,,,,,,fn:osm:7772999053
+fn,,Forno d'Allione,,,,,,,,,,,,fn:osm:312271164
+fn,,Mandolossa,,,,,,,,,,,,fn:osm:665529059
+fn,,Niardo,,,,,,,,,,,,fn:osm:1976777276
+fn,,Sellero,,,,,,,,,,,,fn:osm:9105549613
+fn,,Rodero-Valmorea,,,,,,,,,,,,fn:osm:11116194967
+fse,S11603,Francavilla Fontana,RFI lists this station ID.,,,,,,,,,,,
+fse,S13135,Potenza Santa Maria,"This is a Ferrovie Appulo Lucane station, not an FSE station.",Official FAL service notice and OpenStreetMap station node 9283110905,https://api.openstreetmap.org/api/0.6/node/9283110905.json,,,,https://www.viaggiatreno.it/infomobilitamobile/resteasy/viaggiatreno/cercaStazione/Potenza%20S.Maria,https://ferrovieappulolucane.it/comunic-di-servizio/riattivazione-circolazione-ferroviaria-tra-potenza-santa-maria-e-potenza-macchia-romana_30062026_1231/,,,,fse:S13135
+fse,S13183,Maglie Via Otranto,This ID is for a bus stop in Maglie. The FSE rail station is listed separately.,ViaggiaTreno station lookup and OpenStreetMap railway/bus records,https://www.viaggiatreno.it/infomobilitamobile/resteasy/viaggiatreno/cercaStazione/Maglie%20Via%20Otranto,,https://api.openstreetmap.org/api/0.6/node/1763627220.json,https://api.openstreetmap.org/api/0.6/node/11093814339.json,,,,,,
+fse,S13200,Sorbolo Levante,"This ID refers to Sorbolo, already listed by FER as S05966.",FER current departures page and OpenStreetMap station node 3509147562,https://cedfc3.tsf.it/FER_PittiInfo/Linee/Partenze?codiceStazione=S05966&nomeStazione=SORBOLO&codiceLinea=PRSUZ,https://api.openstreetmap.org/api/0.6/node/3509147562.json,,,https://www.viaggiatreno.it/infomobilitamobile/resteasy/viaggiatreno/cercaStazione/Sorbolo%20Levante,,,,,
+fer,S02340,Suzzara,RFI lists this station ID.,,,,,,,,,,,
+fer,S05014,Parma,RFI lists this station ID.,,,,,,,,,,,
+fer,S05023,Reggio Emilia,RFI lists this station ID.,,,,,,,,,,,
+fer,S05032,Modena,RFI lists this station ID.,,,,,,,,,,,
+fer,S05043,Bologna Centrale,RFI lists this station ID.,,,,,,,,,,,
+fer,S05111,Casalecchio Garibaldi,RFI lists this station ID.,,,,,,,,,,,
+fer,S05308,Poggio Rusco,RFI lists this station ID.,,,,,,,,,,,
+fer,S05712,Ferrara,RFI lists this station ID.,,,,,,,,,,,
+fer,S05802,Portomaggiore,RFI lists this station ID.,,,,,,,,,,,
+fn,S01118,Laveno Mombello,RFI lists this same station.,,,,,,,,,,,
+eav,520,VIA NOCERA,Excluded after station review.,,,,,,,,,,,
+eav,809,ACCADIA P.M.,Excluded after station review.,,,,,,,,,,,
+eav,812,CAPPUCCINI,Excluded after station review.,,,,,,,,,,,
+eav,814,CANTIERI,Excluded after station review.,,,,,,,,,,,
+eav,817,BAIA,Excluded after station review.,,,,,,,,,,,
+rfi,1481,Guidonia-Montecelio-Sant'Angelo,Excluded after station review.,,,,,,,,,,,
+rfi,370,Acerra,Excluded after station review.,,,,,,,,,,,
+rfi,935,Casalnuovo (RFI),Excluded after station review.,,,,,,,,,,,
+eav,101,Bivio Botteghelle,"The provider marks this as a railway junction, not a station.",,,,,,,,,,,
+eav,102,Bivio Madonnelle,"The provider marks this as a railway junction, not a station.",,,,,,,,,,,
+rfi,3619,ROMA ANAGNINA,"The RFI page lists this as a subway and bus interchange, not a rail station.",OpenStreetMap node 13183724021 and RFI station monitor,https://www.openstreetmap.org/node/13183724021,,,,,,https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?Arrivals=False&Search=&Placeid=3619,,,
+fer,S05198,PM SUZZARA,FER labels this as a railway movement point; Suzzara station is listed separately.,FER SUZFE line page and Italian railway definition of Posto di Movimento,https://cedfc3.tsf.it/FER_PittiInfo/Linee/Linea?codiceLinea=SUZFE&nomeLinea=SUZZARA-FERRARA,,,,,,,https://it.wikipedia.org/wiki/Posto_di_movimento,,
+fer,S05321,PM S.VIOLA,"The provider labels this as a railway movement point, not a station.","FER BOVIGN line page, OpenStreetMap service station, and station history",https://it.wikipedia.org/wiki/Stazione_di_Santa_Viola,https://www.openstreetmap.org/node/3394626278,,,,,,,,
+fer,S05713,BIVIO RIVANA,The provider lists a railway junction without a station stop.,FER FECODN line page and OpenStreetMap railway junction,https://www.openstreetmap.org/node/1832068503,,,,,,,,,
+fer,S13199,CASALGRANDE F.M.,No separate station was found for this ID; nearby stations are listed separately.,"FER RESAS line page, Casalgrande station history, and OpenStreetMap passenger-station mapping",https://it.wikipedia.org/wiki/Stazione_di_Casalgrande,https://www.openstreetmap.org/node/3404093454,,,,,,,,
+fer,S05100,Bologna Borgo Panigale,"RFI lists this station too, and keeps this exact ViaggiaTreno ID.",,,,,,,,,,,
+fer,S05102,Casteldebole,"RFI lists this station too, and keeps this exact ViaggiaTreno ID.",,,,,,,,,,,

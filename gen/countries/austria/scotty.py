@@ -34,28 +34,20 @@ class ScottyResolver:
         self.offline = offline
         self.timeout = timeout
         self.cache: dict[str, Any] = {}
+        self.verifications: dict[str, Any] = {}
         self.reviewed_evas = _load_mvo_overrides()[2]
         if cache_path.is_file():
             try:
                 payload = json.loads(cache_path.read_text(encoding="utf-8"))
                 if isinstance(payload, dict) and payload.get("version") == 2:
                     self.cache = dict(payload.get("entries") or {})
+                    self.verifications = dict(payload.get("verifications") or {})
             except (OSError, ValueError):
                 self.cache = {}
 
     def resolve(self, row: dict[str, Any]) -> dict[str, Any] | None:
         key = normalize_ifopt(row.get("hst_globid"))
         expected_eva = row.get("platform_eva_id")
-        if expected_eva:
-            return {
-                "eva_id": int(expected_eva),
-                "name": str(row.get("hst_name") or ""),
-                "lat": _float(row.get("rail_lat", row["hst_y"])),
-                "lon": _float(row.get("rail_lon", row["hst_x"])),
-                "distance_m": 0.0,
-                "similarity": 1.0,
-                "method": "platform_eva",
-            }
         reviewed = self.reviewed_evas.get(key)
         if reviewed:
             return {
@@ -67,6 +59,16 @@ class ScottyResolver:
                 "similarity": 1.0,
                 "method": "reviewed_provider_id",
                 "expected_provider_name": reviewed["expected_name"],
+            }
+        if expected_eva:
+            return {
+                "eva_id": int(expected_eva),
+                "name": str(row.get("hst_name") or ""),
+                "lat": _float(row.get("rail_lat", row["hst_y"])),
+                "lon": _float(row.get("rail_lon", row["hst_x"])),
+                "distance_m": 0.0,
+                "similarity": 1.0,
+                "method": "platform_eva",
             }
         cached = self.cache.get(key)
         if isinstance(cached, dict):
@@ -104,12 +106,27 @@ class ScottyResolver:
             return None
         if selected:
             self.cache[key] = selected
-            self.cache_path.parent.mkdir(parents=True, exist_ok=True)
-            self.cache_path.write_text(
-                json.dumps({"version": 2, "entries": self.cache}, ensure_ascii=False, indent=2) + "\n",
-                encoding="utf-8",
-            )
+            self.save()
         return selected
+
+
+    def record_verifications(self, results: dict[int, Any]) -> None:
+        for eva_id, result in results.items():
+            key = str(eva_id)
+            if result is None:
+                self.verifications.pop(key, None)
+            else:
+                self.verifications[key] = {
+                    **result, "checked_at": datetime.now(_VIENNA).isoformat(),
+                }
+        self.save()
+
+    def save(self) -> None:
+        self.cache_path.parent.mkdir(parents=True, exist_ok=True)
+        self.cache_path.write_text(
+            json.dumps({"version": 2, "entries": self.cache, "verifications": self.verifications}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
 
 
 def verify_scotty_station(

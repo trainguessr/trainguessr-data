@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report generator type and freshness of generated TrainGuessr datasets."""
+"""Show when station files changed and which ones may need checking."""
 from __future__ import annotations
 
 import argparse
@@ -17,31 +17,31 @@ from common.io import ROOT
 # geographic coordinates together. "heuristic" means generation must reconcile
 # provider identity with a separate geographic/source catalogue.
 DATASETS = [
-    ("austria", "heuristic", "nodes/nodes-austria-oebb.json", "python3 gen/austria.py"),
-    ("belgium", "automated", "nodes/nodes-belgium.json", "python3 gen/belgium.py"),
-    ("denmark", "automated", "nodes/nodes-denmark.json", "python3 gen/denmark.py"),
-    ("finland", "automated", "nodes/nodes-finland.json", "python3 gen/finland.py"),
-    ("france", "automated", "nodes/nodes-france-sncf.json", "python3 gen/france.py"),
-    ("germany", "automated", "nodes/nodes-germany.json", "python3 gen/germany.py"),
-    ("italy/eav", "heuristic", "nodes/nodes-italy-eav.json", "python3 gen/italy.py generate eav"),
-    ("italy/fer", "heuristic", "nodes/nodes-italy-fer.json", "python3 gen/italy.py generate fer"),
-    ("italy/fn", "heuristic", "nodes/nodes-italy-fn.json", "python3 gen/italy.py generate fn"),
-    ("italy/fse", "heuristic", "nodes/nodes-italy-fse.json", "python3 gen/italy.py generate fse"),
-    ("italy/rfi", "heuristic", "nodes/nodes-italy-rfi.json", "python3 gen/italy.py generate rfi"),
-    ("italy/sta", "heuristic", "nodes/nodes-italy-sta.json", "python3 gen/italy.py generate sta"),
-    ("italy/tt", "heuristic", "nodes/nodes-italy-tt.json", "python3 gen/italy.py generate tt"),
-    ("netherlands", "automated", "nodes/nodes-netherlands.json", "python3 gen/netherlands.py"),
-    ("norway", "automated", "nodes/nodes-norway.json", "python3 gen/norway.py"),
-    ("spain/renfe", "automated", "nodes/nodes-spain-renfe.json", "python3 gen/spain.py"),
-    ("spain/fgc", "automated", "nodes/nodes-spain-fgc.json", "python3 gen/spain.py"),
-    ("sweden", "automated", "nodes/nodes-sweden.json", "python3 gen/sweden.py"),
-    ("switzerland", "automated", "nodes/nodes-switzerland.json", "python3 gen/switzerland.py"),
-    ("uk", "automated", "nodes/nodes-uk-nationalrail.json", "python3 gen/uk.py"),
+    ("austria", "reviewed", "nodes/nodes-austria-oebb.json", "python3 -m gen.countries austria"),
+    ("belgium", "official", "nodes/nodes-belgium.json", "python3 -m gen.countries belgium"),
+    ("denmark", "official", "nodes/nodes-denmark.json", "python3 -m gen.countries denmark"),
+    ("finland", "official", "nodes/nodes-finland.json", "python3 -m gen.countries finland"),
+    ("france", "official", "nodes/nodes-france-sncf.json", "python3 -m gen.countries france"),
+    ("germany", "reviewed", "nodes/nodes-germany.json", "python3 -m gen.countries germany"),
+    ("italy/eav", "reviewed", "nodes/nodes-italy-eav.json", "python3 -m gen.countries italy generate eav"),
+    ("italy/fer", "reviewed", "nodes/nodes-italy-fer.json", "python3 -m gen.countries italy generate fer"),
+    ("italy/fn", "reviewed", "nodes/nodes-italy-fn.json", "python3 -m gen.countries italy generate fn"),
+    ("italy/fse", "reviewed", "nodes/nodes-italy-fse.json", "python3 -m gen.countries italy generate fse"),
+    ("italy/rfi", "reviewed", "nodes/nodes-italy-rfi.json", "python3 -m gen.countries italy generate rfi"),
+    ("italy/sta", "reviewed", "nodes/nodes-italy-sta.json", "python3 -m gen.countries italy generate sta"),
+    ("italy/tt", "reviewed", "nodes/nodes-italy-tt.json", "python3 -m gen.countries italy generate tt"),
+    ("netherlands", "official", "nodes/nodes-netherlands.json", "python3 -m gen.countries netherlands"),
+    ("norway", "official", "nodes/nodes-norway.json", "python3 -m gen.countries norway"),
+    ("spain/renfe", "official", "nodes/nodes-spain-renfe.json", "python3 -m gen.countries spain"),
+    ("spain/fgc", "official", "nodes/nodes-spain-fgc.json", "python3 -m gen.countries spain"),
+    ("sweden", "official", "nodes/nodes-sweden.json", "python3 -m gen.countries sweden"),
+    ("switzerland", "official", "nodes/nodes-switzerland.json", "python3 -m gen.countries switzerland"),
+    ("uk", "official", "nodes/nodes-uk-nationalrail.json", "python3 -m gen.countries uk"),
 ]
 
 # Existing source-specific expectations. Everything else is reported by age,
 # without pretending that an upstream freshness SLA exists.
-AGE_LIMITS = {"denmark": 14, "france": 7}
+AGE_LIMITS = {"denmark": 14, "france": 7, "italy/sta": 90}
 
 
 def age_days(path: Path, now: datetime) -> int | None:
@@ -58,7 +58,7 @@ def sqlite_calendar_end(path: Path) -> str | None:
         with sqlite3.connect(path) as db:
             row = db.execute(
                 "SELECT max(value) FROM ("
-                "SELECT json_extract(payload, '$.end_date') AS value FROM calendar "
+                "SELECT json_extract(data, '$.end_date') AS value FROM calendar "
                 "UNION ALL SELECT date AS value FROM calendar_dates"
                 ") WHERE value IS NOT NULL AND value != ''"
             ).fetchone()
@@ -69,7 +69,7 @@ def sqlite_calendar_end(path: Path) -> str | None:
 
 def print_table(rows: list[tuple[str, ...]]) -> None:
     """Align columns using the complete report, including timetable statuses."""
-    headers = ("dataset", "kind", "age_days", "status", "command")
+    headers = ("dataset", "source type", "file age (days)", "status", "command")
     widths = [max(len(row[column]) for row in [headers, *rows]) for column in range(len(headers))]
     for row in [headers, *rows]:
         print("  ".join(
@@ -81,7 +81,7 @@ def print_table(rows: list[tuple[str, ...]]) -> None:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stale-after-days", type=int, default=30,
-                        help="fallback review threshold where no source-specific limit exists")
+                        help="flag station files older than this many days (default: 30)")
     args = parser.parse_args(argv)
     now = datetime.now(timezone.utc)
     today = now.strftime("%Y%m%d")
@@ -94,7 +94,7 @@ def main(argv=None) -> int:
         if age is None:
             status = "missing"
         elif age > limit:
-            status = f"stale>{limit}d"
+            status = f"older than {limit} days"
         else:
             status = "current"
         rows.append((name, kind, str(age) if age is not None else "-", status, command))
@@ -107,16 +107,18 @@ def main(argv=None) -> int:
     ):
         end = sqlite_calendar_end(ROOT / relative)
         if end is None:
-            rows.append((label, "automated", "-", "index-missing/unreadable", "python3 gen/spain.py"))
-            due.append("python3 gen/spain.py")
+            rows.append((label, "official", "-", "missing or unreadable", "python3 -m gen.countries spain"))
+            due.append("python3 -m gen.countries spain")
         else:
-            status = "expired" if end < today else f"calendar-through-{end}"
-            rows.append((label, "automated", "-", status, "python3 gen/spain.py"))
+            status = "expired" if end < today else f"current through {end}"
+            rows.append((label, "official", "-", status, "python3 -m gen.countries spain"))
             if end < today:
-                due.append("python3 gen/spain.py")
+                due.append("python3 -m gen.countries spain")
 
     print_table(rows)
-    print("\nRerun:")
+    print("\nFile age shows when the station file last changed. It does not show when the provider data changed.")
+    print("If the station file is unchanged, its file date stays the same. Check saved source dates for source age.")
+    print("\nRerun from the repository root:")
     for command in dict.fromkeys(due):
         print(f"  {command}")
     return 1 if due else 0

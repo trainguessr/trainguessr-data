@@ -9,7 +9,7 @@
 ## Generate
 
 ```bash
-python3 gen/switzerland.py
+python3 -m gen.countries switzerland
 ```
 
 The generator keeps current service points whose pipe-separated transport modes

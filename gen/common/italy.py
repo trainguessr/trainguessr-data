@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-from .io import ROOT, load_ndjson, write_csv
+from .io import ROOT, load_ndjson, require_cached_file, write_csv
 from .validate import validate_file
 
 
@@ -16,7 +16,9 @@ def provider_cache(operator: str, section: str, filename: str) -> Path:
     return ROOT / "cache" / "italy" / operator / section / filename
 
 
-def download(url: str, target: Path) -> bytes:
+def download(url: str, target: Path, *, use_cache: bool = False) -> bytes:
+    if use_cache:
+        return require_cached_file(target, "Italian provider source").read_bytes()
     request = Request(url, headers={"User-Agent": USER_AGENT})
     with urlopen(request, timeout=180) as response:
         data = response.read()
@@ -50,17 +52,23 @@ def write_catalog(operator: str, rows: list[dict[str, str]], fields: list[str]) 
     return path
 
 
-def finish(operator: str) -> None:
-    from countries.italy.reviewed.rebuild import rebuild
-    from reconcile.italy.settings import REVIEW_STATUSES
-    from reconcile.italy.review import review_after_generation
+def finish(operator: str) -> int:
+    from countries.italy.reviewed.rebuild import checked_rebuild
+    from countries.italy.reviewed.paths import audit_report_path
 
-    output, audit = rebuild(operator)
+    output, _audit, status = checked_rebuild(operator)
+    if status:
+        from countries.italy.review import review_after_generation
+        reviewed = review_after_generation(operator)
+        if reviewed is None or reviewed:
+            return status
+        output, _audit, status = checked_rebuild(operator)
+        if status:
+            return status
     path = ROOT / "nodes" / f"nodes-italy-{operator}.json"
     errors = validate_file(path)
     if errors:
         raise ValueError(f"{operator}: {'; '.join(errors)}")
-    review_count = sum(row["status"] in REVIEW_STATUSES for row in audit)
-    print(f"Wrote {len(output)} stations to {path.relative_to(ROOT)}")
-    print(f"Review items: {review_count}")
-    review_after_generation(operator)
+    print(f"OK | italy/{operator} | {len(output)} checked stations; "
+          f"report: {audit_report_path(operator).relative_to(ROOT)}")
+    return 0

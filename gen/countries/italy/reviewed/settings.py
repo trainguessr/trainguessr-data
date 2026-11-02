@@ -7,7 +7,9 @@ from common.io import ROOT
 ITALY_CACHE = ROOT / "cache" / "italy"
 
 
-COORDINATE_OVERRIDES = ROOT / "overrides" / "italy-coordinate-corrections.json"
+COORDINATE_OVERRIDES = ROOT / "overrides" / "italy-coordinate-corrections.csv"
+
+STATION_UIC_CROSSWALKS = ROOT / "overrides" / "italy-uic-crosswalks.csv"
 
 
 HANDLED_OUTSIDE_PROVIDER_DECISIONS = {

@@ -136,6 +136,11 @@
       "rfi_place_id": 5457,
       "name": "Borgo Rivo",
       "reason": "Without traffic as of 2026"
+    },
+    {
+      "rfi_place_id": 2378,
+      "name": "Roma Nomentana LM",
+      "reason": "Freight-only station (linea merci). No ViaggiaTreno passenger station ID is expected. Confirmed by the owner on 2026-11-02."
     }
   ]
 }

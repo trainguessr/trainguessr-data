@@ -1,12 +1,16 @@
 # Data acknowledgments
 
-TrainGuessr reformats provider data and is not affiliated with or endorsed by
+This repository reformats provider data and is not affiliated with or endorsed by
 the named operators or data publishers. Their owners hold all rights to names,
 logos, and trademarks.
 
-The generated station database is distributed under the repository's ODbL
-license, subject to the source-specific terms below. API responses and source
-archives are subject to their publishers' licenses and access terms.
+The curated station dataset is offered under ODbL 1.0 **only where the
+upstream rights allow redistribution**; see [LICENSE](LICENSE) and the
+per-category [publication status](docs/source-terms.json). This licence notice
+cannot override third-party API access, contractual or redistribution restrictions.
+Do not treat every `nodes/` file as unconditionally cleared for redistribution.
+Raw source archives and live API responses retain the publishers' rights.
+Trainline and derived UK station data require attribution and ODbL share-alike.
 
 ## Austria
 

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import html
 import re
 from urllib.parse import parse_qs, urlencode, urlparse
 
 from common.italy import download, finish, provider_cache, write_catalog
+from common.io import add_cache_flag
 
 
 BASE_URL = "https://cedfc3.tsf.it/FER_PittiInfo/Linee/Linea"
@@ -22,12 +24,15 @@ LINES = {
 }
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Download and check the FER station lists.")
+    add_cache_flag(parser)
+    args = parser.parse_args(argv)
     rows_by_id: dict[str, dict[str, str]] = {}
     for line_code, line_name in LINES.items():
         url = f"{BASE_URL}?{urlencode({'codiceLinea': line_code, 'nomeLinea': line_name})}"
         raw = provider_cache("fer", "raw", f"lines/{line_code}.html")
-        text = download(url, raw).decode("utf-8", errors="replace")
+        text = download(url, raw, use_cache=args.cache).decode("utf-8", errors="replace")
         for href in re.findall(r'href=["\']([^"\']*Partenze\?[^"\']+)', text):
             query = parse_qs(urlparse(html.unescape(href)).query)
             station_id = query.get("codiceStazione", [""])[0].strip()
@@ -42,8 +47,7 @@ def main() -> int:
         raise ValueError("The FER line pages did not contain station links")
     rows = sorted(rows_by_id.values(), key=lambda row: row["id"])
     write_catalog("fer", rows, ["id", "name", "line_code"])
-    finish("fer")
-    return 0
+    return finish("fer")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,190 @@
+id,expected_name,reason
+NSR:StopPlace:107,Högboda station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:128,Edane station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:135,Enafors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:184,Hallsberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:193,Fagerås station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:34,Duved station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:345,Undersåker station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:350,Järpen station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:374,Göteborg Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:405,Arvika station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:452,Välsviken station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:485,Östersund Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:492,Östersund västra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:496,Öxnered station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:525,Kil station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:527,Ånn station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:532,Åre station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:559,Åmotfors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:565,Mörsil station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:566,Kornsjø stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:567,Kumla station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:570,Örebro Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:57777,Riksgränsen station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:57778,Abisko östra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:57779,Kiruna station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:579,Väse station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:581,Örebro södra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58392,Malmö Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58611,Katterjåkk station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58612,Björkliden station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58613,Abisko turiststation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58614,Gällivare station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58615,Nattavaara station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58616,Murjek station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58617,Boden Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58618,Sunderby sjukhus station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58619,Luleå Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58620,Älvsbyn station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58621,Jörn station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58622,Bastuträsk station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58623,Katrineholm Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58624,Umeå Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58625,Örnsköldsvik Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58626,Kramfors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58628,Härnösand Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58629,Sundsvall Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58630,Hudiksvall station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58631,Söderhamn station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58632,Gävle Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58633,Uppsala Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58634,Arlanda Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58635,Stockholm Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58637,Brunflo station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58638,Pilgrimstad station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58639,Gällö station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58640,Stavre station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58641,Bräcke station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58642,Ånge station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58643,Erikslund station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58644,Ljungaverk station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58645,Fränsta station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58646,Torpshammar station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58647,Stöde station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58648,Sundsvall västra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58651,Låktatjåkko station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58660,Södertälje syd station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58675,Vassijaure station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58955,Stockholms södra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:58957,Vännäs station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:591,Storlien station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:59304,Flemingsberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:59392,Västerås Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:598,Kristinehamn station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:604,Krokom station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:60966,Vindeln station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:60967,Umeå Östra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:60968,Nordmaling station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:615,Charlottenberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:61818,Ottebol station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:61819,Lene station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:623,Karlstad Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:62776,Eskilstuna Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63027,Enköping station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63028,Bålsta station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63029,Arboga station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63030,Köping station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63107,Bollnäs station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63108,Fjällåsen station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63109,Ljusdal station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63110,Mellansel station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63171,København lufthavn stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63172,København H,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63173,Nørreport stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63174,Østerport stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63175,Ørestad stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63176,Tårnby stasjon,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63177,Hyllie station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63178,Triangeln station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63179,Burlöv station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63180,Lund Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63182,Kävlinge station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63183,Landskrona station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63184,Ramlösa station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63185,Helsingborg Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63186,Ängelholm station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63187,Båstad station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63188,Laholm station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63189,Halmstad Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63190,Falkenberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63191,Varberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63192,Åsa station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63193,Kungsbacka station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63194,Mölndal station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63244,Brussel-Centraal/Bruxelles-Central,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63351,Arbrå station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63356,Gnarp station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63359,Hällnäs station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63362,Holmsveden station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63365,Iggesund station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63368,Järvsö station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63371,Kilafors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63374,Notviken station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63377,Ockelbo station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63382,Örnsköldsvik Norra station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63384,Timrå station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63388,Tvärålund station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63391,Vallsta station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:634,Degerfors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63598,Malmö Syd Svågertorp,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63627,Hörnefors station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63630,Haparanda station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63637,Husum station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63648,Kalix station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63652,Kaitum station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63660,Nälden station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63670,Sjisjka,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63682,Västeraspby station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63685,Vännäsby station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63731,Hede station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63872,Brunsberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:63963,Liseberg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64086,Norrköping Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64087,Linköping Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64088,Nässjö Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64089,Alvesta station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64092,Hässleholm Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64093,Eslöv station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64094,Röjan station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64107,Odense station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64108,Høje Taastrup station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64109,København syd station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64110,Kolding station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64111,Hamburg Hbf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64112,Hamburg-Bergedorf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64113,Hamburg-Harburg,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64114,Berlin Zoologischer Garten,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64115,Berlin Gesundbrunnen,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64116,Berlin Hauptbahnhof,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64117,Dresden Hbf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64118,Dresden-Neustadt,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64119,München Ost,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64120,Salzburg Hbf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64121,Bischofshofen,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64122,St.Johann im Pongau,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64123,Zell am See,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64124,St.Johann in Tirol,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64125,Kitzbühel,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64126,Kirchberg in Tirol,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64127,Jenbach,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64128,Innsbruck Hbf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64129,Bad Gastein,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64130,Wörgl Hbf,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64131,Korsør station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64132,Mjölby station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64171,Gamlestaden,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64172,Borlänge station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64173,Falun station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64174,Mora station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64175,Skövde station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64176,Alingsås station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64179,Jönköping Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64244,Falköping station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64276,Padborg station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64277,Neumünster,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64372,Hamburg-Altona,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64504,Åstorp station,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:64507,Pinneberg,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:681,Trollhättan Centralstation,Reviewed in 2026-08: Entur lists this stop outside Norway.
+NSR:StopPlace:73,Ed station,Reviewed in 2026-08: Entur lists this stop outside Norway.

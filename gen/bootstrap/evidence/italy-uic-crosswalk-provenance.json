@@ -1,0 +1,96 @@
+{
+  "description": "Source notes for the reviewed station-stop mappings in overrides/italy-uic-crosswalks.csv.",
+  "sources": {
+    "regione_lombardia_stops": {
+      "publisher": "Regione Lombardia / Trenord",
+      "dataset_name": "Orario Ferroviario Regionale - Stops",
+      "dataset_id": "j5jz-kvqn",
+      "member": "CSV export",
+      "columns": [
+        "stop_id",
+        "stop_name",
+        "stop_lat",
+        "stop_lon",
+        "location_type",
+        "parent_station"
+      ],
+      "coordinate_encoding": "Decimal digits without separators; latitude decimal follows the first two digits and longitude decimal follows the first digit. Raw and normalized values are retained per row."
+    },
+    "otd_uic_stops": {
+      "publisher": "SBB / OTD / SKI / BAV",
+      "feed_name": "GTFS_FP2026_20261024.zip",
+      "feed_version": "20261024",
+      "member": "stops.txt",
+      "columns": [
+        "stop_id",
+        "stop_name",
+        "stop_lat",
+        "stop_lon",
+        "location_type",
+        "parent_station",
+        "platform_code",
+        "original_stop_id",
+        "didok"
+      ],
+      "selected_record_granularity": "GTFS location_type 0 stop record with a numeric UIC stop_id. The separate Parent{UIC} record has location_type 1 and is not the mapped call identity. Quay/platform records are not mapped."
+    },
+    "oebb_hafas_rj83": {
+      "publisher": "ÖBB / HAFAS",
+      "service_date": "2026-11-02",
+      "occurrence": "RJ 83 from the exact Trento-board acquisition",
+      "record_area": "common.locL",
+      "columns": ["extId", "name", "type", "gidL", "crd"],
+      "selected_record_granularity": "type S station-stop records. Each accepted UIC alias is a literal U× value in the same record's gidL; platform and parent records are not inferred.",
+      "coordinate_encoding": "crd.x is longitude and crd.y is latitude in integer microdegrees; recorded coordinates are normalized from those exact values."
+    },
+    "rfi_bologna_station": {
+      "publisher": "Rete Ferroviaria Italiana",
+      "station_page": "https://www.rfi.it/it/stazioni/bologna-centrale.html",
+      "board_record": "https://iechub.rfi.it/ArriviPartenze/arrivalsdepartures/Monitor?arrivals=False&placeId=683",
+      "reviewed_provider_records": {
+        "rfi_node_id": "683",
+        "viaggiatreno_station_id": "S05043",
+        "wikidata_entity": "Q800557"
+      },
+      "competing_site": {
+        "rfi_node_id": "942",
+        "viaggiatreno_station_id": "S05046",
+        "wikidata_entity": "Q134357581",
+        "uic_stop_id": "8305046"
+      }
+    },
+    "wikidata_bologna_station_identity_bridge": {
+      "publisher": "Wikidata",
+      "entity": "Q800557",
+      "identifiers": {
+        "rfi_station_id": "bologna-centrale",
+        "hafas_ibnr": "8300217",
+        "uic_station_code": "8305043"
+      },
+      "property_references": "No per-property references are attached to these identifier claims. The finite mapping is retained only with the exact official RFI record, literal HAFAS UIC alias, competing Bologna Centrale AV identity, and captured same-date RJ83 occurrence; this entity is not used as an automatic matcher."
+    },
+    "dated_occurrence": {
+      "source": "Captured SBB Formation occurrence 25574 and exact RFI/ViaggiaTreno occurrence",
+      "service_date": "2026-10-29",
+      "fixture": "../../../trainguessr/tests/fixtures/tilo_continuations_20261029.json",
+      "record": "raw[25574] and primary[25574]"
+    },
+    "rj83_occurrence": {
+      "source": "Exact RFI/ViaggiaTreno RJ 83 occurrence paired to the same-date ÖBB HAFAS RJ 83 journey",
+      "service_date": "2026-11-02",
+      "rfi_station_ids": ["S02038", "S02044", "S02430", "S05043"],
+      "hafas_records": [
+        {"extId": "8300101", "gidL": "U×8302038"},
+        {"extId": "8300113", "gidL": "U×8302044"},
+        {"extId": "8300120", "gidL": "U×8302061"},
+        {"extId": "8300217", "gidL": "U×8305043"}
+      ],
+      "granularity": "stop",
+      "fixtures": [
+        "../../../trainguessr/tests/fixtures/rfi_rj83_20261102_details.json",
+        "../../../trainguessr/tests/fixtures/oebb_rj83_20261102_details.json"
+      ],
+      "decision": "Finite reviewed STOP identities only; no platform equivalence, suffix arithmetic, automatic name matching, or distance threshold. The Bologna RFI/UIC bridge is explicitly third-party and uncited at the individual-property level; it is corroborated by the official provider records, the distinct Bologna Centrale AV record, and the exact dated occurrence."
+    }
+  }
+}

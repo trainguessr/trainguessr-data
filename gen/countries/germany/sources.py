@@ -24,12 +24,18 @@ def _cache_age(path):
 
 def ensure_station_cache(cache_dir=GERMANY_CACHE, session=None, use_cache=False):
     """Ensure db-stations data exists, downloading the current npm package if needed."""
-    os.makedirs(cache_dir, exist_ok=True)
     full_path = os.path.join(cache_dir, "full.json")
     data_path = os.path.join(cache_dir, "data.json")
-    if use_cache and os.path.exists(full_path) and os.path.exists(data_path):
-        print(f"Using cached Germany station data (full.json age: {_cache_age(full_path)})")
+    if use_cache:
+        if not os.path.isfile(full_path) or not os.path.isfile(data_path):
+            raise FileNotFoundError(
+                f"Saved Germany station files are missing from {cache_dir}. "
+                "Run again without --cache to download them."
+            )
+        print(f"Using the saved Germany station data (full.json age: {_cache_age(full_path)}).")
         return full_path
+
+    os.makedirs(cache_dir, exist_ok=True)
 
     session = session or requests.Session()
     metadata_response = session.get(NPM_REGISTRY_URL, timeout=30)

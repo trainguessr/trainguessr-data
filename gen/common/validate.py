@@ -19,14 +19,22 @@ def validate_nodes(rows: Iterable[dict[str, Any]]) -> list[str]:
                 errors.append(f"row {index}: missing {field}")
         if row.get("type") != "node":
             errors.append(f"row {index}: type must be node")
-        station_id = str(row.get("id", "")).strip()
-        if not station_id:
-            errors.append(f"row {index}: empty id")
+        raw_id = row.get("id")
+        if isinstance(raw_id, bool) or not isinstance(raw_id, (str, int)):
+            errors.append(f"row {index}: ID must be text or a number")
+            station_id = ""
+        else:
+            station_id = str(raw_id).strip()
+            if not station_id:
+                errors.append(f"row {index}: empty ID")
         ids.append(station_id)
         tags = row.get("tags") if isinstance(row.get("tags"), dict) else {}
-        if not str(tags.get("name", "")).strip():
+        if not isinstance(tags.get("name"), str) or not tags["name"].strip():
             errors.append(f"row {index}: empty name")
         for key, low, high in (("lat", -90.0, 90.0), ("lon", -180.0, 180.0)):
+            if isinstance(row.get(key), bool):
+                errors.append(f"row {index}: invalid {key}")
+                continue
             try:
                 value = float(row.get(key))
             except (TypeError, ValueError):
@@ -34,9 +42,11 @@ def validate_nodes(rows: Iterable[dict[str, Any]]) -> list[str]:
                 continue
             if not isfinite(value) or not low <= value <= high:
                 errors.append(f"row {index}: {key} outside range")
-        category = str(row.get("category", "")).strip()
-        if category:
-            categories.add(category)
+        raw_category = row.get("category")
+        if not isinstance(raw_category, str) or not raw_category.strip():
+            errors.append(f"row {index}: category must be non-empty text")
+        else:
+            categories.add(raw_category.strip())
     for station_id, count in Counter(ids).items():
         if count > 1:
             errors.append(f"duplicate id {station_id}: {count} occurrences")

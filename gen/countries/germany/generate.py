@@ -5,7 +5,7 @@ import os
 import sys
 import argparse
 from common.config import load_rename_map
-from common.io import ROOT
+from common.io import ROOT, add_cache_flag
 from countries.germany.decisions import load_board_groups, load_reconciled_stations
 from countries.germany.nodes import convert_from_json
 from countries.germany.sources import ensure_station_cache
@@ -13,12 +13,8 @@ from countries.germany.sources import ensure_station_cache
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
-    if argv and argv[0] == "--audit":
-        from reconcile.germany.cli import main as reconcile_main
-        return reconcile_main(argv[1:])
     parser = argparse.ArgumentParser(description="Generate German DB stations")
-    parser.add_argument("--cache", action="store_true",
-                        help="reuse cached db-stations source files instead of downloading again")
+    add_cache_flag(parser)
     args = parser.parse_args(argv)
 
     input_file = ensure_station_cache(use_cache=args.cache)

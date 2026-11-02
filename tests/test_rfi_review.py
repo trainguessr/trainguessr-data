@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "gen"))
-from reconcile.italy.viaggiatreno.publication import apply_decisions
+from bootstrap.italy.viaggiatreno.publication import apply_decisions
 
 
 def test_vt_review_applies_explicit_ids_without_mutating_source_or_decisions():
@@ -50,11 +50,11 @@ def test_french_cross_border_reviews_guard_native_names_separately_from_display_
     assert {row["status"] for row in audit} == {"handled_by_other_provider"}
     assert next(row for row in audit if row["id"] == "1339")["reviewed_name"] == "Fontan - Saorge"
     source["1339"]["name"] = "Different station"
-    with pytest.raises(ValueError, match="stale reviewed override"):
+    with pytest.raises(ValueError, match="Check this station"):
         classify_reviewed("rfi", source, [], config, {})
 
 
-def test_rfi_freight_exclusion_keeps_reviewed_display_and_guards_native_identity():
+def test_rfi_freight_line_is_sent_for_station_review():
     from common.config import load_country_config, load_exclusion_rules
     from countries.italy.reviewed.classification import classify_reviewed
     config = load_country_config("italy")
@@ -62,7 +62,27 @@ def test_rfi_freight_exclusion_keeps_reviewed_display_and_guards_native_identity
     source = {"2378": {"id": "2378", "name": "ROMA NOMENTANA LM"}}
     output, audit = classify_reviewed("rfi", source, [], config, rules)
     assert output == []
+    assert audit[0]["status"] == "missing_coordinates"
+    assert audit[0]["details"] == "This station has no reviewed coordinates."
+
+
+def test_ponte_san_cono_disused_station_is_excluded_from_reviewed_rfi_nodes():
+    from common.config import load_country_config, load_exclusion_rules
+    from common.io import ROOT, load_ndjson
+    from countries.italy.reviewed.classification import classify_reviewed
+
+    config = load_country_config("italy")
+    rules = load_exclusion_rules("italy", "rfi")
+    rows = [row for row in config["reviews"]
+            if row.get("operator") == "rfi" and str(row.get("id")) == "2221"]
+    assert len(rows) == 1
+    assert rows[0]["decision"] == "excluded"
+    assert rows[0]["reviewed_name"] == "Ponte San Cono"
+    assert all(str(row["id"]) != "2221"
+               for row in load_ndjson(ROOT / "nodes" / "nodes-italy-rfi.json"))
+
+    legacy_seed = [{"type": "node", "id": 2221, "lat": 1, "lon": 2,
+                    "tags": {"name": "Ponte San Cono"}, "category": "italy_rfi"}]
+    output, audit = classify_reviewed("rfi", {}, legacy_seed, config, rules)
+    assert output == []
     assert audit[0]["status"] == "excluded"
-    source["2378"]["name"] = "Roma Nomentana"
-    with pytest.raises(ValueError, match="stale reviewed override"):
-        classify_reviewed("rfi", source, [], config, rules)

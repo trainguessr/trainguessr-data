@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import json
 import os
-from countries.germany.settings import BOARD_GROUPS_PATH, RECONCILIATION_PATH
+import csv
+from countries.germany.settings import BOARD_GROUPS_PATH, REVIEWED_STATIONS_PATH
 
 
 def load_board_groups(path=BOARD_GROUPS_PATH):
@@ -27,49 +28,37 @@ def load_board_groups(path=BOARD_GROUPS_PATH):
     return groups
 
 
-def load_reconciled_stations(path=RECONCILIATION_PATH):
-    """Load reviewed DB EVA additions backed by a current timetable response."""
+def load_reconciled_stations(path=REVIEWED_STATIONS_PATH):
+    """Load reviewed DB station additions with their source links."""
     if not os.path.exists(path):
         return []
-    with open(path, "r", encoding="utf-8") as handle:
-        payload = json.load(handle)
-    if not isinstance(payload, dict):
-        raise ValueError("Germany reconciliation data must be an object")
-
     stations = []
     seen_ids = set()
-    for row in payload.get("outcomes", []):
-        if not isinstance(row, dict):
-            raise ValueError("Germany reconciliation outcome must be an object")
-        if row.get("status") != "added_existing_provider":
-            continue
-        station_id = str(row.get("eva_id") or "").strip()
-        name = str(row.get("name") or "").strip()
-        evidence = row.get("evidence")
-        if not station_id.isdigit() or not name:
-            raise ValueError(f"Invalid Germany reconciliation station: {row}")
-        if station_id in seen_ids:
-            raise ValueError(f"Duplicate Germany reconciliation station: {station_id}")
-        if str(row.get("db") or "").lower() != "true":
-            raise ValueError(f"Germany station is not marked db=true: {station_id}")
-        if not isinstance(evidence, dict):
-            raise ValueError(f"Germany station has no evidence: {station_id}")
-        probe = evidence.get("db_probe") if isinstance(evidence.get("db_probe"), dict) else evidence
-        if probe.get("station_http_status") != 200 or probe.get("plan_http_status") != 200:
-            raise ValueError(f"Germany station lacks successful API evidence: {station_id}")
-        try:
-            latitude = float(row["latitude"])
-            longitude = float(row["longitude"])
-        except (KeyError, TypeError, ValueError) as exc:
-            raise ValueError(f"Germany station has invalid coordinates: {station_id}") from exc
-        if not -90 <= latitude <= 90 or not -180 <= longitude <= 180:
-            raise ValueError(f"Germany station coordinates are outside range: {station_id}")
-        stations.append({
-            "id": station_id,
-            "name": name,
-            "ril100": str(row.get("ds100") or ""),
-            "location": {"latitude": latitude, "longitude": longitude},
-            "source": str(row.get("source") or "reviewed-germany-akn-supplement"),
-        })
-        seen_ids.add(station_id)
+    with open(path, "r", encoding="utf-8-sig", newline="") as handle:
+        for row in csv.DictReader(handle):
+            station_id = str(row.get("id") or "").strip()
+            name = str(row.get("expected_name") or "").strip()
+            if not station_id.isdigit() or not name:
+                raise ValueError(f"{path}: station ID and name are required")
+            if station_id in seen_ids:
+                raise ValueError(f"{path}: duplicate station ID {station_id}")
+            if not row.get("station_url") or not row.get("plan_url"):
+                raise ValueError(f"{path}: station {station_id} is missing source links")
+            if row.get("station_status") != "200" or row.get("plan_status") != "200":
+                raise ValueError(f"{path}: station {station_id} is missing successful source checks")
+            try:
+                latitude = float(row["lat"])
+                longitude = float(row["lon"])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise ValueError(f"{path}: station {station_id} has invalid coordinates") from exc
+            if not -90 <= latitude <= 90 or not -180 <= longitude <= 180:
+                raise ValueError(f"{path}: station {station_id} coordinates are outside range")
+            stations.append({
+                "id": station_id,
+                "name": name,
+                "ril100": str(row.get("ds100") or ""),
+                "location": {"latitude": latitude, "longitude": longitude},
+                "source": str(row.get("source") or row.get("station_url") or "reviewed DB station"),
+            })
+            seen_ids.add(station_id)
     return stations

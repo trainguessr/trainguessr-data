@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 import re
+import time
+from concurrent.futures import ThreadPoolExecutor
+import requests
 from typing import Any, Iterable
 from common.config import require_reviewed_identity
-from countries.austria.decisions import _load_mvo_overrides
+from countries.austria.decisions import _load_mvo_overrides, load_unmapped_stations
 from countries.austria.identity import _float, _normal_name, normalize_ifopt
 from countries.austria.scotty import ScottyResolver, verify_scotty_station
 from countries.austria.selection import mvo_rail_candidates
@@ -37,8 +40,41 @@ def merge_catalogues(
         "unresolved": [],
     }
     mvo_excluded_ifopts, mvo_aliases, reviewed_resolutions = _load_mvo_overrides()
+    unmapped = load_unmapped_stations()
     existing_by_id = {str(node["id"]): node for node in geonetz_nodes}
-    for row in sorted(mvo_rail_candidates(mvo_rows, mvo_platforms, reviewed_resolutions=reviewed_resolutions), key=lambda item: (str(item.get("hst_name")), str(item.get("hst_globid")))):
+    candidates = sorted(
+        mvo_rail_candidates(mvo_rows, mvo_platforms, reviewed_resolutions={**unmapped, **reviewed_resolutions}),
+        key=lambda item: (str(item.get("hst_name")), str(item.get("hst_globid"))),
+    )
+    resolutions = {}
+    for row in candidates:
+        ifopt = normalize_ifopt(row.get("hst_globid"))
+        if ifopt not in existing_by_ifopt and ifopt not in mvo_excluded_ifopts and ifopt not in mvo_aliases and ifopt not in unmapped:
+            resolutions[ifopt] = resolver.resolve(row)
+    verifications = {}
+    native_ids = sorted({int(r["eva_id"]) for r in resolutions.values() if r and str(r["eva_id"]) not in used_ids})
+    if native_ids and not resolver.offline:
+        print(f"Austria: checking {len(native_ids)} SCOTTY station IDs (up to 4 at a time)...", flush=True)
+        started = time.monotonic()
+
+        def verify(eva_id):
+            # Each worker owns its session; retry only failed IDs after the batch.
+            with requests.Session() as session:
+                return verify_scotty_station(session, eva_id, resolver.timeout, attempts=1)
+
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            for count, (eva_id, result) in enumerate(zip(native_ids, pool.map(verify, native_ids)), 1):
+                verifications[eva_id] = result
+                if count % 50 == 0 or count == len(native_ids):
+                    print(f"Austria: checked {count}/{len(native_ids)} station IDs in {time.monotonic() - started:.1f}s.", flush=True)
+        failed_ids = [eva_id for eva_id, result in verifications.items() if result is None]
+        if failed_ids:
+            print(f"Austria: retrying {len(failed_ids)} failed station checks once...", flush=True)
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                verifications.update(zip(failed_ids, pool.map(verify, failed_ids)))
+    if native_ids and not resolver.offline:
+        resolver.record_verifications(verifications)
+    for row in candidates:
         audit["mvo_rail_candidates"] += 1
         ifopt = normalize_ifopt(row.get("hst_globid"))
         if ifopt in existing_by_ifopt:
@@ -82,7 +118,13 @@ def merge_catalogues(
                 "reason": alias.get("reason", "reviewed_provider_alias"),
             })
             continue
-        resolution = resolver.resolve(row)
+        if ifopt in unmapped:
+            audit["unresolved"].append({
+                "ifopt_id": ifopt, "name": row.get("hst_name"),
+                "reason": "provider_identity_missing", **unmapped[ifopt],
+            })
+            continue
+        resolution = resolutions.get(ifopt)
         if not resolution:
             audit["unresolved"].append({
                 "ifopt_id": ifopt,
@@ -96,18 +138,17 @@ def merge_catalogues(
             audit["resolved_to_existing_eva"] += 1
             continue
         if resolver.offline:
-            verification = {
-                "station_name": str(
-                    resolution.get("expected_provider_name")
-                    or resolution.get("name")
-                    or row.get("hst_name")
-                    or ""
-                ),
-                "journey_count": 0,
-            }
-            board_status = "offline_cached_resolution"
+            verification = resolver.verifications.get(eva_id)
+            if not verification:
+                audit["unresolved"].append({
+                    "ifopt_id": ifopt, "name": row.get("hst_name"),
+                    "reason": "missing_cached_verification",
+                })
+                continue
+            verification = {**verification, "journey_count": None}
+            board_status = "offline_cached_verification"
         else:
-            verification = verify_scotty_station(resolver.session, int(eva_id), resolver.timeout)
+            verification = verifications.get(int(eva_id))
             if not verification:
                 audit["failed_board_verification"] += 1
                 audit["unresolved"].append({
@@ -171,3 +212,20 @@ def merge_catalogues(
     audit["unresolved_count"] = len(audit["unresolved"])
     audit["output_nodes"] = len(geonetz_nodes) + len(new_nodes)
     return geonetz_nodes + new_nodes, audit
+
+
+def preserve_sta_tags(nodes, previous):
+    """STA owns these two fields; a GeoNetz/MVO refresh must not erase them."""
+    by_id = {str(row["id"]): row for row in previous}
+    for row in nodes:
+        old = by_id.get(str(row["id"]))
+        if old is None or not old.get("tags", {}).get("sta_station_id"):
+            continue
+        before = normalize_ifopt(old["tags"].get("ifopt_id"))
+        after = normalize_ifopt(row.get("tags", {}).get("ifopt_id"))
+        if not before or before != after:
+            raise ValueError(f"Check the STA mapping for Austrian station {row['id']}: its IFOPT changed.")
+        for field in ("sta_station_id", "sta_station_name"):
+            if field in old["tags"]:
+                row.setdefault("tags", {})[field] = old["tags"][field]
+    return nodes

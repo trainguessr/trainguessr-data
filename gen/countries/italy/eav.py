@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
 
 from common.italy import download, finish, provider_cache, write_catalog
+from common.io import add_cache_flag
 
 
 URL = "https://orariotreni.eavsrl.it/"
@@ -51,13 +53,15 @@ def parse_station_catalog(text: str) -> list[dict[str, str]]:
     return [{"id": station_id, "name": name} for station_id, name in stations.items()]
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Download and check the EAV station list.")
+    add_cache_flag(parser)
+    args = parser.parse_args(argv)
     raw = provider_cache("eav", "raw", "stations-page.html")
-    text = download(URL, raw).decode("utf-8", errors="replace")
+    text = download(URL, raw, use_cache=args.cache).decode("utf-8", errors="replace")
     rows = parse_station_catalog(text)
     write_catalog("eav", rows, ["id", "name"])
-    finish("eav")
-    return 0
+    return finish("eav")
 
 
 if __name__ == "__main__":

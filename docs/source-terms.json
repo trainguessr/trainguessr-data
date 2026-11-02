@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "Publication/attribution review, not runtime identity or redistribution authorization",
+  "status_semantics": {
+    "open_license_reported": "Attribution chain has a reported open license; verify current scope and notices before release",
+    "terms_review_required": "Source access, reuse scope, combined licensing or authorization requires review"
+  },
+  "datasets": {
+    "austria_oebb": {
+      "source_lineage": "GeoNetz (CC BY 3.0 AT); MVO licensed agreement",
+      "publication_status": "terms_review_required"
+    },
+    "belgium_all": {
+      "source_lineage": "Infrabel operational points (CC0)",
+      "publication_status": "open_license_reported"
+    },
+    "denmark_all": {
+      "source_lineage": "Rejseplanen Labs GTFS, access-controlled",
+      "publication_status": "terms_review_required"
+    },
+    "finland_all": {
+      "source_lineage": "Fintraffic Digitraffic (CC BY 4.0)",
+      "publication_status": "open_license_reported"
+    },
+    "france_sncf": {
+      "source_lineage": "SNCF Gares & Connexions (ODbL); reviewed supplementary sources",
+      "publication_status": "terms_review_required"
+    },
+    "germany_all": {
+      "source_lineage": "DB stations (CC BY 4.0); DELFI and OSM supplements",
+      "publication_status": "terms_review_required"
+    },
+    "italy_rfi": {
+      "source_lineage": "RFI station selector; reviewed coordinates",
+      "publication_status": "terms_review_required"
+    },
+    "italy_fn": {
+      "source_lineage": "Ferrovienord/Trenord; reviewed coordinates",
+      "publication_status": "terms_review_required"
+    },
+    "italy_fse": {
+      "source_lineage": "ViaggiaTreno/FSE; OSM and reviewed records",
+      "publication_status": "terms_review_required"
+    },
+    "italy_tt": {
+      "source_lineage": "Trentino Trasporti GTFS (CC BY 2.5); reviewed legacy IDs",
+      "publication_status": "terms_review_required"
+    },
+    "italy_fer": {
+      "source_lineage": "FER station selector; reviewed records",
+      "publication_status": "terms_review_required"
+    },
+    "italy_eav": {
+      "source_lineage": "EAV station selector; reviewed records",
+      "publication_status": "terms_review_required"
+    },
+    "italy_sta": {
+      "source_lineage": "STA EFA / südtirolmobil; official stop list",
+      "publication_status": "terms_review_required"
+    },
+    "netherlands_all": {
+      "source_lineage": "Rijden de Treinen stations (CC0)",
+      "publication_status": "open_license_reported"
+    },
+    "norway_all": {
+      "source_lineage": "Entur National Stop Register (NLOD)",
+      "publication_status": "open_license_reported"
+    },
+    "spain_renfe": {
+      "source_lineage": "Renfe official GTFS; portal reuse conditions",
+      "publication_status": "terms_review_required"
+    },
+    "spain_fgc": {
+      "source_lineage": "FGC Open Data GTFS (CC BY 4.0)",
+      "publication_status": "open_license_reported"
+    },
+    "sweden_all": {
+      "source_lineage": "Trafiklab Stops (CC0)",
+      "publication_status": "open_license_reported"
+    },
+    "switzerland_all": {
+      "source_lineage": "opentransportdata.swiss / SBB stop data",
+      "publication_status": "terms_review_required"
+    },
+    "uk_national_rail": {
+      "source_lineage": "davwheat/uk-railway-stations, Trainline EU (ODbL)",
+      "publication_status": "open_license_reported"
+    }
+  }
+}

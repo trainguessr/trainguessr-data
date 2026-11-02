@@ -9,10 +9,10 @@
 ## Generate
 
 ```bash
-python3 gen/netherlands.py
+python3 -m gen.countries netherlands
 ```
 
-Use `--cache` to reuse the cached station CSV.
+Use `--cache` to build from the saved station CSV without downloading.
 
 The current category covers the national heavy-rail station namespace. Metro and tram systems are separate.
 

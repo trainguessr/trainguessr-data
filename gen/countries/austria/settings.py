@@ -39,7 +39,7 @@ GEONETZ_URL = "https://data.oebb.at/dam/jcr:d4780bb2-390e-4288-b540-dff1ae1b27ae
 MVO_CATALOGUE_URL = "https://www.mobilitaetsdaten.gv.at/daten/%C3%B6sterreichweite-haltestellen"
 
 
-MVO_DATASETS_URL = "https://data.mobilitaetsverbuende.at/api/public/v1/data-sets?tagIds=&tagFilterModeInclusive=false"
+MVO_DATASETS_URL = "https://data.mobilitaetsverbuende.at/api/public/v1/data-sets?tagIds=&tagFilterModeInclusive=true"
 
 
 MVO_METADATA_URL = "https://data.mobilitaetsverbuende.at/api/public/v1/data-sets/{dataset_id}"

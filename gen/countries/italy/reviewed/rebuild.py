@@ -28,10 +28,14 @@ from common.config import load_country_config, load_exclusion_rules
 from common.io import ROOT, load_ndjson
 from common.manual_overrides import load_override_config
 from countries.italy.reviewed.decisions import index_source_rows
-from countries.italy.reviewed.paths import audit_report_path, reviewed_nodes_path
+from countries.italy.reviewed.paths import audit_report_path, reviewed_nodes_path, node_path
 from countries.italy.reviewed.publication import write_reviewed_output
 from countries.italy.reviewed.settings import COORDINATE_OVERRIDES
 from countries.italy.reviewed.classification import classify_reviewed, apply_reviewed_coordinates, prepare_reviewed_seed
+from countries.italy.reviewed.crosswalks import (
+    apply_station_uic_crosswalks,
+    load_station_uic_crosswalks,
+)
 from countries.italy.reviewed.sources import parse_eav, parse_fer, parse_fn, parse_rfi, parse_tt
 
 
@@ -58,8 +62,39 @@ def rebuild(operator: str, *, dry_run: bool = False) -> tuple[list[dict], list[d
         if row.get("operator") == operator
     ]
     apply_reviewed_coordinates(operator, output, audit, coordinate_overrides)
+    apply_station_uic_crosswalks(operator, output, load_station_uic_crosswalks())
     write_reviewed_output(operator, seed_path, output, audit, dry_run=dry_run)
     return output, audit
+
+
+def checked_rebuild(operator: str, *, dry_run: bool = False) -> tuple[list[dict], list[dict], int]:
+    """Check every recorded decision before replacing the station file."""
+    from common.io import publish_nodes
+    from countries.italy.review import pending_review_rows
+
+    output, audit = rebuild(operator, dry_run=True)
+    pending = pending_review_rows(operator)
+    if pending:
+        labels = {
+            "missing_native_id": "check station ID",
+            "missing_coordinates": "check coordinates",
+            "provider_scope_review": "check railway owner",
+            "reviewed_only_retained": "not found in the new download; kept the old station",
+            "matched_name_difference": "check station name",
+            "manual_reviewed": "check station ID",
+            "gtfs_name_missing": "name missing from timetable",
+        }
+        examples = ", ".join(
+            f"{row['id']} ({labels.get(row['status'], 'check station')})"
+            for row in pending[:5]
+        )
+        print(f"Check these {len(pending)} station details for {operator.upper()} "
+              f"({examples}). The station file is unchanged. Run "
+              f"python3 -m gen.countries italy review {operator}, then generate again.")
+        return output, audit, 2
+    if not dry_run:
+        publish_nodes(node_path(operator), output)
+    return output, audit, 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -71,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="write audit reports but do not overwrite nodes/",
+        help="check the result and save a report, but keep the station file unchanged",
     )
     args = parser.parse_args(argv)
 
@@ -82,10 +117,9 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     for operator in operators:
-        output, audit = rebuild(
-            operator,
-            dry_run=args.dry_run,
-        )
+        output, audit, status = checked_rebuild(operator, dry_run=args.dry_run)
+        if status:
+            return status
 
         review_count = sum(
             row["status"]
@@ -105,8 +139,5 @@ def main(argv: list[str] | None = None) -> int:
             f"audit: {audit_report_path(operator).relative_to(ROOT)}"
         )
 
-        if not args.dry_run:
-            from reconcile.italy.review import review_after_generation
-            review_after_generation(operator)
 
     return 0

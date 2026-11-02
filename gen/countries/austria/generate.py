@@ -7,23 +7,19 @@ from pathlib import Path
 from typing import Any
 import requests
 from common.config import load_rename_map
-from common.io import publish_nodes
-from countries.austria.catalogue import merge_catalogues
+from common.io import add_cache_flag, publish_nodes, require_cached_file, load_ndjson
+from countries.austria.catalogue import merge_catalogues, preserve_sta_tags
 from countries.austria.operators import build_oebb_operator_index, load_oebb_gtfs
 from countries.austria.scotty import ScottyResolver
 from countries.austria.settings import (
-    CACHE_DIR,
     DEFAULT_AUDIT,
     DEFAULT_MVO_CACHE,
     DEFAULT_OEBB_OPERATOR_AUDIT,
     DEFAULT_OEBB_OPERATOR_INDEX,
     DEFAULT_OUTPUT,
     DEFAULT_RESOLUTION_CACHE,
-    GEONETZ_ARCHIVE,
-    GEONETZ_FILTERED,
 )
 from countries.austria.sources import (
-    _adopt_legacy_cache,
     _download_geonetz,
     download_mvo_snapshot,
     load_geonetz_nodes,
@@ -52,16 +48,9 @@ def _build_requested_oebb_index(args: argparse.Namespace) -> dict[str, Any] | No
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Austria rail stations from GeoNetz and MVO")
     parser.add_argument("--mvo-input", type=Path, help="Use this MVO ZIP instead of downloading the official dataset")
-    parser.add_argument(
-        "--cache",
-        action="store_true",
-        help="reuse cached GeoNetz/MVO inputs and SCOTTY resolutions when available",
-    )
-    parser.add_argument(
-        "--offline",
-        action="store_true",
-        help="Use only cached GeoNetz/MVO inputs and persisted or reviewed SCOTTY resolutions",
-    )
+    parser.add_argument("--mvo-sample", action="store_true",
+                        help="explicitly use the public MVO sample (not a production freshness proof)")
+    add_cache_flag(parser)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--audit", type=Path, default=DEFAULT_AUDIT)
     parser.add_argument(
@@ -89,6 +78,39 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def report_unverified_mvo_stops(audit: dict[str, Any]) -> None:
+    """Explain omitted rail candidates on stdout, not as an unexplained JSON task.
+
+    This is a coverage warning, not a failed publication or an interactive
+    review request. Evidence is still saved as JSON for reproducibility.
+    """
+    skipped = audit.get("unresolved", [])
+    if not skipped:
+        return
+    print(
+        f"Austria: {len(skipped)} MVO station records do not have a verified "
+        "ÖBB station ID, so they were not added to the ÖBB station file."
+    )
+    reasons = {
+        "provider_identity_missing": "railway stop kept separately; no working SCOTTY ID",
+        "missing_cached_verification": "no saved successful station check",
+        "no_unique_scotty_match": "no unique SCOTTY station match",
+        "scotty_station_verification_failed": "SCOTTY board verification failed",
+        "scotty_station_name_mismatch": "SCOTTY reports a different station name",
+    }
+    for row in skipped:
+        name = " ".join(str(row.get("name") or "unnamed stop").split())
+        ifopt = " ".join(str(row.get("ifopt_id") or "unknown IFOPT").split())
+        reason = reasons.get(str(row.get("reason")), "identity not confirmed")
+        if row.get("reason") == "provider_identity_missing" and row.get("operator"):
+            reason += f" ({row['operator']})"
+        print(f"  - {name} [{ifopt}]: {reason}")
+    print(
+        "Unmapped railway stops are kept in overrides/austria-unmapped-stations.csv. "
+        "They are not exclusions. Do not substitute nearby stops or invent provider IDs."
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
     if args.oebb_operator_index_only:
@@ -99,39 +121,48 @@ def main(argv: list[str] | None = None) -> int:
 
     session = requests.Session()
     rename_map = load_rename_map("austria")
-    if not args.cache and not args.offline:
-        # A normal generation is a clean refresh. Cache reuse is always opt-in.
-        for cached in (GEONETZ_FILTERED, GEONETZ_ARCHIVE, DEFAULT_MVO_CACHE, DEFAULT_RESOLUTION_CACHE):
-            cached.unlink(missing_ok=True)
-    if args.offline:
-        offline_geonetz = CACHE_DIR / "austria" / "austria_stations_filtered.json"
-        _adopt_legacy_cache(CACHE_DIR / "austria_stations_filtered.json", offline_geonetz)
-        geonetz_source = offline_geonetz
-        if not geonetz_source.is_file():
-            raise SystemExit(f"Offline Austria generation requires cached GeoNetz data: {geonetz_source}")
-    else:
-        geonetz_source = _download_geonetz(session)
-    geonetz_nodes = load_geonetz_nodes(geonetz_source, rename_map)
-    if args.offline:
-        mvo_source = args.mvo_input or DEFAULT_MVO_CACHE
+    # Never delete a working source snapshot before replacement is available.
+    # GeoNetz is a dated, static archive, and exact SCOTTY resolutions remain
+    # guarded by the existing provider identity checks.
+    if args.cache:
+        mvo_source = args.mvo_input or require_cached_file(DEFAULT_MVO_CACHE, "MVO station data")
         if not mvo_source.is_file():
-            raise SystemExit(f"Offline Austria generation requires a cached MVO ZIP: {mvo_source}")
+            raise SystemExit(f"Saved MVO station data is missing: {mvo_source}")
+        from countries.austria.sources import _validate_mvo_archive
+        _validate_mvo_archive(mvo_source)
     else:
-        mvo_source = args.mvo_input or download_mvo_snapshot(session)
+        if args.mvo_input:
+            mvo_source = args.mvo_input
+        else:
+            try:
+                mvo_source = download_mvo_snapshot(session, allow_public_sample=args.mvo_sample)
+            except (requests.RequestException, ValueError) as exc:
+                raise SystemExit(
+                    f"Austria MVO source unavailable: {exc}. "
+                    "Existing nodes and cached source snapshots were preserved. "
+                    "Register and accept the official MVO licence, then configure "
+                    "MVO_USERNAME/MVO_PASSWORD; alternatively use --cache, "
+                    "--mvo-input PATH or opt into the sample with --mvo-sample."
+                ) from exc
     mvo_rows, mvo_platforms = load_mvo_snapshot(mvo_source)
     validate_mvo_wgs84(mvo_rows)
+    geonetz_source = _download_geonetz(session, allow_download=not args.cache)
+    geonetz_nodes = load_geonetz_nodes(geonetz_source, rename_map)
     resolver = ScottyResolver(
         session,
         cache_path=DEFAULT_RESOLUTION_CACHE,
-        offline=args.offline,
+        offline=args.cache,
     )
     output, audit = merge_catalogues(geonetz_nodes, mvo_rows, mvo_platforms, resolver, rename_map)
-    publish_nodes(args.output, output)
     args.audit.parent.mkdir(parents=True, exist_ok=True)
     args.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(
-        f"Austria: {len(geonetz_nodes)} GeoNetz + {audit['added_count']} MVO additions "
-        f"= {len(output)} stations; {audit['unresolved_count']} MVO candidates unresolved"
-    )
+    if args.cache and any(row["reason"] == "missing_cached_verification" for row in audit["unresolved"]):
+        raise ValueError("Saved station checks are missing. Run once without --cache to save successful SCOTTY checks. The station file was not changed.")
+    if args.output.is_file():
+        output = preserve_sta_tags(output, load_ndjson(args.output))
+    publish_nodes(args.output, output)
+    print(f"OK | austria | {len(output)} station identities; "
+          f"{len(geonetz_nodes)} GeoNetz plus {audit['added_count']} MVO additions")
+    report_unverified_mvo_stops(audit)
     _build_requested_oebb_index(args)
     return 0

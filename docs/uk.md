@@ -11,10 +11,10 @@
 ## Generate
 
 ```bash
-python3 gen/uk.py
+python3 -m gen.countries uk
 ```
 
-Use `--cache` to reuse the cached station JSON.
+Use `--cache` to build from the saved station JSON without downloading.
 
 The current category covers National Rail. Northern Ireland Railways, heritage/private railways, Underground, metro, subway, and tram systems need separate providers or modes.
 

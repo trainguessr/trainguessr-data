@@ -1,0 +1,9 @@
+record,id,expected_name,name,canonical_id,canonical_expected_name,lat,lon,source,source_url,reason
+coordinate,23021,Padrón Barbanza,,,,42.7812443,-8.656552,Renfe complete station list (official station-data export),https://data.renfe.com/datastore/dump/b22cd560-3a2b-45dd-a25d-2406941f6fcc?format=xml,Current GTFS repeats Padrón coordinates for the separate Padrón Barbanza station.
+coordinate,05403,Tremañes-Langreo,,,,43.527123,-5.690694,Renfe official FEVE station list,https://data.renfe.com/dataset/f72abe7d-fea8-4af1-9e3d-cf0997b81955/resource/4de015e6-987c-43ae-9350-8bf941ef66c7/download/listado-de-estaciones-feve-2.csv,Current GTFS nearly co-locates Tremañes-Langreo with Tremañes-Carreño despite separate station records.
+name,72209,Martorell Central,Martorell Central (ADIF),,,,,,,Distinct ADIF/Rodalies station adjacent to the FGC Martorell Central station; explicit suffix prevents false duplicate merging.
+name,78709,Sabadell Nord,Sabadell Nord (ADIF),,,,,,,Distinct ADIF/Rodalies station adjacent to the FGC Sabadell Nord interchange station; explicit suffix prevents false duplicate merging.
+alias,99117,Ourense Turístico,,22100,Ourense,,,,,Renfe tourist/service code at the same physical passenger station.
+alias,99161,Pontevedra-Turístico,,23004,Pontevedra,,,,,Renfe tourist/service code at the same physical passenger station.
+alias,99159,Santiago-Turístico,,31400,Santiago de Compostela-Daniel Castelao,,,,,Renfe tourist/service code at the same physical passenger station.
+alias,70001,Vallecas,,70005,Vallecas,,,,https://www.adif.es/w/70005-vallecas,Cercanías feed identifier for the same physical Vallecas passenger station represented by ADIF code 70005.

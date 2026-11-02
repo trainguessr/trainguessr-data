@@ -1,6 +1,8 @@
 """Explicit reviewed decision lookup for Austria."""
 from __future__ import annotations
 
+import csv
+from common.io import ROOT
 from typing import Any
 from common.config import load_country_config, load_exclusion_rules
 from countries.austria.identity import normalize_ifopt
@@ -31,3 +33,10 @@ def _load_mvo_overrides() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str
             raise ValueError(f"austria: invalid MVO resolution {row!r}")
         resolutions[ifopt] = row
     return excluded, aliases, resolutions
+
+
+def load_unmapped_stations() -> dict[str, dict[str, str]]:
+    """Physical railway stops whose timetable-provider ID is still unknown."""
+    path = ROOT / "overrides" / "austria-unmapped-stations.csv"
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        return {row["ifopt_id"]: row for row in csv.DictReader(handle)}

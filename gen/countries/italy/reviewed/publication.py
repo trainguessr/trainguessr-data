@@ -5,6 +5,7 @@ from pathlib import Path
 from common.io import publish_nodes, write_csv
 from common.validate import validate_nodes
 from countries.italy.reviewed.paths import node_path, audit_report_path
+from countries.italy.review_settings import AUDIT_STATUS_LABELS
 
 
 def publish_reviewed_nodes(
@@ -56,9 +57,26 @@ def write_reviewed_output(operator, seed_path, output, audit, *, dry_run):
     report = audit_report_path(operator)
     report.parent.mkdir(parents=True, exist_ok=True)
 
+    report_rows = []
+    details = {
+        "matched": "Provider ID checked.",
+        "matched_name_difference": "The provider name changed. Check the station name.",
+        "missing_coordinates": "This station has no reviewed coordinates.",
+        "provider_scope_review": "Trenord lists this ID, but FN ownership has not been checked.",
+        "reviewed_only_retained": "Not found in the new download. Kept the old station.",
+        "excluded": "This station was excluded after review.",
+    }
+    for row in audit:
+        status = str(row.get("status", ""))
+        report_rows.append({
+            **row,
+            "status": AUDIT_STATUS_LABELS.get(status, "Check this station"),
+            "details": details.get(status, str(row.get("details") or "Check this station.")),
+        })
+
     write_csv(
         report,
-        audit,
+        report_rows,
         [
             "id",
             "source_name",

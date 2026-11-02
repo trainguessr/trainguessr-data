@@ -14,4 +14,4 @@ NPM_REGISTRY_URL = "https://registry.npmjs.org/db-stations/latest"
 BOARD_GROUPS_PATH = os.path.join(ROOT, "overrides", "germany-board-groups.json")
 
 
-RECONCILIATION_PATH = os.path.join(ROOT, "docs", "review", "germany-reconciliation.json")
+REVIEWED_STATIONS_PATH = os.path.join(ROOT, "overrides", "germany-stations.csv")

@@ -11,14 +11,51 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 from common.config import load_country_config
-from common.io import ROOT, load_ndjson, publish_nodes, write_ndjson, write_csv
+from common.io import ROOT, publish_nodes, write_ndjson, write_csv
+from common.io import add_cache_flag
 from common.validate import validate_nodes
 
 
 BASE_DIR = Path(__file__).resolve().parent
-ITALY_CONFIG = load_country_config("italy")
-MANUAL_STATIONS = [row for row in ITALY_CONFIG.get("manual_stations", []) if row.get("operator") == "fse"]
-MANUAL_NAMES = {str(row["name"]) for row in MANUAL_STATIONS}
+# These station decisions are refreshed before each source build so choices
+# made by the shared review tool take effect on the same run.
+ITALY_CONFIG: dict[str, Any] = {}
+MANUAL_STATIONS: list[dict[str, Any]] = []
+MANUAL_NAMES: set[str] = set()
+EXCLUDED_OSM_NAMES: set[str] = set()
+EXCLUDED_REASON_BY_OSM_NAME: dict[str, str] = {}
+EXCLUDED_REASON_BY_ID: dict[str, str] = {}
+
+
+def refresh_review_config() -> None:
+    global ITALY_CONFIG, MANUAL_STATIONS, MANUAL_NAMES
+    global EXCLUDED_OSM_NAMES, EXCLUDED_REASON_BY_OSM_NAME, EXCLUDED_REASON_BY_ID
+    ITALY_CONFIG = load_country_config("italy")
+    MANUAL_STATIONS = [
+        row for row in ITALY_CONFIG.get("manual_stations", [])
+        if row.get("operator") == "fse"
+    ]
+    MANUAL_NAMES = {str(row["name"]) for row in MANUAL_STATIONS}
+    fse_exclusions = [
+        row for row in ITALY_CONFIG.get("excluded", [])
+        if row.get("operator") == "fse"
+    ]
+    EXCLUDED_OSM_NAMES = {
+        str(row["name"])
+        for row in fse_exclusions
+        if row.get("name") and row.get("name") not in MANUAL_NAMES
+    }
+    EXCLUDED_REASON_BY_OSM_NAME = {
+        str(row["name"]): str(row.get("reason", "excluded_by_country_config"))
+        for row in fse_exclusions if row.get("name")
+    }
+    EXCLUDED_REASON_BY_ID = {
+        str(row["id"]): str(row.get("reason", "excluded_by_country_config"))
+        for row in fse_exclusions if row.get("id")
+    }
+
+
+refresh_review_config()
 OVERPASS_URLS = [
     "https://lz4.overpass-api.de/api/interpreter",
     "https://z.overpass-api.de/api/interpreter",
@@ -37,31 +74,13 @@ OUTPUT_FILE = ROOT / "nodes" / "nodes-italy-fse.json"
 FSE_CACHE = ROOT / "cache" / "italy" / "fse"
 REQUEST_CACHE = FSE_CACHE / "raw" / "requests"
 UNRESOLVED_OUTPUT_FILE = FSE_CACHE / "reports" / "unresolved.json"
+EXCLUDED_OUTPUT_FILE = FSE_CACHE / "reports" / "excluded.json"
 AUDIT_FILE = FSE_CACHE / "reports" / "audit.csv"
 
 HEADERS = {
     "User-Agent": "trainguessr-data"
 }
-
-# These names exist as rail-mapped FSE stations in OSM but do not currently
-# resolve to a stable ViaggiaTreno station identifier, so they are emitted in
-# the unresolved/manual-followup file rather than the main playable dataset.
-EXCLUDED_OSM_NAMES = {
-    str(row.get("name"))
-    for row in ITALY_CONFIG.get("excluded", [])
-    if row.get("operator") == "fse" and row.get("name") and row.get("name") not in MANUAL_NAMES
-}
-
-EXCLUDED_REASON_BY_OSM_NAME = {
-    str(row.get("name")): str(row.get("reason", "excluded_by_country_config"))
-    for row in ITALY_CONFIG.get("excluded", [])
-    if row.get("operator") == "fse" and row.get("name")
-}
-EXCLUDED_REASON_BY_ID = {
-    str(row.get("id")): str(row.get("reason", "excluded_by_country_config"))
-    for row in ITALY_CONFIG.get("excluded", [])
-    if row.get("operator") == "fse" and row.get("id")
-}
+CACHE_ONLY = False
 
 # Known non-S13 ViaggiaTreno IDs used by FSE.
 KNOWN_NON_S13_FSE_IDS = {
@@ -164,13 +183,18 @@ VIAGGIATRENO_ALIASES = {
 
 
 def fetch_json(url: str, data: bytes | None = None) -> Any:
-    req = Request(url, headers=HEADERS, data=data)
-    with urlopen(req, timeout=180) as response:
-        payload = response.read()
     key = hashlib.sha256(url.encode("utf-8") + (data or b"")).hexdigest()
     cache_file = REQUEST_CACHE / f"{key}.json"
-    cache_file.parent.mkdir(parents=True, exist_ok=True)
-    cache_file.write_bytes(payload)
+    if CACHE_ONLY:
+        if not cache_file.is_file():
+            raise FileNotFoundError(f"Saved FSE source response is missing: {cache_file}")
+        payload = cache_file.read_bytes()
+    else:
+        req = Request(url, headers=HEADERS, data=data)
+        with urlopen(req, timeout=180) as response:
+            payload = response.read()
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        cache_file.write_bytes(payload)
     return json.loads(payload.decode("utf-8"))
 
 
@@ -183,7 +207,8 @@ def fetch_overpass_json(query: str) -> Any:
             return fetch_json(url, encoded)
         except Exception as exc:
             last_error = exc
-            time.sleep(1)
+            if not CACHE_ONLY:
+                time.sleep(1)
 
     if last_error is not None:
         raise last_error
@@ -452,8 +477,8 @@ def apply_manual_stations(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
             actual_name = normalize_name(str(same_id.get("tags", {}).get("name", "")))
             if actual_name != expected_name:
                 raise ValueError(
-                    f"italy/fse: stale manual station {station_id}: expected "
-                    f"{row['name']!r}, generated {same_id.get('tags', {}).get('name')!r}"
+                    f"italy/fse: Check station ID {station_id}. The saved name is "
+                    f"{row['name']!r}; the downloaded name is {same_id.get('tags', {}).get('name')!r}."
                 )
         conflicting_ids = {
             str(node.get("id")) for node in by_name.get(expected_name, [])
@@ -477,13 +502,14 @@ def write_audit(nodes: list[dict[str, Any]], unresolved: list[dict[str, Any]]) -
     excluded_ids = set(EXCLUDED_REASON_BY_ID)
     for node in nodes:
         tags = node.get("tags", {})
+        checked_manually = tags.get("match_status") == "manual_reviewed"
         rows.append({
             "id": node.get("id", ""),
             "name": tags.get("name", ""),
             "lat": node.get("lat", ""),
             "lon": node.get("lon", ""),
-            "status": tags.get("match_status", "automatic_match"),
-            "reason": tags.get("match_reason", ""),
+            "status": "ID checked" if checked_manually else "Included",
+            "reason": "Provider ID and station details were checked." if checked_manually else "Station matched to provider data.",
         })
     for node in unresolved:
         tags = node.get("tags", {})
@@ -491,21 +517,39 @@ def write_audit(nodes: list[dict[str, Any]], unresolved: list[dict[str, Any]]) -
             continue
         station_id = str(node.get("id"))
         excluded = station_id in excluded_ids
+        reason = str(tags.get("match_reason", ""))
+        if reason == "missing_viaggiatreno_id":
+            status = "missing_native_id"
+            reason = "No ViaggiaTreno ID was found for this station name."
+        elif excluded or tags.get("name") in EXCLUDED_OSM_NAMES:
+            status = "excluded"
+            reason = EXCLUDED_REASON_BY_ID.get(station_id, reason) or "Excluded after station review."
+        else:
+            status = "excluded_or_unresolved"
+            reason = "Check this station's saved details."
         rows.append({
             "id": node.get("id", ""),
             "name": tags.get("name", ""),
+            "source_name": tags.get("name", ""),
+            "reviewed_name": tags.get("name", ""),
             "lat": node.get("lat", ""),
             "lon": node.get("lon", ""),
-            "status": "excluded" if excluded else "excluded_or_unresolved",
-            "reason": EXCLUDED_REASON_BY_ID.get(
-                station_id,
-                tags.get("match_reason", ""),
-            ),
+            "status": {
+                "missing_native_id": "Provider ID needed",
+                "excluded": "Excluded after review",
+                "excluded_or_unresolved": "Check this station",
+            }[status],
+            "reason": reason,
         })
-    write_csv(AUDIT_FILE, rows, ["id", "name", "lat", "lon", "status", "reason"])
+    write_csv(
+        AUDIT_FILE,
+        rows,
+        ["id", "name", "source_name", "reviewed_name", "lat", "lon", "status", "reason"],
+    )
 
 
 def generate_live() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    refresh_review_config()
     osm_stations = fetch_osm_stations()
     nodes: list[dict[str, Any]] = []
     unresolved_nodes: list[dict[str, Any]] = []
@@ -561,31 +605,106 @@ def generate_live() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     return apply_manual_stations(nodes), sorted(unresolved_nodes, key=lambda node: str(node["id"]))
 
 
+def apply_saved_name_decisions(nodes: list[dict[str, Any]]) -> None:
+    """Apply only name choices that still match the saved source report."""
+    from countries.italy.review_decisions import review_key
+    from countries.italy.review_nodes import load_review_rows
+
+    config = load_country_config("italy")
+    decisions = {
+        (
+            str(saved.get("operator", "")),
+            str(saved.get("id", "")),
+            str(saved.get("status", "")),
+            str(saved.get("source_name", "")),
+            str(saved.get("reviewed_name", "")),
+        ): str(saved.get("decision", ""))
+        for saved in config.get("reviews", [])
+    }
+    by_id = {str(node.get("id")): node for node in nodes}
+    for row in load_review_rows("fse"):
+        if row["status"] != "matched_name_difference":
+            continue
+        decision = decisions.get(review_key("fse", row))
+        if decision == "keep_reviewed_name":
+            name = row["reviewed_name"]
+        elif decision == "use_source_name":
+            name = row["source_name"]
+        else:
+            continue
+        node = by_id.get(row["id"])
+        if node is not None:
+            node.setdefault("tags", {})["name"] = name
+
+
+
+def write_source_reports(records):
+    excluded, pending = [], []
+    for record in records:
+        tags = record.get("tags", {})
+        target = excluded if str(record.get("id")) in EXCLUDED_REASON_BY_ID or tags.get("name") in EXCLUDED_OSM_NAMES else pending
+        target.append(record)
+    write_ndjson(UNRESOLVED_OUTPUT_FILE, pending)
+    write_ndjson(EXCLUDED_OUTPUT_FILE, excluded)
+    return pending, excluded
+
+
 def main(argv: list[str] | None = None) -> int:
+    global CACHE_ONLY
     parser = argparse.ArgumentParser(description="Generate and audit the FSE station dataset")
-    parser.add_argument("--offline", action="store_true", help="apply reviewed manual stations to the current JSON without network access")
+    add_cache_flag(parser)
     args = parser.parse_args(argv)
+    CACHE_ONLY = args.cache
 
-    if args.offline:
-        nodes = apply_manual_stations(load_ndjson(OUTPUT_FILE))
-        unresolved: list[dict[str, Any]] = []
-    else:
-        nodes, unresolved = generate_live()
-
+    nodes, unresolved = generate_live()
     errors = validate_nodes(nodes)
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
 
-    publish_nodes(OUTPUT_FILE, nodes)
-    write_ndjson(UNRESOLVED_OUTPUT_FILE, unresolved)
+    write_source_reports(unresolved)
     write_audit(nodes, unresolved)
-    print(f"Wrote {len(nodes)} FSE stations to {OUTPUT_FILE}")
-    print(f"Wrote {len(unresolved)} unresolved/excluded records to {UNRESOLVED_OUTPUT_FILE}")
-    from reconcile.italy.review import review_after_generation
-    review_after_generation("fse")
+    from countries.italy.review import pending_review_rows, review_after_generation
+    pending = pending_review_rows("fse")
+    if pending:
+        reviewed = review_after_generation("fse")
+        if reviewed is None:
+            print(f"Check these {len(pending)} FSE station details. "
+                  f"Report: {AUDIT_FILE.relative_to(ROOT)}. The station file is unchanged. "
+                  "Run `python3 -m gen.countries italy review fse` in a terminal.")
+            return 2
+        if reviewed:
+            return int(reviewed)
+
+        # The first build saved all source responses. Rebuild from those saved
+        # files after the user has made decisions; do not download a second time.
+        CACHE_ONLY = True
+        nodes, unresolved = generate_live()
+        errors = validate_nodes(nodes)
+        if errors:
+            for error in errors:
+                print(f"ERROR: {error}")
+            return 1
+        write_source_reports(unresolved)
+        write_audit(nodes, unresolved)
+        apply_saved_name_decisions(nodes)
+        pending = pending_review_rows("fse")
+        if pending:
+            print(f"Check these {len(pending)} FSE station details. "
+                  f"Report: {AUDIT_FILE.relative_to(ROOT)}. The station file is unchanged.")
+            return 2
+
+    publish_nodes(OUTPUT_FILE, nodes)
+    pending_records, excluded_records = write_source_reports(unresolved)
+    print(f"OK | italy/fse | {len(nodes)} checked stations; "
+          f"{len(pending_records)} unresolved stations; {len(excluded_records)} excluded source records")
+    if pending_records:
+        print(f"Check: {UNRESOLVED_OUTPUT_FILE.relative_to(ROOT)}")
+    if excluded_records:
+        print(f"Excluded records: {EXCLUDED_OUTPUT_FILE.relative_to(ROOT)}")
     return 0
+
 
 
 if __name__ == "__main__":

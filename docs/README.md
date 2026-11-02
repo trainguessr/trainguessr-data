@@ -6,44 +6,40 @@ Each station keeps the ID used by its source or timetable provider. Geographic s
 
 ## Countries and datasets
 
-| Country | Category | Nodes | Generator |
-| --- | --- | ---: | --- |
-| [Austria](austria.md) | `austria_oebb` | 1,416 | `python3 gen/austria.py` |
-| [Belgium](belgium.md) | `belgium_all` | 604 | `python3 gen/belgium.py` |
-| [Denmark](denmark.md) | `denmark_all` | 563 | `python3 gen/denmark.py` |
-| [Finland](finland.md) | `finland_all` | 222 | `python3 gen/finland.py` |
-| [France](france.md) | `france_sncf` | 2,854 | `python3 gen/france.py` |
-| [Germany](germany.md) | `germany_all` | 6,652 | `python3 gen/germany.py` |
-| [Italy](italy.md) | `italy_rfi` | 2,426 | `python3 gen/italy.py generate rfi` |
-| [Italy](italy.md) | `italy_fn` | 111 | `python3 gen/italy.py generate fn` |
-| [Italy](italy.md) | `italy_fse` | 92 | `python3 gen/italy.py generate fse` |
-| [Italy](italy.md) | `italy_tt` | 38 | `python3 gen/italy.py generate tt` |
-| [Italy](italy.md) | `italy_fer` | 117 | `python3 gen/italy.py generate fer` |
-| [Italy](italy.md) | `italy_eav` | 119 | `python3 gen/italy.py generate eav` |
-| [Italy](italy.md) | `italy_sta` | 17 | `python3 gen/italy.py generate sta --write-nodes` |
-| [Netherlands](netherlands.md) | `netherlands_all` | 397 | `python3 gen/netherlands.py` |
-| [Norway](norway.md) | `norway_all` | 367 | `python3 gen/norway.py` |
-| [Spain](spain.md) | `spain_renfe`, `spain_fgc` | 1,457 + 91 | `python3 gen/spain.py` |
-| [Sweden](sweden.md) | `sweden_all` | 832 | `python3 gen/sweden.py` |
-| [Switzerland](switzerland.md) | `switzerland_all` | 1,697 | `python3 gen/switzerland.py` |
-| [United Kingdom](uk.md) | `uk_national_rail` | 2,609 | `python3 gen/uk.py` |
-
-Counts above match the committed files in `nodes/`.
+| Country | Categories | Generator |
+| --- | --- | --- |
+| [Austria](austria.md) | `austria_oebb` | `python3 -m gen.countries austria` |
+| [Belgium](belgium.md) | `belgium_all` | `python3 -m gen.countries belgium` |
+| [Denmark](denmark.md) | `denmark_all` | `python3 -m gen.countries denmark` |
+| [Finland](finland.md) | `finland_all` | `python3 -m gen.countries finland` |
+| [France](france.md) | `france_sncf` | `python3 -m gen.countries france` |
+| [Germany](germany.md) | `germany_all` | `python3 -m gen.countries germany` |
+| [Italy](italy.md) | `italy_rfi`, `italy_fn`, `italy_fse`, `italy_tt`, `italy_fer`, `italy_eav`, `italy_sta` | `python3 -m gen.countries italy generate <provider>` |
+| [Netherlands](netherlands.md) | `netherlands_all` | `python3 -m gen.countries netherlands` |
+| [Norway](norway.md) | `norway_all` | `python3 -m gen.countries norway` |
+| [Spain](spain.md) | `spain_renfe`, `spain_fgc` | `python3 -m gen.countries spain` |
+| [Sweden](sweden.md) | `sweden_all` | `python3 -m gen.countries sweden` |
+| [Switzerland](switzerland.md) | `switzerland_all` | `python3 -m gen.countries switzerland` |
+| [United Kingdom](uk.md) | `uk_national_rail` | `python3 -m gen.countries uk` |
 
 ## Updating a dataset
 
-1. Run the country generator from the repository root.
-2. Read its warnings and review report.
-3. Check the diff in `nodes/` and `overrides/`.
-4. Run the validation commands from the root README.
+1. Run the country generator from the repository root. A successful run exits
+   zero. If the station file is already the same, it is left alone.
+2. If the Italian generator finds a change that needs a decision, it asks in an
+   interactive terminal. Without a terminal, it keeps the current station file,
+   saves a report under `cache/`, and exits with an error. Review later with
+   `python3 -m gen.countries italy review <provider>`.
+3. Validate with the root README commands, then check actual Git changes.
+   A zero exit status is not proof every source carries every passenger stop.
 
-`cache/` is disposable. `overrides/` contains reviewed decisions that change output. `docs/review/` contains large evidence and audit files.
+`cache/` contains disposable downloads and reports. `overrides/` contains reviewed decisions that change output. One-time research tools are in `gen/bootstrap/`.
 
 ## Review rules
 
 - Do not guess a provider ID from a station name, coordinates, route order, or a nearby ID.
-- Keep enough source identity in reviewed changes to detect later upstream changes.
-- If a source schema changes, fail clearly instead of silently skipping bad records.
-- Keep large reconciliation records in `docs/review/`, not in the short country guides.
+- Keep the provider ID and station name with each saved decision so later downloads can be checked.
+- If a provider changes its file format, stop with a clear error instead of skipping records.
+- Keep generated reports in `cache/`; keep reviewed decisions in `overrides/`.
 
-Italy has several datasets behind `gen/italy.py`; see [`italy.md`](italy.md). Finland, France, and Germany also have optional reconciliation tools described in their country pages.
+Italy has several providers behind `python3 -m gen.countries italy`; see [`italy.md`](italy.md). One-time research tools are available through `python3 -m gen.bootstrap --help`.

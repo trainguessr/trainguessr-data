@@ -7,7 +7,6 @@ import io
 import json
 import logging as log
 import os
-import shutil
 import zipfile
 from datetime import datetime
 from pathlib import Path
@@ -22,7 +21,6 @@ from countries.austria.settings import (
     DEFAULT_MVO_CACHE,
     GEONETZ_ARCHIVE,
     GEONETZ_FILTERED,
-    GEONETZ_TEMP,
     GEONETZ_URL,
     MVO_CATALOGUE_URL,
     MVO_DATASETS_URL,
@@ -57,7 +55,9 @@ def _adopt_legacy_cache(old: Path, new: Path) -> Path:
     return new
 
 
-def _download_geonetz(session: requests.Session, timeout: int = 60) -> Path:
+def _download_geonetz(
+    session: requests.Session, timeout: int = 60, *, allow_download: bool = True
+) -> Path:
     AUSTRIA_CACHE.mkdir(parents=True, exist_ok=True)
     _adopt_legacy_cache(CACHE_DIR / "austria_stations_filtered.json", GEONETZ_FILTERED)
     _adopt_legacy_cache(CACHE_DIR / "GeoNetz_12-2024.zip", GEONETZ_ARCHIVE)
@@ -65,41 +65,53 @@ def _download_geonetz(session: requests.Session, timeout: int = 60) -> Path:
         print(f"Using cached GeoNetz station data (age: {_cache_age(GEONETZ_FILTERED)})")
         return GEONETZ_FILTERED
 
+    if not GEONETZ_ARCHIVE.is_file() and not allow_download:
+        raise FileNotFoundError(
+            f"Saved GeoNetz source is missing: {GEONETZ_ARCHIVE}. "
+            "Run again without --cache to download it."
+        )
+
     if not GEONETZ_ARCHIVE.is_file():
         response = session.get(GEONETZ_URL, timeout=timeout)
         response.raise_for_status()
-        GEONETZ_ARCHIVE.write_bytes(response.content)
+        temporary = GEONETZ_ARCHIVE.with_suffix(".zip.tmp")
+        try:
+            temporary.write_bytes(response.content)
+            if not zipfile.is_zipfile(temporary):
+                raise ValueError("ÖBB GeoNetz response is not a ZIP archive")
+            temporary.replace(GEONETZ_ARCHIVE)
+        finally:
+            temporary.unlink(missing_ok=True)
 
-    shutil.rmtree(GEONETZ_TEMP, ignore_errors=True)
-    outer_dir = GEONETZ_TEMP / "outer"
-    inner_dir = GEONETZ_TEMP / "inner"
-    outer_dir.mkdir(parents=True, exist_ok=True)
-    inner_dir.mkdir(parents=True, exist_ok=True)
-    try:
-        with zipfile.ZipFile(GEONETZ_ARCHIVE) as outer:
-            outer.extractall(outer_dir)
-        inner_matches = list(outer_dir.rglob("OEBB_NETWORK_GeoJSON.zip"))
+    # Read only the provider-specified inner ZIP and JSON (no extractall).
+    # Both the downloaded ZIP and the generated filtered cache are replaced
+    # only once their complete contents have passed parsing.
+    with zipfile.ZipFile(GEONETZ_ARCHIVE) as outer:
+        inner_matches = [x for x in outer.namelist()
+                         if Path(x).name == "OEBB_NETWORK_GeoJSON.zip"]
         if len(inner_matches) != 1:
-            raise ValueError(
-                f"{GEONETZ_ARCHIVE}: expected exactly one OEBB_NETWORK_GeoJSON.zip, "
-                f"found {len(inner_matches)}"
-            )
-        with zipfile.ZipFile(inner_matches[0]) as inner:
-            inner.extractall(inner_dir)
-        geojson_matches = list(inner_dir.rglob("OEBB_NETWORK.json"))
-        if len(geojson_matches) != 1:
-            raise ValueError(
-                f"{inner_matches[0]}: expected exactly one OEBB_NETWORK.json, "
-                f"found {len(geojson_matches)}"
-            )
-        payload = json.loads(geojson_matches[0].read_text(encoding="utf-8"))
-        with GEONETZ_FILTERED.open("w", encoding="utf-8", newline="\n") as handle:
-            for feature in payload.get("features", []):
-                properties = feature.get("properties", {})
-                if "railStation" in str(properties.get("STP_TYPE", "")):
-                    handle.write(json.dumps(properties, ensure_ascii=False) + "\n")
+            raise ValueError(f"{GEONETZ_ARCHIVE}: expected exactly one inner GeoJSON ZIP")
+        with zipfile.ZipFile(io.BytesIO(outer.read(inner_matches[0]))) as inner:
+            geojson_matches = [x for x in inner.namelist()
+                               if Path(x).name == "OEBB_NETWORK.json"]
+            if len(geojson_matches) != 1:
+                raise ValueError(f"{GEONETZ_ARCHIVE}: expected exactly one OEBB_NETWORK.json")
+            payload = json.loads(inner.read(geojson_matches[0]).decode("utf-8"))
+    features = payload.get("features")
+    if not isinstance(features, list) or not features:
+        raise ValueError("ÖBB GeoNetz payload has no features")
+    filtered = [feature.get("properties", {}) for feature in features
+                if "railStation" in str(feature.get("properties", {}).get("STP_TYPE", ""))]
+    if not filtered:
+        raise ValueError("ÖBB GeoNetz payload has no rail stations")
+    temporary = GEONETZ_FILTERED.with_suffix(".json.tmp")
+    try:
+        with temporary.open("w", encoding="utf-8", newline="\n") as handle:
+            for properties in filtered:
+                handle.write(json.dumps(properties, ensure_ascii=False) + "\n")
+        temporary.replace(GEONETZ_FILTERED)
     finally:
-        shutil.rmtree(GEONETZ_TEMP, ignore_errors=True)
+        temporary.unlink(missing_ok=True)
     return GEONETZ_FILTERED
 
 
@@ -218,9 +230,18 @@ def _download_to_cache(session: requests.Session, url: str, path: Path, **kwargs
     return path
 
 
-def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_CACHE) -> Path:
+def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_CACHE,
+                          *, allow_public_sample: bool = False) -> Path:
     username = os.getenv("MVO_USERNAME")
     password = os.getenv("MVO_PASSWORD")
+    if bool(username) != bool(password):
+        raise ValueError("MVO_USERNAME and MVO_PASSWORD must both be set")
+    if not username and not allow_public_sample:
+        raise ValueError(
+            "Full MVO stop data require a registered account and manual licence acceptance; "
+            "configure MVO_USERNAME/MVO_PASSWORD, or explicitly use --cache or "
+            "--mvo-input PATH. The public sample is not a production refresh."
+        )
     if username and password:
         token_response = session.post(
             MVO_TOKEN_URL,
@@ -237,7 +258,8 @@ def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_
         token = token_response.json().get("access_token")
         if not token:
             raise ValueError("MVO authentication returned no access token")
-        datasets_response = session.get(MVO_DATASETS_URL, timeout=30)
+        datasets_response = session.get(MVO_DATASETS_URL, timeout=30,
+                                        headers={"Authorization": f"Bearer {token}"})
         datasets_response.raise_for_status()
         datasets = datasets_response.json()
         dataset = next(
@@ -250,7 +272,8 @@ def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_
         if not dataset:
             raise ValueError("MVO dataset catalogue contains no Haltestellen (CSV) dataset")
         dataset_id = str(dataset["id"])
-        metadata = session.get(MVO_METADATA_URL.format(dataset_id=dataset_id), timeout=30)
+        metadata = session.get(MVO_METADATA_URL.format(dataset_id=dataset_id), timeout=30,
+                               headers={"Authorization": f"Bearer {token}"})
         metadata.raise_for_status()
         versions = metadata.json().get("activeVersions") or []
         years = sorted((str(item.get("year")) for item in versions if str(item.get("year", "")).isdigit()), reverse=True)
@@ -266,6 +289,8 @@ def download_mvo_snapshot(session: requests.Session, output: Path = DEFAULT_MVO_
         print(f"Cached authenticated MVO snapshot (age: {_cache_age(path)})")
         return path
 
+    print("NOTICE | austria | --mvo-sample uses a public "
+          "sample snapshot; source completeness/freshness is not assured")
     catalogue = session.get(MVO_CATALOGUE_URL, timeout=30)
     catalogue.raise_for_status()
     match = _MVO_SAMPLE_RE.search(catalogue.text)

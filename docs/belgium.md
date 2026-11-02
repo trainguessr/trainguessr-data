@@ -10,7 +10,7 @@
 ## Generate
 
 ```bash
-python3 gen/belgium.py
+python3 -m gen.countries belgium
 ```
 
 iRail provides the station IDs and does not require an API key. Infrabel and OpenStreetMap are used only to check physical railway locations; they do not replace iRail IDs.
@@ -24,3 +24,5 @@ The current category covers the main NMBS-SNCB network. Tourist railways and urb
 ## Terms
 
 Infrabel operational-point data is CC0. iRail is community-run; confirm the terms for live railway data before public publication. See `../ACKNOWLEDGMENTS.md`.
+
+Saved exclusions apply to source station IDs. A spelling or language change does not stop generation or change which country owns a station. The source may include foreign stations. Repeated station names are allowed.

@@ -1,0 +1,5 @@
+ifopt_id,name,lat,lon,operator,source_url,previous_scotty_id,note
+at:43:20834,Kleinsierning Bahnhof,48.1403745,15.4889318,Eisenbahnclub Mh.6,https://www.mh6.at/de/,,Real railway stop. No working SCOTTY station ID found on 2026-11-02. Keep its MVO identity; do not use a nearby bus stop.
+at:43:70107,Reichenau an der Rax Lokalbahn,47.697909,15.8395622,ÖGLB / Höllentalbahn,https://www.lokalbahnen.at/hoellentalbahn/mitfahren/fahrplan/,8165233,Real railway stop. No working SCOTTY station ID found on 2026-11-02. Keep its MVO identity; do not use a nearby bus stop.
+at:43:70106,Reichenau an der Rax Kurhaus,47.6991545,15.8457875,ÖGLB / Höllentalbahn,https://www.lokalbahnen.at/hoellentalbahn/mitfahren/fahrplan/,8182347,Real railway stop. No working SCOTTY station ID found on 2026-11-02. Keep its MVO identity; do not use a nearby bus stop.
+at:43:70108,Hirschwang/Rax Haaberg,47.7049219,15.8232488,ÖGLB / Höllentalbahn,https://www.lokalbahnen.at/hoellentalbahn/mitfahren/fahrplan/,8161697,Real railway stop. No working SCOTTY station ID found on 2026-11-02. Keep its MVO identity; do not use a nearby bus stop.

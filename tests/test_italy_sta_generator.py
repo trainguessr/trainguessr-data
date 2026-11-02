@@ -105,7 +105,7 @@ def test_resolver_does_not_accept_alias_as_arbitrary_station_label_prefix():
 def test_write_nodes_fails_closed_when_vinschgau_identity_is_incomplete(monkeypatch):
     import pytest
     monkeypatch.setattr(sta, "_read_nodes", lambda path: [])
-    with pytest.raises(ValueError, match="exact STA identity is missing"):
+    with pytest.raises(ValueError, match="The station ID is missing"):
         sta.write_nodes([{
             "id": "66000171", "name": "Naturno, Stazione di Naturno",
             "lat": "46", "lon": "11", "ticket_code": "43",
@@ -121,7 +121,7 @@ def test_write_nodes_fails_closed_when_complete_vinschgau_has_missing_coordinate
         "lat": "" if code == "43" else "46", "lon": "11",
         "ticket_code": code, "source_name": f"Station {code}",
     } for code in sorted(sta.VINSCHGAU_STA_TICKET_CODES, key=int)]
-    with pytest.raises(ValueError, match="provider coordinates are missing"):
+    with pytest.raises(ValueError, match="Coordinates are missing"):
         sta.write_nodes(rows)
 
 
@@ -243,7 +243,7 @@ def test_query_aliases_cover_all_six_bad_live_stopfinder_searches():
 
 def test_exact_id_coordinate_lookup_uses_native_stop_id(monkeypatch):
     seen = {}
-    def fake_download(url, params):
+    def fake_download(url, params, **_kwargs):
         seen.update(params)
         return b"<itdRequest/>"
     monkeypatch.setattr(sta, "_download", fake_download)
@@ -304,3 +304,52 @@ def test_native_sta_nodes_use_official_bilingual_catalogue_name(monkeypatch, tmp
     node = written["nodes-italy-sta.json"][0]
     assert "/" in node["tags"]["name"]
     assert node["tags"]["sta_station_name"].startswith("Localized provider label")
+
+
+def test_sta_default_output_does_not_report_optional_crosswalk_gaps_as_work(monkeypatch, capsys):
+    rows = [{"id": "native", "name": "Native", "ticket_code": "43", "source_name": "Naturno/Naturns"}]
+    review = [{"reason": "no_unique_exact_stopfinder_match", "source_name": "Innsbruck HBF (Austria)",
+               "ticket_code": "33"}]
+    modes = []
+    monkeypatch.setattr(sta, "crawl", lambda *, verbose=False, use_cache=False: (modes.append((verbose, use_cache)) or (rows, review)))
+    monkeypatch.setattr(sta, "write_nodes", lambda rows: (
+        sta.ROOT / "nodes/nodes-italy-sta.json", sta.RFI_NODES, sta.OEBB_NODES,
+        {"sta_nodes": 17, "rfi_augmented": 29, "oebb_augmented": 10, "resolved_but_unmapped": 12},
+    ))
+    assert sta.main([]) == 0
+    out = capsys.readouterr().out
+    assert modes == [(False, False)]
+    assert "17 Vinschgau stations with STA IDs" in out
+    assert "Innsbruck HBF" not in out
+    monkeypatch.setattr(sta, "classify_rows", lambda *args: ([], [], []))
+    assert sta.main(["--verbose"]) == 0
+    assert modes == [(False, False), (True, False)]
+    detail = capsys.readouterr().out
+    assert "DETAILS | italy/sta" in detail
+    assert "Stations were kept when extra IDs were missing." in detail
+    assert "Innsbruck HBF" in detail
+
+
+def test_sta_augmentation_never_truncates_austrian_nodes(monkeypatch, tmp_path):
+    import json
+    source_austria = [_node(f"81{i:05d}", f"Austrian {i}") for i in range(30)]
+    source_austria.append(_node("8100108", "Innsbruck Hbf"))
+    source_rfi = [_node(687, "Bolzano Sud - Bozen Süd")]
+    monkeypatch.setattr(sta, "RFI_NODES", tmp_path / "rfi.json")
+    monkeypatch.setattr(sta, "OEBB_NODES", tmp_path / "austria.json")
+    monkeypatch.setattr(sta, "ROOT", tmp_path)
+    monkeypatch.setattr(sta, "_read_nodes", lambda path: (
+        json.loads(json.dumps(source_austria if path.name == "austria.json" else source_rfi))))
+    written = {}
+    monkeypatch.setattr(sta, "publish_nodes",
+                        lambda path, rows: written.__setitem__(path.name, json.loads(json.dumps(rows))))
+    rows = [{"id": f"sta-{code}", "name": f"Station {code}",
+             "lat": "46", "lon": "11", "ticket_code": code,
+             "source_name": f"Station {code}"}
+            for code in sorted(sta.VINSCHGAU_STA_TICKET_CODES, key=int)]
+    rows.append({"id": "66009999", "name": "Innsbruck", "lat": "47", "lon": "11",
+                 "ticket_code": "33", "source_name": "Innsbruck HBF (Austria)"})
+    _, _, _, stats = sta.write_nodes(rows)
+    assert stats["oebb_augmented"] == 1
+    assert [n["id"] for n in written["austria.json"]] == [n["id"] for n in source_austria]
+    assert written["austria.json"][-1]["tags"]["sta_station_id"] == "66009999"

@@ -2,61 +2,74 @@
 
 ## Current providers
 
-Italy has several railway providers. They share one public generator: `gen/italy.py`.
+Italy has several railway providers. They share one generator command: `python3 -m gen.countries italy`.
 
-| Category | Provider | Nodes | Command |
-| --- | --- | ---: | --- |
-| `italy_rfi` | RFI / ViaggiaTreno | 2,426 | `python3 gen/italy.py generate rfi` |
-| `italy_fn` | Ferrovienord / Trenord | 111 | `python3 gen/italy.py generate fn` |
-| `italy_fse` | Ferrovie del Sud Est / ViaggiaTreno | 92 | `python3 gen/italy.py generate fse` |
-| `italy_tt` | Trentino Trasporti | 38 | `python3 gen/italy.py generate tt` |
-| `italy_fer` | Ferrovie Emilia Romagna | 117 | `python3 gen/italy.py generate fer` |
-| `italy_eav` | Ente Autonomo Volturno | 119 | `python3 gen/italy.py generate eav` |
-| `italy_sta` | südtirolmobil / STA | 17 | `python3 gen/italy.py generate sta --write-nodes` |
+| Category | Provider | Command |
+| --- | --- | --- |
+| `italy_rfi` | RFI / ViaggiaTreno | `python3 -m gen.countries italy generate rfi` |
+| `italy_fn` | Ferrovienord / Trenord | `python3 -m gen.countries italy generate fn` |
+| `italy_fse` | Ferrovie del Sud Est / ViaggiaTreno | `python3 -m gen.countries italy generate fse` |
+| `italy_tt` | Trentino Trasporti | `python3 -m gen.countries italy generate tt` |
+| `italy_fer` | Ferrovie Emilia Romagna | `python3 -m gen.countries italy generate fer` |
+| `italy_eav` | Ente Autonomo Volturno | `python3 -m gen.countries italy generate eav` |
+| `italy_sta` | südtirolmobil / STA | `python3 -m gen.countries italy generate sta` |
 
 ## Generate and review
 
 Generate one provider or all providers:
 
 ```bash
-python3 gen/italy.py generate rfi
-python3 gen/italy.py generate all
+python3 -m gen.countries italy generate rfi
+python3 -m gen.countries italy generate all
+python3 -m gen.countries italy generate all --cache
 ```
 
 Review saved changes without downloading again:
 
 ```bash
-python3 gen/italy.py review all
-python3 gen/italy.py review rfi
+python3 -m gen.countries italy review all
+python3 -m gen.countries italy review rfi
 ```
 
-Check conservative rebuilds without replacing `nodes/`:
+Check a rebuild without changing `nodes/`:
 
 ```bash
-python3 gen/italy.py rebuild all --dry-run
+python3 -m gen.countries italy rebuild all --dry-run
 ```
 
-Set `TRAINGUESSR_SKIP_REVIEW=1` when an automated run must skip the interactive review UI.
+In a terminal, generation opens a short review when new decisions are needed.
+Without a terminal, it keeps the current station file, writes a report under
+`cache/`, and exits with a clear message. Review later with the `review`
+command above, then generate again.
+For FSE, enter the exact ViaggiaTreno ID when the source name has no ID; an
+OpenStreetMap ID is never used as the provider ID.
 
-Most Italian generators compare the current provider catalogue with reviewed station records. New or changed provider records are not silently accepted. Native `source_name`
-(or an exclusion's `expected_name`) is guarded separately from the reviewed
-display name, including French-border RFI spellings. Review decisions live mainly in `../overrides/exclusions/italy.json`; guarded coordinate fixes are in `../overrides/italy-coordinate-corrections.json`.
+The current station file is the starting point for these providers. The generators check downloaded records against it. New IDs and changed names wait for review; a saved source file can be used with `--cache`.
+
+STA checks its Vinschgau station list before writing. `--audit-only` writes a report without changing the station file. `--verbose` shows each StopFinder match and any optional ID matches. A missing optional ID does not remove a station.
+
+Italian station exclusions, reasons, and source links are in `../overrides/exclusions/italy.csv`. Its `evidence_ref` column points to the full station records in `../gen/bootstrap/evidence/italy-exclusion-station-evidence.json`. Review choices are in `../overrides/italy-decisions.csv`. Coordinate fixes are in `../overrides/italy-coordinate-corrections.csv`. UIC station mappings are in `../overrides/italy-uic-crosswalks.csv`; their source notes are in `../gen/bootstrap/evidence/italy-uic-crosswalk-provenance.json`.
+
+The RFI report lists new, changed, and missing source records. If an old station is missing from a download, it stays in the station file until a reviewer chooses what to do. Ponte San Cono (RFI ID 2221) is an existing reviewed exclusion because it is absent from the current RFI station list. A changed name such as GIACHERY PES needs a review.
 
 ## Important provider notes
 
-- **RFI:** uses reviewed RFI station records. Exact ViaggiaTreno `Sxxxxx` IDs are reviewed separately; they are never derived from the RFI ID, route order, names, or nearby stations.
-- **STA:** the default generation is non-destructive. Use `--write-nodes` only after review.
+- **RFI:** uses reviewed RFI station records. ViaggiaTreno `Sxxxxx` IDs are checked separately. They are never worked out from an RFI ID, route order, station name, or nearby station.
+- **STA:** keeps the provider's Vinschgau station records and coordinates.
+  `--audit-only` writes a report without publishing. `--verbose` shows extra
+  IDs found through StopFinder. A station stays in the file when an extra ID
+  is missing. Never invent an ID from a station name or location.
 - **TT:** keeps legacy provider IDs, and its old live endpoint is no longer relied on by this data build.
 - **FSE:** uses ViaggiaTreno IDs and reviewed physical station data. Shared RFI-managed stations stay in the RFI dataset.
-- **FER, EAV, FN:** use reviewed provider records and fail for identity changes that need review.
+- **FER, EAV, FN:** use reviewed provider records and stop when a station ID or name needs review.
 
 The RFI/ViaggiaTreno review tool is:
 
 ```bash
-PYTHONPATH=gen python3 gen/reconcile/italy_rfi_viaggiatreno.py
+python3 -m gen.bootstrap italy-viaggiatreno
 ```
 
-Temporary deferrals are stored in `../overrides/italy-rfi-viaggiatreno-deferred.json`.
+Temporary research deferrals are stored in `../overrides/italy-rfi-viaggiatreno-deferred.json`. This tool is for initial research; everyday station generation uses the commands above.
 
 ## Other providers
 
@@ -65,3 +78,11 @@ Several smaller Italian railways still need separate providers. Do not assign th
 ## Terms
 
 Many Italian live sources are consumer or undocumented endpoints. Public use may need written permission. Keep OSM/ODbL obligations where used. See `../ACKNOWLEDGMENTS.md`.
+
+FN keeps its reviewed stations. New Trenord entries are shown for review only when their names match OSM railway stations owned by Ferrovienord (`operator=Ferrovienord` or `FN`, or `operator:wikidata=Q3736799`). This is a candidate filter, not proof of a provider ID. Unrelated entries are left out. OSM never replaces Trenord IDs or removes reviewed stations. `--cache` also needs the saved `cache/italy/fn/raw/ferrovienord-osm.json` source.
+
+FSE reports real pending records in `cache/italy/fse/reports/unresolved.json` and already-excluded records in `excluded.json`. The summary prints both counts. Potenza S. Maria is FAL, Maglie Via Otranto is a bus stop, and the Sorbolo record is handled by FER; these are not forgotten FSE stations.
+
+TT checks native station IDs against TrainView. GTFS labels are a separate comparison: a different GTFS label does not mean a native station ID is missing. The provider uses labels such as Gardolo-Ferrovia and Cles Ferrovia in GTFS. Existing reviewed display names are kept.
+
+Missing RFI-to-ViaggiaTreno mappings are recorded in `overrides/italy-rfi-viaggiatreno-deferred.json`. These are mapping limits, not exclusions from the RFI station dataset. Some have no passenger service; others lacked exact VT evidence when checked. Roma Nomentana LM is freight-only, so no passenger VT ID is expected.
