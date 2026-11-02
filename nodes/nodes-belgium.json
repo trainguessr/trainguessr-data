@@ -88,6 +88,7 @@
 {"type":"node","id":"BE.NMBS.008884319","lat":50.436388,"lon":3.797025,"tags":{"name":"Boussu"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008821725","lat":51.165764,"lon":4.746511,"tags":{"name":"Bouwel"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008881463","lat":50.474457,"lon":4.126345,"tags":{"name":"Bracquegnies"},"category":"belgium_all"}
+{"type":"node","id":"BE.NMBS.8814217","lat":50.669416,"lon":4.373397,"tags":{"name":"Braine-Alliance"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008814258","lat":50.684778,"lon":4.375526,"tags":{"name":"Braine-l'Alleud"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008883006","lat":50.605079,"lon":4.137662,"tags":{"name":"Braine-le-Comte"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008843901","lat":50.643967,"lon":5.611057,"tags":{"name":"Bressoux"},"category":"belgium_all"}

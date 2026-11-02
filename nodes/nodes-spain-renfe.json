@@ -286,6 +286,7 @@
 {"type":"node","id":"05655","lat":43.4160163,"lon":-3.8411016,"tags":{"name":"Maliaño Vidriera","stop_ids":["05655"],"renfe_stop_id":"05655","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05657","lat":43.4036508,"lon":-3.8206798,"tags":{"name":"Astillero","stop_ids":["05657"],"renfe_stop_id":"05657","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05658","lat":43.3973661,"lon":-3.8149679,"tags":{"name":"La Cantábrica","stop_ids":["05658"],"renfe_stop_id":"05658","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"05659","lat":43.393766,"lon":-3.803854,"tags":{"name":"San Salvador","stop_ids":["05659"],"renfe_stop_id":"05659","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"05661","lat":43.4008996,"lon":-3.7666376,"tags":{"name":"Heras","stop_ids":["05661"],"renfe_stop_id":"05661","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05663","lat":43.3994776,"lon":-3.7383974,"tags":{"name":"Orejo","stop_ids":["05663"],"renfe_stop_id":"05663","feeds":["cercanias","ld"]},"category":"spain_renfe"}
 {"type":"node","id":"05665","lat":43.387247,"lon":-3.7313834,"tags":{"name":"Solares","stop_ids":["05665"],"renfe_stop_id":"05665","feeds":["cercanias"]},"category":"spain_renfe"}
@@ -489,6 +490,8 @@
 {"type":"node","id":"12012","lat":40.80097,"lon":-4.203504,"tags":{"name":"Otero-Herreros","stop_ids":["12012"],"renfe_stop_id":"12012","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12013","lat":40.832771,"lon":-4.168094,"tags":{"name":"Ortigosa del Monte","stop_ids":["12013"],"renfe_stop_id":"12013","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"12014","lat":40.856673,"lon":-4.141103,"tags":{"name":"Navas de Riofrío-La Losa","stop_ids":["12014"],"renfe_stop_id":"12014","feeds":["ld"]},"category":"spain_renfe"}
+{"type":"node","id":"12020","lat":40.7844678,"lon":-4.0047744,"tags":{"name":"Puerto de Navacerrada","stop_ids":["12020"],"renfe_stop_id":"12020","feeds":["cercanias"]},"category":"spain_renfe"}
+{"type":"node","id":"12023","lat":40.8223419,"lon":-3.9644961,"tags":{"name":"Los Cotos","stop_ids":["12023"],"renfe_stop_id":"12023","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"12100","lat":40.93403,"lon":-4.11365,"tags":{"name":"Segovia","stop_ids":["12100"],"renfe_stop_id":"12100","feeds":["ld"]},"category":"spain_renfe"}
 {"type":"node","id":"13100","lat":42.9946191,"lon":-3.0158139,"tags":{"name":"Orduña","stop_ids":["13100"],"renfe_stop_id":"13100","feeds":["cercanias"]},"category":"spain_renfe"}
 {"type":"node","id":"13101","lat":43.049051,"lon":-3.0020176,"tags":{"name":"Amurrio","stop_ids":["13101"],"renfe_stop_id":"13101","feeds":["cercanias"]},"category":"spain_renfe"}
