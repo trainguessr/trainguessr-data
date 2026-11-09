@@ -39,7 +39,13 @@
       "service_date": "2026-11-02",
       "occurrence": "RJ 83 from the exact Trento-board acquisition",
       "record_area": "common.locL",
-      "columns": ["extId", "name", "type", "gidL", "crd"],
+      "columns": [
+        "extId",
+        "name",
+        "type",
+        "gidL",
+        "crd"
+      ],
       "selected_record_granularity": "type S station-stop records. Each accepted UIC alias is a literal U× value in the same record's gidL; platform and parent records are not inferred.",
       "coordinate_encoding": "crd.x is longitude and crd.y is latitude in integer microdegrees; recorded coordinates are normalized from those exact values."
     },
@@ -78,12 +84,29 @@
     "rj83_occurrence": {
       "source": "Exact RFI/ViaggiaTreno RJ 83 occurrence paired to the same-date ÖBB HAFAS RJ 83 journey",
       "service_date": "2026-11-02",
-      "rfi_station_ids": ["S02038", "S02044", "S02430", "S05043"],
+      "rfi_station_ids": [
+        "S02038",
+        "S02044",
+        "S02430",
+        "S05043"
+      ],
       "hafas_records": [
-        {"extId": "8300101", "gidL": "U×8302038"},
-        {"extId": "8300113", "gidL": "U×8302044"},
-        {"extId": "8300120", "gidL": "U×8302061"},
-        {"extId": "8300217", "gidL": "U×8305043"}
+        {
+          "extId": "8300101",
+          "gidL": "U×8302038"
+        },
+        {
+          "extId": "8300113",
+          "gidL": "U×8302044"
+        },
+        {
+          "extId": "8300120",
+          "gidL": "U×8302061"
+        },
+        {
+          "extId": "8300217",
+          "gidL": "U×8305043"
+        }
       ],
       "granularity": "stop",
       "fixtures": [
@@ -91,6 +114,64 @@
         "../../../trainguessr/tests/fixtures/oebb_rj83_20261102_details.json"
       ],
       "decision": "Finite reviewed STOP identities only; no platform equivalence, suffix arithmetic, automatic name matching, or distance threshold. The Bologna RFI/UIC bridge is explicitly third-party and uncited at the individual-property level; it is corroborated by the official provider records, the distinct Bologna Centrale AV record, and the exact dated occurrence."
+    },
+    "rfi_sbb_ec46_20261108": {
+      "publisher": "RFI station register; SBB Formation; Wikidata identifier bridge",
+      "service_date": "2026-11-08",
+      "native_evidence": "corpus/native/rfi-station-register-20261108 and station-register-sbb-italy-20261108; EC46 production capture",
+      "identity_rule": "Official RFI page iframe placeId plus reviewed RFI catalogue VT ID; exact page identifier P12206 and UIC P722 on the same entity; literal UIC in native SBB Formation. No name/coordinate matching or UIC suffix arithmetic.",
+      "rows": [
+        {
+          "rfi_place_id": "3009",
+          "vt_id": "S02593",
+          "sbb_uic": "8302593",
+          "entity": "Q801567",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/venezia-s-lucia.html"
+        },
+        {
+          "rfi_place_id": "3002",
+          "vt_id": "S02589",
+          "sbb_uic": "8302589",
+          "entity": "Q520844",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/venezia-mestre.html"
+        },
+        {
+          "rfi_place_id": "2000",
+          "vt_id": "S02581",
+          "sbb_uic": "8302581",
+          "entity": "Q1150874",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/padova.html"
+        },
+        {
+          "rfi_place_id": "3043",
+          "vt_id": "S02446",
+          "sbb_uic": "8302446",
+          "entity": "Q3971299",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/vicenza.html"
+        },
+        {
+          "rfi_place_id": "3025",
+          "vt_id": "S02430",
+          "sbb_uic": "8302430",
+          "entity": "Q908640",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/verona-porta-nuova.html"
+        },
+        {
+          "rfi_place_id": "2099",
+          "vt_id": "S02088",
+          "sbb_uic": "8302088",
+          "entity": "Q3970454",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/peschiera-del-garda.html"
+        },
+        {
+          "rfi_place_id": "734",
+          "vt_id": "S01717",
+          "sbb_uic": "8301717",
+          "entity": "Q727319",
+          "rfi_station_page": "https://www.rfi.it/it/stazioni/brescia.html"
+        }
+      ],
+      "limitation": "Wikidata individual claims may be uncited; the finite mapping is independently corroborated by exact official RFI page identifiers, the retained same-date native route and existing VT catalogue. This is a manually reviewed mapping, never an automatic entity/name matcher."
     }
   }
 }

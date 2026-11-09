@@ -63,6 +63,10 @@ def rebuild(operator: str, *, dry_run: bool = False) -> tuple[list[dict], list[d
     ]
     apply_reviewed_coordinates(operator, output, audit, coordinate_overrides)
     apply_station_uic_crosswalks(operator, output, load_station_uic_crosswalks())
+    if operator == "rfi":
+        from countries.italy.reviewed.station_identifiers import apply_station_identifiers, load_station_identifiers
+        identifiers, revision = load_station_identifiers()
+        apply_station_identifiers(output, identifiers, revision)
     write_reviewed_output(operator, seed_path, output, audit, dry_run=dry_run)
     return output, audit
 

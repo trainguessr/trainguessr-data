@@ -98,3 +98,8 @@ These physical stops still lack a working SCOTTY identity: Kleinsierning (`at:43
 The four real railway stops are listed in `../overrides/austria-unmapped-stations.csv`, with MVO IFOPT IDs, coordinates, operator links and old rejected numbers. This list is read during generation, so these records remain in the report even without qualifying current platforms. They are not exclusions or valid ÖBB mappings. Reichenau Lokalbahn, Kurhaus and Haaberg belong to ÖGLB's Höllentalbahn; Haag-Kleinsierning belongs to Eisenbahnclub Mh.6's heritage line. Their operators publish timetables, but these sources do not supply a working SCOTTY station ID. Using those timetables in the application requires an adapter for that source, not a made-up ÖBB ID.
 
 Austria refreshes preserve existing `sta_station_id` and `sta_station_name` fields when the ÖBB ID and IFOPT still match. A changed IFOPT stops publication instead of copying a mapping to another station. These STA fields belong to the STA generator; GeoNetz/MVO must not erase them.
+
+Innsbruck Hbf has STA stop `66007022`: the official STA EFA arrival board
+published `gid=at:47:1187` for that stop on 2026-11-05, exactly matching
+ÖBB EVA `8100108`'s IFOPT. This reviewed match supplements the existing
+station; it does not change the station identity or infer a crosswalk by name.

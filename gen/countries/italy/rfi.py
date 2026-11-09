@@ -95,6 +95,20 @@ def main(argv: list[str] | None = None) -> int:
             previous_source = {row["id"]: row["name"] for row in csv.DictReader(handle)}
     write_catalog_diff(rows, previous_source)
     write_catalog("rfi", rows, ["id", "name"])
+    # This source is used only through exact reviewed ViaggiaTreno IDs.
+    from countries.italy.reviewed.station_identifiers import SOURCE_PATH
+    import hashlib
+    body = download("https://raw.githubusercontent.com/trainline-eu/stations/master/stations.csv",
+                    SOURCE_PATH, use_cache=args.cache)
+    metadata = SOURCE_PATH.with_suffix(".source.json")
+    if not args.cache:
+        # Content addressing makes the exact source reproducible even when the
+        # upstream branch changes; generation never fetches during a request.
+        metadata.write_text(json.dumps({
+            "url": "https://github.com/trainline-eu/stations",
+            "revision": "sha256-" + hashlib.sha256(body).hexdigest(),
+            "sha256": hashlib.sha256(body).hexdigest(), "license": "ODbL-1.0",
+        }, indent=2) + "\n")
     return finish("rfi")
 
 

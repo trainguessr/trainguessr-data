@@ -86,3 +86,30 @@ FSE reports real pending records in `cache/italy/fse/reports/unresolved.json` an
 TT checks native station IDs against TrainView. GTFS labels are a separate comparison: a different GTFS label does not mean a native station ID is missing. The provider uses labels such as Gardolo-Ferrovia and Cles Ferrovia in GTFS. Existing reviewed display names are kept.
 
 Missing RFI-to-ViaggiaTreno mappings are recorded in `overrides/italy-rfi-viaggiatreno-deferred.json`. These are mapping limits, not exclusions from the RFI station dataset. Some have no passenger service; others lacked exact VT evidence when checked. Roma Nomentana LM is freight-only, so no passenger VT ID is expected.
+
+
+The shared train service also has seven finite reviewed RFI/SBB stop pairs for
+the EC46 corridor. Their independent RFI page/place IDs, station-register UICs
+and source limitations are recorded in the existing
+`gen/bootstrap/evidence/italy-uic-crosswalk-provenance.json` review record.
+They do not rewrite generated UIC tags: Verona's SBB and older HAFAS aliases
+remain distinct source identifiers. Runtime joins use exact reviewed IDs, not
+station spelling or UIC suffix arithmetic.
+
+## Exact cross-provider station identifiers
+
+RFI generation also downloads Trainline EU's `stations.csv` into
+`cache/italy/rfi/raw/trainline-stations.csv`, with a checksum/revision sidecar.
+`--cache` reuses that exact snapshot. Rebuilds apply it when present; absent raw
+evidence leaves the reviewed seed metadata intact. Runtime never downloads it.
+Only an existing reviewed `viaggiatreno_station_id` can select a unique Italian
+non-city/non-alias record. Duplicate VT IDs, reused foreign identifiers and
+invalid IDs are excluded. Names/coordinates do not select records.
+
+Generated tags preserve the explicit `oebb_station_id`, `db_station_id`,
+`trainline_uic_ref`, `trainline_station_id` and `station_identity_source`. Existing
+reviewed `uic_ref` aliases stay intact; a missing UIC can be filled from the
+explicit source field. Changed explicit foreign IDs require review. The train
+service uses these catalogue IDs for dated occurrence joins, keeping station
+identity separate from provider-local times/platforms and from train numbers.
+Source: https://github.com/trainline-eu/stations, ODbL1.0.

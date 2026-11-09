@@ -702417,5 +702417,46 @@
         }
       }
     }
-  ]
+  ],
+  "france_germany_stop_pairs_20261108": {
+    "source": "https://query.wikidata.org/sparql",
+    "properties": [
+      "P954",
+      "P722"
+    ],
+    "raw_capture": "corpus-v2-20261106/native/station-register-frde-20261108",
+    "review": "Independent identifier claims corroborated by exact retained SNCF StopPoint and DB route records. Seven-digit P722 identifiers identify the UIC base; explicit full SNCF IDs below were reviewed, not generated at runtime. No automatic name/geographic matcher. Discovery remains at Offenburg; these pairs reconcile already acquired calls.",
+    "pairs": [
+      {
+        "entity": "Q3095657",
+        "db_eva": "8000596",
+        "sncf_stop_uic": "80142893"
+      },
+      {
+        "entity": "Q3096868",
+        "db_eva": "8003609",
+        "sncf_stop_uic": "80142901"
+      },
+      {
+        "entity": "Q3096697",
+        "db_eva": "8003408",
+        "sncf_stop_uic": "80142919"
+      },
+      {
+        "entity": "Q669924",
+        "db_eva": "8003218",
+        "sncf_stop_uic": "80142927"
+      },
+      {
+        "entity": "Q2798057",
+        "db_eva": "8733852",
+        "sncf_stop_uic": "87338525"
+      },
+      {
+        "entity": "Q801473",
+        "db_eva": "8700023",
+        "sncf_stop_uic": "87212027"
+      }
+    ]
+  }
 }

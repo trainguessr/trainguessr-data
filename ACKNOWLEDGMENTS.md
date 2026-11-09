@@ -116,3 +116,11 @@ Trainline and derived UK station data require attribution and ODbL share-alike.
 - Live trip updates: official FGC GTFS-Realtime data.
 - Attribution: Ferrocarrils de la Generalitat de Catalunya (FGC), CC BY 4.0.
 - Source: <https://dadesobertes.fgc.cat/>.
+
+## Italian station identifier links
+
+- Exact ViaggiaTreno/UIC/ÖBB/DB station links: Trainline EU stations dataset and
+  contributors, https://github.com/trainline-eu/stations, ODbL1.0.
+- Links enrich existing reviewed RFI stations; they do not supply RFI place IDs,
+  station names/coordinates or railway realtime facts. Preserve attribution and
+  the applicable ODbL obligations on redistribution.

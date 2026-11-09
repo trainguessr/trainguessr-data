@@ -31,7 +31,7 @@
       "publication_status": "terms_review_required"
     },
     "italy_rfi": {
-      "source_lineage": "RFI station selector; reviewed coordinates",
+      "source_lineage": "RFI station selector; reviewed coordinates; exact Trainline EU provider station identifiers (ODbL1.0)",
       "publication_status": "terms_review_required"
     },
     "italy_fn": {
