@@ -16,7 +16,7 @@ Use `--cache` to build from the saved station CSV without downloading.
 
 The current category covers the national heavy-rail station namespace. Metro and tram systems are separate.
 
-Reviewed exclusions are in `../overrides/exclusions/netherlands.json`.
+Reviewed exclusions are in `trainguessr-data/overrides/exclusions/netherlands.json`.
 
 ## Other providers
 

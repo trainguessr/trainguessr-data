@@ -16,7 +16,7 @@ python3 -m gen.countries germany
 
 Use `--cache` to build from the saved `db-stations` files without downloading.
 
-Reviewed board groups and mappings are in `../overrides/germany-board-groups.json` and `../overrides/germany-station-mappings.json`.
+Reviewed board groups and mappings are in `trainguessr-data/overrides/germany-board-groups.json` and `trainguessr-data/overrides/germany-station-mappings.json`.
 
 ## Audit
 
@@ -24,7 +24,7 @@ Reviewed board groups and mappings are in `../overrides/germany-board-groups.jso
 python3 -m gen.bootstrap germany --help
 ```
 
-The one-time research report is written under `cache/germany/`. Reviewed additions are in `../overrides/germany-stations.csv`. Keep DB IDs from DB sources; do not guess them from names, maps, or coordinates.
+The one-time research report is written under `cache/germany/`. Reviewed additions are in `trainguessr-data/overrides/germany-stations.csv`. Keep DB IDs from DB sources; do not guess them from names, maps, or coordinates.
 
 U-Bahn, tram, and separate heritage/private systems are outside this heavy-rail category unless they have a verified DB identity.
 

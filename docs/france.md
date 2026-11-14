@@ -23,7 +23,7 @@ The generator keeps SNCF UIC identities. Multi-UIC stations, border supplements,
 python3 -m gen.bootstrap france --help
 ```
 
-The one-time research report is written under `cache/france/`. Border and supplemental records are under `../overrides/france/`. Reviewed exclusions are in `../overrides/exclusions/france.json`.
+The one-time research report is written under `cache/france/`. Border and supplemental records are under `trainguessr-data/overrides/france/`. Reviewed exclusions are in `trainguessr-data/overrides/exclusions/france.json`.
 
 Some Corsican, RATP/RER, Monaco, heritage, and other separately operated systems need their own provider or mode instead of being forced into `france_sncf`.
 

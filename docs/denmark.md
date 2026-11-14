@@ -27,7 +27,7 @@ check needs `REJSEPLANEN_API_KEY`.
 
 The dataset includes ordinary rail, S-tog, and the railway-like Letbane services already supported by the provider. Metro is kept outside this category for now.
 
-Reviewed exclusions are in `../overrides/exclusions/denmark.json`.
+Reviewed exclusions are in `trainguessr-data/overrides/exclusions/denmark.json`.
 
 ## Other providers
 

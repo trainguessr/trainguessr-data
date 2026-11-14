@@ -1,25 +1,28 @@
 # Railway station datasets
 
-This repository builds ready-to-use railway station datasets for several European countries and networks.
+Ready-to-use railway station lists for many European countries.
 
-The generated files are in [`nodes/`](nodes/). Each file is newline-delimited JSON: one station per line. A station normally has:
+The files are in [`nodes/`](nodes). Each line is one station, in JSON:
 
 ```json
 {"type":"node","id":"...","lat":0.0,"lon":0.0,"tags":{"name":"..."},"category":"..."}
 ```
 
-`id` is the station ID used by the source or timetable provider. `category` is the provider namespace. Extra source fields are kept in `tags` when useful.
+- `id` is the station ID used by the railway or timetable provider.
+- `category` says which provider the station belongs to.
+- `tags` holds the name and other useful source fields.
 
-You can use the files directly.
-## Quick start
+You can use the files as they are.
 
-Run commands from this repository root.
+## Build a dataset
+
+Run commands from this folder.
 
 ```bash
 python3 -m gen.countries <country>
 ```
 
-Italy uses one command for several providers:
+Italy has several providers, so it has its own commands:
 
 ```bash
 python3 -m gen.countries italy generate all
@@ -27,43 +30,41 @@ python3 -m gen.countries italy generate rfi
 python3 -m gen.countries italy review all
 ```
 
-See [`docs/README.md`](docs/README.md) for the full country list and source notes.
+Add `--cache` to build from files you already downloaded.
 
-## Repository layout
+The full country list is in the [dataset guide](docs/README.md).
 
-- `nodes/` — generated station datasets.
-- `gen/countries/` — everyday country generators.
-- `gen/common/` — shared download, output, and validation helpers.
-- `gen/maintenance/` — dataset checks and file-age report.
-- `gen/bootstrap/` — one-time research and reconstruction tools.
-- `overrides/` — reviewed exclusions, renames, aliases, coordinates, and provider mappings.
-- `docs/` — short country guides.
-- `cache/` — downloaded source files, generated reports, and other disposable working data.
-- `tests/` — data and generator tests.
+## Safe by design
 
-## Safe generation
+A generator never breaks a good file:
 
-Generators check the new file before replacing a station file. They stop if it is empty or has an unexpected large drop. An unchanged file is not rewritten. All generators keep the existing station order; new stations are appended in source-ID order. Upstream row or JSON-key ordering alone does not rewrite a file. Italian generators stop for a review when a station ID, name, or coordinate needs a decision; see the Italy guide.
+- It stops if the new file is empty or suddenly much smaller.
+- It does not rewrite a file that did not change.
+- Old stations keep their order. New stations go at the end.
+- Italian generators stop and ask you when an ID, name or position changes.
 
-Use `--cache` to build from saved source files without downloading. The flag has the same meaning for every country generator. Some providers also accept local input files; see the country guide.
+## Folders
 
-Reviewed decisions go into `overrides/`. Generated reports and downloaded files instead finish in the ignored `cache/` directory. One-time research evidence and tools can be found under `gen/bootstrap/`. If a provider reuses an ID or changes a station name, generation should ask for a review before using the saved decision.
+- `nodes/` — the station files.
+- `gen/countries/` — one generator per country.
+- `gen/common/` — shared helpers.
+- `gen/maintenance/` — checks and a freshness report.
+- `gen/bootstrap/` — one-time research tools.
+- `overrides/` — decisions made by hand (renames, exclusions, fixes).
+- `docs/` — dataset guide, country guides and source rights.
+- `cache/` — downloads and reports. Safe to delete.
+- `tests/` — tests.
 
-## Validation
+## Check your work
 
 ```bash
+python3 -m pip install -r requirements-dev.txt   # once, for pytest
 python3 gen/maintenance/validate_all.py
-python3 -m pytest -q  # requires pytest installed in the active Python environment
+python3 -m pytest -q
 git diff --check
 ```
 
-The runtime `requirements.txt` intentionally does not include test tooling.
-If the test command reports `No module named pytest`, activate the generator
-virtual environment and install the development dependencies:
-`python3 -m pip install -r requirements-dev.txt` (or `uv pip install -r
-requirements-dev.txt` when using uv).
-
-To see which datasets may need a refresh:
+To see which datasets are old:
 
 ```bash
 python3 gen/maintenance/freshness.py
@@ -71,8 +72,10 @@ python3 gen/maintenance/freshness.py
 
 ## Sources and licences
 
-See the [ODbL notice](LICENSE), [source attribution](ACKNOWLEDGMENTS.md),
-[per-dataset rights status](docs/source-terms.json), and
-[publication checklist](docs/publication.md). Not every upstream source is
-cleared for arbitrary redistribution; generation success is not a rights grant.
-Country-specific details are in [`docs/`](docs/).
+The datasets use the [ODbL licence](LICENSE). Sources are listed in
+[ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md), and the rights of each dataset are in
+[`docs/source-terms.json`](docs/source-terms.json).
+Before publishing, follow the [publication checklist](docs/publication.md).
+
+Careful: not every source allows free sharing. A file that builds is not a file
+you may publish.

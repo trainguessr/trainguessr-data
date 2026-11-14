@@ -1,12 +1,12 @@
 # Dataset guide
 
-The files in `nodes/` are public railway station datasets built from provider and open-data sources.
+Every station keeps the ID given by its railway or timetable provider. Maps like
+OpenStreetMap can help check a place, but they never replace a real ID with a
+guessed one.
 
-Each station keeps the ID used by its source or timetable provider. Geographic sources such as OpenStreetMap can help check a place, but they do not replace a provider ID with a guessed one.
+## Countries
 
-## Countries and datasets
-
-| Country | Categories | Generator |
+| Country | Categories | Command |
 | --- | --- | --- |
 | [Austria](austria.md) | `austria_oebb` | `python3 -m gen.countries austria` |
 | [Belgium](belgium.md) | `belgium_all` | `python3 -m gen.countries belgium` |
@@ -22,24 +22,23 @@ Each station keeps the ID used by its source or timetable provider. Geographic s
 | [Switzerland](switzerland.md) | `switzerland_all` | `python3 -m gen.countries switzerland` |
 | [United Kingdom](uk.md) | `uk_national_rail` | `python3 -m gen.countries uk` |
 
-## Updating a dataset
+## Update a dataset
 
-1. Run the country generator from the repository root. A successful run exits
-   zero. If the station file is already the same, it is left alone.
-2. If the Italian generator finds a change that needs a decision, it asks in an
-   interactive terminal. Without a terminal, it keeps the current station file,
-   saves a report under `cache/`, and exits with an error. Review later with
+1. Run the command for the country. If nothing changed, the file stays the same.
+2. Italy may find a change that needs a decision. In a terminal, it asks you.
+   Without a terminal, it keeps the old file, saves a report in `cache/` and
+   stops with an error. Answer later with
    `python3 -m gen.countries italy review <provider>`.
-3. Validate with the root README commands, then check actual Git changes.
-   A zero exit status is not proof every source carries every passenger stop.
+3. Run the checks from the [main README](../README.md) and look at the Git diff.
+   A run without errors does not prove that every stop is there.
 
-`cache/` contains disposable downloads and reports. `overrides/` contains reviewed decisions that change output. One-time research tools are in `gen/bootstrap/`.
+## Rules
 
-## Review rules
+- Never guess an ID from a name, a position, the route or a nearby ID.
+- Save the ID and the name with every decision, so later downloads can be checked.
+- If a source changes its format, stop with a clear error. Do not skip rows.
+- Reports go in `cache/`. Decisions go in `overrides/`.
 
-- Do not guess a provider ID from a station name, coordinates, route order, or a nearby ID.
-- Keep the provider ID and station name with each saved decision so later downloads can be checked.
-- If a provider changes its file format, stop with a clear error instead of skipping records.
-- Keep generated reports in `cache/`; keep reviewed decisions in `overrides/`.
+Before you publish data, read the [publication checklist](publication.md).
 
-Italy has several providers behind `python3 -m gen.countries italy`; see [`italy.md`](italy.md). One-time research tools are available through `python3 -m gen.bootstrap --help`.
+One-time research tools: `python3 -m gen.bootstrap --help`.

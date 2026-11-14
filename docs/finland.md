@@ -29,7 +29,7 @@ Additional station checks are separate from normal generation:
 python3 -m gen.bootstrap finland --help
 ```
 
-The one-time research report is written under `cache/finland/`. The current station file is the reviewed station list. The small `../overrides/finland-stations.csv` file checks saved IDs and names.
+The one-time research report is written under `cache/finland/`. The current station file is the reviewed station list. The small `trainguessr-data/overrides/finland-stations.csv` file checks saved IDs and names.
 
 Helsinki metro and tram are not Fintraffic railway identities and need a separate provider.
 

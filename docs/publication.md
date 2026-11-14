@@ -1,7 +1,7 @@
 # Publishing TrainGuessr station data
 
 **Do not equate successful generation with redistribution permission.** See
-[`source-terms.json`](source-terms.json) for a conservative per-category source
+[`source-terms.json`](../docs/source-terms.json) for a conservative per-category source
 lineage and status; consult [`ACKNOWLEDGMENTS.md`](../ACKNOWLEDGMENTS.md) and
 upstream licences before public distribution. An `open_license_reported` entry
 is not a legal clearance certificate. Generated runtime indexes under `cache/`

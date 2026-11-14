@@ -56,11 +56,11 @@ check whether each record is a separate railway station and whether
 SCOTTY supplies its station ID. Save the checked mapping
 (`mvo_resolutions`), existing-node alias (`mvo_aliases`), or deliberate scope
 exclusion (`excluded` with operator `mvo`) in
-`../overrides/exclusions/austria.json`; then regenerate. Do not invent an
+`trainguessr-data/overrides/exclusions/austria.json`; then regenerate. Do not invent an
 EVA ID or delete candidates merely because their lookup failed. The `cache/austria/migration-audit.json` file is a saved report.
 
 Known broader coverage gaps are in
-[`review/austria-dataset-coverage.json`](review/austria-dataset-coverage.json).
+[`review/austria-dataset-coverage.json`](../docs/review/austria-dataset-coverage.json).
 
 ## Other providers
 
@@ -95,7 +95,7 @@ These physical stops still lack a working SCOTTY identity: Kleinsierning (`at:43
 
 `--cache` replays actual successful SCOTTY checks saved in the existing `cache/austria/scotty-resolutions.json`. A platform ID or a reviewed name alone is not a successful check. Old caches without this evidence need one online run. If checks are missing, offline generation writes its report but leaves the station file unchanged. Cached journey counts are not presented as current service.
 
-The four real railway stops are listed in `../overrides/austria-unmapped-stations.csv`, with MVO IFOPT IDs, coordinates, operator links and old rejected numbers. This list is read during generation, so these records remain in the report even without qualifying current platforms. They are not exclusions or valid ÖBB mappings. Reichenau Lokalbahn, Kurhaus and Haaberg belong to ÖGLB's Höllentalbahn; Haag-Kleinsierning belongs to Eisenbahnclub Mh.6's heritage line. Their operators publish timetables, but these sources do not supply a working SCOTTY station ID. Using those timetables in the application requires an adapter for that source, not a made-up ÖBB ID.
+The four real railway stops are listed in `trainguessr-data/overrides/austria-unmapped-stations.csv`, with MVO IFOPT IDs, coordinates, operator links and old rejected numbers. This list is read during generation, so these records remain in the report even without qualifying current platforms. They are not exclusions or valid ÖBB mappings. Reichenau Lokalbahn, Kurhaus and Haaberg belong to ÖGLB's Höllentalbahn; Haag-Kleinsierning belongs to Eisenbahnclub Mh.6's heritage line. Their operators publish timetables, but these sources do not supply a working SCOTTY station ID. Using those timetables in the application requires an adapter for that source, not a made-up ÖBB ID.
 
 Austria refreshes preserve existing `sta_station_id` and `sta_station_name` fields when the ÖBB ID and IFOPT still match. A changed IFOPT stops publication instead of copying a mapping to another station. These STA fields belong to the STA generator; GeoNetz/MVO must not erase them.
 

@@ -18,7 +18,7 @@ Use `--cache` to build from the saved station JSON without downloading.
 
 The current category covers National Rail. Northern Ireland Railways, heritage/private railways, Underground, metro, subway, and tram systems need separate providers or modes.
 
-Reviewed exclusions are in `../overrides/exclusions/uk.json`.
+Reviewed exclusions are in `trainguessr-data/overrides/exclusions/uk.json`.
 
 ## Other providers
 

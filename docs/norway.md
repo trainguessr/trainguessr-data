@@ -20,7 +20,7 @@ For an offline rebuild from a saved Entur response:
 python3 -m gen.countries norway --input path/to/stop-places.json
 ```
 
-The generator keeps provider records marked as active rail stops. Reviewed foreign-station exclusions are in `../overrides/exclusions/norway.csv`; supporting evidence is in [`review/norway/`](review/norway/).
+The generator keeps provider records marked as active rail stops. Reviewed foreign-station exclusions are in `trainguessr-data/overrides/exclusions/norway.csv`; supporting evidence is in [`review/norway/`](../docs/review/norway).
 
 Inactive or historical sites are not added just because a physical station still exists. Metro and light rail are separate modes.
 

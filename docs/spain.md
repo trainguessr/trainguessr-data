@@ -26,13 +26,13 @@ python3 -m gen.countries spain --skip-renfe
 python3 -m gen.countries spain --cercanias path/to.zip --long-distance path/to.zip --fgc path/to.zip --no-download
 ```
 
-Renfe station IDs come from the official feeds. FGC IDs also come from its own official feed. Duplicate names, aliases, coordinate fixes, and exclusions are reviewed explicitly in `../overrides/`.
+Renfe station IDs come from the official feeds. FGC IDs also come from its own official feed. Duplicate names, aliases, coordinate fixes, and exclusions are reviewed explicitly in `trainguessr-data/overrides/`.
 
 Main review files:
 
-- `../overrides/exclusions/spain.json`
-- `../overrides/spain-reviewed-duplicate-names.json`
-- `../overrides/spain-station-corrections.csv`
+- `trainguessr-data/overrides/exclusions/spain.json`
+- `trainguessr-data/overrides/spain-reviewed-duplicate-names.json`
+- `trainguessr-data/overrides/spain-station-corrections.csv`
 
 Metro, funicular, rack, replacement-bus, heritage, and other non-current categories are not silently promoted into the two railway datasets.
 

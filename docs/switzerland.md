@@ -16,7 +16,7 @@ The generator keeps current service points whose pipe-separated transport modes
 include the exact `TRAIN` token, including `BUS|TRAIN` (for example Locarno FART).
 It preserves the official SLOID; no UIC-to-SLOID derivation is used. Non-train or historical records need separate physical and provider evidence before inclusion.
 
-Reviewed exclusions are in `../overrides/exclusions/switzerland.json`.
+Reviewed exclusions are in `trainguessr-data/overrides/exclusions/switzerland.json`.
 
 ## Other providers
 

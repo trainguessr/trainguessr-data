@@ -17,7 +17,7 @@ python3 -m gen.countries sweden
 
 Use `--cache` to build from the saved NeTEx ZIP without downloading.
 
-The generator streams stop places directly from the XML. It keeps Swedish `rail` and `metro` records with national `740...` IDs and rejects foreign IDs. Reviewed exclusions are in `../overrides/exclusions/sweden.json`.
+The generator streams stop places directly from the XML. It keeps Swedish `rail` and `metro` records with national `740...` IDs and rejects foreign IDs. Reviewed exclusions are in `trainguessr-data/overrides/exclusions/sweden.json`.
 
 Ordinary tram expansion is outside the current category.
 

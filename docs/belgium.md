@@ -15,7 +15,7 @@ python3 -m gen.countries belgium
 
 iRail provides the station IDs and does not require an API key. Infrabel and OpenStreetMap are used only to check physical railway locations; they do not replace iRail IDs.
 
-Reviewed exclusions are in `../overrides/exclusions/belgium.json`.
+Reviewed exclusions are in `trainguessr-data/overrides/exclusions/belgium.json`.
 
 ## Other providers
 
