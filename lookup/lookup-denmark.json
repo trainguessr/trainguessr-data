@@ -1,0 +1,87 @@
+{"type":"node","id":"5453179","lat":50.660278,"lon":14.046944,"tags":{"name":"Ústí nad Labem hl.n.","stop_ids":["5453179"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"5455659","lat":50.774167,"lon":14.201389,"tags":{"name":"Decín hl.n.","stop_ids":["5455659"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"5457076","lat":50.061389,"lon":14.435278,"tags":{"name":"Praha hl.n.","stop_ids":["5457076"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"5457256","lat":50.109382,"lon":14.437372,"tags":{"name":"Praha-Holešovice","stop_ids":["5457256"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400001","lat":59.329722,"lon":18.057778,"tags":{"name":"Stockholm C","stop_ids":["7400001"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400002","lat":57.70918,"lon":11.973,"tags":{"name":"Göteborg C","stop_ids":["7400002"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400003","lat":55.609444,"lon":13.000833,"tags":{"name":"Malmö C","stop_ids":["7400003"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400004","lat":56.898611,"lon":14.556111,"tags":{"name":"Alvesta St.","stop_ids":["7400004"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400006","lat":56.157222,"lon":13.762778,"tags":{"name":"Hässleholm C","stop_ids":["7400006"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400007","lat":58.596111,"lon":16.183056,"tags":{"name":"Norrköping C","stop_ids":["7400007"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400009","lat":58.416389,"lon":15.624722,"tags":{"name":"Linköping C","stop_ids":["7400009"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400044","lat":56.043757,"lon":12.694958,"tags":{"name":"Helsingborg C","stop_ids":["7400044"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400045","lat":56.551387,"lon":14.136938,"tags":{"name":"Älmhult St.","stop_ids":["7400045"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400055","lat":59.162544,"lon":17.645737,"tags":{"name":"Södertälje Syd St.","stop_ids":["7400055"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400058","lat":56.502204,"lon":12.998985,"tags":{"name":"Laholm St.","stop_ids":["7400058"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400064","lat":56.24577,"lon":12.853854,"tags":{"name":"Ängelholm St.","stop_ids":["7400064"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400069","lat":56.206625,"lon":15.28334,"tags":{"name":"Ronneby St.","stop_ids":["7400069"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400073","lat":56.176879,"lon":14.867511,"tags":{"name":"Karlshamn St.","stop_ids":["7400073"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400079","lat":56.049767,"lon":14.583652,"tags":{"name":"Sölvesborg St.","stop_ids":["7400079"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400080","lat":56.669186,"lon":12.864596,"tags":{"name":"Halmstad Centralstation","stop_ids":["7400080"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400096","lat":56.629828,"lon":15.534884,"tags":{"name":"Emmaboda St.","stop_ids":["7400096"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400110","lat":57.109314,"lon":12.248479,"tags":{"name":"Varberg St.","stop_ids":["7400110"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400120","lat":55.708056,"lon":13.186672,"tags":{"name":"Lund C","stop_ids":["7400120"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400140","lat":57.652219,"lon":14.693896,"tags":{"name":"Nassjö C","stop_ids":["7400140"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400141","lat":56.067219,"lon":14.480759,"tags":{"name":"Bromölla St.","stop_ids":["7400141"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400155","lat":56.133978,"lon":12.949062,"tags":{"name":"Åstorp St.","stop_ids":["7400155"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400161","lat":57.490206,"lon":12.079918,"tags":{"name":"Kungsbacka St.","stop_ids":["7400161"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400185","lat":55.936753,"lon":13.541659,"tags":{"name":"Höör St.","stop_ids":["7400185"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400189","lat":56.742339,"lon":15.908957,"tags":{"name":"Nybro St.","stop_ids":["7400189"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400191","lat":58.2875,"lon":12.299167,"tags":{"name":"Trollhättan Centralstation","stop_ids":["7400191"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400200","lat":56.031758,"lon":14.151041,"tags":{"name":"Kristiansstad C","stop_ids":["7400200"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400230","lat":56.166307,"lon":15.585252,"tags":{"name":"Karlskrona C","stop_ids":["7400230"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400235","lat":56.750293,"lon":15.2586,"tags":{"name":"Lessebo St.","stop_ids":["7400235"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400250","lat":56.876723,"lon":14.805917,"tags":{"name":"Växjö C","stop_ids":["7400250"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400260","lat":55.837835,"lon":13.305226,"tags":{"name":"Eslöv St.","stop_ids":["7400260"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400295","lat":56.380021,"lon":13.994577,"tags":{"name":"Osby St.","stop_ids":["7400295"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400315","lat":57.655911,"lon":12.018839,"tags":{"name":"Mölndal St.","stop_ids":["7400315"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400366","lat":56.18688,"lon":14.743511,"tags":{"name":"Mörrum St.","stop_ids":["7400366"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400368","lat":56.231048,"lon":15.115954,"tags":{"name":"Bräkne-Hoby St.","stop_ids":["7400368"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400511","lat":56.786145,"lon":15.139969,"tags":{"name":"Hovmantorp St.","stop_ids":["7400511"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400937","lat":55.640957,"lon":13.080399,"tags":{"name":"Burlöv St.","stop_ids":["7400937"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7400945","lat":55.794328,"lon":13.111357,"tags":{"name":"Kävlinge St.","stop_ids":["7400945"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401270","lat":56.022213,"lon":12.727176,"tags":{"name":"Ramlösa St.","stop_ids":["7401270"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401441","lat":56.214124,"lon":13.848319,"tags":{"name":"Ballingslöv station","stop_ids":["7401441"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401537","lat":56.182344,"lon":15.600834,"tags":{"name":"Bergåsa St.","stop_ids":["7401537"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401554","lat":55.867397,"lon":12.83125,"tags":{"name":"Landskrona St.","stop_ids":["7401554"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401579","lat":56.919594,"lon":12.507359,"tags":{"name":"Falkenberg","stop_ids":["7401579"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401585","lat":55.562735,"lon":12.975836,"tags":{"name":"Hyllie St.","stop_ids":["7401585"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401586","lat":55.594481,"lon":13.000427,"tags":{"name":"Triangeln St.","stop_ids":["7401586"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401590","lat":57.728889,"lon":12.004167,"tags":{"name":"Gamlestaden station","stop_ids":["7401590"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401603","lat":56.43166,"lon":12.906942,"tags":{"name":"Båstad St.","stop_ids":["7401603"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401604","lat":57.363057,"lon":12.135552,"tags":{"name":"Åsa St.","stop_ids":["7401604"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7401605","lat":56.475161,"lon":14.098629,"tags":{"name":"Killeberg station","stop_ids":["7401605"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7415362","lat":56.669765,"lon":16.320738,"tags":{"name":"Kalmar S St.","stop_ids":["7415362"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7464282","lat":56.287306,"lon":13.935554,"tags":{"name":"Hästveda station","stop_ids":["7464282"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7600100","lat":59.910278,"lon":10.755278,"tags":{"name":"Oslo S","stop_ids":["7600100"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7600516","lat":59.432222,"lon":10.656389,"tags":{"name":"Moss","stop_ids":["7600516"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7600522","lat":59.208889,"lon":10.950833,"tags":{"name":"Fredrikstad","stop_ids":["7600522"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"7600527","lat":59.285833,"lon":11.118056,"tags":{"name":"Sarpsborg","stop_ids":["7600527"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8001279","lat":53.595864,"lon":9.906697,"tags":{"name":"Hamburg-Eidelstedt Bf","stop_ids":["8001279"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8001289","lat":53.579437,"lon":9.930754,"tags":{"name":"Hamburg-Langenfelde Bf","stop_ids":["8001289"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8001301","lat":51.065827,"lon":13.740823,"tags":{"name":"Dresden-Neustadt","stop_ids":["8001301"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8001305","lat":51.04055,"lon":13.731942,"tags":{"name":"Dresden Hbf","stop_ids":["8001305"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8001311","lat":50.919167,"lon":14.1375,"tags":{"name":"Bad Schandau","stop_ids":["8001311"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8005784","lat":54.870971,"lon":8.8893,"tags":{"name":"Süderlügum St.","stop_ids":["8005784"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8010100","lat":52.525559,"lon":13.36945,"tags":{"name":"Berlin Hbf","stop_ids":["8010100"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8010101","lat":52.475,"lon":13.365278,"tags":{"name":"Berlin Südkreuz","stop_ids":["8010101"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8010102","lat":52.54889,"lon":13.38833,"tags":{"name":"Berlin Gesundbrunnen St.","stop_ids":["8010102"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8010133","lat":52.534447,"lon":13.197496,"tags":{"name":"Berlin-Spandau","stop_ids":["8010133"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8020400","lat":53.552502,"lon":10.006664,"tags":{"name":"Hamburg Hbf","stop_ids":["8020400"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8020402","lat":53.560556,"lon":9.989447,"tags":{"name":"Hamburg Dammtor","stop_ids":["8020402"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8020403","lat":53.5525,"lon":9.934993,"tags":{"name":"Hamburg-Altona","stop_ids":["8020403"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8024313","lat":54.773891,"lon":9.436392,"tags":{"name":"Flensburg","stop_ids":["8024313"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8024643","lat":54.075556,"lon":9.979722,"tags":{"name":"Neumünster St.","stop_ids":["8024643"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8024738","lat":54.302226,"lon":9.671104,"tags":{"name":"Rendsburg","stop_ids":["8024738"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8024790","lat":54.499448,"lon":9.538062,"tags":{"name":"Schleswig","stop_ids":["8024790"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8025670","lat":54.789445,"lon":8.834767,"tags":{"name":"Niebüll St.","stop_ids":["8025670"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8031922","lat":52.525556,"lon":13.369444,"tags":{"name":"Berlin Hbf","stop_ids":["8031922"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8070006","lat":54.758206,"lon":9.398011,"tags":{"name":"Flensburg Weiche","stop_ids":["8070006"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8088761","lat":54.838421,"lon":8.862671,"tags":{"name":"Uphusum St.","stop_ids":["8088761"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100310","lat":47.348332,"lon":13.194992,"tags":{"name":"St. Johann Im Pongau","stop_ids":["8100310"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100320","lat":47.320553,"lon":12.796666,"tags":{"name":"Zell Am See","stop_ids":["8100320"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100328","lat":47.519715,"lon":12.430825,"tags":{"name":"St. Johann In Tirol","stop_ids":["8100328"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100329","lat":47.454159,"lon":12.391101,"tags":{"name":"Kitzbühel","stop_ids":["8100329"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100462","lat":47.813047,"lon":13.04583,"tags":{"name":"Salzburg Hbf","stop_ids":["8100462"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100509","lat":47.388328,"lon":11.778329,"tags":{"name":"Jenbach","stop_ids":["8100509"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
+{"type":"node","id":"8100522","lat":47.263333,"lon":11.400544,"tags":{"name":"Innsbruck Hbf","stop_ids":["8100522"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}

@@ -15,6 +15,7 @@ from common.validate import validate_nodes
 
 ENDPOINT = "https://rata.digitraffic.fi/api/v1/metadata/stations"
 OUTPUT = ROOT / "nodes" / "nodes-finland.json"
+LOOKUP_OUTPUT = ROOT / "lookup" / "lookup-finland.json"
 REVIEW_FILE = ROOT / "overrides" / "finland-stations.csv"
 CACHE_SOURCE = ROOT / "cache" / "finland" / "stations.json"
 
@@ -77,12 +78,14 @@ def validate_reviewed_stations(stations: list[dict], reviewed: dict[str, dict]) 
     return errors
 
 
-def build_nodes(stations: list[dict], reviewed_stations: dict[str, dict] | None = None) -> list[dict]:
+def build_nodes(stations: list[dict], reviewed_stations: dict[str, dict] | None = None,
+                lookup: list[dict] | None = None) -> list[dict]:
+    """Finnish stations; Digitraffic's stations abroad go to ``lookup`` when given."""
     reviewed = load_reviewed_stations() if reviewed_stations is None else reviewed_stations
     by_id: dict[str, dict] = {}
+    abroad: dict[str, dict] = {}
     for station in stations:
-        if station.get("countryCode") != "FI":
-            continue
+        foreign = station.get("countryCode") != "FI"
         if station.get("type") not in ("STATION", "STOPPING_POINT"):
             continue
         station_id = str(station.get("stationShortCode", "")).strip()
@@ -93,13 +96,14 @@ def build_nodes(stations: list[dict], reviewed_stations: dict[str, dict] | None 
             continue
         tags = {
             "name": name,
+            **({"country": station.get("countryCode")} if foreign else {}),
             "uic": station.get("stationUICCode"),
             "station_type": station.get("type"),
             "operator": "Fintraffic",
         }
         if station.get("passengerTraffic") is False:
             tags["station_status"] = "no_current_passenger_traffic"
-        by_id[station_id] = {
+        (abroad if foreign else by_id)[station_id] = {
             "type": "node",
             "id": station_id,
             "lat": float(lat),
@@ -107,6 +111,8 @@ def build_nodes(stations: list[dict], reviewed_stations: dict[str, dict] | None 
             "tags": tags,
             "category": "finland_all",
         }
+    if lookup is not None:
+        lookup.extend(sorted(abroad.values(), key=lambda row: str(row["id"])))
     return sorted(by_id.values(), key=lambda row: str(row["id"]))
 
 
@@ -123,14 +129,18 @@ def main(argv: list[str] | None = None) -> int:
         for error in review_errors:
             print(f"ERROR: {error}")
         return 1
-    nodes = build_nodes(stations, reviewed)
+    lookup: list[dict] = []
+    nodes = build_nodes(stations, reviewed, lookup)
     errors = validate_nodes(nodes)
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
     publish_nodes(OUTPUT, nodes)
+    LOOKUP_OUTPUT.parent.mkdir(exist_ok=True)
+    publish_nodes(LOOKUP_OUTPUT, lookup)
     print(f"Wrote {len(nodes)} Finnish stations to {OUTPUT}")
+    print(f"Wrote {len(lookup)} stations abroad to {LOOKUP_OUTPUT}")
     without_current_service = sum(
         row.get("tags", {}).get("station_status") == "no_current_passenger_traffic"
         for row in nodes

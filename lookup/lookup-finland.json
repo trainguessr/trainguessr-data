@@ -1,0 +1,11 @@
+{"type":"node","id":"BSL","lat":60.840338,"lon":28.3777,"tags":{"name":"Buslovskaja","country":"RU","uic":2140,"station_type":"STATION","operator":"Fintraffic","station_status":"no_current_passenger_traffic"},"category":"finland_all"}
+{"type":"node","id":"HPA","lat":65.828226,"lon":24.130219,"tags":{"name":"Haaparanta pohjoinen","country":"SE","uic":10726,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"KIV","lat":64.545544,"lon":30.074562,"tags":{"name":"Kivijärvi","country":"RU","uic":2810,"station_type":"STATION","operator":"Fintraffic","station_status":"no_current_passenger_traffic"},"category":"finland_all"}
+{"type":"node","id":"MVA","lat":55.777111,"lon":37.655278,"tags":{"name":"Moskova_(Leningradski)","country":"RU","uic":6007,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PRK","lat":62.11698,"lon":32.176808,"tags":{"name":"Petroskoi / Petrozavodsk","country":"RU","uic":1000,"station_type":"STATION","operator":"Fintraffic","station_status":"no_current_passenger_traffic"},"category":"finland_all"}
+{"type":"node","id":"PTL","lat":59.931142,"lon":30.443925,"tags":{"name":"Pietari_(Ladozhski)","country":"RU","uic":3181,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"PTR","lat":59.957131,"lon":30.356308,"tags":{"name":"Pietari_(Finljandski)","country":"RU","uic":3820,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"STG","lat":61.11705,"lon":28.847194,"tags":{"name":"Svetogorsk","country":"RU","uic":2190,"station_type":"STATION","operator":"Fintraffic","station_status":"no_current_passenger_traffic"},"category":"finland_all"}
+{"type":"node","id":"TVE","lat":56.8352,"lon":35.8928,"tags":{"name":"Tver","country":"RU","uic":9999,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}
+{"type":"node","id":"VRS","lat":62.165755,"lon":30.652785,"tags":{"name":"Värtsilä","country":"RU","uic":2410,"station_type":"STATION","operator":"Fintraffic","station_status":"no_current_passenger_traffic"},"category":"finland_all"}
+{"type":"node","id":"VYB","lat":60.716073,"lon":28.751409,"tags":{"name":"Viipuri","country":"RU","uic":2000,"station_type":"STATION","operator":"Fintraffic"},"category":"finland_all"}

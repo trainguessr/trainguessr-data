@@ -393,7 +393,9 @@ class NewCountryGeneratorTests(unittest.TestCase):
         self.assertLessEqual(node_count, station_count)
         excluded = json.loads((ROOT / "overrides" / "exclusions" / "spain.json").read_text(encoding="utf-8"))
         excluded_ids = {str(row["id"]) for row in excluded["excluded"]}
-        self.assertEqual(len(excluded_ids), station_count - node_count)
+        with (ROOT / "lookup" / "lookup-spain-renfe.json").open() as lookup_file:
+            abroad_count = sum(1 for _ in lookup_file)
+        self.assertEqual(len(excluded_ids) + abroad_count, station_count - node_count)
         self.assertTrue(rail_route_types <= {"2", *map(str, range(100, 200))})
 
     def test_spain_reviewed_foreign_stations_are_outside_the_dataset(self):
@@ -520,3 +522,33 @@ def test_austria_refresh_preserves_sta_ids_on_the_same_native_station():
     assert current[0]['tags']['name'] == 'Updated label'
     with pytest.raises(ValueError, match='IFOPT changed'):
         preserve_sta_tags([{'id': 8100106, 'tags': {'ifopt_id': 'at:47:2'}}], previous)
+
+
+def test_sweden_and_finland_keep_stations_abroad_as_lookup_rows(tmp_path):
+    from countries.finland.generate import build_nodes as finland
+    from countries.sweden.generate import convert_from_xml
+    from common.io import load_ndjson
+    stop = ('<StopPlace><Name>{1}</Name><TransportMode>rail</TransportMode><Centroid><Location>'
+            '<Longitude>11</Longitude><Latitude>60</Latitude></Location></Centroid><keyList><KeyValue>'
+            '<Key>rikshallplats</Key><Value>{0}</Value></KeyValue></keyList></StopPlace>')
+    source = tmp_path / 'stops.xml'
+    source.write_text('<root>' + stop.format('740000001', 'Stockholm') + stop.format('760000100', 'Oslo S') + '</root>')
+    convert_from_xml(source, tmp_path / 'nodes.json', {}, lookup_path=tmp_path / 'lookup.json')
+    assert [r['id'] for r in load_ndjson(tmp_path / 'nodes.json')] == [740000001]
+    assert [r['id'] for r in load_ndjson(tmp_path / 'lookup.json')] == [760000100]
+
+    lookup = []
+    rows = [{'countryCode': code, 'type': 'STATION', 'stationShortCode': short, 'stationName': short,
+             'latitude': 60, 'longitude': 25, 'stationUICCode': 1} for code, short in (('FI', 'HKI'), ('RU', 'VYB'))]
+    assert [r['id'] for r in finland(rows, {}, lookup)] == ['HKI']
+    assert [(r['id'], r['tags']['country']) for r in lookup] == [('VYB', 'RU')]
+
+
+def test_belgian_stations_abroad_go_to_lookup_by_published_uic():
+    from countries.belgium.generate import build_nodes as belgium
+    stations = [{'id': f'BE.NMBS.00{uic}', 'standardname': name, 'locationX': '6', 'locationY': '49.6',
+                 '@id': f'http://irail.be/stations/NMBS/00{uic}'} for uic, name in
+                (('8814001', 'Bruxelles-Midi'), ('8200100', 'Lëtzebuerg'))]
+    lookup = []
+    assert [n['tags']['name'] for n in belgium({'station': stations}, lookup)] == ['Bruxelles-Midi']
+    assert [n['tags']['name'] for n in lookup] == ['Lëtzebuerg']

@@ -1100,14 +1100,16 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual("norway_all", nodes[0]["category"])
 
 
-    def test_reviewed_norway_cross_provider_ids_are_excluded(self) -> None:
+    def test_norway_stops_abroad_are_lookup_rows_not_playable_nodes(self) -> None:
         excluded = set(load_exclusion_rules("norway"))
         active = {
             str(row["id"])
             for row in load_ndjson(ROOT / "nodes" / "nodes-norway.json")
         }
-        self.assertEqual(189, len(excluded))
-        self.assertTrue(excluded.isdisjoint(active))
+        abroad = {str(row["id"]) for row in load_ndjson(ROOT / "lookup" / "lookup-norway.json")}
+        self.assertTrue(abroad)
+        self.assertTrue(abroad.isdisjoint(active))
+        self.assertTrue(excluded.isdisjoint(active | abroad))
 
     def test_spain_vallecas_feed_alias_is_not_a_second_station(self) -> None:
         rows = {

@@ -90,11 +90,11 @@ def test_denmark_cache_mode_uses_saved_source_without_calling_live_api(tmp_path,
         "tags": {"name": "Station"}, "category": "denmark_all",
     }
     monkeypatch.setattr(module, "download_gtfs", lambda *, use_cache=False: calls.append(("source", use_cache)) or tmp_path / "saved.zip")
-    monkeypatch.setattr(module, "build_nodes", lambda _path: [station])
+    monkeypatch.setattr(module, "build_nodes", lambda _path, _lookup=None: [station])
     monkeypatch.setattr(module, "validate_live_access", lambda *_args: calls.append(("api", True)))
     monkeypatch.setattr(module, "publish_nodes", lambda *_args: calls.append(("publish", True)))
     assert module.main(["--cache"]) == 0
-    assert calls == [("source", True), ("publish", True)]
+    assert calls == [("source", True), ("publish", True), ("publish", True)]
     assert "saved Rejseplanen source" in capsys.readouterr().out
 
 

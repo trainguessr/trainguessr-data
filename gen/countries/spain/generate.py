@@ -31,6 +31,7 @@ from common.manual_overrides import (
 from common.config import require_reviewed_identity
 
 OUTPUT = ROOT / "nodes" / "nodes-spain-renfe.json"
+LOOKUP_OUTPUT = ROOT / "lookup" / "lookup-spain-renfe.json"
 CACHE_ROOT = ROOT / "cache" / "spain"
 INDEX_OUTPUT = ROOT / "cache" / "spain.sqlite"
 
@@ -618,7 +619,16 @@ def main(argv: list[str] | None = None) -> int:
         if not nodes or not index["trips"]:
             print("ERROR: Renfe GTFS inputs produced no railway stations or trips")
             return 1
-        from common.trainline import add_station_identifiers
+        from common.trainline import add_station_identifiers, apply_station_identifiers, load_rows, unique_station_rows
+        # Renfe serves some stations abroad (Porto, Latour-de-Carol). The pinned
+        # Trainline row with the same Renfe ID names their country: lookup only.
+        rows, revision = load_rows()
+        abroad_index = unique_station_rows(rows, country="ES", key="renfe_id", id_fields=("uic",), foreign=True)
+        abroad = [node for node in nodes if str(node["id"]) in abroad_index]
+        nodes = [node for node in nodes if str(node["id"]) not in abroad_index]
+        apply_station_identifiers(abroad, abroad_index, revision, {"uic": "trainline_uic_ref"})
+        for node in abroad:
+            node["tags"]["country"] = abroad_index[str(node["id"])]["country"]
         applied = add_station_identifiers(nodes, country="ES", key="renfe_id",
                                           tags_by_field={"uic": "trainline_uic_ref"})
         print(f"Trainline UIC on {applied} Renfe stations")
@@ -630,7 +640,10 @@ def main(argv: list[str] | None = None) -> int:
         with preserve_outputs_on_failure(OUTPUT, INDEX_OUTPUT):
             publish_nodes(OUTPUT, nodes)
             write_index(index, INDEX_OUTPUT)
+        LOOKUP_OUTPUT.parent.mkdir(exist_ok=True)
+        publish_nodes(LOOKUP_OUTPUT, abroad)
         print(f"Wrote {len(nodes)} Renfe stations to {OUTPUT}")
+        print(f"Wrote {len(abroad)} Renfe stations abroad to {LOOKUP_OUTPUT}")
         print(f"Wrote Renfe static timetable index to {INDEX_OUTPUT}")
 
     if not args.skip_fgc:

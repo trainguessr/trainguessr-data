@@ -21,6 +21,7 @@ from common.validate import validate_nodes
 
 ENDPOINT = "https://api.entur.io/stop-places/v1/read/stop-places"
 OUTPUT = ROOT / "nodes" / "nodes-norway.json"
+LOOKUP_OUTPUT = ROOT / "lookup" / "lookup-norway.json"
 CACHE_SOURCE = ROOT / "cache" / "norway" / "stop-places.json"
 DEFAULT_CLIENT_NAME = "trainguessr-data"
 _CLIENT_NAME_RE = re.compile(r"^[a-z0-9_]+-[a-z0-9_-]+$")
@@ -109,12 +110,20 @@ def _uic_code(stop: dict[str, Any]) -> str:
     return codes.pop() if len(codes) == 1 and re.fullmatch(r"\d{7}", next(iter(codes))) else ""
 
 
-def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _in_norway(stop: dict[str, Any]) -> bool:
+    """Entur places Norwegian stops in a Kartverket (KVE) municipality."""
+    ref = str((stop.get("topographicPlaceRef") or {}).get("ref") or "")
+    return ref.startswith("KVE:")
+
+
+def build_nodes(stops: list[dict[str, Any]], lookup: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    """Norwegian stop places; Entur's stops abroad go to ``lookup`` when given."""
     excluded = load_exclusion_rules("norway")
     rename_by_name = load_rename_map("norway")
     rename_id_rules = load_rename_id_rules("norway")
     rename_by_id = {station_id: str(rule["to"]) for station_id, rule in rename_id_rules.items()}
     result: dict[str, dict[str, Any]] = {}
+    abroad: dict[str, dict[str, Any]] = {}
     for stop in stops:
         if not _is_active_rail_stop(stop):
             continue
@@ -122,8 +131,9 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if not station_id.startswith("NSR:StopPlace:"):
             continue
         source_name = _text(stop.get("name"))
+        foreign = not _in_norway(stop)
         rule = excluded.get(station_id)
-        if rule is not None:
+        if rule is not None and not foreign:
             continue
         if station_id in rename_id_rules:
             require_reviewed_identity(
@@ -131,7 +141,8 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 source_name,
                 context=f"norway rename:{station_id}",
             )
-        name = rename_by_id.get(station_id) or rename_by_name.get(source_name) or source_name
+        name = source_name if foreign else (
+            rename_by_id.get(station_id) or rename_by_name.get(source_name) or source_name)
         location = (stop.get("centroid") or {}).get("location") or {}
         lat = location.get("latitude")
         lon = location.get("longitude")
@@ -147,7 +158,7 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "uic_ref": _uic_code(stop),
         }
         tags = {key: value for key, value in tags.items() if value}
-        result[station_id] = {
+        (abroad if foreign else result)[station_id] = {
             "type": "node",
             "id": station_id,
             "lat": float(lat),
@@ -156,13 +167,15 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "category": "norway_all",
         }
     # A UIC code published on two stop places identifies neither.
-    claims = Counter(row["tags"].get("uic_ref") for row in result.values())
-    for row in result.values():
+    claims = Counter(row["tags"].get("uic_ref") for row in (*result.values(), *abroad.values()))
+    for row in (*result.values(), *abroad.values()):
         tags = row["tags"]
         if tags.get("uic_ref") and claims[tags["uic_ref"]] > 1:
             del tags["uic_ref"]
         elif tags.get("uic_ref"):
             tags.update(uic_granularity="stop", uic_crosswalk_source="Entur NSR keyList uicCode")
+    if lookup is not None:
+        lookup.extend(sorted(abroad.values(), key=lambda row: (str(row["tags"]["name"]).casefold(), str(row["id"]))))
     return sorted(result.values(), key=lambda row: (str(row["tags"]["name"]).casefold(), str(row["id"])))
 
 
@@ -171,14 +184,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--input", type=Path, help="saved Entur /stop-places response")
     add_cache_flag(parser)
     args = parser.parse_args(argv)
-    nodes = build_nodes(load_stop_places(args.input, use_cache=args.cache))
+    lookup: list[dict[str, Any]] = []
+    nodes = build_nodes(load_stop_places(args.input, use_cache=args.cache), lookup)
     errors = validate_nodes(nodes)
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
     publish_nodes(OUTPUT, nodes)
+    LOOKUP_OUTPUT.parent.mkdir(exist_ok=True)
+    publish_nodes(LOOKUP_OUTPUT, lookup)
     print(f"Wrote {len(nodes)} Norwegian railway stop places to {OUTPUT}")
+    print(f"Wrote {len(lookup)} stop places abroad to {LOOKUP_OUTPUT}")
     return 0
 
 

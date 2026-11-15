@@ -71,7 +71,7 @@ def uic_by_signature(bindings):
     return {signature: codes.pop() for signature, codes in found.items() if len(codes) == 1}
 
 
-def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
+def convert_from_xml(input_path, output_path, rename_map, uic_codes=None, lookup_path=None):
     """Stream NeTEx StopPlace records instead of materialising the 70k-stop tree."""
     import xml.etree.ElementTree as ET
     from collections import Counter
@@ -80,7 +80,7 @@ def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
     rename_id_rules = load_rename_id_rules("sweden")
     rename_id_map = {station_id: str(rule["to"]) for station_id, rule in rename_id_rules.items()}
     print(f"Loaded {len(exclusions)} excluded station IDs")
-    seen, nodes = set(), []
+    seen, nodes, abroad = set(), [], []
     modes, skipped = Counter(), Counter()
 
     for _event, element in ET.iterparse(input_path, events=("end",)):
@@ -113,12 +113,12 @@ def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
                 skipped["missing station ID"] += 1; continue
             if station_id in seen:
                 skipped["duplicate station ID"] += 1; continue
-            if not station_id.startswith("740"):
-                skipped["foreign station ID"] += 1; continue
+            # Samtrafiken national stop IDs start with 740; others are stops abroad.
+            foreign = not station_id.startswith("740")
             rule = exclusions.get(station_id)
-            if rule is not None:
+            if rule is not None and not foreign:
                 skipped["excluded station ID"] += 1; continue
-            if station_id in rename_id_rules:
+            if station_id in rename_id_rules and not foreign:
                 require_reviewed_identity(
                     {"expected_name": rename_id_rules[station_id]["from"]},
                     name,
@@ -126,7 +126,7 @@ def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
                 )
 
             tags = {
-                "name": rename_id_map.get(station_id, rename_map.get(name, name)),
+                "name": name if foreign else rename_id_map.get(station_id, rename_map.get(name, name)),
                 "short_name": _path_text(element, "ShortName"),
                 "private_code": _path_text(element, "PrivateCode"),
                 "transport_mode": mode,
@@ -157,7 +157,7 @@ def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
                             uic_crosswalk_source="ERA RINF primaryLocation by Trafikverket signature")
 
             seen.add(station_id)
-            nodes.append({
+            (abroad if foreign else nodes).append({
                 "type": "node", "id": int(station_id),
                 "lat": float(lat), "lon": float(lon),
                 "tags": tags, "category": "sweden_all",
@@ -176,6 +176,11 @@ def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
                 del node["tags"][key]
     nodes.sort(key=lambda node: node["id"])
     publish_nodes(Path(output_path), nodes)
+    if lookup_path is not None:
+        abroad.sort(key=lambda node: node["id"])
+        Path(lookup_path).parent.mkdir(exist_ok=True)
+        publish_nodes(Path(lookup_path), abroad)
+        print(f"Wrote {len(abroad)} stop places abroad to {lookup_path}")
     print(f"Parsed {sum(modes.values())} stop places; wrote {len(nodes)} railway/metro stations")
     print("Modes: " + ", ".join(f"{name}={count}" for name, count in sorted(modes.items())))
     if skipped:
@@ -258,7 +263,7 @@ def main(argv=None):
     
     era_file = Path(cache_dir) / "era-primary-locations.json"
     uic_codes = uic_by_signature(load_era_locations(era_file, use_cache=args.cache))
-    convert_from_xml(xml_file, output_file, rename_map, uic_codes)
+    convert_from_xml(xml_file, output_file, rename_map, uic_codes, ROOT / "lookup" / "lookup-sweden.json")
     print(f"Done! Output written to {output_file}")
     return 0
 

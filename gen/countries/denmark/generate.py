@@ -21,6 +21,7 @@ GTFS_URL = "https://www.rejseplanen.info/labs/GTFS.zip"
 CACHE_DIR = ROOT / "cache" / "denmark"
 GTFS_ARCHIVE = CACHE_DIR / "rejseplanen-gtfs.zip"
 OUTPUT = ROOT / "nodes" / "nodes-denmark.json"
+LOOKUP_OUTPUT = ROOT / "lookup" / "lookup-denmark.json"
 API_ROOT = "https://www.rejseplanen.dk/api"
 USER_AGENT = "TrainGuessr-data/1.0"
 CACHE_MAX_AGE_SECONDS = 14 * 24 * 60 * 60
@@ -78,7 +79,7 @@ def _normalise_stop_id(value: str | None) -> str:
     return value
 
 
-def build_nodes(path: Path) -> list[dict[str, Any]]:
+def build_nodes(path: Path, lookup: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
     with zipfile.ZipFile(path) as archive:
         stops: dict[str, dict[str, str]] = {}
         for row in _table(archive, "stops.txt"):
@@ -159,10 +160,13 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
                 canonical_children.add(alias_id)
 
     result: dict[str, dict[str, Any]] = {}
+    abroad: dict[str, dict[str, Any]] = {}
     for station_id, child_ids in station_to_children.items():
         # Danish Rejseplanen IDs start with 86. Heavy-rail IDs are usually
         # seven digits; Letbane IDs in the same provider namespace are longer.
-        if len(station_id) < 7 or not station_id.startswith("86"):
+        # Other seven-digit IDs are Rejseplanen's stops abroad (lookup only).
+        foreign = len(station_id) == 7 and not station_id.startswith("86")
+        if len(station_id) < 7 or not (station_id.startswith("86") or foreign):
             continue
         row = stops.get(station_id)
         if row is None:
@@ -176,7 +180,7 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
             continue
         if not name:
             continue
-        result[station_id] = {
+        (abroad if foreign else result)[station_id] = {
             "type": "node",
             "id": station_id,
             "lat": lat,
@@ -190,10 +194,12 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
                 # Seven-digit 86 IDs are Danish UIC station numbers.
                 **({"uic_ref": station_id, "uic_granularity": "stop",
                     "uic_crosswalk_source": "Rejseplanen GTFS stop_id (UIC station number)"}
-                   if len(station_id) == 7 else {}),
+                   if len(station_id) == 7 and not foreign else {}),
             },
             "category": "denmark_all",
         }
+    if lookup is not None:
+        lookup.extend(sorted(abroad.values(), key=lambda row: str(row["id"])))
     return sorted(result.values(), key=lambda row: str(row["id"]))
 
 
@@ -248,7 +254,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.cache and args.validate_live:
         parser.error("--validate-live needs a download and cannot be used with --cache")
     archive = download_gtfs(use_cache=args.cache)
-    nodes = build_nodes(archive)
+    lookup: list[dict[str, Any]] = []
+    nodes = build_nodes(archive, lookup)
     if not nodes:
         print("ERROR: Rejseplanen GTFS input produced no railway stations")
         return 1
@@ -260,6 +267,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.validate_live:
         validate_live_access(str(nodes[0]["id"]))
     publish_nodes(OUTPUT, nodes)
+    LOOKUP_OUTPUT.parent.mkdir(exist_ok=True)
+    publish_nodes(LOOKUP_OUTPUT, lookup)
+    print(f"Wrote {len(lookup)} stops abroad to {LOOKUP_OUTPUT}")
     print("Prepared stations from the saved Rejseplanen source." if args.cache else
           "Prepared stations from the current Rejseplanen source.")
     if args.validate_live:

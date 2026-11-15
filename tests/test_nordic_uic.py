@@ -10,7 +10,7 @@ from countries.sweden import generate as sweden
 
 
 def _stop(number: int, uic: str) -> dict:
-    return {"id": f"NSR:StopPlace:{number}", "name": f"Stop {number}", "transportMode": "RAIL",
+    return {"id": f"NSR:StopPlace:{number}", "topographicPlaceRef": {"ref": "KVE:TopographicPlace:0301"}, "name": f"Stop {number}", "transportMode": "RAIL",
             "centroid": {"location": {"latitude": 60.0, "longitude": 10.0 + number}},
             "keyList": {"keyValue": [{"key": "uicCode", "value": uic}]}}
 
@@ -35,3 +35,14 @@ def test_sweden_maps_signatures_to_one_rinf_location() -> None:
     ])
 
     assert codes == {"MC": "7402611"}
+
+
+def test_norway_sends_stops_abroad_to_lookup_by_entur_municipality() -> None:
+    home = {**_stop(1, "7600100"), "topographicPlaceRef": {"ref": "KVE:TopographicPlace:0301"}}
+    abroad = {**_stop(2, "7401318"), "topographicPlaceRef": {"ref": "LAN:TopographicPlace:1480"}}
+    lookup: list = []
+    nodes = norway.build_nodes([home, abroad], lookup)
+
+    assert [node["id"] for node in nodes] == ["NSR:StopPlace:1"]
+    assert [row["id"] for row in lookup] == ["NSR:StopPlace:2"]
+    assert lookup[0]["tags"]["uic_ref"] == "7401318"

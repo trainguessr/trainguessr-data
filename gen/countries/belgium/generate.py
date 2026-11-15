@@ -33,7 +33,8 @@ def build_nodes(payload: dict, lookup: list[dict] | None = None) -> list[dict]:
             if key not in station:
                 raise ValueError(f"Missing {key!r} in station data")
         tags = {"name": station["standardname"]}
-        if uic := published_uic(station):
+        uic = published_uic(station)
+        if uic:
             tags.update(uic_ref=uic, uic_granularity="stop", uic_crosswalk_source="irail-station-uri")
         node = {
             "type": "node",
@@ -43,7 +44,10 @@ def build_nodes(payload: dict, lookup: list[dict] | None = None) -> list[dict]:
             "tags": tags,
             "category": "belgium_all",
         }
-        if excluded.get(str(station["id"])) is not None:
+        # iRail also lists stations abroad; their published UIC names another
+        # railway country (00 is not a country code).
+        abroad = bool(uic) and uic[:2] not in {"88", "00"}
+        if abroad or excluded.get(str(station["id"])) is not None:
             if lookup is not None:
                 lookup.append(node)
             continue
