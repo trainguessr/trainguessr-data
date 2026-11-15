@@ -7,7 +7,7 @@ import argparse
 from common.config import load_rename_map
 from common.io import ROOT, add_cache_flag
 from countries.germany.decisions import load_board_groups, load_reconciled_stations
-from countries.germany.nodes import convert_from_json
+from countries.germany.nodes import convert_from_json, load_station_identifiers
 from countries.germany.sources import ensure_station_cache
 
 
@@ -28,6 +28,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Loaded {len(board_groups)} reviewed multi-EVA board groups")
     reconciled_stations = load_reconciled_stations()
     print(f"Loaded {len(reconciled_stations)} reviewed Germany station additions")
-    convert_from_json(input_file, output_file, rename_map, board_groups, reconciled_stations)
+    station_identifiers = load_station_identifiers()
+    print(f"Loaded {len(station_identifiers[0])} Trainline DB station identifier rows")
+    convert_from_json(input_file, output_file, rename_map, board_groups, reconciled_stations,
+                      station_identifiers)
     print(f"Conversion complete. Output written to {output_file}")
     return 0

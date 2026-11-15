@@ -14,6 +14,7 @@ if str(GEN_DIR) not in sys.path:
 COUNTRIES = (
     "austria", "belgium", "denmark", "finland", "france", "germany",
     "italy", "netherlands", "norway", "spain", "sweden", "switzerland", "uk",
+    "lookup",
 )
 
 

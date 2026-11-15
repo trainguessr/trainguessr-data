@@ -63,7 +63,12 @@ def main(argv=None):
     print("Loading rename mapping...")
     rename_map = load_rename_map("uk")
     print(f"Loaded {len(rename_map)} rename rules")
-    publish_nodes(output_file, build_nodes(input_path, rename_map))
+    nodes = build_nodes(input_path, rename_map)
+    from common.trainline import add_station_identifiers
+    applied = add_station_identifiers(nodes, country="GB", key="atoc_id",
+                                      tags_by_field={"uic": "trainline_uic_ref"})
+    print(f"Trainline UIC on {applied} National Rail stations")
+    publish_nodes(output_file, nodes)
     print(f"Conversion complete. Output written to {output_file}")
     return 0
 

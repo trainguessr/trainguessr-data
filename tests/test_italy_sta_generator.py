@@ -79,6 +79,21 @@ def test_resolver_accepts_exact_alias_without_station_word():
     assert reason == "exact_alias"
 
 
+def test_resolver_prefers_railway_label_over_same_named_town_stop():
+    # Real 2026-11 StopFinder results: the bare names are other stops.
+    match, reason = sta._resolve_candidates(
+        "Campo di Trens/Freienfeld",
+        [{"id": "66002612", "name": "Freienfeld"},
+         {"id": "66001492", "name": "Campo di Trens, Stazione di Campo di Trens"}],
+    )
+    assert (match["id"], reason) == ("66001492", "exact_railway_label")
+    match, reason = sta._resolve_candidates(
+        "Chiusa/Klausen",
+        [{"id": "66000455", "name": "Chiusa"}, {"id": "66001051", "name": "Stazione di Chiusa"}],
+    )
+    assert (match["id"], reason) == ("66001051", "exact_railway_label")
+
+
 def test_resolver_accepts_sta_compound_railway_label_with_exact_first_component():
     match, reason = sta._resolve_candidates(
         "Spondigna/Spondinig",

@@ -7,7 +7,7 @@
   },
   "datasets": {
     "austria_oebb": {
-      "source_lineage": "GeoNetz (CC BY 3.0 AT); MVO licensed agreement",
+      "source_lineage": "GeoNetz (CC BY 3.0 AT); MVO licensed agreement; exact Trainline EU UIC/DB station identifiers and lookup-only foreign ÖBB IDs (ODbL1.0)",
       "publication_status": "terms_review_required"
     },
     "belgium_all": {
@@ -27,7 +27,7 @@
       "publication_status": "terms_review_required"
     },
     "germany_all": {
-      "source_lineage": "DB stations (CC BY 4.0); DELFI and OSM supplements",
+      "source_lineage": "DB stations (CC BY 4.0); DELFI and OSM supplements; exact Trainline EU UIC/ÖBB station identifiers and lookup-only foreign DB IDs (ODbL1.0)",
       "publication_status": "terms_review_required"
     },
     "italy_rfi": {
@@ -67,7 +67,7 @@
       "publication_status": "open_license_reported"
     },
     "spain_renfe": {
-      "source_lineage": "Renfe official GTFS; portal reuse conditions",
+      "source_lineage": "Renfe official GTFS; portal reuse conditions; exact Trainline EU UIC station identifiers (ODbL1.0)",
       "publication_status": "terms_review_required"
     },
     "spain_fgc": {
@@ -75,8 +75,8 @@
       "publication_status": "open_license_reported"
     },
     "sweden_all": {
-      "source_lineage": "Trafiklab Stops (CC0)",
-      "publication_status": "open_license_reported"
+      "source_lineage": "Trafiklab Stops (CC0); UIC numbers from ERA RINF primary locations (data licence not confirmed; ontology EUPL 1.2)",
+      "publication_status": "terms_review_required"
     },
     "switzerland_all": {
       "source_lineage": "opentransportdata.swiss / SBB stop data",

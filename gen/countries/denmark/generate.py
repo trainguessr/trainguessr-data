@@ -187,6 +187,10 @@ def build_nodes(path: Path) -> list[dict[str, Any]]:
                 **({"provider_place_ids": sorted(child_ids | {station_id})}
                    if len(child_ids | {station_id}) > 1 else {}),
                 "source": "Rejseplanen GTFS",
+                # Seven-digit 86 IDs are Danish UIC station numbers.
+                **({"uic_ref": station_id, "uic_granularity": "stop",
+                    "uic_crosswalk_source": "Rejseplanen GTFS stop_id (UIC station number)"}
+                   if len(station_id) == 7 else {}),
             },
             "category": "denmark_all",
         }

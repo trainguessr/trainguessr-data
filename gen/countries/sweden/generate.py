@@ -4,7 +4,7 @@ import os
 import argparse
 import shutil
 from pathlib import Path
-from common.io import ROOT, add_cache_flag, publish_nodes, require_cached_file
+from common.io import ROOT, add_cache_flag, publish_nodes, require_cached_file, save_source_file
 from common.config import (
     load_exclusion_rules, load_rename_id_rules, load_rename_map,
     require_reviewed_identity,
@@ -28,7 +28,50 @@ def _path_text(element, *names):
     return (current.text or "").strip()
 
 
-def convert_from_xml(input_path, output_path, rename_map):
+ERA_ENDPOINT = "https://graph.data.era.europa.eu/repositories/rinf-plus"
+ERA_QUERY = """PREFIX era: <http://data.europa.eu/949/>
+SELECT ?uopid ?location WHERE {
+  ?op a era:OperationalPoint ;
+      era:inCountry <http://publications.europa.eu/resource/authority/country/SWE> ;
+      era:uopid ?uopid ; era:primaryLocation ?location .
+}"""
+
+
+def load_era_locations(path, *, use_cache):
+    """ERA RINF operational points: Trafikverket signature -> TAP primary location."""
+    import json
+    import requests
+
+    if use_cache:
+        require_cached_file(path, "ERA RINF Swedish primary locations")
+    else:
+        response = requests.post(ERA_ENDPOINT, data={"query": ERA_QUERY}, timeout=240,
+                                 headers={"Accept": "application/sparql-results+json",
+                                          "User-Agent": "TrainGuessr-data/1.0"})
+        response.raise_for_status()
+        save_source_file(path, response.content)
+    return json.loads(Path(path).read_text())["results"]["bindings"]
+
+
+def uic_by_signature(bindings):
+    """Map each signature to a UIC only when RINF gives it exactly one location.
+
+    RINF's UOPID is "SE" + signature and its primary location "SE" + five digits;
+    the Swedish UIC station number is the country code 74 + those digits.
+    """
+    import re
+    from collections import defaultdict
+
+    found = defaultdict(set)
+    for row in bindings:
+        uopid = row["uopid"]["value"]
+        location = row["location"]["value"].rsplit("/", 1)[-1]
+        if uopid.startswith("SE") and re.fullmatch(r"SE\d{5}", location):
+            found[uopid[2:].upper()].add("74" + location[2:])
+    return {signature: codes.pop() for signature, codes in found.items() if len(codes) == 1}
+
+
+def convert_from_xml(input_path, output_path, rename_map, uic_codes=None):
     """Stream NeTEx StopPlace records instead of materialising the 70k-stop tree."""
     import xml.etree.ElementTree as ET
     from collections import Counter
@@ -104,6 +147,14 @@ def convert_from_xml(input_path, output_path, rename_map):
             if "trafikverket-signatures" in key_values:
                 tags["abbreviation"] = key_values["trafikverket-signatures"]
             tags = {key: value for key, value in tags.items() if value}
+            # Only the Trafikverket signature; alternative-name abbreviations are other codes.
+            signature_text = key_values.get("trafikverket-signatures", "")
+            signatures = {part.strip().upper() for part in signature_text.replace("|", ",").split(",")
+                          if part.strip()}
+            codes = {(uic_codes or {}).get(signature) for signature in signatures} - {None}
+            if len(codes) == 1:
+                tags.update(uic_ref=codes.pop(), uic_granularity="stop",
+                            uic_crosswalk_source="ERA RINF primaryLocation by Trafikverket signature")
 
             seen.add(station_id)
             nodes.append({
@@ -117,6 +168,12 @@ def convert_from_xml(input_path, output_path, rename_map):
         finally:
             element.clear()
 
+    # A UIC claimed by two stop places identifies neither.
+    claims = Counter(node["tags"].get("uic_ref") for node in nodes)
+    for node in nodes:
+        if node["tags"].get("uic_ref") and claims[node["tags"]["uic_ref"]] > 1:
+            for key in ("uic_ref", "uic_granularity", "uic_crosswalk_source"):
+                del node["tags"][key]
     nodes.sort(key=lambda node: node["id"])
     publish_nodes(Path(output_path), nodes)
     print(f"Parsed {sum(modes.values())} stop places; wrote {len(nodes)} railway/metro stations")
@@ -199,7 +256,9 @@ def main(argv=None):
     rename_map = load_rename_map("sweden")
     print(f"Loaded {len(rename_map)} rename rules")
     
-    convert_from_xml(xml_file, output_file, rename_map)
+    era_file = Path(cache_dir) / "era-primary-locations.json"
+    uic_codes = uic_by_signature(load_era_locations(era_file, use_cache=args.cache))
+    convert_from_xml(xml_file, output_file, rename_map, uic_codes)
     print(f"Done! Output written to {output_file}")
     return 0
 

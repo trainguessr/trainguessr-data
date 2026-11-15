@@ -111,6 +111,15 @@ def report_unverified_mvo_stops(audit: dict[str, Any]) -> None:
     )
 
 
+TRAINLINE_TAGS = {"uic": "trainline_uic_ref", "db_id": "db_station_id"}
+
+
+def apply_trainline_identifiers(nodes) -> int:
+    """Add the UIC/DB IDs Trainline publishes on the same row as an ÖBB ID."""
+    from common.trainline import add_station_identifiers
+    return add_station_identifiers(nodes, country="AT", key="obb_id", tags_by_field=TRAINLINE_TAGS)
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _parse_args(argv)
     if args.oebb_operator_index_only:
@@ -160,6 +169,8 @@ def main(argv: list[str] | None = None) -> int:
         raise ValueError("Saved station checks are missing. Run once without --cache to save successful SCOTTY checks. The station file was not changed.")
     if args.output.is_file():
         output = preserve_sta_tags(output, load_ndjson(args.output))
+    applied = apply_trainline_identifiers(output)
+    print(f"Trainline UIC/DB identifiers on {applied} ÖBB stations")
     publish_nodes(args.output, output)
     print(f"OK | austria | {len(output)} station identities; "
           f"{len(geonetz_nodes)} GeoNetz plus {audit['added_count']} MVO additions")

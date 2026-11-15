@@ -38,6 +38,8 @@ guessed one.
 - Save the ID and the name with every decision, so later downloads can be checked.
 - If a source changes its format, stop with a clear error. Do not skip rows.
 - Reports go in `cache/`. Decisions go in `overrides/`.
+- Do not throw away a foreign station's ID. If it is not playable, put it in
+  `lookup/`, with the source row that proves the link.
 
 Before you publish data, read the [publication checklist](publication.md).
 

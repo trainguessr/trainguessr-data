@@ -13,6 +13,7 @@ def convert_from_json(
     rename_map,
     board_groups=None,
     reconciled_stations=None,
+    station_identifiers=None,
 ):
     with open(input_path, 'r', encoding='utf-8') as infile:
         data = json.load(infile)
@@ -127,4 +128,22 @@ def convert_from_json(
                 "Germany board groups reference stations absent from source: "
                 + ", ".join(missing_groups)
             )
+        if station_identifiers:
+            apply_station_identifiers(nodes, *station_identifiers)
         publish_nodes(Path(output_path), nodes)
+
+
+# Trainline fields copied onto a DB station; same tag names as Italian rows.
+TRAINLINE_TAGS = {"uic": "trainline_uic_ref", "obb_id": "oebb_station_id"}
+
+
+def load_station_identifiers():
+    from common.trainline import load_rows, unique_station_rows
+    rows, revision = load_rows()
+    return unique_station_rows(rows, country="DE", key="db_id", id_fields=("uic", "obb_id")), revision
+
+
+def apply_station_identifiers(nodes, index, revision):
+    """Add IDs Trainline publishes on the same row as this exact DB EVA."""
+    from common.trainline import apply_station_identifiers as apply
+    return apply(nodes, index, revision, TRAINLINE_TAGS)

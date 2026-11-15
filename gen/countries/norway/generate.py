@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import re
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -99,6 +100,15 @@ def _is_active_rail_stop(stop: dict[str, Any]) -> bool:
     return any(str(item).upper() in {"RAIL", "INTERCITY_RAIL"} for item in modes)
 
 
+def _uic_code(stop: dict[str, Any]) -> str:
+    """The UIC code Entur publishes in the stop place's keyList, if well formed."""
+    values = (stop.get("keyList") or {}).get("keyValue") or []
+    if isinstance(values, dict):
+        values = [values]
+    codes = {str(item.get("value") or "").strip() for item in values if item.get("key") == "uicCode"}
+    return codes.pop() if len(codes) == 1 and re.fullmatch(r"\d{7}", next(iter(codes))) else ""
+
+
 def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
     excluded = load_exclusion_rules("norway")
     rename_by_name = load_rename_map("norway")
@@ -134,6 +144,7 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "public_code": str(stop.get("publicCode") or "").strip(),
             "rail_submode": str(stop.get("railSubmode") or "").strip().casefold(),
             "source": "Entur NSR",
+            "uic_ref": _uic_code(stop),
         }
         tags = {key: value for key, value in tags.items() if value}
         result[station_id] = {
@@ -144,6 +155,14 @@ def build_nodes(stops: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "tags": tags,
             "category": "norway_all",
         }
+    # A UIC code published on two stop places identifies neither.
+    claims = Counter(row["tags"].get("uic_ref") for row in result.values())
+    for row in result.values():
+        tags = row["tags"]
+        if tags.get("uic_ref") and claims[tags["uic_ref"]] > 1:
+            del tags["uic_ref"]
+        elif tags.get("uic_ref"):
+            tags.update(uic_granularity="stop", uic_crosswalk_source="Entur NSR keyList uicCode")
     return sorted(result.values(), key=lambda row: (str(row["tags"]["name"]).casefold(), str(row["id"])))
 
 

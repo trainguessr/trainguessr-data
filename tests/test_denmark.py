@@ -45,6 +45,7 @@ def test_bidirectional_provider_transfer_family_is_one_node(tmp_path: Path) -> N
     assert [node["id"] for node in nodes] == ["8600101"]
     assert nodes[0]["tags"]["stop_ids"] == ["8600101", "8600102"]
     assert nodes[0]["tags"]["provider_place_ids"] == ["8600101", "8600102"]
+    assert nodes[0]["tags"]["uic_ref"] == "8600101"
 
 
 def test_name_match_without_complete_provider_transfer_family_stays_distinct(

@@ -67,6 +67,8 @@ OEBB_NODES = ROOT / "nodes" / "nodes-austria-oebb.json"
 STOPFINDER_QUERY_ALIASES = {
     "Bolzano/Bozen": ("Bolzano Stazione", "Bozen Bahnhof"),
     "Bolzano Sud/Bozen Süd": ("Bolzano Sud Stazione", "Bozen Süd Bahnhof"),
+    # Plain "Chiusa" returns only the Terlano stop "Chiusa (Terlano), Chiusa".
+    "Chiusa/Klausen": ("Chiusa Stazione", "Klausen Bahnhof"),
     "Patsch (Austria)": ("Patsch Bahnhof",),
     "Innsbruck HBF (Austria)": ("Innsbruck Hauptbahnhof", "Innsbruck Hbf"),
     "Unterberg-Stefansbrücke (Austria)": ("Unterberg-Stefansbrücke Bahnhof", "Stefansbrücke Bahnhof"),
@@ -317,11 +319,8 @@ def _resolve_candidates(
     aliases = _aliases(source_name)
     wanted = {_normalize(alias) for alias in aliases}
 
-    exact = [row for row in candidates if _normalize(row.get("name", "")) in wanted]
-    exact_ids = {row["id"] for row in exact}
-    if len(exact_ids) == 1:
-        return exact[0], "exact_alias"
-
+    # STA's railway label wins: a bare locality name ("Chiusa", "Freienfeld")
+    # can be another stop in the same town, kilometres from the station.
     railway = []
     for row in candidates:
         label = _rail_station_label(row.get("name", ""))
@@ -330,6 +329,11 @@ def _resolve_candidates(
     railway_ids = {row["id"] for row in railway}
     if len(railway_ids) == 1:
         return railway[0], "exact_railway_label"
+
+    exact = [row for row in candidates if _normalize(row.get("name", "")) in wanted]
+    exact_ids = {row["id"] for row in exact}
+    if not railway_ids and len(exact_ids) == 1:
+        return exact[0], "exact_alias"
     reviewed = REVIEWED_STOPFINDER_EXCEPTIONS.get(source_name)
     if reviewed is not None:
         reviewed_id, reviewed_name = reviewed

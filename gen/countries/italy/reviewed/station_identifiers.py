@@ -5,28 +5,19 @@ ViaggiaTreno ID selects a unique station row; no IDs are constructed from digits
 """
 from __future__ import annotations
 
-import csv
-import hashlib
-import json
 import re
 from collections import defaultdict
 from pathlib import Path
 
-from common.io import ROOT
+from common.trainline import SOURCE_PATH, load_rows
 
-SOURCE_PATH = ROOT / "cache/italy/rfi/raw/trainline-stations.csv"
 TAG_FIELDS = {"uic": "trainline_uic_ref", "obb_id": "oebb_station_id", "db_id": "db_station_id"}
 
 
 def load_station_identifiers(path: Path = SOURCE_PATH) -> tuple[dict[str, dict], str]:
     """Read the pinned cached source; a missing snapshot leaves seed data intact."""
-    if not path.is_file():
-        return {}, ""
-    metadata = json.loads(path.with_suffix(".source.json").read_text())
-    if hashlib.sha256(path.read_bytes()).hexdigest() != metadata["sha256"]:
-        raise ValueError("Trainline station identifiers: cached source checksum differs")
-    with path.open(encoding="utf-8-sig", newline="") as handle:
-        return index_station_identifiers(csv.DictReader(handle, delimiter=";")), str(metadata["revision"])
+    rows, revision = load_rows(path)
+    return index_station_identifiers(rows), revision
 
 
 def index_station_identifiers(rows) -> dict[str, dict]:

@@ -618,6 +618,10 @@ def main(argv: list[str] | None = None) -> int:
         if not nodes or not index["trips"]:
             print("ERROR: Renfe GTFS inputs produced no railway stations or trips")
             return 1
+        from common.trainline import add_station_identifiers
+        applied = add_station_identifiers(nodes, country="ES", key="renfe_id",
+                                          tags_by_field={"uic": "trainline_uic_ref"})
+        print(f"Trainline UIC on {applied} Renfe stations")
         errors = validate_nodes(nodes)
         if errors:
             for error in errors:

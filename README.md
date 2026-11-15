@@ -14,6 +14,10 @@ The files are in [`nodes/`](nodes). Each line is one station, in JSON:
 
 You can use the files as they are.
 
+The files in [`lookup/`](lookup) use the same format, but their stations are not
+playable. They are foreign stations that a provider knows by its own ID (for
+example, DB's ID for Salzburg). They let a train be followed across a border.
+
 ## Build a dataset
 
 Run commands from this folder.
@@ -32,6 +36,12 @@ python3 -m gen.countries italy review all
 
 Add `--cache` to build from files you already downloaded.
 
+To rebuild the lookup files (after Italy RFI, which downloads the Trainline list):
+
+```bash
+python3 -m gen.countries lookup
+```
+
 The full country list is in the [dataset guide](docs/README.md).
 
 ## Safe by design
@@ -46,6 +56,7 @@ A generator never breaks a good file:
 ## Folders
 
 - `nodes/` — the station files.
+- `lookup/` — not playable, only for linking IDs.
 - `gen/countries/` — one generator per country.
 - `gen/common/` — shared helpers.
 - `gen/maintenance/` — checks and a freshness report.
