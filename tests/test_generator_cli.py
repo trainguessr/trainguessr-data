@@ -398,3 +398,21 @@ def test_austrian_no_unverified_candidates_no_extra_output(capsys):
     from countries.austria.generate import report_unverified_mvo_stops
     report_unverified_mvo_stops({"unresolved": []})
     assert capsys.readouterr().out == ""
+
+
+def test_austria_mvo_unavailable_retains_valid_catalogue(tmp_path, monkeypatch, capsys):
+    import json
+    from countries.austria import generate
+    output = tmp_path / "nodes.json"
+    row = {"type": "node", "id": "8100108", "lat": 47.26, "lon": 11.4,
+           "tags": {"name": "Innsbruck Hbf"}, "category": "austria_oebb"}
+    original = json.dumps(row) + "\n"
+    output.write_text(original)
+    monkeypatch.setattr(generate, "download_mvo_snapshot",
+                        lambda *a, **k: (_ for _ in ()).throw(ValueError("access unavailable")))
+    monkeypatch.setattr(generate, "_download_geonetz", lambda *a, **k: pytest.fail("must retain catalogue"))
+    assert generate.main(["--output", str(output)]) == 0
+    assert output.read_text() == original
+    assert "NOT refreshed" in capsys.readouterr().out
+    with pytest.raises(SystemExit):
+        generate.main(["--output", str(output), "--mvo-sample"])

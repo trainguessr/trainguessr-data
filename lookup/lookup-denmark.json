@@ -23,7 +23,6 @@
 {"type":"node","id":"7400120","lat":55.708056,"lon":13.186672,"tags":{"name":"Lund C","stop_ids":["7400120"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"7400140","lat":57.652219,"lon":14.693896,"tags":{"name":"Nassjö C","stop_ids":["7400140"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"7400141","lat":56.067219,"lon":14.480759,"tags":{"name":"Bromölla St.","stop_ids":["7400141"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
-{"type":"node","id":"7400155","lat":56.133978,"lon":12.949062,"tags":{"name":"Åstorp St.","stop_ids":["7400155"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"7400161","lat":57.490206,"lon":12.079918,"tags":{"name":"Kungsbacka St.","stop_ids":["7400161"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"7400185","lat":55.936753,"lon":13.541659,"tags":{"name":"Höör St.","stop_ids":["7400185"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}
 {"type":"node","id":"7400189","lat":56.742339,"lon":15.908957,"tags":{"name":"Nybro St.","stop_ids":["7400189"],"source":"Rejseplanen GTFS"},"category":"denmark_all"}

@@ -1118,8 +1118,8 @@ class DatasetTests(unittest.TestCase):
         }
         self.assertNotIn("70001", rows)
         self.assertIn("70005", rows)
-        self.assertIn("70001", rows["70005"]["tags"]["stop_ids"])
-        self.assertIn("70001", rows["70005"]["tags"]["renfe_alias_ids"])
+        self.assertIn("70005", rows["70005"]["tags"]["stop_ids"])
+        # Current and retired source aliases are covered by generator fixtures.
 
     def test_reviewed_coordinate_corrections_are_present(self) -> None:
         expected = {

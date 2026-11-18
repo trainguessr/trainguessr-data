@@ -29,9 +29,15 @@ OWN_ID_CATEGORIES = {"germany_all", "austria_oebb"}
 
 
 def known_ids(nodes_dir=ROOT / "nodes"):
-    """UICs and provider IDs that some playable dataset already carries."""
+    """Known identities from playable nodes and independently sourced lookups.
+
+    Trainline-derived lookups cannot support themselves or each other.
+    """
     uics, links, tagged = set(), set(), {tag: set() for tag in LINK_TAGS.values()}
-    for path in sorted(nodes_dir.glob("nodes-*.json")):
+    derived = {spec[2] for spec in PROVIDERS.values()}
+    native_lookups = [path for path in (nodes_dir.parent / "lookup").glob("lookup-*.json")
+                      if path.name not in derived]
+    for path in sorted([*nodes_dir.glob("nodes-*.json"), *native_lookups]):
         for row in load_ndjson(path):
             tags = row.get("tags") or {}
             for tag in ("uic_ref", "uic", "trainline_uic_ref"):
@@ -39,7 +45,8 @@ def known_ids(nodes_dir=ROOT / "nodes"):
             for tag in LINK_TAGS.values():
                 if tags.get(tag):
                     links.add(str(tags[tag]))
-                    tagged[tag].add(str(tags[tag]))
+                    if path.parent == nodes_dir:
+                        tagged[tag].add(str(tags[tag]))
             if row.get("category") in OWN_ID_CATEGORIES:
                 links.add(str(row["id"]))
             # These providers' own IDs are UIC codes (France adds a check digit).
@@ -59,7 +66,7 @@ def build_lookup(rows, revision, field, owned_ids=frozenset(), known=None):
         # Skip IDs a playable node already owns or already carries as a tag.
         if native_id in owned_ids or (known is not None and native_id in known[2][LINK_TAGS[field]]):
             continue
-        # Keep a row only if it links to a station another dataset knows.
+        # Keep a row only if an independent dataset knows the station identity.
         if known is not None and row.get("uic") not in known[0] and not any(
                 row.get(name) in known[1] for name in others):
             continue

@@ -5,7 +5,7 @@
 {"type":"node","id":"66000206","lat":46.679018,"lon":11.131967,"tags":{"name":"Lagundo/Algund","sta_station_name":"Lagundo, Stazione di Lagundo","operator":"STA / südtirolmobil"},"category":"italy_sta"}
 {"type":"node","id":"66000097","lat":46.618364,"lon":10.695575,"tags":{"name":"Lasa/Laas","sta_station_name":"Lasa, Stazione di Lasa","operator":"STA / südtirolmobil"},"category":"italy_sta"}
 {"type":"node","id":"66000036","lat":46.684272,"lon":10.548677,"tags":{"name":"Malles/Mals","sta_station_name":"Malles Venosta, Stazione di Malles","operator":"STA / südtirolmobil"},"category":"italy_sta"}
-{"type":"node","id":"66002374","lat":46.66417,"lon":11.138625,"tags":{"name":"Marlengo/Marling","sta_station_name":"Marlengo, Stazione di Marlengo","operator":"STA / südtirolmobil"},"category":"italy_sta"}
+{"type":"node","id":"66002374","lat":46.664188,"lon":11.138626,"tags":{"name":"Marlengo/Marling","sta_station_name":"Marlengo, Stazione di Marlengo","operator":"STA / südtirolmobil"},"category":"italy_sta"}
 {"type":"node","id":"66000171","lat":46.645137,"lon":11.003918,"tags":{"name":"Naturno/Naturns","sta_station_name":"Naturno, Stazione di Naturno","operator":"STA / südtirolmobil"},"category":"italy_sta"}
 {"type":"node","id":"66000094","lat":46.626781,"lon":10.646133,"tags":{"name":"Oris/Eyrs","sta_station_name":"Oris, Stazione di Oris","operator":"STA / südtirolmobil"},"category":"italy_sta"}
 {"type":"node","id":"66000201","lat":46.65842,"lon":11.041072,"tags":{"name":"Plaus","sta_station_name":"Plaus, Stazione di Plaus","operator":"STA / südtirolmobil"},"category":"italy_sta"}

@@ -188,6 +188,22 @@ class NewCountryGeneratorTests(unittest.TestCase):
         self.assertEqual(["A"], nodes["B"]["tags"]["renfe_alias_ids"])
         self.assertEqual(["A", "B"], index["stations"]["B"]["stop_ids"])
 
+    def test_spain_absent_alias_keeps_only_checked_canonical_identity(self):
+        config = {"aliases": [{"id": "A", "expected_name": "Alias",
+                              "canonical_id": "B", "canonical_expected_name": "Canonical"}]}
+        nodes = {"B": {"id": "B", "tags": {"name": "Canonical", "stop_ids": ["B"]}}}
+        index = {"stations": {"B": {"stop_ids": ["B"]}}}
+        with patch("countries.spain.generate._load_station_corrections", return_value=config), \
+             patch("countries.spain.generate._excluded_station_ids", return_value={"A"}):
+            self.assertEqual(set(), _apply_station_corrections(nodes, index))
+            self.assertEqual(["B"], nodes["B"]["tags"]["stop_ids"])
+            self.assertNotIn("A", index["stations"])
+            nodes["B"]["tags"]["name"] = "Different station"
+            with self.assertRaises(ValueError):
+                _apply_station_corrections(nodes, index)
+            with self.assertRaises(ValueError):
+                _apply_station_corrections({}, index)
+
     def test_spain_guarded_alias_fails_on_renamed_source_station(self):
         nodes = {
             "A": {
@@ -380,7 +396,8 @@ class NewCountryGeneratorTests(unittest.TestCase):
             version = connection.execute(
                 "SELECT value FROM metadata WHERE key='version'"
             ).fetchone()
-            station_count = connection.execute("SELECT count(*) FROM stations").fetchone()[0]
+            station_ids = {row[0] for row in connection.execute("SELECT id FROM stations")}
+            station_count = len(station_ids)
             rail_route_types = {
                 json.loads(row[0]).get("route_type")
                 for row in connection.execute("SELECT data FROM routes")
@@ -395,7 +412,7 @@ class NewCountryGeneratorTests(unittest.TestCase):
         excluded_ids = {str(row["id"]) for row in excluded["excluded"]}
         with (ROOT / "lookup" / "lookup-spain-renfe.json").open() as lookup_file:
             abroad_count = sum(1 for _ in lookup_file)
-        self.assertEqual(len(excluded_ids) + abroad_count, station_count - node_count)
+        self.assertEqual(len(excluded_ids & station_ids) + abroad_count, station_count - node_count)
         self.assertTrue(rail_route_types <= {"2", *map(str, range(100, 200))})
 
     def test_spain_reviewed_foreign_stations_are_outside_the_dataset(self):

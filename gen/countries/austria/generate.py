@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 import requests
 from common.config import load_rename_map
+from common.validate import validate_nodes
 from common.io import add_cache_flag, publish_nodes, require_cached_file, load_ndjson
 from countries.austria.catalogue import merge_catalogues, preserve_sta_tags
 from countries.austria.operators import build_oebb_operator_index, load_oebb_gtfs
@@ -146,6 +147,20 @@ def main(argv: list[str] | None = None) -> int:
             try:
                 mvo_source = download_mvo_snapshot(session, allow_public_sample=args.mvo_sample)
             except (requests.RequestException, ValueError) as exc:
+                # Retain the accepted catalogue, without claiming a source refresh.
+                # Explicit sample/input/cache runs must still expose their failures.
+                if not args.mvo_sample and args.output.is_file():
+                    try:
+                        existing = load_ndjson(args.output)
+                    except (OSError, ValueError):
+                        existing = []
+                    if (existing and not validate_nodes(existing)
+                            and all(row["category"] == "austria_oebb" for row in existing)):
+                        print(f"WARNING | austria | MVO unavailable: {exc}. "
+                              f"Retained {len(existing)} existing stations unchanged; "
+                              "MVO and station catalogue were NOT refreshed.")
+                        _build_requested_oebb_index(args)
+                        return 0
                 raise SystemExit(
                     f"Austria MVO source unavailable: {exc}. "
                     "Existing nodes and cached source snapshots were preserved. "

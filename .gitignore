@@ -6,3 +6,4 @@ temp
 .direnv
 .env-secret
 __pycache__/
+/sync-genevieve.sh

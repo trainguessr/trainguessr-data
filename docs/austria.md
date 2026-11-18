@@ -24,8 +24,12 @@ python3 -m gen.countries austria --mvo-sample
 ```
 
 `--cache` uses saved MVO and GeoNetz source files and does not download. A normal
-refresh fails clearly when MVO is unavailable and preserves the previous snapshot,
-static GeoNetz source/resolutions, and station output; stale publication is never automatic.
+refresh retains a valid existing Austrian station file when MVO is unavailable,
+prints a warning that the catalogue was **not refreshed**, and exits successfully.
+It does not rewrite stations, source snapshots or the last successful merge audit.
+Without a valid existing file it fails. Explicit sample, local-input and offline
+runs still fail on unusable inputs. An explicitly requested operator-index build
+remains independent and still runs after this retention fallback.
 The full MVO dataset is *not* anonymously downloadable: register manually at
 <https://data.mobilitaetsverbuende.at/de/data-sets>, accept the stop-list licence,
 then supply `MVO_USERNAME` and `MVO_PASSWORD` privately. The official public

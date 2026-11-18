@@ -53,3 +53,25 @@ def test_renfe_and_crs_ids_use_their_own_formats():
     # Two rows naming one UIC are ambiguous: neither is linked.
     twin = row(id="4", country="ES", name="Twin", uic="7101005", renfe_id="01006")
     assert unique_station_rows([renfe, twin], country="ES", key="renfe_id", id_fields=("uic",)) == {}
+
+
+def test_lookup_support_includes_native_foreign_points_but_not_derived_outputs(tmp_path):
+    import json
+    from countries.lookup.generate import known_ids
+    nodes = tmp_path / 'nodes'
+    lookups = tmp_path / 'lookup'
+    nodes.mkdir()
+    lookups.mkdir()
+    native = {'id': 'BE.NMBS.008200100', 'category': 'belgium_all',
+              'tags': {'uic_ref': '8200100'}}
+    derived = {'id': 'orphan', 'category': 'germany_all',
+               'tags': {'uic_ref': '9999999'}}
+    (lookups / 'lookup-belgium.json').write_text(json.dumps(native) + '\n')
+    for name in ('lookup-germany.json', 'lookup-austria-oebb.json'):
+        (lookups / name).write_text(json.dumps(derived) + '\n')
+    known = known_ids(nodes)
+    assert '8200100' in known[0]
+    assert '9999999' not in known[0]
+    assert 'orphan' not in known[1]
+    candidate = row(country='LU', uic='8200100', db_id='8200100', obb_id='8200100')
+    assert [item['id'] for item in build_lookup([candidate], 'rev', 'db_id', known=known)] == ['8200100']

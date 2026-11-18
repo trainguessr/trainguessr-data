@@ -268,6 +268,18 @@ def _apply_station_corrections(
                 f"spain_renfe: alias {alias_id}->{canonical_id} must also be listed "
                 "in overrides/exclusions/spain.json"
             )
+        if alias_id not in nodes:
+            canonical = nodes.get(canonical_id)
+            if canonical is None:
+                raise ValueError(f"spain_renfe: canonical station {canonical_id} is missing")
+            require_reviewed_identity(
+                {"expected_name": row.get("canonical_expected_name")},
+                (canonical.get("tags") or {}).get("name"),
+                context=f"spain_renfe canonical:{canonical_id}",
+            )
+            print(f"Renfe: reviewed alias {alias_id} absent from current feeds; "
+                  f"canonical station {canonical_id} retained without that alias")
+            continue
         alias, canonical = require_alias(
             nodes,
             alias_id=alias_id,

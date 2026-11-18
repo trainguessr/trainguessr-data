@@ -44,3 +44,7 @@ guessed one.
 Before you publish data, read the [publication checklist](publication.md).
 
 One-time research tools: `python3 -m gen.bootstrap --help`.
+
+Trainline-derived DB/ÖBB/RFI foreign lookups can link to playable nodes or to
+independently generated foreign lookup identities. Their own generated files
+are excluded as evidence, so these outputs cannot confirm each other.

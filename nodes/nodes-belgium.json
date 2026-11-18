@@ -455,7 +455,6 @@
 {"type":"node","id":"BE.NMBS.008871217","lat":50.443112,"lon":4.393199,"tags":{"name":"Roux","uic_ref":"8871217","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008814365","lat":50.79183,"lon":4.295333,"tags":{"name":"Ruisbroek","uic_ref":"8814365","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008822848","lat":51.081022,"lon":4.324998,"tags":{"name":"Ruisbroek-Sauvegarde","uic_ref":"8822848","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
-{"type":"node","id":"BE.NMBS.8860012","lat":50.466045,"lon":4.839569,"tags":{"name":"SALZINNES-A.C."},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008861432","lat":50.5213,"lon":4.767788,"tags":{"name":"Saint-Denis-Bovesse","uic_ref":"8861432","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008884004","lat":50.44286,"lon":3.820253,"tags":{"name":"Saint-Ghislain","uic_ref":"8884004","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
 {"type":"node","id":"BE.NMBS.008864956","lat":50.406373,"lon":4.949739,"tags":{"name":"Sart-Bernard","uic_ref":"8864956","uic_granularity":"stop","uic_crosswalk_source":"irail-station-uri"},"category":"belgium_all"}
