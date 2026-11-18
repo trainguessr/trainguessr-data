@@ -172,6 +172,16 @@
         }
       ],
       "limitation": "Wikidata individual claims may be uncited; the finite mapping is independently corroborated by exact official RFI page identifiers, the retained same-date native route and existing VT catalogue. This is a manually reviewed mapping, never an automatic entity/name matcher."
+    },
+    "trainline_trenitalia_id": {
+      "publisher": "Trainline stations (trenitalia_id / trenitalia_rtvt_id columns)",
+      "member": "stations.csv record 21023",
+      "use": "Merged stations only: binds the ViaggiaTreno ID to the Trenitalia/UIC stop ID when Regione keeps the merged stop's own ID (Como Camerlata S01308 -> 8325432; Regione S09998)."
+    },
+    "sbb_otd_ojp_location": {
+      "publisher": "SBB / opentransportdata.swiss OJP 2.0",
+      "member": "LocationInformationRequest 8325432, 2026-11-18",
+      "use": "Official name and coordinates of UIC 8325432 Como Camerlata (45.78449, 9.07952); 8301310 Albate-Camerlata is a separate non-passenger operating point."
     }
   }
 }

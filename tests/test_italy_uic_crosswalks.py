@@ -34,6 +34,7 @@ EXPECTED = {
     ("rfi", "683"): ("S05043", "8305043"),
     ("rfi", "685"): ("S02026", "8302026"),
     ("rfi", "1356"): ("S02011", "8302011"),
+    ("rfi", "3222"): ("S01308", "8325432"),
 }
 
 
@@ -56,7 +57,7 @@ def test_reviewed_csv_keeps_exact_provider_ids_and_accepted_stop_pairs():
         provider_id = row["fn_station_id"] if row["operator"] == "fn" else row["rfi_station_id"]
         actual[(row["operator"], provider_id)] = (row["viaggiatreno_station_id"], row["uic_ref"])
     assert actual == EXPECTED
-    assert len(rows) == 16
+    assert len(rows) == 17
 
     # Busto Arsizio Nord and Busto Arsizio FS are distinct provider records.
     assert actual[("fn", "S01137")][1] != actual[("rfi", "766")][1]
@@ -83,6 +84,8 @@ def test_register_preserves_stop_level_source_evidence():
             assert int(row["hafas_crd_x"]) > 0
             assert int(row["hafas_crd_y"]) > 0
             assert row["regione_stop_lat_raw"] == row["regione_stop_lon_raw"] == ""
+        elif row["trainline_id"]:
+            assert row["source_tag"] == f"regione:j5jz-kvqn+sbb-otd-ojp:20261118+trainline:{row['trainline_id']}"
         else:
             assert row["source_tag"] == "regione:j5jz-kvqn+sbb-otd-gtfs:20261024"
 
@@ -140,7 +143,7 @@ def test_an_additional_reviewed_mapping_is_accepted(tmp_path):
     rows.append(extra)
     path = tmp_path / "crosswalks.csv"
     _write_csv(path, rows)
-    assert len(load_station_uic_crosswalks(path)) == 17
+    assert len(load_station_uic_crosswalks(path)) == 18
 
 
 @pytest.mark.parametrize("field,value", [
@@ -155,6 +158,19 @@ def test_rfi_mapping_requires_both_exact_ids_and_the_region_id(field, value, tmp
     path = tmp_path / "crosswalks.csv"
     _write_csv(path, rows)
     with pytest.raises(ValueError, match="exact RFI and ViaggiaTreno IDs|ViaggiaTreno ID must match"):
+        load_station_uic_crosswalks(path)
+
+
+@pytest.mark.parametrize("trainline_trenitalia_id", ["", "8301310"])
+def test_merged_station_needs_the_trainline_trenitalia_id_of_its_uic(trainline_trenitalia_id, tmp_path):
+    """Como Camerlata: Regione keeps the merged stop S09998, not VT S01308."""
+    rows = load_station_uic_crosswalks()
+    target = next(row for row in rows if row["viaggiatreno_station_id"] == "S01308")
+    assert (target["regione_stop_id"], target["trainline_trenitalia_id"]) == ("S09998", "8325432")
+    target["trainline_trenitalia_id"] = trainline_trenitalia_id
+    path = tmp_path / "crosswalks.csv"
+    _write_csv(path, rows)
+    with pytest.raises(ValueError, match="ViaggiaTreno ID must match"):
         load_station_uic_crosswalks(path)
 
 

@@ -55,7 +55,11 @@ def load_station_uic_crosswalks(path: Path = STATION_UIC_CROSSWALKS) -> list[dic
         elif operator == "rfi":
             if fn_id or not rfi_id or not vt_id:
                 raise ValueError(f"{context}: enter both the exact RFI and ViaggiaTreno IDs")
-            if row["regione_stop_id"].strip() != vt_id:
+            # A merged station keeps the Regione record of the merged stop; its
+            # ViaggiaTreno ID is then bound by the Trenitalia ID that Trainline
+            # records for exactly that ViaggiaTreno station (Como Camerlata).
+            merged = bool(row.get("trainline_id", "").strip()) and row.get("trainline_trenitalia_id", "").strip() == uic
+            if row["regione_stop_id"].strip() != vt_id and not merged:
                 raise ValueError(f"{context}: ViaggiaTreno ID must match the Regione station-stop ID")
             provider_ids = [("rfi", rfi_id), ("viaggiatreno", vt_id)]
             if not row["expected_viaggiatreno_name"].strip():
