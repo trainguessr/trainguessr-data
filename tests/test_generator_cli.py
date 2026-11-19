@@ -416,3 +416,41 @@ def test_austria_mvo_unavailable_retains_valid_catalogue(tmp_path, monkeypatch, 
     assert "NOT refreshed" in capsys.readouterr().out
     with pytest.raises(SystemExit):
         generate.main(["--output", str(output), "--mvo-sample"])
+
+
+def test_switzerland_platform_sectors_follow_signs_and_drop_unproved_orders():
+    switzerland = load("switzerland_sectors_test", GEN / "countries" / "switzerland" / "generate.py")
+    def signs(uic, track, pairs):
+        return [{"bpuic": uic, "kundengleisnummer": track, "sektor_vorderseite": a, "sektor_ruckseiter": b}
+                for a, b in pairs]
+    rows = (
+        # Bern 8 (2026-11-18 export): full chain, one sign per boundary.
+        signs("8507000", "8", [("B", "A"), ("C", "B"), ("D", "C"), ("E", "D"), ("F", "E"), ("G", "F"), ("H", "G")])
+        # Bern 49 has no I: the H|J sign proves that neighbourhood.
+        + signs("8507000", "49", [("H", "G"), ("J", "H"), ("K", "J"), ("N", "N")])
+        + signs("8507000", "M", [("L", "M"), ("M", "N")])
+        # Same-letter signs and platform ends ("-") carry no order of their own.
+        + signs("8509416", "2", [("A", "-"), ("A", "A"), ("B", "A"), ("-", "B")])
+        # Unproved gap, non-neighbour sign, single sector, non-letter: dropped.
+        + signs("8509413", "4", [("A", "A"), ("F", "F")])
+        + signs("8509000", "1", [("A", "C"), ("B", "B")])
+        + signs("8509000", "2", [("A", "A")])
+        + signs("8509400", "1", [("-", "-")])
+    )
+    sectors = switzerland.platform_sectors(rows)
+    assert sectors["8507000"] == {"8": "ABCDEFGH", "M": "LMN"}
+    assert "49" not in sectors["8507000"]  # K..N gap without a sign stays unproved
+    assert sectors["8509416"] == {"2": "AB"}
+    assert "8509413" not in sectors and "8509000" not in sectors and "8509400" not in sectors
+    nodes = switzerland.build_nodes({"features": [{
+        "type": "Feature", "geometry": {"coordinates": [7.43, 46.95]},
+        "properties": {"meansoftransport": "TRAIN", "designationofficial": "Bern", "number": 8507000},
+    }]}, {}, sectors)
+    assert nodes[0]["tags"]["sbb_platform_sectors"] == "8:ABCDEFGH;M:LMN"
+
+
+def test_switzerland_platform_sector_gap_needs_a_joining_sign():
+    switzerland = load("switzerland_sector_gap_test", GEN / "countries" / "switzerland" / "generate.py")
+    rows = [{"bpuic": "8507000", "kundengleisnummer": "49", "sektor_vorderseite": a, "sektor_ruckseiter": b}
+            for a, b in [("H", "G"), ("J", "H"), ("K", "J"), ("L", "K"), ("M", "L"), ("N", "M")]]
+    assert switzerland.platform_sectors(rows) == {"8507000": {"49": "GHJKLMN"}}
