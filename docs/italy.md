@@ -63,6 +63,8 @@ The RFI report lists new, changed, and missing source records. If an old station
 - **FSE:** uses ViaggiaTreno IDs and reviewed physical station data. Shared RFI-managed stations stay in the RFI dataset.
 - **FER, EAV, FN:** use reviewed provider records and stop when a station ID or name needs review.
 
+The local railways (FER, TT, EAV, FSE, STA) publish no UICs and no data to derive them.
+
 The RFI/ViaggiaTreno review tool is:
 
 ```bash
